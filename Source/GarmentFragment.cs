@@ -1,0 +1,259 @@
+﻿using System.Diagnostics;
+using System.IO;
+using System.Xml;
+using Microsoft.Xna.Framework.Content;
+using System.Collections.Generic;
+
+namespace SPFLib
+{
+	/// <summary>
+	/// This is a peice of a garment that will get added to the skeleton
+	/// </summary>
+	public class CGarmentFragment
+	{
+		#region Fields
+
+		/// <summary>
+		/// The name of the garment that this guy is a peice of.
+		/// </summary>
+		private string m_strGarmentName;
+
+		/// <summary>
+		/// The animation container for the model to add to the skeleton
+		/// </summary>
+		private CGarmentAnimationContainer m_AnimationContainer;
+
+		#endregion //Fields
+
+		#region Properties
+
+		public string GarmentName
+		{
+			get { return m_strGarmentName; }
+			set { m_strGarmentName = value; }
+		}
+
+		public CGarmentAnimationContainer AnimationContainer
+		{
+			get
+			{
+				Debug.Assert(null != m_AnimationContainer);
+				return m_AnimationContainer; 
+			}
+		}
+
+		public string BoneName
+		{
+			get 
+			{
+				Debug.Assert(null != m_AnimationContainer);
+				Debug.Assert(null != m_AnimationContainer.Model);
+				return AnimationContainer.Model.Name; 
+			}
+		}
+
+		#endregion //Properties
+
+		#region Methods
+
+		/// <summary>
+		/// constructor!
+		/// </summary>
+		public CGarmentFragment()
+		{
+			m_AnimationContainer = new CGarmentAnimationContainer();
+		}
+
+		/// <summary>
+		/// Add this garment to the skeleton structure
+		/// </summary>
+		public void AddToModel()
+		{
+			//add all the garment bones to the bones they attach to
+			m_AnimationContainer.AddToModel();
+		}
+
+		/// <summary>
+		/// Remove this garment from the skeleton structure
+		/// </summary>
+		public void RemoveFromModel()
+		{
+			//remove all the garment bones from the bones they attach to
+			m_AnimationContainer.RemoveFromModel();
+		}
+
+		#region Tools
+
+		/// <summary>
+		/// Get a list of all the weapon
+		/// </summary>
+		/// <param name="listWeapons"></param>
+		public void GetAllWeaponBones(List<string> listWeapons)
+		{
+			AnimationContainer.Model.GetAllWeaponBones(listWeapons);
+		}
+
+		#endregion //Tools
+
+		#endregion //Methods
+
+		#region File IO
+
+		/// <summary>
+		/// set all the data for the garment bones in this dude after they have been read in
+		/// </summary>
+		/// <param name="rRootNode"></param>
+		public void SetGarmentBones(CBone rRootNode)
+		{
+			//set garment name in the bones
+			AnimationContainer.GarmentName = GarmentName;
+
+			//set the parent bone of all those root node garment bones
+			AnimationContainer.SetGarmentBones(rRootNode);
+		}
+
+#if WINDOWS
+
+		/// <summary>
+		/// Read from XML!
+		/// </summary>
+		/// <param name="strResource">xml filename to read from</param>
+		/// <param name="rRenderer">renderer to use to load images</param>
+		/// <param name="rRootNode">bone to attach garments to</param>
+		/// <returns>bool: whether or not it was able to read in the garment</returns>
+		public bool ReadXMLFormat(XmlNode rXMLNode, IRenderer rRenderer)
+		{
+			//make sure it is actually an xml node
+			if (rXMLNode.NodeType != XmlNodeType.Element)
+			{
+				Debug.Assert(false);
+				return false;
+			}
+
+			if ("Item" != rXMLNode.Name)
+			{
+				return false;
+			}
+
+			//should have an attribute Type
+			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
+			for (int i = 0; i < mapAttributes.Count; i++)
+			{
+				//will only have the name attribute
+				string strName = mapAttributes.Item(i).Name;
+				string strValue = mapAttributes.Item(i).Value;
+				if ("Type" == strName)
+				{
+					if ("AnimationLib.GarmentFragmentXML" != strValue)
+					{
+						Debug.Assert(false);
+						return false;
+					}
+				}
+			}
+
+			//Read in child nodes
+			if (rXMLNode.HasChildNodes)
+			{
+				for (XmlNode childNode = rXMLNode.FirstChild;
+					null != childNode;
+					childNode = childNode.NextSibling)
+				{
+					//what is in this node?
+					string strName = childNode.Name;
+					string strValue = childNode.InnerText;
+
+					if (strName == "model")
+					{
+						//read in the model
+						CFilename strModelFile = new CFilename();
+						strModelFile.SetRelFilename(strValue);
+						if (!m_AnimationContainer.ReadSerializedModelFormat(strModelFile.Filename, rRenderer))
+						{
+							Debug.Assert(false);
+							return false;
+						}
+					}
+					else if (strName == "animation")
+					{
+						//read in the animations
+						CFilename strAnimationFile = new CFilename();
+						strAnimationFile.SetRelFilename(strValue);
+						if (!m_AnimationContainer.ReadSerializedAnimationFormat(strAnimationFile.Filename))
+						{
+							Debug.Assert(false);
+							return false;
+						}
+					}
+					else
+					{
+						Debug.Assert(false);
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		/// <summary>
+		/// Write this dude out to the xml format
+		/// </summary>
+		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
+		public void WriteXMLFormat(XmlTextWriter rXMLFile, float fEnbiggify)
+		{
+			//write out the item tag
+			rXMLFile.WriteStartElement("Item");
+			rXMLFile.WriteAttributeString("Type", "AnimationLib.GarmentFragmentXML");
+
+			//write out model filename to use
+			rXMLFile.WriteStartElement("model");
+			rXMLFile.WriteString(AnimationContainer.ModelFile.GetRelFilename());
+			rXMLFile.WriteEndElement();
+
+			//write out animation filename to use
+			rXMLFile.WriteStartElement("animation");
+			rXMLFile.WriteString(AnimationContainer.AnimationFile.GetRelFilename());
+			rXMLFile.WriteEndElement();
+
+			rXMLFile.WriteEndElement();
+
+			//write out the model file
+			AnimationContainer.WriteModelXMLFormat(AnimationContainer.ModelFile.Filename, fEnbiggify);
+
+			//write out the animation file
+			AnimationContainer.WriteXMLFormat(AnimationContainer.AnimationFile.Filename);
+		}
+
+#endif
+
+		/// <summary>
+		/// read from XNA content
+		/// </summary>
+		/// <param name="rXmlContent">teh content loader</param>
+		/// <param name="strResource">name of the garment resource to load</param>
+		/// <param name="rRenderer">renderer to use to load images</param>
+		/// <param name="rRootNode">teh root node of the model that uses this garment</param>
+		/// <returns>bool: whether or not was able to load the garment</returns>
+		public bool ReadXNAContent(ContentManager rContent, AnimationLib.GarmentFragmentXML rGarmentFragment, IRenderer rRenderer)
+		{
+			//read in the model
+			CFilename strModelFile = new CFilename();
+			strModelFile.SetRelFilename(rGarmentFragment.model);
+			if (!m_AnimationContainer.ReadSerializedModelFormat(rContent, strModelFile.GetRelPathFileNoExt(), rRenderer))
+			{
+				Debug.Assert(false);
+				return false;
+			}
+
+			//read in the animations
+			CFilename strAnimationFile = new CFilename();
+			strAnimationFile.SetRelFilename(rGarmentFragment.animation);
+			m_AnimationContainer.ReadSerializedAnimationFormat(rContent, strAnimationFile.GetRelPathFileNoExt());
+
+			return true;
+		}
+
+		#endregion File IO
+	}
+}

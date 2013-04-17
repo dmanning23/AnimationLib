@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{252DF212-370D-4682-B3D8-85CE9ACE545E}</ProjectGuid>
+    <ProjectTypeGuids>{9B831FEF-F496-498F-9FE8-180DA5CB4258};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AnimationLib</RootNamespace>
+    <MonoGamePlatform>WindowsGL</MonoGamePlatform>
+    <AssemblyName>AnimationLib</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="MonoGame.Framework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Source\Animation.cs">
+      <Link>Animation.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\AnimationContainer.cs">
+      <Link>AnimationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Bone.cs">
+      <Link>Bone.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Garment.cs">
+      <Link>Garment.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\GarmentAnimationContainer.cs">
+      <Link>GarmentAnimationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\GarmentBone.cs">
+      <Link>GarmentBone.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\GarmentFragment.cs">
+      <Link>GarmentFragment.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Image.cs">
+      <Link>Image.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Joint.cs">
+      <Link>Joint.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\JointData.cs">
+      <Link>JointData.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\KeyBone.cs">
+      <Link>KeyBone.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\KeyElement.cs">
+      <Link>KeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\KeyJoint.cs">
+      <Link>KeyJoint.cs</Link>
+    </Compile>
+    <Compile Include="AnimationXML.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\externals\GameTimer\Windows\GameTimer.Windows.csproj">
+      <Project>{6B6D4188-5C03-4E16-923B-96FDBC85B91A}</Project>
+      <Name>GameTimer.Windows</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,248 @@
+﻿using System;
+using System.Diagnostics;
+using System.Xml;
+using Microsoft.Xna.Framework;
+
+namespace SPFLib
+{
+	/// <summary>
+	/// This is a special type of bone, that is animated based on the parent bone, can be added and removed at runtime, etc.
+	/// </summary>
+	public class CGarmentBone : CBone
+	{
+		#region Members
+
+		/// <summary>
+		/// The peice of clothing that this bone is part of
+		/// </summary>
+		private string m_strGarment;
+
+		/// <summary>
+		/// reference to the animation container that owns this bone
+		/// used to change animation when the parent bone changes images
+		/// </summary>
+		private CGarmentAnimationContainer m_AnimationContainer;
+
+		/// <summary>
+		/// The bone in the skeleton that this garment attaches to
+		/// </summary>
+		private string m_strParentBone;
+
+		/// <summary>
+		/// Reference to the bone this guy attaches too.  Should have the same name as this guy
+		/// </summary>
+		private CBone m_rParentBone;
+
+		/// <summary>
+		/// flag for whether this garment has been added to the model or not
+		/// </summary>
+		private bool m_bAddedToModel;
+
+		#endregion //Members
+
+		#region Properties
+
+		public string Garment
+		{
+			get { return m_strGarment; }
+			set
+			{
+				//set my garment
+				m_strGarment = value;
+			}
+		}
+
+		public CBone Parent
+		{
+			get { return m_rParentBone; }
+			set
+			{
+				//set my bone
+				m_rParentBone = value;
+			}
+		}
+
+		public string ParentBoneName
+		{
+			get { return m_strParentBone; }
+		}
+
+		#endregion //Properties
+
+		#region Methods
+
+		/// <summary>
+		/// hello, standard constructor!
+		/// </summary>
+		public CGarmentBone(CGarmentAnimationContainer rOwner)
+			: base()
+		{
+			Debug.Assert(null != rOwner);
+			m_AnimationContainer = rOwner;
+			m_rParentBone = null;
+			BoneType = EBoneType.Garment;
+			m_bAddedToModel = false;
+		}
+
+		/// <summary>
+		/// update all this dude's stuff
+		/// </summary>
+		/// <param name="iTime"></param>
+		/// <param name="myPosition"></param>
+		/// <param name="myKeyBone"></param>
+		/// <param name="fParentRotation"></param>
+		/// <param name="bParentFlip"></param>
+		override public void Update(int iTime,
+			Vector2 myPosition,
+			CKeyBone myKeyBone,
+			float fParentRotation,
+			bool bParentFlip,
+			int iParentLayer,
+			float fScale,
+			bool bIgnoreRagdoll)
+		{
+			Debug.Assert(null != m_AnimationContainer);
+
+			//update the animation container, which will update the CBone base class 
+			m_AnimationContainer.Update(iTime, myPosition, bParentFlip, fScale, fParentRotation, bIgnoreRagdoll, iParentLayer, m_rParentBone);
+		}
+
+		public void UpdateBaseBone(int iTime,
+			Vector2 myPosition,
+			CKeyBone myKeyBone,
+			float fParentRotation,
+			bool bParentFlip,
+			int iParentLayer,
+			float fScale,
+			bool bIgnoreRagdoll)
+		{
+			base.Update(iTime, myPosition, myKeyBone, fParentRotation, bParentFlip, iParentLayer, fScale, bIgnoreRagdoll);
+		}
+
+		/// <summary>
+		/// add to model
+		/// </summary>
+		public void AddToModel()
+		{
+			Debug.Assert(null != m_rParentBone);
+
+			if (!m_bAddedToModel)
+			{
+				m_rParentBone.AddGarment(this);
+				m_bAddedToModel = true;
+			}
+		}
+
+		/// <summary>
+		/// remove from model
+		/// </summary>
+		public void RemoveFromModel()
+		{
+			Debug.Assert(null != m_rParentBone);
+
+			if (m_bAddedToModel)
+			{
+				m_rParentBone.RemoveGarment(m_strGarment);
+				m_bAddedToModel = false;
+			}
+		}
+
+		#endregion //Methods
+
+		#region File IO
+
+#if WINDOWS
+
+		/// <summary>
+		/// Parse a child node of this BoneXML
+		/// </summary>
+		/// <param name="childNode">teh node to parse</param>
+		/// <param name="ParentBone"></param>
+		/// <param name="rRenderer"></param>
+		/// <returns></returns>
+		protected override bool ParseChildXMLNode(XmlNode childNode, CBone ParentBone, IRenderer rRenderer)
+		{
+			//what is in this node?
+			string strName = childNode.Name;
+			string strValue = childNode.InnerText;
+
+			if (strName == "parentBone")
+			{
+				//set teh parent bone of this dude
+				m_strParentBone = strValue;
+			}
+			else
+			{
+				//Let the base class parse the rest of the xml
+				return base.ParseChildXMLNode(childNode, ParentBone, rRenderer);
+			}
+
+			return true;
+		}
+
+		/// <summary>
+		/// Write this dude out to the xml format
+		/// </summary>
+		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
+		/// <param name="bStartElement">whether to tag element as "Asset" or "Item"</param>
+		public override void WriteXMLFormat(XmlTextWriter rXMLFile, bool bStartElement, float fEnbiggify)
+		{
+			//add the xml node
+			if (bStartElement)
+			{
+				rXMLFile.WriteStartElement("XnaContent");
+				rXMLFile.WriteStartElement("Asset");
+			}
+			else
+			{
+				rXMLFile.WriteStartElement("Item");
+			}
+			rXMLFile.WriteAttributeString("Type", "AnimationLib.GarmentBoneXML");
+
+			WriteChildXMLNode(rXMLFile, fEnbiggify);
+
+			if (bStartElement)
+			{
+				//write out extra end element for XnaContent
+				rXMLFile.WriteEndElement();
+			}
+			rXMLFile.WriteEndElement();
+		}
+
+		public override void WriteChildXMLNode(XmlTextWriter rXMLFile, float fEnbiggify)
+		{
+			//write out all the base class xml stuff
+			base.WriteChildXMLNode(rXMLFile, fEnbiggify);
+
+			//add the name attribute
+			rXMLFile.WriteStartElement("parentBone");
+			rXMLFile.WriteString(m_strParentBone);
+			rXMLFile.WriteEndElement();
+		}
+
+#endif
+
+		/// <summary>
+		/// Read in all the bone information from an object read in from a serialized XML file.
+		/// </summary>
+		/// <param name="rBone">the xml object to get data from</param>
+		/// <param name="ParentBone">The parent bone for this dude.</param>
+		/// <param name="MyRenderer">The renderer to use to load images</param>
+		public override bool ReadSerializedFormat(AnimationLib.BoneXML rBone, CBone ParentBone, IRenderer rRenderer)
+		{
+			AnimationLib.GarmentBoneXML myGarmentBoneXML = rBone as AnimationLib.GarmentBoneXML;
+			if (null == myGarmentBoneXML)
+			{
+				return false;
+			}
+
+			//get the parent bone
+			m_strParentBone = myGarmentBoneXML.parentBone;
+
+			//let the base class parse the rest of that shit
+			return base.ReadSerializedFormat(rBone, ParentBone, rRenderer);
+		}
+
+		#endregion //File IO
+	}
+}
