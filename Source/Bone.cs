@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
+using FilenameBuddy;
+using DrawListBuddy;
+using MatrixExtensions;
 
-namespace SPFLib
+namespace AnimationLib
 {
 	/// <summary>
 	/// These are the different types of things bones can be.
@@ -18,24 +21,24 @@ namespace SPFLib
 		Garment //this bone is part of a garment and doesn't collide with anything
 	}
 
-	public class CBone
+	public class Bone
 	{
 		#region Member Variables
 
 		/// <summary>
 		/// The images in this bone
 		/// </summary>
-		private List<CImage> m_listImages;
+		private List<Image> m_listImages;
 
 		/// <summary>
 		/// The joints in this bone
 		/// </summary>
-		private List<CJoint> m_listJoints;
+		private List<Joint> m_listJoints;
 
 		/// <summary>
 		/// the child bones of this guy
 		/// </summary>
-		private List<CBone> m_listChildren;
+		private List<Bone> m_listChildren;
 
 		/// <summary>
 		/// The name of this bone
@@ -45,7 +48,7 @@ namespace SPFLib
 		/// <summary>
 		/// the joint this guy attachs to
 		/// </summary>
-		private CJoint m_AnchorJoint;
+		private Joint m_AnchorJoint;
 
 		/// <summary>
 		/// The current position of this guys upper-left corner in screen cooridnates
@@ -94,7 +97,7 @@ namespace SPFLib
 		/// <summary>
 		/// Gets the list of child bones
 		/// </summary>
-		public List<CBone> Bones
+		public List<Bone> Bones
 		{
 			get { return m_listChildren; }
 		}
@@ -102,7 +105,7 @@ namespace SPFLib
 		/// <summary>
 		/// Gets the list of joints
 		/// </summary>
-		public List<CJoint> Joints
+		public List<Joint> Joints
 		{
 			get { return m_listJoints; }
 		}
@@ -110,7 +113,7 @@ namespace SPFLib
 		/// <summary>
 		/// get the list of images
 		/// </summary>
-		public List<CImage> Images
+		public List<Image> Images
 		{
 			get { return m_listImages; }
 		}
@@ -118,7 +121,7 @@ namespace SPFLib
 		/// <summary>
 		/// get teh anchor joint
 		/// </summary>
-		public CJoint Anchor
+		public Joint Anchor
 		{
 			get 
 			{
@@ -213,14 +216,14 @@ namespace SPFLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public CBone()
+		public Bone()
 		{
-			m_listImages = new List<CImage>();
-			m_listJoints = new List<CJoint>();
-			m_listChildren = new List<CBone>();
+			m_listImages = new List<Image>();
+			m_listJoints = new List<Joint>();
+			m_listChildren = new List<Bone>();
 			m_iCurrentImage = -1;
 			m_iCurrentLayer = -1;
-			m_AnchorJoint = new CJoint(0);
+			m_AnchorJoint = new Joint(0);
 			m_strBoneName = "Root";
 			m_fCurrentRotation = 0.0f;
 			m_bCurrentFlip = false;
@@ -253,7 +256,7 @@ namespace SPFLib
 		/// <param name="bParentFlip"></param>
 		virtual public void Update(int iTime,
 			Vector2 myPosition,
-			CKeyBone myKeyBone,
+			KeyBone myKeyBone,
 			float fParentRotation,
 			bool bParentFlip,
 			int iParentLayer,
@@ -267,7 +270,7 @@ namespace SPFLib
 			//first update teh joint by the keyjoint
 			if (null != myKeyBone) //if null == keybone, this is a hack update
 			{
-				CKeyJoint rChildKeyJoint = myKeyBone.KeyJoint;
+				KeyJoint rChildKeyJoint = myKeyBone.KeyJoint;
 				m_AnchorJoint.Update(rChildKeyJoint, iTime);
 			}
 
@@ -323,11 +326,11 @@ namespace SPFLib
 				{
 					Vector2 animationTrans = m_AnchorJoint.CurrentKeyElement.Translation;
 					animationTrans.X *= -1.0f;
-					myPosition += Matrix2.Orientation(fParentRotation) * (animationTrans * fScale);
+					myPosition += MatrixExt.Orientation(fParentRotation).Mutliply(animationTrans * fScale);
 				}
 				else
 				{
-					myPosition += Matrix2.Orientation(fParentRotation) * (m_AnchorJoint.CurrentKeyElement.Translation * fScale);
+					myPosition += MatrixExt.Orientation(fParentRotation).Mutliply(m_AnchorJoint.CurrentKeyElement.Translation * fScale);
 				}
 			}
 
@@ -337,17 +340,17 @@ namespace SPFLib
 			//create the rotation matrix and flip it if necessary
 
 			//Create matrix for the position of this dude
-			Matrix2 myMatrix = new Matrix2(0.0f);
-			myMatrix.XPos = myPosition.X;
-			myMatrix.YPos = myPosition.Y;
+			Matrix myMatrix = Matrix.Identity;
+			myMatrix.XPos(myPosition.X);
+			myMatrix.YPos(myPosition.Y);
 
 			//create -translation matrix to move to and from the origin
-			Matrix2 myTranslation = new Matrix2(0.0f);
-			myTranslation.XPos = -myPosition.X;
-			myTranslation.YPos = -myPosition.Y;
+			Matrix myTranslation = Matrix.Identity;
+			myTranslation.XPos(-myPosition.X);
+			myTranslation.YPos(-myPosition.Y);
 
 			//okay multiply through! move to origin, rotate, move back to my position
-			myMatrix = myMatrix * Matrix2.Orientation(m_fCurrentRotation);
+			myMatrix = myMatrix * MatrixExt.Orientation(m_fCurrentRotation);
 			myMatrix = myMatrix * myTranslation;
 
 			//Get the anchor coord
@@ -372,7 +375,7 @@ namespace SPFLib
 			if (!m_AnchorJoint.CurrentKeyElement.RagDoll || !m_AnchorJoint.Data.Floating || bIgnoreRagdoll)
 			{
 				//Update my position based on the offset of the anchor coord
-				m_CurrentPosition = myMatrix * (myPosition - anchorCoord);
+				m_CurrentPosition = myMatrix.Mutliply(myPosition - anchorCoord);
 			}
 
 			//update all the circle data
@@ -416,7 +419,7 @@ namespace SPFLib
 					jointPosition = myPosition + jointPosition;
 
 					m_listJoints[i].OldPosition = m_listJoints[i].Position;
-					m_listJoints[i].Position = myMatrix * jointPosition;
+					m_listJoints[i].Position = myMatrix.Mutliply(jointPosition);
 				}
 			}
 
@@ -436,7 +439,7 @@ namespace SPFLib
 				}
 
 				//update the chlidren
-				CKeyBone childKeyBone = null;
+				KeyBone childKeyBone = null;
 				if (null != myKeyBone)
 				{
 					childKeyBone = myKeyBone.GetChildBone(i);
@@ -462,7 +465,7 @@ namespace SPFLib
 		/// Put a garment on this bone
 		/// </summary>
 		/// <param name="rBone">Add a garment over this bone</param>
-		public void AddGarment(CGarmentBone rBone)
+		public void AddGarment(GarmentBone rBone)
 		{
 			//just add the bone to the end of the list
 			m_listChildren.Add(rBone);
@@ -477,9 +480,9 @@ namespace SPFLib
 			//find and remove the garment bone that matches the garment
 			for (int i = 0; i < m_listChildren.Count; i++)
 			{
-				if (m_listChildren[i] is CGarmentBone)
+				if (m_listChildren[i] is GarmentBone)
 				{
-					CGarmentBone myBone = m_listChildren[i] as CGarmentBone;
+					GarmentBone myBone = m_listChildren[i] as GarmentBone;
 					Debug.Assert(null != myBone);
 					if (strGarment == myBone.Garment)
 					{
@@ -497,7 +500,7 @@ namespace SPFLib
 		/// Get a specific joint from the list
 		/// </summary>
 		/// <param name="iIndex">The index of the joint to get</param>
-		public CJoint GetJoint(string strJointName)
+		public Joint GetJoint(string strJointName)
 		{
 			for (int i = 0; i < m_listJoints.Count; i++)
 			{
@@ -516,7 +519,7 @@ namespace SPFLib
 		/// </summary>
 		/// <param name="strBoneName">the name of teh bone we are looking for</param>
 		/// <returns>The first bone we found with that name.</returns>
-		public CBone GetBone(string strBoneName)
+		public Bone GetBone(string strBoneName)
 		{
 			//is this the dude?
 			if (Name == strBoneName)
@@ -527,7 +530,7 @@ namespace SPFLib
 			//is the requested bone underneath this dude?
 			for (int i = 0; i < Bones.Count; i++)
 			{
-				CBone myBone = Bones[i].GetBone(strBoneName);
+				Bone myBone = Bones[i].GetBone(strBoneName);
 				if (null != myBone)
 				{
 					return myBone;
@@ -542,8 +545,8 @@ namespace SPFLib
 		/// get the bone that owns a particular bone
 		/// </summary>
 		/// <param name="strBoneName">name of the bone we want the parent of</param>
-		/// <returns>CBone: bone that owns a bone with the requested name.  null if not found</returns>
-		public CBone GetParentBone(string strBoneName)
+		/// <returns>Bone: bone that owns a bone with the requested name.  null if not found</returns>
+		public Bone GetParentBone(string strBoneName)
 		{
 			//are any of my children the correct bone?
 			for (int i = 0; i < Bones.Count; i++)
@@ -557,7 +560,7 @@ namespace SPFLib
 			//do any of my child have the correct bone?
 			for (int i = 0; i < Bones.Count; i++)
 			{
-				CBone FoundBone = Bones[i].GetParentBone(strBoneName);
+				Bone FoundBone = Bones[i].GetParentBone(strBoneName);
 				if (null != FoundBone)
 				{
 					return FoundBone;
@@ -573,11 +576,11 @@ namespace SPFLib
 		/// </summary>
 		/// <param name="strFileName">filename of the image to find</param>
 		/// <returns>the first instance of an image using that name, null if not found</returns>
-		public CImage GetImage(CFilename strFileName)
+		public Image GetImage(Filename strFileName)
 		{
 			for (int i = 0; i < m_listImages.Count; i++)
 			{
-				if (m_listImages[i].Filename.Filename == strFileName.Filename)
+				if (m_listImages[i].Filename.File == strFileName.File)
 				{
 					return m_listImages[i];
 				}
@@ -624,8 +627,8 @@ namespace SPFLib
 		/// <summary>
 		/// get the image currently being displayed by this bone
 		/// </summary>
-		/// <returns>CImage: teh current image</returns>
-		public CImage GetCurrentImage()
+		/// <returns>Image: teh current image</returns>
+		public Image GetCurrentImage()
 		{
 			if ((m_iCurrentImage >= 0) && (m_iCurrentImage < m_listImages.Count))
 			{
@@ -663,7 +666,7 @@ namespace SPFLib
 		/// Render this guy out to a draw list
 		/// </summary>
 		/// <param name="DrawList">the draw list to render to</param>
-		public void Render(CDrawList MyDrawList, Color PaletteSwap)
+		public void Render(DrawList MyDrawList, Color PaletteSwap)
 		{
 			//Render out the current image
 			if ((m_iCurrentImage >= 0) && (m_iCurrentImage < m_listImages.Count))
@@ -696,7 +699,7 @@ namespace SPFLib
 		/// <param name="myRenderer">renderer to draw to</param>
 		/// <param name="bRecurse">whether or not to recurse and draw child bones</param>
 		/// <param name="rColor">the color to use</param>
-		public void DrawJoints(IRenderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawJoints(Renderer myRenderer, bool bRecurse, Color rColor)
 		{
 			for (int i = 0; i < m_listJoints.Count; i++)
 			{
@@ -712,7 +715,7 @@ namespace SPFLib
 			}
 		}
 
-		public void DrawSkeleton(IRenderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawSkeleton(Renderer myRenderer, bool bRecurse, Color rColor)
 		{
 			for (int i = 0; i < m_listJoints.Count; i++)
 			{
@@ -728,7 +731,7 @@ namespace SPFLib
 			}
 		}
 
-		public void DrawPhysics(IRenderer rRenderer, bool bRecurse, Color rColor)
+		public void DrawPhysics(Renderer rRenderer, bool bRecurse, Color rColor)
 		{
 			//draw all my circles
 			if (null != GetCurrentImage())
@@ -746,14 +749,14 @@ namespace SPFLib
 			}
 		}
 
-		public void DrawOutline(IRenderer myRenderer, float fScale)
+		public void DrawOutline(Renderer myRenderer, float fScale)
 		{
 			//get the current image
 			if (m_iCurrentImage < 0)
 			{
 				return;
 			}
-			CImage myImage = m_listImages[m_iCurrentImage];
+			Image myImage = m_listImages[m_iCurrentImage];
 
 			myRenderer.DrawRectangle(
 				m_CurrentPosition,
@@ -888,7 +891,7 @@ namespace SPFLib
 				if (bHitLimit)
 				{
 					//update joint positions
-					Matrix2 myMatrix = Matrix2.Orientation(m_fCurrentRotation);
+					Matrix myMatrix = MatrixExt.Orientation(m_fCurrentRotation);
 					for (int i = 0; i < m_listJoints.Count; i++)
 					{
 						//get the vector from the anchor to the joint
@@ -897,7 +900,7 @@ namespace SPFLib
 						{
 							jointPos.X *= -1.0f;
 						}
-						jointPos = myMatrix * jointPos;
+						jointPos = myMatrix.Mutliply(jointPos);
 						m_listJoints[i].Position = Anchor.Position + jointPos;
 					}
 				}
@@ -948,14 +951,14 @@ namespace SPFLib
 					//Float based on the joint position
 
 					//Get the vector from the current joint position
-					Matrix2 myRotation = Matrix2.Orientation(m_fCurrentRotation);
+					Matrix myRotation = MatrixExt.Orientation(m_fCurrentRotation);
 					Vector2 JointPos = GetCurrentImage().Data[0].Location * fScale;
 					if (Flipped)
 					{
 						//it flipped?
 						JointPos.X = GetCurrentImage().Width - JointPos.X;
 					}
-					JointPos = myRotation * JointPos;
+					JointPos = myRotation.Mutliply(JointPos);
 
 					//update this dude's position 
 					m_CurrentPosition = Joints[0].Position - JointPos;
@@ -965,14 +968,14 @@ namespace SPFLib
 					m_fCurrentRotation = GetRagDollRotation();
 
 					//rotate the anchor position
-					Matrix2 myRotation = Matrix2.Orientation(m_fCurrentRotation);
+					Matrix myRotation = MatrixExt.Orientation(m_fCurrentRotation);
 					Vector2 AnchorCoord = GetCurrentImage().AnchorCoord;
 					if (Flipped)
 					{
 						//it flipped?
 						AnchorCoord.X = GetCurrentImage().Width - AnchorCoord.X;
 					}
-					AnchorCoord = (myRotation * AnchorCoord) * fScale;
+					AnchorCoord = (myRotation.Mutliply(AnchorCoord)) * fScale;
 
 					//update this dude's position 
 					m_CurrentPosition = Anchor.Position - AnchorCoord;
@@ -1008,7 +1011,7 @@ namespace SPFLib
 			int iLayer,
 			int iImageIndex,
 			float fRotation,
-			CKeyBone myBone,
+			KeyBone myBone,
 			bool bParentFlip,
 			float fScale,
 			Vector2 TranslationHack)
@@ -1019,8 +1022,8 @@ namespace SPFLib
 			}
 
 			//get the key element and copy it
-			CKeyElement CurrentElement = Anchor.CurrentKeyElement;
-			CKeyElement myElement = new CKeyElement();
+			KeyElement CurrentElement = Anchor.CurrentKeyElement;
+			KeyElement myElement = new KeyElement();
 			myElement.Copy(CurrentElement);
 
 			//hack up the image
@@ -1069,7 +1072,7 @@ namespace SPFLib
 			MyLocation /= fScale;
 
 			//rotate around by the -current rotation
-			Matrix2 myRotation = Matrix2.Orientation(-m_fCurrentRotation);
+			Matrix myRotation = Matrix.Orientation(-m_fCurrentRotation);
 
 			MyLocation = myRotation * MyLocation;
 			iX = (int)MyLocation.X;
@@ -1106,7 +1109,7 @@ namespace SPFLib
 			float fParentAngle = m_fCurrentRotation - m_AnchorJoint.CurrentKeyElement.Rotation;
 
 			//rotate around by the -current rotation
-			Matrix2 myRotation = Matrix2.Orientation(-fParentAngle);
+			Matrix myRotation = Matrix.Orientation(-fParentAngle);
 
 			MyLocation = myRotation * MyLocation;
 			iX = (int)MyLocation.X;
@@ -1166,7 +1169,7 @@ namespace SPFLib
 
 		public void AddJoint(string strJointName)
 		{
-			CJoint myJoint = new CJoint(m_listJoints.Count);
+			Joint myJoint = new Joint(m_listJoints.Count);
 			myJoint.Name = strJointName;
 			m_listJoints.Add(myJoint);
 
@@ -1182,7 +1185,7 @@ namespace SPFLib
 		/// copy its info into this dude.
 		/// </summary>
 		/// <param name="RootBone">the root bone of the model, used to search for matching bones</param>
-		public void MirrorRightToLeft(CBone RootBone, CPasteAction ActionCollection)
+		public void MirrorRightToLeft(Bone RootBone, CPasteAction ActionCollection)
 		{
 			Debug.Assert(null != RootBone);
 
@@ -1197,7 +1200,7 @@ namespace SPFLib
 					strRightBone += " ";
 					strRightBone += nameTokens[i];
 				}
-				CBone MirrorBone = RootBone.GetBone(strRightBone);
+				Bone MirrorBone = RootBone.GetBone(strRightBone);
 				if (null != MirrorBone)
 				{
 					//copy that dude's info into this guy
@@ -1216,14 +1219,14 @@ namespace SPFLib
 		/// Copy another bone's data into this dude
 		/// </summary>
 		/// <param name="SourceBone">the source to copy from</param>
-		private void Copy(CBone SourceBone, CPasteAction ActionCollection)
+		private void Copy(Bone SourceBone, CPasteAction ActionCollection)
 		{
 			Debug.Assert(null != SourceBone);
 
 			for (int i = 0; i < m_listImages.Count; i++)
 			{
 				//check if the other bone uses this image
-				CImage matchingImage = SourceBone.GetImage(m_listImages[i].Filename);
+				Image matchingImage = SourceBone.GetImage(m_listImages[i].Filename);
 				if (null != matchingImage)
 				{
 					m_listImages[i].Copy(matchingImage, ActionCollection);
@@ -1235,7 +1238,7 @@ namespace SPFLib
 		/// Rename all the joints to name of the bone that attaches to them
 		/// </summary>
 		/// <param name="rAnimations">null or an animation container to also rename joints</param>
-		public void RenameJoints(CAnimationContainer rAnimations)
+		public void RenameJoints(AnimationContainer rAnimations)
 		{
 			//rename the joints in the animations
 			if (null != Anchor.Name)
@@ -1275,7 +1278,7 @@ namespace SPFLib
 			}
 
 			//get all the weapons loaded into the garment manager
-			foreach (CBone curBone in Bones)
+			foreach (Bone curBone in Bones)
 			{
 				curBone.GetAllWeaponBones(listWeapons);
 			}
@@ -1296,7 +1299,7 @@ namespace SPFLib
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public virtual bool ReadSerializedFormat(XmlNode rXMLNode, CBone ParentBone, IRenderer rRenderer)
+		public virtual bool ReadSerializedFormat(XmlNode rXMLNode, Bone ParentBone, Renderer rRenderer)
 		{
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
@@ -1335,7 +1338,7 @@ namespace SPFLib
 					if (null == m_AnchorJoint)
 					{
 						//add a joint to the parent
-						m_AnchorJoint = new CJoint(ParentBone.m_listJoints.Count);
+						m_AnchorJoint = new Joint(ParentBone.m_listJoints.Count);
 						m_AnchorJoint.Name = Name;
 						ParentBone.m_listJoints.Add(m_AnchorJoint);
 					}
@@ -1358,7 +1361,7 @@ namespace SPFLib
 		/// <param name="ParentBone"></param>
 		/// <param name="rRenderer"></param>
 		/// <returns></returns>
-		protected virtual bool ParseChildXMLNode(XmlNode childNode, CBone ParentBone, IRenderer rRenderer)
+		protected virtual bool ParseChildXMLNode(XmlNode childNode, Bone ParentBone, Renderer rRenderer)
 		{
 			//what is in this node?
 			string strName = childNode.Name;
@@ -1413,7 +1416,7 @@ namespace SPFLib
 						null != jointNode;
 						jointNode = jointNode.NextSibling)
 					{
-						CJoint childJoint = new CJoint(m_listJoints.Count);
+						Joint childJoint = new Joint(m_listJoints.Count);
 						if (!childJoint.ReadSerializedFormat(jointNode))
 						{
 							Debug.Assert(false);
@@ -1432,7 +1435,7 @@ namespace SPFLib
 						null != imageNode;
 						imageNode = imageNode.NextSibling)
 					{
-						CImage childImage = new CImage();
+						Image childImage = new Image();
 						if (!childImage.ReadSerializedFormat(imageNode, rRenderer, this))
 						{
 							Debug.Assert(false);
@@ -1451,7 +1454,7 @@ namespace SPFLib
 						null != boneNode;
 						boneNode = boneNode.NextSibling)
 					{
-						CBone childBone = new CBone();
+						Bone childBone = new Bone();
 						if (!childBone.ReadSerializedFormat(boneNode, this, rRenderer))
 						{
 							Debug.Assert(false);
@@ -1537,7 +1540,7 @@ namespace SPFLib
 			for (int i = 0; i < m_listChildren.Count; i++)
 			{
 				//dont write out child garment bones
-				if (m_listChildren[i] is CGarmentBone)
+				if (m_listChildren[i] is GarmentBone)
 				{
 					continue;
 				}
@@ -1554,7 +1557,7 @@ namespace SPFLib
 		/// <param name="rBone">the xml object to get data from</param>
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
-		public virtual bool ReadSerializedFormat(AnimationLib.BoneXML rBone, CBone ParentBone, IRenderer rRenderer)
+		public virtual bool ReadSerializedFormat(AnimationLib.BoneXML rBone, Bone ParentBone, Renderer rRenderer)
 		{
 			//copy all the data from that dude
 			m_strBoneName = rBone.name;
@@ -1571,7 +1574,7 @@ namespace SPFLib
 
 			for (int i = 0; i < rBone.joints.Count; i++)
 			{
-				CJoint myJoint = new CJoint(i);
+				Joint myJoint = new Joint(i);
 				AnimationLib.JointXML myJointXML = rBone.joints[i];
 				if (!myJoint.ReadSerializedFormat(myJointXML))
 				{
@@ -1582,7 +1585,7 @@ namespace SPFLib
 			}
 			for (int i = 0; i < rBone.images.Count; i++)
 			{
-				CImage myImage = new CImage();
+				Image myImage = new Image();
 				AnimationLib.ImageXML myImageXML = rBone.images[i];
 				if (!myImage.ReadSerializedFormat(myImageXML, rRenderer))
 				{
@@ -1593,7 +1596,7 @@ namespace SPFLib
 			}
 			for (int i = 0; i < rBone.bones.Count; i++)
 			{
-				CBone myBone = new CBone();
+				Bone myBone = new Bone();
 				AnimationLib.BoneXML childBoneXML = rBone.bones[i];
 				if (!myBone.ReadSerializedFormat(childBoneXML, this, rRenderer))
 				{

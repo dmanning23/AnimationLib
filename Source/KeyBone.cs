@@ -1,21 +1,21 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace SPFLib
+namespace AnimationLib
 {
-	public class CKeyBone
+	public class KeyBone
 	{
 		#region Member Variables
 
 		/// <summary>
 		/// the list of keyjoints for this dude
 		/// </summary>
-		private CKeyJoint m_KeyJoint;
+		private KeyJoint m_KeyJoint;
 
 		/// <summary>
 		/// the list of child keybones for this dude
 		/// </summary>
-		private List<CKeyBone> m_listChildren;
+		private List<KeyBone> m_listChildren;
 
 		/// <summary>
 		/// name of the bone this dude represents
@@ -31,12 +31,12 @@ namespace SPFLib
 			get { return m_strBoneName; }
 		}
 
-		private List<CKeyBone> Bones
+		private List<KeyBone> Bones
 		{
 			get { return m_listChildren; }
 		}
 
-		public CKeyJoint KeyJoint
+		public KeyJoint KeyJoint
 		{
 			get { return m_KeyJoint; }
 		}
@@ -45,29 +45,29 @@ namespace SPFLib
 
 		#region Methods
 
-		public CKeyBone(CBone myBone)
+		public KeyBone(Bone myBone)
 		{
 			//grab the name of this bone
 			m_strBoneName = myBone.Name;
 
 			//setup the child bones
-			m_listChildren = new List<CKeyBone>();
+			m_listChildren = new List<KeyBone>();
 			for (int i = 0; i < myBone.Bones.Count; i++)
 			{
-				CBone rMyChildBone = myBone.Bones[i];
-				CKeyBone childKeyBone = new CKeyBone(rMyChildBone);
+				Bone rMyChildBone = myBone.Bones[i];
+				KeyBone childKeyBone = new KeyBone(rMyChildBone);
 				m_listChildren.Add(childKeyBone);
 			}
 
 			//setup the key joint
-			m_KeyJoint = new CKeyJoint(m_strBoneName);
+			m_KeyJoint = new KeyJoint(m_strBoneName);
 		}
 
 		/// <summary>
 		/// recursively get a keyjoint from the bone structure
 		/// </summary>
 		/// <param name="strJointName">The name of the keyjoint to get</param>
-		public CKeyJoint GetKeyJoint(string strJointName)
+		public KeyJoint GetKeyJoint(string strJointName)
 		{
 			//check my keyjoints
 			if (m_KeyJoint.Name == strJointName)
@@ -76,7 +76,7 @@ namespace SPFLib
 			}
 
 			//check child key bones
-			CKeyJoint rFoundKeyJoint = null;
+			KeyJoint rFoundKeyJoint = null;
 			for (int i = 0; i < m_listChildren.Count; i++)
 			{
 				rFoundKeyJoint = m_listChildren[i].GetKeyJoint(strJointName);
@@ -90,7 +90,7 @@ namespace SPFLib
 			return null;
 		}
 
-		public CKeyBone GetKeyBone(string strBoneName)
+		public KeyBone GetKeyBone(string strBoneName)
 		{
 			//is this the dude?
 			if (Name == strBoneName)
@@ -101,7 +101,7 @@ namespace SPFLib
 			//is the requested bone underneath this dude?
 			for (int i = 0; i < Bones.Count; i++)
 			{
-				CKeyBone myBone = Bones[i].GetKeyBone(strBoneName);
+				KeyBone myBone = Bones[i].GetKeyBone(strBoneName);
 				if (null != myBone)
 				{
 					return myBone;
@@ -116,7 +116,7 @@ namespace SPFLib
 		/// Get a child bone from this dude
 		/// </summary>
 		/// <param name="iIndex">the index of the child to get</param>
-		public CKeyBone GetChildBone(int iIndex)
+		public KeyBone GetChildBone(int iIndex)
 		{
 			Debug.Assert(iIndex >= 0);
 			if (iIndex < m_listChildren.Count)
@@ -129,8 +129,10 @@ namespace SPFLib
 			}
 		}
 
+#if TOOLS
+
 		public void Copy(CPasteAction myPasteAction,
-			CAnimation myTargetAnimation, 
+			Animation myTargetAnimation, 
 			int iSourceTime, 
 			int iTargetTime,
 			bool bSelectiveCopy)
@@ -145,7 +147,7 @@ namespace SPFLib
 			}
 		}
 
-		public void RemoveKeyElement(CPasteAction rPasteAction, int iTime, CAnimation myAnimation)
+		public void RemoveKeyElement(CPasteAction rPasteAction, int iTime, Animation myAnimation)
 		{
 			//go through each joint
 			m_KeyJoint.RemoveKeyElement(rPasteAction, iTime, myAnimation);
@@ -157,7 +159,7 @@ namespace SPFLib
 			}
 		}
 
-		public void MirrorRightToLeft(CKeyBone RootBone, CPasteAction rPasteAction, int iTime, CAnimation myAnimation)
+		public void MirrorRightToLeft(KeyBone RootBone, CPasteAction rPasteAction, int iTime, Animation myAnimation)
 		{
 			//mirror all the keyjoints
 			m_KeyJoint.MirrorRightToLeft(RootBone, rPasteAction, iTime, myAnimation);
@@ -168,6 +170,8 @@ namespace SPFLib
 				m_listChildren[i].MirrorRightToLeft(RootBone, rPasteAction, iTime, myAnimation);
 			}
 		}
+
+#endif
 
 		/// <summary>
 		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
@@ -220,7 +224,7 @@ namespace SPFLib
 		/// write all this dude's stuff out to xml
 		/// </summary>
 		/// <param name="rXMLDude">the animtion object to add all the keyframes to</param>
-		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, CBone rMyBone)
+		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, Bone rMyBone)
 		{
 			Debug.Assert(null != rMyBone);
 
@@ -231,7 +235,7 @@ namespace SPFLib
 			for (int i = 0; i < m_listChildren.Count; i++)
 			{
 				//find the bone for this keybone
-				CBone rChildBone = rMyBone.GetBone(m_listChildren[i].Name);
+				Bone rChildBone = rMyBone.GetBone(m_listChildren[i].Name);
 				Debug.Assert(null != rChildBone);
 				m_listChildren[i].WriteXMLFormat(rXMLDude, rChildBone);
 			}
@@ -245,7 +249,7 @@ namespace SPFLib
 		{
 			m_KeyJoint.MultiplyLayers(iMultiply);
 
-			foreach (CKeyBone i in m_listChildren)
+			foreach (KeyBone i in m_listChildren)
 			{
 				i.MultiplyLayers(iMultiply);
 			}

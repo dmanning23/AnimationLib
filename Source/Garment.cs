@@ -3,13 +3,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework.Content;
+using FilenameBuddy;
+using DrawListBuddy;
 
-namespace SPFLib
+namespace AnimationLib
 {
 	/// <summary>
 	/// This is a class that is used to put together a garment that can be added to a model skeleton
 	/// </summary>
-	public class CGarment
+	public class Garment
 	{
 		#region Fields
 
@@ -21,9 +23,9 @@ namespace SPFLib
 		/// <summary>
 		/// A list of all the garment fragments that get added to the skeleton
 		/// </summary>
-		private List<CGarmentFragment> m_listFragments;
+		private List<GarmentFragment> m_listFragments;
 
-		private CFilename m_strFilename;
+		private Filename m_strFilename;
 
 		/// <summary>
 		/// Whether or not the garment has any physics data in it.
@@ -40,12 +42,12 @@ namespace SPFLib
 			private set { m_strName = value; }
 		}
 
-		public List<CGarmentFragment> Fragments
+		public List<GarmentFragment> Fragments
 		{
 			get { return m_listFragments; }
 		}
 
-		public CFilename Filename
+		public Filename Filename
 		{
 			get { return m_strFilename; }
 		}
@@ -62,10 +64,10 @@ namespace SPFLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public CGarment()
+		public Garment()
 		{
-			m_listFragments = new List<CGarmentFragment>();
-			m_strFilename = new CFilename();
+			m_listFragments = new List<GarmentFragment>();
+			m_strFilename = new Filename();
 			m_bHasPhysics = false;
 		}
 
@@ -101,7 +103,7 @@ namespace SPFLib
 		/// <param name="listWeapons"></param>
 		public void GetAllWeaponBones(List<string> listWeapons)
 		{
-			foreach (CGarmentFragment curFragment in Fragments)
+			foreach (GarmentFragment curFragment in Fragments)
 			{
 				curFragment.GetAllWeaponBones(listWeapons);
 			}
@@ -117,7 +119,7 @@ namespace SPFLib
 		/// set all the data for the garment bones in this dude after they have been read in
 		/// </summary>
 		/// <param name="rRootNode"></param>
-		private void SetGarmentBones(CBone rRootNode)
+		private void SetGarmentBones(Bone rRootNode)
 		{
 			//set garment name in all bones
 			Debug.Assert(m_strName.Length > 0);
@@ -153,7 +155,7 @@ namespace SPFLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">bone to attach garments to</param>
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
-		public bool ReadXMLFormat(CFilename strFileName, IRenderer rRenderer, CBone rRootNode)
+		public bool ReadXMLFormat(Filename strFileName, Renderer rRenderer, Bone rRootNode)
 		{
 			//Open the file.
 			FileStream stream = File.Open(strFileName.Filename, FileMode.Open, FileAccess.Read);
@@ -211,7 +213,7 @@ namespace SPFLib
 							null != fragmentNode;
 							fragmentNode = fragmentNode.NextSibling)
 						{
-							CGarmentFragment childFragment = new CGarmentFragment();
+							GarmentFragment childFragment = new GarmentFragment();
 							if (!childFragment.ReadXMLFormat(fragmentNode, rRenderer))
 							{
 								Debug.Assert(false);
@@ -285,7 +287,7 @@ namespace SPFLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">teh root node of the model that uses this garment</param>
 		/// <returns>bool: whether or not was able to load the garment</returns>
-		public bool ReadXNAContent(ContentManager rXmlContent, string strResource, IRenderer rRenderer, CBone rRootNode)
+		public bool ReadXNAContent(ContentManager rXmlContent, string strResource, Renderer rRenderer, Bone rRootNode)
 		{
 			//open file
 			Debug.Assert(null != rXmlContent);
@@ -298,7 +300,7 @@ namespace SPFLib
 			//read in all the bones
 			for (int i = 0; i < rGarmentXML.fragments.Count; i++)
 			{
-				CGarmentFragment childFragment = new CGarmentFragment();
+				GarmentFragment childFragment = new GarmentFragment();
 				if (!childFragment.ReadXNAContent(rXmlContent, rGarmentXML.fragments[i], rRenderer))
 				{
 					Debug.Assert(false);

@@ -9,9 +9,9 @@ public enum ERagdollMove
 	OnlyHim
 }
 
-namespace SPFLib
+namespace AnimationLib
 {
-	public class CJoint
+	public class Joint
 	{
 		#region Member Variables
 
@@ -28,7 +28,7 @@ namespace SPFLib
 		/// <summary>
 		/// The current keyelement
 		/// </summary>
-		private CKeyElement m_CurrentKeyElement;
+		private KeyElement m_CurrentKeyElement;
 
 		/// <summary>
 		/// The index of this joint in the bone who owns it
@@ -38,7 +38,7 @@ namespace SPFLib
 		/// <summary>
 		/// the current joint data this dude is using
 		/// </summary>
-		private CJointData m_CurrentData;
+		private JointData m_CurrentData;
 
 		/// <summary>
 		/// this is this dudes old position, stored in world coordinates
@@ -95,7 +95,7 @@ namespace SPFLib
 		/// <summary>
 		/// Get or set the m_CurrentKeyElement property
 		/// </summary>
-		public CKeyElement CurrentKeyElement
+		public KeyElement CurrentKeyElement
 		{
 			get
 			{
@@ -105,7 +105,7 @@ namespace SPFLib
 			set { m_CurrentKeyElement = value; }
 		}
 
-		public CJointData Data
+		public JointData Data
 		{
 			get 
 			{
@@ -164,12 +164,12 @@ namespace SPFLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public CJoint(int iIndex)
+		public Joint(int iIndex)
 		{
 			m_iIndex = iIndex;
 			m_JointPosition = new Vector2(0.0f);
-			m_CurrentKeyElement = new CKeyElement();
-			m_CurrentData = new CJointData();
+			m_CurrentKeyElement = new KeyElement();
+			m_CurrentData = new JointData();
 			m_OldPosition = new Vector2(0.0f);
 			m_Acceleration = new Vector2(0.0f);
 			m_strJointName = "";
@@ -181,7 +181,7 @@ namespace SPFLib
 		/// </summary>
 		/// <param name="MyKeyJoint">the key joint for this dude</param>
 		/// <param name="iTime">The current time of the animation</param>
-		public void Update(CKeyJoint MyKeyJoint, int iTime)
+		public void Update(KeyJoint MyKeyJoint, int iTime)
 		{
 			//get the key element for this dude
 			MyKeyJoint.GetKeyElement(iTime, m_CurrentKeyElement);
@@ -223,7 +223,7 @@ namespace SPFLib
 		/// <param name="rJoint">the joints to solve constraint with</param>
 		/// <param name="fDesiredDistance">the distance from that joint in a perfect world</param>
 		/// <param name="bMoveMe">whether this joint should be moved</param>
-		public void SolveConstraint(CJoint rJoint, float fDesiredDistance, float fScale, ERagdollMove bMovement)
+		public void SolveConstraint(Joint rJoint, float fDesiredDistance, float fScale, ERagdollMove bMovement)
 		{
 			//find the current distance bewteen the two joints
 			Vector2 deltaVector = rJoint.Position - Position;

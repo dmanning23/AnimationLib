@@ -2,9 +2,9 @@
 using System.Xml;
 using Microsoft.Xna.Framework;
 
-namespace SPFLib
+namespace AnimationLib
 {
-	public class CJointData
+	public class JointData
 	{
 		#region Members
 
@@ -127,7 +127,7 @@ namespace SPFLib
 
 		#region Methods
 
-		public CJointData()
+		public JointData()
 		{
 			m_Location = new Vector2(0.0f);
 			m_AnchorVect = new Vector2(0.0f);
@@ -141,7 +141,7 @@ namespace SPFLib
 			m_bFloatRagdoll = false;
 		}
 
-		public void Copy(CJointData myInst)
+		public void Copy(JointData myInst)
 		{
 			m_Location = myInst.m_Location;
 			FirstLimit = myInst.FirstLimit;
@@ -173,7 +173,7 @@ namespace SPFLib
 		/// </summary>
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode, CImage myImage)
+		public bool ReadSerializedFormat(XmlNode rXMLNode, Image myImage)
 		{
 			if ("Item" != rXMLNode.Name)
 			{
@@ -286,7 +286,7 @@ namespace SPFLib
 		/// read this asshole from a serialized xml object
 		/// </summary>
 		/// <param name="rData">the thing to get data from</param>
-		public bool ReadSerializedFormat(AnimationLib.JointDataXML rData, CImage myImage)
+		public bool ReadSerializedFormat(AnimationLib.JointDataXML rData, Image myImage)
 		{
 			Location = rData.location;
 			FirstLimit = MathHelper.ToRadians(rData.limit1);

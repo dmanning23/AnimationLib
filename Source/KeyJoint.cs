@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace SPFLib
+namespace AnimationLib
 {
-	public class CKeyJoint
+	public class KeyJoint
 	{
 		#region Member Variables
 
 		//!Teh list of key elements for this dude
-		private List<CKeyElement> m_listElements;
+		private List<KeyElement> m_listElements;
 
 		//!this dude's name
 		private string m_strName;
@@ -30,9 +30,9 @@ namespace SPFLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public CKeyJoint(string strName)
+		public KeyJoint(string strName)
 		{
-			m_listElements = new List<CKeyElement>();
+			m_listElements = new List<KeyElement>();
 			m_strName = strName;
 		}
 
@@ -41,7 +41,7 @@ namespace SPFLib
 		/// </summary>
 		/// <param name="iTime">The time of the key element to get</param>
 		/// <param name="rKeyElement">The key element to output the stuff to</param>
-		public bool GetKeyElement(int iTime, CKeyElement rKeyElement)
+		public bool GetKeyElement(int iTime, KeyElement rKeyElement)
 		{
 			//if no elements, fuckin FALSE
 			if (m_listElements.Count <= 0)
@@ -66,8 +66,8 @@ namespace SPFLib
 				if ((m_listElements[iPrevIndex].Time <= iTime) &&
 					(m_listElements[iNextIndex].Time >= iTime))
 				{
-					CKeyElement rPrev = m_listElements[iPrevIndex];
-					CKeyElement rNext = m_listElements[iNextIndex];
+					KeyElement rPrev = m_listElements[iPrevIndex];
+					KeyElement rNext = m_listElements[iNextIndex];
 
 					if (iTime == rPrev.Time)
 					{
@@ -151,10 +151,12 @@ namespace SPFLib
 			return bFound;
 		}
 
-		public void RemoveKeyElement(CPasteAction rPasteAction, int iTime, CAnimation myAnimation)
+#if TOOLS
+
+		public void RemoveKeyElement(CPasteAction rPasteAction, int iTime, Animation myAnimation)
 		{
 			//get teh key element at that time
-			CKeyElement CurrentKeyElement = new CKeyElement();
+			KeyElement CurrentKeyElement = new KeyElement();
 			if (!GetKeyElement(iTime, CurrentKeyElement))
 			{
 				//no key elements, so cant remove from this dude
@@ -173,7 +175,7 @@ namespace SPFLib
 			}
 		}
 
-		public void MirrorRightToLeft(CKeyBone RootBone, CPasteAction rPasteAction, int iTime, CAnimation myAnimation)
+		public void MirrorRightToLeft(KeyBone RootBone, CPasteAction rPasteAction, int iTime, Animation myAnimation)
 		{
 			//Check if this bone starts with the work "left"
 			string[] nameTokens = Name.Split(new Char[] { ' ' });
@@ -200,11 +202,11 @@ namespace SPFLib
 						strJointName += " ";
 						strJointName += nameTokens[i];
 					}
-					CKeyJoint MirrorJoint = RootBone.GetKeyJoint(strJointName);
+					KeyJoint MirrorJoint = RootBone.GetKeyJoint(strJointName);
 					if (null != MirrorJoint)
 					{
 						//get the current keyframe of the mirror joint
-						CKeyElement CurrentKeyElement = new CKeyElement();
+						KeyElement CurrentKeyElement = new KeyElement();
 						if (!MirrorJoint.GetKeyElement(iTime, CurrentKeyElement))
 						{
 							return;
@@ -212,7 +214,7 @@ namespace SPFLib
 						CurrentKeyElement.JointName = strJointName;
 
 						//okay, fake up a new keyframe
-						CKeyElement ReplacementKeyElement = new CKeyElement();
+						KeyElement ReplacementKeyElement = new KeyElement();
 						if (!GetKeyElement(iTime, ReplacementKeyElement))
 						{
 							//no key elements, so cant finish operation
@@ -232,13 +234,15 @@ namespace SPFLib
 			}
 		}
 
+#endif
+
 		/// <summary>
 		/// Add a key element to the animation.  
 		/// If an element already exists at that time, replace it.
 		/// Sort the list of keyframes after it has been added.
 		/// </summary>
 		/// <param name="rMyElement">the key frame to add to the animation</param>
-		public void AddKeyElement(CKeyElement rMyElement)
+		public void AddKeyElement(KeyElement rMyElement)
 		{
 			//Do any elements exist with that time?
 			RemoveKeyElement(rMyElement.Time);
@@ -248,26 +252,28 @@ namespace SPFLib
 			m_listElements.Sort(new KeyElementSort());
 		}
 
+#if TOOLS
+
 		public void Copy(CPasteAction myPasteAction,
-			CAnimation myTargetAnimation, 
+			Animation myTargetAnimation, 
 			int iSourceTime, 
 			int iTargetTime,
 			bool bSelectiveCopy)
 		{
 			//get the keyelement to copy into the animation
-			CKeyElement SourceKeyElement = new CKeyElement();
+			KeyElement SourceKeyElement = new KeyElement();
 			GetKeyElement(iSourceTime, SourceKeyElement);
 			SourceKeyElement.Time = iTargetTime;
 			SourceKeyElement.JointName = Name;
 			SourceKeyElement.KeyFrame = true;
 
 			//get the current keyelement out of that animtion
-			CKeyJoint TargetJoint = myTargetAnimation.GetKeyJoint(Name);
+			KeyJoint TargetJoint = myTargetAnimation.GetKeyJoint(Name);
 			if (null == TargetJoint)
 			{
 				return;
 			}
-			CKeyElement OldKeyElement = new CKeyElement();
+			KeyElement OldKeyElement = new KeyElement();
 			TargetJoint.GetKeyElement(iTargetTime, OldKeyElement);
 			OldKeyElement.JointName = TargetJoint.Name;
 
@@ -289,6 +295,8 @@ namespace SPFLib
 			CSetKeyElement myAction = new CSetKeyElement(myTargetAnimation, OldKeyElement, SourceKeyElement);
 			myPasteAction.AddAction(myAction);
 		}
+
+#endif
 
 		/// <summary>
 		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
@@ -353,7 +361,7 @@ namespace SPFLib
 		/// write all this dude's stuff out to xml
 		/// </summary>
 		/// <param name="rXMLDude">the animtion object to add all the keyframes to</param>
-		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, CBone rMyBone)
+		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, Bone rMyBone)
 		{
 			//add all the key elements to that dude
 			for (int i = 0; i < m_listElements.Count; i++)
@@ -386,7 +394,7 @@ namespace SPFLib
 		/// <param name="fMultiply"></param>
 		public void MultiplyLayers(int iMultiply)
 		{
-			foreach (CKeyElement i in m_listElements)
+			foreach (KeyElement i in m_listElements)
 			{
 				i.MultiplyLayers(iMultiply);
 			}
@@ -394,10 +402,10 @@ namespace SPFLib
 
 #endif
 
-		public CKeyElement ReadSerializedAnimationFormat(AnimationLib.KeyXML rKeyElement)
+		public KeyElement ReadSerializedAnimationFormat(AnimationLib.KeyXML rKeyElement)
 		{
 			//create a new key element
-			CKeyElement myElement = new CKeyElement();
+			KeyElement myElement = new KeyElement();
 			myElement.ReadSerializedFormat(rKeyElement);
 			Debug.Assert(myElement.KeyFrame);
 			m_listElements.Add(myElement);

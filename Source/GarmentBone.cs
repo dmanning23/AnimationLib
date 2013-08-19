@@ -2,13 +2,14 @@
 using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
+using DrawListBuddy;
 
-namespace SPFLib
+namespace AnimationLib
 {
 	/// <summary>
 	/// This is a special type of bone, that is animated based on the parent bone, can be added and removed at runtime, etc.
 	/// </summary>
-	public class CGarmentBone : CBone
+	public class GarmentBone : Bone
 	{
 		#region Members
 
@@ -21,7 +22,7 @@ namespace SPFLib
 		/// reference to the animation container that owns this bone
 		/// used to change animation when the parent bone changes images
 		/// </summary>
-		private CGarmentAnimationContainer m_AnimationContainer;
+		private GarmentAnimationContainer m_AnimationContainer;
 
 		/// <summary>
 		/// The bone in the skeleton that this garment attaches to
@@ -31,7 +32,7 @@ namespace SPFLib
 		/// <summary>
 		/// Reference to the bone this guy attaches too.  Should have the same name as this guy
 		/// </summary>
-		private CBone m_rParentBone;
+		private Bone m_rParentBone;
 
 		/// <summary>
 		/// flag for whether this garment has been added to the model or not
@@ -52,7 +53,7 @@ namespace SPFLib
 			}
 		}
 
-		public CBone Parent
+		public Bone Parent
 		{
 			get { return m_rParentBone; }
 			set
@@ -74,7 +75,7 @@ namespace SPFLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public CGarmentBone(CGarmentAnimationContainer rOwner)
+		public GarmentBone(GarmentAnimationContainer rOwner)
 			: base()
 		{
 			Debug.Assert(null != rOwner);
@@ -94,7 +95,7 @@ namespace SPFLib
 		/// <param name="bParentFlip"></param>
 		override public void Update(int iTime,
 			Vector2 myPosition,
-			CKeyBone myKeyBone,
+			KeyBone myKeyBone,
 			float fParentRotation,
 			bool bParentFlip,
 			int iParentLayer,
@@ -103,13 +104,13 @@ namespace SPFLib
 		{
 			Debug.Assert(null != m_AnimationContainer);
 
-			//update the animation container, which will update the CBone base class 
+			//update the animation container, which will update the Bone base class 
 			m_AnimationContainer.Update(iTime, myPosition, bParentFlip, fScale, fParentRotation, bIgnoreRagdoll, iParentLayer, m_rParentBone);
 		}
 
 		public void UpdateBaseBone(int iTime,
 			Vector2 myPosition,
-			CKeyBone myKeyBone,
+			KeyBone myKeyBone,
 			float fParentRotation,
 			bool bParentFlip,
 			int iParentLayer,
@@ -160,7 +161,7 @@ namespace SPFLib
 		/// <param name="ParentBone"></param>
 		/// <param name="rRenderer"></param>
 		/// <returns></returns>
-		protected override bool ParseChildXMLNode(XmlNode childNode, CBone ParentBone, IRenderer rRenderer)
+		protected override bool ParseChildXMLNode(XmlNode childNode, Bone ParentBone, Renderer rRenderer)
 		{
 			//what is in this node?
 			string strName = childNode.Name;
@@ -228,7 +229,7 @@ namespace SPFLib
 		/// <param name="rBone">the xml object to get data from</param>
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
-		public override bool ReadSerializedFormat(AnimationLib.BoneXML rBone, CBone ParentBone, IRenderer rRenderer)
+		public override bool ReadSerializedFormat(AnimationLib.BoneXML rBone, Bone ParentBone, Renderer rRenderer)
 		{
 			AnimationLib.GarmentBoneXML myGarmentBoneXML = rBone as AnimationLib.GarmentBoneXML;
 			if (null == myGarmentBoneXML)

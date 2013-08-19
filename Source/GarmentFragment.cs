@@ -3,13 +3,15 @@ using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
+using DrawListBuddy;
+using FilenameBuddy;
 
-namespace SPFLib
+namespace AnimationLib
 {
 	/// <summary>
 	/// This is a peice of a garment that will get added to the skeleton
 	/// </summary>
-	public class CGarmentFragment
+	public class GarmentFragment
 	{
 		#region Fields
 
@@ -21,7 +23,7 @@ namespace SPFLib
 		/// <summary>
 		/// The animation container for the model to add to the skeleton
 		/// </summary>
-		private CGarmentAnimationContainer m_AnimationContainer;
+		private GarmentAnimationContainer m_AnimationContainer;
 
 		#endregion //Fields
 
@@ -33,7 +35,7 @@ namespace SPFLib
 			set { m_strGarmentName = value; }
 		}
 
-		public CGarmentAnimationContainer AnimationContainer
+		public GarmentAnimationContainer AnimationContainer
 		{
 			get
 			{
@@ -59,9 +61,9 @@ namespace SPFLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public CGarmentFragment()
+		public GarmentFragment()
 		{
-			m_AnimationContainer = new CGarmentAnimationContainer();
+			m_AnimationContainer = new GarmentAnimationContainer();
 		}
 
 		/// <summary>
@@ -103,7 +105,7 @@ namespace SPFLib
 		/// set all the data for the garment bones in this dude after they have been read in
 		/// </summary>
 		/// <param name="rRootNode"></param>
-		public void SetGarmentBones(CBone rRootNode)
+		public void SetGarmentBones(Bone rRootNode)
 		{
 			//set garment name in the bones
 			AnimationContainer.GarmentName = GarmentName;
@@ -121,7 +123,7 @@ namespace SPFLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">bone to attach garments to</param>
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
-		public bool ReadXMLFormat(XmlNode rXMLNode, IRenderer rRenderer)
+		public bool ReadXMLFormat(XmlNode rXMLNode, Renderer rRenderer)
 		{
 			//make sure it is actually an xml node
 			if (rXMLNode.NodeType != XmlNodeType.Element)
@@ -166,7 +168,7 @@ namespace SPFLib
 					if (strName == "model")
 					{
 						//read in the model
-						CFilename strModelFile = new CFilename();
+						Filename strModelFile = new Filename();
 						strModelFile.SetRelFilename(strValue);
 						if (!m_AnimationContainer.ReadSerializedModelFormat(strModelFile.Filename, rRenderer))
 						{
@@ -177,7 +179,7 @@ namespace SPFLib
 					else if (strName == "animation")
 					{
 						//read in the animations
-						CFilename strAnimationFile = new CFilename();
+						Filename strAnimationFile = new Filename();
 						strAnimationFile.SetRelFilename(strValue);
 						if (!m_AnimationContainer.ReadSerializedAnimationFormat(strAnimationFile.Filename))
 						{
@@ -235,10 +237,10 @@ namespace SPFLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">teh root node of the model that uses this garment</param>
 		/// <returns>bool: whether or not was able to load the garment</returns>
-		public bool ReadXNAContent(ContentManager rContent, AnimationLib.GarmentFragmentXML rGarmentFragment, IRenderer rRenderer)
+		public bool ReadXNAContent(ContentManager rContent, AnimationLib.GarmentFragmentXML rGarmentFragment, Renderer rRenderer)
 		{
 			//read in the model
-			CFilename strModelFile = new CFilename();
+			Filename strModelFile = new Filename();
 			strModelFile.SetRelFilename(rGarmentFragment.model);
 			if (!m_AnimationContainer.ReadSerializedModelFormat(rContent, strModelFile.GetRelPathFileNoExt(), rRenderer))
 			{
@@ -247,7 +249,7 @@ namespace SPFLib
 			}
 
 			//read in the animations
-			CFilename strAnimationFile = new CFilename();
+			Filename strAnimationFile = new Filename();
 			strAnimationFile.SetRelFilename(rGarmentFragment.animation);
 			m_AnimationContainer.ReadSerializedAnimationFormat(rContent, strAnimationFile.GetRelPathFileNoExt());
 

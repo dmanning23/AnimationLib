@@ -2,16 +2,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
+using FilenameBuddy;
+using CollisionBuddy;
+using DrawListBuddy;
 
-namespace SPFLib
+namespace AnimationLib
 {
-	public class CImage
+	public class Image
 	{
 		#region Member Variables
 
 		//list of joint locations
 		//These are the coordinates of the joints for this frame
-		private List<CJointData> m_listJointCoords;
+		private List<JointData> m_listJointCoords;
 
 		//The UV coords of this frame
 		//These are where on the bitmap to draw the texture from
@@ -24,15 +27,15 @@ namespace SPFLib
 
 		//The bitmap for this frame
 		private int m_iBmpID;
-		private CFilename m_strFileName;
+		private Filename m_strFileName;
 
 		//physics data
-		private List<CCircle> m_listCircles;
+		private List<Circle> m_listCircles;
 
 		/// <summary>
 		/// physics data for level objects
 		/// </summary>
-		private List<CLine> m_listLines;
+		private List<Line> m_listLines;
 
 		#endregion
 
@@ -43,7 +46,7 @@ namespace SPFLib
 			get { return m_LowerRightUV; }
 		}
 
-		public CFilename Filename
+		public Filename Filename
 		{
 			get { return m_strFileName; }
 		}
@@ -62,17 +65,17 @@ namespace SPFLib
 			get { return m_LowerRightUV.X - m_UpperLeftUV.X; }
 		}
 
-		public List<CJointData> Data
+		public List<JointData> Data
 		{
 			get { return m_listJointCoords; }
 		}
 
-		public List<CCircle> Circles
+		public List<Circle> Circles
 		{
 			get { return m_listCircles; }
 		}
 
-		public List<CLine> Lines
+		public List<Line> Lines
 		{
 			get { return m_listLines; }
 		}
@@ -84,16 +87,16 @@ namespace SPFLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public CImage()
+		public Image()
 		{
-			m_listJointCoords = new List<CJointData>();
-			m_listCircles = new List<CCircle>();
-			m_listLines = new List<CLine>();
+			m_listJointCoords = new List<JointData>();
+			m_listCircles = new List<Circle>();
+			m_listLines = new List<Line>();
 			m_UpperLeftUV = new Vector2(0.0f);
 			m_LowerRightUV = new Vector2(0.0f);
 			m_AnchorCoord = new Vector2(0.0f);
 			m_iBmpID = -1;
-			m_strFileName = new CFilename();
+			m_strFileName = new Filename();
 		}
 
 		/// <summary>
@@ -102,7 +105,7 @@ namespace SPFLib
 		/// <param name="rMatrix">The matrix to rtansform by</param>
 		/// <param name="rDrawList">the drawlist to put it in</param>
 		/// <param name="iLayer">the layer to put the image at</param>
-		public void Render(Vector2 myPosition, CDrawList rDrawList, int iLayer, float fRotation, bool bFlip, Color myColor)
+		public void Render(Vector2 myPosition, DrawList rDrawList, int iLayer, float fRotation, bool bFlip, Color myColor)
 		{
 			if (-1 < m_iBmpID)
 			{
@@ -114,7 +117,7 @@ namespace SPFLib
 		/// Get a joint vector from this dude
 		/// </summary>
 		/// <param name="iIndex">teh index of the joint location to get</param>
-		public CJointData GetJointLocation(int iIndex)
+		public JointData GetJointLocation(int iIndex)
 		{
 			Debug.Assert(iIndex >= 0);
 			Debug.Assert(iIndex < m_listJointCoords.Count);
@@ -123,11 +126,13 @@ namespace SPFLib
 
 		public void AddJoint()
 		{
-			CJointData myData = new CJointData();
+			JointData myData = new JointData();
 			m_listJointCoords.Add(myData);
 		}
 
-		public void Copy(CImage myInst, CPasteAction ActionCollection)
+#if TOOLS
+
+		public void Copy(Image myInst, CPasteAction ActionCollection)
 		{
 			//copy the anchor coord
 			CSetAnchorLocation myAnchorAction = new CSetAnchorLocation(this, (int)myInst.AnchorCoord.X, (int)myInst.AnchorCoord.Y);
@@ -137,7 +142,7 @@ namespace SPFLib
 			for (int i = 0; ((i < m_listJointCoords.Count) && (i < myInst.m_listJointCoords.Count)); i++)
 			{
 				//create the new joint data
-				CJointData myNewData = new CJointData();
+				JointData myNewData = new JointData();
 				myNewData.Copy(myInst.m_listJointCoords[i]);
 
 				//create the action to set it
@@ -168,7 +173,9 @@ namespace SPFLib
 			}
 		}
 
-		public void SetJointData(int iIndex, CJointData myNewData)
+#endif
+
+		public void SetJointData(int iIndex, JointData myNewData)
 		{
 			Debug.Assert(iIndex >= 0);
 			Debug.Assert(iIndex < m_listJointCoords.Count);
@@ -192,7 +199,7 @@ namespace SPFLib
 			}
 		}
 
-		public void DrawPhysics(IRenderer rRenderer, Color rColor)
+		public void DrawPhysics(Renderer rRenderer, Color rColor)
 		{
 			for (int i = 0; i < m_listCircles.Count; i++)
 			{
@@ -250,7 +257,7 @@ namespace SPFLib
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode, IRenderer rRenderer, CBone rParent)
+		public bool ReadSerializedFormat(XmlNode rXMLNode, Renderer rRenderer, Bone rParent)
 		{
 			Debug.Assert(null != rParent);
 
@@ -334,7 +341,7 @@ namespace SPFLib
 								null != circleNode;
 								circleNode = circleNode.NextSibling)
 							{
-								CJointData childJointData = new CJointData();
+								JointData childJointData = new JointData();
 								if (!childJointData.ReadSerializedFormat(circleNode, this))
 								{
 									Debug.Assert(false);
@@ -399,7 +406,7 @@ namespace SPFLib
 			//okay if there are not enough joint data objects, add some blank ones
 			while (m_listJointCoords.Count < rParent.Joints.Count)
 			{
-				m_listJointCoords.Add(new CJointData());
+				m_listJointCoords.Add(new JointData());
 			}
 
 			return true;
@@ -471,7 +478,7 @@ namespace SPFLib
 		/// </summary>
 		/// <param name="rImage">the xml object to get data from</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
-		public bool ReadSerializedFormat(AnimationLib.ImageXML rImage, IRenderer rRenderer)
+		public bool ReadSerializedFormat(AnimationLib.ImageXML rImage, Renderer rRenderer)
 		{
 			//grab all that stuff
 			m_UpperLeftUV = rImage.upperleft;
@@ -491,7 +498,7 @@ namespace SPFLib
 			//read in joint data
 			for (int i = 0; i < rImage.joints.Count; i++)
 			{
-				CJointData myJointData = new CJointData();
+				JointData myJointData = new JointData();
 				AnimationLib.JointDataXML myJointDataXML = rImage.joints[i];
 				if (!myJointData.ReadSerializedFormat(myJointDataXML, this))
 				{
@@ -503,7 +510,7 @@ namespace SPFLib
 			//read in physics data
 			for (int i = 0; i < rImage.circles.Count; i++)
 			{
-				CCircle myCircle = new CCircle();
+				Circle myCircle = new Circle();
 				if (!myCircle.ReadSerializedFormat(rImage.circles[i]))
 				{
 					return false;
@@ -514,7 +521,7 @@ namespace SPFLib
 			//read in line data
 			for (int i = 0; i < rImage.lines.Count; i++)
 			{
-				CLine myLine = new CLine();
+				Line myLine = new Line();
 				if (!myLine.ReadSerializedFormat(rImage.lines[i]))
 				{
 					return false;

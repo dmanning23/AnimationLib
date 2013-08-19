@@ -5,34 +5,26 @@ using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using GameTimer;
-#if !NO_NETWORKING
+#if NETWORKING
 using Microsoft.Xna.Framework.Net;
 #endif
+using FilenameBuddy;
+using DrawListBuddy;
 
-namespace SPFLib
+namespace AnimationLib
 {
-	//The different ways animations can be played
-	public enum EPlayback
-	{
-		Forwards = 0,
-		Loop,
-		Backwards,
-		LoopBackwards,
-		NumPlaybackTypes
-	};
-
-	public class CAnimationContainer
+	/// <summary>
+	/// This is the object that contains the whole skeleton + all animations
+	/// </summary>
+	public class AnimationContainer
 	{
 		#region Member Variables
 
-		//the model this dude uses
-		private CBone m_Model;
-
 		//the list of animations 
-		private List<CAnimation> m_listAnimations;
+		private List<Animation> m_listAnimations;
 
 		//The current animation being played
-		private CAnimation m_CurrentAnimation;
+		private Animation m_CurrentAnimation;
 		private int m_iCurrentAnimationIndex;
 
 		//Timer for timing the animations, both backwards and forwards
@@ -41,9 +33,9 @@ namespace SPFLib
 		//The way the current animation is being played
 		private EPlayback m_ePlayback;
 
-		private CFilename m_strModelFile;
+		private Filename m_strModelFile;
 
-		private CFilename m_strAnimationFile;
+		private Filename m_strAnimationFile;
 
 		/// <summary>
 		/// This flag gets set when the animation is changed, the ragdoll needs to be reset after the first update
@@ -57,13 +49,9 @@ namespace SPFLib
 		/// <summary>
 		/// get access to the model thing
 		/// </summary>
-		public CBone Model
-		{
-			get { return m_Model; }
-			protected set { m_Model = value; }
-		}
+		public Bone Model { get; protected set; }
 
-		public CAnimation CurrentAnimation
+		public Animation CurrentAnimation
 		{
 			get { return m_CurrentAnimation; }
 		}
@@ -73,7 +61,7 @@ namespace SPFLib
 			get { return m_iCurrentAnimationIndex; }
 		}
 
-		public List<CAnimation> Animations
+		public List<Animation> Animations
 		{
 			get { return m_listAnimations; }
 			protected set { m_listAnimations = value; }
@@ -84,13 +72,13 @@ namespace SPFLib
 			get { return m_StopWatch; }
 		}
 
-		public CFilename AnimationFile
+		public Filename AnimationFile
 		{
 			get { return m_strAnimationFile; }
 			set { m_strAnimationFile = value; }
 		}
 
-		public CFilename ModelFile
+		public Filename ModelFile
 		{
 			get { return m_strModelFile; }
 			set { m_strModelFile = value; }
@@ -121,16 +109,16 @@ namespace SPFLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public CAnimationContainer()
+		public AnimationContainer()
 		{
-			m_Model = null;
-			m_listAnimations = new List<CAnimation>();
+			Model = null;
+			m_listAnimations = new List<Animation>();
 			m_CurrentAnimation = null;
 			m_iCurrentAnimationIndex = -1;
 			m_StopWatch = new GameClock();
 			m_ePlayback = EPlayback.Forwards;
-			m_strModelFile = new CFilename();
-			m_strAnimationFile = new CFilename();
+			m_strModelFile = new Filename();
+			m_strAnimationFile = new Filename();
 			ResetRagdoll = false;
 		}
 
@@ -216,12 +204,12 @@ namespace SPFLib
 			float fRotation,
 			bool bIgnoreRagdoll)
 		{
-			Debug.Assert(null != m_Model);
+			Debug.Assert(null != Model);
 
 			//Apply teh current animation to the bones and stuff
-			CKeyBone rCurrentKeyBone = m_CurrentAnimation.KeyBone;
-			m_Model.Anchor.Position = myPosition;
-			m_Model.Update(iTime,
+			KeyBone rCurrentKeyBone = m_CurrentAnimation.KeyBone;
+			Model.Anchor.Position = myPosition;
+			Model.Update(iTime,
 				myPosition,
 				rCurrentKeyBone,
 				fRotation,
@@ -233,7 +221,7 @@ namespace SPFLib
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
 			{
-				m_Model.RestartAnimation();
+				Model.RestartAnimation();
 				ResetRagdoll = false;
 			}
 		}
@@ -252,26 +240,26 @@ namespace SPFLib
 			//accumulate all the force
 			Vector2 gravity = new Vector2(0.0f);
 			gravity.Y = Helper.RagdollGravity();
-			m_Model.AccumulateForces(gravity);
+			Model.AccumulateForces(gravity);
 
 			//run the integrator
 			float fTimeDelta = m_StopWatch.TimeDelta;
 			if (fTimeDelta > 0.0f)
 			{
-				m_Model.RunVerlet(fTimeDelta);
+				Model.RunVerlet(fTimeDelta);
 			}
 
-			m_Model.SolveLimits(0.0f);
-			m_Model.SolveConstraints(false, fScale);
+			Model.SolveLimits(0.0f);
+			Model.SolveConstraints(false, fScale);
 
 			//solve all the constraints
 			for (int i = 0; i < 2; i++)
 			{
-				m_Model.SolveConstraints(false, fScale);
+				Model.SolveConstraints(false, fScale);
 			}
 
 			//run through the post update so the matrix is correct
-			m_Model.PostUpdate(fScale, false);
+			Model.PostUpdate(fScale, false);
 		}
 
 		/// <summary>
@@ -296,12 +284,12 @@ namespace SPFLib
 		/// Render the animation out to a drawlist
 		/// </summary>
 		/// <param name="rDrawList">the drawlist to render out to</param>
-		public void Render(CDrawList rDrawList, Color PaletteSwap)
+		public void Render(DrawList rDrawList, Color PaletteSwap)
 		{
-			if (null != m_Model)
+			if (null != Model)
 			{
 				//send teh model to teh draw list
-				m_Model.Render(rDrawList, PaletteSwap);
+				Model.Render(rDrawList, PaletteSwap);
 			}
 		}
 
@@ -354,7 +342,7 @@ namespace SPFLib
 			return true;
 		}
 
-		public CAnimation FindAnimation(string strAnimationName)
+		public Animation FindAnimation(string strAnimationName)
 		{
 			for (int i = 0; i < m_listAnimations.Count; i++)
 			{
@@ -391,7 +379,7 @@ namespace SPFLib
 		protected virtual void CreateBone()
 		{
 			Debug.Assert(null == Model);
-			Model = new CBone();
+			Model = new Bone();
 		}
 
 		public override string ToString()
@@ -403,7 +391,7 @@ namespace SPFLib
 
 		#region Networking
 
-#if !NO_NETWORKING
+#if NETWORKING
 
 		/// <summary>
 		/// Read this object from a network packet reader.
@@ -444,7 +432,7 @@ namespace SPFLib
 		/// </summary>
 		/// <param name="strResource">filename of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public bool ReadSerializedModelFormat(string strResource, IRenderer rRenderer)
+		public bool ReadSerializedModelFormat(string strResource, Renderer rRenderer)
 		{
 			CreateBone();
 
@@ -526,19 +514,19 @@ namespace SPFLib
 		/// <param name="rContent">content loader to use</param>
 		/// <param name="strResource">name of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public virtual bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, IRenderer rRenderer)
+		public virtual bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, Renderer rRenderer)
 		{
 			CreateBone();
 
 			Debug.Assert(null != rXmlContent);
 			AnimationLib.BoneXML rBoneXML = rXmlContent.Load<AnimationLib.BoneXML>(strResource);
-			if (!m_Model.ReadSerializedFormat(rBoneXML, null, rRenderer))
+			if (!Model.ReadSerializedFormat(rBoneXML, null, rRenderer))
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
-			m_strModelFile.Filename = strResource;
+			m_strModelFile.File = strResource;
 			return true;
 		}
 
@@ -637,7 +625,7 @@ namespace SPFLib
 				null != childNode;
 				childNode = childNode.NextSibling)
 			{
-				CAnimation myAnimation = new CAnimation(m_Model);
+				Animation myAnimation = new Animation(m_Model);
 				Debug.Assert(null != m_Model);
 				if (!myAnimation.ReadSerializedFormat(childNode, m_Model))
 				{
@@ -693,7 +681,7 @@ namespace SPFLib
 		/// <param name="fMultiply"></param>
 		public void MultiplyLayers(int iMultiply)
 		{
-			foreach (CAnimation i in m_listAnimations)
+			foreach (Animation i in m_listAnimations)
 			{
 				i.MultiplyLayers(iMultiply);
 			}
@@ -716,14 +704,14 @@ namespace SPFLib
 			//set up all the animations
 			for (int i = 0; i < myDude.animations.Count; i++)
 			{
-				CAnimation myAnimation = new CAnimation(m_Model);
+				Animation myAnimation = new Animation(Model);
 				AnimationLib.AnimationXML myAnimationXML = myDude.animations[i];
-				Debug.Assert(null != m_Model);
-				myAnimation.ReadSerializedAnimationFormat(myAnimationXML, m_Model);
+				Debug.Assert(null != Model);
+				myAnimation.ReadSerializedAnimationFormat(myAnimationXML, Model);
 				m_listAnimations.Add(myAnimation);
 			}
 
-			m_strAnimationFile.Filename = strResource;
+			m_strAnimationFile.File = strResource;
 			m_ePlayback = EPlayback.Forwards;
 			m_CurrentAnimation = null;
 			RestartAnimation();

@@ -2,14 +2,17 @@ using System;
 using System.Diagnostics;
 using System.Xml;
 
-namespace SPFLib
+namespace AnimationLib
 {
-	public class CAnimation
+	/// <summary>
+	/// This object is a single animation for the skeleton
+	/// </summary>
+	public class Animation
 	{
 		#region Member Variables
 
 		//the root key series
-		private CKeyBone m_KeyBone;
+		private KeyBone m_KeyBone;
 
 		//name of the animation
 		private string m_strAnimationName;
@@ -26,7 +29,7 @@ namespace SPFLib
 			get { return m_fTimeDelta; }
 		}
 
-		public CKeyBone KeyBone
+		public KeyBone KeyBone
 		{
 			get { return m_KeyBone; }
 		}
@@ -43,23 +46,23 @@ namespace SPFLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public CAnimation()
+		public Animation()
 		{
 			m_KeyBone = null;
 			m_fTimeDelta = 0.0f;
 		}
 
-		public CAnimation(CBone rBoneStructure)
+		public Animation(Bone rBoneStructure)
 		{
 			Debug.Assert(null != rBoneStructure);
-			m_KeyBone = new CKeyBone(rBoneStructure);
+			m_KeyBone = new KeyBone(rBoneStructure);
 			m_fTimeDelta = 0.0f;
 		}
 
-		public bool AddKeyframe(CKeyElement rKey)
+		public bool AddKeyframe(KeyElement rKey)
 		{
 			//find the correct keyjoint
-			CKeyJoint MyKeyJoint = m_KeyBone.GetKeyJoint(rKey.JointName);
+			KeyJoint MyKeyJoint = m_KeyBone.GetKeyJoint(rKey.JointName);
 			if (null != MyKeyJoint)
 			{
 				//add the keyframe to the keyjoint
@@ -69,10 +72,10 @@ namespace SPFLib
 			return false;
 		}
 
-		public bool RemoveKeyframe(CKeyElement rKey)
+		public bool RemoveKeyframe(KeyElement rKey)
 		{
 			//find the correct keyjoint
-			CKeyJoint MyKeyJoint = m_KeyBone.GetKeyJoint(rKey.JointName);
+			KeyJoint MyKeyJoint = m_KeyBone.GetKeyJoint(rKey.JointName);
 			if (null != MyKeyJoint)
 			{
 				//remove all keyframes at that time
@@ -81,17 +84,19 @@ namespace SPFLib
 			return false;
 		}
 
-		public bool RemoveKeyframe(CPasteAction myAction, CBone CopyBone, int iTime)
+#if TOOLS
+
+		public bool RemoveKeyframe(CPasteAction myAction, Bone CopyBone, int iTime)
 		{
 			//find that bone
-			CKeyBone myKeyBone = GetKeyBone(CopyBone.Name);
+			KeyBone myKeyBone = GetKeyBone(CopyBone.Name);
 			if (null == myKeyBone)
 			{
 				return false;
 			}
 
 			//first copy the anchor joint of that dude!
-			CKeyJoint anchorKeyJoint = m_KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
+			KeyJoint anchorKeyJoint = m_KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
 			if (null != anchorKeyJoint)
 			{
 				anchorKeyJoint.RemoveKeyElement(myAction, iTime, this);
@@ -100,20 +105,6 @@ namespace SPFLib
 			//copy the rest of the thing
 			myKeyBone.RemoveKeyElement(myAction, iTime, this);
 			return true;
-		}
-
-		public CKeyBone GetKeyBone(string strBoneName)
-		{
-			return m_KeyBone.GetKeyBone(strBoneName);
-		}
-
-		/// <summary>
-		/// Find a keyjoint by name recursively
-		/// </summary>
-		/// <param name="strJointName">The name of the joint to get</param>
-		public CKeyJoint GetKeyJoint(string strJointName)
-		{
-			return m_KeyBone.GetKeyJoint(strJointName);
 		}
 
 		/// <summary>
@@ -126,21 +117,21 @@ namespace SPFLib
 		/// <param name="iTargetTime">the time to paste into the other animation</param>
 		/// <param name="bSelectiveCopy">if this is true, it means only copy image, layer, ragdoll, flip</param>
 		public void Copy(CPasteAction myAction, 
-			CBone CopyBone, 
-			CAnimation myTargetAnimation, 
-			int iSourceTime, 
-			int iTargetTime,
-			bool bSelectiveCopy)
+		                 Bone CopyBone, 
+		                 Animation myTargetAnimation, 
+		                 int iSourceTime, 
+		                 int iTargetTime,
+		                 bool bSelectiveCopy)
 		{
 			//find that bone
-			CKeyBone myKeyBone = GetKeyBone(CopyBone.Name);
+			KeyBone myKeyBone = GetKeyBone(CopyBone.Name);
 			if (null == myKeyBone)
 			{
 				return;
 			}
-			
+
 			//first copy the anchor joint of that dude!
-			CKeyJoint anchorKeyJoint = m_KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
+			KeyJoint anchorKeyJoint = m_KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
 			if (null != anchorKeyJoint)
 			{
 				anchorKeyJoint.Copy(myAction, myTargetAnimation, iSourceTime, iTargetTime, bSelectiveCopy);
@@ -149,6 +140,24 @@ namespace SPFLib
 			//copy the rest of the thing
 			myKeyBone.Copy(myAction, myTargetAnimation, iSourceTime, iTargetTime, bSelectiveCopy);
 		}
+
+#endif
+
+		public KeyBone GetKeyBone(string strBoneName)
+		{
+			return m_KeyBone.GetKeyBone(strBoneName);
+		}
+
+		/// <summary>
+		/// Find a keyjoint by name recursively
+		/// </summary>
+		/// <param name="strJointName">The name of the joint to get</param>
+		public KeyJoint GetKeyJoint(string strJointName)
+		{
+			return m_KeyBone.GetKeyJoint(strJointName);
+		}
+
+
 
 		/// <summary>
 		/// Change teh time for this animation and move all the keyframes to match
@@ -194,7 +203,7 @@ namespace SPFLib
 		/// </summary>
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode, CBone rModel)
+		public bool ReadSerializedFormat(XmlNode rXMLNode, Bone rModel)
 		{
 			if ("Item" != rXMLNode.Name)
 			{
@@ -218,7 +227,7 @@ namespace SPFLib
 			}
 
 			//make sure to setup the bones model
-			m_KeyBone = new CKeyBone(rModel);
+			m_KeyBone = new KeyBone(rModel);
 
 			//Read in child nodes
 			if (rXMLNode.HasChildNodes)
@@ -251,7 +260,7 @@ namespace SPFLib
 								keyNode = keyNode.NextSibling)
 							{
 								//read in the key element
-								CKeyElement myKey = new CKeyElement();
+								KeyElement myKey = new KeyElement();
 								if (!myKey.ReadSerializedFormat(keyNode))
 								{
 									return false;
@@ -261,14 +270,14 @@ namespace SPFLib
 								if ((myKey.KeyFrame) && (iLengthFrames >= myKey.Time))
 								{
 									//set the image index
-									CBone rMyBone = rModel.GetBone(myKey.JointName);
+									Bone rMyBone = rModel.GetBone(myKey.JointName);
 									if (rMyBone != null)
 									{
 										myKey.ImageIndex = rMyBone.GetImageIndex(myKey.ImageName);
 									}
 
 									//add to the correct keyjoint
-									CKeyJoint myKeyJoint = m_KeyBone.GetKeyJoint(myKey.JointName);
+									KeyJoint myKeyJoint = m_KeyBone.GetKeyJoint(myKey.JointName);
 									if (null != myKeyJoint)
 									{
 										myKeyJoint.AddKeyElement(myKey);
@@ -287,7 +296,7 @@ namespace SPFLib
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		public void WriteXMLFormat(XmlTextWriter rXMLFile, CBone rModel)
+		public void WriteXMLFormat(XmlTextWriter rXMLFile, Bone rModel)
 		{
 			Debug.Assert(null != rModel);
 
@@ -370,23 +379,23 @@ namespace SPFLib
 
 #endif
 
-		public void ReadSerializedAnimationFormat(AnimationLib.AnimationXML myDude, CBone rModel)
+		public void ReadSerializedAnimationFormat(AnimationLib.AnimationXML myDude, Bone rModel)
 		{
 			m_strAnimationName = myDude.name;
 			m_fTimeDelta = myDude.length;
-			m_KeyBone = new CKeyBone(rModel);
+			m_KeyBone = new KeyBone(rModel);
 
 			for (int i = 0; i < myDude.keys.Count; i++)
 			{
 				//find a joint that uses this key
-				CKeyJoint myKeyJoint = m_KeyBone.GetKeyJoint(myDude.keys[i].joint);
+				KeyJoint myKeyJoint = m_KeyBone.GetKeyJoint(myDude.keys[i].joint);
 				if (null != myKeyJoint)
 				{
 					AnimationLib.KeyXML myKeyXML = myDude.keys[i];
-					CKeyElement myElement = myKeyJoint.ReadSerializedAnimationFormat(myKeyXML);
+					KeyElement myElement = myKeyJoint.ReadSerializedAnimationFormat(myKeyXML);
 
 					//ok set teh image index after its been read in
-					CBone rMyBone = rModel.GetBone(myElement.JointName);
+					Bone rMyBone = rModel.GetBone(myElement.JointName);
 					if (rMyBone != null)
 					{
 						myElement.ImageIndex = rMyBone.GetImageIndex(myElement.ImageName);

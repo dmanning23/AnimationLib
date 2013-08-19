@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
 
-namespace SPFLib
+namespace AnimationLib
 {
 	/// <summary>
 	/// class for sorting the keyframe XML by time
@@ -20,15 +20,15 @@ namespace SPFLib
 	/// <summary>
 	/// class for sorting the keyframes by time
 	/// </summary>
-	class KeyElementSort : IComparer<CKeyElement>
+	class KeyElementSort : IComparer<KeyElement>
 	{
-		public int Compare(CKeyElement key1, CKeyElement key2)
+		public int Compare(KeyElement key1, KeyElement key2)
 		{
 			return key1.Time.CompareTo(key2.Time);
 		}
 	}
 
-	public class CKeyElement
+	public class KeyElement
 	{
 		#region Member Variables
 
@@ -187,7 +187,7 @@ namespace SPFLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public CKeyElement()
+		public KeyElement()
 		{
 			m_Translation = new Vector2(0.0f);
 			m_iTime = 0;
@@ -199,7 +199,7 @@ namespace SPFLib
 			m_bRagDoll = false;
 		}
 
-		public void Copy(CKeyElement rInst)
+		public void Copy(KeyElement rInst)
 		{
 			m_Translation.X = rInst.m_Translation.X;
 			m_Translation.Y = rInst.m_Translation.Y;
@@ -212,7 +212,7 @@ namespace SPFLib
 			m_bRagDoll = rInst.m_bRagDoll;
 		}
 
-		public bool Compare(CKeyElement rInst)
+		public bool Compare(KeyElement rInst)
 		{
 			if (m_fRotation != rInst.m_fRotation)
 			{
@@ -354,7 +354,7 @@ namespace SPFLib
 		/// write all this dude's stuff out to xml
 		/// </summary>
 		/// <param name="rXMLDude">the animtion object to add all the keyframes to</param>
-		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, CBone rMyBone)
+		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, Bone rMyBone)
 		{
 			Debug.Assert(null != rMyBone);
 
@@ -363,7 +363,7 @@ namespace SPFLib
 			if (-1 != m_iImageIndex)
 			{
 				//find the bone that uses this dudes joint as a keyjoint
-				CBone rChildBone = rMyBone.GetBone(m_strJointName);
+				Bone rChildBone = rMyBone.GetBone(m_strJointName);
 				if (null != rChildBone)
 				{
 					Debug.Assert(m_iImageIndex < rChildBone.Images.Count);

@@ -4,10 +4,11 @@ using Microsoft.Xna.Framework.Content;
 using System.Xml;
 using System.Collections.Generic;
 using GameTimer;
+using DrawListBuddy;
 
-namespace SPFLib
+namespace AnimationLib
 {
-	public class CGarmentAnimationContainer : CAnimationContainer
+	public class GarmentAnimationContainer : AnimationContainer
 	{
 		#region Fields
 
@@ -30,26 +31,26 @@ namespace SPFLib
 			get
 			{
 				Debug.Assert(null != Model);
-				Debug.Assert(Model is CGarmentBone);
-				CGarmentBone myModel = Model as CGarmentBone;
+				Debug.Assert(Model is GarmentBone);
+				GarmentBone myModel = Model as GarmentBone;
 				return myModel.Garment;
 			}
 			set 
 			{
  				Debug.Assert(null != Model);
-				Debug.Assert(Model is CGarmentBone);
-				CGarmentBone myModel = Model as CGarmentBone;
+				Debug.Assert(Model is GarmentBone);
+				GarmentBone myModel = Model as GarmentBone;
 				myModel.Garment = value;
 			}
 		}
 
-		private CGarmentBone GarmentModel
+		private GarmentBone GarmentModel
 		{
 			get
 			{
 				Debug.Assert(null != Model);
-				Debug.Assert(Model is CGarmentBone);
-				return Model as CGarmentBone;
+				Debug.Assert(Model is GarmentBone);
+				return Model as GarmentBone;
 			}
 		}
 
@@ -60,7 +61,7 @@ namespace SPFLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public CGarmentAnimationContainer()
+		public GarmentAnimationContainer()
 		{
 			m_AnimationTimer = new GameClock();
 			m_iCurrentLayer = 0;
@@ -101,7 +102,7 @@ namespace SPFLib
 			float fRotation, 
 			bool bIgnoreRagdoll, 
 			int iLayer, 
-			CBone rAttachedBone)
+			Bone rAttachedBone)
 		{
 			Debug.Assert(Animations.Count == rAttachedBone.Images.Count);
 
@@ -138,7 +139,7 @@ namespace SPFLib
 			Debug.Assert(null != Model);
 
 			//Apply teh current animation to the bones and stuff
-			CKeyBone rCurrentKeyBone = CurrentAnimation.KeyBone;
+			KeyBone rCurrentKeyBone = CurrentAnimation.KeyBone;
 			GarmentModel.UpdateBaseBone(iTime,
 				myPosition,
 				rCurrentKeyBone,
@@ -162,7 +163,7 @@ namespace SPFLib
 		protected override void CreateBone()
 		{
 			Debug.Assert(null == Model);
-			Model = new CGarmentBone(this);
+			Model = new GarmentBone(this);
 		}
 
 		public override string ToString()
@@ -178,11 +179,11 @@ namespace SPFLib
 		/// set all the data for the garment bones in this dude after they have been read in
 		/// </summary>
 		/// <param name="rRootNode"></param>
-		public void SetGarmentBones(CBone rRootNode)
+		public void SetGarmentBones(Bone rRootNode)
 		{
-			//find a CBone with the same name as the garment bone
-			CGarmentBone myGarmentBone = GarmentModel;
-			CBone myBone = rRootNode.GetBone(myGarmentBone.ParentBoneName);
+			//find a Bone with the same name as the garment bone
+			GarmentBone myGarmentBone = GarmentModel;
+			Bone myBone = rRootNode.GetBone(myGarmentBone.ParentBoneName);
 			Debug.Assert(null != myBone);
 			myGarmentBone.Parent = myBone;
 
@@ -192,12 +193,12 @@ namespace SPFLib
 #if WINDOWS
 
 			//ok, if we are in one of the tools, reorder the animations to match the image order.
-			List<CAnimation> myAnimations = new List<CAnimation>();
-			foreach (CImage myImage in myBone.Images)
+			List<Animation> myAnimations = new List<Animation>();
+			foreach (Image myImage in myBone.Images)
 			{
 				//find an animation that has the same name as this image
-				CAnimation foundAnimation = null;
-				foreach (CAnimation curAnimation in Animations)
+				Animation foundAnimation = null;
+				foreach (Animation curAnimation in Animations)
 				{
 					if (curAnimation.Name == myImage.Filename.GetFile())
 					{
@@ -224,7 +225,7 @@ namespace SPFLib
 		/// <param name="rContent">content loader to use</param>
 		/// <param name="strResource">name of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public override bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, IRenderer rRenderer)
+		public override bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, Renderer rRenderer)
 		{
 			CreateBone();
 
@@ -236,7 +237,7 @@ namespace SPFLib
 				return false;
 			}
 
-			ModelFile.Filename = strResource;
+			ModelFile.File = strResource;
 			return true;
 		}
 
