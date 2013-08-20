@@ -9,35 +9,25 @@ namespace AnimationLib
 	/// </summary>
 	public class Animation
 	{
-		#region Member Variables
-
-		//the root key series
-		private KeyBone m_KeyBone;
-
-		//name of the animation
-		private string m_strAnimationName;
-
-		//length of this animation
-		private float m_fTimeDelta;
-
-		#endregion //Members
-
 		#region Properties
+		
+		/// <summary>
+		/// length of this animation
+		/// </summary>
+		/// <value>The length.</value>
+		public float Length { get; private set; }
 
-		public float Length
-		{
-			get { return m_fTimeDelta; }
-		}
+		/// <summary>
+		/// the root key series
+		/// </summary>
+		/// <value>The key bone.</value>
+		public KeyBone KeyBone { get; private set; }
 
-		public KeyBone KeyBone
-		{
-			get { return m_KeyBone; }
-		}
-
-		public string Name
-		{
-			get { return m_strAnimationName; }
-		}
+		/// <summary>
+		/// name of the animation
+		/// </summary>
+		/// <value>The name.</value>
+		public string Name { get; private set; }
 
 		#endregion
 
@@ -48,21 +38,20 @@ namespace AnimationLib
 		/// </summary>
 		public Animation()
 		{
-			m_KeyBone = null;
-			m_fTimeDelta = 0.0f;
+			Length = 0.0f;
 		}
 
 		public Animation(Bone rBoneStructure)
 		{
 			Debug.Assert(null != rBoneStructure);
-			m_KeyBone = new KeyBone(rBoneStructure);
-			m_fTimeDelta = 0.0f;
+			KeyBone = new KeyBone(rBoneStructure);
+			Length = 0.0f;
 		}
 
 		public bool AddKeyframe(KeyElement rKey)
 		{
 			//find the correct keyjoint
-			KeyJoint MyKeyJoint = m_KeyBone.GetKeyJoint(rKey.JointName);
+			KeyJoint MyKeyJoint = KeyBone.GetKeyJoint(rKey.JointName);
 			if (null != MyKeyJoint)
 			{
 				//add the keyframe to the keyjoint
@@ -75,7 +64,7 @@ namespace AnimationLib
 		public bool RemoveKeyframe(KeyElement rKey)
 		{
 			//find the correct keyjoint
-			KeyJoint MyKeyJoint = m_KeyBone.GetKeyJoint(rKey.JointName);
+			KeyJoint MyKeyJoint = KeyBone.GetKeyJoint(rKey.JointName);
 			if (null != MyKeyJoint)
 			{
 				//remove all keyframes at that time
@@ -96,7 +85,7 @@ namespace AnimationLib
 			}
 
 			//first copy the anchor joint of that dude!
-			KeyJoint anchorKeyJoint = m_KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
+			KeyJoint anchorKeyJoint = KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
 			if (null != anchorKeyJoint)
 			{
 				anchorKeyJoint.RemoveKeyElement(myAction, iTime, this);
@@ -131,7 +120,7 @@ namespace AnimationLib
 			}
 
 			//first copy the anchor joint of that dude!
-			KeyJoint anchorKeyJoint = m_KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
+			KeyJoint anchorKeyJoint = KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
 			if (null != anchorKeyJoint)
 			{
 				anchorKeyJoint.Copy(myAction, myTargetAnimation, iSourceTime, iTargetTime, bSelectiveCopy);
@@ -145,7 +134,7 @@ namespace AnimationLib
 
 		public KeyBone GetKeyBone(string strBoneName)
 		{
-			return m_KeyBone.GetKeyBone(strBoneName);
+			return KeyBone.GetKeyBone(strBoneName);
 		}
 
 		/// <summary>
@@ -154,7 +143,7 @@ namespace AnimationLib
 		/// <param name="strJointName">The name of the joint to get</param>
 		public KeyJoint GetKeyJoint(string strJointName)
 		{
-			return m_KeyBone.GetKeyJoint(strJointName);
+			return KeyBone.GetKeyJoint(strJointName);
 		}
 
 
@@ -166,10 +155,10 @@ namespace AnimationLib
 		public void SetTime(float fTime)
 		{
 			//set the time in the animation itself
-			m_KeyBone.SetTime(Helper.SecondsToFrames(m_fTimeDelta), Helper.SecondsToFrames(fTime));
+			KeyBone.SetTime(Helper.SecondsToFrames(Length), Helper.SecondsToFrames(fTime));
 
 			//grab the time
-			m_fTimeDelta = fTime;
+			Length = fTime;
 		}
 
 		/// <summary>
@@ -184,7 +173,7 @@ namespace AnimationLib
 				return;
 			}
 
-			m_KeyBone.RenameJoint(strOldName, strNewName);
+			KeyBone.RenameJoint(strOldName, strNewName);
 		}
 
 		public override string ToString()
@@ -195,8 +184,6 @@ namespace AnimationLib
 		#endregion //Methods
 
 		#region File IO
-
-#if WINDOWS
 
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
@@ -227,7 +214,7 @@ namespace AnimationLib
 			}
 
 			//make sure to setup the bones model
-			m_KeyBone = new KeyBone(rModel);
+			KeyBone = new KeyBone(rModel);
 
 			//Read in child nodes
 			if (rXMLNode.HasChildNodes)
@@ -242,16 +229,16 @@ namespace AnimationLib
 
 					if (strName == "name")
 					{
-						m_strAnimationName = strValue;
+						Name = strValue;
 					}
 					else if (strName == "length")
 					{
-						m_fTimeDelta = Convert.ToSingle(strValue);
+						Length = Convert.ToSingle(strValue);
 					}
 					else if (strName == "keys")
 					{
 						//get the animation length in frames
-						int iLengthFrames = Helper.SecondsToFrames(m_fTimeDelta);
+						int iLengthFrames = Helper.SecondsToFrames(Length);
 
 						if (childNode.HasChildNodes)
 						{
@@ -277,7 +264,7 @@ namespace AnimationLib
 									}
 
 									//add to the correct keyjoint
-									KeyJoint myKeyJoint = m_KeyBone.GetKeyJoint(myKey.JointName);
+									KeyJoint myKeyJoint = KeyBone.GetKeyJoint(myKey.JointName);
 									if (null != myKeyJoint)
 									{
 										myKeyJoint.AddKeyElement(myKey);
@@ -302,7 +289,7 @@ namespace AnimationLib
 
 			//first get a list of all the keyframes
 			AnimationLib.AnimationXML myAnimationXML = new AnimationLib.AnimationXML();
-			m_KeyBone.WriteXMLFormat(myAnimationXML, rModel);
+			KeyBone.WriteXMLFormat(myAnimationXML, rModel);
 
 			//now sort all those keyframes
 			myAnimationXML.keys.Sort(new KeyXMLSort());
@@ -313,12 +300,12 @@ namespace AnimationLib
 
 			//write out animation name
 			rXMLFile.WriteStartElement("name");
-			rXMLFile.WriteString(m_strAnimationName);
+			rXMLFile.WriteString(Name);
 			rXMLFile.WriteEndElement();
 
 			//write out animation length
 			rXMLFile.WriteStartElement("length");
-			rXMLFile.WriteString(m_fTimeDelta.ToString());
+			rXMLFile.WriteString(Length.ToString());
 			rXMLFile.WriteEndElement();
 
 			//write out all the keyframes
@@ -374,21 +361,19 @@ namespace AnimationLib
 		/// <param name="fMultiply"></param>
 		public void MultiplyLayers(int iMultiply)
 		{
-			m_KeyBone.MultiplyLayers(iMultiply);
+			KeyBone.MultiplyLayers(iMultiply);
 		}
-
-#endif
 
 		public void ReadSerializedAnimationFormat(AnimationLib.AnimationXML myDude, Bone rModel)
 		{
-			m_strAnimationName = myDude.name;
-			m_fTimeDelta = myDude.length;
-			m_KeyBone = new KeyBone(rModel);
+			Name = myDude.name;
+			Length = myDude.length;
+			KeyBone = new KeyBone(rModel);
 
 			for (int i = 0; i < myDude.keys.Count; i++)
 			{
 				//find a joint that uses this key
-				KeyJoint myKeyJoint = m_KeyBone.GetKeyJoint(myDude.keys[i].joint);
+				KeyJoint myKeyJoint = KeyBone.GetKeyJoint(myDude.keys[i].joint);
 				if (null != myKeyJoint)
 				{
 					AnimationLib.KeyXML myKeyXML = myDude.keys[i];

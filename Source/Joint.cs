@@ -2,13 +2,6 @@ using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
 
-public enum ERagdollMove
-{
-	MoveAll,
-	OnlyMe,
-	OnlyHim
-}
-
 namespace AnimationLib
 {
 	public class Joint
@@ -291,8 +284,6 @@ namespace AnimationLib
 
 		#region File IO
 
-#if WINDOWS
-
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
@@ -366,8 +357,6 @@ namespace AnimationLib
 
 			rXMLFile.WriteEndElement();
 		}
-
-#endif
 
 		/// <summary>
 		/// Read in all the bone information from an object read in from a serialized XML file.

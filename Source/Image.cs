@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using FilenameBuddy;
 using CollisionBuddy;
 using DrawListBuddy;
+using BasicPrimitiveBuddy;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AnimationLib
 {
@@ -26,16 +28,8 @@ namespace AnimationLib
 		private Vector2 m_AnchorCoord;
 
 		//The bitmap for this frame
-		private int m_iBmpID;
+		private Texture2D m_iBmpID;
 		private Filename m_strFileName;
-
-		//physics data
-		private List<Circle> m_listCircles;
-
-		/// <summary>
-		/// physics data for level objects
-		/// </summary>
-		private List<Line> m_listLines;
 
 		#endregion
 
@@ -70,15 +64,16 @@ namespace AnimationLib
 			get { return m_listJointCoords; }
 		}
 
-		public List<Circle> Circles
-		{
-			get { return m_listCircles; }
-		}
+		/// <summary>
+		/// Physics Data!
+		/// </summary>
+		/// <value>The circles.</value>
+		public List<PhysicsCircle> Circles { get; private set; }
 
-		public List<Line> Lines
-		{
-			get { return m_listLines; }
-		}
+		/// <summary>
+		/// physics data for level objects
+		/// </summary>
+		public List<PhysicsLine> Lines { get; private set; }
 
 		#endregion
 
@@ -90,12 +85,12 @@ namespace AnimationLib
 		public Image()
 		{
 			m_listJointCoords = new List<JointData>();
-			m_listCircles = new List<Circle>();
-			m_listLines = new List<Line>();
+			Circles = new List<PhysicsCircle>();
+			Lines = new List<PhysicsLine>();
 			m_UpperLeftUV = new Vector2(0.0f);
 			m_LowerRightUV = new Vector2(0.0f);
 			m_AnchorCoord = new Vector2(0.0f);
-			m_iBmpID = -1;
+			m_iBmpID = null;
 			m_strFileName = new Filename();
 		}
 
@@ -107,7 +102,7 @@ namespace AnimationLib
 		/// <param name="iLayer">the layer to put the image at</param>
 		public void Render(Vector2 myPosition, DrawList rDrawList, int iLayer, float fRotation, bool bFlip, Color myColor)
 		{
-			if (-1 < m_iBmpID)
+			if (null != m_iBmpID)
 			{
 				rDrawList.AddQuad(m_iBmpID, myPosition, myColor, fRotation, bFlip, iLayer);
 			}
@@ -151,10 +146,10 @@ namespace AnimationLib
 			}
 
 			//copy circles
-			for (int i = 0; ((i < m_listCircles.Count) && (i < myInst.m_listCircles.Count)); i++)
+			for (int i = 0; ((i < Circles.Count) && (i < myInst.Circles.Count)); i++)
 			{
 				CCircle myCircle = new CCircle();
-				myCircle.Copy(myInst.m_listCircles[i]);
+				myCircle.Copy(myInst.Circles[i]);
 
 				//create the action to set it
 				CSetCircleData mySetCircleAction = new CSetCircleData(this, i, myCircle);
@@ -185,30 +180,30 @@ namespace AnimationLib
 		public void Update(Vector2 BonePosition, float fRotation, bool bFlip, float fScale)
 		{
 			//update all the circles
-			for (int i = 0; i < m_listCircles.Count; i++)
+			for (int i = 0; i < Circles.Count; i++)
 			{
-				Debug.Assert(null != m_listCircles);
-				Debug.Assert(null != m_listCircles[i]);
-				m_listCircles[i].Update(this, BonePosition, fRotation, bFlip, fScale);
+				Debug.Assert(null != Circles);
+				Debug.Assert(null != Circles[i]);
+				Circles[i].Update(this, BonePosition, fRotation, bFlip, fScale);
 			}
 
 			//update all the lines
-			for (int i = 0; i < m_listLines.Count; i++)
+			for (int i = 0; i < Lines.Count; i++)
 			{
-				m_listLines[i].Update(this, BonePosition, fRotation, bFlip, fScale);
+				Lines[i].Update(this, BonePosition, fRotation, bFlip, fScale);
 			}
 		}
 
-		public void DrawPhysics(Renderer rRenderer, Color rColor)
+		public void DrawPhysics(Renderer rRenderer, Color rColor, BasicPrimitive primitive)
 		{
-			for (int i = 0; i < m_listCircles.Count; i++)
+			for (int i = 0; i < Circles.Count; i++)
 			{
-				m_listCircles[i].Render(rRenderer, rColor);
+				Circles[i].Render(rRenderer, rColor, primitive);
 			}
 
-			for (int i = 0; i < m_listLines.Count; i++)
+			for (int i = 0; i < Lines.Count; i++)
 			{
-				m_listLines[i].Render(rRenderer, rColor);
+				Lines[i].Render(rRenderer, rColor, primitive);
 			}
 		}
 
@@ -218,38 +213,12 @@ namespace AnimationLib
 		/// <returns>true if there is physics data, false if not</returns>
 		public bool HasPhysics()
 		{
-			return ((m_listCircles.Count > 0) || (m_listLines.Count > 0));
+			return ((Circles.Count > 0) || (Lines.Count > 0));
 		}
 
 		#endregion //methods
 
-		#region Deprecated File IO
-
-		/// <summary>
-		/// take a number from opengl coords, convert to pixel coords
-		/// </summary>
-		/// <param name="fNum">the number to convert</param>
-		/// <returns>pixel coords</returns>
-		static public float ConvertNum(float fNum)
-		{
-			return (fNum * (64.0f / 0.2549801f));
-		}
-
-		public void ConvertVector(ref Vector2 myVect)
-		{
-			//add 1/2 image width to X
-			//subtract 1/2 image height from y
-			//multiply y by -1
-			myVect.X += ((m_LowerRightUV.X - m_UpperLeftUV.X) / 2.0f);
-			myVect.Y -= ((m_LowerRightUV.Y - m_UpperLeftUV.Y) / 2.0f);
-			myVect.Y *= -1.0f;
-		}
-
-		#endregion Deprecated File IO
-
 		#region File IO
-
-#if WINDOWS
 
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
@@ -360,13 +329,13 @@ namespace AnimationLib
 								null != jointNode;
 								jointNode = jointNode.NextSibling)
 							{
-								CCircle myCircle = new CCircle();
+								PhysicsCircle myCircle = new PhysicsCircle();
 								if (!myCircle.ReadSerializedFormat(jointNode))
 								{
 									Debug.Assert(false);
 									return false;
 								}
-								m_listCircles.Add(myCircle);
+								Circles.Add(myCircle);
 							}
 						}
 					}
@@ -379,13 +348,13 @@ namespace AnimationLib
 								null != jointNode;
 								jointNode = jointNode.NextSibling)
 							{
-								CLine myCircle = new CLine();
+								PhysicsLine myCircle = new PhysicsLine();
 								if (!myCircle.ReadSerializedFormat(jointNode))
 								{
 									Debug.Assert(false);
 									return false;
 								}
-								m_listLines.Add(myCircle);
+								Lines.Add(myCircle);
 							}
 						}
 					}
@@ -455,9 +424,9 @@ namespace AnimationLib
 
 			//write out polygon info
 			rXMLFile.WriteStartElement("circles");
-			for (int i = 0; i < m_listCircles.Count; i++)
+			for (int i = 0; i < Circles.Count; i++)
 			{
-				m_listCircles[i].WriteXMLFormat(rXMLFile);
+				Circles[i].WriteXMLFormat(rXMLFile);
 			}
 			rXMLFile.WriteEndElement();
 
@@ -470,8 +439,6 @@ namespace AnimationLib
 
 			rXMLFile.WriteEndElement();
 		}
-
-#endif
 
 		/// <summary>
 		/// Read in all the bone information from an object read in from a serialized XML file.
@@ -510,23 +477,23 @@ namespace AnimationLib
 			//read in physics data
 			for (int i = 0; i < rImage.circles.Count; i++)
 			{
-				Circle myCircle = new Circle();
+				PhysicsCircle myCircle = new PhysicsCircle();
 				if (!myCircle.ReadSerializedFormat(rImage.circles[i]))
 				{
 					return false;
 				}
-				m_listCircles.Add(myCircle);
+				Circles.Add(myCircle);
 			}
 
 			//read in line data
 			for (int i = 0; i < rImage.lines.Count; i++)
 			{
-				Line myLine = new Line();
+				PhysicsLine myLine = new PhysicsLine();
 				if (!myLine.ReadSerializedFormat(rImage.lines[i]))
 				{
 					return false;
 				}
-				m_listLines.Add(myLine);
+				Lines.Add(myLine);
 			}
 
 			return true;

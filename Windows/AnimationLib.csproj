@@ -87,6 +87,18 @@
     <Compile Include="..\Source\Helper.cs">
       <Link>Helper.cs</Link>
     </Compile>
+    <Compile Include="..\Source\BoneType.cs">
+      <Link>BoneType.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\RagdollMove.cs">
+      <Link>RagdollMove.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\PhysicsCircle.cs">
+      <Link>PhysicsCircle.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\PhysicsLine.cs">
+      <Link>PhysicsLine.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -120,6 +132,10 @@
     <ProjectReference Include="..\externals\MatrixExtensions\Windows\MatrixExtensions.Windows.csproj">
       <Project>{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}</Project>
       <Name>MatrixExtensions.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\externals\BasicPrimitiveBuddy\Windows\BasicPrimitiveBuddy.Windows.csproj">
+      <Project>{0FAA1286-7BFA-4765-8B51-62E438CB121D}</Project>
+      <Name>BasicPrimitiveBuddy.Windows</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

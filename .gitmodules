@@ -16,3 +16,6 @@
 [submodule "externals/MatrixExtensions"]
 	path = externals/MatrixExtensions
 	url = https://github.com/dmanning23/MatrixExtensions.git
+[submodule "externals/BasicPrimitiveBuddy"]
+	path = externals/BasicPrimitiveBuddy
+	url = https://github.com/dmanning23/BasicPrimitiveBuddy.git

@@ -6,49 +6,28 @@ using Microsoft.Xna.Framework;
 using FilenameBuddy;
 using DrawListBuddy;
 using MatrixExtensions;
+using BasicPrimitiveBuddy;
 
 namespace AnimationLib
 {
-	/// <summary>
-	/// These are the different types of things bones can be.
-	/// They will respond differently to collisions depending on the bone type.
-	/// </summary>
-	public enum EBoneType
-	{
-		Foot, //this bone collides with the floor (also a "normal" bone)
-		Weapon, //this bone only collides when it is in an active attack
-		Normal, //this bone only collides with active weapons
-		Garment //this bone is part of a garment and doesn't collide with anything
-	}
-
 	public class Bone
 	{
 		#region Member Variables
 
 		/// <summary>
-		/// The images in this bone
-		/// </summary>
-		private List<Image> m_listImages;
-
-		/// <summary>
-		/// The joints in this bone
-		/// </summary>
-		private List<Joint> m_listJoints;
-
-		/// <summary>
-		/// the child bones of this guy
-		/// </summary>
-		private List<Bone> m_listChildren;
-
-		/// <summary>
-		/// The name of this bone
-		/// </summary>
-		private string m_strBoneName;
-
-		/// <summary>
 		/// the joint this guy attachs to
 		/// </summary>
 		private Joint m_AnchorJoint;
+
+		public Joint Anchor
+		{
+			get 
+			{
+				Debug.Assert(null != m_AnchorJoint);
+				return m_AnchorJoint; 
+			}
+			protected set { m_AnchorJoint = value; }
+		}
 
 		/// <summary>
 		/// The current position of this guys upper-left corner in screen cooridnates
@@ -61,75 +40,42 @@ namespace AnimationLib
 		private Vector2 m_CurAnchorPos;
 
 		/// <summary>
-		/// this guys current image to render
-		/// </summary>
-		private int m_iCurrentImage;
-
-		/// <summary>
-		/// this guys current layer to render at
-		/// </summary>
-		private int m_iCurrentLayer;
-
-		/// <summary>
-		/// the rotation to render this guy at
-		/// </summary>
-		private float m_fCurrentRotation;
-
-		/// <summary>
 		/// whether to flip this dude or not when rendering
 		/// </summary>
 		private bool m_bCurrentFlip;
+		public bool Flipped
+		{
+			get { return m_bCurrentFlip; }
+			set
+			{
+				m_bCurrentFlip = value;
 
-		/// <summary>
-		/// Whether or not this bone should be colored by the palette swap
-		/// </summary>
-		private bool m_bColorable;
-
-		/// <summary>
-		/// Flag used to tell the difference between the bone types for collision purposes
-		/// </summary>
-		private EBoneType m_eBoneType;
+				//set parent flip in all the joints
+				for (int i = 0; i < Joints.Count; i++)
+				{
+					Joints[i].ParentFlip = m_bCurrentFlip;
+				}
+			}
+		}
 
 		#endregion
 
 		#region Properties
 
 		/// <summary>
-		/// Gets the list of child bones
+		/// the child bones of this guy
 		/// </summary>
-		public List<Bone> Bones
-		{
-			get { return m_listChildren; }
-		}
+		public List<Bone> Bones { get; private set; }
 
 		/// <summary>
-		/// Gets the list of joints
+		/// The joints in this bone
 		/// </summary>
-		public List<Joint> Joints
-		{
-			get { return m_listJoints; }
-		}
+		public List<Joint> Joints { get; private set; }
 
 		/// <summary>
-		/// get the list of images
+		/// The images in this bone
 		/// </summary>
-		public List<Image> Images
-		{
-			get { return m_listImages; }
-		}
-
-		/// <summary>
-		/// get teh anchor joint
-		/// </summary>
-		public Joint Anchor
-		{
-			get 
-			{
-				Debug.Assert(null != m_AnchorJoint);
-				return m_AnchorJoint; 
-			}
-			protected set { m_AnchorJoint = value; }
-		}
+		public List<Image> Images { get; private set; }
 
 		public Vector2 Position
 		{
@@ -143,71 +89,45 @@ namespace AnimationLib
 			protected set { m_CurAnchorPos = value; }
 		}
 
-		public string Name
-		{
-			get { return m_strBoneName; }
-			protected set { m_strBoneName = value; }
-		}
+		/// <summary>
+		/// The name of this bone
+		/// </summary>
+		public string Name { get; protected set; }
 
-		public float Rotation
-		{
-			get { return m_fCurrentRotation; }
-			protected set { m_fCurrentRotation = value; }
-		}
-
-		public bool Flipped
-		{
-			get { return m_bCurrentFlip; }
-			set
-			{
-				m_bCurrentFlip = value;
-
-				//set parent flip in all the joints
-				for (int i = 0; i < m_listJoints.Count; i++)
-				{
-					m_listJoints[i].ParentFlip = m_bCurrentFlip;
-				}
-			}
-		}
-
-		public int Layer
-		{
-			get { return m_iCurrentLayer; }
-		}
+		/// <summary>
+		/// the rotation to render this guy at
+		/// </summary>
+		public float Rotation { get; protected set; }
 
 		public bool IsFoot
 		{
-			get { return EBoneType.Foot == m_eBoneType; }
+			get { return EBoneType.Foot == BoneType; }
 		}
 
 		public bool IsWeapon
 		{
-			get { return EBoneType.Weapon == m_eBoneType; }
+			get { return EBoneType.Weapon == BoneType; }
 		}
 
-		public EBoneType BoneType
-		{
-			get { return m_eBoneType; }
-			protected set { m_eBoneType = value; }
-		}
+		/// <summary>
+		/// Flag used to tell the difference between the bone types for collision purposes
+		/// </summary>
+		public EBoneType BoneType { get; protected set; }
 
-		public int ImageIndex
-		{
-			get { return m_iCurrentImage; }
-			protected set { m_iCurrentImage = value; }
-		}
+		/// <summary>
+		/// this guys current image to render
+		/// </summary>
+		public int ImageIndex { get; protected set; }
 
-		protected int CurrentLayer
-		{
-			get { return m_iCurrentLayer; }
-			set { m_iCurrentLayer = value; }
-		}
+		/// <summary>
+		/// this guys current layer to render at
+		/// </summary>
+		protected int CurrentLayer { get; set; }
 
-		protected bool Colorable
-		{
-			get { return m_bColorable; }
-			set { m_bColorable = value; }
-		}
+		/// <summary>
+		/// Whether or not this bone should be colored by the palette swap
+		/// </summary>
+		protected bool Colorable { get; set; }
 
 		#endregion //Properties
 
@@ -218,31 +138,31 @@ namespace AnimationLib
 		/// </summary>
 		public Bone()
 		{
-			m_listImages = new List<Image>();
-			m_listJoints = new List<Joint>();
-			m_listChildren = new List<Bone>();
-			m_iCurrentImage = -1;
-			m_iCurrentLayer = -1;
+			Images = new List<Image>();
+			Joints = new List<Joint>();
+			Bones = new List<Bone>();
+			ImageIndex = -1;
+			CurrentLayer = -1;
 			m_AnchorJoint = new Joint(0);
-			m_strBoneName = "Root";
-			m_fCurrentRotation = 0.0f;
+			Name = "Root";
+			Rotation = 0.0f;
 			m_bCurrentFlip = false;
-			m_bColorable = false;
-			m_eBoneType = EBoneType.Normal;
+			Colorable = false;
+			BoneType = EBoneType.Normal;
 		}
 
 		public void RestartAnimation()
 		{
 			//reset all my shit
-			for (int i = 0; i < m_listJoints.Count; i++)
+			for (int i = 0; i < Joints.Count; i++)
 			{
-				m_listJoints[i].RestartAnimation();
+				Joints[i].RestartAnimation();
 			}
 
 			//reset child shit
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				m_listChildren[i].RestartAnimation();
+				Bones[i].RestartAnimation();
 			}
 		}
 
@@ -275,10 +195,10 @@ namespace AnimationLib
 			}
 
 			//UPDATE THE IMAGE
-			m_iCurrentImage = m_AnchorJoint.CurrentKeyElement.ImageIndex;
+			ImageIndex = m_AnchorJoint.CurrentKeyElement.ImageIndex;
 
 			//GET THE CURRENT LAYER
-			m_iCurrentLayer = iParentLayer + m_AnchorJoint.CurrentKeyElement.Layer;
+			CurrentLayer = iParentLayer + m_AnchorJoint.CurrentKeyElement.Layer;
 
 			//UPDATE THE FLIP
 			if (bParentFlip && m_AnchorJoint.CurrentKeyElement.Flip)
@@ -311,11 +231,11 @@ namespace AnimationLib
 				//add my rotation to the parents rotation
 				if (!bParentFlip)
 				{
-					m_fCurrentRotation = fParentRotation + m_AnchorJoint.CurrentKeyElement.Rotation;
+					Rotation = fParentRotation + m_AnchorJoint.CurrentKeyElement.Rotation;
 				}
 				else
 				{
-					m_fCurrentRotation = fParentRotation - m_AnchorJoint.CurrentKeyElement.Rotation;
+					Rotation = fParentRotation - m_AnchorJoint.CurrentKeyElement.Rotation;
 				}
 			}
 
@@ -350,23 +270,23 @@ namespace AnimationLib
 			myTranslation.YPos(-myPosition.Y);
 
 			//okay multiply through! move to origin, rotate, move back to my position
-			myMatrix = myMatrix * MatrixExt.Orientation(m_fCurrentRotation);
+			myMatrix = myMatrix * MatrixExt.Orientation(Rotation);
 			myMatrix = myMatrix * myTranslation;
 
 			//Get the anchor coord
 			Vector2 anchorCoord = new Vector2(0.0f);
-			if (m_iCurrentImage >= 0)
+			if (ImageIndex >= 0)
 			{
-				Debug.Assert(m_iCurrentImage < m_listImages.Count);
+				Debug.Assert(ImageIndex < Images.Count);
 				if (Flipped)
 				{
 					//flip the x coord
-					anchorCoord.X = m_listImages[m_iCurrentImage].Width - m_listImages[m_iCurrentImage].AnchorCoord.X;
-					anchorCoord.Y = m_listImages[m_iCurrentImage].AnchorCoord.Y;
+					anchorCoord.X = Images[ImageIndex].Width - Images[ImageIndex].AnchorCoord.X;
+					anchorCoord.Y = Images[ImageIndex].AnchorCoord.Y;
 				}
 				else
 				{
-					anchorCoord = m_listImages[m_iCurrentImage].AnchorCoord;
+					anchorCoord = Images[ImageIndex].AnchorCoord;
 				}
 			}
 
@@ -379,35 +299,35 @@ namespace AnimationLib
 			}
 
 			//update all the circle data
-			if (m_iCurrentImage >= 0)
+			if (ImageIndex >= 0)
 			{
-				Debug.Assert(null != GetCurrentImage());
-				GetCurrentImage().Update(m_CurrentPosition, m_fCurrentRotation, Flipped, fScale);
+				Debug.Assert(null != GetImageIndex());
+				GetImageIndex().Update(m_CurrentPosition, Rotation, Flipped, fScale);
 			}
 
 			//update all the joints
-			for (int i = 0; i < m_listJoints.Count; i++)
+			for (int i = 0; i < Joints.Count; i++)
 			{
 				//update the positions of all the joints
 				Vector2 jointPosition = new Vector2(0.0f);
-				if (m_iCurrentImage >= 0)
+				if (ImageIndex >= 0)
 				{
-					Debug.Assert(m_iCurrentImage < m_listImages.Count);
+					Debug.Assert(ImageIndex < Images.Count);
 
 					//get my joint translation from my current image
 					if (Flipped)
 					{
 						//flip the x coord
-						jointPosition.X = m_listImages[m_iCurrentImage].Width - m_listImages[m_iCurrentImage].GetJointLocation(i).Location.X;
-						jointPosition.Y = m_listImages[m_iCurrentImage].GetJointLocation(i).Location.Y;
+						jointPosition.X = Images[ImageIndex].Width - Images[ImageIndex].GetJointLocation(i).Location.X;
+						jointPosition.Y = Images[ImageIndex].GetJointLocation(i).Location.Y;
 					}
 					else
 					{
-						jointPosition = m_listImages[m_iCurrentImage].GetJointLocation(i).Location;
+						jointPosition = Images[ImageIndex].GetJointLocation(i).Location;
 					}
 
 					//get teh joint data
-					m_listJoints[i].Data = m_listImages[m_iCurrentImage].Data[i];
+					Joints[i].Data = Images[ImageIndex].Data[i];
 				}
 
 				if (!m_AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
@@ -418,19 +338,19 @@ namespace AnimationLib
 					jointPosition = jointPosition - anchorCoord;
 					jointPosition = myPosition + jointPosition;
 
-					m_listJoints[i].OldPosition = m_listJoints[i].Position;
-					m_listJoints[i].Position = myMatrix.Mutliply(jointPosition);
+					Joints[i].OldPosition = Joints[i].Position;
+					Joints[i].Position = myMatrix.Mutliply(jointPosition);
 				}
 			}
 
 			//this layer counter is incremented to layer garments on to pof each other
-			int iCurrentLayer = m_iCurrentLayer;
+			int iCurrentLayer = CurrentLayer;
 
 			//update all the bones
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
 				//set the bones position to the anchor pos
-				Vector2 childVector = m_listChildren[i].m_AnchorJoint.Position;
+				Vector2 childVector = Bones[i].m_AnchorJoint.Position;
 
 				//if the anchor pos is not in this bone, set it to the bones pos
 				if (i >= Joints.Count)
@@ -444,17 +364,17 @@ namespace AnimationLib
 				{
 					childKeyBone = myKeyBone.GetChildBone(i);
 				}
-				m_listChildren[i].Update(iTime,
+				Bones[i].Update(iTime,
 					childVector,
 					childKeyBone, 
-					m_fCurrentRotation,
+					Rotation,
 					Flipped,
 					iCurrentLayer,
 					fScale,
 					bIgnoreRagdoll);
 
 				//if that was a garment, increment the counter for the next garment
-				if (EBoneType.Garment == m_listChildren[i].BoneType)
+				if (EBoneType.Garment == Bones[i].BoneType)
 				{
 					iCurrentLayer--; //subtract to put the next garment on top of this one
 				}
@@ -468,7 +388,7 @@ namespace AnimationLib
 		public void AddGarment(GarmentBone rBone)
 		{
 			//just add the bone to the end of the list
-			m_listChildren.Add(rBone);
+			Bones.Add(rBone);
 		}
 
 		/// <summary>
@@ -478,15 +398,15 @@ namespace AnimationLib
 		public void RemoveGarment(string strGarment)
 		{
 			//find and remove the garment bone that matches the garment
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				if (m_listChildren[i] is GarmentBone)
+				if (Bones[i] is GarmentBone)
 				{
-					GarmentBone myBone = m_listChildren[i] as GarmentBone;
+					GarmentBone myBone = Bones[i] as GarmentBone;
 					Debug.Assert(null != myBone);
 					if (strGarment == myBone.Garment)
 					{
-						m_listChildren.RemoveAt(i);
+						Bones.RemoveAt(i);
 						return;
 					}
 				}
@@ -502,11 +422,11 @@ namespace AnimationLib
 		/// <param name="iIndex">The index of the joint to get</param>
 		public Joint GetJoint(string strJointName)
 		{
-			for (int i = 0; i < m_listJoints.Count; i++)
+			for (int i = 0; i < Joints.Count; i++)
 			{
-				if (m_listJoints[i].Name == strJointName)
+				if (Joints[i].Name == strJointName)
 				{
-					return m_listJoints[i];
+					return Joints[i];
 				}
 			}
 			
@@ -578,11 +498,11 @@ namespace AnimationLib
 		/// <returns>the first instance of an image using that name, null if not found</returns>
 		public Image GetImage(Filename strFileName)
 		{
-			for (int i = 0; i < m_listImages.Count; i++)
+			for (int i = 0; i < Images.Count; i++)
 			{
-				if (m_listImages[i].Filename.File == strFileName.File)
+				if (Images[i].Filename.File == strFileName.File)
 				{
-					return m_listImages[i];
+					return Images[i];
 				}
 			}
 
@@ -603,18 +523,18 @@ namespace AnimationLib
 			}
 
 			//check my images
-			for (int i = 0; i < m_listImages.Count; i++)
+			for (int i = 0; i < Images.Count; i++)
 			{
-				if (m_listImages[i].Filename.GetFile() == strFileName)
+				if (Images[i].Filename.GetFile() == strFileName)
 				{
 					return i;
 				}
 			}
 
 			//check child bones images
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				int iResult = m_listChildren[i].GetImageIndex(strFileName);
+				int iResult = Bones[i].GetImageIndex(strFileName);
 				if (-1 != iResult)
 				{
 					return iResult;
@@ -628,11 +548,11 @@ namespace AnimationLib
 		/// get the image currently being displayed by this bone
 		/// </summary>
 		/// <returns>Image: teh current image</returns>
-		public Image GetCurrentImage()
+		public Image GetImageIndex()
 		{
-			if ((m_iCurrentImage >= 0) && (m_iCurrentImage < m_listImages.Count))
+			if ((ImageIndex >= 0) && (ImageIndex < Images.Count))
 			{
-				return m_listImages[m_iCurrentImage];
+				return Images[ImageIndex];
 			}
 
 			return null;
@@ -657,7 +577,7 @@ namespace AnimationLib
 
 		public override string ToString()
 		{
-			return m_strBoneName;
+			return Name;
 		}
 
 		#region Drawing
@@ -669,27 +589,27 @@ namespace AnimationLib
 		public void Render(DrawList MyDrawList, Color PaletteSwap)
 		{
 			//Render out the current image
-			if ((m_iCurrentImage >= 0) && (m_iCurrentImage < m_listImages.Count))
+			if ((ImageIndex >= 0) && (ImageIndex < Images.Count))
 			{
 				//Does this bone ignore palette swaps?
 				Color FinalColor = Color.White;
-				if (m_bColorable)
+				if (Colorable)
 				{
 					FinalColor = PaletteSwap;
 				}
 
-				m_listImages[m_iCurrentImage].Render(m_CurrentPosition,
+				Images[ImageIndex].Render(m_CurrentPosition,
 					MyDrawList,
-					m_iCurrentLayer,
-					m_fCurrentRotation,
+					CurrentLayer,
+					Rotation,
 					Flipped,
 					FinalColor);
 			}
 
 			//render out all the children
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				m_listChildren[i].Render(MyDrawList, PaletteSwap);
+				Bones[i].Render(MyDrawList, PaletteSwap);
 			}
 		}
 
@@ -699,71 +619,72 @@ namespace AnimationLib
 		/// <param name="myRenderer">renderer to draw to</param>
 		/// <param name="bRecurse">whether or not to recurse and draw child bones</param>
 		/// <param name="rColor">the color to use</param>
-		public void DrawJoints(Renderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawJoints(Renderer myRenderer, bool bRecurse, Color rColor, BasicPrimitive primitive)
 		{
-			for (int i = 0; i < m_listJoints.Count; i++)
+			for (int i = 0; i < Joints.Count; i++)
 			{
-				myRenderer.DrawPoint(m_listJoints[i].Position, rColor);
+				primitive.Point(Joints[i].Position, rColor, myRenderer.SpriteBatch);
 			}
 
 			if (bRecurse)
 			{
-				for (int i = 0; i < m_listChildren.Count; i++)
+				for (int i = 0; i < Bones.Count; i++)
 				{
-					m_listChildren[i].DrawJoints(myRenderer, bRecurse, rColor);
+					Bones[i].DrawJoints(myRenderer, bRecurse, rColor, primitive);
 				}
 			}
 		}
 
-		public void DrawSkeleton(Renderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawSkeleton(Renderer myRenderer, bool bRecurse, Color rColor, BasicPrimitive primitive)
 		{
-			for (int i = 0; i < m_listJoints.Count; i++)
+			for (int i = 0; i < Joints.Count; i++)
 			{
-				myRenderer.DrawLine(m_CurAnchorPos, m_listJoints[i].Position, rColor);
+				primitive.Line(m_CurAnchorPos, Joints[i].Position, rColor, myRenderer.SpriteBatch);
 			}
 
 			if (bRecurse)
 			{
-				for (int i = 0; i < m_listChildren.Count; i++)
+				for (int i = 0; i < Bones.Count; i++)
 				{
-					m_listChildren[i].DrawSkeleton(myRenderer, bRecurse, rColor);
+					Bones[i].DrawSkeleton(myRenderer, bRecurse, rColor, primitive);
 				}
 			}
 		}
 
-		public void DrawPhysics(Renderer rRenderer, bool bRecurse, Color rColor)
+		public void DrawPhysics(Renderer myRenderer, bool bRecurse, Color rColor, BasicPrimitive primitive)
 		{
 			//draw all my circles
-			if (null != GetCurrentImage())
+			if (null != GetImageIndex())
 			{
-				GetCurrentImage().DrawPhysics(rRenderer, rColor);
+				GetImageIndex().DrawPhysics(myRenderer, rColor, primitive);
 			}
 
 			//draw all child circles
 			if (bRecurse)
 			{
-				for (int i = 0; i < m_listChildren.Count; i++)
+				for (int i = 0; i < Bones.Count; i++)
 				{
-					m_listChildren[i].DrawPhysics(rRenderer, bRecurse, rColor);
+					Bones[i].DrawPhysics(myRenderer, bRecurse, rColor, primitive);
 				}
 			}
 		}
 
-		public void DrawOutline(Renderer myRenderer, float fScale)
+		public void DrawOutline(Renderer myRenderer, float fScale, BasicPrimitive primitive)
 		{
 			//get the current image
-			if (m_iCurrentImage < 0)
+			if (ImageIndex < 0)
 			{
 				return;
 			}
-			Image myImage = m_listImages[m_iCurrentImage];
+			Image myImage = Images[ImageIndex];
 
-			myRenderer.DrawRectangle(
-				m_CurrentPosition,
-				new Vector2(m_CurrentPosition.X + myImage.LowerRight.X, m_CurrentPosition.Y + myImage.LowerRight.Y),
-				m_fCurrentRotation,
+			primitive.Rectangle(
+				new Rectangle((int)m_CurrentPosition.X,
+			              (int)m_CurrentPosition.Y,
+			              (int)(m_CurrentPosition.X + myImage.LowerRight.X),
+			              (int)(m_CurrentPosition.Y + myImage.LowerRight.Y)),
 				Color.White,
-				fScale);
+				myRenderer.SpriteBatch);
 		}
 
 		#endregion //Drawing
@@ -775,15 +696,15 @@ namespace AnimationLib
 		public void AccumulateForces(Vector2 rForce)
 		{
 			//update the children
-			for (int i = 0; i < m_listJoints.Count; i++)
+			for (int i = 0; i < Joints.Count; i++)
 			{
-				m_listJoints[i].Acceleration = rForce;
+				Joints[i].Acceleration = rForce;
 			}
 
 			//update the children
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				m_listChildren[i].AccumulateForces(rForce);
+				Bones[i].AccumulateForces(rForce);
 			}
 		}
 
@@ -794,16 +715,16 @@ namespace AnimationLib
 			//solve all the joints
 			if (m_AnchorJoint.CurrentKeyElement.RagDoll)
 			{
-				for (int i = 0; i < m_listJoints.Count; i++)
+				for (int i = 0; i < Joints.Count; i++)
 				{
-					m_listJoints[i].RunVerlet(fTimeStep);
+					Joints[i].RunVerlet(fTimeStep);
 				}
 			}
 
 			//update all the children
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				m_listChildren[i].RunVerlet(fTimeStep);
+				Bones[i].RunVerlet(fTimeStep);
 			}
 		}
 
@@ -811,40 +732,40 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != m_AnchorJoint);
 
-			if ((m_iCurrentImage >= 0) && (m_AnchorJoint.CurrentKeyElement.RagDoll || bParentRagdoll))
+			if ((ImageIndex >= 0) && (m_AnchorJoint.CurrentKeyElement.RagDoll || bParentRagdoll))
 			{
 				//update all the joints
-				for (int i = 0; i < m_listJoints.Count; i++)
+				for (int i = 0; i < Joints.Count; i++)
 				{
 					//if there is no image, all the joints go to the loc of the anchor joint
 
 					//solve constraints from anchor to each joint location
-					m_AnchorJoint.SolveConstraint(m_listJoints[i], m_listJoints[i].Data.Length, fScale, 
+					m_AnchorJoint.SolveConstraint(Joints[i], Joints[i].Data.Length, fScale, 
 						(bParentRagdoll ? ERagdollMove.MoveAll : ERagdollMove.OnlyHim));
 
 					//solve constraints from each joint to each other joint
-					for (int j = (i + 1); j < m_listJoints.Count; j++)
+					for (int j = (i + 1); j < Joints.Count; j++)
 					{
 						//get the distance the joints are supposed to be
 						float fDistance = 0.0f;
-						if (m_iCurrentImage >= 0)
+						if (ImageIndex >= 0)
 						{
 							//Get the vector from one joint to the other
-							Vector2 JointVect = m_listJoints[j].Data.Location - m_listJoints[i].Data.Location;
+							Vector2 JointVect = Joints[j].Data.Location - Joints[i].Data.Location;
 							fDistance = JointVect.Length();
 						}
 
 						//move them joints
-						m_listJoints[i].SolveConstraint(m_listJoints[j], fDistance, fScale,
+						Joints[i].SolveConstraint(Joints[j], fDistance, fScale,
 							((0 == i) ? ERagdollMove.OnlyHim : ERagdollMove.MoveAll)); //don't pull on the first joint though
 					}
 				}
 			}
 
 			//update the children
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				m_listChildren[i].SolveConstraints(m_AnchorJoint.CurrentKeyElement.RagDoll, fScale);
+				Bones[i].SolveConstraints(m_AnchorJoint.CurrentKeyElement.RagDoll, fScale);
 			}
 		}
 
@@ -852,11 +773,11 @@ namespace AnimationLib
 		{
 			if (Anchor.CurrentKeyElement.RagDoll &&
 				!Anchor.Data.Floating &&
-				(0 <= m_iCurrentImage))
+				(0 <= ImageIndex))
 			{
 				//Get the current rotation
-				m_fCurrentRotation = GetRagDollRotation();
-				float fMyActualRotation = Helper.ClampAngle(m_fCurrentRotation - fParentRotation);
+				Rotation = GetRagDollRotation();
+				float fMyActualRotation = Helper.ClampAngle(Rotation - fParentRotation);
 
 				bool bHitLimit = false;
 				if (fMyActualRotation < Anchor.FirstLimit)
@@ -871,7 +792,7 @@ namespace AnimationLib
 						//If it hit and the bone if flipped, swap the rotation
 						fLimit = MathHelper.Pi - fLimit;
 					}
-					m_fCurrentRotation = fParentRotation + Anchor.FirstLimit;
+					Rotation = fParentRotation + Anchor.FirstLimit;
 				}
 				else if (fMyActualRotation > Anchor.SecondLimit)
 				{
@@ -885,37 +806,37 @@ namespace AnimationLib
 						//If it hit and the bone if flipped, swap the rotation
 						fLimit = MathHelper.Pi - fLimit;
 					}
-					m_fCurrentRotation = fParentRotation + Anchor.SecondLimit;
+					Rotation = fParentRotation + Anchor.SecondLimit;
 				}
 
 				if (bHitLimit)
 				{
 					//update joint positions
-					Matrix myMatrix = MatrixExt.Orientation(m_fCurrentRotation);
-					for (int i = 0; i < m_listJoints.Count; i++)
+					Matrix myMatrix = MatrixExt.Orientation(Rotation);
+					for (int i = 0; i < Joints.Count; i++)
 					{
 						//get the vector from the anchor to the joint
-						Vector2 jointPos = GetCurrentImage().Data[i].AnchorVect;
+						Vector2 jointPos = GetImageIndex().Data[i].AnchorVect;
 						if (Flipped)
 						{
 							jointPos.X *= -1.0f;
 						}
 						jointPos = myMatrix.Mutliply(jointPos);
-						m_listJoints[i].Position = Anchor.Position + jointPos;
+						Joints[i].Position = Anchor.Position + jointPos;
 					}
 				}
 			}
 
 			//Solve limits for all the child bones
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				m_listChildren[i].SolveLimits(m_fCurrentRotation);
+				Bones[i].SolveLimits(Rotation);
 			}
 		}
 
 		private float GetRagDollRotation()
 		{
-			if (!Anchor.Data.Floating && (0 <= m_iCurrentImage) && (0 < m_listJoints.Count))
+			if (!Anchor.Data.Floating && (0 <= ImageIndex) && (0 < Joints.Count))
 			{
 				//get the difference between the anchor position and the joint
 				Vector2 diff = Joints[0].Position - m_CurAnchorPos;
@@ -935,7 +856,7 @@ namespace AnimationLib
 			}
 			else
 			{
-				return m_fCurrentRotation;
+				return Rotation;
 			}
 		}
 
@@ -944,19 +865,19 @@ namespace AnimationLib
 			//update this dudes rotation
 			Debug.Assert(null != m_AnchorJoint);
 			Debug.Assert(null != m_AnchorJoint.CurrentKeyElement);
-			if ((0 <= m_iCurrentImage) && (m_AnchorJoint.CurrentKeyElement.RagDoll || bParentRagdoll))
+			if ((0 <= ImageIndex) && (m_AnchorJoint.CurrentKeyElement.RagDoll || bParentRagdoll))
 			{
-				if (Anchor.Data.Floating && (0 < m_listJoints.Count))
+				if (Anchor.Data.Floating && (0 < Joints.Count))
 				{
 					//Float based on the joint position
 
 					//Get the vector from the current joint position
-					Matrix myRotation = MatrixExt.Orientation(m_fCurrentRotation);
-					Vector2 JointPos = GetCurrentImage().Data[0].Location * fScale;
+					Matrix myRotation = MatrixExt.Orientation(Rotation);
+					Vector2 JointPos = GetImageIndex().Data[0].Location * fScale;
 					if (Flipped)
 					{
 						//it flipped?
-						JointPos.X = GetCurrentImage().Width - JointPos.X;
+						JointPos.X = GetImageIndex().Width - JointPos.X;
 					}
 					JointPos = myRotation.Mutliply(JointPos);
 
@@ -965,15 +886,15 @@ namespace AnimationLib
 				}
 				else
 				{
-					m_fCurrentRotation = GetRagDollRotation();
+					Rotation = GetRagDollRotation();
 
 					//rotate the anchor position
-					Matrix myRotation = MatrixExt.Orientation(m_fCurrentRotation);
-					Vector2 AnchorCoord = GetCurrentImage().AnchorCoord;
+					Matrix myRotation = MatrixExt.Orientation(Rotation);
+					Vector2 AnchorCoord = GetImageIndex().AnchorCoord;
 					if (Flipped)
 					{
 						//it flipped?
-						AnchorCoord.X = GetCurrentImage().Width - AnchorCoord.X;
+						AnchorCoord.X = GetImageIndex().Width - AnchorCoord.X;
 					}
 					AnchorCoord = (myRotation.Mutliply(AnchorCoord)) * fScale;
 
@@ -983,15 +904,15 @@ namespace AnimationLib
 			}
 
 			//update the current image
-			if (m_iCurrentImage >= 0)
+			if (ImageIndex >= 0)
 			{
-				m_listImages[m_iCurrentImage].Update(m_CurrentPosition, m_fCurrentRotation, Flipped, fScale);
+				Images[ImageIndex].Update(m_CurrentPosition, Rotation, Flipped, fScale);
 			}
 
 			//go through & update the children too
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				m_listChildren[i].PostUpdate(fScale, Anchor.CurrentKeyElement.RagDoll);
+				Bones[i].PostUpdate(fScale, Anchor.CurrentKeyElement.RagDoll);
 			}
 		}
 
@@ -1072,7 +993,7 @@ namespace AnimationLib
 			MyLocation /= fScale;
 
 			//rotate around by the -current rotation
-			Matrix myRotation = Matrix.Orientation(-m_fCurrentRotation);
+			Matrix myRotation = Matrix.Orientation(-Rotation);
 
 			MyLocation = myRotation * MyLocation;
 			iX = (int)MyLocation.X;
@@ -1106,7 +1027,7 @@ namespace AnimationLib
 			MyLocation /= fScale;
 
 			//get difference between current angle and the one specified in the animation to get parent rotation
-			float fParentAngle = m_fCurrentRotation - m_AnchorJoint.CurrentKeyElement.Rotation;
+			float fParentAngle = Rotation - m_AnchorJoint.CurrentKeyElement.Rotation;
 
 			//rotate around by the -current rotation
 			Matrix myRotation = Matrix.Orientation(-fParentAngle);
@@ -1134,7 +1055,7 @@ namespace AnimationLib
 			float fAngle = Helper.atan2(MyLocation);
 
 			//get difference between current angle and the one specified in the animation to get parent rotation
-			float fParentAngle = m_fCurrentRotation - m_AnchorJoint.CurrentKeyElement.Rotation;
+			float fParentAngle = Rotation - m_AnchorJoint.CurrentKeyElement.Rotation;
 
 			float fDiff = 0.0f;
 			if (Flipped && !Anchor.CurrentKeyElement.Flip)
@@ -1154,13 +1075,13 @@ namespace AnimationLib
 		/// <returns></returns>
 		public float GetBoneAngle()
 		{
-			if ((null == GetCurrentImage()) || (Joints.Count <= 0))
+			if ((null == GetImageIndex()) || (Joints.Count <= 0))
 			{
 				return 0.0f;
 			}
 
 			//get the difference between the anchor position and the joint
-			Vector2 anchorPos = GetCurrentImage().AnchorCoord;
+			Vector2 anchorPos = GetImageIndex().AnchorCoord;
 			Vector2 jointPos = Joints[0].Data.Location;
 			Vector2 diff = jointPos - anchorPos;
 
@@ -1169,14 +1090,14 @@ namespace AnimationLib
 
 		public void AddJoint(string strJointName)
 		{
-			Joint myJoint = new Joint(m_listJoints.Count);
+			Joint myJoint = new Joint(Joints.Count);
 			myJoint.Name = strJointName;
-			m_listJoints.Add(myJoint);
+			Joints.Add(myJoint);
 
 			//add the data for that joint to all the images
-			for (int i = 0; i < m_listImages.Count; i++)
+			for (int i = 0; i < Images.Count; i++)
 			{
-				m_listImages[i].AddJoint();
+				Images[i].AddJoint();
 			}
 		}
 
@@ -1209,9 +1130,9 @@ namespace AnimationLib
 			}
 
 			//mirror all the child bones too
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
-				m_listChildren[i].MirrorRightToLeft(RootBone, ActionCollection);
+				Bones[i].MirrorRightToLeft(RootBone, ActionCollection);
 			}
 		}
 
@@ -1223,13 +1144,13 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != SourceBone);
 
-			for (int i = 0; i < m_listImages.Count; i++)
+			for (int i = 0; i < Images.Count; i++)
 			{
 				//check if the other bone uses this image
-				Image matchingImage = SourceBone.GetImage(m_listImages[i].Filename);
+				Image matchingImage = SourceBone.GetImage(Images[i].Filename);
 				if (null != matchingImage)
 				{
-					m_listImages[i].Copy(matchingImage, ActionCollection);
+					Images[i].Copy(matchingImage, ActionCollection);
 				}
 			}
 		}
@@ -1290,8 +1211,6 @@ namespace AnimationLib
 
 		#region File IO
 
-#if WINDOWS
-
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
@@ -1338,9 +1257,9 @@ namespace AnimationLib
 					if (null == m_AnchorJoint)
 					{
 						//add a joint to the parent
-						m_AnchorJoint = new Joint(ParentBone.m_listJoints.Count);
+						m_AnchorJoint = new Joint(ParentBone.Joints.Count);
 						m_AnchorJoint.Name = Name;
-						ParentBone.m_listJoints.Add(m_AnchorJoint);
+						ParentBone.Joints.Add(m_AnchorJoint);
 					}
 				}
 			}
@@ -1348,7 +1267,7 @@ namespace AnimationLib
 			//set the 'foot' flag as appropriate
 			if (Name == "Left Foot" || Name == "Right Foot")
 			{
-				m_eBoneType = EBoneType.Foot;
+				BoneType = EBoneType.Foot;
 			}
 
 			return true;
@@ -1370,7 +1289,7 @@ namespace AnimationLib
 			if (strName == "name")
 			{
 				//set the name of this bone
-				m_strBoneName = strValue;
+				Name = strValue;
 			}
 			else if (strName == "anchor")
 			{
@@ -1392,20 +1311,20 @@ namespace AnimationLib
 			{
 				if ("Foot" == strValue)
 				{
-					m_eBoneType = EBoneType.Foot;
+					BoneType = EBoneType.Foot;
 				}
 				else if ("Weapon" == strValue)
 				{
-					m_eBoneType = EBoneType.Weapon;
+					BoneType = EBoneType.Weapon;
 				}
 				else
 				{
-					m_eBoneType = EBoneType.Normal;
+					BoneType = EBoneType.Normal;
 				}
 			}
 			else if (strName == "colorable")
 			{
-				m_bColorable = Convert.ToBoolean(strValue);
+				Colorable = Convert.ToBoolean(strValue);
 			}
 			else if (strName == "joints")
 			{
@@ -1416,13 +1335,13 @@ namespace AnimationLib
 						null != jointNode;
 						jointNode = jointNode.NextSibling)
 					{
-						Joint childJoint = new Joint(m_listJoints.Count);
+						Joint childJoint = new Joint(Joints.Count);
 						if (!childJoint.ReadSerializedFormat(jointNode))
 						{
 							Debug.Assert(false);
 							return false;
 						}
-						m_listJoints.Add(childJoint);
+						Joints.Add(childJoint);
 					}
 				}
 			}
@@ -1441,7 +1360,7 @@ namespace AnimationLib
 							Debug.Assert(false);
 							return false;
 						}
-						m_listImages.Add(childImage);
+						Images.Add(childImage);
 					}
 				}
 			}
@@ -1460,7 +1379,7 @@ namespace AnimationLib
 							Debug.Assert(false);
 							return false;
 						}
-						m_listChildren.Add(childBone);
+						Bones.Add(childBone);
 					}
 				}
 			}
@@ -1506,50 +1425,48 @@ namespace AnimationLib
 		{
 			//add the name attribute
 			rXMLFile.WriteStartElement("name");
-			rXMLFile.WriteString(m_strBoneName);
+			rXMLFile.WriteString(Name);
 			rXMLFile.WriteEndElement();
 
 			//add the type attribute
 			rXMLFile.WriteStartElement("type");
-			rXMLFile.WriteString(m_eBoneType.ToString());
+			rXMLFile.WriteString("AnimationLib.Bone");
 			rXMLFile.WriteEndElement();
 
 			//add whether or not this bone ignores palette swap
 			rXMLFile.WriteStartElement("colorable");
-			rXMLFile.WriteString(m_bColorable ? "true" : "false");
+			rXMLFile.WriteString(Colorable ? "true" : "false");
 			rXMLFile.WriteEndElement();
 
 			//write out joints
 			rXMLFile.WriteStartElement("joints");
-			for (int i = 0; i < m_listJoints.Count; i++)
+			for (int i = 0; i < Joints.Count; i++)
 			{
-				m_listJoints[i].WriteXMLFormat(rXMLFile, fEnbiggify);
+				Joints[i].WriteXMLFormat(rXMLFile, fEnbiggify);
 			}
 			rXMLFile.WriteEndElement();
 
 			//write out images
 			rXMLFile.WriteStartElement("images");
-			for (int i = 0; i < m_listImages.Count; i++)
+			for (int i = 0; i < Images.Count; i++)
 			{
-				m_listImages[i].WriteXMLFormat(rXMLFile, fEnbiggify);
+				Images[i].WriteXMLFormat(rXMLFile, fEnbiggify);
 			}
 			rXMLFile.WriteEndElement();
 
 			//write out child bones
 			rXMLFile.WriteStartElement("bones");
-			for (int i = 0; i < m_listChildren.Count; i++)
+			for (int i = 0; i < Bones.Count; i++)
 			{
 				//dont write out child garment bones
-				if (m_listChildren[i] is GarmentBone)
+				if (Bones[i] is GarmentBone)
 				{
 					continue;
 				}
-				m_listChildren[i].WriteXMLFormat(rXMLFile, false, fEnbiggify);
+				Bones[i].WriteXMLFormat(rXMLFile, false, fEnbiggify);
 			}
 			rXMLFile.WriteEndElement();
 		}
-
-#endif
 
 		/// <summary>
 		/// Read in all the bone information from an object read in from a serialized XML file.
@@ -1560,17 +1477,17 @@ namespace AnimationLib
 		public virtual bool ReadSerializedFormat(AnimationLib.BoneXML rBone, Bone ParentBone, Renderer rRenderer)
 		{
 			//copy all the data from that dude
-			m_strBoneName = rBone.name;
+			Name = rBone.name;
 			if (null != ParentBone)
 			{
-				m_AnchorJoint = ParentBone.GetJoint(m_strBoneName);
+				m_AnchorJoint = ParentBone.GetJoint(Name);
 				if (null == m_AnchorJoint)
 				{
 					Debug.Assert(false);
 					return false;
 				}
 			}
-			m_bColorable = rBone.colorable;
+			Colorable = rBone.colorable;
 
 			for (int i = 0; i < rBone.joints.Count; i++)
 			{
@@ -1581,7 +1498,7 @@ namespace AnimationLib
 					Debug.Assert(false);
 					return false;
 				}
-				m_listJoints.Add(myJoint);
+				Joints.Add(myJoint);
 			}
 			for (int i = 0; i < rBone.images.Count; i++)
 			{
@@ -1592,7 +1509,7 @@ namespace AnimationLib
 					Debug.Assert(false);
 					return false;
 				}
-				m_listImages.Add(myImage);
+				Images.Add(myImage);
 			}
 			for (int i = 0; i < rBone.bones.Count; i++)
 			{
@@ -1603,21 +1520,21 @@ namespace AnimationLib
 					Debug.Assert(false);
 					return false;
 				}
-				m_listChildren.Add(myBone);
+				Bones.Add(myBone);
 			}
 
 			//set the 'foot', 'weapon' flags as appropriate
 			if ("Foot" == rBone.type)
 			{
-				m_eBoneType = EBoneType.Foot;
+				BoneType = EBoneType.Foot;
 			}
 			else if ("Weapon" == rBone.type)
 			{
-				m_eBoneType = EBoneType.Weapon;
+				BoneType = EBoneType.Weapon;
 			}
 			else
 			{
-				m_eBoneType = EBoneType.Normal;
+				BoneType = EBoneType.Normal;
 			}
 
 			return true;
