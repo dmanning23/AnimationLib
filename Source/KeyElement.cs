@@ -269,8 +269,6 @@ namespace AnimationLib
 
 		#region File IO
 
-#if WINDOWS
-
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
@@ -398,8 +396,6 @@ namespace AnimationLib
 		{
 			m_iLayer *= iMultiply;
 		}
-
-#endif
 
 		public void ReadSerializedFormat(AnimationLib.KeyXML rKeyElement)
 		{

@@ -355,8 +355,6 @@ namespace AnimationLib
 
 		#region File IO
 
-#if WINDOWS
-
 		/// <summary>
 		/// write all this dude's stuff out to xml
 		/// </summary>
@@ -399,8 +397,6 @@ namespace AnimationLib
 				i.MultiplyLayers(iMultiply);
 			}
 		}
-
-#endif
 
 		public KeyElement ReadSerializedAnimationFormat(AnimationLib.KeyXML rKeyElement)
 		{
