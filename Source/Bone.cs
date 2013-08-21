@@ -920,8 +920,6 @@ namespace AnimationLib
 
 		#region Tools
 
-#if WINDOWS
-
 		/// <summary>
 		/// override this dude's update to do some special properties different from the ones in the animation
 		/// </summary>
@@ -993,9 +991,9 @@ namespace AnimationLib
 			MyLocation /= fScale;
 
 			//rotate around by the -current rotation
-			Matrix myRotation = Matrix.Orientation(-Rotation);
+			Matrix myRotation = MatrixExt.Orientation(-Rotation);
 
-			MyLocation = myRotation * MyLocation;
+			MyLocation = myRotation.Mutliply(MyLocation);
 			iX = (int)MyLocation.X;
 			iY = (int)MyLocation.Y;
 		}
@@ -1030,9 +1028,9 @@ namespace AnimationLib
 			float fParentAngle = Rotation - m_AnchorJoint.CurrentKeyElement.Rotation;
 
 			//rotate around by the -current rotation
-			Matrix myRotation = Matrix.Orientation(-fParentAngle);
+			Matrix myRotation = MatrixExt.Orientation(-fParentAngle);
 
-			MyLocation = myRotation * MyLocation;
+			MyLocation = myRotation.Mutliply(MyLocation);
 			iX = (int)MyLocation.X;
 			iY = (int)MyLocation.Y;
 		}
@@ -1101,6 +1099,8 @@ namespace AnimationLib
 			}
 		}
 
+#if TOOLS
+
 		/// <summary>
 		/// Take this bone, see if there is a matching bone on teh right side of the model,
 		/// copy its info into this dude.
@@ -1155,6 +1155,8 @@ namespace AnimationLib
 			}
 		}
 
+#endif //TOOLS
+
 		/// <summary>
 		/// Rename all the joints to name of the bone that attaches to them
 		/// </summary>
@@ -1204,8 +1206,6 @@ namespace AnimationLib
 				curBone.GetAllWeaponBones(listWeapons);
 			}
 		}
-
-#endif
 
 		#endregion //Tools
 

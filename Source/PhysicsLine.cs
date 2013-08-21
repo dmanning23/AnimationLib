@@ -4,6 +4,7 @@ using CollisionBuddy;
 using MatrixExtensions;
 using DrawListBuddy;
 using BasicPrimitiveBuddy;
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -125,11 +126,11 @@ namespace AnimationLib
 
 					if (strName == "start")
 					{
-						LocalStart = CStringUtils.ReadVectorFromString(strValue);
+						LocalStart = strValue.ToVector2();
 					}
 					else if (strName == "end")
 					{
-						LocalEnd = CStringUtils.ReadVectorFromString(strValue);
+						LocalEnd = strValue.ToVector2();
 					}
 					else
 					{

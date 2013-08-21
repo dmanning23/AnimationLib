@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml;
 using Microsoft.Xna.Framework;
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -207,7 +208,7 @@ namespace AnimationLib
 
 					if (strName == "location")
 					{
-						Location = CStringUtils.ReadVectorFromString(strValue);
+						Location = strValue.ToVector2();
 					}
 					else if (strName == "limit1")
 					{

@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Xml;
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -336,8 +337,7 @@ namespace AnimationLib
 				rXMLFile.WriteEndElement();
 
 				rXMLFile.WriteStartElement("translation");
-				rXMLFile.WriteString(myAnimationXML.keys[i].translation.X.ToString() + " " +
-					myAnimationXML.keys[i].translation.Y.ToString());
+				rXMLFile.WriteString(myAnimationXML.keys[i].translation.StringFromVector());
 				rXMLFile.WriteEndElement();
 
 				rXMLFile.WriteStartElement("ragdoll");

@@ -7,6 +7,7 @@ using CollisionBuddy;
 using DrawListBuddy;
 using BasicPrimitiveBuddy;
 using Microsoft.Xna.Framework.Graphics;
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -266,17 +267,17 @@ namespace AnimationLib
 					if (strName == "upperleft")
 					{
 						//convert to the correct vector
-						m_UpperLeftUV = CStringUtils.ReadVectorFromString(strValue);
+						m_UpperLeftUV = strValue.ToVector2();
 					}
 					else if (strName == "lowerright")
 					{
 						//convert to the correct vector
-						m_LowerRightUV = CStringUtils.ReadVectorFromString(strValue);
+						m_LowerRightUV = strValue.ToVector2();
 					}
 					else if (strName == "anchorcoord")
 					{
 						//convert to the correct vector
-						m_AnchorCoord = CStringUtils.ReadVectorFromString(strValue);
+						m_AnchorCoord = strValue.ToVector2();
 					}
 					else if (strName == "filename")
 					{

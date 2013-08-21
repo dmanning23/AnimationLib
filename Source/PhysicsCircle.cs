@@ -5,6 +5,7 @@ using MatrixExtensions;
 using DrawListBuddy;
 using BasicPrimitiveBuddy;
 using System;
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -138,7 +139,7 @@ namespace AnimationLib
 
 					if (strName == "center")
 					{
-						LocalPosition = CStringUtils.ReadVectorFromString(strValue);
+						LocalPosition = strValue.ToVector2();
 					}
 					else if (strName == "radius")
 					{

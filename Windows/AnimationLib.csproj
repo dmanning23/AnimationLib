@@ -137,5 +137,9 @@
       <Project>{0FAA1286-7BFA-4765-8B51-62E438CB121D}</Project>
       <Name>BasicPrimitiveBuddy.Windows</Name>
     </ProjectReference>
+    <ProjectReference Include="..\externals\Vector2Extensions\Windows\Vector2Extensions.Windows.csproj">
+      <Project>{2C5ACADA-D15A-4193-BA0A-D36A362075F4}</Project>
+      <Name>Vector2Extensions.Windows</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

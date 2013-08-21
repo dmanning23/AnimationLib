@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -332,7 +333,7 @@ namespace AnimationLib
 					}
 					else if (strName == "translation")
 					{
-						m_Translation = CStringUtils.ReadVectorFromString(strValue);
+						m_Translation = strValue.ToVector2();
 					}
 					else if (strName == "ragdoll")
 					{
