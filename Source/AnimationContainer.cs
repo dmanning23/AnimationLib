@@ -93,19 +93,6 @@ namespace AnimationLib
 
 		#region Methods
 
-		static public EPlayback StringToPlaybackType(string strType)
-		{
-			for (EPlayback i = 0; i < EPlayback.NumPlaybackTypes; i++)
-			{
-				if (strType == i.ToString())
-				{
-					return i;
-				}
-			}
-
-			return EPlayback.NumPlaybackTypes;
-		}
-
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
@@ -208,7 +195,7 @@ namespace AnimationLib
 
 			//Apply teh current animation to the bones and stuff
 			KeyBone rCurrentKeyBone = m_CurrentAnimation.KeyBone;
-			Model.Anchor.Position = myPosition;
+			Model.AnchorJoint.Position = myPosition;
 			Model.Update(iTime,
 				myPosition,
 				rCurrentKeyBone,

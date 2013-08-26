@@ -8,9 +8,7 @@ namespace AnimationLib
 	{
 		#region Member Variables
 
-		/// <summary>
-		/// The name of this joint
-		/// </summary>
+
 		private string m_strJointName;
 
 		/// <summary>
@@ -19,19 +17,9 @@ namespace AnimationLib
 		private Vector2 m_JointPosition;
 
 		/// <summary>
-		/// The current keyelement
-		/// </summary>
-		private KeyElement m_CurrentKeyElement;
-
-		/// <summary>
 		/// The index of this joint in the bone who owns it
 		/// </summary>
 		private int m_iIndex;
-
-		/// <summary>
-		/// the current joint data this dude is using
-		/// </summary>
-		private JointData m_CurrentData;
 
 		/// <summary>
 		/// this is this dudes old position, stored in world coordinates
@@ -54,21 +42,14 @@ namespace AnimationLib
 		#region Properties
 
 		/// <summary>
-		/// Get or set the m_strJointName property
+		/// The name of this joint
 		/// </summary>
-		public string Name
-		{
-			get { return m_strJointName; }
-			set { m_strJointName = value; }
-		}
+		public string Name { get; set; }
 
 		/// <summary>
-		/// Get the index
+		/// The index of this joint in the bone who owns it
 		/// </summary>
-		public int Index
-		{
-			get { return m_iIndex; }
-		}
+		public int Index { get; private set; }
 
 		/// <summary>
 		/// Get or set the m_JointMatrix property
@@ -86,27 +67,14 @@ namespace AnimationLib
 		}
 
 		/// <summary>
-		/// Get or set the m_CurrentKeyElement property
+		/// The current keyelement
 		/// </summary>
-		public KeyElement CurrentKeyElement
-		{
-			get
-			{
-				Debug.Assert(null != m_CurrentKeyElement);
-				return m_CurrentKeyElement;
-			}
-			set { m_CurrentKeyElement = value; }
-		}
+		public KeyElement CurrentKeyElement { get; set; }
 
-		public JointData Data
-		{
-			get 
-			{
-				Debug.Assert(null != m_CurrentData);
-				return m_CurrentData; 
-			}
-			set { m_CurrentData = value; }
-		}
+		/// <summary>
+		/// the current joint data this dude is using
+		/// </summary>
+		public JointData Data { get; set; }
 
 		public Vector2 Acceleration
 		{
@@ -161,8 +129,8 @@ namespace AnimationLib
 		{
 			m_iIndex = iIndex;
 			m_JointPosition = new Vector2(0.0f);
-			m_CurrentKeyElement = new KeyElement();
-			m_CurrentData = new JointData();
+			CurrentKeyElement = new KeyElement();
+			Data = new JointData();
 			m_OldPosition = new Vector2(0.0f);
 			m_Acceleration = new Vector2(0.0f);
 			m_strJointName = "";
@@ -177,7 +145,7 @@ namespace AnimationLib
 		public void Update(KeyJoint MyKeyJoint, int iTime)
 		{
 			//get the key element for this dude
-			MyKeyJoint.GetKeyElement(iTime, m_CurrentKeyElement);
+			MyKeyJoint.GetKeyElement(iTime, CurrentKeyElement);
 		}
 
 		public void RestartAnimation()

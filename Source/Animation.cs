@@ -147,8 +147,6 @@ namespace AnimationLib
 			return KeyBone.GetKeyJoint(strJointName);
 		}
 
-
-
 		/// <summary>
 		/// Change teh time for this animation and move all the keyframes to match
 		/// </summary>
