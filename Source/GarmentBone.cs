@@ -152,8 +152,6 @@ namespace AnimationLib
 
 		#region File IO
 
-#if WINDOWS
-
 		/// <summary>
 		/// Parse a child node of this BoneXML
 		/// </summary>
@@ -220,8 +218,6 @@ namespace AnimationLib
 			rXMLFile.WriteString(m_strParentBone);
 			rXMLFile.WriteEndElement();
 		}
-
-#endif
 
 		/// <summary>
 		/// Read in all the bone information from an object read in from a serialized XML file.

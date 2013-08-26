@@ -146,8 +146,6 @@ namespace AnimationLib
 			}
 		}
 
-#if WINDOWS
-
 		/// <summary>
 		/// Read from XML!
 		/// </summary>
@@ -158,7 +156,7 @@ namespace AnimationLib
 		public bool ReadXMLFormat(Filename strFileName, Renderer rRenderer, Bone rRootNode)
 		{
 			//Open the file.
-			FileStream stream = File.Open(strFileName.Filename, FileMode.Open, FileAccess.Read);
+			FileStream stream = File.Open(strFileName.File, FileMode.Open, FileAccess.Read);
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
@@ -237,7 +235,7 @@ namespace AnimationLib
 			SetGarmentBones(rRootNode);
 
 			//grab teh filename
-			m_strFilename.Filename = strFileName.Filename;
+			m_strFilename.File = strFileName.File;
 
 			return true;
 		}
@@ -276,8 +274,6 @@ namespace AnimationLib
 			rXMLFile.Flush();
 			rXMLFile.Close();
 		}
-
-#endif
 
 		/// <summary>
 		/// read from XNA content

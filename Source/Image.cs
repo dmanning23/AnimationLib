@@ -290,15 +290,15 @@ namespace AnimationLib
 							//do we need to load the image?
 							if (null != rRenderer)
 							{
-								m_iBmpID = rRenderer.LoadBitmap(m_strFileName);
-								if (-1 == m_iBmpID)
+								m_iBmpID = rRenderer.Content.Load<Texture2D>(m_strFileName.File);
+								if (null == m_iBmpID)
 								{
 									Debug.Assert(false);
 									return false;
 								}
 
 								m_UpperLeftUV = Vector2.Zero;
-								m_LowerRightUV = rRenderer.GetImageSize(m_iBmpID);
+								m_LowerRightUV = new Vector2(m_iBmpID.Width, m_iBmpID.Height);
 							}
 						}
 					}
@@ -459,7 +459,7 @@ namespace AnimationLib
 			{
 				if (null != rRenderer)
 				{
-					m_iBmpID = rRenderer.LoadBitmap(m_strFileName);
+					m_iBmpID = rRenderer.Content.Load<Texture2D>(m_strFileName.File);
 				}
 			}
 

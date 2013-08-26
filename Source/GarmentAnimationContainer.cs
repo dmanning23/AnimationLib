@@ -190,8 +190,6 @@ namespace AnimationLib
 			//Make sure this animation container has the correct number of animations
 			Debug.Assert(Animations.Count == myBone.Images.Count);
 
-#if WINDOWS
-
 			//ok, if we are in one of the tools, reorder the animations to match the image order.
 			List<Animation> myAnimations = new List<Animation>();
 			foreach (Image myImage in myBone.Images)
@@ -214,9 +212,6 @@ namespace AnimationLib
 
 			//now hold onto the sorted list
 			Animations = myAnimations;
-
-#endif
-
 		}
 
 		/// <summary>

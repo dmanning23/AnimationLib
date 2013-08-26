@@ -114,8 +114,6 @@ namespace AnimationLib
 			AnimationContainer.SetGarmentBones(rRootNode);
 		}
 
-#if WINDOWS
-
 		/// <summary>
 		/// Read from XML!
 		/// </summary>
@@ -170,7 +168,7 @@ namespace AnimationLib
 						//read in the model
 						Filename strModelFile = new Filename();
 						strModelFile.SetRelFilename(strValue);
-						if (!m_AnimationContainer.ReadSerializedModelFormat(strModelFile.Filename, rRenderer))
+						if (!m_AnimationContainer.ReadSerializedModelFormat(strModelFile.File, rRenderer))
 						{
 							Debug.Assert(false);
 							return false;
@@ -181,7 +179,7 @@ namespace AnimationLib
 						//read in the animations
 						Filename strAnimationFile = new Filename();
 						strAnimationFile.SetRelFilename(strValue);
-						if (!m_AnimationContainer.ReadSerializedAnimationFormat(strAnimationFile.Filename))
+						if (!m_AnimationContainer.ReadSerializedAnimationFormat(strAnimationFile.File))
 						{
 							Debug.Assert(false);
 							return false;
@@ -221,13 +219,11 @@ namespace AnimationLib
 			rXMLFile.WriteEndElement();
 
 			//write out the model file
-			AnimationContainer.WriteModelXMLFormat(AnimationContainer.ModelFile.Filename, fEnbiggify);
+			AnimationContainer.WriteModelXMLFormat(AnimationContainer.ModelFile.File, fEnbiggify);
 
 			//write out the animation file
-			AnimationContainer.WriteXMLFormat(AnimationContainer.AnimationFile.Filename);
+			AnimationContainer.WriteXMLFormat(AnimationContainer.AnimationFile.File);
 		}
-
-#endif
 
 		/// <summary>
 		/// read from XNA content

@@ -425,8 +425,6 @@ namespace AnimationLib
 
 		#region Model File IO
 
-#if WINDOWS
-
 		/// <summary>
 		/// Read a model file from a serialized xml resource
 		/// </summary>
@@ -457,7 +455,7 @@ namespace AnimationLib
 				}
 
 				//make sure to read from the the next node
-				if (!m_Model.ReadSerializedFormat(rootNode.FirstChild, null, rRenderer))
+				if (!Model.ReadSerializedFormat(rootNode.FirstChild, null, rRenderer))
 				{
 					Debug.Assert(false);
 					stream.Close();
@@ -476,7 +474,7 @@ namespace AnimationLib
 			stream.Close();
 
 			//grab that filename 
-			m_strModelFile.Filename = strResource;
+			m_strModelFile.File = strResource;
 			return true;
 		}
 
@@ -486,10 +484,10 @@ namespace AnimationLib
 		/// <param name="strFileName">name of the file to dump to</param>
 		public virtual void WriteModelXMLFormat(string strFileName, float fEnbiggify)
 		{
-			Debug.Assert(null != m_Model);
+			Debug.Assert(null != Model);
 
 			//first rename all the joints so they are correct
-			m_Model.RenameJoints(this);
+			Model.RenameJoints(this);
 
 			//open the file, create it if it doesnt exist yet
 			XmlTextWriter rFile = new XmlTextWriter(strFileName, null);
@@ -498,15 +496,13 @@ namespace AnimationLib
 			rFile.IndentChar = '\t';
 
 			rFile.WriteStartDocument();
-			m_Model.WriteXMLFormat(rFile, true, fEnbiggify);
+			Model.WriteXMLFormat(rFile, true, fEnbiggify);
 			rFile.WriteEndDocument();
 
 			// Close the file.
 			rFile.Flush();
 			rFile.Close();
 		}
-
-#endif
 
 		/// <summary>
 		/// Read a model file from a serialized xml resource
@@ -534,15 +530,13 @@ namespace AnimationLib
 
 		#region Animation File IO
 
-#if WINDOWS
-
 		/// <summary>
 		/// read in a list of animations from a serialized xml format file
 		/// </summary>
 		/// <param name="strFileName">filename of the animations to load</param>
 		public virtual bool ReadSerializedAnimationFormat(string strFileName)
 		{
-			Debug.Assert(null != m_Model); //need a model to read in animations
+			Debug.Assert(null != Model); //need a model to read in animations
 			m_listAnimations.Clear();
 
 			//gonna have to do this the HARD way
@@ -605,7 +599,7 @@ namespace AnimationLib
 			stream.Close();
 
 			//grab teh filename
-			m_strAnimationFile.Filename = strFileName;
+			m_strAnimationFile.File = strFileName;
 
 			m_ePlayback = EPlayback.Forwards;
 			m_CurrentAnimation = null;
@@ -625,9 +619,9 @@ namespace AnimationLib
 				null != childNode;
 				childNode = childNode.NextSibling)
 			{
-				Animation myAnimation = new Animation(m_Model);
-				Debug.Assert(null != m_Model);
-				if (!myAnimation.ReadSerializedFormat(childNode, m_Model))
+				Animation myAnimation = new Animation(Model);
+				Debug.Assert(null != Model);
+				if (!myAnimation.ReadSerializedFormat(childNode, Model))
 				{
 					return false;
 				}
@@ -640,8 +634,8 @@ namespace AnimationLib
 		public void WriteXMLFormat(string strFileName)
 		{
 			//first rename all the joints so they are correct
-			Debug.Assert(null != m_Model);
-			m_Model.RenameJoints(this);
+			Debug.Assert(null != Model);
+			Model.RenameJoints(this);
 
 			//open the file, create it if it doesnt exist yet
 			XmlTextWriter rXMLFile = new XmlTextWriter(strFileName, null);
@@ -660,8 +654,8 @@ namespace AnimationLib
 			rXMLFile.WriteStartElement("animations");
 			for (int i = 0; i < m_listAnimations.Count; i++)
 			{
-				Debug.Assert(null != m_Model);
-				m_listAnimations[i].WriteXMLFormat(rXMLFile, m_Model);
+				Debug.Assert(null != Model);
+				m_listAnimations[i].WriteXMLFormat(rXMLFile, Model);
 			}
 			rXMLFile.WriteEndElement();
 
@@ -686,8 +680,6 @@ namespace AnimationLib
 				i.MultiplyLayers(iMultiply);
 			}
 		}
-
-#endif
 
 		/// <summary>
 		/// read in a list of animations from a resource
