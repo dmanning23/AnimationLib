@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Net;
 #endif
 using FilenameBuddy;
 using DrawListBuddy;
+using RenderBuddy;
 
 namespace AnimationLib
 {

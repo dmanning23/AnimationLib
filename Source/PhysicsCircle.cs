@@ -6,6 +6,7 @@ using DrawListBuddy;
 using BasicPrimitiveBuddy;
 using System;
 using Vector2Extensions;
+using RenderBuddy;
 
 namespace AnimationLib
 {

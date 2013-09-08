@@ -8,6 +8,7 @@ using DrawListBuddy;
 using BasicPrimitiveBuddy;
 using Microsoft.Xna.Framework.Graphics;
 using Vector2Extensions;
+using RenderBuddy;
 
 namespace AnimationLib
 {

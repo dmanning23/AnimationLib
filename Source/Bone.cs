@@ -7,6 +7,7 @@ using FilenameBuddy;
 using DrawListBuddy;
 using MatrixExtensions;
 using BasicPrimitiveBuddy;
+using RenderBuddy;
 
 namespace AnimationLib
 {

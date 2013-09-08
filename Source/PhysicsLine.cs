@@ -5,6 +5,7 @@ using MatrixExtensions;
 using DrawListBuddy;
 using BasicPrimitiveBuddy;
 using Vector2Extensions;
+using RenderBuddy;
 
 namespace AnimationLib
 {

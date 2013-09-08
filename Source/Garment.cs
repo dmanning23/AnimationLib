@@ -5,6 +5,7 @@ using System.Xml;
 using Microsoft.Xna.Framework.Content;
 using FilenameBuddy;
 using DrawListBuddy;
+using RenderBuddy;
 
 namespace AnimationLib
 {

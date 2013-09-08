@@ -141,5 +141,9 @@
       <Project>{2C5ACADA-D15A-4193-BA0A-D36A362075F4}</Project>
       <Name>Vector2Extensions.Windows</Name>
     </ProjectReference>
+    <ProjectReference Include="..\externals\RenderBuddy\Windows\RenderBuddy.Windows.csproj">
+      <Project>{5C9D6145-A763-4B79-8541-0C44C6DEE72D}</Project>
+      <Name>RenderBuddy.Windows</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

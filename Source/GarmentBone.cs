@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
 using DrawListBuddy;
+using RenderBuddy;
 
 namespace AnimationLib
 {

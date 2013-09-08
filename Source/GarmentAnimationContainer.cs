@@ -5,6 +5,7 @@ using System.Xml;
 using System.Collections.Generic;
 using GameTimer;
 using DrawListBuddy;
+using RenderBuddy;
 
 namespace AnimationLib
 {
