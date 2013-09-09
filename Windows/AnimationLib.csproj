@@ -109,10 +109,6 @@
       <Project>{6B6D4188-5C03-4E16-923B-96FDBC85B91A}</Project>
       <Name>GameTimer.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CollisionBuddy\Windows\CollisionBuddy.Windows.csproj">
-      <Project>{E032CF52-88BC-4D76-8E93-3798F5EE5CD2}</Project>
-      <Name>CollisionBuddy.Windows</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\DrawListBuddy\Windows\DrawListBuddy.Windows.csproj">
       <Project>{1ABFAAEC-29E3-430C-B212-5B15E75E6192}</Project>
       <Name>DrawListBuddy.Windows</Name>
@@ -144,6 +140,10 @@
     <ProjectReference Include="..\..\RenderBuddy\Windows\RenderBuddy.Windows.csproj">
       <Project>{5C9D6145-A763-4B79-8541-0C44C6DEE72D}</Project>
       <Name>RenderBuddy.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CollisionBuddy\Windows\CollisionBuddy.Windows.csproj">
+      <Project>{E032CF52-88BC-4D76-8E93-3798F5EE5CD2}</Project>
+      <Name>CollisionBuddy.Windows</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
