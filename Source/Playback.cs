@@ -7,7 +7,6 @@ namespace AnimationLib
 		Forwards = 0,
 		Loop,
 		Backwards,
-		LoopBackwards,
-		NumPlaybackTypes
+		LoopBackwards
 	};
 }

@@ -571,6 +571,15 @@ namespace AnimationLib
 			return Name;
 		}
 
+		/// <summary>
+		/// Gets the position.  Used in all the delegate methods
+		/// </summary>
+		/// <returns>The position.</returns>
+		public Vector2 GetPosition()
+		{
+			return Position;
+		}
+
 		#region Drawing
 
 		/// <summary>
