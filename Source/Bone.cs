@@ -292,8 +292,8 @@ namespace AnimationLib
 			//update all the circle data
 			if (ImageIndex >= 0)
 			{
-				Debug.Assert(null != GetImageIndex());
-				GetImageIndex().Update(m_CurrentPosition, Rotation, Flipped, fScale);
+				Debug.Assert(null != GetCurrentImage());
+				GetCurrentImage().Update(m_CurrentPosition, Rotation, Flipped, fScale);
 			}
 
 			//update all the joints
@@ -539,7 +539,7 @@ namespace AnimationLib
 		/// get the image currently being displayed by this bone
 		/// </summary>
 		/// <returns>Image: teh current image</returns>
-		public Image GetImageIndex()
+		public Image GetCurrentImage()
 		{
 			if ((ImageIndex >= 0) && (ImageIndex < Images.Count))
 			{
@@ -610,44 +610,44 @@ namespace AnimationLib
 		/// <param name="myRenderer">renderer to draw to</param>
 		/// <param name="bRecurse">whether or not to recurse and draw child bones</param>
 		/// <param name="rColor">the color to use</param>
-		public void DrawJoints(Renderer myRenderer, bool bRecurse, Color rColor, BasicPrimitive primitive)
+		public void DrawJoints(Renderer myRenderer, bool bRecurse, Color rColor)
 		{
 			for (int i = 0; i < Joints.Count; i++)
 			{
-				primitive.Point(Joints[i].Position, rColor, myRenderer.SpriteBatch);
+				myRenderer.Primitive.Point(Joints[i].Position, rColor, myRenderer.SpriteBatch);
 			}
 
 			if (bRecurse)
 			{
 				for (int i = 0; i < Bones.Count; i++)
 				{
-					Bones[i].DrawJoints(myRenderer, bRecurse, rColor, primitive);
+					Bones[i].DrawJoints(myRenderer, bRecurse, rColor);
 				}
 			}
 		}
 
-		public void DrawSkeleton(Renderer myRenderer, bool bRecurse, Color rColor, BasicPrimitive primitive)
+		public void DrawSkeleton(Renderer myRenderer, bool bRecurse, Color rColor)
 		{
 			for (int i = 0; i < Joints.Count; i++)
 			{
-				primitive.Line(m_CurAnchorPos, Joints[i].Position, rColor, myRenderer.SpriteBatch);
+				myRenderer.Primitive.Line(m_CurAnchorPos, Joints[i].Position, rColor, myRenderer.SpriteBatch);
 			}
 
 			if (bRecurse)
 			{
 				for (int i = 0; i < Bones.Count; i++)
 				{
-					Bones[i].DrawSkeleton(myRenderer, bRecurse, rColor, primitive);
+					Bones[i].DrawSkeleton(myRenderer, bRecurse, rColor);
 				}
 			}
 		}
 
-		public void DrawPhysics(Renderer myRenderer, bool bRecurse, Color rColor, BasicPrimitive primitive)
+		public void DrawPhysics(Renderer myRenderer, bool bRecurse, Color rColor)
 		{
 			//draw all my circles
-			if (null != GetImageIndex())
+			if (null != GetCurrentImage())
 			{
-				GetImageIndex().DrawPhysics(myRenderer, rColor, primitive);
+				GetCurrentImage().DrawPhysics(myRenderer, rColor);
 			}
 
 			//draw all child circles
@@ -655,12 +655,12 @@ namespace AnimationLib
 			{
 				for (int i = 0; i < Bones.Count; i++)
 				{
-					Bones[i].DrawPhysics(myRenderer, bRecurse, rColor, primitive);
+					Bones[i].DrawPhysics(myRenderer, bRecurse, rColor);
 				}
 			}
 		}
 
-		public void DrawOutline(Renderer myRenderer, float fScale, BasicPrimitive primitive)
+		public void DrawOutline(Renderer myRenderer, float fScale)
 		{
 			//get the current image
 			if (ImageIndex < 0)
@@ -669,7 +669,7 @@ namespace AnimationLib
 			}
 			Image myImage = Images[ImageIndex];
 
-			primitive.Rectangle(
+			myRenderer.Primitive.Rectangle(
 				new Rectangle((int)m_CurrentPosition.X,
 			              (int)m_CurrentPosition.Y,
 			              (int)(m_CurrentPosition.X + myImage.LowerRight.X),
@@ -807,7 +807,7 @@ namespace AnimationLib
 					for (int i = 0; i < Joints.Count; i++)
 					{
 						//get the vector from the anchor to the joint
-						Vector2 jointPos = GetImageIndex().Data[i].AnchorVect;
+						Vector2 jointPos = GetCurrentImage().Data[i].AnchorVect;
 						if (Flipped)
 						{
 							jointPos.X *= -1.0f;
@@ -864,11 +864,11 @@ namespace AnimationLib
 
 					//Get the vector from the current joint position
 					Matrix myRotation = MatrixExt.Orientation(Rotation);
-					Vector2 JointPos = GetImageIndex().Data[0].Location * fScale;
+					Vector2 JointPos = GetCurrentImage().Data[0].Location * fScale;
 					if (Flipped)
 					{
 						//it flipped?
-						JointPos.X = GetImageIndex().Width - JointPos.X;
+						JointPos.X = GetCurrentImage().Width - JointPos.X;
 					}
 					JointPos = myRotation.Mutliply(JointPos);
 
@@ -881,11 +881,11 @@ namespace AnimationLib
 
 					//rotate the anchor position
 					Matrix myRotation = MatrixExt.Orientation(Rotation);
-					Vector2 AnchorCoord = GetImageIndex().AnchorCoord;
+					Vector2 AnchorCoord = GetCurrentImage().AnchorCoord;
 					if (Flipped)
 					{
 						//it flipped?
-						AnchorCoord.X = GetImageIndex().Width - AnchorCoord.X;
+						AnchorCoord.X = GetCurrentImage().Width - AnchorCoord.X;
 					}
 					AnchorCoord = (myRotation.Mutliply(AnchorCoord)) * fScale;
 
@@ -1064,13 +1064,13 @@ namespace AnimationLib
 		/// <returns></returns>
 		public float GetBoneAngle()
 		{
-			if ((null == GetImageIndex()) || (Joints.Count <= 0))
+			if ((null == GetCurrentImage()) || (Joints.Count <= 0))
 			{
 				return 0.0f;
 			}
 
 			//get the difference between the anchor position and the joint
-			Vector2 anchorPos = GetImageIndex().AnchorCoord;
+			Vector2 anchorPos = GetCurrentImage().AnchorCoord;
 			Vector2 jointPos = Joints[0].Data.Location;
 			Vector2 diff = jointPos - anchorPos;
 

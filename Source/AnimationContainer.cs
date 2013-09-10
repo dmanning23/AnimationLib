@@ -195,11 +195,10 @@ namespace AnimationLib
 			Debug.Assert(null != Model);
 
 			//Apply teh current animation to the bones and stuff
-			KeyBone rCurrentKeyBone = m_CurrentAnimation.KeyBone;
 			Model.AnchorJoint.Position = myPosition;
 			Model.Update(iTime,
 				myPosition,
-				rCurrentKeyBone,
+				m_CurrentAnimation.KeyBone,
 				fRotation,
 				bFlip,
 				0,
@@ -226,7 +225,7 @@ namespace AnimationLib
 			}
 
 			//accumulate all the force
-			Vector2 gravity = new Vector2(0.0f);
+			Vector2 gravity = Vector2.Zero;
 			gravity.Y = Helper.RagdollGravity();
 			Model.AccumulateForces(gravity);
 

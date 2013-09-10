@@ -196,16 +196,16 @@ namespace AnimationLib
 			}
 		}
 
-		public void DrawPhysics(Renderer rRenderer, Color rColor, BasicPrimitive primitive)
+		public void DrawPhysics(Renderer rRenderer, Color rColor)
 		{
 			for (int i = 0; i < Circles.Count; i++)
 			{
-				Circles[i].Render(rRenderer, rColor, primitive);
+				Circles[i].Render(rRenderer, rColor);
 			}
 
 			for (int i = 0; i < Lines.Count; i++)
 			{
-				Lines[i].Render(rRenderer, rColor, primitive);
+				Lines[i].Render(rRenderer, rColor);
 			}
 		}
 

@@ -72,9 +72,9 @@ namespace AnimationLib
 			Radius = LocalRadius * fScale;
 		}
 
-		public void Render(Renderer rRenderer, Color rColor, BasicPrimitive primitive)
+		public void Render(Renderer rRenderer, Color rColor)
 		{
-			primitive.Circle(Pos, Radius, rColor, rRenderer.SpriteBatch);
+			rRenderer.Primitive.Circle(Pos, Radius, rColor, rRenderer.SpriteBatch);
 		}
 
 		public float DistanceToPoint(int iScreenX, int iScreenY)
