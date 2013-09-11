@@ -25,3 +25,6 @@
 [submodule "externals/RenderBuddy"]
 	path = externals/RenderBuddy
 	url = git@github.com:dmanning23/RenderBuddy.git
+[submodule "externals/CameraBuddy"]
+	path = externals/CameraBuddy
+	url = git@github.com:dmanning23/CameraBuddy.git
