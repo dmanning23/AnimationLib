@@ -257,10 +257,11 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode)
+		public bool ReadXMLFormat(XmlNode rXMLNode)
 		{
 			if ("Item" != rXMLNode.Name)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 

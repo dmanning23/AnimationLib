@@ -275,12 +275,13 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode)
+		public bool ReadXMLFormat(XmlNode rXMLNode)
 		{
 			m_bKeyFrame = true;
 
 			if ("Item" != rXMLNode.Name)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 
@@ -295,6 +296,7 @@ namespace AnimationLib
 				{
 					if ("AnimationLib.KeyXML" != strValue)
 					{
+						Debug.Assert(false);
 						return false;
 					}
 				}

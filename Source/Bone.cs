@@ -1219,8 +1219,10 @@ namespace AnimationLib
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public virtual bool ReadSerializedFormat(XmlNode rXMLNode, Bone ParentBone, IRenderer rRenderer)
+		public virtual bool ReadXMLFormat(XmlNode rXMLNode, Bone ParentBone, IRenderer rRenderer)
 		{
+			Debug.Assert(null != rXMLNode);
+
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
@@ -1244,12 +1246,14 @@ namespace AnimationLib
 				{
 					if (!ParseChildXMLNode(childNode, ParentBone, rRenderer))
 					{
+						Debug.Assert(false);
 						return false;
 					}
 				}
 			}
 
 			//if it didnt find an anchor joint, set it to the joint that matches this dudes name
+			Debug.Assert(null != AnchorJoint);
 			if ("" == AnchorJoint.Name)
 			{
 				if (null != ParentBone)
@@ -1337,7 +1341,7 @@ namespace AnimationLib
 						jointNode = jointNode.NextSibling)
 					{
 						Joint childJoint = new Joint(Joints.Count);
-						if (!childJoint.ReadSerializedFormat(jointNode))
+						if (!childJoint.ReadXMLFormat(jointNode))
 						{
 							Debug.Assert(false);
 							return false;
@@ -1356,7 +1360,7 @@ namespace AnimationLib
 						imageNode = imageNode.NextSibling)
 					{
 						Image childImage = new Image();
-						if (!childImage.ReadSerializedFormat(imageNode, rRenderer, this))
+						if (!childImage.ReadXMLFormat(imageNode, rRenderer, this))
 						{
 							Debug.Assert(false);
 							return false;
@@ -1375,7 +1379,7 @@ namespace AnimationLib
 						boneNode = boneNode.NextSibling)
 					{
 						Bone childBone = new Bone();
-						if (!childBone.ReadSerializedFormat(boneNode, this, rRenderer))
+						if (!childBone.ReadXMLFormat(boneNode, this, rRenderer))
 						{
 							Debug.Assert(false);
 							return false;

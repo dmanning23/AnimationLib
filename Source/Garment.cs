@@ -154,10 +154,10 @@ namespace AnimationLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">bone to attach garments to</param>
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
-		public bool ReadXMLFormat(Filename strFileName, IRenderer rRenderer, Bone rRootNode)
+		public bool ReadXMLFormat(string strResource, IRenderer rRenderer, Bone rRootNode)
 		{
 			//Open the file.
-			FileStream stream = File.Open(strFileName.File, FileMode.Open, FileAccess.Read);
+			FileStream stream = File.Open(strResource, FileMode.Open, FileAccess.Read);
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
@@ -183,10 +183,12 @@ namespace AnimationLib
 			XmlNode AssetNode = rootNode.FirstChild;
 			if (null == AssetNode)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 			if (!AssetNode.HasChildNodes)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 
@@ -236,7 +238,7 @@ namespace AnimationLib
 			SetGarmentBones(rRootNode);
 
 			//grab teh filename
-			m_strFilename.File = strFileName.File;
+			m_strFilename.File = strResource;
 
 			return true;
 		}
@@ -284,7 +286,7 @@ namespace AnimationLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">teh root node of the model that uses this garment</param>
 		/// <returns>bool: whether or not was able to load the garment</returns>
-		public bool ReadXNAContent(ContentManager rXmlContent, string strResource, IRenderer rRenderer, Bone rRootNode)
+		public bool ReadSerializedFormat(ContentManager rXmlContent, string strResource, IRenderer rRenderer, Bone rRootNode)
 		{
 			//open file
 			Debug.Assert(null != rXmlContent);
@@ -311,6 +313,6 @@ namespace AnimationLib
 			return true;
 		}
 
-		#endregion File IO
+		#endregion //File IO
 	}
 }

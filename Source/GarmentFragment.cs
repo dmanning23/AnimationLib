@@ -133,6 +133,7 @@ namespace AnimationLib
 
 			if ("Item" != rXMLNode.Name)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 
@@ -169,7 +170,7 @@ namespace AnimationLib
 						//read in the model
 						Filename strModelFile = new Filename();
 						strModelFile.SetRelFilename(strValue);
-						if (!m_AnimationContainer.ReadSerializedModelFormat(strModelFile.File, rRenderer))
+						if (!m_AnimationContainer.ReadXMLModelFormat(strModelFile.File, rRenderer))
 						{
 							Debug.Assert(false);
 							return false;
@@ -180,7 +181,7 @@ namespace AnimationLib
 						//read in the animations
 						Filename strAnimationFile = new Filename();
 						strAnimationFile.SetRelFilename(strValue);
-						if (!m_AnimationContainer.ReadSerializedAnimationFormat(strAnimationFile.File))
+						if (!m_AnimationContainer.ReadXMLAnimationFormat(strAnimationFile.File))
 						{
 							Debug.Assert(false);
 							return false;

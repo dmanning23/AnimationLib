@@ -189,10 +189,11 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode, Bone rModel)
+		public bool ReadXMLFormat(XmlNode rXMLNode, Bone rModel)
 		{
 			if ("Item" != rXMLNode.Name)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 
@@ -207,6 +208,7 @@ namespace AnimationLib
 				{
 					if ("AnimationLib.AnimationXML" != strValue)
 					{
+						Debug.Assert(false);
 						return false;
 					}
 				}
@@ -247,8 +249,9 @@ namespace AnimationLib
 							{
 								//read in the key element
 								KeyElement myKey = new KeyElement();
-								if (!myKey.ReadSerializedFormat(keyNode))
+								if (!myKey.ReadXMLFormat(keyNode))
 								{
+									Debug.Assert(false);
 									return false;
 								}
 
@@ -362,7 +365,7 @@ namespace AnimationLib
 			KeyBone.MultiplyLayers(iMultiply);
 		}
 
-		public void ReadSerializedAnimationFormat(AnimationLib.AnimationXML myDude, Bone rModel)
+		public void ReadSerializedFormat(AnimationLib.AnimationXML myDude, Bone rModel)
 		{
 			Name = myDude.name;
 			Length = myDude.length;

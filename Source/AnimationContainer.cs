@@ -417,7 +417,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="strResource">filename of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public bool ReadSerializedModelFormat(string strResource, IRenderer rRenderer)
+		public bool ReadXMLModelFormat(string strResource, IRenderer rRenderer)
 		{
 			CreateBone();
 
@@ -442,7 +442,7 @@ namespace AnimationLib
 				}
 
 				//make sure to read from the the next node
-				if (!Model.ReadSerializedFormat(rootNode.FirstChild, null, rRenderer))
+				if (!Model.ReadXMLFormat(rootNode.FirstChild, null, rRenderer))
 				{
 					Debug.Assert(false);
 					stream.Close();
@@ -521,7 +521,7 @@ namespace AnimationLib
 		/// read in a list of animations from a serialized xml format file
 		/// </summary>
 		/// <param name="strFileName">filename of the animations to load</param>
-		public virtual bool ReadSerializedAnimationFormat(string strFileName)
+		public virtual bool ReadXMLAnimationFormat(string strFileName)
 		{
 			Debug.Assert(null != Model); //need a model to read in animations
 			m_listAnimations.Clear();
@@ -541,10 +541,12 @@ namespace AnimationLib
 				string strElementName = rootNode.Name;
 				if (("XnaContent" != strElementName) || !rootNode.HasChildNodes)
 				{
+					Debug.Assert(false);
 					return false;
 				}
 				if (!rootNode.HasChildNodes)
 				{
+					Debug.Assert(false);
 					return false;
 				}
 
@@ -552,10 +554,12 @@ namespace AnimationLib
 				XmlNode AssetNode = rootNode.FirstChild;
 				if (null == AssetNode)
 				{
+					Debug.Assert(false);
 					return false;
 				}
 				if (!AssetNode.HasChildNodes)
 				{
+					Debug.Assert(false);
 					return false;
 				}
 
@@ -563,22 +567,26 @@ namespace AnimationLib
 				XmlNode AnimationsNode = AssetNode.FirstChild;
 				if (null == AnimationsNode)
 				{
+					Debug.Assert(false);
 					return false;
 				}
 				if (!AnimationsNode.HasChildNodes)
 				{
+					Debug.Assert(false);
 					return false;
 				}
 
 				//the rest of the nodes are animations
 				if (!ReadAnimationsNode(AnimationsNode))
 				{
+					Debug.Assert(false);
 					return false;
 				}
 			}
 			else
 			{
 				//should be an xml node!!!
+				Debug.Assert(false);
 				return false;
 			}
 
@@ -608,8 +616,9 @@ namespace AnimationLib
 			{
 				Animation myAnimation = new Animation(Model);
 				Debug.Assert(null != Model);
-				if (!myAnimation.ReadSerializedFormat(childNode, Model))
+				if (!myAnimation.ReadXMLFormat(childNode, Model))
 				{
+					Debug.Assert(false);
 					return false;
 				}
 				m_listAnimations.Add(myAnimation);
@@ -686,7 +695,7 @@ namespace AnimationLib
 				Animation myAnimation = new Animation(Model);
 				AnimationLib.AnimationXML myAnimationXML = myDude.animations[i];
 				Debug.Assert(null != Model);
-				myAnimation.ReadSerializedAnimationFormat(myAnimationXML, Model);
+				myAnimation.ReadSerializedFormat(myAnimationXML, Model);
 				m_listAnimations.Add(myAnimation);
 			}
 

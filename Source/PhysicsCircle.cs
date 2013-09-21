@@ -7,6 +7,7 @@ using BasicPrimitiveBuddy;
 using System;
 using Vector2Extensions;
 using RenderBuddy;
+using System.Diagnostics;
 
 namespace AnimationLib
 {
@@ -104,10 +105,11 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode)
+		public bool ReadXMLFormat(XmlNode rXMLNode)
 		{
 			if ("Item" != rXMLNode.Name)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 
@@ -120,8 +122,9 @@ namespace AnimationLib
 				string strValue = mapAttributes.Item(i).Value;
 				if ("Type" == strName)
 				{
-					if ("SPFSettings.CircleXML" != strValue)
+					if ("AnimationLib.CircleXML" != strValue)
 					{
+						Debug.Assert(false);
 						return false;
 					}
 				}
@@ -148,6 +151,7 @@ namespace AnimationLib
 					}
 					else
 					{
+						Debug.Assert(false);
 						return false;
 					}
 				}
@@ -164,7 +168,7 @@ namespace AnimationLib
 		{
 			//write out the item tag
 			rXMLFile.WriteStartElement("Item");
-			rXMLFile.WriteAttributeString("Type", "SPFSettings.CircleXML");
+			rXMLFile.WriteAttributeString("Type", "AnimationLib.CircleXML");
 
 			//write out joint offset
 			rXMLFile.WriteStartElement("center");

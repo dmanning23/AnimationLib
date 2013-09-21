@@ -228,12 +228,13 @@ namespace AnimationLib
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode, IRenderer rRenderer, Bone rParent)
+		public bool ReadXMLFormat(XmlNode rXMLNode, IRenderer rRenderer, Bone rParent)
 		{
 			Debug.Assert(null != rParent);
 
 			if ("Item" != rXMLNode.Name)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 
@@ -313,7 +314,7 @@ namespace AnimationLib
 								circleNode = circleNode.NextSibling)
 							{
 								JointData childJointData = new JointData();
-								if (!childJointData.ReadSerializedFormat(circleNode, this))
+								if (!childJointData.ReadXMLFormat(circleNode, this))
 								{
 									Debug.Assert(false);
 									return false;
@@ -332,7 +333,7 @@ namespace AnimationLib
 								jointNode = jointNode.NextSibling)
 							{
 								PhysicsCircle myCircle = new PhysicsCircle();
-								if (!myCircle.ReadSerializedFormat(jointNode))
+								if (!myCircle.ReadXMLFormat(jointNode))
 								{
 									Debug.Assert(false);
 									return false;
@@ -351,7 +352,7 @@ namespace AnimationLib
 								jointNode = jointNode.NextSibling)
 							{
 								PhysicsLine myCircle = new PhysicsLine();
-								if (!myCircle.ReadSerializedFormat(jointNode))
+								if (!myCircle.ReadXMLFormat(jointNode))
 								{
 									Debug.Assert(false);
 									return false;
