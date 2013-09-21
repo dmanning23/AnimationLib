@@ -619,11 +619,11 @@ namespace AnimationLib
 		/// <param name="myRenderer">renderer to draw to</param>
 		/// <param name="bRecurse">whether or not to recurse and draw child bones</param>
 		/// <param name="rColor">the color to use</param>
-		public void DrawJoints(Renderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawJoints(IRenderer myRenderer, bool bRecurse, Color rColor)
 		{
 			for (int i = 0; i < Joints.Count; i++)
 			{
-				myRenderer.Primitive.Point(Joints[i].Position, rColor, myRenderer.SpriteBatch);
+				myRenderer.Primitive.Point(Joints[i].Position, rColor);
 			}
 
 			if (bRecurse)
@@ -635,11 +635,11 @@ namespace AnimationLib
 			}
 		}
 
-		public void DrawSkeleton(Renderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawSkeleton(IRenderer myRenderer, bool bRecurse, Color rColor)
 		{
 			for (int i = 0; i < Joints.Count; i++)
 			{
-				myRenderer.Primitive.Line(m_CurAnchorPos, Joints[i].Position, rColor, myRenderer.SpriteBatch);
+				myRenderer.Primitive.Line(m_CurAnchorPos, Joints[i].Position, rColor);
 			}
 
 			if (bRecurse)
@@ -651,7 +651,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void DrawPhysics(Renderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawPhysics(IRenderer myRenderer, bool bRecurse, Color rColor)
 		{
 			//draw all my circles
 			if (null != GetCurrentImage())
@@ -669,7 +669,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void DrawOutline(Renderer myRenderer, float fScale)
+		public void DrawOutline(IRenderer myRenderer, float fScale)
 		{
 			//get the current image
 			if (ImageIndex < 0)
@@ -679,12 +679,13 @@ namespace AnimationLib
 			Image myImage = Images[ImageIndex];
 
 			myRenderer.Primitive.Rectangle(
-				new Rectangle((int)m_CurrentPosition.X,
-			              (int)m_CurrentPosition.Y,
-			              (int)(m_CurrentPosition.X + myImage.LowerRight.X),
+				new Vector2((int)m_CurrentPosition.X,
+			              (int)m_CurrentPosition.Y),
+				new Vector2((int)(m_CurrentPosition.X + myImage.LowerRight.X),
 			              (int)(m_CurrentPosition.Y + myImage.LowerRight.Y)),
-				Color.White,
-				myRenderer.SpriteBatch);
+				Rotation,
+				fScale,
+				Color.White);
 		}
 
 		#endregion //Drawing
@@ -1218,7 +1219,7 @@ namespace AnimationLib
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public virtual bool ReadSerializedFormat(XmlNode rXMLNode, Bone ParentBone, Renderer rRenderer)
+		public virtual bool ReadSerializedFormat(XmlNode rXMLNode, Bone ParentBone, IRenderer rRenderer)
 		{
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
@@ -1280,7 +1281,7 @@ namespace AnimationLib
 		/// <param name="ParentBone"></param>
 		/// <param name="rRenderer"></param>
 		/// <returns></returns>
-		protected virtual bool ParseChildXMLNode(XmlNode childNode, Bone ParentBone, Renderer rRenderer)
+		protected virtual bool ParseChildXMLNode(XmlNode childNode, Bone ParentBone, IRenderer rRenderer)
 		{
 			//what is in this node?
 			string strName = childNode.Name;
@@ -1474,7 +1475,7 @@ namespace AnimationLib
 		/// <param name="rBone">the xml object to get data from</param>
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
-		public virtual bool ReadSerializedFormat(AnimationLib.BoneXML rBone, Bone ParentBone, Renderer rRenderer)
+		public virtual bool ReadSerializedFormat(AnimationLib.BoneXML rBone, Bone ParentBone, IRenderer rRenderer)
 		{
 			//copy all the data from that dude
 			Name = rBone.name;

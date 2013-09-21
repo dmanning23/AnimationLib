@@ -221,7 +221,7 @@ namespace AnimationLib
 		/// <param name="rContent">content loader to use</param>
 		/// <param name="strResource">name of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public override bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, Renderer rRenderer)
+		public override bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, IRenderer rRenderer)
 		{
 			CreateBone();
 

@@ -160,7 +160,7 @@ namespace AnimationLib
 		/// <param name="ParentBone"></param>
 		/// <param name="rRenderer"></param>
 		/// <returns></returns>
-		protected override bool ParseChildXMLNode(XmlNode childNode, Bone ParentBone, Renderer rRenderer)
+		protected override bool ParseChildXMLNode(XmlNode childNode, Bone ParentBone, IRenderer rRenderer)
 		{
 			//what is in this node?
 			string strName = childNode.Name;
@@ -226,7 +226,7 @@ namespace AnimationLib
 		/// <param name="rBone">the xml object to get data from</param>
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
-		public override bool ReadSerializedFormat(AnimationLib.BoneXML rBone, Bone ParentBone, Renderer rRenderer)
+		public override bool ReadSerializedFormat(AnimationLib.BoneXML rBone, Bone ParentBone, IRenderer rRenderer)
 		{
 			AnimationLib.GarmentBoneXML myGarmentBoneXML = rBone as AnimationLib.GarmentBoneXML;
 			if (null == myGarmentBoneXML)

@@ -417,7 +417,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="strResource">filename of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public bool ReadSerializedModelFormat(string strResource, Renderer rRenderer)
+		public bool ReadSerializedModelFormat(string strResource, IRenderer rRenderer)
 		{
 			CreateBone();
 
@@ -497,7 +497,7 @@ namespace AnimationLib
 		/// <param name="rContent">content loader to use</param>
 		/// <param name="strResource">name of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public virtual bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, Renderer rRenderer)
+		public virtual bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, IRenderer rRenderer)
 		{
 			CreateBone();
 

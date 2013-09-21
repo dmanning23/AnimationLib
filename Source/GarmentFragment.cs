@@ -122,7 +122,7 @@ namespace AnimationLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">bone to attach garments to</param>
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
-		public bool ReadXMLFormat(XmlNode rXMLNode, Renderer rRenderer)
+		public bool ReadXMLFormat(XmlNode rXMLNode, IRenderer rRenderer)
 		{
 			//make sure it is actually an xml node
 			if (rXMLNode.NodeType != XmlNodeType.Element)
@@ -234,7 +234,7 @@ namespace AnimationLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">teh root node of the model that uses this garment</param>
 		/// <returns>bool: whether or not was able to load the garment</returns>
-		public bool ReadXNAContent(ContentManager rContent, AnimationLib.GarmentFragmentXML rGarmentFragment, Renderer rRenderer)
+		public bool ReadXNAContent(ContentManager rContent, AnimationLib.GarmentFragmentXML rGarmentFragment, IRenderer rRenderer)
 		{
 			//read in the model
 			Filename strModelFile = new Filename();

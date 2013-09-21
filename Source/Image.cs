@@ -30,7 +30,7 @@ namespace AnimationLib
 		private Vector2 m_AnchorCoord;
 
 		//The bitmap for this frame
-		private Texture2D m_iBmpID;
+		private ITexture m_Image;
 		private Filename m_strFileName;
 
 		#endregion
@@ -92,7 +92,7 @@ namespace AnimationLib
 			m_UpperLeftUV = new Vector2(0.0f);
 			m_LowerRightUV = new Vector2(0.0f);
 			m_AnchorCoord = new Vector2(0.0f);
-			m_iBmpID = null;
+			m_Image = null;
 			m_strFileName = new Filename();
 		}
 
@@ -104,9 +104,9 @@ namespace AnimationLib
 		/// <param name="iLayer">the layer to put the image at</param>
 		public void Render(Vector2 myPosition, DrawList rDrawList, int iLayer, float fRotation, bool bFlip, Color myColor)
 		{
-			if (null != m_iBmpID)
+			if (null != m_Image)
 			{
-				rDrawList.AddQuad(m_iBmpID, myPosition, myColor, fRotation, bFlip, iLayer);
+				rDrawList.AddQuad(m_Image, myPosition, myColor, fRotation, bFlip, iLayer);
 			}
 		}
 
@@ -196,7 +196,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void DrawPhysics(Renderer rRenderer, Color rColor)
+		public void DrawPhysics(IRenderer rRenderer, Color rColor)
 		{
 			for (int i = 0; i < Circles.Count; i++)
 			{
@@ -228,7 +228,7 @@ namespace AnimationLib
 		/// <param name="rXMLNode">The xml node to read from</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadSerializedFormat(XmlNode rXMLNode, Renderer rRenderer, Bone rParent)
+		public bool ReadSerializedFormat(XmlNode rXMLNode, IRenderer rRenderer, Bone rParent)
 		{
 			Debug.Assert(null != rParent);
 
@@ -291,15 +291,15 @@ namespace AnimationLib
 							//do we need to load the image?
 							if (null != rRenderer)
 							{
-								m_iBmpID = rRenderer.Content.Load<Texture2D>(m_strFileName.File);
-								if (null == m_iBmpID)
+								m_Image = rRenderer.LoadImage(m_strFileName.File);
+								if (null == m_Image)
 								{
 									Debug.Assert(false);
 									return false;
 								}
 
 								m_UpperLeftUV = Vector2.Zero;
-								m_LowerRightUV = new Vector2(m_iBmpID.Width, m_iBmpID.Height);
+								m_LowerRightUV = new Vector2(m_Image.Width, m_Image.Height);
 							}
 						}
 					}
@@ -447,7 +447,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="rImage">the xml object to get data from</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
-		public bool ReadSerializedFormat(AnimationLib.ImageXML rImage, Renderer rRenderer)
+		public bool ReadSerializedFormat(AnimationLib.ImageXML rImage, IRenderer rRenderer)
 		{
 			//grab all that stuff
 			m_UpperLeftUV = rImage.upperleft;
@@ -460,7 +460,7 @@ namespace AnimationLib
 			{
 				if (null != rRenderer)
 				{
-					m_iBmpID = rRenderer.Content.Load<Texture2D>(m_strFileName.File);
+					m_Image = rRenderer.LoadImage(m_strFileName.File);
 				}
 			}
 

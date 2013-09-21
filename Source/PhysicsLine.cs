@@ -61,9 +61,9 @@ namespace AnimationLib
 			End = WorldEnd;
 		}
 
-		public void Render(Renderer rRenderer, Color rColor)
+		public void Render(IRenderer rRenderer, Color rColor)
 		{
-			rRenderer.Primitive.Line(Start, End, rColor, rRenderer.SpriteBatch);
+			rRenderer.Primitive.Line(Start, End, rColor);
 		}
 
 		/// <summary>
