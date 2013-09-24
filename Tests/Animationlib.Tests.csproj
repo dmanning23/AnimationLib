@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E56D6621-FDE5-4219-ACA1-E86921E21EC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Animationlib.Tests</RootNamespace>
+    <AssemblyName>Animationlib.Tests</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="AnimationContainerTests.cs" />
+    <Compile Include="AnimationTests.cs" />
+    <Compile Include="BoneTests.cs" />
+    <Compile Include="GarmentAnimationContainerTests.cs" />
+    <Compile Include="GarmentBoneTests.cs" />
+    <Compile Include="GarmentFragmentTests.cs" />
+    <Compile Include="GarmentTests.cs" />
+    <Compile Include="ImageTests.cs" />
+    <Compile Include="JointDataTests.cs" />
+    <Compile Include="JointTests.cs" />
+    <Compile Include="KeyBoneTests.cs" />
+    <Compile Include="KeyElementTests.cs" />
+    <Compile Include="KeyJointTests.cs" />
+    <Compile Include="PhysicsCircleTests.cs" />
+    <Compile Include="PhysicsLineTests.cs" />
+  </ItemGroup>
+</Project>

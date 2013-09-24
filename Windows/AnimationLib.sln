@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderBuddy.Windows", "..\e
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraBuddy.Windows", "..\externals\CameraBuddy\Windows\CameraBuddy.Windows.csproj", "{5320A521-E249-4027-A241-F91E79020EE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animationlib.Tests", "..\Tests\Animationlib.Tests.csproj", "{E56D6621-FDE5-4219-ACA1-E86921E21EC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -79,6 +81,10 @@ Global
 		{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}.Debug|x86.Build.0 = Debug|Any CPU
 		{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}.Release|x86.ActiveCfg = Release|Any CPU
 		{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}.Release|x86.Build.0 = Release|Any CPU
+		{E56D6621-FDE5-4219-ACA1-E86921E21EC9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E56D6621-FDE5-4219-ACA1-E86921E21EC9}.Debug|x86.Build.0 = Debug|Any CPU
+		{E56D6621-FDE5-4219-ACA1-E86921E21EC9}.Release|x86.ActiveCfg = Release|Any CPU
+		{E56D6621-FDE5-4219-ACA1-E86921E21EC9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = AnimationLib.csproj
