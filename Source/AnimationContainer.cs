@@ -128,55 +128,63 @@ namespace AnimationLib
 			m_StopWatch.Update(myClock);
 
 			//apply the animation
+			ApplyAnimation(GetAnimationTime(), myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
+		}
+
+		/// <summary>
+		/// Get the current time of the animation.
+		/// </summary>
+		/// <returns>The animation time, in frames.  Will be between 0 and the length of the animation</returns>
+		public int GetAnimationTime()
+		{
+			//This will hold the time of the animation
+			float fTime = 0.0f;
+
+			//apply the animation
 			switch (m_ePlayback)
 			{
 				case EPlayback.Backwards:
+				{
+					//apply the eggtimer to the animationiterator
+					fTime = m_CurrentAnimation.Length - m_StopWatch.CurrentTime;
+					if (fTime < 0.0f)
 					{
-						//apply the eggtimer to the animationiterator
-						float fTime = m_CurrentAnimation.Length - m_StopWatch.CurrentTime;
-						if (fTime < 0.0f)
-						{
-							fTime = 0.0f;
-						}
-						ApplyAnimation(Helper.SecondsToFrames(fTime), myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
+						fTime = 0.0f;
 					}
-					break;
+				}
+				break;
 
 				case EPlayback.Forwards:
+				{
+					//apply the stop watch to the aniiterator
+					fTime = m_StopWatch.CurrentTime;
+					if (fTime > m_CurrentAnimation.Length)
 					{
-						//apply the stop watch to the aniiterator
-						float fTime = m_StopWatch.CurrentTime;
-						if (fTime > m_CurrentAnimation.Length)
-						{
-							fTime = m_CurrentAnimation.Length;
-						}
-						ApplyAnimation(Helper.SecondsToFrames(fTime), myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
+						fTime = m_CurrentAnimation.Length;
 					}
-					break;
+				}
+				break;
 
 				case EPlayback.Loop:
-					{
-						//apply the stop watch to the aniiterator
-						int iNumTimes = (int)(m_StopWatch.CurrentTime / m_CurrentAnimation.Length);
-						float fTimeDiff = (m_CurrentAnimation.Length * (float)iNumTimes);
-						float fTime = (m_StopWatch.CurrentTime - fTimeDiff);
-						ApplyAnimation(Helper.SecondsToFrames(fTime), myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
-					}
-					break;
+				{
+					//apply the stop watch to the aniiterator
+					int iNumTimes = (int)(m_StopWatch.CurrentTime / m_CurrentAnimation.Length);
+					float fTimeDiff = (m_CurrentAnimation.Length * (float)iNumTimes);
+					fTime = (m_StopWatch.CurrentTime - fTimeDiff);
+				}
+				break;
 
 				case EPlayback.LoopBackwards:
-					{
-						//apply the eggtimer to the animationiterator
-						float fTime = m_CurrentAnimation.Length - m_StopWatch.CurrentTime;
-						if (fTime < 0.0f)
-						{
-							fTime = 0.0f;
-							m_StopWatch.Start();
-						}
-						ApplyAnimation(Helper.SecondsToFrames(fTime), myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
-					}
-					break;
+				{
+					//apply the eggtimer to the animationiterator
+					int iNumTimes = (int)(m_StopWatch.CurrentTime / m_CurrentAnimation.Length);
+					float fTimeDiff = (m_CurrentAnimation.Length * (float)iNumTimes);
+					fTime = m_CurrentAnimation.Length - (m_StopWatch.CurrentTime - fTimeDiff);
+				}
+				break;
 			}
+
+			return Helper.SecondsToFrames(fTime);
 		}
 
 		/// <summary>

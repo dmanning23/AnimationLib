@@ -52,4 +52,10 @@
     <Compile Include="PhysicsCircleTests.cs" />
     <Compile Include="PhysicsLineTests.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Windows\AnimationLib.csproj">
+      <Project>{252DF212-370D-4682-B3D8-85CE9ACE545E}</Project>
+      <Name>AnimationLib</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

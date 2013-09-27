@@ -103,7 +103,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Flag used to tell the difference between the bone types for collision purposes
 		/// </summary>
-		public EBoneType BoneType { get; protected set; }
+		public EBoneType BoneType { get; set; }
 
 		/// <summary>
 		/// this guys current image to render
