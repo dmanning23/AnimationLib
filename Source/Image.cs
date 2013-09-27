@@ -127,6 +127,50 @@ namespace AnimationLib
 			m_listJointCoords.Add(myData);
 		}
 
+		/// <summary>
+		/// Gets the flipped anchor coordinate.
+		/// </summary>
+		/// <returns>The flipped anchor coordinate.</returns>
+		/// <param name="bFlipped">Whether or not we want the anchor coord flipped</param>
+		/// <param name="fScale">The scale to get the anchor coord</param>
+		public Vector2 GetFlippedAnchorCoord(bool bFlipped, float fScale)
+		{
+			//Get the anchor coord
+			Vector2 updatedAnchorCoord = new Vector2(0.0f);
+			if (bFlipped)
+			{
+				//flip the x coord
+				updatedAnchorCoord.X = Width - AnchorCoord.X;
+				updatedAnchorCoord.Y = AnchorCoord.Y;
+			}
+			else
+			{
+				updatedAnchorCoord = AnchorCoord;
+			}
+
+			updatedAnchorCoord *= fScale;
+			return updatedAnchorCoord;
+		}
+
+		/// <summary>
+		/// Gets the flipped anchor coordinate.
+		/// </summary>
+		/// <returns>The flipped anchor coordinate.</returns>
+		/// <param name="bFlipped">Whether or not we want the anchor coord flipped</param>
+		/// <param name="fScale">The scale to get the anchor coord</param>
+		public Vector2 GetFlippedJointCoord(int iJointIndex, bool bFlipped, float fScale)
+		{
+			Vector2 updatedJointCoord = GetJointLocation(iJointIndex).Location;
+			if (bFlipped)
+			{
+				//flip the x coord
+				updatedJointCoord.X = Width - updatedJointCoord.X;
+			}
+
+			updatedJointCoord *= fScale;
+			return updatedJointCoord;
+		}
+
 #if TOOLS
 
 		public void Copy(Image myInst, CPasteAction ActionCollection)
