@@ -176,6 +176,7 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != AnchorJoint);
 
+			//TODO: move this to it's own method & unit test
 			//UPDATE MY ANCHOR JOINT
 
 			//first update teh joint by the keyjoint
@@ -185,12 +186,15 @@ namespace AnimationLib
 				AnchorJoint.Update(rChildKeyJoint, iTime);
 			}
 
+			//TODO: move this to it's own method & unit test
 			//UPDATE THE IMAGE
 			ImageIndex = AnchorJoint.CurrentKeyElement.ImageIndex;
 
+			//TODO: move this to it's own method & unit test
 			//GET THE CURRENT LAYER
 			CurrentLayer = iParentLayer + AnchorJoint.CurrentKeyElement.Layer;
 
+			//TODO: move this to it's own method & unit test
 			//UPDATE THE FLIP
 			if (bParentFlip && AnchorJoint.CurrentKeyElement.Flip)
 			{
@@ -213,6 +217,7 @@ namespace AnimationLib
 				Flipped = false;
 			}
 
+			//TODO: move this to it's own method & unit test
 			//UPDATE THE ROTATION
 			if (!AnchorJoint.CurrentKeyElement.RagDoll || 
 				bIgnoreRagdoll || 
@@ -230,6 +235,7 @@ namespace AnimationLib
 				}
 			}
 
+			//TODO: move this to it's own method
 			//UPDATE THE TRANSLATION
 			if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
 			{
