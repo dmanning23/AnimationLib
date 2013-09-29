@@ -199,7 +199,7 @@ namespace AnimationLib
 				Animation foundAnimation = null;
 				foreach (Animation curAnimation in Animations)
 				{
-					if (curAnimation.Name == myImage.Filename.GetFile())
+					if (curAnimation.Name == myImage.ImageFile.GetFile())
 					{
 						foundAnimation = curAnimation;
 						break;

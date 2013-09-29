@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="SPFSettings.AnimationContainerXML">
+		<animations>
+			<Item Type="SPFSettings.AnimationXML">
+				<name>CrotchFront</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="SPFSettings.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>CrotchFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Crotch Nekkid</joint>
+					</Item>
+					<Item Type="SPFSettings.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>CrotchFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Crotch Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="SPFSettings.AnimationXML">
+				<name>CrotchSide</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="SPFSettings.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>CrotchSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Crotch Nekkid</joint>
+					</Item>
+					<Item Type="SPFSettings.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>CrotchSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Crotch Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="SPFSettings.AnimationXML">
+				<name>CrotchBack</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="SPFSettings.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>CrotchBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Crotch Nekkid</joint>
+					</Item>
+					<Item Type="SPFSettings.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>CrotchBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Crotch Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+		</animations>
+	</Asset>
+</XnaContent>

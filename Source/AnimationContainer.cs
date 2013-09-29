@@ -21,9 +21,6 @@ namespace AnimationLib
 	{
 		#region Member Variables
 
-		//the list of animations 
-		private List<Animation> m_listAnimations;
-
 		//The current animation being played
 		private Animation m_CurrentAnimation;
 		private int m_iCurrentAnimationIndex;
@@ -33,15 +30,6 @@ namespace AnimationLib
 
 		//The way the current animation is being played
 		private EPlayback m_ePlayback;
-
-		private Filename m_strModelFile;
-
-		private Filename m_strAnimationFile;
-
-		/// <summary>
-		/// This flag gets set when the animation is changed, the ragdoll needs to be reset after the first update
-		/// </summary>
-		protected bool ResetRagdoll { get; set; }
 
 		#endregion
 
@@ -62,33 +50,30 @@ namespace AnimationLib
 			get { return m_iCurrentAnimationIndex; }
 		}
 
-		public List<Animation> Animations
-		{
-			get { return m_listAnimations; }
-			protected set { m_listAnimations = value; }
-		}
+		/// <summary>
+		/// the list of animations 
+		/// </summary>
+		/// <value>The animations.</value>
+		public List<Animation> Animations { get; protected set; }
 
 		public GameClock StopWatch
 		{
 			get { return m_StopWatch; }
 		}
 
-		public Filename AnimationFile
-		{
-			get { return m_strAnimationFile; }
-			set { m_strAnimationFile = value; }
-		}
+		public Filename AnimationFile { get; set; }
 
-		public Filename ModelFile
-		{
-			get { return m_strModelFile; }
-			set { m_strModelFile = value; }
-		}
+		public Filename ModelFile { get; set; }
 
 		public GameClock Clock
 		{
 			get { return m_StopWatch; }
 		}
+
+		/// <summary>
+		/// This flag gets set when the animation is changed, the ragdoll needs to be reset after the first update
+		/// </summary>
+		protected bool ResetRagdoll { get; set; }
 
 		#endregion
 
@@ -100,13 +85,13 @@ namespace AnimationLib
 		public AnimationContainer()
 		{
 			Model = null;
-			m_listAnimations = new List<Animation>();
+			Animations = new List<Animation>();
 			m_CurrentAnimation = null;
 			m_iCurrentAnimationIndex = -1;
 			m_StopWatch = new GameClock();
 			m_ePlayback = EPlayback.Forwards;
-			m_strModelFile = new Filename();
-			m_strAnimationFile = new Filename();
+			ModelFile = new Filename();
+			AnimationFile = new Filename();
 			ResetRagdoll = false;
 		}
 
@@ -118,8 +103,7 @@ namespace AnimationLib
 		/// <param name="bFlip">whether or not to flip this dude on the y axis</param>
 		public void Update(GameClock myClock, Vector2 myPosition, bool bFlip, float fScale, float fRotation, bool bIgnoreRagdoll)
 		{
-			if ((null == m_listAnimations) ||
-				(null == m_CurrentAnimation))
+			if ((null == Animations) || (null == m_CurrentAnimation))
 			{
 				return;
 			}
@@ -264,11 +248,11 @@ namespace AnimationLib
 		/// <param name="ePlaybackMode">the playback mode to use</param>
 		public void SetAnimation(int iIndex, EPlayback ePlaybackMode)
 		{
-			if ((iIndex >= 0) && (iIndex < m_listAnimations.Count))
+			if ((iIndex >= 0) && (iIndex < Animations.Count))
 			{
 				//set teh stuff
 				m_ePlayback = ePlaybackMode;
-				m_CurrentAnimation = m_listAnimations[iIndex];
+				m_CurrentAnimation = Animations[iIndex];
 				m_iCurrentAnimationIndex = iIndex;
 
 				RestartAnimation();
@@ -339,11 +323,11 @@ namespace AnimationLib
 
 		public Animation FindAnimation(string strAnimationName)
 		{
-			for (int i = 0; i < m_listAnimations.Count; i++)
+			for (int i = 0; i < Animations.Count; i++)
 			{
-				if (m_listAnimations[i].Name == strAnimationName)
+				if (Animations[i].Name == strAnimationName)
 				{
-					return m_listAnimations[i];
+					return Animations[i];
 				}
 			}
 
@@ -357,9 +341,9 @@ namespace AnimationLib
 		/// <returns>teh index of teh animation with that name, -1 if none found</returns>
 		public int FindAnimationIndex(string strAnimationName)
 		{
-			for (int i = 0; i < m_listAnimations.Count; i++)
+			for (int i = 0; i < Animations.Count; i++)
 			{
-				if (m_listAnimations[i].Name == strAnimationName)
+				if (Animations[i].Name == strAnimationName)
 				{
 					return i;
 				}
@@ -469,7 +453,7 @@ namespace AnimationLib
 			stream.Close();
 
 			//grab that filename 
-			m_strModelFile.File = strResource;
+			ModelFile.File = strResource;
 			return true;
 		}
 
@@ -517,7 +501,7 @@ namespace AnimationLib
 				return false;
 			}
 
-			m_strModelFile.File = strResource;
+			ModelFile.File = strResource;
 			return true;
 		}
 
@@ -532,7 +516,7 @@ namespace AnimationLib
 		public virtual bool ReadXMLAnimationFormat(string strFileName)
 		{
 			Debug.Assert(null != Model); //need a model to read in animations
-			m_listAnimations.Clear();
+			Animations.Clear();
 
 			//gonna have to do this the HARD way
 
@@ -602,7 +586,7 @@ namespace AnimationLib
 			stream.Close();
 
 			//grab teh filename
-			m_strAnimationFile.File = strFileName;
+			AnimationFile.File = strFileName;
 
 			m_ePlayback = EPlayback.Forwards;
 			m_CurrentAnimation = null;
@@ -629,7 +613,7 @@ namespace AnimationLib
 					Debug.Assert(false);
 					return false;
 				}
-				m_listAnimations.Add(myAnimation);
+				Animations.Add(myAnimation);
 			}
 
 			return true;
@@ -656,10 +640,10 @@ namespace AnimationLib
 
 			//write out joints
 			rXMLFile.WriteStartElement("animations");
-			for (int i = 0; i < m_listAnimations.Count; i++)
+			for (int i = 0; i < Animations.Count; i++)
 			{
 				Debug.Assert(null != Model);
-				m_listAnimations[i].WriteXMLFormat(rXMLFile, Model);
+				Animations[i].WriteXMLFormat(rXMLFile, Model);
 			}
 			rXMLFile.WriteEndElement();
 
@@ -679,7 +663,7 @@ namespace AnimationLib
 		/// <param name="fMultiply"></param>
 		public void MultiplyLayers(int iMultiply)
 		{
-			foreach (Animation i in m_listAnimations)
+			foreach (Animation i in Animations)
 			{
 				i.MultiplyLayers(iMultiply);
 			}
@@ -692,7 +676,7 @@ namespace AnimationLib
 		/// <param name="strResource">name of the resource</param>
 		public virtual void ReadSerializedAnimationFormat(ContentManager rXmlContent, string strResource)
 		{
-			m_listAnimations.Clear();
+			Animations.Clear();
 
 			//load the resource
 			AnimationLib.AnimationContainerXML myDude = rXmlContent.Load<AnimationLib.AnimationContainerXML>(strResource);
@@ -704,10 +688,10 @@ namespace AnimationLib
 				AnimationLib.AnimationXML myAnimationXML = myDude.animations[i];
 				Debug.Assert(null != Model);
 				myAnimation.ReadSerializedFormat(myAnimationXML, Model);
-				m_listAnimations.Add(myAnimation);
+				Animations.Add(myAnimation);
 			}
 
-			m_strAnimationFile.File = strResource;
+			AnimationFile.File = strResource;
 			m_ePlayback = EPlayback.Forwards;
 			m_CurrentAnimation = null;
 			RestartAnimation();

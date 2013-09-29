@@ -1,0 +1,1340 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="SPFSettings.BoneXML">
+		<name>Crotch</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints>
+			<Item Type="SPFSettings.JointXML">
+				<name>Torso</name>
+			</Item>
+			<Item Type="SPFSettings.JointXML">
+				<name>Left Thigh</name>
+			</Item>
+			<Item Type="SPFSettings.JointXML">
+				<name>Right Thigh</name>
+			</Item>
+		</joints>
+		<images>
+			<Item Type="SPFSettings.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 150</lowerright>
+				<anchorcoord>74 62</anchorcoord>
+				<filename>CrotchFront</filename>
+				<joints>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>67 44</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>88 48</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>34 47</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="SPFSettings.CircleXML">
+						<center>69 97</center>
+						<radius>78.1089</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="SPFSettings.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>135 159</lowerright>
+				<anchorcoord>66 68</anchorcoord>
+				<filename>CrotchSide</filename>
+				<joints>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>71 32</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>89 87</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>89 87</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="SPFSettings.CircleXML">
+						<center>57 132</center>
+						<radius>73.54591</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="SPFSettings.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 150</lowerright>
+				<anchorcoord>74 70</anchorcoord>
+				<filename>CrotchBack</filename>
+				<joints>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>76 51</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>55 69</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="SPFSettings.JointDataXML">
+						<location>116 68</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="SPFSettings.CircleXML">
+						<center>76 104</center>
+						<radius>84.5281</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+		</images>
+		<bones>
+			<Item Type="SPFSettings.BoneXML">
+				<name>Torso</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="SPFSettings.JointXML">
+						<name>Chesticle</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>78 126</lowerright>
+						<anchorcoord>37 99</anchorcoord>
+						<filename>TorsoFront</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>40 38</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>124 167</lowerright>
+						<anchorcoord>60 120</anchorcoord>
+						<filename>TorsoSide</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>63 72</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>78 126</lowerright>
+						<anchorcoord>37 99</anchorcoord>
+						<filename>TorsoBack</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>35 30</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones>
+					<Item Type="SPFSettings.BoneXML">
+						<name>Chesticle</name>
+						<type>Normal</type>
+						<colorable>false</colorable>
+						<joints>
+							<Item Type="SPFSettings.JointXML">
+								<name>Neck</name>
+							</Item>
+							<Item Type="SPFSettings.JointXML">
+								<name>Left Shoulder</name>
+							</Item>
+							<Item Type="SPFSettings.JointXML">
+								<name>Right Shoulder</name>
+							</Item>
+						</joints>
+						<images>
+							<Item Type="SPFSettings.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>128 128</lowerright>
+								<anchorcoord>71 94</anchorcoord>
+								<filename>ChesticleFront</filename>
+								<joints>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>69 -5</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>91 11</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>35 8</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles>
+									<Item Type="SPFSettings.CircleXML">
+										<center>62 76</center>
+										<radius>75.02666</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+							<Item Type="SPFSettings.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>119 139</lowerright>
+								<anchorcoord>63 102</anchorcoord>
+								<filename>ChesticleSide</filename>
+								<joints>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>65 14</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>60 19</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>60 20</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles>
+									<Item Type="SPFSettings.CircleXML">
+										<center>65 109</center>
+										<radius>69.18092</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+							<Item Type="SPFSettings.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>128 128</lowerright>
+								<anchorcoord>71 94</anchorcoord>
+								<filename>ChesticleBack</filename>
+								<joints>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>70 8</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>41 19</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>103 20</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles>
+									<Item Type="SPFSettings.CircleXML">
+										<center>66 75</center>
+										<radius>72.02777</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+						</images>
+						<bones>
+							<Item Type="SPFSettings.BoneXML">
+								<name>Neck</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="SPFSettings.JointXML">
+										<name>Head</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="SPFSettings.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>47 68</lowerright>
+										<anchorcoord>21 53</anchorcoord>
+										<filename>NeckFront</filename>
+										<joints>
+											<Item Type="SPFSettings.JointDataXML">
+												<location>21 10</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles />
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="SPFSettings.BoneXML">
+										<name>Head</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints />
+										<images>
+											<Item Type="SPFSettings.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>145 139</lowerright>
+												<anchorcoord>63 112</anchorcoord>
+												<filename>HeadFront</filename>
+												<joints />
+												<circles>
+													<Item Type="SPFSettings.CircleXML">
+														<center>80 72</center>
+														<radius>65.27634</radius>
+													</Item>
+												</circles>
+												<lines />
+											</Item>
+											<Item Type="SPFSettings.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>163 146</lowerright>
+												<anchorcoord>70 99</anchorcoord>
+												<filename>HeadSide</filename>
+												<joints />
+												<circles>
+													<Item Type="SPFSettings.CircleXML">
+														<center>85 75</center>
+														<radius>64.03124</radius>
+													</Item>
+												</circles>
+												<lines />
+											</Item>
+											<Item Type="SPFSettings.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>145 139</lowerright>
+												<anchorcoord>63 112</anchorcoord>
+												<filename>HeadBack</filename>
+												<joints />
+												<circles>
+													<Item Type="SPFSettings.CircleXML">
+														<center>73 68</center>
+														<radius>71.38628</radius>
+													</Item>
+												</circles>
+												<lines />
+											</Item>
+										</images>
+										<bones />
+									</Item>
+								</bones>
+							</Item>
+							<Item Type="SPFSettings.BoneXML">
+								<name>Left Shoulder</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="SPFSettings.JointXML">
+										<name>Left Bicep</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="SPFSettings.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>52 48</lowerright>
+										<anchorcoord>38 22</anchorcoord>
+										<filename>ShoulderFront</filename>
+										<joints>
+											<Item Type="SPFSettings.JointDataXML">
+												<location>14 27</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles />
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="SPFSettings.BoneXML">
+										<name>Left Bicep</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="SPFSettings.JointXML">
+												<name>Left Forearm</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="SPFSettings.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>54 143</lowerright>
+												<anchorcoord>28 14</anchorcoord>
+												<filename>Bicep</filename>
+												<joints>
+													<Item Type="SPFSettings.JointDataXML">
+														<location>21 116</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones>
+											<Item Type="SPFSettings.BoneXML">
+												<name>Left Forearm</name>
+												<type>Normal</type>
+												<colorable>false</colorable>
+												<joints>
+													<Item Type="SPFSettings.JointXML">
+														<name>Left Hand</name>
+													</Item>
+												</joints>
+												<images>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>64 147</lowerright>
+														<anchorcoord>33 18</anchorcoord>
+														<filename>ForearmSide</filename>
+														<joints>
+															<Item Type="SPFSettings.JointDataXML">
+																<location>26 128</location>
+																<limit1>-180</limit1>
+																<limit2>180</limit2>
+																<FloatRadius>0</FloatRadius>
+																<FloatOrRotate>false</FloatOrRotate>
+															</Item>
+														</joints>
+														<circles />
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>40 61</lowerright>
+														<anchorcoord>22 13</anchorcoord>
+														<filename>ForearmFront</filename>
+														<joints>
+															<Item Type="SPFSettings.JointDataXML">
+																<location>18 46</location>
+																<limit1>-180</limit1>
+																<limit2>180</limit2>
+																<FloatRadius>0</FloatRadius>
+																<FloatOrRotate>false</FloatOrRotate>
+															</Item>
+														</joints>
+														<circles />
+														<lines />
+													</Item>
+												</images>
+												<bones>
+													<Item Type="SPFSettings.BoneXML">
+														<name>Left Hand</name>
+														<type>Normal</type>
+														<colorable>false</colorable>
+														<joints />
+														<images>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>19 16</anchorcoord>
+																<filename>FistBack</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>31 38</center>
+																		<radius>35.05468</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>24 24</anchorcoord>
+																<filename>FistFront</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>27 27</center>
+																		<radius>34.48301</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>20 14</anchorcoord>
+																<filename>FistPalm</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>29 32</center>
+																		<radius>39.85892</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 15</anchorcoord>
+																<filename>FistPinky</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>34 34</center>
+																		<radius>33.05789</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 18</anchorcoord>
+																<filename>FistThumb</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>36 33</center>
+																		<radius>31.85792</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>26 20</anchorcoord>
+																<filename>FistWrist</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>29 35</center>
+																		<radius>31.25392</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+														</images>
+														<bones />
+													</Item>
+												</bones>
+											</Item>
+										</bones>
+									</Item>
+								</bones>
+							</Item>
+							<Item Type="SPFSettings.BoneXML">
+								<name>Right Shoulder</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="SPFSettings.JointXML">
+										<name>Right Bicep</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="SPFSettings.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>52 48</lowerright>
+										<anchorcoord>38 22</anchorcoord>
+										<filename>ShoulderFront</filename>
+										<joints>
+											<Item Type="SPFSettings.JointDataXML">
+												<location>14 27</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles />
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="SPFSettings.BoneXML">
+										<name>Right Bicep</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="SPFSettings.JointXML">
+												<name>Right Forearm</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="SPFSettings.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>54 143</lowerright>
+												<anchorcoord>28 14</anchorcoord>
+												<filename>Bicep</filename>
+												<joints>
+													<Item Type="SPFSettings.JointDataXML">
+														<location>21 116</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones>
+											<Item Type="SPFSettings.BoneXML">
+												<name>Right Forearm</name>
+												<type>Normal</type>
+												<colorable>false</colorable>
+												<joints>
+													<Item Type="SPFSettings.JointXML">
+														<name>Right Hand</name>
+													</Item>
+												</joints>
+												<images>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>64 147</lowerright>
+														<anchorcoord>33 18</anchorcoord>
+														<filename>ForearmSide</filename>
+														<joints>
+															<Item Type="SPFSettings.JointDataXML">
+																<location>26 128</location>
+																<limit1>-180</limit1>
+																<limit2>180</limit2>
+																<FloatRadius>0</FloatRadius>
+																<FloatOrRotate>false</FloatOrRotate>
+															</Item>
+														</joints>
+														<circles />
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>40 61</lowerright>
+														<anchorcoord>22 13</anchorcoord>
+														<filename>ForearmFront</filename>
+														<joints>
+															<Item Type="SPFSettings.JointDataXML">
+																<location>18 46</location>
+																<limit1>-180</limit1>
+																<limit2>180</limit2>
+																<FloatRadius>0</FloatRadius>
+																<FloatOrRotate>false</FloatOrRotate>
+															</Item>
+														</joints>
+														<circles />
+														<lines />
+													</Item>
+												</images>
+												<bones>
+													<Item Type="SPFSettings.BoneXML">
+														<name>Right Hand</name>
+														<type>Normal</type>
+														<colorable>false</colorable>
+														<joints />
+														<images>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>19 16</anchorcoord>
+																<filename>FistBack</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>31 38</center>
+																		<radius>35.05468</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>24 24</anchorcoord>
+																<filename>FistFront</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>27 27</center>
+																		<radius>34.48301</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>20 14</anchorcoord>
+																<filename>FistPalm</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>29 32</center>
+																		<radius>39.85892</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 15</anchorcoord>
+																<filename>FistPinky</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>34 34</center>
+																		<radius>33.05789</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 18</anchorcoord>
+																<filename>FistThumb</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>36 33</center>
+																		<radius>31.85792</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="SPFSettings.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>26 20</anchorcoord>
+																<filename>FistWrist</filename>
+																<joints />
+																<circles>
+																	<Item Type="SPFSettings.CircleXML">
+																		<center>29 35</center>
+																		<radius>31.25392</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+														</images>
+														<bones />
+													</Item>
+												</bones>
+											</Item>
+										</bones>
+									</Item>
+								</bones>
+							</Item>
+						</bones>
+					</Item>
+				</bones>
+			</Item>
+			<Item Type="SPFSettings.BoneXML">
+				<name>Left Thigh</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="SPFSettings.JointXML">
+						<name>Left Knee</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>86 213</lowerright>
+						<anchorcoord>37 28</anchorcoord>
+						<filename>ThighFront</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>35 169</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<filename>ThighSide</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>55 193</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<filename>ThighBack</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>55 193</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones>
+					<Item Type="SPFSettings.BoneXML">
+						<name>Left Knee</name>
+						<type>Normal</type>
+						<colorable>false</colorable>
+						<joints>
+							<Item Type="SPFSettings.JointXML">
+								<name>Left Calf</name>
+							</Item>
+						</joints>
+						<images>
+							<Item Type="SPFSettings.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>43 61</lowerright>
+								<anchorcoord>22 24</anchorcoord>
+								<filename>Knee</filename>
+								<joints>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>19 40</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles />
+								<lines />
+							</Item>
+						</images>
+						<bones>
+							<Item Type="SPFSettings.BoneXML">
+								<name>Left Calf</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="SPFSettings.JointXML">
+										<name>Left Ankle</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="SPFSettings.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>90 216</lowerright>
+										<anchorcoord>56 13</anchorcoord>
+										<filename>CalfFront</filename>
+										<joints>
+											<Item Type="SPFSettings.JointDataXML">
+												<location>42 156</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles>
+											<Item Type="SPFSettings.CircleXML">
+												<center>50 62</center>
+												<radius>46.823</radius>
+											</Item>
+										</circles>
+										<lines />
+									</Item>
+									<Item Type="SPFSettings.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>110 211</lowerright>
+										<anchorcoord>54 23</anchorcoord>
+										<filename>CalfSide</filename>
+										<joints>
+											<Item Type="SPFSettings.JointDataXML">
+												<location>51 155</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles>
+											<Item Type="SPFSettings.CircleXML">
+												<center>50 79</center>
+												<radius>46.29329</radius>
+											</Item>
+										</circles>
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="SPFSettings.BoneXML">
+										<name>Left Ankle</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="SPFSettings.JointXML">
+												<name>Left Foot</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="SPFSettings.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>50 66</lowerright>
+												<anchorcoord>24 13</anchorcoord>
+												<filename>Ankle</filename>
+												<joints>
+													<Item Type="SPFSettings.JointDataXML">
+														<location>22 30</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones>
+											<Item Type="SPFSettings.BoneXML">
+												<name>Left Foot</name>
+												<type>Foot</type>
+												<colorable>false</colorable>
+												<joints />
+												<images>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>71 53</anchorcoord>
+														<filename>FootTop</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>91 40</center>
+																<radius>57.36001</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>69 55</anchorcoord>
+														<filename>FootBall</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>85 42</center>
+																<radius>60.68922</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>53 53</anchorcoord>
+														<filename>FootFront</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>69 50</center>
+																<radius>56.0357</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>58 61</anchorcoord>
+														<filename>FootSide</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>82 48</center>
+																<radius>57.36001</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>51 55</anchorcoord>
+														<filename>FootBack</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>55 49</center>
+																<radius>55.89994</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+												</images>
+												<bones />
+											</Item>
+										</bones>
+									</Item>
+								</bones>
+							</Item>
+						</bones>
+					</Item>
+				</bones>
+			</Item>
+			<Item Type="SPFSettings.BoneXML">
+				<name>Right Thigh</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="SPFSettings.JointXML">
+						<name>Right Knee</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>86 213</lowerright>
+						<anchorcoord>37 28</anchorcoord>
+						<filename>ThighFront</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>35 169</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<filename>ThighSide</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>55 193</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="SPFSettings.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<filename>ThighBack</filename>
+						<joints>
+							<Item Type="SPFSettings.JointDataXML">
+								<location>55 193</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones>
+					<Item Type="SPFSettings.BoneXML">
+						<name>Right Knee</name>
+						<type>Normal</type>
+						<colorable>false</colorable>
+						<joints>
+							<Item Type="SPFSettings.JointXML">
+								<name>Right Calf</name>
+							</Item>
+						</joints>
+						<images>
+							<Item Type="SPFSettings.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>43 61</lowerright>
+								<anchorcoord>22 24</anchorcoord>
+								<filename>Knee</filename>
+								<joints>
+									<Item Type="SPFSettings.JointDataXML">
+										<location>19 40</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles />
+								<lines />
+							</Item>
+						</images>
+						<bones>
+							<Item Type="SPFSettings.BoneXML">
+								<name>Right Calf</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="SPFSettings.JointXML">
+										<name>Right Ankle</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="SPFSettings.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>90 216</lowerright>
+										<anchorcoord>56 13</anchorcoord>
+										<filename>CalfFront</filename>
+										<joints>
+											<Item Type="SPFSettings.JointDataXML">
+												<location>42 156</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles>
+											<Item Type="SPFSettings.CircleXML">
+												<center>50 62</center>
+												<radius>46.823</radius>
+											</Item>
+										</circles>
+										<lines />
+									</Item>
+									<Item Type="SPFSettings.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>110 211</lowerright>
+										<anchorcoord>54 23</anchorcoord>
+										<filename>CalfSide</filename>
+										<joints>
+											<Item Type="SPFSettings.JointDataXML">
+												<location>51 155</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles>
+											<Item Type="SPFSettings.CircleXML">
+												<center>50 79</center>
+												<radius>46.29329</radius>
+											</Item>
+										</circles>
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="SPFSettings.BoneXML">
+										<name>Right Ankle</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="SPFSettings.JointXML">
+												<name>Right Foot</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="SPFSettings.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>50 66</lowerright>
+												<anchorcoord>24 13</anchorcoord>
+												<filename>Ankle</filename>
+												<joints>
+													<Item Type="SPFSettings.JointDataXML">
+														<location>22 30</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones>
+											<Item Type="SPFSettings.BoneXML">
+												<name>Right Foot</name>
+												<type>Foot</type>
+												<colorable>false</colorable>
+												<joints />
+												<images>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>71 53</anchorcoord>
+														<filename>FootTop</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>91 40</center>
+																<radius>57.36001</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>69 55</anchorcoord>
+														<filename>FootBall</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>85 42</center>
+																<radius>60.68922</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>53 53</anchorcoord>
+														<filename>FootFront</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>69 50</center>
+																<radius>56.0357</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>58 61</anchorcoord>
+														<filename>FootSide</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>82 48</center>
+																<radius>57.36001</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="SPFSettings.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>51 55</anchorcoord>
+														<filename>FootBack</filename>
+														<joints />
+														<circles>
+															<Item Type="SPFSettings.CircleXML">
+																<center>55 49</center>
+																<radius>55.89994</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+												</images>
+												<bones />
+											</Item>
+										</bones>
+									</Item>
+								</bones>
+							</Item>
+						</bones>
+					</Item>
+				</bones>
+			</Item>
+		</bones>
+	</Asset>
+</XnaContent>

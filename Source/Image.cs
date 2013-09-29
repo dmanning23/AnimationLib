@@ -16,10 +16,6 @@ namespace AnimationLib
 	{
 		#region Member Variables
 
-		//list of joint locations
-		//These are the coordinates of the joints for this frame
-		private List<JointData> m_listJointCoords;
-
 		//The UV coords of this frame
 		//These are where on the bitmap to draw the texture from
 		private Vector2 m_UpperLeftUV;
@@ -31,7 +27,6 @@ namespace AnimationLib
 
 		//The bitmap for this frame
 		private ITexture m_Image;
-		private Filename m_strFileName;
 
 		#endregion
 
@@ -42,10 +37,7 @@ namespace AnimationLib
 			get { return m_LowerRightUV; }
 		}
 
-		public Filename Filename
-		{
-			get { return m_strFileName; }
-		}
+		public Filename ImageFile { get; set; }
 
 		/// <summary>
 		/// Get or set the m_AnchorCoord member variable
@@ -61,19 +53,21 @@ namespace AnimationLib
 			get { return m_LowerRightUV.X - m_UpperLeftUV.X; }
 		}
 
-		public List<JointData> Data
-		{
-			get { return m_listJointCoords; }
-		}
+		/// <summary>
+		/// list of joint locations
+		/// These are the coordinates of the joints for this frame
+		/// </summary>
+		/// <value>The JointCoords.</value>
+		public List<JointData> JointCoords { get; protected set; }
 
 		/// <summary>
-		/// Physics Data!
+		/// Physics JointCoords!
 		/// </summary>
 		/// <value>The circles.</value>
 		public List<PhysicsCircle> Circles { get; private set; }
 
 		/// <summary>
-		/// physics data for level objects
+		/// physics JointCoords for level objects
 		/// </summary>
 		public List<PhysicsLine> Lines { get; private set; }
 
@@ -86,14 +80,14 @@ namespace AnimationLib
 		/// </summary>
 		public Image()
 		{
-			m_listJointCoords = new List<JointData>();
+			JointCoords = new List<JointData>();
 			Circles = new List<PhysicsCircle>();
 			Lines = new List<PhysicsLine>();
 			m_UpperLeftUV = new Vector2(0.0f);
 			m_LowerRightUV = new Vector2(0.0f);
 			m_AnchorCoord = new Vector2(0.0f);
 			m_Image = null;
-			m_strFileName = new Filename();
+			ImageFile = new Filename();
 		}
 
 		/// <summary>
@@ -117,14 +111,14 @@ namespace AnimationLib
 		public JointData GetJointLocation(int iIndex)
 		{
 			Debug.Assert(iIndex >= 0);
-			Debug.Assert(iIndex < m_listJointCoords.Count);
-			return m_listJointCoords[iIndex];
+			Debug.Assert(iIndex < JointCoords.Count);
+			return JointCoords[iIndex];
 		}
 
 		public void AddJoint()
 		{
-			JointData myData = new JointData();
-			m_listJointCoords.Add(myData);
+			JointData myJointCoords = new JointData();
+			JointCoords.Add(myJointCoords);
 		}
 
 		/// <summary>
@@ -179,16 +173,16 @@ namespace AnimationLib
 			CSetAnchorLocation myAnchorAction = new CSetAnchorLocation(this, (int)myInst.AnchorCoord.X, (int)myInst.AnchorCoord.Y);
 			ActionCollection.AddAction(myAnchorAction);
 
-			//copy all the joint data
+			//copy all the joint JointCoords
 			for (int i = 0; ((i < m_listJointCoords.Count) && (i < myInst.m_listJointCoords.Count)); i++)
 			{
-				//create the new joint data
-				JointData myNewData = new JointData();
-				myNewData.Copy(myInst.m_listJointCoords[i]);
+				//create the new joint JointCoords
+				JointJointCoords myNewJointCoords = new JointJointCoords();
+				myNewJointCoords.Copy(myInst.m_listJointCoords[i]);
 
 				//create the action to set it
-				CSetJointData mySetJointDataAction = new CSetJointData(this, i, myNewData);
-				ActionCollection.AddAction(mySetJointDataAction);
+				CSetJointJointCoords mySetJointJointCoordsAction = new CSetJointJointCoords(this, i, myNewJointCoords);
+				ActionCollection.AddAction(mySetJointJointCoordsAction);
 			}
 
 			//copy circles
@@ -198,7 +192,7 @@ namespace AnimationLib
 				myCircle.Copy(myInst.Circles[i]);
 
 				//create the action to set it
-				CSetCircleData mySetCircleAction = new CSetCircleData(this, i, myCircle);
+				CSetCircleJointCoords mySetCircleAction = new CSetCircleJointCoords(this, i, myCircle);
 				ActionCollection.AddAction(mySetCircleAction);
 			}
 
@@ -209,18 +203,18 @@ namespace AnimationLib
 				myLine.Copy(myInst.Lines[i]);
 
 				//create the action to set it
-				CSetLineData mySetCircleAction = new CSetLineData(this, i, myLine);
+				CSetLineJointCoords mySetCircleAction = new CSetLineJointCoords(this, i, myLine);
 				ActionCollection.AddAction(mySetCircleAction);
 			}
 		}
 
 #endif
 
-		public void SetJointData(int iIndex, JointData myNewData)
+		public void SetJointJointCoords(int iIndex, JointData myNewJointCoords)
 		{
 			Debug.Assert(iIndex >= 0);
-			Debug.Assert(iIndex < m_listJointCoords.Count);
-			m_listJointCoords[iIndex] = myNewData;
+			Debug.Assert(iIndex < JointCoords.Count);
+			JointCoords[iIndex] = myNewJointCoords;
 		}
 
 		public void Update(Vector2 BonePosition, float fRotation, bool bFlip, float fScale)
@@ -254,9 +248,9 @@ namespace AnimationLib
 		}
 
 		/// <summary>
-		/// Check if this image contains any physics data
+		/// Check if this image contains any physics JointCoords
 		/// </summary>
-		/// <returns>true if there is physics data, false if not</returns>
+		/// <returns>true if there is physics JointCoords, false if not</returns>
 		public bool HasPhysics()
 		{
 			return ((Circles.Count > 0) || (Lines.Count > 0));
@@ -328,15 +322,15 @@ namespace AnimationLib
 					else if (strName == "filename")
 					{
 						//get the correct path & filename
-						m_strFileName.SetRelFilename(strValue);
+						ImageFile.SetRelFilename(strValue);
 
 						//add the ability to have blank image, which means a skeletal structure that is not displayed
-						if (m_strFileName.GetFileExt().ToString().Length > 0)
+						if (ImageFile.GetFileExt().ToString().Length > 0)
 						{
 							//do we need to load the image?
 							if (null != rRenderer)
 							{
-								m_Image = rRenderer.LoadImage(m_strFileName.File);
+								m_Image = rRenderer.LoadImage(ImageFile.File);
 								if (null == m_Image)
 								{
 									Debug.Assert(false);
@@ -350,20 +344,20 @@ namespace AnimationLib
 					}
 					else if (strName == "joints")
 					{
-						//Read in all the joint data
+						//Read in all the joint JointCoords
 						if (childNode.HasChildNodes)
 						{
 							for (XmlNode circleNode = childNode.FirstChild;
 								null != circleNode;
 								circleNode = circleNode.NextSibling)
 							{
-								JointData childJointData = new JointData();
-								if (!childJointData.ReadXMLFormat(circleNode, this))
+								JointData childJointJointCoords = new JointData();
+								if (!childJointJointCoords.ReadXMLFormat(circleNode, this))
 								{
 									Debug.Assert(false);
 									return false;
 								}
-								m_listJointCoords.Add(childJointData);
+								JointCoords.Add(childJointJointCoords);
 							}
 						}
 					}
@@ -413,16 +407,16 @@ namespace AnimationLib
 				}
 			}
 
-			//check if there are too many joint data objects
-			while (m_listJointCoords.Count > rParent.Joints.Count)
+			//check if there are too many joint JointCoords objects
+			while (JointCoords.Count > rParent.Joints.Count)
 			{
-				m_listJointCoords.RemoveAt(0);
+				JointCoords.RemoveAt(0);
 			}
 
-			//okay if there are not enough joint data objects, add some blank ones
-			while (m_listJointCoords.Count < rParent.Joints.Count)
+			//okay if there are not enough joint JointCoords objects, add some blank ones
+			while (JointCoords.Count < rParent.Joints.Count)
 			{
-				m_listJointCoords.Add(new JointData());
+				JointCoords.Add(new JointData());
 			}
 
 			return true;
@@ -458,14 +452,14 @@ namespace AnimationLib
 
 			//write out filename to use
 			rXMLFile.WriteStartElement("filename");
-			rXMLFile.WriteString(m_strFileName.GetRelFilename());
+			rXMLFile.WriteString(ImageFile.GetRelFilename());
 			rXMLFile.WriteEndElement();
 
 			//write out joint locations
 			rXMLFile.WriteStartElement("joints");
-			for (int i = 0; i < m_listJointCoords.Count; i++)
+			for (int i = 0; i < JointCoords.Count; i++)
 			{
-				m_listJointCoords[i].WriteXMLFormat(rXMLFile, fEnbiggify);
+				JointCoords[i].WriteXMLFormat(rXMLFile, fEnbiggify);
 			}
 			rXMLFile.WriteEndElement();
 
@@ -490,7 +484,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Read in all the bone information from an object read in from a serialized XML file.
 		/// </summary>
-		/// <param name="rImage">the xml object to get data from</param>
+		/// <param name="rImage">the xml object to get JointCoords from</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		public bool ReadSerializedFormat(AnimationLib.ImageXML rImage, IRenderer rRenderer)
 		{
@@ -500,28 +494,28 @@ namespace AnimationLib
 			m_AnchorCoord = rImage.anchorcoord;
 
 			//add the ability to have blank image, which means a skeletal structure that is not displayed
-			m_strFileName.SetRelFilename(rImage.filename);
-			if (m_strFileName.GetFileExt().Length > 0)
+			ImageFile.SetRelFilename(rImage.filename);
+			if (ImageFile.GetFileExt().Length > 0)
 			{
 				if (null != rRenderer)
 				{
-					m_Image = rRenderer.LoadImage(m_strFileName.File);
+					m_Image = rRenderer.LoadImage(ImageFile.File);
 				}
 			}
 
-			//read in joint data
+			//read in joint JointCoords
 			for (int i = 0; i < rImage.joints.Count; i++)
 			{
-				JointData myJointData = new JointData();
-				AnimationLib.JointDataXML myJointDataXML = rImage.joints[i];
-				if (!myJointData.ReadSerializedFormat(myJointDataXML, this))
+				JointData myJointJointCoords = new JointData();
+				AnimationLib.JointDataXML myJointJointCoordsXML = rImage.joints[i];
+				if (!myJointJointCoords.ReadSerializedFormat(myJointJointCoordsXML, this))
 				{
 					return false;
 				}
-				m_listJointCoords.Add(myJointData);
+				JointCoords.Add(myJointJointCoords);
 			}
 
-			//read in physics data
+			//read in physics JointCoords
 			for (int i = 0; i < rImage.circles.Count; i++)
 			{
 				PhysicsCircle myCircle = new PhysicsCircle();
@@ -532,7 +526,7 @@ namespace AnimationLib
 				Circles.Add(myCircle);
 			}
 
-			//read in line data
+			//read in line JointCoords
 			for (int i = 0; i < rImage.lines.Count; i++)
 			{
 				PhysicsLine myLine = new PhysicsLine();

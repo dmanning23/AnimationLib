@@ -368,7 +368,7 @@ namespace AnimationLib
 				if (null != rChildBone)
 				{
 					Debug.Assert(m_iImageIndex < rChildBone.Images.Count);
-					strImage = rChildBone.Images[m_iImageIndex].Filename.GetFile();
+					strImage = rChildBone.Images[m_iImageIndex].ImageFile.GetFile();
 				}
 			}
 

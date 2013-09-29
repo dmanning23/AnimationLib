@@ -183,7 +183,7 @@ namespace AnimationLib
 
 			//update the image
 			UpdateImage();
-;
+
 			//get the current layer
 			UpdateLayer(iParentLayer);
 
@@ -243,7 +243,7 @@ namespace AnimationLib
 					jointPosition = CurrentImage.GetFlippedJointCoord(i, Flipped, fScale);
 
 					//get teh joint data
-					Joints[i].Data = Images[ImageIndex].Data[i];
+					Joints[i].Data = Images[ImageIndex].JointCoords[i];
 				}
 
 				if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
@@ -517,7 +517,7 @@ namespace AnimationLib
 		{
 			for (int i = 0; i < Images.Count; i++)
 			{
-				if (Images[i].Filename.File == strFileName.File)
+				if (Images[i].ImageFile.File == strFileName.File)
 				{
 					return Images[i];
 				}
@@ -542,7 +542,7 @@ namespace AnimationLib
 			//check my images
 			for (int i = 0; i < Images.Count; i++)
 			{
-				if (Images[i].Filename.GetFile() == strFileName)
+				if (Images[i].ImageFile.GetFile() == strFileName)
 				{
 					return i;
 				}
@@ -843,7 +843,7 @@ namespace AnimationLib
 					for (int i = 0; i < Joints.Count; i++)
 					{
 						//get the vector from the anchor to the joint
-						Vector2 jointPos = GetCurrentImage().Data[i].AnchorVect;
+						Vector2 jointPos = GetCurrentImage().JointCoords[i].AnchorVect;
 						if (Flipped)
 						{
 							jointPos.X *= -1.0f;
@@ -900,7 +900,7 @@ namespace AnimationLib
 
 					//Get the vector from the current joint position
 					Matrix myRotation = MatrixExt.Orientation(Rotation);
-					Vector2 JointPos = GetCurrentImage().Data[0].Location * fScale;
+					Vector2 JointPos = GetCurrentImage().JointCoords[0].Location * fScale;
 					if (Flipped)
 					{
 						//it flipped?

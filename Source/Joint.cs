@@ -8,18 +8,10 @@ namespace AnimationLib
 	{
 		#region Member Variables
 
-
-		private string m_strJointName;
-
 		/// <summary>
 		/// The position for this dude
 		/// </summary>
 		private Vector2 m_JointPosition;
-
-		/// <summary>
-		/// The index of this joint in the bone who owns it
-		/// </summary>
-		private int m_iIndex;
 
 		/// <summary>
 		/// this is this dudes old position, stored in world coordinates
@@ -30,12 +22,6 @@ namespace AnimationLib
 		/// this is the acceleration currently on this dude
 		/// </summary>
 		private Vector2 m_Acceleration;
-
-		/// <summary>
-		/// whether or not the bone that owns this joint is currently flipped
-		/// used for ragdoll limit calculation
-		/// </summary>
-		bool m_bParentFlip;
 
 		#endregion
 
@@ -82,17 +68,17 @@ namespace AnimationLib
 			set { m_Acceleration = value; }
 		}
 
-		public bool ParentFlip
-		{
-			get { return m_bParentFlip; }
-			set { m_bParentFlip = value; }
-		}
+		/// <summary>
+		/// whether or not the bone that owns this joint is currently flipped
+		/// used for ragdoll limit calculation
+		/// </summary>
+		public bool ParentFlip { get; set; }
 
 		public float FirstLimit
 		{
 			get 
 			{
-				if (m_bParentFlip)
+				if (ParentFlip)
 				{
 					return Data.FirstLimitFlipped;
 				}
@@ -107,7 +93,7 @@ namespace AnimationLib
 		{
 			get
 			{
-				if (m_bParentFlip)
+				if (ParentFlip)
 				{
 					return Data.SecondLimitFlipped;
 				}
@@ -127,14 +113,14 @@ namespace AnimationLib
 		/// </summary>
 		public Joint(int iIndex)
 		{
-			m_iIndex = iIndex;
+			Index = iIndex;
 			m_JointPosition = new Vector2(0.0f);
 			CurrentKeyElement = new KeyElement();
 			Data = new JointData();
 			m_OldPosition = new Vector2(0.0f);
 			m_Acceleration = new Vector2(0.0f);
-			m_strJointName = "";
-			m_bParentFlip = false;
+			Name = "";
+			ParentFlip = false;
 		}
 
 		/// <summary>
@@ -296,7 +282,7 @@ namespace AnimationLib
 					if (strName == "name")
 					{
 						//set the name of this joint
-						m_strJointName = strValue;
+						Name = strValue;
 					}
 					else
 					{
@@ -321,7 +307,7 @@ namespace AnimationLib
 
 			//write out upper left coords
 			rXMLFile.WriteStartElement("name");
-			rXMLFile.WriteString(m_strJointName);
+			rXMLFile.WriteString(Name);
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteEndElement();
@@ -330,10 +316,10 @@ namespace AnimationLib
 		/// <summary>
 		/// Read in all the bone information from an object read in from a serialized XML file.
 		/// </summary>
-		/// <param name="rJoint">the xml object to get data from</param>
+		/// <param name="rJoint">the xml object to get JointCoords from</param>
 		public bool ReadSerializedFormat(AnimationLib.JointXML rJoint)
 		{
-			m_strJointName = rJoint.name;
+			Name = rJoint.name;
 			return true;
 		}
 
