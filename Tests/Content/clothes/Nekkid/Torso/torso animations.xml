@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <XnaContent>
-	<Asset Type="SPFSettings.AnimationContainerXML">
+	<Asset Type="AnimationLib.AnimationContainerXML">
 		<animations>
-			<Item Type="SPFSettings.AnimationXML">
+			<Item Type="AnimationLib.AnimationXML">
 				<name>TorsoFront</name>
 				<length>0.1</length>
 				<keys>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -16,7 +16,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Torso Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -26,7 +26,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe10</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -36,7 +36,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe9</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -46,7 +46,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe17</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -56,7 +56,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe8</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -66,7 +66,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe13</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -76,7 +76,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe7</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -86,7 +86,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe6</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -96,7 +96,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe12</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -106,7 +106,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe5</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -116,7 +116,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe14</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -126,7 +126,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe4</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -136,7 +136,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe15</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -146,7 +146,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe3</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -156,7 +156,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe2</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -166,7 +166,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -176,7 +176,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe1</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -186,7 +186,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -196,7 +196,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe13</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -206,7 +206,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe15</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -216,7 +216,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe12</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -226,7 +226,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -236,7 +236,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe14</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -246,7 +246,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe8</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -256,7 +256,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe10</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -266,7 +266,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe9</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -276,7 +276,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe7</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -286,7 +286,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe6</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -296,7 +296,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe5</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -306,7 +306,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe4</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -316,7 +316,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe3</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -326,7 +326,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe2</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -336,7 +336,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe1</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -346,7 +346,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Torso Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -356,7 +356,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -368,11 +368,11 @@
 					</Item>
 				</keys>
 			</Item>
-			<Item Type="SPFSettings.AnimationXML">
+			<Item Type="AnimationLib.AnimationXML">
 				<name>TorsoSide</name>
 				<length>0.1</length>
 				<keys>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -382,7 +382,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Torso Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -392,7 +392,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe10</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -402,7 +402,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe9</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -412,7 +412,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe17</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -422,7 +422,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe8</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -432,7 +432,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe13</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -442,7 +442,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe7</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -452,7 +452,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe6</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -462,7 +462,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe12</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -472,7 +472,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe5</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -482,7 +482,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe14</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -492,7 +492,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe4</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -502,7 +502,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe15</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -512,7 +512,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe3</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -522,7 +522,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe2</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -532,7 +532,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -542,7 +542,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe1</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -552,7 +552,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -562,7 +562,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe13</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -572,7 +572,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe15</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -582,7 +582,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe12</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -592,7 +592,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -602,7 +602,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe14</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -612,7 +612,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe8</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -622,7 +622,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe10</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -632,7 +632,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe9</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -642,7 +642,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe7</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -652,7 +652,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe6</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -662,7 +662,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe5</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -672,7 +672,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe4</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -682,7 +682,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe3</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -692,7 +692,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe2</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -702,7 +702,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe1</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -712,7 +712,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Torso Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -722,7 +722,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -734,11 +734,11 @@
 					</Item>
 				</keys>
 			</Item>
-			<Item Type="SPFSettings.AnimationXML">
+			<Item Type="AnimationLib.AnimationXML">
 				<name>TorsoBack</name>
 				<length>0.1</length>
 				<keys>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -748,7 +748,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Torso Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -758,7 +758,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe10</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -768,7 +768,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe9</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -778,7 +778,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe17</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -788,7 +788,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe8</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -798,7 +798,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe13</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -808,7 +808,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe7</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -818,7 +818,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe6</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -828,7 +828,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe12</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -838,7 +838,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe5</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -848,7 +848,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe14</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -858,7 +858,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe4</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -868,7 +868,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe15</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -878,7 +878,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe3</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -888,7 +888,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe2</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -898,7 +898,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -908,7 +908,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe1</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -918,7 +918,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -928,7 +928,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe13</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -938,7 +938,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe15</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -948,7 +948,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe12</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -958,7 +958,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -968,7 +968,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe14</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -978,7 +978,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe8</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -988,7 +988,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe10</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -998,7 +998,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe9</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1008,7 +1008,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe7</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1018,7 +1018,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe6</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1028,7 +1028,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe5</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1038,7 +1038,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe4</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1048,7 +1048,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe3</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1058,7 +1058,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe2</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1068,7 +1068,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe1</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1078,7 +1078,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Torso Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -1088,7 +1088,7 @@
 						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>

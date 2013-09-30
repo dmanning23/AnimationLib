@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <XnaContent>
-	<Asset Type="SPFSettings.AnimationContainerXML">
+	<Asset Type="AnimationLib.AnimationContainerXML">
 		<animations>
-			<Item Type="SPFSettings.AnimationXML">
+			<Item Type="AnimationLib.AnimationXML">
 				<name>CrotchFront</name>
 				<length>0.1</length>
 				<keys>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -16,7 +16,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Crotch Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -28,11 +28,11 @@
 					</Item>
 				</keys>
 			</Item>
-			<Item Type="SPFSettings.AnimationXML">
+			<Item Type="AnimationLib.AnimationXML">
 				<name>CrotchSide</name>
 				<length>0.1</length>
 				<keys>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -42,7 +42,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Crotch Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -54,11 +54,11 @@
 					</Item>
 				</keys>
 			</Item>
-			<Item Type="SPFSettings.AnimationXML">
+			<Item Type="AnimationLib.AnimationXML">
 				<name>CrotchBack</name>
 				<length>0.1</length>
 				<keys>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
@@ -68,7 +68,7 @@
 						<ragdoll>false</ragdoll>
 						<joint>Crotch Nekkid</joint>
 					</Item>
-					<Item Type="SPFSettings.KeyXML">
+					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
