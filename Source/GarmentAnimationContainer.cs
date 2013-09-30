@@ -34,14 +34,14 @@ namespace AnimationLib
 				Debug.Assert(null != Model);
 				Debug.Assert(Model is GarmentBone);
 				GarmentBone myModel = Model as GarmentBone;
-				return myModel.Garment;
+				return myModel.GarmentName;
 			}
 			set 
 			{
  				Debug.Assert(null != Model);
 				Debug.Assert(Model is GarmentBone);
 				GarmentBone myModel = Model as GarmentBone;
-				myModel.Garment = value;
+				myModel.GarmentName = value;
 			}
 		}
 
@@ -186,7 +186,7 @@ namespace AnimationLib
 			GarmentBone myGarmentBone = GarmentModel;
 			Bone myBone = rRootNode.GetBone(myGarmentBone.ParentBoneName);
 			Debug.Assert(null != myBone);
-			myGarmentBone.Parent = myBone;
+			myGarmentBone.ParentBone = myBone;
 
 			//Make sure this animation container has the correct number of animations
 			Debug.Assert(Animations.Count == myBone.Images.Count);

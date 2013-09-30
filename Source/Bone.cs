@@ -421,7 +421,7 @@ namespace AnimationLib
 				{
 					GarmentBone myBone = Bones[i] as GarmentBone;
 					Debug.Assert(null != myBone);
-					if (strGarment == myBone.Garment)
+					if (strGarment == myBone.GarmentName)
 					{
 						Bones.RemoveAt(i);
 						return;

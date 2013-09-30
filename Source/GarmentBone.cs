@@ -15,25 +15,10 @@ namespace AnimationLib
 		#region Members
 
 		/// <summary>
-		/// The peice of clothing that this bone is part of
-		/// </summary>
-		private string m_strGarment;
-
-		/// <summary>
 		/// reference to the animation container that owns this bone
 		/// used to change animation when the parent bone changes images
 		/// </summary>
 		private GarmentAnimationContainer m_AnimationContainer;
-
-		/// <summary>
-		/// The bone in the skeleton that this garment attaches to
-		/// </summary>
-		private string m_strParentBone;
-
-		/// <summary>
-		/// Reference to the bone this guy attaches too.  Should have the same name as this guy
-		/// </summary>
-		private Bone m_rParentBone;
 
 		/// <summary>
 		/// flag for whether this garment has been added to the model or not
@@ -44,30 +29,20 @@ namespace AnimationLib
 
 		#region Properties
 
-		public string Garment
-		{
-			get { return m_strGarment; }
-			set
-			{
-				//set my garment
-				m_strGarment = value;
-			}
-		}
+		/// <summary>
+		/// The peice of clothing that this bone is part of
+		/// </summary>
+		public string GarmentName { get; set; }
 
-		public Bone Parent
-		{
-			get { return m_rParentBone; }
-			set
-			{
-				//set my bone
-				m_rParentBone = value;
-			}
-		}
+		/// <summary>
+		/// Reference to the bone this guy attaches too.  Should have the same name as this guy
+		/// </summary>
+		public Bone ParentBone { get; set; }
 
-		public string ParentBoneName
-		{
-			get { return m_strParentBone; }
-		}
+		/// <summary>
+		/// The bone in the skeleton that this garment attaches to
+		/// </summary>
+		public string ParentBoneName { get; protected set; }
 
 		#endregion //Properties
 
@@ -81,7 +56,7 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != rOwner);
 			m_AnimationContainer = rOwner;
-			m_rParentBone = null;
+			ParentBone = null;
 			BoneType = EBoneType.Garment;
 			m_bAddedToModel = false;
 		}
@@ -106,7 +81,7 @@ namespace AnimationLib
 			Debug.Assert(null != m_AnimationContainer);
 
 			//update the animation container, which will update the Bone base class 
-			m_AnimationContainer.Update(iTime, myPosition, bParentFlip, fScale, fParentRotation, bIgnoreRagdoll, iParentLayer, m_rParentBone);
+			m_AnimationContainer.Update(iTime, myPosition, bParentFlip, fScale, fParentRotation, bIgnoreRagdoll, iParentLayer, ParentBone);
 		}
 
 		public void UpdateBaseBone(int iTime,
@@ -126,11 +101,11 @@ namespace AnimationLib
 		/// </summary>
 		public void AddToModel()
 		{
-			Debug.Assert(null != m_rParentBone);
+			Debug.Assert(null != ParentBone);
 
 			if (!m_bAddedToModel)
 			{
-				m_rParentBone.AddGarment(this);
+				ParentBone.AddGarment(this);
 				m_bAddedToModel = true;
 			}
 		}
@@ -140,11 +115,11 @@ namespace AnimationLib
 		/// </summary>
 		public void RemoveFromModel()
 		{
-			Debug.Assert(null != m_rParentBone);
+			Debug.Assert(null != ParentBone);
 
 			if (m_bAddedToModel)
 			{
-				m_rParentBone.RemoveGarment(m_strGarment);
+				ParentBone.RemoveGarment(GarmentName);
 				m_bAddedToModel = false;
 			}
 		}
@@ -169,7 +144,7 @@ namespace AnimationLib
 			if (strName == "parentBone")
 			{
 				//set teh parent bone of this dude
-				m_strParentBone = strValue;
+				ParentBoneName = strValue;
 			}
 			else
 			{
@@ -216,7 +191,7 @@ namespace AnimationLib
 
 			//add the name attribute
 			rXMLFile.WriteStartElement("parentBone");
-			rXMLFile.WriteString(m_strParentBone);
+			rXMLFile.WriteString(ParentBoneName);
 			rXMLFile.WriteEndElement();
 		}
 
@@ -235,7 +210,7 @@ namespace AnimationLib
 			}
 
 			//get the parent bone
-			m_strParentBone = myGarmentBoneXML.parentBone;
+			ParentBoneName = myGarmentBoneXML.parentBone;
 
 			//let the base class parse the rest of that shit
 			return base.ReadSerializedFormat(rBone, ParentBone, rRenderer);
