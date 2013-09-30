@@ -12,7 +12,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>89 147</lowerright>
 				<anchorcoord>47 116</anchorcoord>
-				<filename>TorsoFront.png</filename>
+				<filename>Clothes\Nekkid\Torso\TorsoFront.png</filename>
 				<joints>
 					
 				</joints>
@@ -23,7 +23,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>72 129</lowerright>
 				<anchorcoord>33 84</anchorcoord>
-				<filename>TorsoSide.png</filename>
+				<filename>Clothes\Nekkid\Torso\TorsoSide.png</filename>
 				<joints>
 					
 				</joints>
@@ -34,7 +34,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>82 167</lowerright>
 				<anchorcoord>38 116</anchorcoord>
-				<filename>TorsoBack.png</filename>
+				<filename>Clothes\Nekkid\Torso\TorsoBack.png</filename>
 				<joints>
 					
 				</joints>
