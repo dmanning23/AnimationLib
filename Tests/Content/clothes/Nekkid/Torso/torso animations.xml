@@ -10,11 +10,71 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
-						<image>TorsoFront.png</image>
+						<image>med.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Torso Nekkid</joint>
+						<ragdoll>true</ragdoll>
+						<joint>fringe14</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe8</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe7</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe15</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe6</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe11</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe12</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
@@ -44,77 +104,67 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
+						<joint>fringe13</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe5</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe2</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe3</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe1</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
 						<joint>fringe17</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
-						<image>med.png</image>
+						<image>TorsoFront.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe8</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe13</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe7</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe6</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe12</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe5</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe14</joint>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
@@ -134,77 +184,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe15</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe3</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe2</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe1</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe11</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe13</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe15</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -224,7 +204,17 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe16</joint>
+						<joint>fringe17</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe15</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -244,7 +234,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe8</joint>
+						<joint>fringe16</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -254,57 +244,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe10</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe9</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe7</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe6</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe5</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe4</joint>
+						<joint>fringe13</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -324,7 +264,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe2</joint>
+						<joint>fringe4</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -334,7 +274,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe1</joint>
+						<joint>fringe5</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -354,6 +294,46 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
+						<joint>fringe1</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe2</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe9</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe10</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
@@ -364,7 +344,27 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe17</joint>
+						<joint>fringe6</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe7</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe8</joint>
 					</Item>
 				</keys>
 			</Item>
@@ -376,11 +376,71 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
-						<image>TorsoSide.png</image>
+						<image>med.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Torso Nekkid</joint>
+						<ragdoll>true</ragdoll>
+						<joint>fringe14</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe8</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe7</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe15</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe6</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe11</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe12</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
@@ -406,6 +466,56 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe13</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe5</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe2</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe3</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe1</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
 						<image />
 						<flip>false</flip>
 						<translation>0 0</translation>
@@ -416,71 +526,11 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
-						<image>med.png</image>
+						<image>TorsoSide.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe8</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe13</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe7</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe6</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe12</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe5</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe14</joint>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
@@ -500,77 +550,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe15</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe3</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe2</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe1</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe11</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe13</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe15</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -586,11 +566,21 @@
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
+						<image />
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe17</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
 						<image>med.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe16</joint>
+						<joint>fringe15</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -610,7 +600,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe8</joint>
+						<joint>fringe16</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -620,57 +610,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe10</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe9</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe7</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe6</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe5</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe4</joint>
+						<joint>fringe13</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -690,7 +630,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe2</joint>
+						<joint>fringe4</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -700,7 +640,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe1</joint>
+						<joint>fringe5</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -720,17 +660,77 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
+						<joint>fringe1</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe2</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe9</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe10</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
-						<image />
+						<image>med.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe17</joint>
+						<joint>fringe6</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe7</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe8</joint>
 					</Item>
 				</keys>
 			</Item>
@@ -742,11 +742,71 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
-						<image>TorsoBack.png</image>
+						<image>med.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Torso Nekkid</joint>
+						<ragdoll>true</ragdoll>
+						<joint>fringe14</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe8</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe7</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe15</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe6</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe11</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe12</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
@@ -776,77 +836,67 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
+						<joint>fringe13</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe5</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe2</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe3</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe1</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
 						<joint>fringe17</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-1</layer>
-						<image>med.png</image>
+						<image>TorsoBack.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe8</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe13</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe7</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe6</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe12</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe5</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe14</joint>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
@@ -866,77 +916,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe15</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe3</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe2</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
 						<joint>fringe16</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe1</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe11</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe13</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe15</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -956,7 +936,17 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe16</joint>
+						<joint>fringe17</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe15</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -976,7 +966,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe8</joint>
+						<joint>fringe16</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -986,57 +976,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe10</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe9</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe7</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe6</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe5</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-1</layer>
-						<image>med.png</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>true</ragdoll>
-						<joint>fringe4</joint>
+						<joint>fringe13</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -1056,7 +996,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe2</joint>
+						<joint>fringe4</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -1066,7 +1006,7 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe1</joint>
+						<joint>fringe5</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
@@ -1086,6 +1026,46 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
+						<joint>fringe1</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe2</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe9</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe10</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
 						<joint>fringe11</joint>
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
@@ -1096,7 +1076,27 @@
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>true</ragdoll>
-						<joint>fringe17</joint>
+						<joint>fringe6</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe7</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>med.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>fringe8</joint>
 					</Item>
 				</keys>
 			</Item>

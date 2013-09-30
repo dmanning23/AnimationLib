@@ -10,7 +10,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>129 116</lowerright>
 				<anchorcoord>74 62</anchorcoord>
-				<filename>Resources\Tabby\Clothes\Nekkid\Crotch\CrotchFront.png</filename>
+				<filename>CrotchFront.png</filename>
 				<joints />
 				<circles />
 				<lines />
@@ -19,7 +19,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>87 117</lowerright>
 				<anchorcoord>43 59</anchorcoord>
-				<filename>Resources\Tabby\Clothes\Nekkid\Crotch\CrotchSide.png</filename>
+				<filename>CrotchSide.png</filename>
 				<joints />
 				<circles />
 				<lines />
@@ -28,7 +28,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>125 129</lowerright>
 				<anchorcoord>54 56</anchorcoord>
-				<filename>Resources\Tabby\Clothes\Nekkid\Crotch\CrotchBack.png</filename>
+				<filename>CrotchBack.png</filename>
 				<joints />
 				<circles />
 				<lines />

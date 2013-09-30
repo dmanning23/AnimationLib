@@ -20,7 +20,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>113 133</lowerright>
 				<anchorcoord>60 111</anchorcoord>
-				<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\ChesticleFront.png</filename>
+				<filename>ChesticleFront.png</filename>
 				<joints>
 					<Item Type="AnimationLib.JointDataXML">
 						<location>87 50</location>
@@ -51,7 +51,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>89 131</lowerright>
 				<anchorcoord>46 106</anchorcoord>
-				<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\ChesticleSide.png</filename>
+				<filename>ChesticleSide.png</filename>
 				<joints>
 					<Item Type="AnimationLib.JointDataXML">
 						<location>42 44</location>
@@ -82,7 +82,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>108 116</lowerright>
 				<anchorcoord>51 100</anchorcoord>
-				<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\ChesticleBack.png</filename>
+				<filename>ChesticleBack.png</filename>
 				<joints>
 					<Item Type="AnimationLib.JointDataXML">
 						<location>87 53</location>
@@ -125,7 +125,7 @@
 						<upperleft>0 0</upperleft>
 						<lowerright>58 73</lowerright>
 						<anchorcoord>29 29</anchorcoord>
-						<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\LTittyFront.png</filename>
+						<filename>LTittyFront.png</filename>
 						<joints>
 							<Item Type="AnimationLib.JointDataXML">
 								<location>29 28</location>
@@ -142,7 +142,7 @@
 						<upperleft>0 0</upperleft>
 						<lowerright>57 73</lowerright>
 						<anchorcoord>-2 29</anchorcoord>
-						<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\LTittySide.png</filename>
+						<filename>LTittySide.png</filename>
 						<joints>
 							<Item Type="AnimationLib.JointDataXML">
 								<location>53 32</location>
@@ -172,7 +172,7 @@
 						<upperleft>0 0</upperleft>
 						<lowerright>61 74</lowerright>
 						<anchorcoord>30 31</anchorcoord>
-						<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\RTittyFront.png</filename>
+						<filename>RTittyFront.png</filename>
 						<joints>
 							<Item Type="AnimationLib.JointDataXML">
 								<location>31 31</location>
@@ -189,7 +189,7 @@
 						<upperleft>0 0</upperleft>
 						<lowerright>57 73</lowerright>
 						<anchorcoord>-4 29</anchorcoord>
-						<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\LTittySide.png</filename>
+						<filename>LTittySide.png</filename>
 						<joints>
 							<Item Type="AnimationLib.JointDataXML">
 								<location>49 34</location>
@@ -219,7 +219,7 @@
 						<upperleft>0 0</upperleft>
 						<lowerright>29 55</lowerright>
 						<anchorcoord>12 29</anchorcoord>
-						<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\CenterPieceFront.png</filename>
+						<filename>CenterPieceFront.png</filename>
 						<joints>
 							<Item Type="AnimationLib.JointDataXML">
 								<location>12 29</location>
@@ -236,7 +236,7 @@
 						<upperleft>0 0</upperleft>
 						<lowerright>57 73</lowerright>
 						<anchorcoord>9 37</anchorcoord>
-						<filename>Resources\Tabby\Clothes\Nekkid\Chesticle\LTittySide.png</filename>
+						<filename>LTittySide.png</filename>
 						<joints>
 							<Item Type="AnimationLib.JointDataXML">
 								<location>0 0</location>

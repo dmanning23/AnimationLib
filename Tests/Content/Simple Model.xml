@@ -2,7 +2,7 @@
 <XnaContent>
 	<Asset Type="AnimationLib.BoneXML">
 		<name>Crotch</name>
-		<type>AnimationLib.Bone</type>
+		<type>Normal</type>
 		<colorable>false</colorable>
 		<joints>
 			<Item Type="AnimationLib.JointXML">
@@ -80,7 +80,7 @@
 		<bones>
 			<Item Type="AnimationLib.BoneXML">
 				<name>Torso</name>
-				<type>AnimationLib.Bone</type>
+				<type>Normal</type>
 				<colorable>false</colorable>
 				<joints>
 					<Item Type="AnimationLib.JointXML">
@@ -143,7 +143,7 @@
 				<bones>
 					<Item Type="AnimationLib.BoneXML">
 						<name>Chesticle</name>
-						<type>AnimationLib.Bone</type>
+						<type>Normal</type>
 						<colorable>false</colorable>
 						<joints />
 						<images>

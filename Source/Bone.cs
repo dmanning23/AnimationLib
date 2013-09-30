@@ -1471,7 +1471,7 @@ namespace AnimationLib
 
 			//add the type attribute
 			rXMLFile.WriteStartElement("type");
-			rXMLFile.WriteString("AnimationLib.Bone");
+			rXMLFile.WriteString(BoneType.ToString());
 			rXMLFile.WriteEndElement();
 
 			//add whether or not this bone ignores palette swap
