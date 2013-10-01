@@ -62,29 +62,29 @@
     <Folder Include="Content\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Simple Animations.xml" />
-    <None Include="Content\Simple Model.xml" />
-    <None Include="Content\Tabby animations.xml" />
-    <None Include="Content\Tabby model.xml" />
-    <None Include="Content\clothes\Simple Garment.xml" />
-    <None Include="Content\clothes\Nekkid\Chesticle\CenterPieceFront.png" />
-    <None Include="Content\clothes\Nekkid\Chesticle\chesticle animations.xml" />
-    <None Include="Content\clothes\Nekkid\Chesticle\chesticle model.xml" />
-    <None Include="Content\clothes\Nekkid\Chesticle\ChesticleBack.png" />
-    <None Include="Content\clothes\Nekkid\Chesticle\ChesticleFront.png" />
-    <None Include="Content\clothes\Nekkid\Chesticle\ChesticleSide.png" />
-    <None Include="Content\clothes\Nekkid\Chesticle\LTittyFront.png" />
-    <None Include="Content\clothes\Nekkid\Chesticle\LTittySide.png" />
-    <None Include="Content\clothes\Nekkid\Chesticle\RTittyFront.png" />
-    <None Include="Content\clothes\Nekkid\Crotch\crotch animations.xml" />
-    <None Include="Content\clothes\Nekkid\Crotch\crotch model.xml" />
-    <None Include="Content\clothes\Nekkid\Crotch\CrotchBack.png" />
-    <None Include="Content\clothes\Nekkid\Crotch\CrotchFront.png" />
-    <None Include="Content\clothes\Nekkid\Crotch\CrotchSide.png" />
-    <None Include="Content\clothes\Nekkid\Torso\torso animations.xml" />
-    <None Include="Content\clothes\Nekkid\Torso\torso model.xml" />
-    <None Include="Content\clothes\Nekkid\Torso\TorsoBack.png" />
-    <None Include="Content\clothes\Nekkid\Torso\TorsoFront.png" />
-    <None Include="Content\clothes\Nekkid\Torso\TorsoSide.png" />
+    <None Include="Content\Simple\Simple Animations.xml" />
+    <None Include="Content\Simple\Simple Model.xml" />
+    <None Include="Content\Simple\Tabby Animations.xml" />
+    <None Include="Content\Simple\Tabby Model.xml" />
+    <None Include="Content\Simple\Clothes\Simple Garment.xml" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\CenterPieceFront.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\Chesticle Animations.xml" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\Chesticle Model.xml" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleBack.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleFront.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleSide.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\LTittyFront.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\LTittySide.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\RTittyFront.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Crotch\Crotch Animations.xml" />
+    <None Include="Content\Simple\Clothes\Nekkid\Crotch\Crotch Model.xml" />
+    <None Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchBack.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchFront.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchSide.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Torso\Torso Animations.xml" />
+    <None Include="Content\Simple\Clothes\Nekkid\Torso\Torso Model.xml" />
+    <None Include="Content\Simple\Clothes\Nekkid\Torso\TorsoBack.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Torso\TorsoFront.png" />
+    <None Include="Content\Simple\Clothes\Nekkid\Torso\TorsoSide.png" />
   </ItemGroup>
 </Project>
