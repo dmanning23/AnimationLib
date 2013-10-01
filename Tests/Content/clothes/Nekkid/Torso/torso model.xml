@@ -4,18 +4,14 @@
 		<name>Torso Nekkid</name>
 		<type>Normal</type>
 		<colorable>false</colorable>
-		<joints>
-			
-		</joints>
+		<joints />
 		<images>
 			<Item Type="AnimationLib.ImageXML">
 				<upperleft>0 0</upperleft>
 				<lowerright>89 147</lowerright>
 				<anchorcoord>47 116</anchorcoord>
 				<filename>Clothes\Nekkid\Torso\TorsoFront.png</filename>
-				<joints>
-					
-				</joints>
+				<joints />
 				<circles />
 				<lines />
 			</Item>
@@ -24,9 +20,7 @@
 				<lowerright>72 129</lowerright>
 				<anchorcoord>33 84</anchorcoord>
 				<filename>Clothes\Nekkid\Torso\TorsoSide.png</filename>
-				<joints>
-					
-				</joints>
+				<joints />
 				<circles />
 				<lines />
 			</Item>
@@ -35,16 +29,12 @@
 				<lowerright>82 167</lowerright>
 				<anchorcoord>38 116</anchorcoord>
 				<filename>Clothes\Nekkid\Torso\TorsoBack.png</filename>
-				<joints>
-					
-				</joints>
+				<joints />
 				<circles />
 				<lines />
 			</Item>
 		</images>
-		<bones>
-			
-		</bones>
+		<bones />
 		<parentBone>Torso</parentBone>
 	</Asset>
 </XnaContent>
