@@ -10,7 +10,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>89 147</lowerright>
 				<anchorcoord>47 116</anchorcoord>
-				<filename>Clothes\Nekkid\Torso\TorsoFront.png</filename>
+				<filename>Simple\Clothes\Nekkid\Torso\TorsoFront.png</filename>
 				<joints />
 				<circles />
 				<lines />
@@ -19,7 +19,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>72 129</lowerright>
 				<anchorcoord>33 84</anchorcoord>
-				<filename>Clothes\Nekkid\Torso\TorsoSide.png</filename>
+				<filename>Simple\Clothes\Nekkid\Torso\TorsoSide.png</filename>
 				<joints />
 				<circles />
 				<lines />
@@ -28,7 +28,7 @@
 				<upperleft>0 0</upperleft>
 				<lowerright>82 167</lowerright>
 				<anchorcoord>38 116</anchorcoord>
-				<filename>Clothes\Nekkid\Torso\TorsoBack.png</filename>
+				<filename>Simple\Clothes\Nekkid\Torso\TorsoBack.png</filename>
 				<joints />
 				<circles />
 				<lines />
