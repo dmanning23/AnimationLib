@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentXML">
+		<name>Nekkid</name>
+		<fragments>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Clothes\Nekkid\Crotch\Crotch Model.xml</model>
+				<animation>Clothes\Nekkid\Crotch\Crotch Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Clothes\Nekkid\Torso\Torso Model.xml</model>
+				<animation>Clothes\Nekkid\Torso\Torso Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Clothes\Nekkid\Chesticle\Chesticle Model.xml</model>
+				<animation>Clothes\Nekkid\Chesticle\Chesticle Animations.xml</animation>
+			</Item>
+		</fragments>
+	</Asset>
+</XnaContent>
