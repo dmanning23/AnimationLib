@@ -8,7 +8,7 @@
 				<keys>
 					<Item Type="AnimationLib.KeyXML">
 						<time>0</time>
-						<rotation>8.537733E-07</rotation>
+						<rotation>0</rotation>
 						<layer>-2001</layer>
 						<image>TorsoSide</image>
 						<flip>false</flip>
@@ -58,7 +58,7 @@
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
-						<rotation>8.537733E-07</rotation>
+						<rotation>90</rotation>
 						<layer>-2001</layer>
 						<image>TorsoSide</image>
 						<flip>false</flip>
@@ -124,7 +124,7 @@
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
-						<rotation>0</rotation>
+						<rotation>90</rotation>
 						<layer>-2000</layer>
 						<image>TorsoFront</image>
 						<flip>false</flip>
@@ -190,7 +190,7 @@
 					</Item>
 					<Item Type="AnimationLib.KeyXML">
 						<time>6</time>
-						<rotation>0</rotation>
+						<rotation>90</rotation>
 						<layer>-2000</layer>
 						<image>TorsoBack</image>
 						<flip>false</flip>

@@ -34,118 +34,49 @@ namespace AnimationLib
 		#region Member Variables
 
 		/// <summary>
-		/// the time of this key element, stored in 1/60ths of a second
-		/// </summary>
-		private int m_iTime;
-
-		/// <summary>
-		/// the angle of rotation
-		/// </summary>
-		private float m_fRotation;
-
-		/// <summary>
-		/// the offset from the parents layer to draw at
-		/// </summary>
-		private int m_iLayer;
-
-		/// <summary>
-		/// teh name of the image to use, will be filename with no path info
-		/// </summary>
-		private string m_strImageName;
-
-		/// <summary>
-		/// the index of teh image to draw
-		/// </summary>
-		private int m_iImageIndex;
-
-		/// <summary>
-		/// whether it should be reversed on the x plane(drawn backwards)
-		/// </summary>
-		private bool m_bFlip;
-
-		/// <summary>
-		/// the bool flags the element as a keyframe
-		/// this is needed for recalibrating the animation
-		/// </summary>
-		private bool m_bKeyFrame;
-
-		/// <summary>
 		/// the translation for this frame
 		/// </summary>
 		private Vector2 m_Translation;
-
-		/// <summary>
-		/// whether or not to turn on ragdoll physics
-		/// </summary>
-		private bool m_bRagDoll;
-
-		/// <summary>
-		/// The name of the joint that this keyframe describes
-		/// </summary>
-		private string m_strJointName;
 
 		#endregion
 
 		#region Properties
 
 		/// <summary>
-		/// Get or set the m_fTime member variable
+		/// the time of this key element, stored in 1/60ths of a second
 		/// </summary>
-		public int Time
-		{
-			get { return m_iTime; }
-			set { m_iTime = value; }
-		}
+		public int Time { get; set; }
 
 		/// <summary>
-		/// Get or set the m_fRotation member variable
+		/// the angle of rotation, stored in radians
 		/// </summary>
-		public float Rotation
-		{
-			get { return m_fRotation; }
-			set { m_fRotation = value; }
-		}
+		public float Rotation { get; set; }
 
 		/// <summary>
-		/// Get or set the m_iLayer member variable
+		/// the offset from the parents layer to draw at
 		/// </summary>
-		public int Layer
-		{
-			get { return m_iLayer; }
-			set { m_iLayer = value; }
-		}
+		public int Layer { get; set; }
 
 		/// <summary>
-		/// Get or set the m_iFrameIndex member variable
+		/// the index of teh image to draw
 		/// </summary>
-		public int ImageIndex
-		{
-			get { return m_iImageIndex; }
-			set { m_iImageIndex = value; }
-		}
-
-		public string ImageName
-		{
-			get { return m_strImageName; }
-		}
+		public int ImageIndex { get; set; }
 
 		/// <summary>
-		/// Get or set the m_bFlip member variable
+		/// teh name of the image to use, will be filename with no path info
 		/// </summary>
-		public bool Flip
-		{
-			get { return m_bFlip; }
-			set { m_bFlip = value; }
-		}
+		public string ImageName { get; set; }
 
 		/// <summary>
-		/// Get or set the m_bKeyFrame member variable
+		/// whether it should be reversed on the x plane(drawn backwards)
 		/// </summary>
-		public bool KeyFrame
-		{
-			get { return m_bKeyFrame; }
-			set { m_bKeyFrame = value; }
-		}
+		public bool Flip { get; set; }
+
+		/// <summary>
+		/// the bool flags the element as a keyframe
+		/// this is needed for recalibrating the animation
+		/// </summary>
+		public bool KeyFrame { get; set; }
 
 		/// <summary>
 		/// Get or set the m_Translation member variable
@@ -167,19 +98,14 @@ namespace AnimationLib
 		}
 
 		/// <summary>
-		/// Get or set the ragdoll member variable
+		/// whether or not to turn on ragdoll physics
 		/// </summary>
-		public bool RagDoll
-		{
-			get { return m_bRagDoll; }
-			set { m_bRagDoll = value; }
-		}
+		public bool RagDoll { get; set; }
 
-		public string JointName
-		{
-			get { return m_strJointName; }
-			set { m_strJointName = value; }
-		}
+		/// <summary>
+		/// The name of the joint that this keyframe describes
+		/// </summary>
+		public string JointName { get; set; }
 
 		#endregion
 
@@ -191,43 +117,43 @@ namespace AnimationLib
 		public KeyElement()
 		{
 			m_Translation = new Vector2(0.0f);
-			m_iTime = 0;
-			m_fRotation = 0.0f;
-			m_iLayer = -1;
-			m_iImageIndex = -1;
-			m_bFlip = false;
-			m_bKeyFrame = false;
-			m_bRagDoll = false;
+			Time = 0;
+			Rotation = 0.0f;
+			Layer = -1;
+			ImageIndex = -1;
+			Flip = false;
+			KeyFrame = false;
+			RagDoll = false;
 		}
 
 		public void Copy(KeyElement rInst)
 		{
 			m_Translation.X = rInst.m_Translation.X;
 			m_Translation.Y = rInst.m_Translation.Y;
-			m_iTime = rInst.m_iTime;
-			m_fRotation = rInst.m_fRotation;
-			m_iLayer = rInst.m_iLayer;
-			m_iImageIndex = rInst.m_iImageIndex;
-			m_bFlip = rInst.m_bFlip;
-			m_bKeyFrame = rInst.m_bKeyFrame;
-			m_bRagDoll = rInst.m_bRagDoll;
+			Time = rInst.Time;
+			Rotation = rInst.Rotation;
+			Layer = rInst.Layer;
+			ImageIndex = rInst.ImageIndex;
+			Flip = rInst.Flip;
+			KeyFrame = rInst.KeyFrame;
+			RagDoll = rInst.RagDoll;
 		}
 
 		public bool Compare(KeyElement rInst)
 		{
-			if (m_fRotation != rInst.m_fRotation)
+			if (Rotation != rInst.Rotation)
 			{
 				return false;
 			}
-			else if (m_iLayer != rInst.m_iLayer)
+			else if (Layer != rInst.Layer)
 			{
 				return false;
 			}
-			else if (m_iImageIndex != rInst.m_iImageIndex)
+			else if (ImageIndex != rInst.ImageIndex)
 			{
 				return false;
 			}
-			else if (m_bFlip != rInst.m_bFlip)
+			else if (Flip != rInst.Flip)
 			{
 				return false;
 			}
@@ -239,11 +165,11 @@ namespace AnimationLib
 			{
 				return false;
 			}
-			else if (m_bRagDoll != rInst.m_bRagDoll)
+			else if (RagDoll != rInst.RagDoll)
 			{
 				return false;
 			}
-			else if (m_strJointName != rInst.m_strJointName)
+			else if (JointName != rInst.JointName)
 			{
 				return false;
 			}
@@ -260,9 +186,9 @@ namespace AnimationLib
 		/// <param name="strNewName">the new name for that joint.</param>
 		public void RenameJoint(string strOldName, string strNewName)
 		{
-			if (m_strJointName == strOldName)
+			if (JointName == strOldName)
 			{
-				m_strJointName = strNewName;
+				JointName = strNewName;
 			}
 		}
 
@@ -277,7 +203,7 @@ namespace AnimationLib
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
 		public bool ReadXMLFormat(XmlNode rXMLNode)
 		{
-			m_bKeyFrame = true;
+			KeyFrame = true;
 
 			if ("Item" != rXMLNode.Name)
 			{
@@ -315,23 +241,23 @@ namespace AnimationLib
 
 					if (strName == "time")
 					{
-						m_iTime = Convert.ToInt32(strValue);
+						Time = Convert.ToInt32(strValue);
 					}
 					else if (strName == "rotation")
 					{
-						m_fRotation = MathHelper.ToRadians(Convert.ToSingle(strValue));
+						Rotation = MathHelper.ToRadians(Convert.ToSingle(strValue));
 					}
 					else if (strName == "layer")
 					{
-						m_iLayer = Convert.ToInt32(strValue);
+						Layer = Convert.ToInt32(strValue);
 					}
 					else if (strName == "image")
 					{
-						m_strImageName = strValue;
+						ImageName = strValue;
 					}
 					else if (strName == "flip")
 					{
-						m_bFlip = Convert.ToBoolean(strValue);
+						Flip = Convert.ToBoolean(strValue);
 					}
 					else if (strName == "translation")
 					{
@@ -339,11 +265,11 @@ namespace AnimationLib
 					}
 					else if (strName == "ragdoll")
 					{
-						m_bRagDoll = Convert.ToBoolean(strValue);
+						RagDoll = Convert.ToBoolean(strValue);
 					}
 					else if (strName == "joint")
 					{
-						m_strJointName = strValue;
+						JointName = strValue;
 					}
 				}
 			}
@@ -361,31 +287,31 @@ namespace AnimationLib
 
 			//find the image this key element uses
 			string strImage = "";
-			if (-1 != m_iImageIndex)
+			if (-1 != ImageIndex)
 			{
 				//find the bone that uses this dudes joint as a keyjoint
-				Bone rChildBone = rMyBone.GetBone(m_strJointName);
+				Bone rChildBone = rMyBone.GetBone(JointName);
 				if (null != rChildBone)
 				{
-					Debug.Assert(m_iImageIndex < rChildBone.Images.Count);
-					strImage = rChildBone.Images[m_iImageIndex].ImageFile.GetFile();
+					Debug.Assert(ImageIndex < rChildBone.Images.Count);
+					strImage = rChildBone.Images[ImageIndex].ImageFile.GetFile();
 				}
 			}
 
 			//create the xml object and add it to the animation
 			AnimationLib.KeyXML myThing = new AnimationLib.KeyXML();
-			myThing.flip = m_bFlip;
+			myThing.flip = Flip;
 			myThing.image = strImage;
-			myThing.joint = m_strJointName;
-			myThing.layer = m_iLayer;
-			myThing.ragdoll = m_bRagDoll;
+			myThing.joint = JointName;
+			myThing.layer = Layer;
+			myThing.ragdoll = RagDoll;
 
 			//Set the rotation to 0 if this dude is using ragdoll
-			if (!m_bRagDoll)
+			if (!RagDoll)
 			{
-				myThing.rotation = MathHelper.ToDegrees(m_fRotation);
+				myThing.rotation = MathHelper.ToDegrees(Rotation);
 			}
-			myThing.time = m_iTime;
+			myThing.time = Time;
 			myThing.translation = m_Translation;
 
 			rXMLDude.keys.Add(myThing);
@@ -397,19 +323,19 @@ namespace AnimationLib
 		/// <param name="fMultiply"></param>
 		public void MultiplyLayers(int iMultiply)
 		{
-			m_iLayer *= iMultiply;
+			Layer *= iMultiply;
 		}
 
 		public void ReadSerializedFormat(AnimationLib.KeyXML rKeyElement)
 		{
-			m_bKeyFrame = true;
-			m_bFlip = rKeyElement.flip;
-			m_strImageName = rKeyElement.image;
-			m_strJointName = rKeyElement.joint;
-			m_iLayer = rKeyElement.layer;
-			m_bRagDoll = rKeyElement.ragdoll;
-			m_fRotation = MathHelper.ToRadians(rKeyElement.rotation);
-			m_iTime = rKeyElement.time;
+			KeyFrame = true;
+			Flip = rKeyElement.flip;
+			ImageName = rKeyElement.image;
+			JointName = rKeyElement.joint;
+			Layer = rKeyElement.layer;
+			RagDoll = rKeyElement.ragdoll;
+			Rotation = MathHelper.ToRadians(rKeyElement.rotation);
+			Time = rKeyElement.time;
 			m_Translation = rKeyElement.translation;
 		}
 
