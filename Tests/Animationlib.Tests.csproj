@@ -57,34 +57,90 @@
       <Project>{252DF212-370D-4682-B3D8-85CE9ACE545E}</Project>
       <Name>AnimationLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\externals\RenderBuddy\Windows\RenderBuddy.Windows.csproj">
+      <Project>{5C9D6145-A763-4B79-8541-0C44C6DEE72D}</Project>
+      <Name>RenderBuddy.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\externals\Filename\Windows\Filename.Windows.csproj">
+      <Project>{2A84DFE8-75E0-4774-BAAF-00629ED44405}</Project>
+      <Name>Filename.Windows</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Simple\Simple Animations.xml" />
-    <None Include="Content\Simple\Simple Model.xml" />
-    <None Include="Content\Simple\Tabby Animations.xml" />
-    <None Include="Content\Simple\Tabby Model.xml" />
-    <None Include="Content\Simple\Clothes\Simple Garment.xml" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\CenterPieceFront.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\Chesticle Animations.xml" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\Chesticle Model.xml" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleBack.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleFront.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleSide.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\LTittyFront.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\LTittySide.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Chesticle\RTittyFront.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Crotch\Crotch Animations.xml" />
-    <None Include="Content\Simple\Clothes\Nekkid\Crotch\Crotch Model.xml" />
-    <None Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchBack.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchFront.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchSide.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Torso\Torso Animations.xml" />
-    <None Include="Content\Simple\Clothes\Nekkid\Torso\Torso Model.xml" />
-    <None Include="Content\Simple\Clothes\Nekkid\Torso\TorsoBack.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Torso\TorsoFront.png" />
-    <None Include="Content\Simple\Clothes\Nekkid\Torso\TorsoSide.png" />
+    <Content Include="Content\Simple\Simple Animations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Simple Model.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Tabby Animations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Tabby Model.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Simple Garment.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\CenterPieceFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\Chesticle Animations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\Chesticle Model.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleBack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleSide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\LTittyFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\LTittySide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\RTittyFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\Crotch Animations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\Crotch Model.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchBack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchSide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\Torso Animations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\Torso Model.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\TorsoBack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\TorsoFront.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\TorsoSide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

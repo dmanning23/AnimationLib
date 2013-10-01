@@ -118,7 +118,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Whether or not this bone should be colored by the palette swap
 		/// </summary>
-		protected bool Colorable { get; set; }
+		public bool Colorable { get; set; }
 
 		#endregion //Properties
 

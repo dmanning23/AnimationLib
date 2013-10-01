@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using AnimationLib;
+using FilenameBuddy;
 
 namespace Animationlib.Tests
 {
@@ -35,6 +36,144 @@ namespace Animationlib.Tests
 		}
 
 		#endregion //Type Tests
+
+		#region load tests
+
+		[Test()]
+		public void LoadedCrotch()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.IsNotNull(test.Model);
+		}
+
+		[Test()]
+		public void LoadedCrotchName()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual("Crotch", test.Model.Name);
+		}
+
+		[Test()]
+		public void LoadedCrotchType()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual(EBoneType.Normal, test.Model.BoneType);
+		}
+
+		[Test()]
+		public void LoadedCrotchColorable()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual(false, test.Model.Colorable);
+		}
+
+		[Test()]
+		public void LoadedCrotchJoints()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual(1, test.Model.Joints.Count);
+		}
+
+		[Test()]
+		public void LoadedCrotchImages()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual(3, test.Model.Images.Count);
+		}
+
+		[Test()]
+		public void LoadedCrotchBones()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual(1, test.Model.Bones.Count);
+		}
+
+		[Test()]
+		public void LoadedTorso()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.IsNotNull(test.Model.GetBone("Torso"));
+		}
+
+		[Test()]
+		public void LoadedTorsoType()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual(EBoneType.Foot, test.Model.GetBone("Torso").BoneType);
+		}
+
+		[Test()]
+		public void LoadedTorsoColorable()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual(true, test.Model.GetBone("Torso").Colorable);
+		}
+
+		[Test()]
+		public void LoadedChesticle()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.IsNotNull(test.Model.GetBone("Chesticle"));
+		}
+
+		[Test()]
+		public void LoadedChesticleType()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			bool bTest = test.ReadXMLModelFormat(testFile.File, null);
+
+			Assert.AreEqual(EBoneType.Weapon, test.Model.GetBone("Chesticle").BoneType);
+		}
+
+		#endregion //load tests
+
+
 	}
 }
 
