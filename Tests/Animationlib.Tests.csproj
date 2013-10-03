@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="Content\SuperSimple\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Simple\Simple Animations.xml">
@@ -142,5 +143,18 @@
     <Content Include="Content\Simple\Clothes\Nekkid\Torso\TorsoSide.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\SuperSimple\ChesticleBack.png" />
+    <None Include="Content\SuperSimple\ChesticleFront.png" />
+    <None Include="Content\SuperSimple\ChesticleSide.png" />
+    <None Include="Content\SuperSimple\CrotchBack.png" />
+    <None Include="Content\SuperSimple\CrotchFront.png" />
+    <None Include="Content\SuperSimple\CrotchSide.png" />
+    <None Include="Content\SuperSimple\Simple Animations.xml" />
+    <None Include="Content\SuperSimple\Simple Model.xml" />
+    <None Include="Content\SuperSimple\TorsoBack.png" />
+    <None Include="Content\SuperSimple\TorsoFront.png" />
+    <None Include="Content\SuperSimple\TorsoSide.png" />
   </ItemGroup>
 </Project>

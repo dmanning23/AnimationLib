@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.BoneXML">
+		<name>Crotch</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints>
+			<Item Type="AnimationLib.JointXML">
+				<name>Torso</name>
+			</Item>
+		</joints>
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 150</lowerright>
+				<anchorcoord>74 62</anchorcoord>
+				<filename>SuperSimple\CrotchFront.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>67 44</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>69 97</center>
+						<radius>78.1089</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>135 159</lowerright>
+				<anchorcoord>66 68</anchorcoord>
+				<filename>SuperSimple\CrotchSide.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>71 32</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>57 132</center>
+						<radius>73.54591</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 150</lowerright>
+				<anchorcoord>74 70</anchorcoord>
+				<filename>SuperSimple\CrotchBack.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>76 51</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>76 104</center>
+						<radius>84.5281</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+		</images>
+		<bones>
+			<Item Type="AnimationLib.BoneXML">
+				<name>Torso</name>
+				<type>Foot</type>
+				<colorable>true</colorable>
+				<joints>
+					<Item Type="AnimationLib.JointXML">
+						<name>Chesticle</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>78 126</lowerright>
+						<anchorcoord>37 99</anchorcoord>
+						<filename>SuperSimple\TorsoFront.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>40 38</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>124 167</lowerright>
+						<anchorcoord>60 120</anchorcoord>
+						<filename>SuperSimple\TorsoSide.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>63 72</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>78 126</lowerright>
+						<anchorcoord>37 99</anchorcoord>
+						<filename>SuperSimple\TorsoBack.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>35 30</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones>
+					<Item Type="AnimationLib.BoneXML">
+						<name>Chesticle</name>
+						<type>Weapon</type>
+						<colorable>false</colorable>
+						<joints />
+						<images>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>128 128</lowerright>
+								<anchorcoord>71 94</anchorcoord>
+								<filename>SuperSimple\ChesticleFront.png</filename>
+								<joints />
+								<circles>
+									<Item Type="AnimationLib.CircleXML">
+										<center>62 76</center>
+										<radius>75.02666</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>119 139</lowerright>
+								<anchorcoord>63 102</anchorcoord>
+								<filename>SuperSimple\ChesticleSide.png</filename>
+								<joints />
+								<circles>
+									<Item Type="AnimationLib.CircleXML">
+										<center>65 109</center>
+										<radius>69.18092</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>128 128</lowerright>
+								<anchorcoord>71 94</anchorcoord>
+								<filename>SuperSimple\ChesticleBack.png</filename>
+								<joints />
+								<circles>
+									<Item Type="AnimationLib.CircleXML">
+										<center>66 75</center>
+										<radius>72.02777</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+						</images>
+						<bones />
+					</Item>
+				</bones>
+			</Item>
+		</bones>
+	</Asset>
+</XnaContent>
