@@ -32,9 +32,16 @@ namespace AnimationLib
 
 		#region Properties
 
+		public Vector2 UpperLeft
+		{
+			get { return m_UpperLeftUV; }
+			set { m_LowerRightUV = value; }
+		}
+
 		public Vector2 LowerRight
 		{
 			get { return m_LowerRightUV; }
+			set { m_LowerRightUV = value; }
 		}
 
 		public Filename ImageFile { get; set; }
@@ -83,9 +90,9 @@ namespace AnimationLib
 			JointCoords = new List<JointData>();
 			Circles = new List<PhysicsCircle>();
 			Lines = new List<PhysicsLine>();
-			m_UpperLeftUV = new Vector2(0.0f);
-			m_LowerRightUV = new Vector2(0.0f);
-			m_AnchorCoord = new Vector2(0.0f);
+			m_UpperLeftUV = Vector2.Zero;
+			m_LowerRightUV = Vector2.Zero;
+			m_AnchorCoord = Vector2.Zero;
 			m_Image = null;
 			ImageFile = new Filename();
 		}
