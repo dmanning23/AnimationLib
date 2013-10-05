@@ -10,7 +10,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-2001</layer>
-						<image>TorsoSide</image>
+						<image>TorsoSide.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -20,7 +20,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>ChesticleSide</image>
+						<image>ChesticleSide.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -30,7 +30,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>CrotchSide</image>
+						<image>CrotchSide.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -40,7 +40,7 @@
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>ChesticleSide</image>
+						<image>ChesticleSide.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -50,7 +50,7 @@
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>CrotchSide</image>
+						<image>CrotchSide.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -60,7 +60,7 @@
 						<time>6</time>
 						<rotation>90</rotation>
 						<layer>-2001</layer>
-						<image>TorsoSide</image>
+						<image>TorsoSide.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -76,7 +76,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-2000</layer>
-						<image>TorsoFront</image>
+						<image>TorsoFront.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -86,7 +86,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>ChesticleFront</image>
+						<image>ChesticleFront.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -96,7 +96,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>CrotchFront</image>
+						<image>CrotchFront.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -106,7 +106,7 @@
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>ChesticleFront</image>
+						<image>ChesticleFront.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -116,7 +116,7 @@
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>CrotchFront</image>
+						<image>CrotchFront.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -126,7 +126,7 @@
 						<time>6</time>
 						<rotation>90</rotation>
 						<layer>-2000</layer>
-						<image>TorsoFront</image>
+						<image>TorsoFront.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -142,7 +142,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-2000</layer>
-						<image>TorsoBack</image>
+						<image>TorsoBack.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -152,7 +152,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>ChesticleBack</image>
+						<image>ChesticleBack.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -162,7 +162,7 @@
 						<time>0</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>CrotchBack</image>
+						<image>CrotchBack.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -172,7 +172,7 @@
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>ChesticleBack</image>
+						<image>ChesticleBack.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -182,7 +182,7 @@
 						<time>6</time>
 						<rotation>0</rotation>
 						<layer>-100</layer>
-						<image>CrotchBack</image>
+						<image>CrotchBack.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>
@@ -192,7 +192,7 @@
 						<time>6</time>
 						<rotation>90</rotation>
 						<layer>-2000</layer>
-						<image>TorsoBack</image>
+						<image>TorsoBack.png</image>
 						<flip>false</flip>
 						<translation>0 0</translation>
 						<ragdoll>false</ragdoll>

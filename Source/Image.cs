@@ -35,7 +35,7 @@ namespace AnimationLib
 		public Vector2 UpperLeft
 		{
 			get { return m_UpperLeftUV; }
-			set { m_LowerRightUV = value; }
+			set { m_UpperLeftUV = value; }
 		}
 
 		public Vector2 LowerRight
@@ -57,7 +57,7 @@ namespace AnimationLib
 
 		public float Width
 		{
-			get { return m_LowerRightUV.X - m_UpperLeftUV.X; }
+			get { return LowerRight.X - UpperLeft.X; }
 		}
 
 		/// <summary>
@@ -90,8 +90,8 @@ namespace AnimationLib
 			JointCoords = new List<JointData>();
 			Circles = new List<PhysicsCircle>();
 			Lines = new List<PhysicsLine>();
-			m_UpperLeftUV = Vector2.Zero;
-			m_LowerRightUV = Vector2.Zero;
+			UpperLeft = Vector2.Zero;
+			LowerRight = Vector2.Zero;
 			m_AnchorCoord = Vector2.Zero;
 			m_Image = null;
 			ImageFile = new Filename();
@@ -314,12 +314,12 @@ namespace AnimationLib
 					if (strName == "upperleft")
 					{
 						//convert to the correct vector
-						m_UpperLeftUV = strValue.ToVector2();
+						UpperLeft = strValue.ToVector2();
 					}
 					else if (strName == "lowerright")
 					{
 						//convert to the correct vector
-						m_LowerRightUV = strValue.ToVector2();
+						LowerRight = strValue.ToVector2();
 					}
 					else if (strName == "anchorcoord")
 					{
@@ -344,8 +344,8 @@ namespace AnimationLib
 									return false;
 								}
 
-								m_UpperLeftUV = Vector2.Zero;
-								m_LowerRightUV = new Vector2(m_Image.Width, m_Image.Height);
+								UpperLeft = Vector2.Zero;
+								LowerRight = new Vector2(m_Image.Width, m_Image.Height);
 							}
 						}
 					}
@@ -441,14 +441,14 @@ namespace AnimationLib
 
 			//write out upper left coords
 			rXMLFile.WriteStartElement("upperleft");
-			rXMLFile.WriteString(m_UpperLeftUV.X.ToString() + " " +
-				m_UpperLeftUV.Y.ToString());
+			rXMLFile.WriteString(UpperLeft.X.ToString() + " " +
+				UpperLeft.Y.ToString());
 			rXMLFile.WriteEndElement();
 
 			//write out lower right coords
 			rXMLFile.WriteStartElement("lowerright");
-			rXMLFile.WriteString(m_LowerRightUV.X.ToString() + " " +
-				m_LowerRightUV.Y.ToString());
+			rXMLFile.WriteString(LowerRight.X.ToString() + " " +
+				LowerRight.Y.ToString());
 			rXMLFile.WriteEndElement();
 
 			//write out lower right coords
@@ -496,8 +496,8 @@ namespace AnimationLib
 		public bool ReadSerializedFormat(AnimationLib.ImageXML rImage, IRenderer rRenderer)
 		{
 			//grab all that stuff
-			m_UpperLeftUV = rImage.upperleft;
-			m_LowerRightUV = rImage.lowerright;
+			UpperLeft = rImage.upperleft;
+			LowerRight = rImage.lowerright;
 			m_AnchorCoord = rImage.anchorcoord;
 
 			//add the ability to have blank image, which means a skeletal structure that is not displayed
