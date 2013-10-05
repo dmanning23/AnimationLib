@@ -19,9 +19,9 @@
 					<Item Type="AnimationLib.JointDataXML">
 						<location>67 44</location>
 						<limit1>-180</limit1>
-						<limit2>180</limit2>
-						<FloatRadius>0</FloatRadius>
-						<FloatOrRotate>false</FloatOrRotate>
+						<limit2>260</limit2>
+						<FloatRadius>10</FloatRadius>
+						<FloatOrRotate>true</FloatOrRotate>
 					</Item>
 				</joints>
 				<circles>
