@@ -12,7 +12,7 @@
 		<images>
 			<Item Type="AnimationLib.ImageXML">
 				<upperleft>0 0</upperleft>
-				<lowerright>137 150</lowerright>
+				<lowerright>129 116</lowerright>
 				<anchorcoord>74 62</anchorcoord>
 				<filename>SuperSimple\CrotchFront.png</filename>
 				<joints>
@@ -34,7 +34,7 @@
 			</Item>
 			<Item Type="AnimationLib.ImageXML">
 				<upperleft>0 0</upperleft>
-				<lowerright>135 159</lowerright>
+				<lowerright>87 117</lowerright>
 				<anchorcoord>66 68</anchorcoord>
 				<filename>SuperSimple\CrotchSide.png</filename>
 				<joints>
@@ -56,7 +56,7 @@
 			</Item>
 			<Item Type="AnimationLib.ImageXML">
 				<upperleft>0 0</upperleft>
-				<lowerright>137 150</lowerright>
+				<lowerright>125 129</lowerright>
 				<anchorcoord>74 70</anchorcoord>
 				<filename>SuperSimple\CrotchBack.png</filename>
 				<joints>
@@ -90,7 +90,7 @@
 				<images>
 					<Item Type="AnimationLib.ImageXML">
 						<upperleft>0 0</upperleft>
-						<lowerright>78 126</lowerright>
+						<lowerright>89 147</lowerright>
 						<anchorcoord>37 99</anchorcoord>
 						<filename>SuperSimple\TorsoFront.png</filename>
 						<joints>
@@ -107,7 +107,7 @@
 					</Item>
 					<Item Type="AnimationLib.ImageXML">
 						<upperleft>0 0</upperleft>
-						<lowerright>124 167</lowerright>
+						<lowerright>72 129</lowerright>
 						<anchorcoord>60 120</anchorcoord>
 						<filename>SuperSimple\TorsoSide.png</filename>
 						<joints>
@@ -124,7 +124,7 @@
 					</Item>
 					<Item Type="AnimationLib.ImageXML">
 						<upperleft>0 0</upperleft>
-						<lowerright>78 126</lowerright>
+						<lowerright>82 167</lowerright>
 						<anchorcoord>37 99</anchorcoord>
 						<filename>SuperSimple\TorsoBack.png</filename>
 						<joints>
@@ -149,7 +149,7 @@
 						<images>
 							<Item Type="AnimationLib.ImageXML">
 								<upperleft>0 0</upperleft>
-								<lowerright>128 128</lowerright>
+								<lowerright>113 133</lowerright>
 								<anchorcoord>71 94</anchorcoord>
 								<filename>SuperSimple\ChesticleFront.png</filename>
 								<joints />
@@ -163,7 +163,7 @@
 							</Item>
 							<Item Type="AnimationLib.ImageXML">
 								<upperleft>0 0</upperleft>
-								<lowerright>119 139</lowerright>
+								<lowerright>89 131</lowerright>
 								<anchorcoord>63 102</anchorcoord>
 								<filename>SuperSimple\ChesticleSide.png</filename>
 								<joints />
@@ -177,7 +177,7 @@
 							</Item>
 							<Item Type="AnimationLib.ImageXML">
 								<upperleft>0 0</upperleft>
-								<lowerright>128 128</lowerright>
+								<lowerright>108 116</lowerright>
 								<anchorcoord>71 94</anchorcoord>
 								<filename>SuperSimple\ChesticleBack.png</filename>
 								<joints />
