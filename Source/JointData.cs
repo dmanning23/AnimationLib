@@ -27,16 +27,6 @@ namespace AnimationLib
 		private float m_SecondLimit = MathHelper.Pi;
 
 		/// <summary>
-		/// the first rotation limit for ragdoll when parent bone is flipped
-		/// </summary>
-		private float m_FirstLimitFlipped;
-
-		/// <summary>
-		/// the second rotation limit for ragdoll when parent bone is flipped
-		/// </summary>
-		private float m_SecondLimitFlipped;
-
-		/// <summary>
 		/// This is the vector from this joint position to the anchor location
 		/// </summary>
 		private Vector2 m_AnchorVect;
@@ -96,8 +86,14 @@ namespace AnimationLib
 			}
 		}
 
+		/// <summary>
+		/// the first rotation limit for ragdoll when parent bone is flipped
+		/// </summary>
 		public float FirstLimitFlipped { get; private set; }
 
+		/// <summary>
+		/// the second rotation limit for ragdoll when parent bone is flipped
+		/// </summary>
 		public float SecondLimitFlipped { get; private set; }
 
 		#endregion
@@ -109,9 +105,6 @@ namespace AnimationLib
 			m_Location = new Vector2(0.0f);
 			m_AnchorVect = new Vector2(0.0f);
 			Length = 0.0f;
-
-
-
 			FloatRadius = 0.0f;
 			Floating = false;
 		}
