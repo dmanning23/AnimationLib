@@ -4,6 +4,7 @@ using System;
 using AnimationLib;
 using FilenameBuddy;
 using RenderBuddy.Tests;
+using GameTimer;
 
 namespace Animationlib.Tests
 {
@@ -228,6 +229,41 @@ namespace Animationlib.Tests
 		}
 
 		#endregion //coord tests
+
+		#region Update Tests
+
+		[Test()]
+		public void UpdateIndex()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			test.ReadXMLModelFormat(testFile.File, null);
+			testFile.SetRelFilename("Simple\\Simple Animations.xml");
+			test.ReadXMLAnimationFormat(testFile.File);
+			test.SetAnimation(0, EPlayback.Forwards);
+
+			GameClock timer = new GameClock();
+			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			Assert.AreEqual(0, test.Model.ImageIndex);
+		}
+
+		[Test()]
+		public void UpdateImage()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			test.ReadXMLModelFormat(testFile.File, null);
+			testFile.SetRelFilename("Simple\\Simple Animations.xml");
+			test.ReadXMLAnimationFormat(testFile.File);
+			test.SetAnimation(0, EPlayback.Forwards);
+
+			GameClock timer = new GameClock();
+			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			Assert.NotNull(test.Model.GetCurrentImage());
+		}
+
+		#endregion //Update Tests
 	}
 }
-

@@ -21,8 +21,15 @@ namespace AnimationLib
 	{
 		#region Member Variables
 
-		//The way the current animation is being played
+		/// <summary>
+		/// The way the current animation is being played
+		/// </summary>
 		private EPlayback m_ePlayback;
+
+		/// <summary>
+		/// Index of the current animation being played
+		/// </summary>
+		private int m_iAnimationIndex;
 
 		#endregion
 
@@ -43,9 +50,20 @@ namespace AnimationLib
 		/// Index of the current animation being played
 		/// </summary>
 		/// <value>The index of the current animation.</value>
-		public int CurrentAnimationIndex { get; protected set; }
+		public int CurrentAnimationIndex 
+		{
+			get { return m_iAnimationIndex; }
+			set
+			{
+				m_iAnimationIndex = value;
 
-		/// <summary>
+				//If there is an animation at that index, use it.
+				CurrentAnimation = (((0 <= m_iAnimationIndex) && (Animations.Count > m_iAnimationIndex))
+				                    ? Animations[m_iAnimationIndex] : null);
+			}
+		}
+
+		/// 			<summary>
 		/// the list of animations 
 		/// </summary>
 		/// <value>The animations.</value>
@@ -77,7 +95,6 @@ namespace AnimationLib
 		{
 			Model = null;
 			Animations = new List<Animation>();
-			CurrentAnimation = null;
 			CurrentAnimationIndex = -1;
 			StopWatch = new GameClock();
 			m_ePlayback = EPlayback.Forwards;
@@ -176,6 +193,7 @@ namespace AnimationLib
 			bool bIgnoreRagdoll)
 		{
 			Debug.Assert(null != Model);
+			Debug.Assert(null != CurrentAnimation);
 
 			//Apply teh current animation to the bones and stuff
 			Model.AnchorJoint.Position = myPosition;
@@ -239,15 +257,11 @@ namespace AnimationLib
 		/// <param name="ePlaybackMode">the playback mode to use</param>
 		public void SetAnimation(int iIndex, EPlayback ePlaybackMode)
 		{
-			if ((iIndex >= 0) && (iIndex < Animations.Count))
-			{
-				//set teh stuff
-				m_ePlayback = ePlaybackMode;
-				CurrentAnimation = Animations[iIndex];
-				CurrentAnimationIndex = iIndex;
+			//set teh stuff
+			m_ePlayback = ePlaybackMode;
+			CurrentAnimationIndex = iIndex;
 
-				RestartAnimation();
-			}
+			RestartAnimation();
 		}
 
 		/// <summary>

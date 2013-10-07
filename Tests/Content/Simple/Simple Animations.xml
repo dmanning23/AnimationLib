@@ -3,72 +3,6 @@
 	<Asset Type="AnimationLib.AnimationContainerXML">
 		<animations>
 			<Item Type="AnimationLib.AnimationXML">
-				<name>NEUTRAL side</name>
-				<length>0.1</length>
-				<keys>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-2001</layer>
-						<image>TorsoSide</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Torso</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-100</layer>
-						<image>ChesticleSide</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Chesticle</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>0</time>
-						<rotation>0</rotation>
-						<layer>-100</layer>
-						<image>CrotchSide</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Crotch</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-100</layer>
-						<image>ChesticleSide</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Chesticle</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>0</rotation>
-						<layer>-100</layer>
-						<image>CrotchSide</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Crotch</joint>
-					</Item>
-					<Item Type="AnimationLib.KeyXML">
-						<time>6</time>
-						<rotation>90</rotation>
-						<layer>-2001</layer>
-						<image>TorsoSide</image>
-						<flip>false</flip>
-						<translation>0 0</translation>
-						<ragdoll>false</ragdoll>
-						<joint>Torso</joint>
-					</Item>
-				</keys>
-			</Item>
-			<Item Type="AnimationLib.AnimationXML">
 				<name>NEUTRAL front</name>
 				<length>0.1</length>
 				<keys>
@@ -134,6 +68,73 @@
 					</Item>
 				</keys>
 			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>NEUTRAL side</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-2001</layer>
+						<image>TorsoSide</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Torso</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-100</layer>
+						<image>ChesticleSide</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Chesticle</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-100</layer>
+						<image>CrotchSide</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Crotch</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-100</layer>
+						<image>ChesticleSide</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Chesticle</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-100</layer>
+						<image>CrotchSide</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Crotch</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>90</rotation>
+						<layer>-2001</layer>
+						<image>TorsoSide</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Torso</joint>
+					</Item>
+				</keys>
+			</Item>
+			
 			<Item Type="AnimationLib.AnimationXML">
 				<name>NEUTRAL back</name>
 				<length>0.1</length>

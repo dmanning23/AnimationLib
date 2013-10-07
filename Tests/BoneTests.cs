@@ -194,6 +194,25 @@ namespace Animationlib.Tests
 		}
 
 		[Test()]
+		public void CrotchLocation()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			test.ReadXMLModelFormat(testFile.File, null);
+			testFile.SetRelFilename("Simple\\Simple Animations.xml");
+			test.ReadXMLAnimationFormat(testFile.File);
+			test.SetAnimation(0, EPlayback.Forwards);
+
+			GameClock timer = new GameClock();
+			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+
+			Bone crotch = test.Model.GetBone("Crotch");
+
+			Assert.AreEqual(Vector2.Zero, crotch.AnchorPosition);
+		}
+
+		[Test()]
 		public void jointlocation()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -202,14 +221,29 @@ namespace Animationlib.Tests
 			test.ReadXMLModelFormat(testFile.File, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadXMLAnimationFormat(testFile.File);
+			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
 			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
-
 			Bone torso = test.Model.GetBone("Torso");
+			Assert.AreEqual(new Vector2(-7.0f, -18.0f), torso.AnchorPosition);
+		}
 
-			Assert.AreEqual(67.0f, torso.AnchorPosition.X);
-			Assert.AreEqual(44.0f, torso.AnchorPosition.Y);
+		[Test()]
+		public void jointlocation1()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			test.ReadXMLModelFormat(testFile.File, null);
+			testFile.SetRelFilename("Simple\\Simple Animations.xml");
+			test.ReadXMLAnimationFormat(testFile.File);
+			test.SetAnimation(0, EPlayback.Forwards);
+
+			GameClock timer = new GameClock();
+			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			Bone Crotch = test.Model.GetBone("Crotch");
+			Assert.AreEqual(new Vector2(-74.0f, -62.0f), Crotch.Position);
 		}
 
 		#endregion //Update tests
