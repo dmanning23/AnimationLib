@@ -21,13 +21,6 @@ namespace AnimationLib
 	{
 		#region Member Variables
 
-		//The current animation being played
-		private Animation m_CurrentAnimation;
-		private int m_iCurrentAnimationIndex;
-
-		//Timer for timing the animations, both backwards and forwards
-		private GameClock m_StopWatch;
-
 		//The way the current animation is being played
 		private EPlayback m_ePlayback;
 
@@ -40,15 +33,17 @@ namespace AnimationLib
 		/// </summary>
 		public Bone Model { get; protected set; }
 
-		public Animation CurrentAnimation
-		{
-			get { return m_CurrentAnimation; }
-		}
+		/// <summary>
+		/// The current animation being played
+		/// </summary>
+		/// <value>The current animation.</value>
+		public Animation CurrentAnimation { get; protected set; }
 
-		protected int CurrentAnimationIndex
-		{
-			get { return m_iCurrentAnimationIndex; }
-		}
+		/// <summary>
+		/// Index of the current animation being played
+		/// </summary>
+		/// <value>The index of the current animation.</value>
+		public int CurrentAnimationIndex { get; protected set; }
 
 		/// <summary>
 		/// the list of animations 
@@ -56,19 +51,15 @@ namespace AnimationLib
 		/// <value>The animations.</value>
 		public List<Animation> Animations { get; protected set; }
 
-		public GameClock StopWatch
-		{
-			get { return m_StopWatch; }
-		}
+		/// <summary>
+		/// Timer for timing the animations, both backwards and forwards
+		/// </summary>
+		/// <value>The stop watch.</value>
+		public GameClock StopWatch { get; protected set; }
 
 		public Filename AnimationFile { get; set; }
 
 		public Filename ModelFile { get; set; }
-
-		public GameClock Clock
-		{
-			get { return m_StopWatch; }
-		}
 
 		/// <summary>
 		/// This flag gets set when the animation is changed, the ragdoll needs to be reset after the first update
@@ -86,9 +77,9 @@ namespace AnimationLib
 		{
 			Model = null;
 			Animations = new List<Animation>();
-			m_CurrentAnimation = null;
-			m_iCurrentAnimationIndex = -1;
-			m_StopWatch = new GameClock();
+			CurrentAnimation = null;
+			CurrentAnimationIndex = -1;
+			StopWatch = new GameClock();
 			m_ePlayback = EPlayback.Forwards;
 			ModelFile = new Filename();
 			AnimationFile = new Filename();
@@ -103,13 +94,13 @@ namespace AnimationLib
 		/// <param name="bFlip">whether or not to flip this dude on the y axis</param>
 		public void Update(GameClock myClock, Vector2 myPosition, bool bFlip, float fScale, float fRotation, bool bIgnoreRagdoll)
 		{
-			if ((null == Animations) || (null == m_CurrentAnimation))
+			if ((null == Animations) || (null == CurrentAnimation))
 			{
 				return;
 			}
 
 			//update the animation clock
-			m_StopWatch.Update(myClock);
+			StopWatch.Update(myClock);
 
 			//apply the animation
 			ApplyAnimation(GetAnimationTime(), myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
@@ -130,7 +121,7 @@ namespace AnimationLib
 				case EPlayback.Backwards:
 				{
 					//apply the eggtimer to the animationiterator
-					fTime = m_CurrentAnimation.Length - m_StopWatch.CurrentTime;
+					fTime = CurrentAnimation.Length - StopWatch.CurrentTime;
 					if (fTime < 0.0f)
 					{
 						fTime = 0.0f;
@@ -141,10 +132,10 @@ namespace AnimationLib
 				case EPlayback.Forwards:
 				{
 					//apply the stop watch to the aniiterator
-					fTime = m_StopWatch.CurrentTime;
-					if (fTime > m_CurrentAnimation.Length)
+					fTime = StopWatch.CurrentTime;
+					if (fTime > CurrentAnimation.Length)
 					{
-						fTime = m_CurrentAnimation.Length;
+						fTime = CurrentAnimation.Length;
 					}
 				}
 				break;
@@ -152,18 +143,18 @@ namespace AnimationLib
 				case EPlayback.Loop:
 				{
 					//apply the stop watch to the aniiterator
-					int iNumTimes = (int)(m_StopWatch.CurrentTime / m_CurrentAnimation.Length);
-					float fTimeDiff = (m_CurrentAnimation.Length * (float)iNumTimes);
-					fTime = (m_StopWatch.CurrentTime - fTimeDiff);
+					int iNumTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
+					float fTimeDiff = (CurrentAnimation.Length * (float)iNumTimes);
+					fTime = (StopWatch.CurrentTime - fTimeDiff);
 				}
 				break;
 
 				case EPlayback.LoopBackwards:
 				{
 					//apply the eggtimer to the animationiterator
-					int iNumTimes = (int)(m_StopWatch.CurrentTime / m_CurrentAnimation.Length);
-					float fTimeDiff = (m_CurrentAnimation.Length * (float)iNumTimes);
-					fTime = m_CurrentAnimation.Length - (m_StopWatch.CurrentTime - fTimeDiff);
+					int iNumTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
+					float fTimeDiff = (CurrentAnimation.Length * (float)iNumTimes);
+					fTime = CurrentAnimation.Length - (StopWatch.CurrentTime - fTimeDiff);
 				}
 				break;
 			}
@@ -190,7 +181,7 @@ namespace AnimationLib
 			Model.AnchorJoint.Position = myPosition;
 			Model.Update(iTime,
 				myPosition,
-				m_CurrentAnimation.KeyBone,
+				CurrentAnimation.KeyBone,
 				fRotation,
 				bFlip,
 				0,
@@ -222,7 +213,7 @@ namespace AnimationLib
 			Model.AccumulateForces(gravity);
 
 			//run the integrator
-			float fTimeDelta = m_StopWatch.TimeDelta;
+			float fTimeDelta = StopWatch.TimeDelta;
 			if (fTimeDelta > 0.0f)
 			{
 				Model.RunVerlet(fTimeDelta);
@@ -252,8 +243,8 @@ namespace AnimationLib
 			{
 				//set teh stuff
 				m_ePlayback = ePlaybackMode;
-				m_CurrentAnimation = Animations[iIndex];
-				m_iCurrentAnimationIndex = iIndex;
+				CurrentAnimation = Animations[iIndex];
+				CurrentAnimationIndex = iIndex;
 
 				RestartAnimation();
 			}
@@ -277,7 +268,7 @@ namespace AnimationLib
 		/// </summary>
 		private void RestartAnimation()
 		{
-			m_StopWatch.Start();
+			StopWatch.Start();
 			ResetRagdoll = true;
 		}
 
@@ -286,7 +277,7 @@ namespace AnimationLib
 		/// </summary>
 		public bool IsAnimationDone()
 		{
-			if (null != m_CurrentAnimation)
+			if (null != CurrentAnimation)
 			{
 				//check which type of playbakc we are doing
 				switch (m_ePlayback)
@@ -294,14 +285,14 @@ namespace AnimationLib
 					case EPlayback.Backwards:
 						{
 							//check if the eggtimer has finished up
-							return (m_CurrentAnimation.Length < m_StopWatch.CurrentTime);
+							return (CurrentAnimation.Length < StopWatch.CurrentTime);
 						}
 
 					case EPlayback.Forwards:
 						{
 							//check if the time delta since starting is greater than the animation length
 							//that mean the animation is done playing, idjit
-							return (m_CurrentAnimation.Length < m_StopWatch.CurrentTime);
+							return (CurrentAnimation.Length < StopWatch.CurrentTime);
 						}
 
 					case EPlayback.Loop:
@@ -589,7 +580,7 @@ namespace AnimationLib
 			AnimationFile.File = strFileName;
 
 			m_ePlayback = EPlayback.Forwards;
-			m_CurrentAnimation = null;
+			CurrentAnimation = null;
 			RestartAnimation();
 
 			return true;
@@ -693,7 +684,7 @@ namespace AnimationLib
 
 			AnimationFile.File = strResource;
 			m_ePlayback = EPlayback.Forwards;
-			m_CurrentAnimation = null;
+			CurrentAnimation = null;
 			RestartAnimation();
 		}
 

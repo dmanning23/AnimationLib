@@ -142,21 +142,6 @@ namespace AnimationLib
 			BoneType = EBoneType.Normal;
 		}
 
-		public void RestartAnimation()
-		{
-			//reset all my shit
-			for (int i = 0; i < Joints.Count; i++)
-			{
-				Joints[i].RestartAnimation();
-			}
-
-			//reset child shit
-			for (int i = 0; i < Bones.Count; i++)
-			{
-				Bones[i].RestartAnimation();
-			}
-		}
-
 		#region Update Methods
 
 		/// <summary>
@@ -397,6 +382,21 @@ namespace AnimationLib
 		}
 
 		#endregion //Update Methods
+
+		public void RestartAnimation()
+		{
+			//reset all my shit
+			for (int i = 0; i < Joints.Count; i++)
+			{
+				Joints[i].RestartAnimation();
+			}
+
+			//reset child shit
+			for (int i = 0; i < Bones.Count; i++)
+			{
+				Bones[i].RestartAnimation();
+			}
+		}
 
 		/// <summary>
 		/// Put a garment on this bone

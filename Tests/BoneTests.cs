@@ -2,6 +2,8 @@ using NUnit.Framework;
 using System;
 using AnimationLib;
 using FilenameBuddy;
+using GameTimer;
+using Microsoft.Xna.Framework;
 
 namespace Animationlib.Tests
 {
@@ -173,7 +175,43 @@ namespace Animationlib.Tests
 
 		#endregion //load tests
 
+		#region Update tests
 
+		[Test()]
+		public void LoadedAnimation()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			test.ReadXMLModelFormat(testFile.File, null);
+			testFile.SetRelFilename("Simple\\Simple Animations.xml");
+			test.ReadXMLAnimationFormat(testFile.File);
+
+			GameClock timer = new GameClock();
+			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+
+			Assert.AreEqual(Vector2.Zero, test.Model.AnchorPosition);
+		}
+
+		[Test()]
+		public void jointlocation()
+		{
+			AnimationContainer test = new AnimationContainer();
+			Filename testFile = new Filename();
+			testFile.SetRelFilename("Simple\\Simple Model.xml");
+			test.ReadXMLModelFormat(testFile.File, null);
+			testFile.SetRelFilename("Simple\\Simple Animations.xml");
+			test.ReadXMLAnimationFormat(testFile.File);
+
+			GameClock timer = new GameClock();
+			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+
+			Bone torso = test.Model.GetBone("Torso");
+
+			Assert.AreEqual(67.0f, torso.AnchorPosition.X);
+			Assert.AreEqual(44.0f, torso.AnchorPosition.Y);
+		}
+
+		#endregion //Update tests
 	}
 }
-
