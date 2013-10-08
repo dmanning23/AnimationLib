@@ -125,6 +125,24 @@ namespace AnimationLib
 		}
 
 		/// <summary>
+		/// Set the current animation
+		/// </summary>
+		/// <param name="iIndex">the index of the animation to set</param>
+		/// <param name="ePlaybackMode">the playback mode to use</param>
+		public override void SetAnimation(int iIndex, EPlayback ePlaybackMode)
+		{
+			//do we have a garment for that image???
+			if (iIndex > Animations.Count)
+			{
+				//Set to the base animation
+				iIndex = 0;
+			}
+
+			//ok, that is definitly good to go
+			base.SetAnimation(iIndex, ePlaybackMode);
+		}
+
+		/// <summary>
 		/// Apply the animation at a certain time
 		/// </summary>
 		/// <param name="iTime">the time of teh animation to set</param>
