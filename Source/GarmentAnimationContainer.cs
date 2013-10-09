@@ -114,7 +114,7 @@ namespace AnimationLib
 			m_AnimationTimer.Update(iTime);
 
 			//check if the animation has changed
-			if (rAttachedBone.ImageIndex != CurrentAnimationIndex)
+			if ((rAttachedBone.ImageIndex != CurrentAnimationIndex) || (null == CurrentAnimation))
 			{
 				//the animation has changed!!!
 				SetAnimation(rAttachedBone.ImageIndex, EPlayback.Loop);
@@ -122,24 +122,6 @@ namespace AnimationLib
 
 			//call the base update
 			base.Update(m_AnimationTimer, myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
-		}
-
-		/// <summary>
-		/// Set the current animation
-		/// </summary>
-		/// <param name="iIndex">the index of the animation to set</param>
-		/// <param name="ePlaybackMode">the playback mode to use</param>
-		public override void SetAnimation(int iIndex, EPlayback ePlaybackMode)
-		{
-			//do we have a garment for that image???
-			if (iIndex > Animations.Count)
-			{
-				//Set to the base animation
-				iIndex = 0;
-			}
-
-			//ok, that is definitly good to go
-			base.SetAnimation(iIndex, ePlaybackMode);
 		}
 
 		/// <summary>
