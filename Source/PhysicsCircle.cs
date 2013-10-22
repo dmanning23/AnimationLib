@@ -56,18 +56,7 @@ namespace AnimationLib
 
 			//move to the correct position
 			WorldPosition = BonePosition + WorldPosition;
-
-			//set teh world radius
-			Radius = LocalRadius * fScale;
-		}
-
-		/// <summary>
-		/// update the position of this circle
-		/// </summary>
-		/// <param name="myPosition">the location of this dude in the world</param>
-		public void Update(Vector2 myPosition, float fScale)
-		{
-			Pos = myPosition;
+			Pos = WorldPosition;
 
 			//set teh world radius
 			Radius = LocalRadius * fScale;
