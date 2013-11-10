@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using UndoRedoBuddy;
+using AnimationLib.Commands;
 
 namespace AnimationLib
 {
@@ -151,9 +153,7 @@ namespace AnimationLib
 			return bFound;
 		}
 
-#if TOOLS
-
-		public void RemoveKeyElement(CPasteAction rPasteAction, int iTime, Animation myAnimation)
+		public void RemoveKeyElement(Macro rPasteAction, int iTime, Animation myAnimation)
 		{
 			//get teh key element at that time
 			KeyElement CurrentKeyElement = new KeyElement();
@@ -170,12 +170,12 @@ namespace AnimationLib
 				CurrentKeyElement.JointName = Name;
 
 				//create the remove action
-				CRemoveKeyElement myAction = new CRemoveKeyElement(myAnimation, CurrentKeyElement);
-				rPasteAction.AddAction(myAction);
+				RemoveKeyElement myAction = new RemoveKeyElement(myAnimation, CurrentKeyElement);
+				rPasteAction.Add(myAction);
 			}
 		}
 
-		public void MirrorRightToLeft(KeyBone RootBone, CPasteAction rPasteAction, int iTime, Animation myAnimation)
+		public void MirrorRightToLeft(KeyBone RootBone, Macro rPasteAction, int iTime, Animation myAnimation)
 		{
 			//Check if this bone starts with the work "left"
 			string[] nameTokens = Name.Split(new Char[] { ' ' });
@@ -227,14 +227,12 @@ namespace AnimationLib
 						ReplacementKeyElement.Layer = CurrentKeyElement.Layer;
 
 						//add to the pasteaction
-						CSetKeyElement myAction = new CSetKeyElement(myAnimation, CurrentKeyElement, ReplacementKeyElement);
-						rPasteAction.AddAction(myAction);
+						SetKeyElement myAction = new SetKeyElement(myAnimation, CurrentKeyElement, ReplacementKeyElement);
+						rPasteAction.Add(myAction);
 					}
 				}
 			}
 		}
-
-#endif
 
 		/// <summary>
 		/// Add a key element to the animation.  
@@ -252,9 +250,7 @@ namespace AnimationLib
 			m_listElements.Sort(new KeyElementSort());
 		}
 
-#if TOOLS
-
-		public void Copy(CPasteAction myPasteAction,
+		public void Copy(Macro myPasteAction,
 			Animation myTargetAnimation, 
 			int iSourceTime, 
 			int iTargetTime,
@@ -292,11 +288,9 @@ namespace AnimationLib
 			}
 
 			//add to the animation
-			CSetKeyElement myAction = new CSetKeyElement(myTargetAnimation, OldKeyElement, SourceKeyElement);
-			myPasteAction.AddAction(myAction);
+			SetKeyElement myAction = new SetKeyElement(myTargetAnimation, OldKeyElement, SourceKeyElement);
+			myPasteAction.Add(myAction);
 		}
-
-#endif
 
 		/// <summary>
 		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements

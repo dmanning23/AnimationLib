@@ -9,6 +9,8 @@ using BasicPrimitiveBuddy;
 using Microsoft.Xna.Framework.Graphics;
 using Vector2Extensions;
 using RenderBuddy;
+using UndoRedoBuddy;
+using AnimationLib.Commands;
 
 namespace AnimationLib
 {
@@ -172,52 +174,48 @@ namespace AnimationLib
 			return updatedJointCoord;
 		}
 
-#if TOOLS
-
-		public void Copy(Image myInst, CPasteAction ActionCollection)
+		public void Copy(Image myInst, Macro ActionCollection)
 		{
 			//copy the anchor coord
-			CSetAnchorLocation myAnchorAction = new CSetAnchorLocation(this, (int)myInst.AnchorCoord.X, (int)myInst.AnchorCoord.Y);
-			ActionCollection.AddAction(myAnchorAction);
+			SetAnchorLocation myAnchorAction = new SetAnchorLocation(this, (int)myInst.AnchorCoord.X, (int)myInst.AnchorCoord.Y);
+			ActionCollection.Add(myAnchorAction);
 
 			//copy all the joint JointCoords
-			for (int i = 0; ((i < m_listJointCoords.Count) && (i < myInst.m_listJointCoords.Count)); i++)
+			for (int i = 0; ((i < JointCoords.Count) && (i < myInst.JointCoords.Count)); i++)
 			{
 				//create the new joint JointCoords
-				JointJointCoords myNewJointCoords = new JointJointCoords();
-				myNewJointCoords.Copy(myInst.m_listJointCoords[i]);
+				JointData myNewJointCoords = new JointData();
+				myNewJointCoords.Copy(myInst.JointCoords[i]);
 
 				//create the action to set it
-				CSetJointJointCoords mySetJointJointCoordsAction = new CSetJointJointCoords(this, i, myNewJointCoords);
-				ActionCollection.AddAction(mySetJointJointCoordsAction);
+				SetJointCoords mySetJointJointCoordsAction = new SetJointCoords(this, i, myNewJointCoords);
+				ActionCollection.Add(mySetJointJointCoordsAction);
 			}
 
 			//copy circles
 			for (int i = 0; ((i < Circles.Count) && (i < myInst.Circles.Count)); i++)
 			{
-				CCircle myCircle = new CCircle();
+				PhysicsCircle myCircle = new PhysicsCircle();
 				myCircle.Copy(myInst.Circles[i]);
 
 				//create the action to set it
-				CSetCircleJointCoords mySetCircleAction = new CSetCircleJointCoords(this, i, myCircle);
-				ActionCollection.AddAction(mySetCircleAction);
+				SetCircleData mySetCircleAction = new SetCircleData(this, i, myCircle);
+				ActionCollection.Add(mySetCircleAction);
 			}
 
 			//copy lines
 			for (int i = 0; ((i < Lines.Count) && (i < myInst.Lines.Count)); i++)
 			{
-				CLine myLine = new CLine();
+				PhysicsLine myLine = new PhysicsLine();
 				myLine.Copy(myInst.Lines[i]);
 
 				//create the action to set it
-				CSetLineJointCoords mySetCircleAction = new CSetLineJointCoords(this, i, myLine);
-				ActionCollection.AddAction(mySetCircleAction);
+				SetLineData mySetCircleAction = new SetLineData(this, i, myLine);
+				ActionCollection.Add(mySetCircleAction);
 			}
 		}
 
-#endif
-
-		public void SetJointJointCoords(int iIndex, JointData myNewJointCoords)
+		public void SetJointCoords(int iIndex, JointData myNewJointCoords)
 		{
 			Debug.Assert(iIndex >= 0);
 			Debug.Assert(iIndex < JointCoords.Count);

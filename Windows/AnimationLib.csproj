@@ -115,9 +115,28 @@
     <Compile Include="..\Source\PhysicsLine.cs">
       <Link>PhysicsLine.cs</Link>
     </Compile>
+    <Compile Include="..\Source\Commands\RemoveKeyElement.cs">
+      <Link>Commands\RemoveKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetAnchorLocation.cs">
+      <Link>Commands\SetAnchorLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetCircleData.cs">
+      <Link>Commands\SetCircleData.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetJointData.cs">
+      <Link>Commands\SetJointData.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetKeyElement.cs">
+      <Link>Commands\SetKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetLineData.cs">
+      <Link>Commands\SetLineData.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

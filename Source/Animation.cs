@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Xml;
 using Vector2Extensions;
+using UndoRedoBuddy;
 
 namespace AnimationLib
 {
@@ -74,9 +75,7 @@ namespace AnimationLib
 			return false;
 		}
 
-#if TOOLS
-
-		public bool RemoveKeyframe(CPasteAction myAction, Bone CopyBone, int iTime)
+		public bool RemoveKeyframe(Macro myAction, Bone CopyBone, int iTime)
 		{
 			//find that bone
 			KeyBone myKeyBone = GetKeyBone(CopyBone.Name);
@@ -86,7 +85,7 @@ namespace AnimationLib
 			}
 
 			//first copy the anchor joint of that dude!
-			KeyJoint anchorKeyJoint = KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
+			KeyJoint anchorKeyJoint = KeyBone.GetKeyJoint(CopyBone.AnchorJoint.Name);
 			if (null != anchorKeyJoint)
 			{
 				anchorKeyJoint.RemoveKeyElement(myAction, iTime, this);
@@ -106,7 +105,7 @@ namespace AnimationLib
 		/// <param name="iSourceTime">the time to copy from this animation</param>
 		/// <param name="iTargetTime">the time to paste into the other animation</param>
 		/// <param name="bSelectiveCopy">if this is true, it means only copy image, layer, ragdoll, flip</param>
-		public void Copy(CPasteAction myAction, 
+		public void Copy(Macro myAction, 
 		                 Bone CopyBone, 
 		                 Animation myTargetAnimation, 
 		                 int iSourceTime, 
@@ -121,7 +120,7 @@ namespace AnimationLib
 			}
 
 			//first copy the anchor joint of that dude!
-			KeyJoint anchorKeyJoint = KeyBone.GetKeyJoint(CopyBone.Anchor.Name);
+			KeyJoint anchorKeyJoint = KeyBone.GetKeyJoint(CopyBone.AnchorJoint.Name);
 			if (null != anchorKeyJoint)
 			{
 				anchorKeyJoint.Copy(myAction, myTargetAnimation, iSourceTime, iTargetTime, bSelectiveCopy);
@@ -130,8 +129,6 @@ namespace AnimationLib
 			//copy the rest of the thing
 			myKeyBone.Copy(myAction, myTargetAnimation, iSourceTime, iTargetTime, bSelectiveCopy);
 		}
-
-#endif
 
 		public KeyBone GetKeyBone(string strBoneName)
 		{

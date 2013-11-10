@@ -8,6 +8,7 @@ using DrawListBuddy;
 using MatrixExtensions;
 using BasicPrimitiveBuddy;
 using RenderBuddy;
+using UndoRedoBuddy;
 
 namespace AnimationLib
 {
@@ -1139,14 +1140,12 @@ namespace AnimationLib
 			return new Bone();
 		}
 
-#if TOOLS
-
 		/// <summary>
 		/// Take this bone, see if there is a matching bone on teh right side of the model,
 		/// copy its info into this dude.
 		/// </summary>
 		/// <param name="RootBone">the root bone of the model, used to search for matching bones</param>
-		public void MirrorRightToLeft(Bone RootBone, CPasteAction ActionCollection)
+		public void MirrorRightToLeft(Bone RootBone, Macro ActionCollection)
 		{
 			Debug.Assert(null != RootBone);
 
@@ -1180,22 +1179,20 @@ namespace AnimationLib
 		/// Copy another bone's data into this dude
 		/// </summary>
 		/// <param name="SourceBone">the source to copy from</param>
-		private void Copy(Bone SourceBone, CPasteAction ActionCollection)
+		private void Copy(Bone SourceBone, Macro ActionCollection)
 		{
 			Debug.Assert(null != SourceBone);
 
 			for (int i = 0; i < Images.Count; i++)
 			{
 				//check if the other bone uses this image
-				Image matchingImage = SourceBone.GetImage(Images[i].Filename);
+				Image matchingImage = SourceBone.GetImage(Images[i].ImageFile);
 				if (null != matchingImage)
 				{
 					Images[i].Copy(matchingImage, ActionCollection);
 				}
 			}
 		}
-
-#endif //TOOLS
 
 		/// <summary>
 		/// Rename all the joints to name of the bone that attaches to them

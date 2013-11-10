@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using UndoRedoBuddy;
 
 namespace AnimationLib
 {
@@ -129,9 +130,7 @@ namespace AnimationLib
 			}
 		}
 
-#if TOOLS
-
-		public void Copy(CPasteAction myPasteAction,
+		public void Copy(Macro myPasteAction,
 			Animation myTargetAnimation, 
 			int iSourceTime, 
 			int iTargetTime,
@@ -147,7 +146,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void RemoveKeyElement(CPasteAction rPasteAction, int iTime, Animation myAnimation)
+		public void RemoveKeyElement(Macro rPasteAction, int iTime, Animation myAnimation)
 		{
 			//go through each joint
 			m_KeyJoint.RemoveKeyElement(rPasteAction, iTime, myAnimation);
@@ -159,7 +158,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void MirrorRightToLeft(KeyBone RootBone, CPasteAction rPasteAction, int iTime, Animation myAnimation)
+		public void MirrorRightToLeft(KeyBone RootBone, Macro rPasteAction, int iTime, Animation myAnimation)
 		{
 			//mirror all the keyjoints
 			m_KeyJoint.MirrorRightToLeft(RootBone, rPasteAction, iTime, myAnimation);
@@ -170,8 +169,6 @@ namespace AnimationLib
 				m_listChildren[i].MirrorRightToLeft(RootBone, rPasteAction, iTime, myAnimation);
 			}
 		}
-
-#endif
 
 		/// <summary>
 		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
