@@ -28,3 +28,6 @@
 [submodule "externals/CameraBuddy"]
 	path = externals/CameraBuddy
 	url = git@github.com:dmanning23/CameraBuddy.git
+[submodule "externals/UndoRedoBuddy"]
+	path = externals/UndoRedoBuddy
+	url = git@github.com:dmanning23/UndoRedoBuddy.git
