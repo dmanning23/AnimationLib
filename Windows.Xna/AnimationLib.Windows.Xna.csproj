@@ -107,6 +107,24 @@
     <Compile Include="..\Source\BoneType.cs">
       <Link>BoneType.cs</Link>
     </Compile>
+    <Compile Include="..\Source\Commands\RemoveKeyElement.cs">
+      <Link>Commands\RemoveKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetAnchorLocation.cs">
+      <Link>Commands\SetAnchorLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetCircleData.cs">
+      <Link>Commands\SetCircleData.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetJointData.cs">
+      <Link>Commands\SetJointData.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetKeyElement.cs">
+      <Link>Commands\SetKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetLineData.cs">
+      <Link>Commands\SetLineData.cs</Link>
+    </Compile>
     <Compile Include="..\Source\Garment.cs">
       <Link>Garment.cs</Link>
     </Compile>
@@ -186,6 +204,10 @@
     <ProjectReference Include="..\..\RenderBuddy\Windows.XNA\RenderBuddy.Windows.XNA.csproj">
       <Project>{BB375F09-143B-41CB-B38E-FD9317E33F02}</Project>
       <Name>RenderBuddy.Windows.XNA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UndoRedoBuddy\Windows\UndoRedoLib.Windows.csproj">
+      <Project>{319967CE-B425-4416-9188-5C62389D9967}</Project>
+      <Name>UndoRedoLib.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Vector2Extensions\Windows.Xna\Vector2Extensions.Windows.Xna.csproj">
       <Project>{9978C16B-1B18-456C-A947-A4BE53E6AA0B}</Project>
