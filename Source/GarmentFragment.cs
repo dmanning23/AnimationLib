@@ -168,9 +168,8 @@ namespace AnimationLib
 					if (strName == "model")
 					{
 						//read in the model
-						Filename strModelFile = new Filename();
-						strModelFile.SetRelFilename(strValue);
-						if (!m_AnimationContainer.ReadXMLModelFormat(strModelFile.File, rRenderer))
+						Filename strModelFile = new Filename(strValue);
+						if (!m_AnimationContainer.ReadXMLModelFormat(strModelFile, rRenderer))
 						{
 							Debug.Assert(false);
 							return false;
@@ -179,9 +178,8 @@ namespace AnimationLib
 					else if (strName == "animation")
 					{
 						//read in the animations
-						Filename strAnimationFile = new Filename();
-						strAnimationFile.SetRelFilename(strValue);
-						if (!m_AnimationContainer.ReadXMLAnimationFormat(strAnimationFile.File))
+						Filename strAnimationFile = new Filename(strValue);
+						if (!m_AnimationContainer.ReadXMLAnimationFormat(strAnimationFile))
 						{
 							Debug.Assert(false);
 							return false;
@@ -221,10 +219,10 @@ namespace AnimationLib
 			rXMLFile.WriteEndElement();
 
 			//write out the model file
-			AnimationContainer.WriteModelXMLFormat(AnimationContainer.ModelFile.File, fEnbiggify);
+			AnimationContainer.WriteModelXMLFormat(AnimationContainer.ModelFile, fEnbiggify);
 
 			//write out the animation file
-			AnimationContainer.WriteXMLFormat(AnimationContainer.AnimationFile.File);
+			AnimationContainer.WriteXMLFormat(AnimationContainer.AnimationFile);
 		}
 
 		/// <summary>
@@ -238,18 +236,16 @@ namespace AnimationLib
 		public bool ReadXNAContent(ContentManager rContent, AnimationLib.GarmentFragmentXML rGarmentFragment, IRenderer rRenderer)
 		{
 			//read in the model
-			Filename strModelFile = new Filename();
-			strModelFile.SetRelFilename(rGarmentFragment.model);
-			if (!m_AnimationContainer.ReadSerializedModelFormat(rContent, strModelFile.GetRelPathFileNoExt(), rRenderer))
+			Filename strModelFile = new Filename(rGarmentFragment.model);
+			if (!m_AnimationContainer.ReadSerializedModelFormat(rContent, strModelFile, rRenderer))
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
 			//read in the animations
-			Filename strAnimationFile = new Filename();
-			strAnimationFile.SetRelFilename(rGarmentFragment.animation);
-			m_AnimationContainer.ReadSerializedAnimationFormat(rContent, strAnimationFile.GetRelPathFileNoExt());
+			Filename strAnimationFile = new Filename(rGarmentFragment.animation);
+			m_AnimationContainer.ReadSerializedAnimationFormat(rContent, strAnimationFile);
 
 			return true;
 		}

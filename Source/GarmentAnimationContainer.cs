@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using GameTimer;
 using DrawListBuddy;
 using RenderBuddy;
+using FilenameBuddy;
 
 namespace AnimationLib
 {
@@ -221,19 +222,19 @@ namespace AnimationLib
 		/// <param name="rContent">content loader to use</param>
 		/// <param name="strResource">name of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public override bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, IRenderer rRenderer)
+		public override bool ReadSerializedModelFormat(ContentManager rXmlContent, Filename strResource, IRenderer rRenderer)
 		{
 			CreateBone();
 
 			Debug.Assert(null != rXmlContent);
-			AnimationLib.GarmentBoneXML rBoneXML = rXmlContent.Load<AnimationLib.GarmentBoneXML>(strResource);
+			AnimationLib.GarmentBoneXML rBoneXML = rXmlContent.Load<AnimationLib.GarmentBoneXML>(strResource.GetRelPathFileNoExt());
 			if (!Model.ReadSerializedFormat(rBoneXML, null, rRenderer))
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
-			ModelFile.File = strResource;
+			ModelFile.File = strResource.File;
 			return true;
 		}
 

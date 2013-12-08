@@ -154,10 +154,10 @@ namespace AnimationLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">bone to attach garments to</param>
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
-		public bool ReadXMLFormat(string strResource, IRenderer rRenderer, Bone rRootNode)
+		public bool ReadXMLFormat(Filename strResource, IRenderer rRenderer, Bone rRootNode)
 		{
 			//Open the file.
-			FileStream stream = File.Open(strResource, FileMode.Open, FileAccess.Read);
+			FileStream stream = File.Open(strResource.File, FileMode.Open, FileAccess.Read);
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
@@ -238,15 +238,15 @@ namespace AnimationLib
 			SetGarmentBones(rRootNode);
 
 			//grab teh filename
-			m_strFilename.File = strResource;
+			m_strFilename.File = strResource.File;
 
 			return true;
 		}
 
-		public void WriteXMLFormat(string strFileName, float fEnbiggify)
+		public void WriteXMLFormat(Filename strFileName, float fEnbiggify)
 		{
 			//open the file, create it if it doesnt exist yet
-			XmlTextWriter rXMLFile = new XmlTextWriter(strFileName, null);
+			XmlTextWriter rXMLFile = new XmlTextWriter(strFileName.File, null);
 			rXMLFile.Formatting = Formatting.Indented;
 			rXMLFile.Indentation = 1;
 			rXMLFile.IndentChar = '\t';
@@ -286,15 +286,15 @@ namespace AnimationLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">teh root node of the model that uses this garment</param>
 		/// <returns>bool: whether or not was able to load the garment</returns>
-		public bool ReadSerializedFormat(ContentManager rXmlContent, string strResource, IRenderer rRenderer, Bone rRootNode)
+		public bool ReadSerializedFormat(ContentManager rXmlContent, Filename strResource, IRenderer rRenderer, Bone rRootNode)
 		{
 			//open file
 			Debug.Assert(null != rXmlContent);
-			AnimationLib.GarmentXML rGarmentXML = rXmlContent.Load<AnimationLib.GarmentXML>(strResource);
+			AnimationLib.GarmentXML rGarmentXML = rXmlContent.Load<AnimationLib.GarmentXML>(strResource.GetRelPathFileNoExt());
 
 			//set the name 
 			Name = rGarmentXML.name;
-			m_strFilename.SetRelFilename(strResource);
+			m_strFilename.File = strResource.File;
 
 			//read in all the bones
 			for (int i = 0; i < rGarmentXML.fragments.Count; i++)

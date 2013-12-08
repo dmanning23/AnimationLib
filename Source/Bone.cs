@@ -114,7 +114,7 @@ namespace AnimationLib
 		/// <summary>
 		/// this guys current layer to render at
 		/// </summary>
-		protected int CurrentLayer { get; set; }
+		public int CurrentLayer { get; set; }
 
 		/// <summary>
 		/// Whether or not this bone should be colored by the palette swap

@@ -415,14 +415,14 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="strResource">filename of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public bool ReadXMLModelFormat(string strResource, IRenderer rRenderer)
+		public bool ReadXMLModelFormat(Filename strResource, IRenderer rRenderer)
 		{
 			CreateBone();
 
 			//gonna have to do this the HARD way
 
 			//Open the file.
-			FileStream stream = File.Open(strResource, FileMode.Open, FileAccess.Read);
+			FileStream stream = File.Open(strResource.File, FileMode.Open, FileAccess.Read);
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
@@ -459,7 +459,7 @@ namespace AnimationLib
 			stream.Close();
 
 			//grab that filename 
-			ModelFile.File = strResource;
+			ModelFile.File = strResource.File;
 			return true;
 		}
 
@@ -467,7 +467,7 @@ namespace AnimationLib
 		/// Open an xml file and dump model data to it
 		/// </summary>
 		/// <param name="strFileName">name of the file to dump to</param>
-		public virtual void WriteModelXMLFormat(string strFileName, float fEnbiggify)
+		public virtual void WriteModelXMLFormat(Filename strFileName, float fEnbiggify)
 		{
 			Debug.Assert(null != Model);
 
@@ -475,7 +475,7 @@ namespace AnimationLib
 			Model.RenameJoints(this);
 
 			//open the file, create it if it doesnt exist yet
-			XmlTextWriter rFile = new XmlTextWriter(strFileName, null);
+			XmlTextWriter rFile = new XmlTextWriter(strFileName.File, null);
 			rFile.Formatting = Formatting.Indented;
 			rFile.Indentation = 1;
 			rFile.IndentChar = '\t';
@@ -495,19 +495,19 @@ namespace AnimationLib
 		/// <param name="rContent">content loader to use</param>
 		/// <param name="strResource">name of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public virtual bool ReadSerializedModelFormat(ContentManager rXmlContent, string strResource, IRenderer rRenderer)
+		public virtual bool ReadSerializedModelFormat(ContentManager rXmlContent, Filename strResource, IRenderer rRenderer)
 		{
 			CreateBone();
 
 			Debug.Assert(null != rXmlContent);
-			AnimationLib.BoneXML rBoneXML = rXmlContent.Load<AnimationLib.BoneXML>(strResource);
+			AnimationLib.BoneXML rBoneXML = rXmlContent.Load<AnimationLib.BoneXML>(strResource.GetRelPathFileNoExt());
 			if (!Model.ReadSerializedFormat(rBoneXML, null, rRenderer))
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
-			ModelFile.File = strResource;
+			ModelFile = strResource;
 			return true;
 		}
 
@@ -519,7 +519,7 @@ namespace AnimationLib
 		/// read in a list of animations from a serialized xml format file
 		/// </summary>
 		/// <param name="strFileName">filename of the animations to load</param>
-		public virtual bool ReadXMLAnimationFormat(string strFileName)
+		public virtual bool ReadXMLAnimationFormat(Filename strFileName)
 		{
 			Debug.Assert(null != Model); //need a model to read in animations
 			Animations.Clear();
@@ -527,7 +527,7 @@ namespace AnimationLib
 			//gonna have to do this the HARD way
 
 			//Open the file.
-			FileStream stream = File.Open(strFileName, FileMode.Open, FileAccess.Read);
+			FileStream stream = File.Open(strFileName.File, FileMode.Open, FileAccess.Read);
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
@@ -592,7 +592,7 @@ namespace AnimationLib
 			stream.Close();
 
 			//grab teh filename
-			AnimationFile.File = strFileName;
+			AnimationFile = strFileName;
 
 			m_ePlayback = EPlayback.Forwards;
 			CurrentAnimation = null;
@@ -625,14 +625,14 @@ namespace AnimationLib
 			return true;
 		}
 
-		public void WriteXMLFormat(string strFileName)
+		public void WriteXMLFormat(Filename strFileName)
 		{
 			//first rename all the joints so they are correct
 			Debug.Assert(null != Model);
 			Model.RenameJoints(this);
 
 			//open the file, create it if it doesnt exist yet
-			XmlTextWriter rXMLFile = new XmlTextWriter(strFileName, null);
+			XmlTextWriter rXMLFile = new XmlTextWriter(strFileName.File, null);
 			rXMLFile.Formatting = Formatting.Indented;
 			rXMLFile.Indentation = 1;
 			rXMLFile.IndentChar = '\t';
@@ -680,12 +680,12 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="rContent">content loader to use</param>
 		/// <param name="strResource">name of the resource</param>
-		public virtual void ReadSerializedAnimationFormat(ContentManager rXmlContent, string strResource)
+		public virtual void ReadSerializedAnimationFormat(ContentManager rXmlContent, Filename strResource)
 		{
 			Animations.Clear();
 
 			//load the resource
-			AnimationLib.AnimationContainerXML myDude = rXmlContent.Load<AnimationLib.AnimationContainerXML>(strResource);
+			AnimationLib.AnimationContainerXML myDude = rXmlContent.Load<AnimationLib.AnimationContainerXML>(strResource.GetRelPathFileNoExt());
 
 			//set up all the animations
 			for (int i = 0; i < myDude.animations.Count; i++)
@@ -697,7 +697,7 @@ namespace AnimationLib
 				Animations.Add(myAnimation);
 			}
 
-			AnimationFile.File = strResource;
+			AnimationFile = strResource;
 			m_ePlayback = EPlayback.Forwards;
 			CurrentAnimation = null;
 			RestartAnimation();
