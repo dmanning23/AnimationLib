@@ -52,7 +52,7 @@ namespace AnimationLib
 			}
 
 			//rotate correctly
-			WorldPosition = MatrixExt.Orientation(fRotation).Mutliply(WorldPosition);
+			WorldPosition = MatrixExt.Orientation(fRotation).Multiply(WorldPosition);
 
 			//move to the correct position
 			WorldPosition = BonePosition + WorldPosition;

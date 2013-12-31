@@ -50,8 +50,8 @@ namespace AnimationLib
 
 			//rotate correctly
 			Matrix myRotation = MatrixExt.Orientation(fRotation);
-			WorldStart = myRotation.Mutliply(WorldStart);
-			WorldEnd = myRotation.Mutliply(WorldEnd);
+			WorldStart = myRotation.Multiply(WorldStart);
+			WorldEnd = myRotation.Multiply(WorldEnd);
 
 			//move to the correct position
 			WorldStart = BonePosition + WorldStart;

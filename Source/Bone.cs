@@ -435,7 +435,7 @@ namespace AnimationLib
 			if (!AnchorJoint.CurrentKeyElement.RagDoll || !AnchorJoint.Data.Floating || bIgnoreRagdoll)
 			{
 				//Update my position based on the offset of the anchor coord
-				m_CurrentPosition = myMatrix.Mutliply(myPosition - anchorCoord);
+				m_CurrentPosition = myMatrix.Multiply(myPosition - anchorCoord);
 			}
 
 			//update all the circle data
@@ -465,7 +465,7 @@ namespace AnimationLib
 					jointPosition = myPosition + jointPosition;
 
 					Joints[i].OldPosition = Joints[i].Position;
-					Joints[i].Position = myMatrix.Mutliply(jointPosition);
+					Joints[i].Position = myMatrix.Multiply(jointPosition);
 				}
 			}
 
@@ -597,11 +597,11 @@ namespace AnimationLib
 				{
 					Vector2 animationTrans = AnchorJoint.CurrentKeyElement.Translation;
 					animationTrans.X *= -1.0f;
-					myPosition += MatrixExt.Orientation(fParentRotation).Mutliply(animationTrans * fScale);
+					myPosition += MatrixExt.Orientation(fParentRotation).Multiply(animationTrans * fScale);
 				}
 				else
 				{
-					myPosition += MatrixExt.Orientation(fParentRotation).Mutliply(AnchorJoint.CurrentKeyElement.Translation * fScale);
+					myPosition += MatrixExt.Orientation(fParentRotation).Multiply(AnchorJoint.CurrentKeyElement.Translation * fScale);
 				}
 			}
 			//grab the position (joint location + animation translation)
@@ -852,7 +852,7 @@ namespace AnimationLib
 						{
 							jointPos.X *= -1.0f;
 						}
-						jointPos = myMatrix.Mutliply(jointPos);
+						jointPos = myMatrix.Multiply(jointPos);
 						Joints[i].Position = AnchorJoint.Position + jointPos;
 					}
 				}
@@ -910,7 +910,7 @@ namespace AnimationLib
 						//it flipped?
 						JointPos.X = GetCurrentImage().Width - JointPos.X;
 					}
-					JointPos = myRotation.Mutliply(JointPos);
+					JointPos = myRotation.Multiply(JointPos);
 
 					//update this dude's position 
 					m_CurrentPosition = Joints[0].Position - JointPos;
@@ -927,7 +927,7 @@ namespace AnimationLib
 						//it flipped?
 						AnchorCoord.X = GetCurrentImage().Width - AnchorCoord.X;
 					}
-					AnchorCoord = (myRotation.Mutliply(AnchorCoord)) * fScale;
+					AnchorCoord = (myRotation.Multiply(AnchorCoord)) * fScale;
 
 					//update this dude's position 
 					m_CurrentPosition = AnchorJoint.Position - AnchorCoord;
@@ -1024,7 +1024,7 @@ namespace AnimationLib
 			//rotate around by the -current rotation
 			Matrix myRotation = MatrixExt.Orientation(-Rotation);
 
-			MyLocation = myRotation.Mutliply(MyLocation);
+			MyLocation = myRotation.Multiply(MyLocation);
 			iX = (int)MyLocation.X;
 			iY = (int)MyLocation.Y;
 		}
@@ -1061,7 +1061,7 @@ namespace AnimationLib
 			//rotate around by the -current rotation
 			Matrix myRotation = MatrixExt.Orientation(-fParentAngle);
 
-			MyLocation = myRotation.Mutliply(MyLocation);
+			MyLocation = myRotation.Multiply(MyLocation);
 			iX = (int)MyLocation.X;
 			iY = (int)MyLocation.Y;
 		}
