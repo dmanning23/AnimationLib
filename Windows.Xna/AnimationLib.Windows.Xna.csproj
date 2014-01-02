@@ -116,8 +116,8 @@
     <Compile Include="..\Source\Commands\SetCircleData.cs">
       <Link>Commands\SetCircleData.cs</Link>
     </Compile>
-    <Compile Include="..\Source\Commands\SetJointData.cs">
-      <Link>Commands\SetJointData.cs</Link>
+    <Compile Include="..\Source\Commands\SetJointCoords.cs">
+      <Link>Commands\SetJointCoords.cs</Link>
     </Compile>
     <Compile Include="..\Source\Commands\SetKeyElement.cs">
       <Link>Commands\SetKeyElement.cs</Link>
