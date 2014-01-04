@@ -172,7 +172,7 @@
       <Name>RenderBuddy.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\UndoRedoBuddy\Windows\UndoRedoLib.Windows.csproj">
-      <Project>{319967ce-b425-4416-9188-5c62389d9967}</Project>
+      <Project>{319967CE-B425-4416-9188-5C62389D9967}</Project>
       <Name>UndoRedoLib.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Vector2Extensions\Windows\Vector2Extensions.Windows.csproj">
