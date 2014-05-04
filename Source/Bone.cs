@@ -9,6 +9,7 @@ using MatrixExtensions;
 using BasicPrimitiveBuddy;
 using RenderBuddy;
 using UndoRedoBuddy;
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -364,6 +365,21 @@ namespace AnimationLib
 		public Vector2 GetPosition()
 		{
 			return Position;
+		}
+
+		/// <summary>
+		/// Get the true current rotation of this bone, ignoring flip etc.
+		/// </summary>
+		/// <returns></returns>
+		public Vector2 TrueRotation()
+		{
+			if ((null == GetCurrentImage()) || (Joints.Count <= 0))
+			{
+				return Vector2.UnitX;
+			}
+
+			//get the difference between the anchor position and the joint
+			return Joints[0].Position - AnchorPosition;
 		}
 
 		#region Update Methods
