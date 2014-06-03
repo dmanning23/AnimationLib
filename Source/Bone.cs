@@ -382,6 +382,15 @@ namespace AnimationLib
 			return Joints[0].Position - AnchorPosition;
 		}
 
+		/// <summary>
+		/// Get the true current rotation of this bone, ignoring flip etc.
+		/// </summary>
+		/// <returns></returns>
+		public float TrueRotationAngle()
+		{
+			return TrueRotation().Angle();
+		}
+
 		#region Update Methods
 
 		/// <summary>
