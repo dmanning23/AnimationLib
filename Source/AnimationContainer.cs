@@ -281,7 +281,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Restart the animation
 		/// </summary>
-		private void RestartAnimation()
+		public void RestartAnimation()
 		{
 			StopWatch.Start();
 			ResetRagdoll = true;

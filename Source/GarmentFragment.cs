@@ -1,11 +1,9 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Xml;
+﻿using FilenameBuddy;
 using Microsoft.Xna.Framework.Content;
-using System.Collections.Generic;
-using DrawListBuddy;
-using FilenameBuddy;
 using RenderBuddy;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Xml;
 
 namespace AnimationLib
 {
@@ -17,11 +15,6 @@ namespace AnimationLib
 		#region Fields
 
 		/// <summary>
-		/// The name of the garment that this guy is a peice of.
-		/// </summary>
-		private string m_strGarmentName;
-
-		/// <summary>
 		/// The animation container for the model to add to the skeleton
 		/// </summary>
 		private GarmentAnimationContainer m_AnimationContainer;
@@ -30,11 +23,10 @@ namespace AnimationLib
 
 		#region Properties
 
-		public string GarmentName
-		{
-			get { return m_strGarmentName; }
-			set { m_strGarmentName = value; }
-		}
+		/// <summary>
+		/// The name of the garment that this guy is a peice of.
+		/// </summary>
+		public string GarmentName { get; set; }
 
 		public GarmentAnimationContainer AnimationContainer
 		{
