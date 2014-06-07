@@ -364,7 +364,7 @@ namespace AnimationLib
 		/// <returns>The position.</returns>
 		public Vector2 GetPosition()
 		{
-			return Position;
+			return AnchorPosition;
 		}
 
 		/// <summary>
