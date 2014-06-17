@@ -391,6 +391,19 @@ namespace AnimationLib
 			return TrueRotation().Angle();
 		}
 
+		/// <summary>
+		/// Dont display this bone or its children.
+		/// Used to hide garments.
+		/// </summary>
+		public void Hide()
+		{
+			this.ImageIndex = -1;
+			for (int i = 0; i < Bones.Count; i++)
+			{
+				Bones[i].Hide();
+			}
+		}
+
 		#region Update Methods
 
 		/// <summary>

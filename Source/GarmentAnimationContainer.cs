@@ -121,8 +121,16 @@ namespace AnimationLib
 				SetAnimation(rAttachedBone.ImageIndex, EPlayback.Loop);
 			}
 
-			//call the base update
-			base.Update(m_AnimationTimer, myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
+			//if there is no animation, the bone is invisible, hide the garment bone.
+			if (null == CurrentAnimation)
+			{
+				Model.Hide();
+			}
+			else
+			{
+				//call the base update
+				Update(m_AnimationTimer, myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
+			}
 		}
 
 		/// <summary>

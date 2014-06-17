@@ -55,11 +55,16 @@ namespace AnimationLib
 			get { return m_iAnimationIndex; }
 			set
 			{
+				m_iAnimationIndex = value;
+
 				//If there is an animation at that index, use it.
 				if ((0 <= value) && (Animations.Count > value))
 				{
-					m_iAnimationIndex = value;
 					CurrentAnimation = Animations[m_iAnimationIndex];
+				}
+				else
+				{
+					CurrentAnimation = null;
 				}
 			}
 		}
