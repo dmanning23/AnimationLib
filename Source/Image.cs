@@ -309,105 +309,116 @@ namespace AnimationLib
 					string strName = childNode.Name;
 					string strValue = childNode.InnerText;
 
-					if (strName == "upperleft")
+					switch (strName)
 					{
-						//convert to the correct vector
-						UpperLeft = strValue.ToVector2();
-					}
-					else if (strName == "lowerright")
-					{
-						//convert to the correct vector
-						LowerRight = strValue.ToVector2();
-					}
-					else if (strName == "anchorcoord")
-					{
-						//convert to the correct vector
-						m_AnchorCoord = strValue.ToVector2();
-					}
-					else if (strName == "filename")
-					{
-						//get the correct path & filename
-						ImageFile.SetRelFilename(strValue);
+						case "upperleft":
+						{
+							//convert to the correct vector
+							UpperLeft = strValue.ToVector2();
+						}
+						break;
+						case "lowerright":
+						{
+							//convert to the correct vector
+							LowerRight = strValue.ToVector2();
+						}
+						break;
+						case "anchorcoord":
+						{
+							//convert to the correct vector
+							m_AnchorCoord = strValue.ToVector2();
+						}
+						break;
+						case "filename":
+						{
+							//get the correct path & filename
+							ImageFile.SetRelFilename(strValue);
 
-						//add the ability to have blank image, which means a skeletal structure that is not displayed
-						if (ImageFile.GetFileExt().ToString().Length > 0)
-						{
-							//do we need to load the image?
-							if (null != rRenderer)
+							//add the ability to have blank image, which means a skeletal structure that is not displayed
+							if (ImageFile.GetFileExt().ToString().Length > 0)
 							{
-								m_Image = rRenderer.LoadImage(ImageFile.File);
-								if (null == m_Image)
+								//do we need to load the image?
+								if (null != rRenderer)
 								{
-									Debug.Assert(false);
-									return false;
-								}
+									m_Image = rRenderer.LoadImage(ImageFile.File);
+									if (null == m_Image)
+									{
+										Debug.Assert(false);
+										return false;
+									}
 
-								UpperLeft = Vector2.Zero;
-								LowerRight = new Vector2(m_Image.Width, m_Image.Height);
-							}
-						}
-					}
-					else if (strName == "joints")
-					{
-						//Read in all the joint JointCoords
-						if (childNode.HasChildNodes)
-						{
-							for (XmlNode circleNode = childNode.FirstChild;
-								null != circleNode;
-								circleNode = circleNode.NextSibling)
-							{
-								JointData childJointJointCoords = new JointData();
-								if (!childJointJointCoords.ReadXMLFormat(circleNode, this))
-								{
-									Debug.Assert(false);
-									return false;
+									UpperLeft = Vector2.Zero;
+									LowerRight = new Vector2(m_Image.Width, m_Image.Height);
 								}
-								JointCoords.Add(childJointJointCoords);
 							}
 						}
-					}
-					else if (strName == "circles")
-					{
-						//Read in all the circles
-						if (childNode.HasChildNodes)
+						break;
+						case "joints":
 						{
-							for (XmlNode jointNode = childNode.FirstChild;
-								null != jointNode;
-								jointNode = jointNode.NextSibling)
+							//Read in all the joint JointCoords
+							if (childNode.HasChildNodes)
 							{
-								PhysicsCircle myCircle = new PhysicsCircle();
-								if (!myCircle.ReadXMLFormat(jointNode))
+								for (XmlNode circleNode = childNode.FirstChild;
+									null != circleNode;
+									circleNode = circleNode.NextSibling)
 								{
-									Debug.Assert(false);
-									return false;
+									JointData childJointJointCoords = new JointData();
+									if (!childJointJointCoords.ReadXMLFormat(circleNode, this))
+									{
+										Debug.Assert(false);
+										return false;
+									}
+									JointCoords.Add(childJointJointCoords);
 								}
-								Circles.Add(myCircle);
 							}
 						}
-					}
-					else if (strName == "lines")
-					{
-						//Read in all the lines
-						if (childNode.HasChildNodes)
+						break;
+						case "circles":
 						{
-							for (XmlNode jointNode = childNode.FirstChild;
-								null != jointNode;
-								jointNode = jointNode.NextSibling)
+							//Read in all the circles
+							if (childNode.HasChildNodes)
 							{
-								PhysicsLine myCircle = new PhysicsLine();
-								if (!myCircle.ReadXMLFormat(jointNode))
+								for (XmlNode jointNode = childNode.FirstChild;
+									null != jointNode;
+									jointNode = jointNode.NextSibling)
 								{
-									Debug.Assert(false);
-									return false;
+									PhysicsCircle myCircle = new PhysicsCircle();
+									if (!myCircle.ReadXMLFormat(jointNode))
+									{
+										Debug.Assert(false);
+										return false;
+									}
+									Circles.Add(myCircle);
 								}
-								Lines.Add(myCircle);
 							}
 						}
-					}
-					else
-					{
-						Debug.Assert(false);
-						return false;
+						break;
+						case "lines":
+						{
+							//Read in all the lines
+							if (childNode.HasChildNodes)
+							{
+								for (XmlNode jointNode = childNode.FirstChild;
+									null != jointNode;
+									jointNode = jointNode.NextSibling)
+								{
+									PhysicsLine myCircle = new PhysicsLine();
+									if (!myCircle.ReadXMLFormat(jointNode))
+									{
+										Debug.Assert(false);
+										return false;
+									}
+									Lines.Add(myCircle);
+								}
+							}
+						}
+						break;
+						default:
+						{
+							Debug.Assert(false);
+							return false;
+						}
+						break;
 					}
 				}
 			}

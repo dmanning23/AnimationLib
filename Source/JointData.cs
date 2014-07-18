@@ -173,27 +173,35 @@ namespace AnimationLib
 					string strName = childNode.Name;
 					string strValue = childNode.InnerText;
 
-					if (strName == "location")
+					switch (strName)
 					{
-						Location = strValue.ToVector2();
-					}
-					else if (strName == "limit1")
-					{
-						float fMyLimit = Convert.ToSingle(strValue);
-						FirstLimit = MathHelper.ToRadians(fMyLimit);
-					}
-					else if (strName == "limit2")
-					{
-						float fMyLimit = Convert.ToSingle(strValue);
-						SecondLimit = MathHelper.ToRadians(fMyLimit);
-					}
-					else if (strName == "FloatRadius")
-					{
-						FloatRadius = Convert.ToSingle(strValue);
-					}
-					else if (strName == "FloatOrRotate")
-					{
-						Floating = Convert.ToBoolean(strValue);
+						case "location":
+						{
+							Location = strValue.ToVector2();
+						}
+						break;
+						case "limit1":
+						{
+							float fMyLimit = Convert.ToSingle(strValue);
+							FirstLimit = MathHelper.ToRadians(fMyLimit);
+						}
+						break;
+						case "limit2":
+						{
+							float fMyLimit = Convert.ToSingle(strValue);
+							SecondLimit = MathHelper.ToRadians(fMyLimit);
+						}
+						break;
+						case "FloatRadius":
+						{
+							FloatRadius = Convert.ToSingle(strValue);
+						}
+						break;
+						case "FloatOrRotate":
+						{
+							Floating = Convert.ToBoolean(strValue);
+						}
+						break;
 					}
 				}
 			}

@@ -239,37 +239,48 @@ namespace AnimationLib
 					string strName = childNode.Name;
 					string strValue = childNode.InnerText;
 
-					if (strName == "time")
+					switch (strName)
 					{
-						Time = Convert.ToInt32(strValue);
-					}
-					else if (strName == "rotation")
-					{
-						Rotation = MathHelper.ToRadians(Convert.ToSingle(strValue));
-					}
-					else if (strName == "layer")
-					{
-						Layer = Convert.ToInt32(strValue);
-					}
-					else if (strName == "image")
-					{
-						ImageName = strValue;
-					}
-					else if (strName == "flip")
-					{
-						Flip = Convert.ToBoolean(strValue);
-					}
-					else if (strName == "translation")
-					{
-						m_Translation = strValue.ToVector2();
-					}
-					else if (strName == "ragdoll")
-					{
-						RagDoll = Convert.ToBoolean(strValue);
-					}
-					else if (strName == "joint")
-					{
-						JointName = strValue;
+						case "time":
+						{
+							Time = Convert.ToInt32(strValue);
+						}
+						break;
+						case "rotation":
+						{
+							Rotation = MathHelper.ToRadians(Convert.ToSingle(strValue));
+						}
+						break;
+						case "layer":
+						{
+							Layer = Convert.ToInt32(strValue);
+						}
+						break;
+						case "image":
+						{
+							ImageName = strValue;
+						}
+						break;
+						case "flip":
+						{
+							Flip = Convert.ToBoolean(strValue);
+						}
+						break;
+						case "translation":
+						{
+							m_Translation = strValue.ToVector2();
+						}
+						break;
+						case "ragdoll":
+						{
+							RagDoll = Convert.ToBoolean(strValue);
+						}
+						break;
+						case "joint":
+						{
+							JointName = strValue;
+						}
+						break;
 					}
 				}
 			}

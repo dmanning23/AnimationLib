@@ -1365,107 +1365,117 @@ namespace AnimationLib
 			string strName = childNode.Name;
 			string strValue = childNode.InnerText;
 
-			if (strName == "name")
+			switch (strName)
 			{
-				//set the name of this bone
-				Name = strValue;
-			}
-			else if (strName == "anchor")
-			{
-				//get the name of the anchor joint
-				string strAnchorJoint = strValue;
+				case "name":
+				{
+					//set the name of this bone
+					Name = strValue;
+				}
+				break;
+				case "anchor":
+				{
+					//get the name of the anchor joint
+					string strAnchorJoint = strValue;
 
-				//get the anchor joint from the parent bone
-				if (null != ParentBone)
-				{
-					AnchorJoint = ParentBone.GetJoint(strAnchorJoint);
-					if (null == AnchorJoint)
+					//get the anchor joint from the parent bone
+					if (null != ParentBone)
 					{
-						Debug.Assert(false);
-						return false;
-					}
-				}
-			}
-			else if (strName == "type")
-			{
-				if ("Foot" == strValue)
-				{
-					BoneType = EBoneType.Foot;
-				}
-				else if ("Weapon" == strValue)
-				{
-					BoneType = EBoneType.Weapon;
-				}
-				else
-				{
-					BoneType = EBoneType.Normal;
-				}
-			}
-			else if (strName == "colorable")
-			{
-				Colorable = Convert.ToBoolean(strValue);
-			}
-			else if (strName == "joints")
-			{
-				//Read in all the joints
-				if (childNode.HasChildNodes)
-				{
-					for (XmlNode jointNode = childNode.FirstChild;
-						null != jointNode;
-						jointNode = jointNode.NextSibling)
-					{
-						Joint childJoint = new Joint(Joints.Count);
-						if (!childJoint.ReadXMLFormat(jointNode))
+						AnchorJoint = ParentBone.GetJoint(strAnchorJoint);
+						if (null == AnchorJoint)
 						{
 							Debug.Assert(false);
 							return false;
 						}
-						Joints.Add(childJoint);
 					}
 				}
-			}
-			else if (strName == "images")
-			{
-				//Read in all the images
-				if (childNode.HasChildNodes)
+				break;
+				case "type":
 				{
-					for (XmlNode imageNode = childNode.FirstChild;
-						null != imageNode;
-						imageNode = imageNode.NextSibling)
+					if ("Foot" == strValue)
 					{
-						Image childImage = new Image();
-						if (!childImage.ReadXMLFormat(imageNode, rRenderer, this))
-						{
-							Debug.Assert(false);
-							return false;
-						}
-						Images.Add(childImage);
+						BoneType = EBoneType.Foot;
+					}
+					else if ("Weapon" == strValue)
+					{
+						BoneType = EBoneType.Weapon;
+					}
+					else
+					{
+						BoneType = EBoneType.Normal;
 					}
 				}
-			}
-			else if (strName == "bones")
-			{
-				//read in all the child bones
-				if (childNode.HasChildNodes)
+				break;
+				case "colorable":
 				{
-					for (XmlNode boneNode = childNode.FirstChild;
-						null != boneNode;
-						boneNode = boneNode.NextSibling)
+					Colorable = Convert.ToBoolean(strValue);
+				}
+				break;
+				case "joints":
+				{
+					//Read in all the joints
+					if (childNode.HasChildNodes)
 					{
-						Bone childBone = CreateBone();
-						if (!childBone.ReadXMLFormat(boneNode, this, rRenderer))
+						for (XmlNode jointNode = childNode.FirstChild;
+							null != jointNode;
+							jointNode = jointNode.NextSibling)
 						{
-							Debug.Assert(false);
-							return false;
+							Joint childJoint = new Joint(Joints.Count);
+							if (!childJoint.ReadXMLFormat(jointNode))
+							{
+								Debug.Assert(false);
+								return false;
+							}
+							Joints.Add(childJoint);
 						}
-						Bones.Add(childBone);
 					}
 				}
-			}
-			else
-			{
-				Debug.Assert(false);
-				return false;
+				break;
+				case "images":
+				{
+					//Read in all the images
+					if (childNode.HasChildNodes)
+					{
+						for (XmlNode imageNode = childNode.FirstChild;
+							null != imageNode;
+							imageNode = imageNode.NextSibling)
+						{
+							Image childImage = new Image();
+							if (!childImage.ReadXMLFormat(imageNode, rRenderer, this))
+							{
+								Debug.Assert(false);
+								return false;
+							}
+							Images.Add(childImage);
+						}
+					}
+				}
+				break;
+				case "bones":
+				{
+					//read in all the child bones
+					if (childNode.HasChildNodes)
+					{
+						for (XmlNode boneNode = childNode.FirstChild;
+							null != boneNode;
+							boneNode = boneNode.NextSibling)
+						{
+							Bone childBone = CreateBone();
+							if (!childBone.ReadXMLFormat(boneNode, this, rRenderer))
+							{
+								Debug.Assert(false);
+								return false;
+							}
+							Bones.Add(childBone);
+						}
+					}
+				}
+				break;
+				default:
+				{
+					Debug.Assert(false);
+					return false;
+				}
 			}
 
 			return true;
