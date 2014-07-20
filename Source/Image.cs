@@ -418,7 +418,6 @@ namespace AnimationLib
 							Debug.Assert(false);
 							return false;
 						}
-						break;
 					}
 				}
 			}
