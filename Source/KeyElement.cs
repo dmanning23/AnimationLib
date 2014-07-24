@@ -200,15 +200,19 @@ namespace AnimationLib
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
 		/// <param name="rXMLNode">The xml node to read from</param>
-		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode rXMLNode)
+		public void ReadXMLFormat(XmlNode rXMLNode)
 		{
 			KeyFrame = true;
 
+#if DEBUG
 			if ("Item" != rXMLNode.Name)
 			{
-				Debug.Assert(false);
-				return false;
+				throw new Exception("keyelement nodes need to be Item not " + rXMLNode.Name);
+			}
+
+			if (!rXMLNode.HasChildNodes)
+			{
+				throw new Exception("keyelement with no child nodes");
 			}
 
 			//should have an attribute Type
@@ -218,74 +222,70 @@ namespace AnimationLib
 				//will only have the name attribute
 				string strName = mapAttributes.Item(i).Name;
 				string strValue = mapAttributes.Item(i).Value;
+
 				if ("Type" == strName)
 				{
 					if ("AnimationLib.KeyXML" != strValue)
 					{
-						Debug.Assert(false);
-						return false;
+						throw new Exception("keyelement needs to be AnimationLib.KeyXML not " + strValue);
 					}
 				}
 			}
+#endif
 
 			//Read in child nodes
-			if (rXMLNode.HasChildNodes)
+			for (XmlNode childNode = rXMLNode.FirstChild;
+				null != childNode;
+				childNode = childNode.NextSibling)
 			{
-				for (XmlNode childNode = rXMLNode.FirstChild;
-					null != childNode;
-					childNode = childNode.NextSibling)
-				{
-					//what is in this node?
-					string strName = childNode.Name;
-					string strValue = childNode.InnerText;
+				//what is in this node?
+				string strName = childNode.Name;
+				string strValue = childNode.InnerText;
 
-					switch (strName)
+				switch (strName)
+				{
+					case "time":
 					{
-						case "time":
-						{
-							Time = Convert.ToInt32(strValue);
-						}
-						break;
-						case "rotation":
-						{
-							Rotation = MathHelper.ToRadians(Convert.ToSingle(strValue));
-						}
-						break;
-						case "layer":
-						{
-							Layer = Convert.ToInt32(strValue);
-						}
-						break;
-						case "image":
-						{
-							ImageName = strValue;
-						}
-						break;
-						case "flip":
-						{
-							Flip = Convert.ToBoolean(strValue);
-						}
-						break;
-						case "translation":
-						{
-							m_Translation = strValue.ToVector2();
-						}
-						break;
-						case "ragdoll":
-						{
-							RagDoll = Convert.ToBoolean(strValue);
-						}
-						break;
-						case "joint":
-						{
-							JointName = strValue;
-						}
-						break;
+						Time = Convert.ToInt32(strValue);
 					}
+					break;
+					case "rotation":
+					{
+						Rotation = MathHelper.ToRadians(Convert.ToSingle(strValue));
+					}
+					break;
+					case "layer":
+					{
+						Layer = Convert.ToInt32(strValue);
+					}
+					break;
+					case "image":
+					{
+						ImageName = strValue;
+					}
+					break;
+					case "flip":
+					{
+						Flip = Convert.ToBoolean(strValue);
+					}
+					break;
+					case "translation":
+					{
+						m_Translation = strValue.ToVector2();
+					}
+					break;
+					case "ragdoll":
+					{
+						RagDoll = Convert.ToBoolean(strValue);
+					}
+					break;
+					case "joint":
+					{
+						JointName = strValue;
+					}
+					break;
 				}
 			}
-
-			return true;
 		}
 
 		/// <summary>

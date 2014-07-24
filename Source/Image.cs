@@ -275,6 +275,7 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != rParent);
 
+#if DEBUG
 			if ("Item" != rXMLNode.Name)
 			{
 				Debug.Assert(false);
@@ -288,6 +289,7 @@ namespace AnimationLib
 				//will only have the name attribute
 				string strName = mapAttributes.Item(i).Name;
 				string strValue = mapAttributes.Item(i).Value;
+
 				if ("Type" == strName)
 				{
 					if ("AnimationLib.ImageXML" != strValue)
@@ -297,6 +299,7 @@ namespace AnimationLib
 					}
 				}
 			}
+#endif
 
 			//Read in child nodes
 			if (rXMLNode.HasChildNodes)

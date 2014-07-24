@@ -106,6 +106,7 @@ namespace AnimationLib
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
 		public bool ReadXMLFormat(XmlNode rXMLNode)
 		{
+#if DEBUG
 			if ("Item" != rXMLNode.Name)
 			{
 				Debug.Assert(false);
@@ -128,6 +129,7 @@ namespace AnimationLib
 					}
 				}
 			}
+#endif
 
 			//Read in child nodes
 			if (rXMLNode.HasChildNodes)

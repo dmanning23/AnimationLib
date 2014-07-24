@@ -141,6 +141,7 @@ namespace AnimationLib
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
 		public bool ReadXMLFormat(XmlNode rXMLNode, Image myImage)
 		{
+#if DEBUG
 			if ("Item" != rXMLNode.Name)
 			{
 				return false;
@@ -153,6 +154,7 @@ namespace AnimationLib
 				//will only have the name attribute
 				string strName = mapAttributes.Item(i).Name;
 				string strValue = mapAttributes.Item(i).Value;
+
 				if ("Type" == strName)
 				{
 					if ("AnimationLib.JointDataXML" != strValue)
@@ -161,6 +163,7 @@ namespace AnimationLib
 					}
 				}
 			}
+#endif
 
 			//Read in child nodes
 			if (rXMLNode.HasChildNodes)

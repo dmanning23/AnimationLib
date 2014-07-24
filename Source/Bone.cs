@@ -1297,6 +1297,7 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != rXMLNode);
 
+#if DEBUG
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
@@ -1310,6 +1311,7 @@ namespace AnimationLib
 					return false;
 				}
 			}
+#endif
 
 			//Read in child nodes
 			if (rXMLNode.HasChildNodes)

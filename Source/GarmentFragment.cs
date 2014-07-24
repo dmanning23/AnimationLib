@@ -116,6 +116,7 @@ namespace AnimationLib
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
 		public bool ReadXMLFormat(XmlNode rXMLNode, IRenderer rRenderer)
 		{
+#if DEBUG
 			//make sure it is actually an xml node
 			if (rXMLNode.NodeType != XmlNodeType.Element)
 			{
@@ -136,6 +137,8 @@ namespace AnimationLib
 				//will only have the name attribute
 				string strName = mapAttributes.Item(i).Name;
 				string strValue = mapAttributes.Item(i).Value;
+
+
 				if ("Type" == strName)
 				{
 					if ("AnimationLib.GarmentFragmentXML" != strValue)
@@ -145,6 +148,7 @@ namespace AnimationLib
 					}
 				}
 			}
+#endif
 
 			//Read in child nodes
 			if (rXMLNode.HasChildNodes)

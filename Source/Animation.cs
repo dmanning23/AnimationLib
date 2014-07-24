@@ -188,6 +188,7 @@ namespace AnimationLib
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
 		public bool ReadXMLFormat(XmlNode rXMLNode, Bone rModel)
 		{
+#if DEBUG
 			if ("Item" != rXMLNode.Name)
 			{
 				Debug.Assert(false);
@@ -201,6 +202,7 @@ namespace AnimationLib
 				//will only have the name attribute
 				string strName = mapAttributes.Item(i).Name;
 				string strValue = mapAttributes.Item(i).Value;
+
 				if ("Type" == strName)
 				{
 					if ("AnimationLib.AnimationXML" != strValue)
@@ -210,6 +212,7 @@ namespace AnimationLib
 					}
 				}
 			}
+#endif
 
 			//make sure to setup the bones model
 			KeyBone = new KeyBone(rModel);
@@ -225,52 +228,56 @@ namespace AnimationLib
 					string strName = childNode.Name;
 					string strValue = childNode.InnerText;
 
-					if (strName == "name")
+					switch (strName)
 					{
-						Name = strValue;
-					}
-					else if (strName == "length")
-					{
-						Length = Convert.ToSingle(strValue);
-					}
-					else if (strName == "keys")
-					{
-						//get the animation length in frames
-						int iLengthFrames = Helper.SecondsToFrames(Length);
-
-						if (childNode.HasChildNodes)
+						case "name":
 						{
-							for (XmlNode keyNode = childNode.FirstChild;
-								null != keyNode;
-								keyNode = keyNode.NextSibling)
+							Name = strValue;
+						}
+						break;
+
+						case "length":
+						{
+							Length = Convert.ToSingle(strValue);
+						}
+						break;
+
+						case "keys":
+						{
+							//get the animation length in frames
+							int iLengthFrames = Helper.SecondsToFrames(Length);
+
+							if (childNode.HasChildNodes)
 							{
-								//read in the key element
-								KeyElement myKey = new KeyElement();
-								if (!myKey.ReadXMLFormat(keyNode))
+								for (XmlNode keyNode = childNode.FirstChild;
+									null != keyNode;
+									keyNode = keyNode.NextSibling)
 								{
-									Debug.Assert(false);
-									return false;
-								}
+									//read in the key element
+									KeyElement myKey = new KeyElement();
+									myKey.ReadXMLFormat(keyNode);
 
-								//is this keyelement worth keeping?
-								if ((myKey.KeyFrame) && (iLengthFrames >= myKey.Time))
-								{
-									//set the image index
-									Bone rMyBone = rModel.GetBone(myKey.JointName);
-									if (rMyBone != null)
+									//is this keyelement worth keeping?
+									if ((myKey.KeyFrame) && (iLengthFrames >= myKey.Time))
 									{
-										myKey.ImageIndex = rMyBone.GetImageIndex(myKey.ImageName);
-									}
+										//set the image index
+										Bone rMyBone = rModel.GetBone(myKey.JointName);
+										if (rMyBone != null)
+										{
+											myKey.ImageIndex = rMyBone.GetImageIndex(myKey.ImageName);
+										}
 
-									//add to the correct keyjoint
-									KeyJoint myKeyJoint = KeyBone.GetKeyJoint(myKey.JointName);
-									if (null != myKeyJoint)
-									{
-										myKeyJoint.AddKeyElement(myKey);
+										//add to the correct keyjoint
+										KeyJoint myKeyJoint = KeyBone.GetKeyJoint(myKey.JointName);
+										if (null != myKeyJoint)
+										{
+											myKeyJoint.AddKeyElement(myKey);
+										}
 									}
 								}
 							}
 						}
+						break;
 					}
 				}
 			}

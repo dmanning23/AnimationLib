@@ -172,15 +172,20 @@ namespace AnimationLib
 
 			//eat up the name of that xml node
 			string strElementName = rootNode.Name;
+
+#if DEBUG
 			if (("XnaContent" != strElementName) || !rootNode.HasChildNodes)
 			{
 				Debug.Assert(false);
 				stream.Close();
 				return false;
 			}
+#endif
 
 			//next node is "Asset"
 			XmlNode AssetNode = rootNode.FirstChild;
+
+#if DEBUG
 			if (null == AssetNode)
 			{
 				Debug.Assert(false);
@@ -191,6 +196,7 @@ namespace AnimationLib
 				Debug.Assert(false);
 				return false;
 			}
+#endif
 
 			//Read in child nodes
 			for (XmlNode childNode = AssetNode.FirstChild;
