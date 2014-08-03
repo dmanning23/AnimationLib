@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBD63372-7303-4F72-A770-16A12EB9C154}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AnimationLib.Ouya</RootNamespace>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AssemblyName>AnimationLib.Ouya</AssemblyName>
+    <TargetFrameworkVersion>v4.2</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="..\Source\Animation.cs">
+      <Link>Animation.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\AnimationContainer.cs">
+      <Link>AnimationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\AnimationXML.cs">
+      <Link>AnimationXML.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Bone.cs">
+      <Link>Bone.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\BoneType.cs">
+      <Link>BoneType.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Garment.cs">
+      <Link>Garment.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\GarmentAnimationContainer.cs">
+      <Link>GarmentAnimationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\GarmentBone.cs">
+      <Link>GarmentBone.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\GarmentFragment.cs">
+      <Link>GarmentFragment.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Helper.cs">
+      <Link>Helper.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Image.cs">
+      <Link>Image.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Joint.cs">
+      <Link>Joint.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\JointData.cs">
+      <Link>JointData.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\KeyBone.cs">
+      <Link>KeyBone.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\KeyElement.cs">
+      <Link>KeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\KeyJoint.cs">
+      <Link>KeyJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\PhysicsCircle.cs">
+      <Link>PhysicsCircle.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\PhysicsLine.cs">
+      <Link>PhysicsLine.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Playback.cs">
+      <Link>Playback.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\RagdollMove.cs">
+      <Link>RagdollMove.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\RemoveKeyElement.cs">
+      <Link>Commands\RemoveKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetAnchorLocation.cs">
+      <Link>Commands\SetAnchorLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetCircleData.cs">
+      <Link>Commands\SetCircleData.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetJointCoords.cs">
+      <Link>Commands\SetJointCoords.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetKeyElement.cs">
+      <Link>Commands\SetKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Commands\SetLineData.cs">
+      <Link>Commands\SetLineData.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
+      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
+      <Name>MonoGame.Framework.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vector2Extensions\Ouya\Vector2Extensions.Ouya.csproj">
+      <Project>{D2F681A5-57CC-4023-9470-B6A7ED443771}</Project>
+      <Name>Vector2Extensions.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GameTimer\Ouya\GameTimer.Ouya.csproj">
+      <Project>{B5C54D08-EA4C-479B-8A25-09643724056A}</Project>
+      <Name>GameTimer.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Filename\Android\FilenameBuddy.Android.csproj">
+      <Project>{D30C7E1A-CD13-4E46-903E-72FAAD937745}</Project>
+      <Name>FilenameBuddy.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CollisionBuddy\Ouya\CollisionBuddy.Ouya.csproj">
+      <Project>{106E118C-6759-4EEA-A340-ED99500ECAB0}</Project>
+      <Name>CollisionBuddy.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MatrixExtensions\Ouya\MatrixExtensions.Ouya.csproj">
+      <Project>{2E31A986-E147-4000-A5E3-28309C9DC601}</Project>
+      <Name>MatrixExtensions.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BasicPrimitiveBuddy\Ouya\BasicPrimitiveBuddy.Ouya.csproj">
+      <Project>{CA0A3695-B4CD-4129-9593-AD56D5A63F1E}</Project>
+      <Name>BasicPrimitiveBuddy.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UndoRedoBuddy\Ouya\UndoRedoBuddy.Ouya.csproj">
+      <Project>{489653EE-1D28-4444-BD8F-9DC10055CF02}</Project>
+      <Name>UndoRedoBuddy.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DrawListBuddy\Ouya\DrawListBuddy.Ouya.csproj">
+      <Project>{D4F10302-D1D0-4126-B95F-E3A83D78A433}</Project>
+      <Name>DrawListBuddy.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RenderBuddy\Ouya\RenderBuddy.Ouya.csproj">
+      <Project>{98D892D9-5C75-42E4-B478-FF057D7485C3}</Project>
+      <Name>RenderBuddy.Ouya</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
