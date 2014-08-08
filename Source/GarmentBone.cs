@@ -195,27 +195,6 @@ namespace AnimationLib
 			rXMLFile.WriteEndElement();
 		}
 
-		/// <summary>
-		/// Read in all the bone information from an object read in from a serialized XML file.
-		/// </summary>
-		/// <param name="rBone">the xml object to get data from</param>
-		/// <param name="ParentBone">The parent bone for this dude.</param>
-		/// <param name="MyRenderer">The renderer to use to load images</param>
-		public override bool ReadSerializedFormat(AnimationLib.BoneXML rBone, Bone ParentBone, IRenderer rRenderer)
-		{
-			AnimationLib.GarmentBoneXML myGarmentBoneXML = rBone as AnimationLib.GarmentBoneXML;
-			if (null == myGarmentBoneXML)
-			{
-				return false;
-			}
-
-			//get the parent bone
-			ParentBoneName = myGarmentBoneXML.parentBone;
-
-			//let the base class parse the rest of that shit
-			return base.ReadSerializedFormat(rBone, ParentBone, rRenderer);
-		}
-
 		#endregion //File IO
 	}
 }

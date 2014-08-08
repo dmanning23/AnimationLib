@@ -392,17 +392,6 @@ namespace AnimationLib
 			}
 		}
 
-		public KeyElement ReadSerializedAnimationFormat(AnimationLib.KeyXML rKeyElement)
-		{
-			//create a new key element
-			KeyElement myElement = new KeyElement();
-			myElement.ReadSerializedFormat(rKeyElement);
-			Debug.Assert(myElement.KeyFrame);
-			m_listElements.Add(myElement);
-
-			return myElement;
-		}
-
 		#endregion
 	}
 }

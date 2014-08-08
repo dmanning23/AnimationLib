@@ -173,17 +173,6 @@ namespace AnimationLib
 			rXMLFile.WriteEndElement();
 		}
 
-		/// <summary>
-		/// read this asshole from a serialized xml file object
-		/// </summary>
-		/// <param name="myCircle">the object to get data from</param>
-		public bool ReadSerializedFormat(LineXML myLine)
-		{
-			LocalStart = myLine.start;
-			LocalEnd = myLine.end;
-			return true;
-		}
-
 		#endregion //File IO
 	}
 }

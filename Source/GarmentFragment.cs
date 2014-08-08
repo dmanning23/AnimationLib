@@ -221,31 +221,6 @@ namespace AnimationLib
 			AnimationContainer.WriteXMLFormat(AnimationContainer.AnimationFile);
 		}
 
-		/// <summary>
-		/// read from XNA content
-		/// </summary>
-		/// <param name="rXmlContent">teh content loader</param>
-		/// <param name="strResource">name of the garment resource to load</param>
-		/// <param name="rRenderer">renderer to use to load images</param>
-		/// <param name="rRootNode">teh root node of the model that uses this garment</param>
-		/// <returns>bool: whether or not was able to load the garment</returns>
-		public bool ReadXNAContent(ContentManager rContent, AnimationLib.GarmentFragmentXML rGarmentFragment, IRenderer rRenderer)
-		{
-			//read in the model
-			Filename strModelFile = new Filename(rGarmentFragment.model);
-			if (!m_AnimationContainer.ReadSerializedModelFormat(rContent, strModelFile, rRenderer))
-			{
-				Debug.Assert(false);
-				return false;
-			}
-
-			//read in the animations
-			Filename strAnimationFile = new Filename(rGarmentFragment.animation);
-			m_AnimationContainer.ReadSerializedAnimationFormat(rContent, strAnimationFile);
-
-			return true;
-		}
-
 		#endregion File IO
 	}
 }

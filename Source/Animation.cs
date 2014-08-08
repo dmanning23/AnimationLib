@@ -325,29 +325,47 @@ namespace AnimationLib
 				rXMLFile.WriteString(myAnimationXML.keys[i].time.ToString());
 				rXMLFile.WriteEndElement();
 
-				rXMLFile.WriteStartElement("rotation");
-				rXMLFile.WriteString(myAnimationXML.keys[i].rotation.ToString());
-				rXMLFile.WriteEndElement();
+				if (!myAnimationXML.keys[i].SkipRotation)
+				{
+					rXMLFile.WriteStartElement("rotation");
+					rXMLFile.WriteString(myAnimationXML.keys[i].rotation.ToString());
+					rXMLFile.WriteEndElement();
+				}
 
-				rXMLFile.WriteStartElement("layer");
-				rXMLFile.WriteString(myAnimationXML.keys[i].layer.ToString());
-				rXMLFile.WriteEndElement();
+				if (!myAnimationXML.keys[i].SkipLayer)
+				{
+					rXMLFile.WriteStartElement("layer");
+					rXMLFile.WriteString(myAnimationXML.keys[i].layer.ToString());
+					rXMLFile.WriteEndElement();
+				}
 
-				rXMLFile.WriteStartElement("image");
-				rXMLFile.WriteString(myAnimationXML.keys[i].image.ToString());
-				rXMLFile.WriteEndElement();
+				if (!myAnimationXML.keys[i].SkipImage)
+				{
+					rXMLFile.WriteStartElement("image");
+					rXMLFile.WriteString(myAnimationXML.keys[i].image.ToString());
+					rXMLFile.WriteEndElement();
+				}
 
-				rXMLFile.WriteStartElement("flip");
-				rXMLFile.WriteString(myAnimationXML.keys[i].flip ? "true" : "false");
-				rXMLFile.WriteEndElement();
+				if (!myAnimationXML.keys[i].SkipFlip)
+				{
+					rXMLFile.WriteStartElement("flip");
+					rXMLFile.WriteString(myAnimationXML.keys[i].flip ? "true" : "false");
+					rXMLFile.WriteEndElement();
+				}
 
-				rXMLFile.WriteStartElement("translation");
-				rXMLFile.WriteString(myAnimationXML.keys[i].translation.StringFromVector());
-				rXMLFile.WriteEndElement();
+				if (!myAnimationXML.keys[i].SkipTranslation)
+				{
+					rXMLFile.WriteStartElement("translation");
+					rXMLFile.WriteString(myAnimationXML.keys[i].translation.StringFromVector());
+					rXMLFile.WriteEndElement();
+				}
 
-				rXMLFile.WriteStartElement("ragdoll");
-				rXMLFile.WriteString(myAnimationXML.keys[i].ragdoll ? "true" : "false");
-				rXMLFile.WriteEndElement();
+				if (!myAnimationXML.keys[i].SkipRagDoll)
+				{
+					rXMLFile.WriteStartElement("ragdoll");
+					rXMLFile.WriteString(myAnimationXML.keys[i].ragdoll ? "true" : "false");
+					rXMLFile.WriteEndElement();
+				}
 
 				rXMLFile.WriteStartElement("joint");
 				rXMLFile.WriteString(myAnimationXML.keys[i].joint.ToString());
@@ -367,31 +385,6 @@ namespace AnimationLib
 		public void MultiplyLayers(int iMultiply)
 		{
 			KeyBone.MultiplyLayers(iMultiply);
-		}
-
-		public void ReadSerializedFormat(AnimationLib.AnimationXML myDude, Bone rModel)
-		{
-			Name = myDude.name;
-			Length = myDude.length;
-			KeyBone = new KeyBone(rModel);
-
-			for (int i = 0; i < myDude.keys.Count; i++)
-			{
-				//find a joint that uses this key
-				KeyJoint myKeyJoint = KeyBone.GetKeyJoint(myDude.keys[i].joint);
-				if (null != myKeyJoint)
-				{
-					AnimationLib.KeyXML myKeyXML = myDude.keys[i];
-					KeyElement myElement = myKeyJoint.ReadSerializedAnimationFormat(myKeyXML);
-
-					//ok set teh image index after its been read in
-					Bone rMyBone = rModel.GetBone(myElement.JointName);
-					if (rMyBone != null)
-					{
-						myElement.ImageIndex = rMyBone.GetImageIndex(myElement.ImageName);
-					}
-				}
-			}
 		}
 
 		#endregion

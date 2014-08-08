@@ -128,8 +128,7 @@ namespace AnimationLib
 
 		public void Copy(KeyElement rInst)
 		{
-			m_Translation.X = rInst.m_Translation.X;
-			m_Translation.Y = rInst.m_Translation.Y;
+			m_Translation = rInst.m_Translation;
 			Time = rInst.Time;
 			Rotation = rInst.Rotation;
 			Layer = rInst.Layer;
@@ -310,7 +309,7 @@ namespace AnimationLib
 			}
 
 			//create the xml object and add it to the animation
-			AnimationLib.KeyXML myThing = new AnimationLib.KeyXML();
+			var myThing = new AnimationLib.KeyXML();
 			myThing.flip = Flip;
 			myThing.image = strImage;
 			myThing.joint = JointName;
@@ -335,19 +334,6 @@ namespace AnimationLib
 		public void MultiplyLayers(int iMultiply)
 		{
 			Layer *= iMultiply;
-		}
-
-		public void ReadSerializedFormat(AnimationLib.KeyXML rKeyElement)
-		{
-			KeyFrame = true;
-			Flip = rKeyElement.flip;
-			ImageName = rKeyElement.image;
-			JointName = rKeyElement.joint;
-			Layer = rKeyElement.layer;
-			RagDoll = rKeyElement.ragdoll;
-			Rotation = MathHelper.ToRadians(rKeyElement.rotation);
-			Time = rKeyElement.time;
-			m_Translation = rKeyElement.translation;
 		}
 
 		#endregion //File IO

@@ -316,16 +316,6 @@ namespace AnimationLib
 			rXMLFile.WriteEndElement();
 		}
 
-		/// <summary>
-		/// Read in all the bone information from an object read in from a serialized XML file.
-		/// </summary>
-		/// <param name="rJoint">the xml object to get JointCoords from</param>
-		public bool ReadSerializedFormat(AnimationLib.JointXML rJoint)
-		{
-			Name = rJoint.name;
-			return true;
-		}
-
 		#endregion //File IO
 	}
 }

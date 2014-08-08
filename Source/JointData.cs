@@ -257,24 +257,6 @@ namespace AnimationLib
 			rXMLFile.WriteEndElement();
 		}
 
-		/// <summary>
-		/// read this asshole from a serialized xml object
-		/// </summary>
-		/// <param name="rData">the thing to get data from</param>
-		public bool ReadSerializedFormat(AnimationLib.JointDataXML rData, Image myImage)
-		{
-			Location = rData.location;
-			FirstLimit = MathHelper.ToRadians(rData.limit1);
-			SecondLimit = MathHelper.ToRadians(rData.limit2);
-			FloatRadius = rData.FloatRadius;
-			Floating = rData.FloatOrRotate;
-
-			//get the vector from the anchor position to this joint position
-			m_AnchorVect = Location - myImage.AnchorCoord;
-			Length = m_AnchorVect.Length();
-			return true;
-		}
-
 		#endregion
 	}
 }

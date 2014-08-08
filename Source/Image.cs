@@ -499,65 +499,6 @@ namespace AnimationLib
 			rXMLFile.WriteEndElement();
 		}
 
-		/// <summary>
-		/// Read in all the bone information from an object read in from a serialized XML file.
-		/// </summary>
-		/// <param name="rImage">the xml object to get JointCoords from</param>
-		/// <param name="MyRenderer">The renderer to use to load images</param>
-		public bool ReadSerializedFormat(AnimationLib.ImageXML rImage, IRenderer rRenderer)
-		{
-			//grab all that stuff
-			UpperLeft = rImage.upperleft;
-			LowerRight = rImage.lowerright;
-			m_AnchorCoord = rImage.anchorcoord;
-
-			//add the ability to have blank image, which means a skeletal structure that is not displayed
-			ImageFile.SetRelFilename(rImage.filename);
-			if (ImageFile.GetFileExt().Length > 0)
-			{
-				if (null != rRenderer)
-				{
-					m_Image = rRenderer.LoadImage(ImageFile.File);
-				}
-			}
-
-			//read in joint JointCoords
-			for (int i = 0; i < rImage.joints.Count; i++)
-			{
-				JointData myJointJointCoords = new JointData();
-				AnimationLib.JointDataXML myJointJointCoordsXML = rImage.joints[i];
-				if (!myJointJointCoords.ReadSerializedFormat(myJointJointCoordsXML, this))
-				{
-					return false;
-				}
-				JointCoords.Add(myJointJointCoords);
-			}
-
-			//read in physics JointCoords
-			for (int i = 0; i < rImage.circles.Count; i++)
-			{
-				PhysicsCircle myCircle = new PhysicsCircle();
-				if (!myCircle.ReadSerializedFormat(rImage.circles[i]))
-				{
-					return false;
-				}
-				Circles.Add(myCircle);
-			}
-
-			//read in line JointCoords
-			for (int i = 0; i < rImage.lines.Count; i++)
-			{
-				PhysicsLine myLine = new PhysicsLine();
-				if (!myLine.ReadSerializedFormat(rImage.lines[i]))
-				{
-					return false;
-				}
-				Lines.Add(myLine);
-			}
-
-			return true;
-		}
-
 		#endregion //File IO
 	}
 }

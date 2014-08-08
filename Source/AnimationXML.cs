@@ -96,6 +96,49 @@ namespace AnimationLib
 		public Vector2 translation = new Vector2(0.0f);
 		public bool ragdoll = false;
 		public string joint = "";
+
+		public bool SkipRotation
+		{
+			get
+			{
+				return 0.0f == rotation;
+			}
+		}
+		public bool SkipLayer
+		{
+			get
+			{
+				return 0 == layer;
+			}
+		}
+		public bool SkipImage
+		{
+			get
+			{
+				return string.IsNullOrEmpty(image);
+			}
+		}
+		public bool SkipFlip
+		{
+			get
+			{
+				return false == flip;
+			}
+		}
+		public bool SkipTranslation
+		{
+			get
+			{
+				return Vector2.Zero == translation;
+			}
+		}
+		public bool SkipRagDoll
+		{
+			get
+			{
+				return false == ragdoll;
+			}
+		}
 	}
 	
 	/// <summary>

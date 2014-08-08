@@ -497,28 +497,6 @@ namespace AnimationLib
 			rFile.Close();
 		}
 
-		/// <summary>
-		/// Read a model file from a serialized xml resource
-		/// </summary>
-		/// <param name="rContent">content loader to use</param>
-		/// <param name="strResource">name of the resource to load</param>
-		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public virtual bool ReadSerializedModelFormat(ContentManager rXmlContent, Filename strResource, IRenderer rRenderer)
-		{
-			CreateBone();
-
-			Debug.Assert(null != rXmlContent);
-			AnimationLib.BoneXML rBoneXML = rXmlContent.Load<AnimationLib.BoneXML>(strResource.GetRelPathFileNoExt());
-			if (!Model.ReadSerializedFormat(rBoneXML, null, rRenderer))
-			{
-				Debug.Assert(false);
-				return false;
-			}
-
-			ModelFile = strResource;
-			return true;
-		}
-
 		#endregion //Model File IO
 
 		#region Animation File IO
@@ -690,34 +668,6 @@ namespace AnimationLib
 			{
 				i.MultiplyLayers(iMultiply);
 			}
-		}
-
-		/// <summary>
-		/// read in a list of animations from a resource
-		/// </summary>
-		/// <param name="rContent">content loader to use</param>
-		/// <param name="strResource">name of the resource</param>
-		public virtual void ReadSerializedAnimationFormat(ContentManager rXmlContent, Filename strResource)
-		{
-			Animations.Clear();
-
-			//load the resource
-			AnimationLib.AnimationContainerXML myDude = rXmlContent.Load<AnimationLib.AnimationContainerXML>(strResource.GetRelPathFileNoExt());
-
-			//set up all the animations
-			for (int i = 0; i < myDude.animations.Count; i++)
-			{
-				Animation myAnimation = new Animation(Model);
-				AnimationLib.AnimationXML myAnimationXML = myDude.animations[i];
-				Debug.Assert(null != Model);
-				myAnimation.ReadSerializedFormat(myAnimationXML, Model);
-				Animations.Add(myAnimation);
-			}
-
-			AnimationFile = strResource;
-			m_ePlayback = EPlayback.Forwards;
-			CurrentAnimation = null;
-			RestartAnimation();
 		}
 
 		#endregion //Animation File IO
