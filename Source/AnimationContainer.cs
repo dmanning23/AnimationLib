@@ -5,12 +5,12 @@ using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using GameTimer;
-#if NETWORKING
-using Microsoft.Xna.Framework.Net;
-#endif
 using FilenameBuddy;
 using DrawListBuddy;
 using RenderBuddy;
+#if OUYA
+using Ouya.Console.Api;
+#endif
 
 namespace AnimationLib
 {
@@ -379,40 +379,6 @@ namespace AnimationLib
 
 		#endregion //Methods
 
-		#region Networking
-
-#if NETWORKING
-
-		/// <summary>
-		/// Read this object from a network packet reader.
-		/// </summary>
-		public void ReadFromNetwork(PacketReader packetReader)
-		{
-			int iIndex = packetReader.ReadInt32();
-			EPlayback ePlaybackMode = (EPlayback)packetReader.ReadInt32();
-
-			if ((m_iCurrentAnimationIndex != iIndex) || (m_ePlayback != ePlaybackMode))
-			{
-				SetAnimation(iIndex, ePlaybackMode);
-			}
-
-			m_StopWatch.ReadFromNetwork(packetReader);
-		}
-
-		/// <summary>
-		/// Write this object to a network packet reader.
-		/// </summary>
-		public void WriteToNetwork(PacketWriter packetWriter)
-		{
-			packetWriter.Write(m_iCurrentAnimationIndex);
-			packetWriter.Write((int)m_ePlayback);
-			m_StopWatch.WriteToNetwork(packetWriter);
-		}
-
-#endif
-
-		#endregion //Networking
-
 		#region Model File IO
 
 		/// <summary>
@@ -427,7 +393,11 @@ namespace AnimationLib
 			//gonna have to do this the HARD way
 
 			//Open the file.
+			#if ANDROID
+			Stream stream = Game.Activity.Assets.Open(strResource.File);
+			#else
 			FileStream stream = File.Open(strResource.File, FileMode.Open, FileAccess.Read);
+			#endif
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
@@ -513,7 +483,11 @@ namespace AnimationLib
 			//gonna have to do this the HARD way
 
 			//Open the file.
+			#if ANDROID
+			Stream stream = Game.Activity.Assets.Open(strFileName.File);
+			#else
 			FileStream stream = File.Open(strFileName.File, FileMode.Open, FileAccess.Read);
+			#endif
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
