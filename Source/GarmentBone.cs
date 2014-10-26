@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using RenderBuddy;
 using System.Diagnostics;
 using System.Xml;
-using Microsoft.Xna.Framework;
-using DrawListBuddy;
-using RenderBuddy;
 
 namespace AnimationLib
 {

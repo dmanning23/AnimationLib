@@ -6,9 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using FilenameBuddy;
-using DrawListBuddy;
 using RenderBuddy;
 
 namespace AnimationLib

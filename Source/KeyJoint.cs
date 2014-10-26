@@ -1,8 +1,8 @@
+using AnimationLib.Commands;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UndoRedoBuddy;
-using AnimationLib.Commands;
 
 namespace AnimationLib
 {

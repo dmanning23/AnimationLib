@@ -1,13 +1,12 @@
+using DrawListBuddy;
+using FilenameBuddy;
+using MatrixExtensions;
+using Microsoft.Xna.Framework;
+using RenderBuddy;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
-using Microsoft.Xna.Framework;
-using FilenameBuddy;
-using DrawListBuddy;
-using MatrixExtensions;
-using BasicPrimitiveBuddy;
-using RenderBuddy;
 using UndoRedoBuddy;
 using Vector2Extensions;
 

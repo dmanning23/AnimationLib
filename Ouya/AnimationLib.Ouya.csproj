@@ -132,10 +132,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
-      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
-      <Name>MonoGame.Framework.Ouya</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Vector2Extensions\Ouya\Vector2Extensions.Ouya.csproj">
       <Project>{D2F681A5-57CC-4023-9470-B6A7ED443771}</Project>
       <Name>Vector2Extensions.Ouya</Name>
@@ -175,6 +171,10 @@
     <ProjectReference Include="..\..\ouya-csharp\Ouya.Console.Api\Ouya.Console.Api.csproj">
       <Project>{493A4B6F-98CE-4000-8A0C-4A4726299061}</Project>
       <Name>Ouya.Console.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
+      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
+      <Name>MonoGame.Framework.Ouya</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

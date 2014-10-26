@@ -1,5 +1,4 @@
 ﻿using FilenameBuddy;
-using Microsoft.Xna.Framework.Content;
 using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using GameTimer;
 using FilenameBuddy;
 using DrawListBuddy;

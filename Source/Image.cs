@@ -1,16 +1,13 @@
+using AnimationLib.Commands;
+using DrawListBuddy;
+using FilenameBuddy;
+using Microsoft.Xna.Framework;
+using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
-using Microsoft.Xna.Framework;
-using FilenameBuddy;
-using CollisionBuddy;
-using DrawListBuddy;
-using BasicPrimitiveBuddy;
-using Microsoft.Xna.Framework.Graphics;
-using Vector2Extensions;
-using RenderBuddy;
 using UndoRedoBuddy;
-using AnimationLib.Commands;
+using Vector2Extensions;
 
 namespace AnimationLib
 {
