@@ -129,6 +129,27 @@ namespace AnimationLib
 		}
 
 		/// <summary>
+		/// After manually setting a few bones, call this method to update the whole model to match the manual bone
+		/// Call this as many times as you want after the animation has been updated
+		/// </summary>
+		/// <param name="flip"></param>
+		/// <param name="scale"></param>
+		/// <param name="rotation"></param>
+		/// <param name="ignoreRagdoll"></param>
+		public void HackUpdate(bool flip, float scale, float rotation, bool ignoreRagdoll = false)
+		{
+			//Apply teh current animation to the bones and stuff
+			Model.Update(0,
+				Model.AnchorJoint.Position,
+				null,
+				rotation,
+				flip,
+				0,
+				scale,
+				ignoreRagdoll);
+		}
+
+		/// <summary>
 		/// Get the current time of the animation.
 		/// </summary>
 		/// <returns>The animation time, in frames.  Will be between 0 and the length of the animation</returns>
@@ -187,29 +208,33 @@ namespace AnimationLib
 		/// <summary>
 		/// Apply the animation at a certain time
 		/// </summary>
-		/// <param name="iTime">the time of teh animation to set</param>
-		/// <param name="rMatrix">the matrix to transform the model by</param>
+		/// <param name="time"></param>
+		/// <param name="position"></param>
+		/// <param name="flip"></param>
+		/// <param name="scale"></param>
+		/// <param name="rotation"></param>
+		/// <param name="ignoreRagdoll"></param>
 		protected virtual void ApplyAnimation(
-			int iTime,
-			Vector2 myPosition,
-			bool bFlip,
-			float fScale,
-			float fRotation,
-			bool bIgnoreRagdoll)
+			int time,
+			Vector2 position,
+			bool flip,
+			float scale,
+			float rotation,
+			bool ignoreRagdoll)
 		{
 			Debug.Assert(null != Model);
 			Debug.Assert(null != CurrentAnimation);
 
 			//Apply teh current animation to the bones and stuff
-			Model.AnchorJoint.Position = myPosition;
-			Model.Update(iTime,
-				myPosition,
+			Model.AnchorJoint.Position = position;
+			Model.Update(time,
+				position,
 				CurrentAnimation.KeyBone,
-				fRotation,
-				bFlip,
+				rotation,
+				flip,
 				0,
-				fScale,
-				bIgnoreRagdoll || ResetRagdoll);
+				scale,
+				ignoreRagdoll || ResetRagdoll);
 
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
