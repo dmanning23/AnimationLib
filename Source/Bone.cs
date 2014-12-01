@@ -442,69 +442,8 @@ namespace AnimationLib
 			//update the translation
 			UpdateTranslation(ref myPosition, fParentRotation, fScale, bIgnoreRagdoll);
 
-			//Get the correct location of the anchor coord
-			Image CurrentImage = GetCurrentImage();
-			Vector2 anchorCoord = Vector2.Zero;
-			if (null != CurrentImage)
-			{
-				anchorCoord = CurrentImage.GetFlippedAnchorCoord(Flipped, fScale);
-			}
-
-			//create the rotation matrix and flip it if necessary
-
-			//Create matrix for the position of this dude
-			Matrix myMatrix = Matrix.Identity;
-			MatrixExt.SetPosition(ref myMatrix, myPosition);
-
-			//create -translation matrix to move to and from the origin
-			Matrix myTranslation = Matrix.Identity;
-			MatrixExt.SetPosition(ref myTranslation, -myPosition);
-
-			//okay multiply through! move to origin, rotate, move back to my position
-			myTranslation = myTranslation * MatrixExt.Orientation(Rotation);
-			myTranslation = myTranslation * myMatrix;
-
-			myMatrix = myTranslation;
-
-			//myMatrix = myMatrix * MatrixExt.Orientation(Rotation);
-			//myMatrix = myMatrix * myTranslation;
-
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || !AnchorJoint.Data.Floating || bIgnoreRagdoll)
-			{
-				//Update my position based on the offset of the anchor coord
-				m_CurrentPosition = myMatrix.Multiply(myPosition - anchorCoord);
-			}
-
-			//update all the circle data
-			if (null != CurrentImage)
-			{
-				CurrentImage.Update(m_CurrentPosition, Rotation, Flipped, fScale);
-			}
-
-			//update all the joints
-			for (int i = 0; i < Joints.Count; i++)
-			{
-				//update the positions of all the joints
-				Vector2 jointPosition = new Vector2(0.0f);
-				if (null != CurrentImage)
-				{
-					//get my joint translation from my current image
-					jointPosition = CurrentImage.GetFlippedJointCoord(i, Flipped, fScale);
-
-					//get teh joint data
-					Joints[i].Data = Images[ImageIndex].JointCoords[i];
-				}
-
-				if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
-				{
-					//to get the joint position, subtract anchor coord from joint position, and add my position
-					jointPosition = jointPosition - anchorCoord;
-					jointPosition = myPosition + jointPosition;
-
-					Joints[i].OldPosition = Joints[i].Position;
-					Joints[i].Position = myMatrix.Multiply(jointPosition);
-				}
-			}
+			//Update this bone and all its joint positions
+			UpdateBone(myPosition, fScale, bIgnoreRagdoll);
 
 			//this layer counter is incremented to layer garments on to pof each other
 			int iCurrentLayer = CurrentLayer;
@@ -643,6 +582,73 @@ namespace AnimationLib
 			}
 			//grab the position (joint location + animation translation)
 			AnchorPosition = myPosition;
+		}
+
+		public void UpdateBone(Vector2 myPosition, float fScale, bool bIgnoreRagdoll)
+		{
+			//Get the correct location of the anchor coord
+			Image CurrentImage = GetCurrentImage();
+			Vector2 anchorCoord = Vector2.Zero;
+			if (null != CurrentImage)
+			{
+				anchorCoord = CurrentImage.GetFlippedAnchorCoord(Flipped, fScale);
+			}
+
+			//create the rotation matrix and flip it if necessary
+
+			//Create matrix for the position of this dude
+			Matrix myMatrix = Matrix.Identity;
+			MatrixExt.SetPosition(ref myMatrix, myPosition);
+
+			//create -translation matrix to move to and from the origin
+			Matrix myTranslation = Matrix.Identity;
+			MatrixExt.SetPosition(ref myTranslation, -myPosition);
+
+			//okay multiply through! move to origin, rotate, move back to my position
+			myTranslation = myTranslation * MatrixExt.Orientation(Rotation);
+			myTranslation = myTranslation * myMatrix;
+
+			myMatrix = myTranslation;
+
+			//myMatrix = myMatrix * MatrixExt.Orientation(Rotation);
+			//myMatrix = myMatrix * myTranslation;
+
+			if (!AnchorJoint.CurrentKeyElement.RagDoll || !AnchorJoint.Data.Floating || bIgnoreRagdoll)
+			{
+				//Update my position based on the offset of the anchor coord
+				m_CurrentPosition = myMatrix.Multiply(myPosition - anchorCoord);
+			}
+
+			//update all the circle data
+			if (null != CurrentImage)
+			{
+				CurrentImage.Update(m_CurrentPosition, Rotation, Flipped, fScale);
+			}
+
+			//update all the joints
+			for (int i = 0; i < Joints.Count; i++)
+			{
+				//update the positions of all the joints
+				Vector2 jointPosition = new Vector2(0.0f);
+				if (null != CurrentImage)
+				{
+					//get my joint translation from my current image
+					jointPosition = CurrentImage.GetFlippedJointCoord(i, Flipped, fScale);
+
+					//get teh joint data
+					Joints[i].Data = Images[ImageIndex].JointCoords[i];
+				}
+
+				if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
+				{
+					//to get the joint position, subtract anchor coord from joint position, and add my position
+					jointPosition = jointPosition - anchorCoord;
+					jointPosition = myPosition + jointPosition;
+
+					Joints[i].OldPosition = Joints[i].Position;
+					Joints[i].Position = myMatrix.Multiply(jointPosition);
+				}
+			}
 		}
 
 		#endregion //Update Methods
