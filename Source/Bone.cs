@@ -89,7 +89,7 @@ namespace AnimationLib
 		/// <summary>
 		/// the rotation to render this guy at
 		/// </summary>
-		public float Rotation { get; protected set; }
+		public float Rotation { get; set; }
 
 		public bool IsFoot
 		{
@@ -518,7 +518,7 @@ namespace AnimationLib
 				//if the anchor pos is not in this bone, set it to the bones pos
 				if (i >= Joints.Count)
 				{
-					childVector = m_CurAnchorPos;
+					childVector = AnchorPosition;
 				}
 
 				//update the chlidren
@@ -642,7 +642,7 @@ namespace AnimationLib
 				}
 			}
 			//grab the position (joint location + animation translation)
-			m_CurAnchorPos = myPosition;
+			AnchorPosition = myPosition;
 		}
 
 		#endregion //Update Methods
@@ -706,7 +706,7 @@ namespace AnimationLib
 		{
 			for (int i = 0; i < Joints.Count; i++)
 			{
-				myRenderer.Primitive.Line(m_CurAnchorPos, Joints[i].Position, rColor);
+				myRenderer.Primitive.Line(AnchorPosition, Joints[i].Position, rColor);
 			}
 
 			if (bRecurse)
@@ -902,12 +902,12 @@ namespace AnimationLib
 			}
 		}
 
-		private float GetRagDollRotation()
+		public float GetRagDollRotation()
 		{
 			if (!AnchorJoint.Data.Floating && (0 <= ImageIndex) && (0 < Joints.Count))
 			{
 				//get the difference between the anchor position and the joint
-				Vector2 diff = Joints[0].Position - m_CurAnchorPos;
+				Vector2 diff = Joints[0].Position - AnchorPosition;
 
 				//get the desired rotation 
 				Debug.Assert(null != Joints[0].Data);
@@ -1030,7 +1030,7 @@ namespace AnimationLib
 
 			//re-update from this guy onward
 			Update(AnchorJoint.CurrentKeyElement.Time,
-				m_CurAnchorPos,
+				AnchorPosition,
 				null,
 				0.0f,
 				bParentFlip,
@@ -1115,7 +1115,7 @@ namespace AnimationLib
 			Vector2 ScreenLocation = new Vector2(0.0f);
 			ScreenLocation.X = (float)iX;
 			ScreenLocation.Y = (float)iY;
-			MyLocation = ScreenLocation - m_CurAnchorPos;
+			MyLocation = ScreenLocation - AnchorPosition;
 
 			//get the angle to that vector
 			float fAngle = Helper.atan2(MyLocation);

@@ -340,7 +340,7 @@ namespace AnimationLib
 								//do we need to load the image?
 								if (null != rRenderer)
 								{
-									m_Image = rRenderer.LoadImage(ImageFile.File);
+									m_Image = rRenderer.LoadImage(ImageFile);
 									if (null == m_Image)
 									{
 										Debug.Assert(false);
