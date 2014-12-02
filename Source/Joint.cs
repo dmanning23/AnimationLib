@@ -139,6 +139,11 @@ namespace AnimationLib
 			m_OldPosition = m_JointPosition;
 		}
 
+		public override string ToString()
+		{
+			return Name;
+		}
+
 		#endregion
 
 		#region Ragdoll

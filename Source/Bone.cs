@@ -445,6 +445,11 @@ namespace AnimationLib
 			//Update this bone and all its joint positions
 			UpdateImageAndJoints(myPosition, fScale, bIgnoreRagdoll);
 
+			UpdateChildren(iTime, myKeyBone, fScale, bIgnoreRagdoll);
+		}
+
+		private void UpdateChildren(int iTime, KeyBone myKeyBone, float fScale, bool bIgnoreRagdoll)
+		{
 			//this layer counter is incremented to layer garments on to pof each other
 			int iCurrentLayer = CurrentLayer;
 
@@ -467,13 +472,13 @@ namespace AnimationLib
 					childKeyBone = myKeyBone.GetChildBone(i);
 				}
 				Bones[i].Update(iTime,
-				                childVector,
-				                childKeyBone, 
-				                Rotation,
-				                Flipped,
-				                iCurrentLayer,
-				                fScale,
-				                bIgnoreRagdoll);
+								childVector,
+								childKeyBone,
+								Rotation,
+								Flipped,
+								iCurrentLayer,
+								fScale,
+								bIgnoreRagdoll);
 
 				//if that was a garment, increment the counter for the next garment
 				if (EBoneType.Garment == Bones[i].BoneType)
@@ -1072,6 +1077,10 @@ namespace AnimationLib
 				currentElement.ImageIndex,
 				rotation,
 				currentElement.Translation);
+
+			//UpdateImageAndJoints(AnchorJoint.Position, 1.0f, false);
+
+			//UpdateChildren(0, null, 1.0f, false);
 		}
 
 		/// <summary>
