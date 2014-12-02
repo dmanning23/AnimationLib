@@ -10,6 +10,7 @@ using RenderBuddy;
 #if OUYA
 using Ouya.Console.Api;
 #endif
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -202,7 +203,7 @@ namespace AnimationLib
 				break;
 			}
 
-			return Helper.SecondsToFrames(fTime);
+			return fTime.ToFrames();
 		}
 
 		/// <summary>

@@ -151,7 +151,7 @@ namespace AnimationLib
 		public void SetTime(float fTime)
 		{
 			//set the time in the animation itself
-			KeyBone.SetTime(Helper.SecondsToFrames(Length), Helper.SecondsToFrames(fTime));
+			KeyBone.SetTime(Length.ToFrames(), fTime.ToFrames());
 
 			//grab the time
 			Length = fTime;
@@ -245,7 +245,7 @@ namespace AnimationLib
 						case "keys":
 						{
 							//get the animation length in frames
-							int iLengthFrames = Helper.SecondsToFrames(Length);
+							int iLengthFrames = Length.ToFrames();
 
 							if (childNode.HasChildNodes)
 							{

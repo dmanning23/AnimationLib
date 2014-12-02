@@ -57,17 +57,6 @@ namespace AnimationLib
 			return fAngle;
 		}
 
-		public static int SecondsToFrames(float fSeconds)
-		{
-			fSeconds *= 60.0f;
-			return (int)(fSeconds + 0.5f);
-		}
-
-		public static float FramesToSeconds(int iFrames)
-		{
-			return ((float)iFrames / 60.0f);
-		}
-
 		public static float Length(float fX, float fY)
 		{
 			Vector2 myVect = new Vector2(0.0f);

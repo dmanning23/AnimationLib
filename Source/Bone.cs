@@ -548,6 +548,30 @@ namespace AnimationLib
 			}
 		}
 
+		private bool GetParentFlip()
+		{
+			if (Flipped && AnchorJoint.CurrentKeyElement.Flip)
+			{
+				//they cancel each other
+				return false;
+			}
+			else if (Flipped && !AnchorJoint.CurrentKeyElement.Flip)
+			{
+				//the parent is flipped
+				return true;
+			}
+			else if (!Flipped && AnchorJoint.CurrentKeyElement.Flip)
+			{
+				//I am flipped
+				return true;
+			}
+			else
+			{
+				//no one is flipped
+				return false;
+			}
+		}
+
 		/// <summary>
 		/// update the rotation of this bone
 		/// </summary>
@@ -556,7 +580,10 @@ namespace AnimationLib
 		/// <param name="bIgnoreRagdoll">If set to <c>true</c> b ignore ragdoll.</param>
 		private void UpdateRotation(float fParentRotation, bool bParentFlip, bool bIgnoreRagdoll)
 		{
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll || (0 == Joints.Count) || (AnchorJoint.CurrentKeyElement.RagDoll && AnchorJoint.Data.Floating))
+			if (!AnchorJoint.CurrentKeyElement.RagDoll || 
+				bIgnoreRagdoll || 
+				(0 == Joints.Count) || 
+				(AnchorJoint.CurrentKeyElement.RagDoll && AnchorJoint.Data.Floating))
 			{
 				//add my rotation to the parents rotation
 				if (!bParentFlip)
@@ -1078,9 +1105,15 @@ namespace AnimationLib
 				rotation,
 				currentElement.Translation);
 
-			//UpdateImageAndJoints(AnchorJoint.Position, 1.0f, false);
-
-			//UpdateChildren(0, null, 1.0f, false);
+			//re-update from this guy onward
+			Update(AnchorJoint.CurrentKeyElement.Time,
+				AnchorPosition,
+				null,
+				0.0f,
+				GetParentFlip(),
+				0,
+				1.0f,
+				false); 
 		}
 
 		/// <summary>
