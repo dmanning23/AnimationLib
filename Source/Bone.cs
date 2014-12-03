@@ -1111,7 +1111,7 @@ namespace AnimationLib
 				null,
 				0.0f,
 				GetParentFlip(),
-				0,
+				CurrentLayer - AnchorJoint.CurrentKeyElement.Layer,
 				1.0f,
 				false); 
 		}
@@ -1174,7 +1174,7 @@ namespace AnimationLib
 			iY = (int)myLocation.Y;
 		}
 
-		public float GetAngle(int iX, int iY)
+		public float GetAngle(Vector2 screenPos)
 		{
 			if (null == AnchorJoint)
 			{
@@ -1182,8 +1182,7 @@ namespace AnimationLib
 			}
 
 			//get teh offset from the bone location
-			var screenLocation = new Vector2((float)iX, (float)iY);
-			var myLocation = screenLocation - AnchorJoint.Position;
+			var myLocation = screenPos - AnchorJoint.Position;
 
 			//get the angle to that vector
 			float fAngle = Helper.atan2(myLocation);
