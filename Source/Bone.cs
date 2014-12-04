@@ -548,7 +548,7 @@ namespace AnimationLib
 			}
 		}
 
-		private bool GetParentFlip()
+		public bool GetParentFlip()
 		{
 			if (Flipped && AnchorJoint.CurrentKeyElement.Flip)
 			{
