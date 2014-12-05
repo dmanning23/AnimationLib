@@ -130,27 +130,6 @@ namespace AnimationLib
 		}
 
 		/// <summary>
-		/// After manually setting a few bones, call this method to update the whole model to match the manual bone
-		/// Call this as many times as you want after the animation has been updated
-		/// </summary>
-		/// <param name="flip"></param>
-		/// <param name="scale"></param>
-		/// <param name="rotation"></param>
-		/// <param name="ignoreRagdoll"></param>
-		public void HackUpdate(bool flip, float scale, float rotation, bool ignoreRagdoll = false)
-		{
-			//Apply teh current animation to the bones and stuff
-			Model.Update(0,
-				Model.AnchorJoint.Position,
-				null,
-				rotation,
-				flip,
-				0,
-				scale,
-				ignoreRagdoll);
-		}
-
-		/// <summary>
 		/// Get the current time of the animation.
 		/// </summary>
 		/// <returns>The animation time, in frames.  Will be between 0 and the length of the animation</returns>
