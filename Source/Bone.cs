@@ -1048,7 +1048,7 @@ namespace AnimationLib
 				return;
 			}
 
-			ManualKeyFrame(layer, imageIndex, rotation, translationHack);
+			ManualKeyFrame(layer, imageIndex, rotation, translationHack, false);
 
 			//re-update from this guy onward
 			Update(AnchorJoint.CurrentKeyElement.Time,
@@ -1068,7 +1068,8 @@ namespace AnimationLib
 		/// <param name="imageIndex">the image index to use to display this dude</param>
 		/// <param name="rotation">the rotation to display this bone at</param>
 		/// <param name="translationHack"></param>
-		public void ManualKeyFrame(int layer, int imageIndex, float rotation, Vector2 translationHack)
+		/// <param name="ragdoll"></param>
+		public void ManualKeyFrame(int layer, int imageIndex, float rotation, Vector2 translationHack, bool ragdoll)
 		{
 			//get the key element and copy it
 			KeyElement currentElement = AnchorJoint.CurrentKeyElement;
@@ -1087,6 +1088,8 @@ namespace AnimationLib
 			//hack the rotation
 			myElement.Rotation = rotation;
 
+			myElement.RagDoll = ragdoll;
+
 			//inject the hacked keyframe into the anchor joint
 			AnchorJoint.CurrentKeyElement = myElement;
 		}
@@ -1103,7 +1106,8 @@ namespace AnimationLib
 			ManualKeyFrame(currentElement.Layer, 
 				currentElement.ImageIndex,
 				rotation,
-				currentElement.Translation);
+				currentElement.Translation,
+				true);
 
 			//re-update from this guy onward
 			Update(AnchorJoint.CurrentKeyElement.Time,
