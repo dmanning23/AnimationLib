@@ -1103,11 +1103,12 @@ namespace AnimationLib
 			//get the current key element
 			KeyElement currentElement = AnchorJoint.CurrentKeyElement;
 
-			ManualKeyFrame(currentElement.Layer, 
+			ManualKeyFrame(currentElement.Layer,
 				currentElement.ImageIndex,
 				rotation,
 				currentElement.Translation,
-				true);
+				false);
+				//true); //Ragdoll doesnt work on base skeleton :P
 
 			//re-update from this guy onward
 			Update(AnchorJoint.CurrentKeyElement.Time,
