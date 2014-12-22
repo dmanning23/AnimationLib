@@ -879,7 +879,8 @@ namespace AnimationLib
 		{
 			if (AnchorJoint.CurrentKeyElement.RagDoll &&
 			    !AnchorJoint.Data.Floating &&
-				(0 <= ImageIndex))
+				(0 <= ImageIndex) &&
+				((-Math.PI < AnchorJoint.FirstLimit) && (Math.PI > AnchorJoint.SecondLimit)))//are there any limits on this bone, or just letting it spin?
 			{
 				//Get the current rotation
 				Rotation = GetRagDollRotation();
