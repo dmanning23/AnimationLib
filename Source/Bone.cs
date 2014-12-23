@@ -799,18 +799,24 @@ namespace AnimationLib
 
 		#region Ragdoll
 
-		public void AccumulateForces(Vector2 rForce)
+		public void AccumulateForces(Vector2 gravity, float springStrength, float fScale)
 		{
 			//update the children
 			for (int i = 0; i < Joints.Count; i++)
 			{
-				Joints[i].Acceleration = rForce;
+				Joints[i].Acceleration = gravity;
+
+				//if the joint[i].data is floating, add some spring force
+				if ((ImageIndex >= 0) && AnchorJoint.CurrentKeyElement.RagDoll)
+				{
+					AnchorJoint.SpringFloatingRagdoll(Joints[i], springStrength, Joints[i].Data.Length, fScale);
+				}
 			}
 
 			//update the children
 			for (int i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].AccumulateForces(rForce);
+				Bones[i].AccumulateForces(gravity, springStrength, fScale);
 			}
 		}
 

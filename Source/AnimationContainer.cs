@@ -257,7 +257,7 @@ namespace AnimationLib
 			}
 
 			//accumulate all the force
-			Model.AccumulateForces(ragdollGravity);
+			Model.AccumulateForces(ragdollGravity, Helper.RagdollSpring(), fScale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
