@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
@@ -139,6 +140,11 @@ namespace AnimationLib
 			m_OldPosition = m_JointPosition;
 		}
 
+		public override string ToString()
+		{
+			return Name;
+		}
+
 		#endregion
 
 		#region Ragdoll
@@ -162,6 +168,40 @@ namespace AnimationLib
 			//{
 			//    m_Position.Y(FLOOR);
 			//}
+		}
+
+		/// <summary>
+		/// If a joint is floating ragdoll, bounce it back toward the anchor joint.
+		/// Called from the anchor joint to spring child joints.
+		/// </summary>
+		/// <param name="rJoint">the child joint to bounce</param>
+		/// <param name="springStrength"></param>
+		/// <param name="desiredDistance"></param>
+		/// <param name="scale"></param>
+		public void SpringFloatingRagdoll(Joint rJoint, float springStrength, float desiredDistance, float scale)
+		{
+			if (Data.Floating)
+			{
+				//get the deisred float radius of this dude
+				float fMyFloatRadius = Data.FloatRadius * scale;
+				if (0.0f < fMyFloatRadius) //the float radius can't be 0 or negative
+				{
+					//find the current distance bewteen the two joints
+					Vector2 deltaVector = Position - rJoint.Position; //swap this so it points from joint -> anchor
+					float fCurDistance = deltaVector.Length();
+					deltaVector /= fCurDistance; //normalize
+
+					//what is the ratio of the distance between the current position and desired position? 
+					//0.0 = at same position
+					//1.0 = fully extended
+					float springRatio = fCurDistance / fMyFloatRadius;
+					springRatio = Math.Min(Math.Max(0.0f, springRatio), 1.0f); //constrain the springratio
+					
+					//get the force, but point it back at the first joint
+					Vector2 springForce = (deltaVector * springStrength) * springRatio;
+					rJoint.m_Acceleration += springForce;
+				}
+			}
 		}
 
 		/// <summary>

@@ -11,10 +11,10 @@ namespace AnimationLib
 			return 9.8f * 150.0f; //add some number cuz shit is fucked up
 		}
 
-		public static float Gravity()
+		public static float RagdollSpring()
 		{
 			//gravity is positive in this game since y axis is flipped
-			return 9.8f * 175.0f; //add some number cuz shit is fucked up
+			return 9.8f * 150.0f; //add some number cuz shit is fucked up
 		}
 
 		/// <summary>
@@ -55,17 +55,6 @@ namespace AnimationLib
 			}
 
 			return fAngle;
-		}
-
-		public static int SecondsToFrames(float fSeconds)
-		{
-			fSeconds *= 60.0f;
-			return (int)(fSeconds + 0.5f);
-		}
-
-		public static float FramesToSeconds(int iFrames)
-		{
-			return ((float)iFrames / 60.0f);
 		}
 
 		public static float Length(float fX, float fY)

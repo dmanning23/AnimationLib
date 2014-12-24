@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+#if OUYA
+using Ouya.Console.Api;
+#endif
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
-using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
 using FilenameBuddy;
-using DrawListBuddy;
 using RenderBuddy;
 
 namespace AnimationLib
@@ -157,7 +159,11 @@ namespace AnimationLib
 		public bool ReadXMLFormat(Filename strResource, IRenderer rRenderer, Bone rRootNode)
 		{
 			//Open the file.
+			#if ANDROID
+			Stream stream = Game.Activity.Assets.Open(strResource.File);
+			#else
 			FileStream stream = File.Open(strResource.File, FileMode.Open, FileAccess.Read);
+			#endif
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;

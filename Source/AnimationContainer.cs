@@ -3,14 +3,14 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using GameTimer;
-#if NETWORKING
-using Microsoft.Xna.Framework.Net;
-#endif
 using FilenameBuddy;
 using DrawListBuddy;
 using RenderBuddy;
+#if OUYA
+using Ouya.Console.Api;
+#endif
+using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -30,6 +30,12 @@ namespace AnimationLib
 		/// Index of the current animation being played
 		/// </summary>
 		private int m_iAnimationIndex;
+
+		/// <summary>
+		/// The amount of gravity to use for ragdoll stuff.
+		/// Start out with the default, but allow the user to change it per game.
+		/// </summary>
+		private static Vector2 ragdollGravity = new Vector2(0.0f, Helper.RagdollGravity());
 
 		#endregion
 
@@ -89,6 +95,21 @@ namespace AnimationLib
 		/// This flag gets set when the animation is changed, the ragdoll needs to be reset after the first update
 		/// </summary>
 		protected bool ResetRagdoll { get; set; }
+
+		/// <summary>
+		/// change the ragdoll gravity.
+		/// </summary>
+		public static float RagdollGravity
+		{
+			get
+			{
+				return ragdollGravity.Y;
+			}
+			set
+			{
+				ragdollGravity = new Vector2(0.0f, value);
+			}
+		}
 
 		#endregion
 
@@ -182,35 +203,39 @@ namespace AnimationLib
 				break;
 			}
 
-			return Helper.SecondsToFrames(fTime);
+			return fTime.ToFrames();
 		}
 
 		/// <summary>
 		/// Apply the animation at a certain time
 		/// </summary>
-		/// <param name="iTime">the time of teh animation to set</param>
-		/// <param name="rMatrix">the matrix to transform the model by</param>
+		/// <param name="time"></param>
+		/// <param name="position"></param>
+		/// <param name="flip"></param>
+		/// <param name="scale"></param>
+		/// <param name="rotation"></param>
+		/// <param name="ignoreRagdoll"></param>
 		protected virtual void ApplyAnimation(
-			int iTime,
-			Vector2 myPosition,
-			bool bFlip,
-			float fScale,
-			float fRotation,
-			bool bIgnoreRagdoll)
+			int time,
+			Vector2 position,
+			bool flip,
+			float scale,
+			float rotation,
+			bool ignoreRagdoll)
 		{
 			Debug.Assert(null != Model);
 			Debug.Assert(null != CurrentAnimation);
 
 			//Apply teh current animation to the bones and stuff
-			Model.AnchorJoint.Position = myPosition;
-			Model.Update(iTime,
-				myPosition,
+			Model.AnchorJoint.Position = position;
+			Model.Update(time,
+				position,
 				CurrentAnimation.KeyBone,
-				fRotation,
-				bFlip,
+				rotation,
+				flip,
 				0,
-				fScale,
-				bIgnoreRagdoll || ResetRagdoll);
+				scale,
+				ignoreRagdoll || ResetRagdoll);
 
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
@@ -232,9 +257,7 @@ namespace AnimationLib
 			}
 
 			//accumulate all the force
-			Vector2 gravity = Vector2.Zero;
-			gravity.Y = Helper.RagdollGravity();
-			Model.AccumulateForces(gravity);
+			Model.AccumulateForces(ragdollGravity, Helper.RagdollSpring(), fScale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
@@ -379,40 +402,6 @@ namespace AnimationLib
 
 		#endregion //Methods
 
-		#region Networking
-
-#if NETWORKING
-
-		/// <summary>
-		/// Read this object from a network packet reader.
-		/// </summary>
-		public void ReadFromNetwork(PacketReader packetReader)
-		{
-			int iIndex = packetReader.ReadInt32();
-			EPlayback ePlaybackMode = (EPlayback)packetReader.ReadInt32();
-
-			if ((m_iCurrentAnimationIndex != iIndex) || (m_ePlayback != ePlaybackMode))
-			{
-				SetAnimation(iIndex, ePlaybackMode);
-			}
-
-			m_StopWatch.ReadFromNetwork(packetReader);
-		}
-
-		/// <summary>
-		/// Write this object to a network packet reader.
-		/// </summary>
-		public void WriteToNetwork(PacketWriter packetWriter)
-		{
-			packetWriter.Write(m_iCurrentAnimationIndex);
-			packetWriter.Write((int)m_ePlayback);
-			m_StopWatch.WriteToNetwork(packetWriter);
-		}
-
-#endif
-
-		#endregion //Networking
-
 		#region Model File IO
 
 		/// <summary>
@@ -427,7 +416,11 @@ namespace AnimationLib
 			//gonna have to do this the HARD way
 
 			//Open the file.
+			#if ANDROID
+			Stream stream = Game.Activity.Assets.Open(strResource.File);
+			#else
 			FileStream stream = File.Open(strResource.File, FileMode.Open, FileAccess.Read);
+			#endif
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
@@ -513,7 +506,11 @@ namespace AnimationLib
 			//gonna have to do this the HARD way
 
 			//Open the file.
+			#if ANDROID
+			Stream stream = Game.Activity.Assets.Open(strFileName.File);
+			#else
 			FileStream stream = File.Open(strFileName.File, FileMode.Open, FileAccess.Read);
+			#endif
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;

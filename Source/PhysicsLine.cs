@@ -1,12 +1,10 @@
-﻿using System.Xml;
-using Microsoft.Xna.Framework;
-using CollisionBuddy;
+﻿using CollisionBuddy;
 using MatrixExtensions;
-using DrawListBuddy;
-using BasicPrimitiveBuddy;
-using Vector2Extensions;
+using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System.Diagnostics;
+using System.Xml;
+using Vector2Extensions;
 
 namespace AnimationLib
 {

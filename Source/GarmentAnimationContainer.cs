@@ -1,12 +1,7 @@
-﻿using System.Diagnostics;
+﻿using GameTimer;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using System.Xml;
 using System.Collections.Generic;
-using GameTimer;
-using DrawListBuddy;
-using RenderBuddy;
-using FilenameBuddy;
+using System.Diagnostics;
 
 namespace AnimationLib
 {

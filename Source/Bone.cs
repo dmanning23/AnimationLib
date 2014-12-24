@@ -1,13 +1,12 @@
+using DrawListBuddy;
+using FilenameBuddy;
+using MatrixExtensions;
+using Microsoft.Xna.Framework;
+using RenderBuddy;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
-using Microsoft.Xna.Framework;
-using FilenameBuddy;
-using DrawListBuddy;
-using MatrixExtensions;
-using BasicPrimitiveBuddy;
-using RenderBuddy;
 using UndoRedoBuddy;
 using Vector2Extensions;
 
@@ -90,7 +89,7 @@ namespace AnimationLib
 		/// <summary>
 		/// the rotation to render this guy at
 		/// </summary>
-		public float Rotation { get; protected set; }
+		public float Rotation { get; set; }
 
 		public bool IsFoot
 		{
@@ -443,6 +442,182 @@ namespace AnimationLib
 			//update the translation
 			UpdateTranslation(ref myPosition, fParentRotation, fScale, bIgnoreRagdoll);
 
+			//Update this bone and all its joint positions
+			UpdateImageAndJoints(myPosition, fScale, bIgnoreRagdoll);
+
+			UpdateChildren(iTime, myKeyBone, fScale, bIgnoreRagdoll);
+		}
+
+		private void UpdateChildren(int iTime, KeyBone myKeyBone, float fScale, bool bIgnoreRagdoll)
+		{
+			//this layer counter is incremented to layer garments on to pof each other
+			int iCurrentLayer = CurrentLayer;
+
+			//update all the bones
+			for (int i = 0; i < Bones.Count; i++)
+			{
+				//set the bones position to the anchor pos
+				Vector2 childVector = Bones[i].AnchorJoint.Position;
+
+				//if the anchor pos is not in this bone, set it to the bones pos
+				if (i >= Joints.Count)
+				{
+					childVector = AnchorPosition;
+				}
+
+				//update the chlidren
+				KeyBone childKeyBone = null;
+				if (null != myKeyBone)
+				{
+					childKeyBone = myKeyBone.GetChildBone(i);
+				}
+				Bones[i].Update(iTime,
+								childVector,
+								childKeyBone,
+								Rotation,
+								Flipped,
+								iCurrentLayer,
+								fScale,
+								bIgnoreRagdoll);
+
+				//if that was a garment, increment the counter for the next garment
+				if (EBoneType.Garment == Bones[i].BoneType)
+				{
+					iCurrentLayer--; //subtract to put the next garment on top of this one
+				}
+			}
+		}
+
+		/// <summary>
+		/// Updates the anchor joint.
+		/// </summary>
+		/// <param name="iTime">The current time of of the animation frames</param>
+		/// <param name="myKeyBone">My key bone.</param>
+		void UpdateAnchorJoint(int iTime, KeyBone myKeyBone)
+		{
+			//first update teh joint by the keyjoint
+			if (null != myKeyBone)//if null == keybone, this is a hack update
+			{
+				KeyJoint rChildKeyJoint = myKeyBone.KeyJoint;
+				AnchorJoint.Update(rChildKeyJoint, iTime);
+			}
+		}
+
+		/// <summary>
+		/// Update the current image
+		/// </summary>
+		private void UpdateImage()
+		{
+			ImageIndex = AnchorJoint.CurrentKeyElement.ImageIndex;
+		}
+
+		/// <summary>
+		/// Update the current layer
+		/// </summary>
+		/// <param name="iParentLayer">the parent's layer.</param>
+		private void UpdateLayer(int iParentLayer)
+		{
+			CurrentLayer = iParentLayer + AnchorJoint.CurrentKeyElement.Layer;
+		}
+
+		/// <summary>
+		/// Updates the flip.
+		/// </summary>
+		/// <param name="bParentFlip">whether or not the parent is flipped</param>
+		private void UpdateFlip(bool bParentFlip)
+		{
+			if (bParentFlip && AnchorJoint.CurrentKeyElement.Flip)
+			{
+				//they cancel each other
+				Flipped = false;
+			}
+			else if (bParentFlip && !AnchorJoint.CurrentKeyElement.Flip)
+			{	
+				//the parent is flipped
+				Flipped = true;
+			}
+			else if (!bParentFlip && AnchorJoint.CurrentKeyElement.Flip)
+			{
+				//I am flipped
+				Flipped = true;
+			}
+			else
+			{
+				//no one is flipped
+				Flipped = false;
+			}
+		}
+
+		public bool GetParentFlip()
+		{
+			if (Flipped && AnchorJoint.CurrentKeyElement.Flip)
+			{
+				//they cancel each other
+				return false;
+			}
+			else if (Flipped && !AnchorJoint.CurrentKeyElement.Flip)
+			{
+				//the parent is flipped
+				return true;
+			}
+			else if (!Flipped && AnchorJoint.CurrentKeyElement.Flip)
+			{
+				//I am flipped
+				return true;
+			}
+			else
+			{
+				//no one is flipped
+				return false;
+			}
+		}
+
+		/// <summary>
+		/// update the rotation of this bone
+		/// </summary>
+		/// <param name="fParentRotation">the parent rotation.</param>
+		/// <param name="bParentFlip">whether or not the parent is flipped</param>
+		/// <param name="bIgnoreRagdoll">If set to <c>true</c> b ignore ragdoll.</param>
+		private void UpdateRotation(float fParentRotation, bool bParentFlip, bool bIgnoreRagdoll)
+		{
+			if (!AnchorJoint.CurrentKeyElement.RagDoll || 
+				bIgnoreRagdoll || 
+				(0 == Joints.Count) || 
+				(AnchorJoint.CurrentKeyElement.RagDoll && AnchorJoint.Data.Floating))
+			{
+				//add my rotation to the parents rotation
+				if (!bParentFlip)
+				{
+					Rotation = fParentRotation + AnchorJoint.CurrentKeyElement.Rotation;
+				}
+				else
+				{
+					Rotation = fParentRotation - AnchorJoint.CurrentKeyElement.Rotation;
+				}
+			}
+		}
+
+		private void UpdateTranslation(ref Vector2 myPosition, float fParentRotation, float fScale, bool bIgnoreRagdoll)
+		{
+			if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
+			{
+				if (Flipped)
+				{
+					Vector2 animationTrans = AnchorJoint.CurrentKeyElement.Translation;
+					animationTrans.X *= -1.0f;
+					myPosition += MatrixExt.Orientation(fParentRotation).Multiply(animationTrans * fScale);
+				}
+				else
+				{
+					myPosition += MatrixExt.Orientation(fParentRotation).Multiply(AnchorJoint.CurrentKeyElement.Translation * fScale);
+				}
+			}
+			//grab the position (joint location + animation translation)
+			AnchorPosition = myPosition;
+		}
+
+		private void UpdateImageAndJoints(Vector2 myPosition, float fScale, bool bIgnoreRagdoll)
+		{
 			//Get the correct location of the anchor coord
 			Image CurrentImage = GetCurrentImage();
 			Vector2 anchorCoord = Vector2.Zero;
@@ -506,144 +681,6 @@ namespace AnimationLib
 					Joints[i].Position = myMatrix.Multiply(jointPosition);
 				}
 			}
-
-			//this layer counter is incremented to layer garments on to pof each other
-			int iCurrentLayer = CurrentLayer;
-
-			//update all the bones
-			for (int i = 0; i < Bones.Count; i++)
-			{
-				//set the bones position to the anchor pos
-				Vector2 childVector = Bones[i].AnchorJoint.Position;
-
-				//if the anchor pos is not in this bone, set it to the bones pos
-				if (i >= Joints.Count)
-				{
-					childVector = m_CurAnchorPos;
-				}
-
-				//update the chlidren
-				KeyBone childKeyBone = null;
-				if (null != myKeyBone)
-				{
-					childKeyBone = myKeyBone.GetChildBone(i);
-				}
-				Bones[i].Update(iTime,
-				                childVector,
-				                childKeyBone, 
-				                Rotation,
-				                Flipped,
-				                iCurrentLayer,
-				                fScale,
-				                bIgnoreRagdoll);
-
-				//if that was a garment, increment the counter for the next garment
-				if (EBoneType.Garment == Bones[i].BoneType)
-				{
-					iCurrentLayer--; //subtract to put the next garment on top of this one
-				}
-			}
-		}
-
-		/// <summary>
-		/// Updates the anchor joint.
-		/// </summary>
-		/// <param name="iTime">The current time of of the animation frames</param>
-		/// <param name="myKeyBone">My key bone.</param>
-		void UpdateAnchorJoint(int iTime, KeyBone myKeyBone)
-		{
-			//first update teh joint by the keyjoint
-			if (null != myKeyBone)//if null == keybone, this is a hack update
-			{
-				KeyJoint rChildKeyJoint = myKeyBone.KeyJoint;
-				AnchorJoint.Update(rChildKeyJoint, iTime);
-			}
-		}
-
-		/// <summary>
-		/// Update the current image
-		/// </summary>
-		void UpdateImage()
-		{
-			ImageIndex = AnchorJoint.CurrentKeyElement.ImageIndex;
-		}
-
-		/// <summary>
-		/// Update the current layer
-		/// </summary>
-		/// <param name="iParentLayer">the parent's layer.</param>
-		void UpdateLayer(int iParentLayer)
-		{
-			CurrentLayer = iParentLayer + AnchorJoint.CurrentKeyElement.Layer;
-		}
-
-		/// <summary>
-		/// Updates the flip.
-		/// </summary>
-		/// <param name="bParentFlip">whether or not the parent is flipped</param>
-		void UpdateFlip(bool bParentFlip)
-		{
-			if (bParentFlip && AnchorJoint.CurrentKeyElement.Flip)
-			{
-				//they cancel each other
-				Flipped = false;
-			}
-			else if (bParentFlip && !AnchorJoint.CurrentKeyElement.Flip)
-			{	
-				//the parent is flipped
-				Flipped = true;
-			}
-			else if (!bParentFlip && AnchorJoint.CurrentKeyElement.Flip)
-			{
-				//I am flipped
-				Flipped = true;
-			}
-			else
-			{
-				//no one is flipped
-				Flipped = false;
-			}
-		}
-
-		/// <summary>
-		/// update the rotation of this bone
-		/// </summary>
-		/// <param name="fParentRotation">the parent rotation.</param>
-		/// <param name="bParentFlip">whether or not the parent is flipped</param>
-		/// <param name="bIgnoreRagdoll">If set to <c>true</c> b ignore ragdoll.</param>
-		void UpdateRotation(float fParentRotation, bool bParentFlip, bool bIgnoreRagdoll)
-		{
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll || (0 == Joints.Count) || (AnchorJoint.CurrentKeyElement.RagDoll && AnchorJoint.Data.Floating))
-			{
-				//add my rotation to the parents rotation
-				if (!bParentFlip)
-				{
-					Rotation = fParentRotation + AnchorJoint.CurrentKeyElement.Rotation;
-				}
-				else
-				{
-					Rotation = fParentRotation - AnchorJoint.CurrentKeyElement.Rotation;
-				}
-			}
-		}
-
-		void UpdateTranslation(ref Vector2 myPosition, float fParentRotation, float fScale, bool bIgnoreRagdoll)
-		{
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
-			{
-				if (Flipped)
-				{
-					Vector2 animationTrans = AnchorJoint.CurrentKeyElement.Translation;
-					animationTrans.X *= -1.0f;
-					myPosition += MatrixExt.Orientation(fParentRotation).Multiply(animationTrans * fScale);
-				}
-				else
-				{
-					myPosition += MatrixExt.Orientation(fParentRotation).Multiply(AnchorJoint.CurrentKeyElement.Translation * fScale);
-				}
-			}
-			//grab the position (joint location + animation translation)
-			m_CurAnchorPos = myPosition;
 		}
 
 		#endregion //Update Methods
@@ -707,7 +744,7 @@ namespace AnimationLib
 		{
 			for (int i = 0; i < Joints.Count; i++)
 			{
-				myRenderer.Primitive.Line(m_CurAnchorPos, Joints[i].Position, rColor);
+				myRenderer.Primitive.Line(AnchorPosition, Joints[i].Position, rColor);
 			}
 
 			if (bRecurse)
@@ -762,18 +799,24 @@ namespace AnimationLib
 
 		#region Ragdoll
 
-		public void AccumulateForces(Vector2 rForce)
+		public void AccumulateForces(Vector2 gravity, float springStrength, float fScale)
 		{
 			//update the children
 			for (int i = 0; i < Joints.Count; i++)
 			{
-				Joints[i].Acceleration = rForce;
+				Joints[i].Acceleration = gravity;
+
+				//if the joint[i].data is floating, add some spring force
+				if ((ImageIndex >= 0) && AnchorJoint.CurrentKeyElement.RagDoll)
+				{
+					AnchorJoint.SpringFloatingRagdoll(Joints[i], springStrength, Joints[i].Data.Length, fScale);
+				}
 			}
 
 			//update the children
 			for (int i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].AccumulateForces(rForce);
+				Bones[i].AccumulateForces(gravity, springStrength, fScale);
 			}
 		}
 
@@ -842,7 +885,8 @@ namespace AnimationLib
 		{
 			if (AnchorJoint.CurrentKeyElement.RagDoll &&
 			    !AnchorJoint.Data.Floating &&
-				(0 <= ImageIndex))
+				(0 <= ImageIndex) &&
+				((-Math.PI < AnchorJoint.FirstLimit) && (Math.PI > AnchorJoint.SecondLimit)))//are there any limits on this bone, or just letting it spin?
 			{
 				//Get the current rotation
 				Rotation = GetRagDollRotation();
@@ -903,12 +947,12 @@ namespace AnimationLib
 			}
 		}
 
-		private float GetRagDollRotation()
+		public float GetRagDollRotation()
 		{
 			if (!AnchorJoint.Data.Floating && (0 <= ImageIndex) && (0 < Joints.Count))
 			{
 				//get the difference between the anchor position and the joint
-				Vector2 diff = Joints[0].Position - m_CurAnchorPos;
+				Vector2 diff = Joints[0].Position - AnchorPosition;
 
 				//get the desired rotation 
 				Debug.Assert(null != Joints[0].Data);
@@ -992,52 +1036,96 @@ namespace AnimationLib
 		/// <summary>
 		/// override this dude's update to do some special properties different from the ones in the animation
 		/// </summary>
-		/// <param name="iLayer">a special layer to display this bone at</param>
-		/// <param name="iImageIndex">the image index to use to display this dude </param>
-		/// <param name="fRotation">the rotation to display this bone at</param>
+		/// <param name="layer">a special layer to display this bone at</param>
+		/// <param name="imageIndex">the image index to use to display this dude</param>
+		/// <param name="rotation">the rotation to display this bone at</param>
+		/// <param name="parentFlip"></param>
+		/// <param name="scale"></param>
+		/// <param name="translationHack"></param>
 		public void HackUpdate(
-			int iLayer,
-			int iImageIndex,
-			float fRotation,
-			KeyBone myBone,
-			bool bParentFlip,
-			float fScale,
-			Vector2 TranslationHack)
+			int layer,
+			int imageIndex,
+			float rotation,
+			bool parentFlip,
+			float scale,
+			Vector2 translationHack)
 		{
 			if (null == AnchorJoint)
 			{
 				return;
 			}
 
-			//get the key element and copy it
-			KeyElement CurrentElement = AnchorJoint.CurrentKeyElement;
-			KeyElement myElement = new KeyElement();
-			myElement.Copy(CurrentElement);
-
-			//hack up the image
-			myElement.ImageIndex = iImageIndex;
-
-			//hack the layer
-			myElement.Layer = iLayer;
-
-			//hack the translation
-			myElement.Translation = TranslationHack;
-
-			//hack the rotation
-			myElement.Rotation = fRotation;
-
-			//inject the hacked keyframe into the anchor joint
-			AnchorJoint.CurrentKeyElement = myElement;
+			ManualKeyFrame(layer, imageIndex, rotation, translationHack, false);
 
 			//re-update from this guy onward
 			Update(AnchorJoint.CurrentKeyElement.Time,
-				m_CurAnchorPos,
+				AnchorPosition,
 				null,
 				0.0f,
-				bParentFlip,
+				parentFlip,
 				0,
-				fScale,
+				scale,
 				true); 
+		}
+
+		/// <summary>
+		/// Manually set a bunch of the properties of this bone before updating
+		/// </summary>
+		/// <param name="layer">a special layer to display this bone at</param>
+		/// <param name="imageIndex">the image index to use to display this dude</param>
+		/// <param name="rotation">the rotation to display this bone at</param>
+		/// <param name="translationHack"></param>
+		/// <param name="ragdoll"></param>
+		public void ManualKeyFrame(int layer, int imageIndex, float rotation, Vector2 translationHack, bool ragdoll)
+		{
+			//get the key element and copy it
+			KeyElement currentElement = AnchorJoint.CurrentKeyElement;
+			KeyElement myElement = new KeyElement();
+			myElement.Copy(currentElement);
+
+			//hack up the image
+			myElement.ImageIndex = imageIndex;
+
+			//hack the layer
+			myElement.Layer = layer;
+
+			//hack the translation
+			myElement.Translation = translationHack;
+
+			//hack the rotation
+			myElement.Rotation = rotation;
+
+			myElement.RagDoll = ragdoll;
+
+			//inject the hacked keyframe into the anchor joint
+			AnchorJoint.CurrentKeyElement = myElement;
+		}
+
+		/// <summary>
+		/// Manually set the rotation of this bone before updating
+		/// </summary>
+		/// <param name="rotation">the rotation to display this bone at</param>
+		public void ManualRotation(float rotation)
+		{
+			//get the current key element
+			KeyElement currentElement = AnchorJoint.CurrentKeyElement;
+
+			ManualKeyFrame(currentElement.Layer,
+				currentElement.ImageIndex,
+				rotation,
+				currentElement.Translation,
+				false);
+				//true); //Ragdoll doesnt work on base skeleton :P
+
+			//re-update from this guy onward
+			Update(AnchorJoint.CurrentKeyElement.Time,
+				AnchorPosition,
+				null,
+				0.0f,
+				GetParentFlip(),
+				CurrentLayer - AnchorJoint.CurrentKeyElement.Layer,
+				1.0f,
+				false); 
 		}
 
 		/// <summary>
@@ -1050,21 +1138,18 @@ namespace AnimationLib
 		public void ConvertCoord(int iScreenX, int iScreenY, ref int iX, ref int iY, float fScale)
 		{
 			//get teh offset from the bone location
-			Vector2 MyLocation = new Vector2(0.0f);
-			Vector2 ScreenLocation = new Vector2(0.0f);
-			ScreenLocation.X = (float)iScreenX;
-			ScreenLocation.Y = (float)iScreenY;
-			MyLocation = ScreenLocation - m_CurrentPosition;
+			var screenLocation = new Vector2((float)iScreenX, (float)iScreenY);
+			var myLocation = screenLocation - m_CurrentPosition;
 
 			//compensate for the graphical scaling
-			MyLocation /= fScale;
+			myLocation /= fScale;
 
 			//rotate around by the -current rotation
 			Matrix myRotation = MatrixExt.Orientation(-Rotation);
 
-			MyLocation = myRotation.Multiply(MyLocation);
-			iX = (int)MyLocation.X;
-			iY = (int)MyLocation.Y;
+			myLocation = myRotation.Multiply(myLocation);
+			iX = (int)myLocation.X;
+			iY = (int)myLocation.Y;
 		}
 
 		/// <summary>
@@ -1084,14 +1169,11 @@ namespace AnimationLib
 			}
 
 			//get teh offset from the bone location
-			Vector2 MyLocation = new Vector2(0.0f);
-			Vector2 ScreenLocation = new Vector2(0.0f);
-			ScreenLocation.X = (float)iScreenX;
-			ScreenLocation.Y = (float)iScreenY;
-			MyLocation = ScreenLocation - AnchorJoint.Position;
+			var screenLocation = new Vector2((float)iScreenX, (float)iScreenY);
+			var myLocation = screenLocation - AnchorJoint.Position;
 
 			//compensate for the graphical scaling
-			MyLocation /= fScale;
+			myLocation /= fScale;
 
 			//get difference between current angle and the one specified in the animation to get parent rotation
 			float fParentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
@@ -1099,12 +1181,12 @@ namespace AnimationLib
 			//rotate around by the -current rotation
 			Matrix myRotation = MatrixExt.Orientation(-fParentAngle);
 
-			MyLocation = myRotation.Multiply(MyLocation);
-			iX = (int)MyLocation.X;
-			iY = (int)MyLocation.Y;
+			myLocation = myRotation.Multiply(myLocation);
+			iX = (int)myLocation.X;
+			iY = (int)myLocation.Y;
 		}
 
-		public float GetAngle(int iX, int iY)
+		public float GetAngle(Vector2 screenPos)
 		{
 			if (null == AnchorJoint)
 			{
@@ -1112,14 +1194,10 @@ namespace AnimationLib
 			}
 
 			//get teh offset from the bone location
-			Vector2 MyLocation = new Vector2(0.0f);
-			Vector2 ScreenLocation = new Vector2(0.0f);
-			ScreenLocation.X = (float)iX;
-			ScreenLocation.Y = (float)iY;
-			MyLocation = ScreenLocation - m_CurAnchorPos;
+			var myLocation = screenPos - AnchorJoint.Position;
 
 			//get the angle to that vector
-			float fAngle = Helper.atan2(MyLocation);
+			float fAngle = Helper.atan2(myLocation);
 
 			//get difference between current angle and the one specified in the animation to get parent rotation
 			float fParentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
