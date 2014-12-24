@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Xml;
 using Microsoft.Xna.Framework;
 using Vector2Extensions;
@@ -144,6 +145,7 @@ namespace AnimationLib
 #if DEBUG
 			if ("Item" != rXMLNode.Name)
 			{
+				Debug.Assert(false);
 				return false;
 			}
 
@@ -159,6 +161,7 @@ namespace AnimationLib
 				{
 					if ("AnimationLib.JointDataXML" != strValue)
 					{
+						Debug.Assert(false);
 						return false;
 					}
 				}
