@@ -261,6 +261,11 @@ namespace AnimationLib
 			return ((Circles.Count > 0) || (Lines.Count > 0));
 		}
 
+		public override string ToString()
+		{
+			return ImageFile.GetFile();
+		}
+
 		#endregion //methods
 
 		#region File IO

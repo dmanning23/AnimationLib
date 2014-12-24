@@ -6,24 +6,22 @@ using AnimationLib.Commands;
 
 namespace AnimationLib
 {
+	/// <summary>
+	/// Every keybone is attached to a keyjoint, which holds all the animation data for the particular animation
+	/// </summary>
 	public class KeyJoint
 	{
-		#region Member Variables
-
-		//!Teh list of key elements for this dude
-		private List<KeyElement> m_listElements;
-
-		//!this dude's name
-		private string m_strName;
-
-		#endregion
-
 		#region Properties
 
-		public string Name
-		{
-			get { return m_strName; }
-		}
+		/// <summary>
+		/// Teh list of key elements for this dude
+		/// </summary>
+		private List<KeyElement> Elements { get; set; }
+
+		/// <summary>
+		/// this dude's name
+		/// </summary>
+		public string Name { get; private set; }
 
 		#endregion
 
@@ -34,8 +32,8 @@ namespace AnimationLib
 		/// </summary>
 		public KeyJoint(string strName)
 		{
-			m_listElements = new List<KeyElement>();
-			m_strName = strName;
+			Elements = new List<KeyElement>();
+			Name = strName;
 		}
 
 		/// <summary>
@@ -46,15 +44,15 @@ namespace AnimationLib
 		public bool GetKeyElement(int iTime, KeyElement rKeyElement)
 		{
 			//if no elements, fuckin FALSE
-			if (m_listElements.Count <= 0)
+			if (Elements.Count <= 0)
 			{
 				return false;
 			}
 
 			//if only one element, return it
-			if (m_listElements.Count == 1)
+			if (Elements.Count == 1)
 			{
-				rKeyElement.Copy(m_listElements[0]);
+				rKeyElement.Copy(Elements[0]);
 				rKeyElement.Time = iTime;
 				return true;
 			}
@@ -62,14 +60,14 @@ namespace AnimationLib
 			//so there are 2 or more elements...
 			int iPrevIndex = 0;
 			int iNextIndex = iPrevIndex + 1;
-			while (iNextIndex < m_listElements.Count)
+			while (iNextIndex < Elements.Count)
 			{
 				//check if the time falls on or between the two keyframes
-				if ((m_listElements[iPrevIndex].Time <= iTime) &&
-					(m_listElements[iNextIndex].Time >= iTime))
+				if ((Elements[iPrevIndex].Time <= iTime) &&
+					(Elements[iNextIndex].Time >= iTime))
 				{
-					KeyElement rPrev = m_listElements[iPrevIndex];
-					KeyElement rNext = m_listElements[iNextIndex];
+					KeyElement rPrev = Elements[iPrevIndex];
+					KeyElement rNext = Elements[iNextIndex];
 
 					if (iTime == rPrev.Time)
 					{
@@ -123,7 +121,7 @@ namespace AnimationLib
 			}
 
 			//if it gets here, it is past the animation, return the last element
-			rKeyElement.Copy(m_listElements[m_listElements.Count - 1]);
+			rKeyElement.Copy(Elements[Elements.Count - 1]);
 			rKeyElement.Time = iTime;
 			return true;
 		}
@@ -137,11 +135,11 @@ namespace AnimationLib
 		{
 			bool bFound = false;
 			int i = 0;
-			while (i < m_listElements.Count)
+			while (i < Elements.Count)
 			{
-				if (m_listElements[i].Time == iTime)
+				if (Elements[i].Time == iTime)
 				{
-					m_listElements.RemoveAt(i);
+					Elements.RemoveAt(i);
 					bFound = true;
 				}
 				else
@@ -246,8 +244,8 @@ namespace AnimationLib
 			RemoveKeyElement(rMyElement.Time);
 
 			//add the element to the end and sort the list
-			m_listElements.Add(rMyElement);
-			m_listElements.Sort(new KeyElementSort());
+			Elements.Add(rMyElement);
+			Elements.Sort(new KeyElementSort());
 		}
 
 		public void Copy(Macro myPasteAction,
@@ -303,15 +301,15 @@ namespace AnimationLib
 			if (Name == strOldName)
 			{
 				//rename all the key elements
-				for (int i = 0; i < m_listElements.Count; i++)
+				for (int i = 0; i < Elements.Count; i++)
 				{
-					Debug.Assert(m_listElements[i].JointName == strOldName);
-					m_listElements[i].RenameJoint(strOldName, strNewName);
-					Debug.Assert(m_listElements[i].JointName == strNewName);
+					Debug.Assert(Elements[i].JointName == strOldName);
+					Elements[i].RenameJoint(strOldName, strNewName);
+					Debug.Assert(Elements[i].JointName == strNewName);
 				}
 
 				//rename this dude
-				m_strName = strNewName;
+				Name = strNewName;
 
 				return true;
 			}
@@ -328,21 +326,26 @@ namespace AnimationLib
 		/// <param name="iCurrentTime">the new time of this animation</param>
 		public void SetTime(int iOldTime, int iCurrentTime)
 		{
-			for (int i = 0; i < m_listElements.Count; i++)
+			for (int i = 0; i < Elements.Count; i++)
 			{
 				//get the updated time of this keyelemt
-				int fMyOldTime = m_listElements[i].Time;
-				m_listElements[i].Time = ((fMyOldTime * iCurrentTime) / iOldTime);
+				int fMyOldTime = Elements[i].Time;
+				Elements[i].Time = ((fMyOldTime * iCurrentTime) / iOldTime);
 
 				//check if any other keyframes are already at this time, so frames dont overlap
 				for (int j = 0; j < i; j++)
 				{
-					if (m_listElements[i].Time == m_listElements[j].Time)
+					if (Elements[i].Time == Elements[j].Time)
 					{
-						m_listElements[i].Time++;
+						Elements[i].Time++;
 					}
 				}
 			}
+		}
+
+		public override string ToString()
+		{
+			return Name;
 		}
 
 		#endregion //Methods
@@ -356,27 +359,27 @@ namespace AnimationLib
 		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, Bone rMyBone)
 		{
 			//add all the key elements to that dude
-			for (int i = 0; i < m_listElements.Count; i++)
+			for (int i = 0; i < Elements.Count; i++)
 			{
 				//don't write out fucked up shit?
-				Debug.Assert(m_listElements[i].KeyFrame);
+				Debug.Assert(Elements[i].KeyFrame);
 
 				//don't write out reduntant key elements
-				if ((i > 0) && (i < (m_listElements.Count - 1)))
+				if ((i > 0) && (i < (Elements.Count - 1)))
 				{
-					if (m_listElements[i].Compare(m_listElements[i - 1]) && m_listElements[i].Compare(m_listElements[i + 1]))
+					if (Elements[i].Compare(Elements[i - 1]) && Elements[i].Compare(Elements[i + 1]))
 					{
 						//dont write out if this matches the previous and next keys
 						continue;
 					}
 
-					if  ((i == m_listElements.Count - 1) && m_listElements[i].Compare(m_listElements[i - 1]))
+					if  ((i == Elements.Count - 1) && Elements[i].Compare(Elements[i - 1]))
 					{
 						//dont write out if this is last key and matches prev
 						continue;
 					}
 				}
-				m_listElements[i].WriteXMLFormat(rXMLDude, rMyBone);
+				Elements[i].WriteXMLFormat(rXMLDude, rMyBone);
 			}
 		}
 
@@ -386,7 +389,7 @@ namespace AnimationLib
 		/// <param name="fMultiply"></param>
 		public void MultiplyLayers(int iMultiply)
 		{
-			foreach (KeyElement i in m_listElements)
+			foreach (KeyElement i in Elements)
 			{
 				i.MultiplyLayers(iMultiply);
 			}
