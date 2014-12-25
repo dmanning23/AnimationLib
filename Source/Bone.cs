@@ -892,11 +892,11 @@ namespace AnimationLib
 				Rotation = GetRagDollRotation();
 				float fMyActualRotation = Helper.ClampAngle(Rotation - fParentRotation);
 
-				float fFirstLimit = selectedBone.AnchorJoint.FirstLimit;
-				float fSecondLimit = selectedBone.AnchorJoint.SecondLimit;
+				float fFirstLimit = AnchorJoint.FirstLimit;
+				float fSecondLimit = AnchorJoint.SecondLimit;
 
 				//swap the limits if the bone is flipped
-				if (selectedBone.Flipped)
+				if (Flipped)
 				{
 					float temp = fFirstLimit;
 					fFirstLimit = fSecondLimit * -1.0f;
