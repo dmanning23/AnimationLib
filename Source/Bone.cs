@@ -892,34 +892,33 @@ namespace AnimationLib
 				Rotation = GetRagDollRotation();
 				float fMyActualRotation = Helper.ClampAngle(Rotation - fParentRotation);
 
+				float fFirstLimit = selectedBone.AnchorJoint.FirstLimit;
+				float fSecondLimit = selectedBone.AnchorJoint.SecondLimit;
+
+				//swap the limits if the bone is flipped
+				if (selectedBone.Flipped)
+				{
+					float temp = fFirstLimit;
+					fFirstLimit = fSecondLimit * -1.0f;
+					fSecondLimit = temp * -1.0f;
+				}
+
 				bool bHitLimit = false;
-				if (fMyActualRotation < AnchorJoint.FirstLimit)
+				if (fMyActualRotation < fFirstLimit)
 				{
 					//if it is less than the first limit, update rotation and move the joints to fit 
 
 					//use the first limit as the rotation
 					bHitLimit = true;
-					float fLimit = AnchorJoint.FirstLimit;
-					if (Flipped)
-					{
-						//If it hit and the bone if flipped, swap the rotation
-						fLimit = MathHelper.Pi - fLimit;
-					}
-					Rotation = fParentRotation + AnchorJoint.FirstLimit;
+					Rotation = fParentRotation + fFirstLimit;
 				}
-				else if (fMyActualRotation > AnchorJoint.SecondLimit)
+				else if (fMyActualRotation > fSecondLimit)
 				{
 					//if it is more than the second limit, update rotation and move the joints to fit
 
 					//use the second limit as the rotation
 					bHitLimit = true;
-					float fLimit = AnchorJoint.SecondLimit;
-					if (Flipped)
-					{
-						//If it hit and the bone if flipped, swap the rotation
-						fLimit = MathHelper.Pi - fLimit;
-					}
-					Rotation = fParentRotation + AnchorJoint.SecondLimit;
+					Rotation = fParentRotation + fSecondLimit;
 				}
 
 				if (bHitLimit)
