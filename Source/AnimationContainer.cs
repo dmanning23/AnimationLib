@@ -31,12 +31,6 @@ namespace AnimationLib
 		/// </summary>
 		private int m_iAnimationIndex;
 
-		/// <summary>
-		/// The amount of gravity to use for ragdoll stuff.
-		/// Start out with the default, but allow the user to change it per game.
-		/// </summary>
-		private static Vector2 ragdollGravity = new Vector2(0.0f, Helper.RagdollGravity());
-
 		#endregion
 
 		#region Properties
@@ -95,21 +89,6 @@ namespace AnimationLib
 		/// This flag gets set when the animation is changed, the ragdoll needs to be reset after the first update
 		/// </summary>
 		protected bool ResetRagdoll { get; set; }
-
-		/// <summary>
-		/// change the ragdoll gravity.
-		/// </summary>
-		public static float RagdollGravity
-		{
-			get
-			{
-				return ragdollGravity.Y;
-			}
-			set
-			{
-				ragdollGravity = new Vector2(0.0f, value);
-			}
-		}
 
 		#endregion
 
@@ -257,7 +236,7 @@ namespace AnimationLib
 			}
 
 			//accumulate all the force
-			Model.AccumulateForces(ragdollGravity, Helper.RagdollSpring(), fScale);
+			Model.AccumulateForces(RagdollConstants.Gravity, RagdollConstants.Spring, fScale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;

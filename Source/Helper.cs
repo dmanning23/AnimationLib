@@ -5,18 +5,6 @@ namespace AnimationLib
 {
 	public static class Helper
 	{
-		public static float RagdollGravity()
-		{
-			//gravity is positive in this game since y axis is flipped
-			return 9.8f * 150.0f; //add some number cuz shit is fucked up
-		}
-
-		public static float RagdollSpring()
-		{
-			//gravity is positive in this game since y axis is flipped
-			return RagdollGravity() * 1.5f; //add some number cuz shit is fucked up
-		}
-
 		/// <summary>
 		/// This is the fastest speed for the player in the +y direction while falling
 		/// </summary>
