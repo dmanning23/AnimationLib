@@ -677,11 +677,7 @@ namespace AnimationLib
 					jointPosition = jointPosition - anchorCoord;
 					jointPosition = myPosition + jointPosition;
 
-					if (!AnchorJoint.CurrentKeyElement.RagDoll)
-					{
-						//Joints[i].OldPosition = Joints[i].Position;
-					}
-					
+					Joints[i].OldPosition = Joints[i].Position;
 					Joints[i].Position = myMatrix.Multiply(jointPosition);
 				}
 			}

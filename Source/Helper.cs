@@ -14,7 +14,7 @@ namespace AnimationLib
 		public static float RagdollSpring()
 		{
 			//gravity is positive in this game since y axis is flipped
-			return 9.8f *500.0f; //add some number cuz shit is fucked up
+			return RagdollGravity() * 1.5f; //add some number cuz shit is fucked up
 		}
 
 		/// <summary>

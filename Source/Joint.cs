@@ -59,7 +59,7 @@ namespace AnimationLib
 			{
 				return m_OldPosition;
 			}
-			private set
+			set
 			{
 				m_OldPosition = value;
 			}
@@ -163,8 +163,21 @@ namespace AnimationLib
 
 		public void RunVerlet(float fTimeDelta)
 		{
+			//Get the velocity we are going to apply
+			Vector2 vel = ((m_JointPosition - m_OldPosition) + (m_Acceleration * (fTimeDelta * fTimeDelta)));
+
+			//simulate friction to add damping into the equation
+			if (Data.Floating)
+			{
+				vel *= .9f;
+			}
+			else
+			{
+				vel *= .98f;
+			}
+
 			Vector2 tempCurrentPosition = m_JointPosition;
-			m_JointPosition += ((tempCurrentPosition - m_OldPosition) + (m_Acceleration * (fTimeDelta * fTimeDelta)));
+			m_JointPosition += vel;
 			m_OldPosition = tempCurrentPosition;
 
 			////meak sure the position stays in the board
@@ -203,14 +216,18 @@ namespace AnimationLib
 					float fCurDistance = deltaVector.Length();
 					deltaVector /= fCurDistance; //normalize
 
+					//float stretch = fCurDistance - (fMyFloatRadius * 0.2f);
+					//Vector2 springForce = (deltaVector * stretch) * springStrength;
+
 					//what is the ratio of the distance between the current position and desired position? 
 					//0.0 = at same position
 					//1.0 = fully extended
 					float springRatio = fCurDistance / fMyFloatRadius;
 					springRatio = Math.Min(Math.Max(0.0f, springRatio), 1.0f); //constrain the springratio
-					
+
 					//get the force, but point it back at the first joint
 					Vector2 springForce = (deltaVector * springStrength) * springRatio;
+
 					rJoint.m_Acceleration += springForce;
 				}
 			}
