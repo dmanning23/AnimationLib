@@ -43,14 +43,26 @@ namespace AnimationLib
 		/// </summary>
 		public Vector2 Position
 		{
-			get { return m_JointPosition; }
-			set { m_JointPosition = value; }
+			get
+			{
+				return m_JointPosition;
+			}
+			set
+			{
+				m_JointPosition = value;
+			}
 		}
 
 		public Vector2 OldPosition
 		{
-			get { return m_OldPosition; }
-			set { m_OldPosition = value; }
+			get
+			{
+				return m_OldPosition;
+			}
+			private set
+			{
+				m_OldPosition = value;
+			}
 		}
 
 		/// <summary>
@@ -77,7 +89,7 @@ namespace AnimationLib
 
 		public float FirstLimit
 		{
-			get 
+			get
 			{
 				if (ParentFlip)
 				{
