@@ -19,11 +19,16 @@ namespace AnimationLib
 			{
 				return gravity;
 			}
+			set 
+			{ 
+				gravity = value; 
+			}
 		}
 
 		public static void SetGravity(float grav)
 		{
 			gravity.Y = grav;
+			spring = new Vector2(0.0f, Gravity.Y * 1.5f);
 		}
 
 		/// <summary>
