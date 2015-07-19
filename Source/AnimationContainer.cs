@@ -391,7 +391,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="strResource">filename of the resource to load</param>
 		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public bool ReadXMLModelFormat(Filename strResource, IRenderer rRenderer)
+		public bool ReadModelXml(Filename strResource, IRenderer rRenderer)
 		{
 			CreateBone();
 
@@ -456,7 +456,8 @@ namespace AnimationLib
 		/// Open an xml file and dump model data to it
 		/// </summary>
 		/// <param name="strFileName">name of the file to dump to</param>
-		public virtual void WriteModelXMLFormat(Filename strFileName, float fEnbiggify)
+		/// <param name="scale">How much to scale the model when writing it out</param>
+		public virtual void WriteModelXml(Filename strFileName, float scale)
 		{
 			Debug.Assert(null != Model);
 
@@ -464,18 +465,18 @@ namespace AnimationLib
 			Model.RenameJoints(this);
 
 			//open the file, create it if it doesnt exist yet
-			XmlTextWriter rFile = new XmlTextWriter(strFileName.File, null);
-			rFile.Formatting = Formatting.Indented;
-			rFile.Indentation = 1;
-			rFile.IndentChar = '\t';
+			var xmlWriter = new XmlTextWriter(strFileName.File, null);
+			xmlWriter.Formatting = Formatting.Indented;
+			xmlWriter.Indentation = 1;
+			xmlWriter.IndentChar = '\t';
 
-			rFile.WriteStartDocument();
-			Model.WriteXMLFormat(rFile, true, fEnbiggify);
-			rFile.WriteEndDocument();
+			xmlWriter.WriteStartDocument();
+			Model.WriteXMLFormat(xmlWriter, true, scale);
+			xmlWriter.WriteEndDocument();
 
 			// Close the file.
-			rFile.Flush();
-			rFile.Close();
+			xmlWriter.Flush();
+			xmlWriter.Close();
 		}
 
 		#endregion //Model File IO
@@ -486,7 +487,7 @@ namespace AnimationLib
 		/// read in a list of animations from a serialized xml format file
 		/// </summary>
 		/// <param name="strFileName">filename of the animations to load</param>
-		public virtual bool ReadXMLAnimationFormat(Filename strFileName)
+		public virtual bool ReadAnimationXml(Filename strFileName)
 		{
 			Debug.Assert(null != Model); //need a model to read in animations
 			Animations.Clear();
@@ -584,17 +585,17 @@ namespace AnimationLib
 		/// <summary>
 		/// This node reads in all the animations from an xml node
 		/// </summary>
-		/// <param name="AnimationsNode">the xml node with all the animations underneath it</param>
+		/// <param name="animationsNode">the xml node with all the animations underneath it</param>
 		/// <returns>bool: whether or not an error occurred.</returns>
-		protected virtual bool ReadAnimationsNode(XmlNode AnimationsNode)
+		protected virtual bool ReadAnimationsNode(XmlNode animationsNode)
 		{
-			for (XmlNode childNode = AnimationsNode.FirstChild;
+			for (var childNode = animationsNode.FirstChild;
 				null != childNode;
 				childNode = childNode.NextSibling)
 			{
 				Animation myAnimation = new Animation(Model);
 				Debug.Assert(null != Model);
-				if (!myAnimation.ReadXMLFormat(childNode, Model))
+				if (!myAnimation.ReadXmlFormat(childNode, Model))
 				{
 					Debug.Assert(false);
 					return false;
@@ -605,53 +606,53 @@ namespace AnimationLib
 			return true;
 		}
 
-		public void WriteXMLFormat(Filename strFileName)
+		public void WriteAnimationXml(Filename fileName)
 		{
 			//first rename all the joints so they are correct
 			Debug.Assert(null != Model);
 			Model.RenameJoints(this);
 
 			//open the file, create it if it doesnt exist yet
-			XmlTextWriter rXMLFile = new XmlTextWriter(strFileName.File, null);
-			rXMLFile.Formatting = Formatting.Indented;
-			rXMLFile.Indentation = 1;
-			rXMLFile.IndentChar = '\t';
+			var xmlWriter = new XmlTextWriter(fileName.File, null);
+			xmlWriter.Formatting = Formatting.Indented;
+			xmlWriter.Indentation = 1;
+			xmlWriter.IndentChar = '\t';
 
-			rXMLFile.WriteStartDocument();
+			xmlWriter.WriteStartDocument();
 
 			//add the xml node
-			rXMLFile.WriteStartElement("XnaContent");
-			rXMLFile.WriteStartElement("Asset");
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.AnimationContainerXML");
+			xmlWriter.WriteStartElement("XnaContent");
+			xmlWriter.WriteStartElement("Asset");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.AnimationContainerXML");
 
 			//write out joints
-			rXMLFile.WriteStartElement("animations");
+			xmlWriter.WriteStartElement("animations");
 			for (int i = 0; i < Animations.Count; i++)
 			{
 				Debug.Assert(null != Model);
-				Animations[i].WriteXMLFormat(rXMLFile, Model);
+				Animations[i].WriteXmlFormat(xmlWriter, Model);
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndElement();
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndDocument();
+			xmlWriter.WriteEndDocument();
 
 			// Close the file.
-			rXMLFile.Flush();
-			rXMLFile.Close();
+			xmlWriter.Flush();
+			xmlWriter.Close();
 		}
 
 		/// <summary>
 		/// Multiply all the layers to spread out the model
 		/// </summary>
-		/// <param name="fMultiply"></param>
-		public void MultiplyLayers(int iMultiply)
+		/// <param name="multiply"></param>
+		public void MultiplyLayers(int multiply)
 		{
-			foreach (Animation i in Animations)
+			foreach (var animation in Animations)
 			{
-				i.MultiplyLayers(iMultiply);
+				animation.MultiplyLayers(multiply);
 			}
 		}
 

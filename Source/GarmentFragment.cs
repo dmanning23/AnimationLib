@@ -113,24 +113,24 @@ namespace AnimationLib
 		/// <param name="rRenderer">renderer to use to load images</param>
 		/// <param name="rRootNode">bone to attach garments to</param>
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
-		public bool ReadXMLFormat(XmlNode rXMLNode, IRenderer rRenderer)
+		public bool ReadXMLFormat(XmlNode node, IRenderer rRenderer)
 		{
 #if DEBUG
 			//make sure it is actually an xml node
-			if (rXMLNode.NodeType != XmlNodeType.Element)
+			if (node.NodeType != XmlNodeType.Element)
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
-			if ("Item" != rXMLNode.Name)
+			if ("Item" != node.Name)
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
 			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
+			XmlNamedNodeMap mapAttributes = node.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
@@ -150,9 +150,9 @@ namespace AnimationLib
 #endif
 
 			//Read in child nodes
-			if (rXMLNode.HasChildNodes)
+			if (node.HasChildNodes)
 			{
-				for (XmlNode childNode = rXMLNode.FirstChild;
+				for (XmlNode childNode = node.FirstChild;
 					null != childNode;
 					childNode = childNode.NextSibling)
 				{
@@ -164,7 +164,7 @@ namespace AnimationLib
 					{
 						//read in the model
 						Filename strModelFile = new Filename(strValue);
-						if (!m_AnimationContainer.ReadXMLModelFormat(strModelFile, rRenderer))
+						if (!m_AnimationContainer.ReadModelXml(strModelFile, rRenderer))
 						{
 							Debug.Assert(false);
 							return false;
@@ -174,7 +174,7 @@ namespace AnimationLib
 					{
 						//read in the animations
 						Filename strAnimationFile = new Filename(strValue);
-						if (!m_AnimationContainer.ReadXMLAnimationFormat(strAnimationFile))
+						if (!m_AnimationContainer.ReadAnimationXml(strAnimationFile))
 						{
 							Debug.Assert(false);
 							return false;
@@ -195,7 +195,7 @@ namespace AnimationLib
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		public void WriteXMLFormat(XmlTextWriter rXMLFile, float fEnbiggify)
+		public void WriteXmlFormat(XmlTextWriter rXMLFile, float fEnbiggify)
 		{
 			//write out the item tag
 			rXMLFile.WriteStartElement("Item");
@@ -214,10 +214,10 @@ namespace AnimationLib
 			rXMLFile.WriteEndElement();
 
 			//write out the model file
-			AnimationContainer.WriteModelXMLFormat(AnimationContainer.ModelFile, fEnbiggify);
+			AnimationContainer.WriteModelXml(AnimationContainer.ModelFile, fEnbiggify);
 
 			//write out the animation file
-			AnimationContainer.WriteXMLFormat(AnimationContainer.AnimationFile);
+			AnimationContainer.WriteAnimationXml(AnimationContainer.AnimationFile);
 		}
 
 		#endregion File IO

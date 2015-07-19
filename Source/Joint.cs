@@ -310,19 +310,19 @@ namespace AnimationLib
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
-		/// <param name="rXMLNode">The xml node to read from</param>
+		/// <param name="node">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode rXMLNode)
+		public bool ReadXMLFormat(XmlNode node)
 		{
 #if DEBUG
-			if ("Item" != rXMLNode.Name)
+			if ("Item" != node.Name)
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
 			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
+			XmlNamedNodeMap mapAttributes = node.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
@@ -341,9 +341,9 @@ namespace AnimationLib
 #endif
 
 			//Read in child nodes
-			if (rXMLNode.HasChildNodes)
+			if (node.HasChildNodes)
 			{
-				for (XmlNode childNode = rXMLNode.FirstChild;
+				for (XmlNode childNode = node.FirstChild;
 					null != childNode;
 					childNode = childNode.NextSibling)
 				{

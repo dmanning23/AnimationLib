@@ -1450,7 +1450,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
-		/// <param name="rXMLNode">The xml node to read from</param>
+		/// <param name="node">The xml node to read from</param>
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>

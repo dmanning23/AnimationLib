@@ -88,6 +88,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Source\AnimationXml.cs">
+      <Link>AnimationXml.cs</Link>
+    </Compile>
     <Compile Include="..\Source\RagdollConstants.cs">
       <Link>RagdollConstants.cs</Link>
     </Compile>
@@ -130,9 +133,6 @@
     </Compile>
     <Compile Include="..\Source\KeyJoint.cs">
       <Link>KeyJoint.cs</Link>
-    </Compile>
-    <Compile Include="..\Source\AnimationXML.cs">
-      <Link>AnimationXML.cs</Link>
     </Compile>
     <Compile Include="..\Source\Playback.cs">
       <Link>Playback.cs</Link>

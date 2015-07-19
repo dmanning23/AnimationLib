@@ -40,8 +40,8 @@ namespace AnimationLib
 		/// Get a key element at a certain tim from this dude
 		/// </summary>
 		/// <param name="time">The time of the key element to get</param>
-		/// <param name="rKeyElement">The key element to output the stuff to</param>
-		public bool GetKeyElement(int time, KeyElement rKeyElement)
+		/// <param name="keyElement">The key element to output the stuff to</param>
+		public bool GetKeyElement(int time, KeyElement keyElement)
 		{
 			//if no elements, fuckin FALSE
 			if (Elements.Count <= 0)
@@ -52,8 +52,8 @@ namespace AnimationLib
 			//if only one element, return it
 			if (Elements.Count == 1)
 			{
-				rKeyElement.Copy(Elements[0]);
-				rKeyElement.Time = time;
+				keyElement.Copy(Elements[0]);
+				keyElement.Time = time;
 				return true;
 			}
 
@@ -72,19 +72,19 @@ namespace AnimationLib
 					if (time == rPrev.Time)
 					{
 						//it is the previous element
-						rKeyElement.Copy(rPrev);
+						keyElement.Copy(rPrev);
 						return true;
 					}
 					else if (time == rNext.Time)
 					{
 						//it is the next element
-						rKeyElement.Copy(rNext);
+						keyElement.Copy(rNext);
 						return true;
 					}
 
 					//okay, copy the first one and add the changes
-					rKeyElement.Copy(rPrev);
-					rKeyElement.Time = time;
+					keyElement.Copy(rPrev);
+					keyElement.Time = time;
 
 					//find the ratio of rotation/time for the whole step
 					float fWholeTimeDelta = rNext.Time - rPrev.Time;
@@ -98,20 +98,20 @@ namespace AnimationLib
 						return true;
 					}
 
-					rKeyElement.KeyFrame = false; //not a keyframe!
+					keyElement.KeyFrame = false; //not a keyframe!
 
 					//get the step 
 					float fWholeRotationDelta = rNext.Rotation - rPrev.Rotation;
 					float fStepRotationDelta = ((fWholeRotationDelta * fStepTimeDelta) / fWholeTimeDelta);
-					rKeyElement.Rotation = rPrev.Rotation + fStepRotationDelta;
+					keyElement.Rotation = rPrev.Rotation + fStepRotationDelta;
 
 					float fWholeXDelta = rNext.Translation.X - rPrev.Translation.X;
 					float fStepXDelta = ((fWholeXDelta * fStepTimeDelta) / fWholeTimeDelta);
-					rKeyElement.TranslationX = rPrev.Translation.X + fStepXDelta;
+					keyElement.TranslationX = rPrev.Translation.X + fStepXDelta;
 
 					float fWholeYDelta = rNext.Translation.Y - rPrev.Translation.Y;
 					float fStepYDelta = ((fWholeYDelta * fStepTimeDelta) / fWholeTimeDelta);
-					rKeyElement.TranslationY = rPrev.Translation.Y + fStepYDelta;
+					keyElement.TranslationY = rPrev.Translation.Y + fStepYDelta;
 
 					return true;
 				}
@@ -121,8 +121,8 @@ namespace AnimationLib
 			}
 
 			//if it gets here, it is past the animation, return the last element
-			rKeyElement.Copy(Elements[Elements.Count - 1]);
-			rKeyElement.Time = time;
+			keyElement.Copy(Elements[Elements.Count - 1]);
+			keyElement.Time = time;
 			return true;
 		}
 
@@ -151,25 +151,25 @@ namespace AnimationLib
 			return bFound;
 		}
 
-		public void RemoveKeyElement(Macro rPasteAction, int time, Animation myAnimation)
+		public void RemoveKeyElement(Macro pasteAction, int time, Animation myAnimation)
 		{
 			//get teh key element at that time
-			KeyElement CurrentKeyElement = new KeyElement();
-			if (!GetKeyElement(time, CurrentKeyElement))
+			KeyElement currentKeyElement = new KeyElement();
+			if (!GetKeyElement(time, currentKeyElement))
 			{
 				//no key elements, so cant remove from this dude
 				return;
 			}
 
 			//check if this is a key frame at this time
-			if (CurrentKeyElement.KeyFrame)
+			if (currentKeyElement.KeyFrame)
 			{
 				//set the joint name
-				CurrentKeyElement.JointName = Name;
+				currentKeyElement.JointName = Name;
 
 				//create the remove action
-				RemoveKeyElement myAction = new RemoveKeyElement(myAnimation, CurrentKeyElement);
-				rPasteAction.Add(myAction);
+				RemoveKeyElement myAction = new RemoveKeyElement(myAnimation, currentKeyElement);
+				pasteAction.Add(myAction);
 			}
 		}
 
@@ -237,7 +237,7 @@ namespace AnimationLib
 		/// If an element already exists at that time, replace it.
 		/// Sort the list of keyframes after it has been added.
 		/// </summary>
-		/// <param name="rMyElement">the key frame to add to the animation</param>
+		/// <param name="myElement">the key frame to add to the animation</param>
 		public void AddKeyElement(KeyElement myElement)
 		{
 			//Do any elements exist with that time?
@@ -248,46 +248,46 @@ namespace AnimationLib
 			Elements.Sort(new KeyElementSort());
 		}
 
-		public void Copy(Macro myPasteAction,
-			Animation myTargetAnimation, 
-			int iSourceTime, 
-			int iTargetTime,
-			bool bSelectiveCopy)
+		public void Copy(Macro pasteAction,
+			Animation targetAnimation, 
+			int sourceTime, 
+			int targetTime,
+			bool selectiveCopy)
 		{
 			//get the keyelement to copy into the animation
-			KeyElement sourceKeyElement = new KeyElement();
-			GetKeyElement(iSourceTime, sourceKeyElement);
-			sourceKeyElement.Time = iTargetTime;
+			var sourceKeyElement = new KeyElement();
+			GetKeyElement(sourceTime, sourceKeyElement);
+			sourceKeyElement.Time = targetTime;
 			sourceKeyElement.JointName = Name;
 			sourceKeyElement.KeyFrame = true;
 
 			//get the current keyelement out of that animtion
-			KeyJoint TargetJoint = myTargetAnimation.GetKeyJoint(Name);
-			if (null == TargetJoint)
+			var targetJoint = targetAnimation.GetKeyJoint(Name);
+			if (null == targetJoint)
 			{
 				return;
 			}
-			KeyElement OldKeyElement = new KeyElement();
-			TargetJoint.GetKeyElement(iTargetTime, OldKeyElement);
-			OldKeyElement.JointName = TargetJoint.Name;
+			var oldKeyElement = new KeyElement();
+			targetJoint.GetKeyElement(targetTime, oldKeyElement);
+			oldKeyElement.JointName = targetJoint.Name;
 
 			//if this is a selective copy, set the rotation & translation to the old value
-			if (bSelectiveCopy)
+			if (selectiveCopy)
 			{
-				sourceKeyElement.Rotation = OldKeyElement.Rotation;
-				sourceKeyElement.Translation = OldKeyElement.Translation;
+				sourceKeyElement.Rotation = oldKeyElement.Rotation;
+				sourceKeyElement.Translation = oldKeyElement.Translation;
 
-				if (-1 != OldKeyElement.ImageIndex)
+				if (-1 != oldKeyElement.ImageIndex)
 				{
-					sourceKeyElement.ImageIndex = OldKeyElement.ImageIndex;
-					sourceKeyElement.Flip = OldKeyElement.Flip;
-					sourceKeyElement.RagDoll = OldKeyElement.RagDoll;
+					sourceKeyElement.ImageIndex = oldKeyElement.ImageIndex;
+					sourceKeyElement.Flip = oldKeyElement.Flip;
+					sourceKeyElement.RagDoll = oldKeyElement.RagDoll;
 				}
 			}
 
 			//add to the animation
-			SetKeyElement myAction = new SetKeyElement(myTargetAnimation, OldKeyElement, sourceKeyElement);
-			myPasteAction.Add(myAction);
+			var myAction = new SetKeyElement(targetAnimation, oldKeyElement, sourceKeyElement);
+			pasteAction.Add(myAction);
 		}
 
 		/// <summary>
@@ -355,8 +355,9 @@ namespace AnimationLib
 		/// <summary>
 		/// write all this dude's stuff out to xml
 		/// </summary>
-		/// <param name="rXMLDude">the animtion object to add all the keyframes to</param>
-		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, Bone rMyBone)
+		/// <param name="animationXml">the animtion object to add all the keyframes to</param>
+		/// <param name="myBone">the bone this dude references</param>
+		public void WriteXmlFormat(AnimationXml animationXml, Bone myBone)
 		{
 			//add all the key elements to that dude
 			for (int i = 0; i < Elements.Count; i++)
@@ -379,19 +380,19 @@ namespace AnimationLib
 						continue;
 					}
 				}
-				Elements[i].WriteXMLFormat(rXMLDude, rMyBone);
+				Elements[i].WriteXmlFormat(animationXml, myBone);
 			}
 		}
 
 		/// <summary>
 		/// Multiply all the layers to spread out the model
 		/// </summary>
-		/// <param name="fMultiply"></param>
-		public void MultiplyLayers(int iMultiply)
+		/// <param name="multiply"></param>
+		public void MultiplyLayers(int multiply)
 		{
-			foreach (KeyElement i in Elements)
+			foreach (var element in Elements)
 			{
-				i.MultiplyLayers(iMultiply);
+				element.MultiplyLayers(multiply);
 			}
 		}
 

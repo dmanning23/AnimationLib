@@ -80,7 +80,7 @@ namespace AnimationLib
 		public void AddToModel()
 		{
 			//add all the garment bones to the bones they attach to
-			for (int i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < m_listFragments.Count; i++)
 			{
 				m_listFragments[i].AddToModel();
 			}
@@ -92,7 +92,7 @@ namespace AnimationLib
 		public void RemoveFromModel()
 		{
 			//remove all the garment bones from the bones they attach to
-			for (int i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < m_listFragments.Count; i++)
 			{
 				m_listFragments[i].RemoveFromModel();
 			}
@@ -126,20 +126,20 @@ namespace AnimationLib
 		{
 			//set garment name in all bones
 			Debug.Assert(m_strName.Length > 0);
-			for (int i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < m_listFragments.Count; i++)
 			{
 				m_listFragments[i].GarmentName = Name;
 			}
 
 			//set the parent bone of all those root node garment bones
-			for (int i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < m_listFragments.Count; i++)
 			{
 				m_listFragments[i].SetGarmentBones(rRootNode);
 			}
 
 			//check whether or not there is any physics data in the garment
 			m_bHasPhysics = false;
-			for (int i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < m_listFragments.Count; i++)
 			{
 				if (m_listFragments[i].AnimationContainer.Model.HasPhysicsData())
 				{
@@ -255,39 +255,39 @@ namespace AnimationLib
 			return true;
 		}
 
-		public void WriteXMLFormat(Filename strFileName, float fEnbiggify)
+		public void WriteXmlFormat(Filename fileName, float scale)
 		{
 			//open the file, create it if it doesnt exist yet
-			XmlTextWriter rXMLFile = new XmlTextWriter(strFileName.File, null);
-			rXMLFile.Formatting = Formatting.Indented;
-			rXMLFile.Indentation = 1;
-			rXMLFile.IndentChar = '\t';
+			var xmlWriter = new XmlTextWriter(fileName.File, null);
+			xmlWriter.Formatting = Formatting.Indented;
+			xmlWriter.Indentation = 1;
+			xmlWriter.IndentChar = '\t';
 
-			rXMLFile.WriteStartDocument();
+			xmlWriter.WriteStartDocument();
 
 			//add the xml node
-			rXMLFile.WriteStartElement("XnaContent");
-			rXMLFile.WriteStartElement("Asset");
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.GarmentXML");
+			xmlWriter.WriteStartElement("XnaContent");
+			xmlWriter.WriteStartElement("Asset");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.GarmentXML");
 
 			//write out the garment name
-			rXMLFile.WriteStartElement("name");
-			rXMLFile.WriteString(Name);
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("name");
+			xmlWriter.WriteString(Name);
+			xmlWriter.WriteEndElement();
 
 			//write out the garment fragments
-			rXMLFile.WriteStartElement("fragments");
-			for (int i = 0; i < m_listFragments.Count; i++)
+			xmlWriter.WriteStartElement("fragments");
+			for (var i = 0; i < m_listFragments.Count; i++)
 			{
-				m_listFragments[i].WriteXMLFormat(rXMLFile, fEnbiggify);
+				m_listFragments[i].WriteXmlFormat(xmlWriter, scale);
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndDocument();
+			xmlWriter.WriteEndDocument();
 
 			// Close the file.
-			rXMLFile.Flush();
-			rXMLFile.Close();
+			xmlWriter.Flush();
+			xmlWriter.Close();
 		}
 
 		#endregion //File IO

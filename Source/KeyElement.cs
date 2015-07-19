@@ -10,9 +10,9 @@ namespace AnimationLib
 	/// <summary>
 	/// class for sorting the keyframe XML by time
 	/// </summary>
-	class KeyXMLSort : IComparer<AnimationLib.KeyXML>
+	class KeyXmlSort : IComparer<KeyXml>
 	{
-		public int Compare(AnimationLib.KeyXML key1, AnimationLib.KeyXML key2)
+		public int Compare(KeyXml key1, KeyXml key2)
 		{
 			return key1.time.CompareTo(key2.time);
 		}
@@ -36,7 +36,7 @@ namespace AnimationLib
 		/// <summary>
 		/// the translation for this frame
 		/// </summary>
-		private Vector2 m_Translation;
+		private Vector2 _translation;
 
 		#endregion
 
@@ -83,18 +83,18 @@ namespace AnimationLib
 		/// </summary>
 		public Vector2 Translation
 		{
-			get { return m_Translation; }
-			set { m_Translation = value; }
+			get { return _translation; }
+			set { _translation = value; }
 		}
 
 		public float TranslationX
 		{
-			set { m_Translation.X = value; }
+			set { _translation.X = value; }
 		}
 
 		public float TranslationY
 		{
-			set { m_Translation.Y = value; }
+			set { _translation.Y = value; }
 		}
 
 		/// <summary>
@@ -116,7 +116,7 @@ namespace AnimationLib
 		/// </summary>
 		public KeyElement()
 		{
-			m_Translation = new Vector2(0.0f);
+			_translation = Vector2.Zero;
 			Time = 0;
 			Rotation = 0.0f;
 			Layer = -1;
@@ -126,49 +126,49 @@ namespace AnimationLib
 			RagDoll = false;
 		}
 
-		public void Copy(KeyElement rInst)
+		public void Copy(KeyElement inst)
 		{
-			m_Translation = rInst.m_Translation;
-			Time = rInst.Time;
-			Rotation = rInst.Rotation;
-			Layer = rInst.Layer;
-			ImageIndex = rInst.ImageIndex;
-			Flip = rInst.Flip;
-			KeyFrame = rInst.KeyFrame;
-			RagDoll = rInst.RagDoll;
+			_translation = inst._translation;
+			Time = inst.Time;
+			Rotation = inst.Rotation;
+			Layer = inst.Layer;
+			ImageIndex = inst.ImageIndex;
+			Flip = inst.Flip;
+			KeyFrame = inst.KeyFrame;
+			RagDoll = inst.RagDoll;
 		}
 
-		public bool Compare(KeyElement rInst)
+		public bool Compare(KeyElement inst)
 		{
-			if (Rotation != rInst.Rotation)
+			if (Rotation != inst.Rotation)
 			{
 				return false;
 			}
-			else if (Layer != rInst.Layer)
+			else if (Layer != inst.Layer)
 			{
 				return false;
 			}
-			else if (ImageIndex != rInst.ImageIndex)
+			else if (ImageIndex != inst.ImageIndex)
 			{
 				return false;
 			}
-			else if (Flip != rInst.Flip)
+			else if (Flip != inst.Flip)
 			{
 				return false;
 			}
-			else if (Translation.X != rInst.Translation.X)
+			else if (Translation.X != inst.Translation.X)
 			{
 				return false;
 			}
-			else if (Translation.Y != rInst.Translation.Y)
+			else if (Translation.Y != inst.Translation.Y)
 			{
 				return false;
 			}
-			else if (RagDoll != rInst.RagDoll)
+			else if (RagDoll != inst.RagDoll)
 			{
 				return false;
 			}
-			else if (JointName != rInst.JointName)
+			else if (JointName != inst.JointName)
 			{
 				return false;
 			}
@@ -181,13 +181,13 @@ namespace AnimationLib
 		/// <summary>
 		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
 		/// </summary>
-		/// <param name="strOldName">the name of the joint to be renamed</param>
-		/// <param name="strNewName">the new name for that joint.</param>
-		public void RenameJoint(string strOldName, string strNewName)
+		/// <param name="oldName">the name of the joint to be renamed</param>
+		/// <param name="newName">the new name for that joint.</param>
+		public void RenameJoint(string oldName, string newName)
 		{
-			if (JointName == strOldName)
+			if (JointName == oldName)
 			{
-				JointName = strNewName;
+				JointName = newName;
 			}
 		}
 
@@ -198,24 +198,24 @@ namespace AnimationLib
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
-		/// <param name="rXMLNode">The xml node to read from</param>
-		public void ReadXMLFormat(XmlNode rXMLNode)
+		/// <param name="node">The xml node to read from</param>
+		public void ReadXmlFormat(XmlNode node)
 		{
 			KeyFrame = true;
 
 #if DEBUG
-			if ("Item" != rXMLNode.Name)
+			if ("Item" != node.Name)
 			{
-				throw new Exception("keyelement nodes need to be Item not " + rXMLNode.Name);
+				throw new Exception("keyelement nodes need to be Item not " + node.Name);
 			}
 
-			if (!rXMLNode.HasChildNodes)
+			if (!node.HasChildNodes)
 			{
 				throw new Exception("keyelement with no child nodes");
 			}
 
 			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
+			XmlNamedNodeMap mapAttributes = node.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
@@ -233,7 +233,7 @@ namespace AnimationLib
 #endif
 
 			//Read in child nodes
-			for (XmlNode childNode = rXMLNode.FirstChild;
+			for (XmlNode childNode = node.FirstChild;
 				null != childNode;
 				childNode = childNode.NextSibling)
 			{
@@ -270,7 +270,7 @@ namespace AnimationLib
 					break;
 					case "translation":
 					{
-						m_Translation = strValue.ToVector2();
+						Translation = strValue.ToVector2();
 					}
 					break;
 					case "ragdoll":
@@ -290,17 +290,18 @@ namespace AnimationLib
 		/// <summary>
 		/// write all this dude's stuff out to xml
 		/// </summary>
-		/// <param name="rXMLDude">the animtion object to add all the keyframes to</param>
-		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, Bone rMyBone)
+		/// <param name="animationXml">the animtion object to add all the keyframes to</param>
+		/// <param name="myBone">the bone this dude references</param>
+		public void WriteXmlFormat(AnimationXml animationXml, Bone myBone)
 		{
-			Debug.Assert(null != rMyBone);
+			Debug.Assert(null != myBone);
 
 			//find the image this key element uses
 			string strImage = "";
 			if (-1 != ImageIndex)
 			{
 				//find the bone that uses this dudes joint as a keyjoint
-				Bone rChildBone = rMyBone.GetBone(JointName);
+				Bone rChildBone = myBone.GetBone(JointName);
 				if (null != rChildBone)
 				{
 					Debug.Assert(ImageIndex < rChildBone.Images.Count);
@@ -309,7 +310,7 @@ namespace AnimationLib
 			}
 
 			//create the xml object and add it to the animation
-			var myThing = new AnimationLib.KeyXML();
+			var myThing = new KeyXml();
 			myThing.flip = Flip;
 			myThing.image = strImage;
 			myThing.joint = JointName;
@@ -322,18 +323,18 @@ namespace AnimationLib
 				myThing.rotation = MathHelper.ToDegrees(Rotation);
 			}
 			myThing.time = Time;
-			myThing.translation = m_Translation;
+			myThing.translation = Translation;
 
-			rXMLDude.keys.Add(myThing);
+			animationXml.keys.Add(myThing);
 		}
 
 		/// <summary>
 		/// Multiply all the layers to spread out the model
 		/// </summary>
-		/// <param name="fMultiply"></param>
-		public void MultiplyLayers(int iMultiply)
+		/// <param name="multiply"></param>
+		public void MultiplyLayers(int multiply)
 		{
-			Layer *= iMultiply;
+			Layer *= multiply;
 		}
 
 		#endregion //File IO

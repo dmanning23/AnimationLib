@@ -33,18 +33,18 @@ namespace AnimationLib
 		/// <summary>
 		/// Constructor!
 		/// </summary>
-		/// <param name="myBone">the bone this dude represents</param>
-		public KeyBone(Bone myBone)
+		/// <param name="bone">the bone this dude represents</param>
+		public KeyBone(Bone bone)
 		{
 			//grab the name of this bone
-			Name = myBone.Name;
+			Name = bone.Name;
 
 			//setup the child bones
 			Bones = new List<KeyBone>();
-			for (int i = 0; i < myBone.Bones.Count; i++)
+			for (var i = 0; i < bone.Bones.Count; i++)
 			{
-				Bone rMyChildBone = myBone.Bones[i];
-				KeyBone childKeyBone = new KeyBone(rMyChildBone);
+				Bone childBone = bone.Bones[i];
+				KeyBone childKeyBone = new KeyBone(childBone);
 				Bones.Add(childKeyBone);
 			}
 
@@ -55,23 +55,23 @@ namespace AnimationLib
 		/// <summary>
 		/// recursively get a keyjoint from the bone structure
 		/// </summary>
-		/// <param name="strJointName">The name of the keyjoint to get</param>
-		public KeyJoint GetKeyJoint(string strJointName)
+		/// <param name="jointName">The name of the keyjoint to get</param>
+		public KeyJoint GetKeyJoint(string jointName)
 		{
 			//check my keyjoints
-			if (KeyJoint.Name == strJointName)
+			if (KeyJoint.Name == jointName)
 			{
 				return KeyJoint;
 			}
 
 			//check child key bones
-			KeyJoint rFoundKeyJoint = null;
-			for (int i = 0; i < Bones.Count; i++)
+			KeyJoint foundKeyJoint = null;
+			for (var i = 0; i < Bones.Count; i++)
 			{
-				rFoundKeyJoint = Bones[i].GetKeyJoint(strJointName);
-				if (rFoundKeyJoint != null)
+				foundKeyJoint = Bones[i].GetKeyJoint(jointName);
+				if (foundKeyJoint != null)
 				{
-					return rFoundKeyJoint;
+					return foundKeyJoint;
 				}
 			}
 
@@ -82,23 +82,23 @@ namespace AnimationLib
 		/// <summary>
 		/// Recursively find a keybone
 		/// </summary>
-		/// <param name="strBoneName">name of the bone to find</param>
+		/// <param name="boneName">name of the bone to find</param>
 		/// <returns>keybone with that name, or null if no bone found</returns>
-		public KeyBone GetKeyBone(string strBoneName)
+		public KeyBone GetKeyBone(string boneName)
 		{
 			//is this the dude?
-			if (Name == strBoneName)
+			if (Name == boneName)
 			{
 				return this;
 			}
 
 			//is the requested bone underneath this dude?
-			for (int i = 0; i < Bones.Count; i++)
+			for (var i = 0; i < Bones.Count; i++)
 			{
-				KeyBone myBone = Bones[i].GetKeyBone(strBoneName);
-				if (null != myBone)
+				KeyBone bone = Bones[i].GetKeyBone(boneName);
+				if (null != bone)
 				{
-					return myBone;
+					return bone;
 				}
 			}
 
@@ -109,13 +109,13 @@ namespace AnimationLib
 		/// <summary>
 		/// Get a child bone from this dude
 		/// </summary>
-		/// <param name="iIndex">the index of the child to get</param>
-		public KeyBone GetChildBone(int iIndex)
+		/// <param name="index">the index of the child to get</param>
+		public KeyBone GetChildBone(int index)
 		{
-			Debug.Assert(iIndex >= 0);
-			if (iIndex < Bones.Count)
+			Debug.Assert(index >= 0);
+			if (index < Bones.Count)
 			{
-				return Bones[iIndex];
+				return Bones[index];
 			}
 			else
 			{
@@ -123,61 +123,61 @@ namespace AnimationLib
 			}
 		}
 
-		public void Copy(Macro myPasteAction,
-			Animation myTargetAnimation, 
-			int iSourceTime, 
-			int iTargetTime,
-			bool bSelectiveCopy)
+		public void Copy(Macro pasteAction,
+			Animation targetAnimation, 
+			int sourceTime, 
+			int targetTime,
+			bool selectiveCopy)
 		{
 			//go through each joint
-				KeyJoint.Copy(myPasteAction, myTargetAnimation, iSourceTime, iTargetTime, bSelectiveCopy);
+			KeyJoint.Copy(pasteAction, targetAnimation, sourceTime, targetTime, selectiveCopy);
 
 			//go through child bones
-				for (int i = 0; i < Bones.Count; i++)
+				for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].Copy(myPasteAction, myTargetAnimation, iSourceTime, iTargetTime, bSelectiveCopy);
+				Bones[i].Copy(pasteAction, targetAnimation, sourceTime, targetTime, selectiveCopy);
 			}
 		}
 
-		public void RemoveKeyElement(Macro rPasteAction, int iTime, Animation myAnimation)
+		public void RemoveKeyElement(Macro pasteAction, int time, Animation animation)
 		{
 			//go through each joint
-			KeyJoint.RemoveKeyElement(rPasteAction, iTime, myAnimation);
+			KeyJoint.RemoveKeyElement(pasteAction, time, animation);
 
 			//go through child bones
-			for (int i = 0; i < Bones.Count; i++)
+			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].RemoveKeyElement(rPasteAction, iTime, myAnimation);
+				Bones[i].RemoveKeyElement(pasteAction, time, animation);
 			}
 		}
 
-		public void MirrorRightToLeft(KeyBone RootBone, Macro rPasteAction, int iTime, Animation myAnimation)
+		public void MirrorRightToLeft(KeyBone rootBone, Macro pasteAction, int time, Animation animation)
 		{
 			//mirror all the keyjoints
-			KeyJoint.MirrorRightToLeft(RootBone, rPasteAction, iTime, myAnimation);
+			KeyJoint.MirrorRightToLeft(rootBone, pasteAction, time, animation);
 
 			//mirror all the child bones too
-			for (int i = 0; i < Bones.Count; i++)
+			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].MirrorRightToLeft(RootBone, rPasteAction, iTime, myAnimation);
+				Bones[i].MirrorRightToLeft(rootBone, pasteAction, time, animation);
 			}
 		}
 
 		/// <summary>
 		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
 		/// </summary>
-		/// <param name="strOldName">the name of the joint to be renamed</param>
-		/// <param name="strNewName">the new name for that joint.</param>
-		public bool RenameJoint(string strOldName, string strNewName)
+		/// <param name="oldName">the name of the joint to be renamed</param>
+		/// <param name="newName">the new name for that joint.</param>
+		public bool RenameJoint(string oldName, string newName)
 		{
-			if (KeyJoint.RenameJoint(strOldName, strNewName))
+			if (KeyJoint.RenameJoint(oldName, newName))
 			{
 				return true;
 			}
 
-			for (int i = 0; i < Bones.Count; i++)
+			for (var i = 0; i < Bones.Count; i++)
 			{
-				if (Bones[i].RenameJoint(strOldName, strNewName))
+				if (Bones[i].RenameJoint(oldName, newName))
 				{
 					return true;
 				}
@@ -190,17 +190,17 @@ namespace AnimationLib
 		/// <summary>
 		/// change the time for this animation and move all the key frames around
 		/// </summary>
-		/// <param name="iOldTime">teh previous time of this animation</param>
-		/// <param name="iCurrentTime">the new time of this animation</param>
-		public void SetTime(int iOldTime, int iCurrentTime)
+		/// <param name="oldTime">teh previous time of this animation</param>
+		/// <param name="currentTime">the new time of this animation</param>
+		public void SetTime(int oldTime, int currentTime)
 		{
 			//set the time for all the joints
-			KeyJoint.SetTime(iOldTime, iCurrentTime);
+			KeyJoint.SetTime(oldTime, currentTime);
 
 			//set the time for all the child bones
-			for (int i = 0; i < Bones.Count; i++)
+			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].SetTime(iOldTime, iCurrentTime);
+				Bones[i].SetTime(oldTime, currentTime);
 			}
 		}
 
@@ -216,35 +216,36 @@ namespace AnimationLib
 		/// <summary>
 		/// write all this dude's stuff out to xml
 		/// </summary>
-		/// <param name="rXMLDude">the animtion object to add all the keyframes to</param>
-		public void WriteXMLFormat(AnimationLib.AnimationXML rXMLDude, Bone rMyBone)
+		/// <param name="animationXml">the animtion object to add all the keyframes to</param>
+		/// <param name="myBone">the bone this keybone references</param>
+		public void WriteXmlFormat(AnimationXml animationXml, Bone myBone)
 		{
-			Debug.Assert(null != rMyBone);
+			Debug.Assert(null != myBone);
 
 			//write out all my joints
-			KeyJoint.WriteXMLFormat(rXMLDude, rMyBone);
+			KeyJoint.WriteXmlFormat(animationXml, myBone);
 			
 			//write out all the children's joints
-			for (int i = 0; i < Bones.Count; i++)
+			for (var i = 0; i < Bones.Count; i++)
 			{
 				//find the bone for this keybone
-				Bone rChildBone = rMyBone.GetBone(Bones[i].Name);
+				Bone rChildBone = myBone.GetBone(Bones[i].Name);
 				Debug.Assert(null != rChildBone);
-				Bones[i].WriteXMLFormat(rXMLDude, rChildBone);
+				Bones[i].WriteXmlFormat(animationXml, rChildBone);
 			}
 		}
 
 		/// <summary>
 		/// Multiply all the layers to spread out the model
 		/// </summary>
-		/// <param name="fMultiply"></param>
-		public void MultiplyLayers(int iMultiply)
+		/// <param name="multiply"></param>
+		public void MultiplyLayers(int multiply)
 		{
-			KeyJoint.MultiplyLayers(iMultiply);
+			KeyJoint.MultiplyLayers(multiply);
 
-			foreach (KeyBone i in Bones)
+			foreach (var bone in Bones)
 			{
-				i.MultiplyLayers(iMultiply);
+				bone.MultiplyLayers(multiply);
 			}
 		}
 
