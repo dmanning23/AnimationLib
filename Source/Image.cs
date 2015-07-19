@@ -97,6 +97,51 @@ namespace AnimationLib
 		}
 
 		/// <summary>
+		/// Make sure this image has enough joint objects to match the bone
+		/// </summary>
+		/// <param name="bone">the bone that owns this image</param>
+		public void SetAnchorJoint(Bone bone)
+		{
+			Debug.Assert(null != bone);
+
+			//check if there are too many joint JointCoords objects
+			while (JointCoords.Count > bone.Joints.Count)
+			{
+				JointCoords.RemoveAt(JointCoords.Count - 1);
+			}
+
+			//okay if there are not enough joint JointCoords objects, add some blank ones
+			while (JointCoords.Count < bone.Joints.Count)
+			{
+				JointCoords.Add(new JointData());
+			}
+		}
+
+		/// <summary>
+		/// Load all the images for the model
+		/// </summary>
+		/// <param name="renderer"></param>
+		public void LoadImage(IRenderer renderer)
+		{
+			//add the ability to have blank image, which means a skeletal structure that is not displayed
+			if (ImageFile.GetFileExt().Length > 0)
+			{
+				//do we need to load the image?
+				if (null != renderer)
+				{
+					m_Image = renderer.LoadImage(ImageFile);
+					if (null == m_Image)
+					{
+						Debug.Assert(false);
+					}
+
+					UpperLeft = Vector2.Zero;
+					LowerRight = new Vector2(m_Image.Width, m_Image.Height);
+				}
+			}
+		}
+
+		/// <summary>
 		/// Render this image
 		/// </summary>
 		/// <param name="rMatrix">The matrix to rtansform by</param>
@@ -270,22 +315,19 @@ namespace AnimationLib
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
-		/// <param name="rXMLNode">The xml node to read from</param>
-		/// <param name="MyRenderer">The renderer to use to load images</param>
+		/// <param name="node">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode rXMLNode, IRenderer rRenderer, Bone rParent)
+		public bool ReadXMLFormat(XmlNode node)
 		{
-			Debug.Assert(null != rParent);
-
 #if DEBUG
-			if ("Item" != rXMLNode.Name)
+			if ("Item" != node.Name)
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
 			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
+			XmlNamedNodeMap mapAttributes = node.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
@@ -304,9 +346,9 @@ namespace AnimationLib
 #endif
 
 			//Read in child nodes
-			if (rXMLNode.HasChildNodes)
+			if (node.HasChildNodes)
 			{
-				for (XmlNode childNode = rXMLNode.FirstChild;
+				for (XmlNode childNode = node.FirstChild;
 					null != childNode;
 					childNode = childNode.NextSibling)
 				{
@@ -338,24 +380,6 @@ namespace AnimationLib
 						{
 							//get the correct path & filename
 							ImageFile.SetRelFilename(strValue);
-
-							//add the ability to have blank image, which means a skeletal structure that is not displayed
-							if (ImageFile.GetFileExt().ToString().Length > 0)
-							{
-								//do we need to load the image?
-								if (null != rRenderer)
-								{
-									m_Image = rRenderer.LoadImage(ImageFile);
-									if (null == m_Image)
-									{
-										Debug.Assert(false);
-										return false;
-									}
-
-									UpperLeft = Vector2.Zero;
-									LowerRight = new Vector2(m_Image.Width, m_Image.Height);
-								}
-							}
 						}
 						break;
 						case "joints":
@@ -425,18 +449,6 @@ namespace AnimationLib
 						}
 					}
 				}
-			}
-
-			//check if there are too many joint JointCoords objects
-			while (JointCoords.Count > rParent.Joints.Count)
-			{
-				JointCoords.RemoveAt(0);
-			}
-
-			//okay if there are not enough joint JointCoords objects, add some blank ones
-			while (JointCoords.Count < rParent.Joints.Count)
-			{
-				JointCoords.Add(new JointData());
 			}
 
 			return true;

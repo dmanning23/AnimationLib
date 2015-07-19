@@ -128,7 +128,7 @@ namespace AnimationLib
 
 		#endregion //Properties
 
-		#region Methods
+		#region Initialization
 
 		/// <summary>
 		/// hello, standard constructor!
@@ -148,6 +148,59 @@ namespace AnimationLib
 			BoneType = EBoneType.Normal;
 			RagdollForces = new List<Vector2>();
 		}
+
+		/// <summary>
+		/// After the model has been read in from file, set all the anchor joints
+		/// </summary>
+		/// <param name="parentBone"></param>
+		public void SetAnchorJoint(Bone parentBone)
+		{
+			//get the anchor joint from the parent bone
+			if (null != parentBone)
+			{
+				AnchorJoint = parentBone.GetJoint(Name);
+				if (null == AnchorJoint)
+				{
+					//add a joint to the parent
+					AnchorJoint = new Joint(parentBone.Joints.Count);
+					AnchorJoint.Name = Name;
+					parentBone.Joints.Add(AnchorJoint);
+				}
+			}
+
+			//update all the images
+			for (var i = 0; i < Images.Count; i++)
+			{
+				Images[i].SetAnchorJoint(this);
+			}
+
+			//set the anchor joint in all child joints
+			for (var i = 0; i < Bones.Count; i++)
+			{
+				Bones[i].SetAnchorJoint(this);
+			}
+		}
+
+		/// <summary>
+		/// Load all the images for the model
+		/// </summary>
+		/// <param name="renderer"></param>
+		public void LoadImages(IRenderer renderer)
+		{
+			for (var i = 0; i < Images.Count; i++)
+			{
+				Images[i].LoadImage(renderer);
+			}
+
+			for (var i = 0; i < Bones.Count; i++)
+			{
+				Bones[i].LoadImages(renderer);
+			}
+		}
+
+		#endregion //Initialization
+
+		#region Methods
 
 		public void RestartAnimation()
 		{
@@ -1401,13 +1454,13 @@ namespace AnimationLib
 		/// <param name="ParentBone">The parent bone for this dude.</param>
 		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public virtual bool ReadXMLFormat(XmlNode rXMLNode, Bone ParentBone, IRenderer rRenderer)
+		public virtual bool ReadXMLFormat(XmlNode node)
 		{
-			Debug.Assert(null != rXMLNode);
+			Debug.Assert(null != node);
 
 #if DEBUG
 			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
+			XmlNamedNodeMap mapAttributes = node.Attributes;
 			for (var i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
@@ -1422,33 +1475,16 @@ namespace AnimationLib
 #endif
 
 			//Read in child nodes
-			if (rXMLNode.HasChildNodes)
+			if (node.HasChildNodes)
 			{
-				for (XmlNode childNode = rXMLNode.FirstChild;
+				for (XmlNode childNode = node.FirstChild;
 					null != childNode;
 					childNode = childNode.NextSibling)
 				{
-					if (!ParseChildXMLNode(childNode, ParentBone, rRenderer))
+					if (!ParseChildXMLNode(childNode))
 					{
 						Debug.Assert(false);
 						return false;
-					}
-				}
-			}
-
-			//if it didnt find an anchor joint, set it to the joint that matches this dudes name
-			Debug.Assert(null != AnchorJoint);
-			if ("" == AnchorJoint.Name)
-			{
-				if (null != ParentBone)
-				{
-					AnchorJoint = ParentBone.GetJoint(Name);
-					if (null == AnchorJoint)
-					{
-						//add a joint to the parent
-						AnchorJoint = new Joint(ParentBone.Joints.Count);
-						AnchorJoint.Name = Name;
-						ParentBone.Joints.Add(AnchorJoint);
 					}
 				}
 			}
@@ -1469,7 +1505,7 @@ namespace AnimationLib
 		/// <param name="ParentBone"></param>
 		/// <param name="rRenderer"></param>
 		/// <returns></returns>
-		protected virtual bool ParseChildXMLNode(XmlNode childNode, Bone ParentBone, IRenderer rRenderer)
+		protected virtual bool ParseChildXMLNode(XmlNode childNode)
 		{
 			//what is in this node?
 			string strName = childNode.Name;
@@ -1481,23 +1517,6 @@ namespace AnimationLib
 				{
 					//set the name of this bone
 					Name = strValue;
-				}
-				break;
-				case "anchor":
-				{
-					//get the name of the anchor joint
-					string strAnchorJoint = strValue;
-
-					//get the anchor joint from the parent bone
-					if (null != ParentBone)
-					{
-						AnchorJoint = ParentBone.GetJoint(strAnchorJoint);
-						if (null == AnchorJoint)
-						{
-							Debug.Assert(false);
-							return false;
-						}
-					}
 				}
 				break;
 				case "type":
@@ -1551,7 +1570,7 @@ namespace AnimationLib
 							imageNode = imageNode.NextSibling)
 						{
 							Image childImage = new Image();
-							if (!childImage.ReadXMLFormat(imageNode, rRenderer, this))
+							if (!childImage.ReadXMLFormat(imageNode))
 							{
 								Debug.Assert(false);
 								return false;
@@ -1571,7 +1590,7 @@ namespace AnimationLib
 							boneNode = boneNode.NextSibling)
 						{
 							Bone childBone = CreateBone();
-							if (!childBone.ReadXMLFormat(boneNode, this, rRenderer))
+							if (!childBone.ReadXMLFormat(boneNode))
 							{
 								Debug.Assert(false);
 								return false;

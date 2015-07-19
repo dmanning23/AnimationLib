@@ -130,10 +130,9 @@ namespace AnimationLib
 		/// Parse a child node of this BoneXML
 		/// </summary>
 		/// <param name="childNode">teh node to parse</param>
-		/// <param name="ParentBone"></param>
 		/// <param name="rRenderer"></param>
 		/// <returns></returns>
-		protected override bool ParseChildXMLNode(XmlNode childNode, Bone ParentBone, IRenderer rRenderer)
+		protected override bool ParseChildXMLNode(XmlNode childNode)
 		{
 			//what is in this node?
 			string strName = childNode.Name;
@@ -147,7 +146,7 @@ namespace AnimationLib
 			else
 			{
 				//Let the base class parse the rest of the xml
-				return base.ParseChildXMLNode(childNode, ParentBone, rRenderer);
+				return base.ParseChildXMLNode(childNode);
 			}
 
 			return true;

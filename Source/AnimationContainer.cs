@@ -423,12 +423,18 @@ namespace AnimationLib
 #endif
 
 				//make sure to read from the the next node
-				if (!Model.ReadXMLFormat(rootNode.FirstChild, null, rRenderer))
+				if (!Model.ReadXMLFormat(rootNode.FirstChild))
 				{
 					Debug.Assert(false);
 					stream.Close();
 					return false;
 				}
+
+				//Set the anchor joints of the whole model
+				Model.SetAnchorJoint(null);
+
+				//Load all the images
+				Model.LoadImages(rRenderer);
 			}
 			else
 			{
