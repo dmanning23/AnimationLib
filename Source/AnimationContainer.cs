@@ -24,12 +24,12 @@ namespace AnimationLib
 		/// <summary>
 		/// The way the current animation is being played
 		/// </summary>
-		private EPlayback m_ePlayback;
+		private EPlayback _playback;
 
 		/// <summary>
 		/// Index of the current animation being played
 		/// </summary>
-		private int m_iAnimationIndex;
+		private int _animationIndex;
 
 		#endregion
 
@@ -52,15 +52,15 @@ namespace AnimationLib
 		/// <value>The index of the current animation.</value>
 		public int CurrentAnimationIndex 
 		{
-			get { return m_iAnimationIndex; }
+			get { return _animationIndex; }
 			set
 			{
-				m_iAnimationIndex = value;
+				_animationIndex = value;
 
 				//If there is an animation at that index, use it.
 				if ((0 <= value) && (Animations.Count > value))
 				{
-					CurrentAnimation = Animations[m_iAnimationIndex];
+					CurrentAnimation = Animations[_animationIndex];
 				}
 				else
 				{
@@ -103,7 +103,7 @@ namespace AnimationLib
 			Animations = new List<Animation>();
 			CurrentAnimationIndex = -1;
 			StopWatch = new GameClock();
-			m_ePlayback = EPlayback.Forwards;
+			_playback = EPlayback.Forwards;
 			ModelFile = new Filename();
 			AnimationFile = new Filename();
 			ResetRagdoll = false;
@@ -112,10 +112,13 @@ namespace AnimationLib
 		/// <summary>
 		/// Update the model with the current animation
 		/// </summary>
-		/// <param name="myClock">the clock to update this dude with</param>
-		/// <param name="myPosition">this dude's screen location</param>
-		/// <param name="bFlip">whether or not to flip this dude on the y axis</param>
-		public void Update(GameClock myClock, Vector2 myPosition, bool bFlip, float fScale, float fRotation, bool bIgnoreRagdoll)
+		/// <param name="time">the clock to update this dude with</param>
+		/// <param name="position">this dude's screen location</param>
+		/// <param name="isFlipped">whether or not to flip this dude on the y axis</param>
+		/// <param name="scale">how much to scale the animation</param>
+		/// <param name="rotation">how much to rotate the animation</param>
+		/// <param name="ignoreRagdoll">whether or not to apply the ragdoll physics</param>
+		public void Update(GameClock time, Vector2 position, bool isFlipped, float scale, float rotation, bool ignoreRagdoll)
 		{
 			if ((null == Animations) || (null == CurrentAnimation))
 			{
@@ -123,10 +126,10 @@ namespace AnimationLib
 			}
 
 			//update the animation clock
-			StopWatch.Update(myClock);
+			StopWatch.Update(time);
 
 			//apply the animation
-			ApplyAnimation(GetAnimationTime(), myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
+			ApplyAnimation(GetAnimationTime(), position, isFlipped, scale, rotation, ignoreRagdoll);
 		}
 
 		/// <summary>
@@ -136,18 +139,18 @@ namespace AnimationLib
 		public int GetAnimationTime()
 		{
 			//This will hold the time of the animation
-			float fTime = 0.0f;
+			var time = 0.0f;
 
 			//apply the animation
-			switch (m_ePlayback)
+			switch (_playback)
 			{
 				case EPlayback.Backwards:
 				{
 					//apply the eggtimer to the animationiterator
-					fTime = CurrentAnimation.Length - StopWatch.CurrentTime;
-					if (fTime < 0.0f)
+					time = CurrentAnimation.Length - StopWatch.CurrentTime;
+					if (time < 0.0f)
 					{
-						fTime = 0.0f;
+						time = 0.0f;
 					}
 				}
 				break;
@@ -155,10 +158,10 @@ namespace AnimationLib
 				case EPlayback.Forwards:
 				{
 					//apply the stop watch to the aniiterator
-					fTime = StopWatch.CurrentTime;
-					if (fTime > CurrentAnimation.Length)
+					time = StopWatch.CurrentTime;
+					if (time > CurrentAnimation.Length)
 					{
-						fTime = CurrentAnimation.Length;
+						time = CurrentAnimation.Length;
 					}
 				}
 				break;
@@ -166,23 +169,23 @@ namespace AnimationLib
 				case EPlayback.Loop:
 				{
 					//apply the stop watch to the aniiterator
-					int iNumTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
-					float fTimeDiff = (CurrentAnimation.Length * (float)iNumTimes);
-					fTime = (StopWatch.CurrentTime - fTimeDiff);
+					int numTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
+					float timeDiff = (CurrentAnimation.Length * (float)numTimes);
+					time = (StopWatch.CurrentTime - timeDiff);
 				}
 				break;
 
 				case EPlayback.LoopBackwards:
 				{
 					//apply the eggtimer to the animationiterator
-					int iNumTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
-					float fTimeDiff = (CurrentAnimation.Length * (float)iNumTimes);
-					fTime = CurrentAnimation.Length - (StopWatch.CurrentTime - fTimeDiff);
+					int numTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
+					float timeDiff = (CurrentAnimation.Length * (float)numTimes);
+					time = CurrentAnimation.Length - (StopWatch.CurrentTime - timeDiff);
 				}
 				break;
 			}
 
-			return fTime.ToFrames();
+			return time.ToFrames();
 		}
 
 		/// <summary>
@@ -227,10 +230,11 @@ namespace AnimationLib
 		/// <summary>
 		/// this needs to get run after the velocity is added to the model
 		/// </summary>
-		/// <param name="bIgnoreRagdoll"></param>
-		public void UpdateRagdoll(bool bIgnoreRagdoll, float fScale)
+		/// <param name="ignoreRagdoll"></param>
+		/// <param name="scale">how much to scale the animation</param>
+		public void UpdateRagdoll(bool ignoreRagdoll, float scale)
 		{
-			if (bIgnoreRagdoll)
+			if (ignoreRagdoll)
 			{
 				return;
 			}
@@ -239,7 +243,7 @@ namespace AnimationLib
 			Model.AddGravity(RagdollConstants.Gravity);
 
 			//accumulate all the force
-			Model.AccumulateForces(RagdollConstants.Spring, fScale);
+			Model.AccumulateForces(RagdollConstants.Spring, scale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
@@ -249,28 +253,28 @@ namespace AnimationLib
 			}
 
 			Model.SolveLimits(0.0f);
-			Model.SolveConstraints(false, fScale);
+			Model.SolveConstraints(false, scale);
 
 			//solve all the constraints
 			for (int i = 0; i < 2; i++)
 			{
-				Model.SolveConstraints(false, fScale);
+				Model.SolveConstraints(false, scale);
 			}
 
 			//run through the post update so the matrix is correct
-			Model.PostUpdate(fScale, false);
+			Model.PostUpdate(scale, false);
 		}
 
 		/// <summary>
 		/// Set the current animation
 		/// </summary>
-		/// <param name="iIndex">the index of the animation to set</param>
-		/// <param name="ePlaybackMode">the playback mode to use</param>
-		public void SetAnimation(int iIndex, EPlayback ePlaybackMode)
+		/// <param name="index">the index of the animation to set</param>
+		/// <param name="playbackMode">the playback mode to use</param>
+		public void SetAnimation(int index, EPlayback playbackMode)
 		{
 			//set teh stuff
-			m_ePlayback = ePlaybackMode;
-			CurrentAnimationIndex = iIndex;
+			_playback = playbackMode;
+			CurrentAnimationIndex = index;
 
 			RestartAnimation();
 		}
@@ -278,13 +282,14 @@ namespace AnimationLib
 		/// <summary>
 		/// Render the animation out to a drawlist
 		/// </summary>
-		/// <param name="rDrawList">the drawlist to render out to</param>
-		public void Render(DrawList rDrawList, Color PaletteSwap)
+		/// <param name="drawList">the drawlist to render out to</param>
+		/// <param name="paletteSwap">the color to use for the palette swap</param>
+		public void Render(DrawList drawList, Color paletteSwap)
 		{
 			if (null != Model)
 			{
 				//send teh model to teh draw list
-				Model.Render(rDrawList, PaletteSwap);
+				Model.Render(drawList, paletteSwap);
 			}
 		}
 
@@ -305,7 +310,7 @@ namespace AnimationLib
 			if (null != CurrentAnimation)
 			{
 				//check which type of playbakc we are doing
-				switch (m_ePlayback)
+				switch (_playback)
 				{
 					case EPlayback.Backwards:
 						{
@@ -337,11 +342,11 @@ namespace AnimationLib
 			return true;
 		}
 
-		public Animation FindAnimation(string strAnimationName)
+		public Animation FindAnimation(string animationName)
 		{
-			for (int i = 0; i < Animations.Count; i++)
+			for (var i = 0; i < Animations.Count; i++)
 			{
-				if (Animations[i].Name == strAnimationName)
+				if (Animations[i].Name == animationName)
 				{
 					return Animations[i];
 				}
@@ -355,11 +360,11 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="strAnimationName">name of teh animation to find</param>
 		/// <returns>teh index of teh animation with that name, -1 if none found</returns>
-		public int FindAnimationIndex(string strAnimationName)
+		public int FindAnimationIndex(string animationName)
 		{
-			for (int i = 0; i < Animations.Count; i++)
+			for (var i = 0; i < Animations.Count; i++)
 			{
-				if (Animations[i].Name == strAnimationName)
+				if (Animations[i].Name == animationName)
 				{
 					return i;
 				}
@@ -389,9 +394,9 @@ namespace AnimationLib
 		/// <summary>
 		/// Read a model file from a serialized xml resource
 		/// </summary>
-		/// <param name="strResource">filename of the resource to load</param>
-		/// <param name="rRenderer">renderer to use to load bitmap images</param>
-		public bool ReadModelXml(Filename strResource, IRenderer rRenderer)
+		/// <param name="filename">filename of the resource to load</param>
+		/// <param name="renderer">renderer to use to load bitmap images</param>
+		public bool ReadModelXml(Filename filename, IRenderer renderer)
 		{
 			CreateBone();
 
@@ -399,9 +404,9 @@ namespace AnimationLib
 
 			//Open the file.
 			#if ANDROID
-			Stream stream = Game.Activity.Assets.Open(strResource.File);
-			#else
-			FileStream stream = File.Open(strResource.File, FileMode.Open, FileAccess.Read);
+			Stream stream = Game.Activity.Assets.Open(filename.File);
+#else
+			FileStream stream = File.Open(filename.File, FileMode.Open, FileAccess.Read);
 			#endif
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
@@ -434,7 +439,7 @@ namespace AnimationLib
 				Model.SetAnchorJoint(null);
 
 				//Load all the images
-				Model.LoadImages(rRenderer);
+				Model.LoadImages(renderer);
 			}
 			else
 			{
@@ -448,16 +453,16 @@ namespace AnimationLib
 			stream.Close();
 
 			//grab that filename 
-			ModelFile.File = strResource.File;
+			ModelFile.File = filename.File;
 			return true;
 		}
 
 		/// <summary>
 		/// Open an xml file and dump model data to it
 		/// </summary>
-		/// <param name="strFileName">name of the file to dump to</param>
+		/// <param name="filename">name of the file to dump to</param>
 		/// <param name="scale">How much to scale the model when writing it out</param>
-		public virtual void WriteModelXml(Filename strFileName, float scale)
+		public virtual void WriteModelXml(Filename filename, float scale)
 		{
 			Debug.Assert(null != Model);
 
@@ -465,7 +470,7 @@ namespace AnimationLib
 			Model.RenameJoints(this);
 
 			//open the file, create it if it doesnt exist yet
-			var xmlWriter = new XmlTextWriter(strFileName.File, null);
+			var xmlWriter = new XmlTextWriter(filename.File, null);
 			xmlWriter.Formatting = Formatting.Indented;
 			xmlWriter.Indentation = 1;
 			xmlWriter.IndentChar = '\t';
@@ -487,7 +492,7 @@ namespace AnimationLib
 		/// read in a list of animations from a serialized xml format file
 		/// </summary>
 		/// <param name="strFileName">filename of the animations to load</param>
-		public virtual bool ReadAnimationXml(Filename strFileName)
+		public virtual bool ReadAnimationXml(Filename filename)
 		{
 			Debug.Assert(null != Model); //need a model to read in animations
 			Animations.Clear();
@@ -496,9 +501,9 @@ namespace AnimationLib
 
 			//Open the file.
 			#if ANDROID
-			Stream stream = Game.Activity.Assets.Open(strFileName.File);
-			#else
-			FileStream stream = File.Open(strFileName.File, FileMode.Open, FileAccess.Read);
+			Stream stream = Game.Activity.Assets.Open(filename.File);
+#else
+			FileStream stream = File.Open(filename.File, FileMode.Open, FileAccess.Read);
 			#endif
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
@@ -524,15 +529,15 @@ namespace AnimationLib
 #endif
 
 				//next node is "Asset"
-				XmlNode AssetNode = rootNode.FirstChild;
+				XmlNode assetNode = rootNode.FirstChild;
 
 #if DEBUG
-				if (null == AssetNode)
+				if (null == assetNode)
 				{
 					Debug.Assert(false);
 					return false;
 				}
-				if (!AssetNode.HasChildNodes)
+				if (!assetNode.HasChildNodes)
 				{
 					Debug.Assert(false);
 					return false;
@@ -540,15 +545,15 @@ namespace AnimationLib
 #endif
 
 				//next node is "Animations"
-				XmlNode AnimationsNode = AssetNode.FirstChild;
+				XmlNode animationsNode = assetNode.FirstChild;
 
 #if DEBUG
-				if (null == AnimationsNode)
+				if (null == animationsNode)
 				{
 					Debug.Assert(false);
 					return false;
 				}
-				if (!AnimationsNode.HasChildNodes)
+				if (!animationsNode.HasChildNodes)
 				{
 					Debug.Assert(false);
 					return false;
@@ -556,7 +561,7 @@ namespace AnimationLib
 #endif
 
 				//the rest of the nodes are animations
-				if (!ReadAnimationsNode(AnimationsNode))
+				if (!ReadAnimationsNode(animationsNode))
 				{
 					Debug.Assert(false);
 					return false;
@@ -573,9 +578,9 @@ namespace AnimationLib
 			stream.Close();
 
 			//grab teh filename
-			AnimationFile = strFileName;
+			AnimationFile = filename;
 
-			m_ePlayback = EPlayback.Forwards;
+			_playback = EPlayback.Forwards;
 			CurrentAnimation = null;
 			RestartAnimation();
 

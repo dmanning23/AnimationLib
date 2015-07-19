@@ -12,12 +12,12 @@ namespace AnimationLib
 		/// <summary>
 		/// This is our own little timer, since we won't be getting one passed into the update function
 		/// </summary>
-		private GameClock m_AnimationTimer;
+		private GameClock _animationTimer;
 
 		/// <summary>
 		/// The layer to draw this animation container
 		/// </summary>
-		int m_iCurrentLayer;
+		int _currentLayer;
 		
 		#endregion //Fields
 
@@ -60,8 +60,8 @@ namespace AnimationLib
 		/// </summary>
 		public GarmentAnimationContainer()
 		{
-			m_AnimationTimer = new GameClock();
-			m_iCurrentLayer = 0;
+			_animationTimer = new GameClock();
+			_currentLayer = 0;
 		}
 
 		/// <summary>
@@ -104,10 +104,10 @@ namespace AnimationLib
 			Debug.Assert(Animations.Count == rAttachedBone.Images.Count);
 
 			//set teh layer to draw this dude at
-			m_iCurrentLayer = iLayer;
+			_currentLayer = iLayer;
 
 			//update the timer
-			m_AnimationTimer.Update(iTime);
+			_animationTimer.Update(iTime);
 
 			//check if the animation has changed
 			if ((rAttachedBone.ImageIndex != CurrentAnimationIndex) || (null == CurrentAnimation))
@@ -124,7 +124,7 @@ namespace AnimationLib
 			else
 			{
 				//call the base update
-				Update(m_AnimationTimer, myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
+				Update(_animationTimer, myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
 			}
 		}
 
@@ -150,7 +150,7 @@ namespace AnimationLib
 				rCurrentKeyBone,
 				fRotation,
 				bFlip,
-				m_iCurrentLayer,
+				_currentLayer,
 				fScale,
 				bIgnoreRagdoll || ResetRagdoll);
 
@@ -183,12 +183,12 @@ namespace AnimationLib
 		/// <summary>
 		/// set all the data for the garment bones in this dude after they have been read in
 		/// </summary>
-		/// <param name="rRootNode"></param>
-		public void SetGarmentBones(Bone rRootNode)
+		/// <param name="model"></param>
+		public void SetGarmentBones(Bone model)
 		{
 			//find a Bone with the same name as the garment bone
-			GarmentBone myGarmentBone = GarmentModel;
-			Bone myBone = rRootNode.GetBone(myGarmentBone.ParentBoneName);
+			var myGarmentBone = GarmentModel;
+			var myBone = model.GetBone(myGarmentBone.ParentBoneName);
 			Debug.Assert(null != myBone);
 			myGarmentBone.ParentBone = myBone;
 
@@ -196,12 +196,12 @@ namespace AnimationLib
 			Debug.Assert(Animations.Count == myBone.Images.Count);
 
 			//ok, if we are in one of the tools, reorder the animations to match the image order.
-			List<Animation> myAnimations = new List<Animation>();
+			var myAnimations = new List<Animation>();
 			foreach (Image myImage in myBone.Images)
 			{
 				//find an animation that has the same name as this image
 				Animation foundAnimation = null;
-				foreach (Animation curAnimation in Animations)
+				foreach (var curAnimation in Animations)
 				{
 					if (curAnimation.Name == myImage.ImageFile.GetFile())
 					{

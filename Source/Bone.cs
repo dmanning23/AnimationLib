@@ -1550,7 +1550,7 @@ namespace AnimationLib
 							jointNode = jointNode.NextSibling)
 						{
 							Joint childJoint = new Joint(Joints.Count);
-							if (!childJoint.ReadXMLFormat(jointNode))
+							if (!childJoint.ReadXmlFormat(jointNode))
 							{
 								Debug.Assert(false);
 								return false;
@@ -1660,7 +1660,7 @@ namespace AnimationLib
 			rXMLFile.WriteStartElement("joints");
 			for (var i = 0; i < Joints.Count; i++)
 			{
-				Joints[i].WriteXMLFormat(rXMLFile, fEnbiggify);
+				Joints[i].WriteXmlFormat(rXMLFile);
 			}
 			rXMLFile.WriteEndElement();
 

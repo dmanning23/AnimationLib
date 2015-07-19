@@ -12,17 +12,17 @@ namespace AnimationLib
 		/// <summary>
 		/// The position for this dude
 		/// </summary>
-		private Vector2 m_JointPosition;
+		private Vector2 _position;
 
 		/// <summary>
 		/// this is this dudes old position, stored in world coordinates
 		/// </summary>
-		private Vector2 m_OldPosition;
+		private Vector2 _oldPosition;
 
 		/// <summary>
 		/// this is the acceleration currently on this dude
 		/// </summary>
-		private Vector2 m_Acceleration;
+		private Vector2 _acceleration;
 
 		#endregion
 
@@ -45,11 +45,11 @@ namespace AnimationLib
 		{
 			get
 			{
-				return m_JointPosition;
+				return _position;
 			}
 			set
 			{
-				m_JointPosition = value;
+				_position = value;
 			}
 		}
 
@@ -57,11 +57,11 @@ namespace AnimationLib
 		{
 			get
 			{
-				return m_OldPosition;
+				return _oldPosition;
 			}
 			set
 			{
-				m_OldPosition = value;
+				_oldPosition = value;
 			}
 		}
 
@@ -77,8 +77,8 @@ namespace AnimationLib
 
 		public Vector2 Acceleration
 		{
-			get { return m_Acceleration; }
-			set { m_Acceleration = value; }
+			get { return _acceleration; }
+			set { _acceleration = value; }
 		}
 
 		/// <summary>
@@ -124,14 +124,14 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public Joint(int iIndex)
+		public Joint(int index)
 		{
-			Index = iIndex;
-			m_JointPosition = new Vector2(0.0f);
+			Index = index;
+			_position = Vector2.Zero;
 			CurrentKeyElement = new KeyElement();
 			Data = new JointData();
-			m_OldPosition = new Vector2(0.0f);
-			m_Acceleration = new Vector2(0.0f);
+			_oldPosition = Vector2.Zero;
+			_acceleration = Vector2.Zero;
 			Name = "";
 			ParentFlip = false;
 		}
@@ -139,17 +139,17 @@ namespace AnimationLib
 		/// <summary>
 		/// Update the joints stuff
 		/// </summary>
-		/// <param name="MyKeyJoint">the key joint for this dude</param>
-		/// <param name="iTime">The current time of the animation</param>
-		public void Update(KeyJoint MyKeyJoint, int iTime)
+		/// <param name="myKeyJoint">the key joint for this dude</param>
+		/// <param name="time">The current time of the animation</param>
+		public void Update(KeyJoint myKeyJoint, int time)
 		{
 			//get the key element for this dude
-			MyKeyJoint.GetKeyElement(iTime, CurrentKeyElement);
+			myKeyJoint.GetKeyElement(time, CurrentKeyElement);
 		}
 
 		public void RestartAnimation()
 		{
-			m_OldPosition = m_JointPosition;
+			_oldPosition = _position;
 		}
 
 		public override string ToString()
@@ -161,10 +161,10 @@ namespace AnimationLib
 
 		#region Ragdoll
 
-		public void RunVerlet(float fTimeDelta)
+		public void RunVerlet(float timeDelta)
 		{
 			//Get the velocity we are going to apply
-			Vector2 vel = ((m_JointPosition - m_OldPosition) + (m_Acceleration * (fTimeDelta * fTimeDelta)));
+			Vector2 vel = ((_position - _oldPosition) + (_acceleration * (timeDelta * timeDelta)));
 
 			//simulate friction to add damping into the equation
 			if (Data.Floating)
@@ -176,9 +176,9 @@ namespace AnimationLib
 				vel *= .98f;
 			}
 
-			Vector2 tempCurrentPosition = m_JointPosition;
-			m_JointPosition += vel;
-			m_OldPosition = tempCurrentPosition;
+			Vector2 tempCurrentPosition = _position;
+			_position += vel;
+			_oldPosition = tempCurrentPosition;
 
 			////meak sure the position stays in the board
 			//if (m_Position.X() < LEFT_WALL)
@@ -199,11 +199,11 @@ namespace AnimationLib
 		/// If a joint is floating ragdoll, bounce it back toward the anchor joint.
 		/// Called from the anchor joint to spring child joints.
 		/// </summary>
-		/// <param name="rJoint">the child joint to bounce</param>
+		/// <param name="joint">the child joint to bounce</param>
 		/// <param name="springStrength"></param>
 		/// <param name="desiredDistance"></param>
 		/// <param name="scale"></param>
-		public void SpringFloatingRagdoll(Joint rJoint, float springStrength, float desiredDistance, float scale)
+		public void SpringFloatingRagdoll(Joint joint, float springStrength, float desiredDistance, float scale)
 		{
 			if (Data.Floating)
 			{
@@ -212,7 +212,7 @@ namespace AnimationLib
 				if (0.0f < fMyFloatRadius) //the float radius can't be 0 or negative
 				{
 					//find the current distance bewteen the two joints
-					Vector2 deltaVector = Position - rJoint.Position; //swap this so it points from joint -> anchor
+					Vector2 deltaVector = Position - joint.Position; //swap this so it points from joint -> anchor
 					float fCurDistance = deltaVector.Length();
 					deltaVector /= fCurDistance; //normalize
 
@@ -228,7 +228,7 @@ namespace AnimationLib
 					//get the force, but point it back at the first joint
 					Vector2 springForce = (deltaVector * springStrength) * springRatio;
 
-					rJoint.m_Acceleration += springForce;
+					joint._acceleration += springForce;
 				}
 			}
 		}
@@ -236,13 +236,14 @@ namespace AnimationLib
 		/// <summary>
 		/// rearrange the joints so they match the distance constraints
 		/// </summary>
-		/// <param name="rJoint">the joints to solve constraint with</param>
-		/// <param name="fDesiredDistance">the distance from that joint in a perfect world</param>
+		/// <param name="joint">the joints to solve constraint with</param>
+		/// <param name="desiredDistance">the distance from that joint in a perfect world</param>
+		/// <param name="scale">the current scale of the model</param>
 		/// <param name="bMoveMe">whether this joint should be moved</param>
-		public void SolveConstraint(Joint rJoint, float fDesiredDistance, float fScale, ERagdollMove bMovement)
+		public void SolveConstraint(Joint joint, float desiredDistance, float scale, ERagdollMove movement)
 		{
 			//find the current distance bewteen the two joints
-			Vector2 deltaVector = rJoint.Position - Position;
+			Vector2 deltaVector = joint.Position - Position;
 			float fCurDistance = deltaVector.Length();
 			deltaVector /= fCurDistance; //normalize
 
@@ -250,7 +251,7 @@ namespace AnimationLib
 			float fDiff = 0.0f;
 			if (Data.Floating)
 			{
-				float fMyFloatRadius = Data.FloatRadius * fScale;
+				float fMyFloatRadius = Data.FloatRadius * scale;
 				if (fCurDistance < fMyFloatRadius)
 				{
 					//The distance is less that the amount of float, dont bother constraining
@@ -264,29 +265,35 @@ namespace AnimationLib
 			else
 			{
 				//find the diff between the two
-				fDiff = (fCurDistance - (fDesiredDistance * fScale));
+				fDiff = (fCurDistance - (desiredDistance * scale));
 			}
 
 			if (0.0f != fDiff)
 			{
-				if (bMovement == ERagdollMove.MoveAll)
+				switch (movement)
 				{
-					//find the amount to move them by
-					Vector2 halfVector = deltaVector * 0.5f * fDiff;
-					rJoint.Position = rJoint.Position - halfVector;
-					m_JointPosition = Position + halfVector;
-				}
-				else if (bMovement == ERagdollMove.OnlyHim)
-				{
-					//only move the other dude
-					Vector2 halfVector = deltaVector * fDiff;
-					rJoint.Position = rJoint.Position - halfVector;
-				}
-				else
-				{
-					//only move me
-					Vector2 halfVector = deltaVector * fDiff;
-					m_JointPosition = Position + halfVector;
+					case ERagdollMove.MoveAll:
+					{
+						//find the amount to move them by
+						Vector2 halfVector = deltaVector*0.5f*fDiff;
+						joint.Position = joint.Position - halfVector;
+						_position = Position + halfVector;
+					}
+					break;
+					case ERagdollMove.OnlyHim:
+					{
+						//only move the other dude
+						Vector2 halfVector = deltaVector*fDiff;
+						joint.Position = joint.Position - halfVector;
+					}
+					break;
+					default:
+					{
+						//only move me
+						Vector2 halfVector = deltaVector*fDiff;
+						_position = Position + halfVector;
+					}
+					break;
 				}
 			}
 
@@ -312,7 +319,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="node">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode node)
+		public bool ReadXmlFormat(XmlNode node)
 		{
 #if DEBUG
 			if ("Item" != node.Name)
@@ -370,19 +377,19 @@ namespace AnimationLib
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
-		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		public void WriteXMLFormat(XmlTextWriter rXMLFile, float fEnbiggify)
+		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
+		public void WriteXmlFormat(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
-			rXMLFile.WriteStartElement("Item");
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.JointXML");
+			xmlWriter.WriteStartElement("Item");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.JointXML");
 
 			//write out upper left coords
-			rXMLFile.WriteStartElement("name");
-			rXMLFile.WriteString(Name);
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("name");
+			xmlWriter.WriteString(Name);
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 		}
 
 		#endregion //File IO

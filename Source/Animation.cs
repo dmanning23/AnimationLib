@@ -147,7 +147,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Change teh time for this animation and move all the keyframes to match
 		/// </summary>
-		/// <param name="fTime">the new time delta of this animation</param>
+		/// <param name="time">the new time delta of this animation</param>
 		public void SetTime(float time)
 		{
 			//set the time in the animation itself
