@@ -30,18 +30,18 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public KeyJoint(string strName)
+		public KeyJoint(string name)
 		{
 			Elements = new List<KeyElement>();
-			Name = strName;
+			Name = name;
 		}
 
 		/// <summary>
 		/// Get a key element at a certain tim from this dude
 		/// </summary>
-		/// <param name="iTime">The time of the key element to get</param>
+		/// <param name="time">The time of the key element to get</param>
 		/// <param name="rKeyElement">The key element to output the stuff to</param>
-		public bool GetKeyElement(int iTime, KeyElement rKeyElement)
+		public bool GetKeyElement(int time, KeyElement rKeyElement)
 		{
 			//if no elements, fuckin FALSE
 			if (Elements.Count <= 0)
@@ -53,7 +53,7 @@ namespace AnimationLib
 			if (Elements.Count == 1)
 			{
 				rKeyElement.Copy(Elements[0]);
-				rKeyElement.Time = iTime;
+				rKeyElement.Time = time;
 				return true;
 			}
 
@@ -63,19 +63,19 @@ namespace AnimationLib
 			while (iNextIndex < Elements.Count)
 			{
 				//check if the time falls on or between the two keyframes
-				if ((Elements[iPrevIndex].Time <= iTime) &&
-					(Elements[iNextIndex].Time >= iTime))
+				if ((Elements[iPrevIndex].Time <= time) &&
+					(Elements[iNextIndex].Time >= time))
 				{
 					KeyElement rPrev = Elements[iPrevIndex];
 					KeyElement rNext = Elements[iNextIndex];
 
-					if (iTime == rPrev.Time)
+					if (time == rPrev.Time)
 					{
 						//it is the previous element
 						rKeyElement.Copy(rPrev);
 						return true;
 					}
-					else if (iTime == rNext.Time)
+					else if (time == rNext.Time)
 					{
 						//it is the next element
 						rKeyElement.Copy(rNext);
@@ -84,13 +84,13 @@ namespace AnimationLib
 
 					//okay, copy the first one and add the changes
 					rKeyElement.Copy(rPrev);
-					rKeyElement.Time = iTime;
+					rKeyElement.Time = time;
 
 					//find the ratio of rotation/time for the whole step
 					float fWholeTimeDelta = rNext.Time - rPrev.Time;
 
 					//so if it rotates x degrees in y seconds, it rotates z degrees in w seconds
-					float fStepTimeDelta = iTime - rPrev.Time;
+					float fStepTimeDelta = time - rPrev.Time;
 
 					//if step is less than 1/60 second, use teh previous one
 					if (fWholeTimeDelta <= 1.0f)
@@ -122,22 +122,22 @@ namespace AnimationLib
 
 			//if it gets here, it is past the animation, return the last element
 			rKeyElement.Copy(Elements[Elements.Count - 1]);
-			rKeyElement.Time = iTime;
+			rKeyElement.Time = time;
 			return true;
 		}
 
 		/// <summary>
 		/// remove a key element from the animation
 		/// </summary>
-		/// <param name="iTime">time of the keyelement to remove</param>
+		/// <param name="time">time of the keyelement to remove</param>
 		/// <returns>bool: whether or not there was a key element at that time</returns>
-		public bool RemoveKeyElement(int iTime)
+		public bool RemoveKeyElement(int time)
 		{
 			bool bFound = false;
 			int i = 0;
 			while (i < Elements.Count)
 			{
-				if (Elements[i].Time == iTime)
+				if (Elements[i].Time == time)
 				{
 					Elements.RemoveAt(i);
 					bFound = true;
@@ -151,11 +151,11 @@ namespace AnimationLib
 			return bFound;
 		}
 
-		public void RemoveKeyElement(Macro rPasteAction, int iTime, Animation myAnimation)
+		public void RemoveKeyElement(Macro rPasteAction, int time, Animation myAnimation)
 		{
 			//get teh key element at that time
 			KeyElement CurrentKeyElement = new KeyElement();
-			if (!GetKeyElement(iTime, CurrentKeyElement))
+			if (!GetKeyElement(time, CurrentKeyElement))
 			{
 				//no key elements, so cant remove from this dude
 				return;
@@ -173,7 +173,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void MirrorRightToLeft(KeyBone RootBone, Macro rPasteAction, int iTime, Animation myAnimation)
+		public void MirrorRightToLeft(KeyBone rootBone, Macro pasteAction, int time, Animation myAnimation)
 		{
 			//Check if this bone starts with the work "left"
 			string[] nameTokens = Name.Split(new Char[] { ' ' });
@@ -200,33 +200,33 @@ namespace AnimationLib
 						strJointName += " ";
 						strJointName += nameTokens[i];
 					}
-					KeyJoint MirrorJoint = RootBone.GetKeyJoint(strJointName);
-					if (null != MirrorJoint)
+					KeyJoint mirrorJoint = rootBone.GetKeyJoint(strJointName);
+					if (null != mirrorJoint)
 					{
 						//get the current keyframe of the mirror joint
-						KeyElement CurrentKeyElement = new KeyElement();
-						if (!MirrorJoint.GetKeyElement(iTime, CurrentKeyElement))
+						KeyElement currentKeyElement = new KeyElement();
+						if (!mirrorJoint.GetKeyElement(time, currentKeyElement))
 						{
 							return;
 						}
-						CurrentKeyElement.JointName = strJointName;
+						currentKeyElement.JointName = strJointName;
 
 						//okay, fake up a new keyframe
-						KeyElement ReplacementKeyElement = new KeyElement();
-						if (!GetKeyElement(iTime, ReplacementKeyElement))
+						KeyElement replacementKeyElement = new KeyElement();
+						if (!GetKeyElement(time, replacementKeyElement))
 						{
 							//no key elements, so cant finish operation
 							return;
 						}
 
 						//set the keyframe up for the other dude
-						ReplacementKeyElement.KeyFrame = true;
-						ReplacementKeyElement.JointName = strJointName;
-						ReplacementKeyElement.Layer = CurrentKeyElement.Layer;
+						replacementKeyElement.KeyFrame = true;
+						replacementKeyElement.JointName = strJointName;
+						replacementKeyElement.Layer = currentKeyElement.Layer;
 
 						//add to the pasteaction
-						SetKeyElement myAction = new SetKeyElement(myAnimation, CurrentKeyElement, ReplacementKeyElement);
-						rPasteAction.Add(myAction);
+						SetKeyElement myAction = new SetKeyElement(myAnimation, currentKeyElement, replacementKeyElement);
+						pasteAction.Add(myAction);
 					}
 				}
 			}
@@ -238,13 +238,13 @@ namespace AnimationLib
 		/// Sort the list of keyframes after it has been added.
 		/// </summary>
 		/// <param name="rMyElement">the key frame to add to the animation</param>
-		public void AddKeyElement(KeyElement rMyElement)
+		public void AddKeyElement(KeyElement myElement)
 		{
 			//Do any elements exist with that time?
-			RemoveKeyElement(rMyElement.Time);
+			RemoveKeyElement(myElement.Time);
 
 			//add the element to the end and sort the list
-			Elements.Add(rMyElement);
+			Elements.Add(myElement);
 			Elements.Sort(new KeyElementSort());
 		}
 
@@ -255,11 +255,11 @@ namespace AnimationLib
 			bool bSelectiveCopy)
 		{
 			//get the keyelement to copy into the animation
-			KeyElement SourceKeyElement = new KeyElement();
-			GetKeyElement(iSourceTime, SourceKeyElement);
-			SourceKeyElement.Time = iTargetTime;
-			SourceKeyElement.JointName = Name;
-			SourceKeyElement.KeyFrame = true;
+			KeyElement sourceKeyElement = new KeyElement();
+			GetKeyElement(iSourceTime, sourceKeyElement);
+			sourceKeyElement.Time = iTargetTime;
+			sourceKeyElement.JointName = Name;
+			sourceKeyElement.KeyFrame = true;
 
 			//get the current keyelement out of that animtion
 			KeyJoint TargetJoint = myTargetAnimation.GetKeyJoint(Name);
@@ -274,42 +274,42 @@ namespace AnimationLib
 			//if this is a selective copy, set the rotation & translation to the old value
 			if (bSelectiveCopy)
 			{
-				SourceKeyElement.Rotation = OldKeyElement.Rotation;
-				SourceKeyElement.Translation = OldKeyElement.Translation;
+				sourceKeyElement.Rotation = OldKeyElement.Rotation;
+				sourceKeyElement.Translation = OldKeyElement.Translation;
 
 				if (-1 != OldKeyElement.ImageIndex)
 				{
-					SourceKeyElement.ImageIndex = OldKeyElement.ImageIndex;
-					SourceKeyElement.Flip = OldKeyElement.Flip;
-					SourceKeyElement.RagDoll = OldKeyElement.RagDoll;
+					sourceKeyElement.ImageIndex = OldKeyElement.ImageIndex;
+					sourceKeyElement.Flip = OldKeyElement.Flip;
+					sourceKeyElement.RagDoll = OldKeyElement.RagDoll;
 				}
 			}
 
 			//add to the animation
-			SetKeyElement myAction = new SetKeyElement(myTargetAnimation, OldKeyElement, SourceKeyElement);
+			SetKeyElement myAction = new SetKeyElement(myTargetAnimation, OldKeyElement, sourceKeyElement);
 			myPasteAction.Add(myAction);
 		}
 
 		/// <summary>
 		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
 		/// </summary>
-		/// <param name="strOldName">the name of the joint to be renamed</param>
-		/// <param name="strNewName">the new name for that joint.</param>
-		public bool RenameJoint(string strOldName, string strNewName)
+		/// <param name="oldName">the name of the joint to be renamed</param>
+		/// <param name="newName">the new name for that joint.</param>
+		public bool RenameJoint(string oldName, string newName)
 		{
 			//is it this joint?
-			if (Name == strOldName)
+			if (Name == oldName)
 			{
 				//rename all the key elements
 				for (int i = 0; i < Elements.Count; i++)
 				{
-					Debug.Assert(Elements[i].JointName == strOldName);
-					Elements[i].RenameJoint(strOldName, strNewName);
-					Debug.Assert(Elements[i].JointName == strNewName);
+					Debug.Assert(Elements[i].JointName == oldName);
+					Elements[i].RenameJoint(oldName, newName);
+					Debug.Assert(Elements[i].JointName == newName);
 				}
 
 				//rename this dude
-				Name = strNewName;
+				Name = newName;
 
 				return true;
 			}
@@ -322,15 +322,15 @@ namespace AnimationLib
 		/// <summary>
 		/// change the time for this animation and move all the key frames around
 		/// </summary>
-		/// <param name="iOldTime">teh previous time of this animation</param>
-		/// <param name="iCurrentTime">the new time of this animation</param>
-		public void SetTime(int iOldTime, int iCurrentTime)
+		/// <param name="oldTime">teh previous time of this animation</param>
+		/// <param name="currentTime">the new time of this animation</param>
+		public void SetTime(int oldTime, int currentTime)
 		{
 			for (int i = 0; i < Elements.Count; i++)
 			{
 				//get the updated time of this keyelemt
-				int fMyOldTime = Elements[i].Time;
-				Elements[i].Time = ((fMyOldTime * iCurrentTime) / iOldTime);
+				int myOldTime = Elements[i].Time;
+				Elements[i].Time = ((myOldTime * currentTime) / oldTime);
 
 				//check if any other keyframes are already at this time, so frames dont overlap
 				for (int j = 0; j < i; j++)

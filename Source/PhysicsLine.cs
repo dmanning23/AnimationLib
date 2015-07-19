@@ -32,53 +32,53 @@ namespace AnimationLib
 			LocalEnd = Vector2.Zero;
 		}
 
-		public void Update(Image rOwner, Vector2 BonePosition, float fRotation, bool bFlip, float fScale)
+		public void Update(Image owner, Vector2 bonePosition, float rotation, bool isFlipped, float scale)
 		{
 			//set to local coord
-			Vector2 WorldStart = LocalStart * fScale;
-			Vector2 WorldEnd = LocalEnd * fScale;
+			Vector2 worldStart = LocalStart * scale;
+			Vector2 worldEnd = LocalEnd * scale;
 
 			//is it flipped?
-			if (bFlip)
+			if (isFlipped)
 			{
 				//flip from the edge of the image
-				WorldStart.X = (rOwner.Width * fScale) - WorldStart.X;
-				WorldEnd.X = (rOwner.Width * fScale) - WorldEnd.X;
+				worldStart.X = (owner.Width * scale) - worldStart.X;
+				worldEnd.X = (owner.Width * scale) - worldEnd.X;
 			}
 
 			//rotate correctly
-			Matrix myRotation = MatrixExt.Orientation(fRotation);
-			WorldStart = myRotation.Multiply(WorldStart);
-			WorldEnd = myRotation.Multiply(WorldEnd);
+			Matrix myRotation = MatrixExt.Orientation(rotation);
+			worldStart = myRotation.Multiply(worldStart);
+			worldEnd = myRotation.Multiply(worldEnd);
 
 			//move to the correct position
-			WorldStart = BonePosition + WorldStart;
-			WorldEnd = BonePosition + WorldEnd;
+			worldStart = bonePosition + worldStart;
+			worldEnd = bonePosition + worldEnd;
 
 			//Set the start and end points that are stored in the line object
-			Start = WorldStart;
-			End = WorldEnd;
+			Start = worldStart;
+			End = worldEnd;
 		}
 
-		public void Render(IRenderer rRenderer, Color rColor)
+		public void Render(IRenderer renderer, Color color)
 		{
-			rRenderer.Primitive.Line(Start, End, rColor);
+			renderer.Primitive.Line(Start, End, color);
 		}
 
 		/// <summary>
 		/// Copy another line's data into this one
 		/// </summary>
-		/// <param name="rInst">The line to copy</param>
-		public void Copy(PhysicsLine rInst)
+		/// <param name="inst">The line to copy</param>
+		public void Copy(PhysicsLine inst)
 		{
-			LocalStart = rInst.LocalStart;
-			LocalEnd = rInst.LocalEnd;
-			_Start = rInst._Start;
-			_End = rInst.End;
-			OldStart = rInst.OldStart;
-			OldEnd = rInst.OldEnd;
-			Length = rInst.Length;
-			Direction = rInst.Direction;
+			LocalStart = inst.LocalStart;
+			LocalEnd = inst.LocalEnd;
+			_Start = inst._Start;
+			_End = inst.End;
+			OldStart = inst.OldStart;
+			OldEnd = inst.OldEnd;
+			Length = inst.Length;
+			Direction = inst.Direction;
 		}
 
 		#endregion //Members
@@ -88,19 +88,19 @@ namespace AnimationLib
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
-		/// <param name="rXMLNode">The xml node to read from</param>
+		/// <param name="node">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode rXMLNode)
+		public bool ReadXMLFormat(XmlNode node)
 		{
 #if DEBUG
-			if ("Item" != rXMLNode.Name)
+			if ("Item" != node.Name)
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
 			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
+			XmlNamedNodeMap mapAttributes = node.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
@@ -118,9 +118,9 @@ namespace AnimationLib
 #endif
 
 			//Read in child nodes
-			if (rXMLNode.HasChildNodes)
+			if (node.HasChildNodes)
 			{
-				for (XmlNode childNode = rXMLNode.FirstChild;
+				for (XmlNode childNode = node.FirstChild;
 					null != childNode;
 					childNode = childNode.NextSibling)
 				{
@@ -139,7 +139,6 @@ namespace AnimationLib
 					else
 					{
 						Debug.Assert(false);
-						return false;
 					}
 				}
 			}
@@ -150,25 +149,25 @@ namespace AnimationLib
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
-		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		public void WriteXMLFormat(XmlTextWriter rXMLFile)
+		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
+		public void WriteXMLFormat(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
-			rXMLFile.WriteStartElement("Item");
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.LineXML");
+			xmlWriter.WriteStartElement("Item");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.LineXML");
 
 			//write out joint offset
-			rXMLFile.WriteStartElement("start");
-			rXMLFile.WriteString(LocalStart.X.ToString() + " " +
-				LocalStart.Y.ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("start");
+			xmlWriter.WriteString(LocalStart.X + " " +
+				LocalStart.Y);
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteStartElement("end");
-			rXMLFile.WriteString(LocalEnd.X.ToString() + " " +
-				LocalEnd.Y.ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("end");
+			xmlWriter.WriteString(LocalEnd.X + " " +
+				LocalEnd.Y);
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 		}
 
 		#endregion //File IO

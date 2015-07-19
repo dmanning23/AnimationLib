@@ -11,40 +11,40 @@ namespace AnimationLib
 		/// Amount of gravity to apply to ragdoll physics in this game
 		/// gravity is positive in this game since y axis is flipped
 		/// </summary>
-		private static Vector2 gravity = new Vector2(0.0f, 9.8f * 150.0f);
+		private static Vector2 _gravity = new Vector2(0.0f, 9.8f * 150.0f);
 
 		public static Vector2 Gravity
 		{
 			get
 			{
-				return gravity;
+				return _gravity;
 			}
 			set 
-			{ 
-				gravity = value; 
+			{
+				_gravity = value; 
 			}
 		}
 
 		public static void SetGravity(float grav)
 		{
-			gravity.Y = grav;
-			spring = new Vector2(0.0f, Gravity.Y * 1.5f);
+			_gravity.Y = grav;
+			_spring = new Vector2(0.0f, Gravity.Y * 1.5f);
 		}
 
 		/// <summary>
 		/// Amount to spring floating ragdoll back to center.
 		/// </summary>
-		private static Vector2 spring = new Vector2(0.0f, Gravity.Y * 1.5f);
+		private static Vector2 _spring = new Vector2(0.0f, Gravity.Y * 1.5f);
 
 		public static float Spring
 		{
 			get
 			{
-				return spring.Y;
+				return _spring.Y;
 			}
 			set
 			{
-				spring.Y = value;
+				_spring.Y = value;
 			}
 		}
 

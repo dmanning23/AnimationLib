@@ -30,67 +30,68 @@ namespace AnimationLib
 			LocalRadius = 0.0f;
 		}
 
-		public void Reset(Vector2 Position)
+		public void Reset(Vector2 position)
 		{
-			Pos = Position;
-			OldPos = Position;
+			Pos = position;
+			OldPos = position;
 			Radius = Radius;
 		}
 
-		public void Update(Image rOwner, Vector2 BonePosition, float fRotation, bool bFlip, float fScale)
+		public void Update(Image owner, Vector2 bonePosition, float rotation, bool isFlipped, float scale)
 		{
 			//set to local coord
-			Vector2 WorldPosition = LocalPosition * fScale;
+			Vector2 worldPosition = LocalPosition * scale;
 
 			//is it flipped?
-			if (bFlip && (null != rOwner))
+			if (isFlipped && (null != owner))
 			{
 				//flip from the edge of the image
-				WorldPosition.X = (rOwner.Width * fScale) - WorldPosition.X;
+				worldPosition.X = (owner.Width * scale) - worldPosition.X;
 			}
 
 			//rotate correctly
-			WorldPosition = MatrixExt.Orientation(fRotation).Multiply(WorldPosition);
+			worldPosition = MatrixExt.Orientation(rotation).Multiply(worldPosition);
 
 			//move to the correct position
-			WorldPosition = BonePosition + WorldPosition;
+			worldPosition = bonePosition + worldPosition;
 
-			Update(WorldPosition, fScale);
+			Update(worldPosition, scale);
 		}
 
 		/// <summary>
 		/// update the position of this circle
 		/// </summary>
 		/// <param name="myPosition">the location of this dude in the world</param>
-		public void Update(Vector2 myPosition, float fScale)
+		/// <param name="scale">how much to scale the physics item</param>
+		public void Update(Vector2 myPosition, float scale)
 		{
 			Pos = myPosition;
 
 			//set teh world radius
-			Radius = LocalRadius * fScale;
+			Radius = LocalRadius * scale;
 		}
 
-		public void Render(IRenderer rRenderer, Color rColor)
+		public void Render(IRenderer renderer, Color color)
 		{
-			rRenderer.Primitive.Circle(Pos, Radius, rColor);
+			renderer.Primitive.Circle(Pos, Radius, color);
 		}
 
-		public float DistanceToPoint(int iScreenX, int iScreenY)
+		public float DistanceToPoint(int screenX, int screenY)
 		{
-			return DistanceToPoint(new Vector2(iScreenX, iScreenY));
+			return DistanceToPoint(new Vector2(screenX, screenY));
 		}
 
 		/// <summary>
 		/// Copy another circle's data into this one
 		/// </summary>
-		/// <param name="rInst">The circle to copy</param>
-		public void Copy(PhysicsCircle rInst)
+		/// <param name="inst">The circle to copy</param>
+		public void Copy(PhysicsCircle inst)
 		{
-			LocalPosition = rInst.LocalPosition;
-			LocalRadius = rInst.LocalRadius;
-			_Position = rInst._Position;
-			OldPos = rInst.OldPos;
-			Radius = rInst.Radius;
+			LocalPosition = inst.LocalPosition;
+			LocalRadius = inst.LocalRadius;
+			_Position = inst._Position;
+			OldPos = inst.OldPos;
+			Radius = inst.Radius;
 		}
 
 		#endregion //Methods
@@ -100,19 +101,19 @@ namespace AnimationLib
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
-		/// <param name="rXMLNode">The xml node to read from</param>
+		/// <param name="node">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode rXMLNode)
+		public bool ReadXMLFormat(XmlNode node)
 		{
 #if DEBUG
-			if ("Item" != rXMLNode.Name)
+			if ("Item" != node.Name)
 			{
 				Debug.Assert(false);
 				return false;
 			}
 
 			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
+			XmlNamedNodeMap mapAttributes = node.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
@@ -130,9 +131,9 @@ namespace AnimationLib
 #endif
 
 			//Read in child nodes
-			if (rXMLNode.HasChildNodes)
+			if (node.HasChildNodes)
 			{
-				for (XmlNode childNode = rXMLNode.FirstChild;
+				for (XmlNode childNode = node.FirstChild;
 					null != childNode;
 					childNode = childNode.NextSibling)
 				{
@@ -162,25 +163,25 @@ namespace AnimationLib
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
-		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		public void WriteXMLFormat(XmlTextWriter rXMLFile)
+		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
+		public void WriteXMLFormat(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
-			rXMLFile.WriteStartElement("Item");
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.CircleXML");
+			xmlWriter.WriteStartElement("Item");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.CircleXML");
 
 			//write out joint offset
-			rXMLFile.WriteStartElement("center");
-			rXMLFile.WriteString(LocalPosition.X.ToString() + " " +
-				LocalPosition.Y.ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("center");
+			xmlWriter.WriteString(LocalPosition.X + " " +
+				LocalPosition.Y);
+			xmlWriter.WriteEndElement();
 
 			//write first limit 
-			rXMLFile.WriteStartElement("radius");
-			rXMLFile.WriteString(LocalRadius.ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("radius");
+			xmlWriter.WriteString(LocalRadius.ToString());
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 		}
 
 		#endregion //File IO

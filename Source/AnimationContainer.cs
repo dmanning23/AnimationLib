@@ -235,8 +235,11 @@ namespace AnimationLib
 				return;
 			}
 
+			//add gravity to the ragdoll physics
+			Model.AddGravity(RagdollConstants.Gravity);
+
 			//accumulate all the force
-			Model.AccumulateForces(RagdollConstants.Gravity, RagdollConstants.Spring, fScale);
+			Model.AccumulateForces(RagdollConstants.Spring, fScale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
