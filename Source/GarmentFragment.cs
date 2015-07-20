@@ -16,7 +16,7 @@ namespace AnimationLib
 		/// <summary>
 		/// The animation container for the model to add to the skeleton
 		/// </summary>
-		private GarmentAnimationContainer m_AnimationContainer;
+		private readonly GarmentAnimationContainer _animationContainer;
 
 		#endregion //Fields
 
@@ -31,8 +31,8 @@ namespace AnimationLib
 		{
 			get
 			{
-				Debug.Assert(null != m_AnimationContainer);
-				return m_AnimationContainer; 
+				Debug.Assert(null != _animationContainer);
+				return _animationContainer; 
 			}
 		}
 
@@ -40,8 +40,8 @@ namespace AnimationLib
 		{
 			get 
 			{
-				Debug.Assert(null != m_AnimationContainer);
-				Debug.Assert(null != m_AnimationContainer.Model);
+				Debug.Assert(null != _animationContainer);
+				Debug.Assert(null != _animationContainer.Model);
 				return AnimationContainer.Model.Name; 
 			}
 		}
@@ -55,7 +55,7 @@ namespace AnimationLib
 		/// </summary>
 		public GarmentFragment()
 		{
-			m_AnimationContainer = new GarmentAnimationContainer();
+			_animationContainer = new GarmentAnimationContainer();
 		}
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace AnimationLib
 		public void AddToModel()
 		{
 			//add all the garment bones to the bones they attach to
-			m_AnimationContainer.AddToModel();
+			_animationContainer.AddToModel();
 		}
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace AnimationLib
 		public void RemoveFromModel()
 		{
 			//remove all the garment bones from the bones they attach to
-			m_AnimationContainer.RemoveFromModel();
+			_animationContainer.RemoveFromModel();
 		}
 
 		#region Tools
@@ -96,24 +96,24 @@ namespace AnimationLib
 		/// <summary>
 		/// set all the data for the garment bones in this dude after they have been read in
 		/// </summary>
-		/// <param name="rRootNode"></param>
-		public void SetGarmentBones(Bone rRootNode)
+		/// <param name="rootNode"></param>
+		public void SetGarmentBones(Bone rootNode)
 		{
 			//set garment name in the bones
 			AnimationContainer.GarmentName = GarmentName;
 
 			//set the parent bone of all those root node garment bones
-			AnimationContainer.SetGarmentBones(rRootNode);
+
+			AnimationContainer.SetGarmentBones(rootNode);
 		}
 
 		/// <summary>
 		/// Read from XML!
 		/// </summary>
-		/// <param name="strResource">xml filename to read from</param>
-		/// <param name="rRenderer">renderer to use to load images</param>
-		/// <param name="rRootNode">bone to attach garments to</param>
+		/// <param name="node">bone to attach garments to</param>
+		/// <param name="renderer">renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
-		public bool ReadXMLFormat(XmlNode node, IRenderer rRenderer)
+		public bool ReadXmlFormat(XmlNode node, IRenderer renderer)
 		{
 #if DEBUG
 			//make sure it is actually an xml node
@@ -134,13 +134,12 @@ namespace AnimationLib
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
+				var name = mapAttributes.Item(i).Name;
+				var value = mapAttributes.Item(i).Value;
 
-
-				if ("Type" == strName)
+				if ("Type" == name)
 				{
-					if ("AnimationLib.GarmentFragmentXML" != strValue)
+					if ("AnimationLib.GarmentFragmentXML" != value)
 					{
 						Debug.Assert(false);
 						return false;
@@ -157,24 +156,24 @@ namespace AnimationLib
 					childNode = childNode.NextSibling)
 				{
 					//what is in this node?
-					string strName = childNode.Name;
-					string strValue = childNode.InnerText;
+					var name = childNode.Name;
+					var value = childNode.InnerText;
 
-					if (strName == "model")
+					if (name == "model")
 					{
-						//read in the model
-						Filename strModelFile = new Filename(strValue);
-						if (!m_AnimationContainer.ReadModelXml(strModelFile, rRenderer))
+						//read in the model 
+						var modelFile = new Filename(value);
+						if (!AnimationContainer.ReadModelXml(modelFile, renderer))
 						{
 							Debug.Assert(false);
 							return false;
 						}
 					}
-					else if (strName == "animation")
+					else if (name == "animation")
 					{
 						//read in the animations
-						Filename strAnimationFile = new Filename(strValue);
-						if (!m_AnimationContainer.ReadAnimationXml(strAnimationFile))
+						Filename strAnimationFile = new Filename(value);
+						if (!AnimationContainer.ReadAnimationXml(strAnimationFile))
 						{
 							Debug.Assert(false);
 							return false;
@@ -194,27 +193,28 @@ namespace AnimationLib
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
-		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		public void WriteXmlFormat(XmlTextWriter rXMLFile, float fEnbiggify)
+		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
+		/// <param name="scale"></param>
+		public void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
 		{
 			//write out the item tag
-			rXMLFile.WriteStartElement("Item");
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.GarmentFragmentXML");
+			xmlWriter.WriteStartElement("Item");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.GarmentFragmentXML");
 
 			//write out model filename to use
-			rXMLFile.WriteStartElement("model");
-			rXMLFile.WriteString(AnimationContainer.ModelFile.GetRelFilename());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("model");
+			xmlWriter.WriteString(AnimationContainer.ModelFile.GetRelFilename());
+			xmlWriter.WriteEndElement();
 
 			//write out animation filename to use
-			rXMLFile.WriteStartElement("animation");
-			rXMLFile.WriteString(AnimationContainer.AnimationFile.GetRelFilename());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("animation");
+			xmlWriter.WriteString(AnimationContainer.AnimationFile.GetRelFilename());
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
 			//write out the model file
-			AnimationContainer.WriteModelXml(AnimationContainer.ModelFile, fEnbiggify);
+			AnimationContainer.WriteModelXml(AnimationContainer.ModelFile, scale);
 
 			//write out the animation file
 			AnimationContainer.WriteAnimationXml(AnimationContainer.AnimationFile);

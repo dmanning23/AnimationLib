@@ -428,7 +428,7 @@ namespace AnimationLib
 #endif
 
 				//make sure to read from the the next node
-				if (!Model.ReadXMLFormat(rootNode.FirstChild))
+				if (!Model.ReadXmlFormat(rootNode.FirstChild))
 				{
 					Debug.Assert(false);
 					stream.Close();
@@ -476,7 +476,7 @@ namespace AnimationLib
 			xmlWriter.IndentChar = '\t';
 
 			xmlWriter.WriteStartDocument();
-			Model.WriteXMLFormat(xmlWriter, true, scale);
+			Model.WriteXmlFormat(xmlWriter, true, scale);
 			xmlWriter.WriteEndDocument();
 
 			// Close the file.
@@ -491,7 +491,7 @@ namespace AnimationLib
 		/// <summary>
 		/// read in a list of animations from a serialized xml format file
 		/// </summary>
-		/// <param name="strFileName">filename of the animations to load</param>
+		/// <param name="filename">filename of the animations to load</param>
 		public virtual bool ReadAnimationXml(Filename filename)
 		{
 			Debug.Assert(null != Model); //need a model to read in animations

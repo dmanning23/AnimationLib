@@ -5,7 +5,6 @@ using Ouya.Console.Api;
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
-using Microsoft.Xna.Framework;
 using FilenameBuddy;
 using RenderBuddy;
 
@@ -16,49 +15,27 @@ namespace AnimationLib
 	/// </summary>
 	public class Garment
 	{
-		#region Fields
+		#region Properties
 
 		/// <summary>
 		/// The name of this garment.
 		/// </summary>
-		string m_strName;
+		public string Name { get; private set; }
 
 		/// <summary>
 		/// A list of all the garment fragments that get added to the skeleton
 		/// </summary>
-		private List<GarmentFragment> m_listFragments;
+		public List<GarmentFragment> Fragments { get; private set; }
 
-		private Filename m_strFilename;
+		/// <summary>
+		/// The file this garment was loaded from
+		/// </summary>
+		public Filename Filename { get; private set; }
 
 		/// <summary>
 		/// Whether or not the garment has any physics data in it.
 		/// </summary>
-		private bool m_bHasPhysics;
-
-		#endregion //Fields
-
-		#region Properties
-
-		public string Name
-		{
-			get { return m_strName; }
-			private set { m_strName = value; }
-		}
-
-		public List<GarmentFragment> Fragments
-		{
-			get { return m_listFragments; }
-		}
-
-		public Filename Filename
-		{
-			get { return m_strFilename; }
-		}
-
-		public bool HasPhysics
-		{
-			get { return m_bHasPhysics; }
-		}
+		public bool HasPhysics { get; private set; }
 
 		#endregion //Properties
 
@@ -69,9 +46,9 @@ namespace AnimationLib
 		/// </summary>
 		public Garment()
 		{
-			m_listFragments = new List<GarmentFragment>();
-			m_strFilename = new Filename();
-			m_bHasPhysics = false;
+			Fragments = new List<GarmentFragment>();
+			Filename = new Filename();
+			HasPhysics = false;
 		}
 
 		/// <summary>
@@ -80,9 +57,9 @@ namespace AnimationLib
 		public void AddToModel()
 		{
 			//add all the garment bones to the bones they attach to
-			for (var i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < Fragments.Count; i++)
 			{
-				m_listFragments[i].AddToModel();
+				Fragments[i].AddToModel();
 			}
 		}
 
@@ -92,9 +69,9 @@ namespace AnimationLib
 		public void RemoveFromModel()
 		{
 			//remove all the garment bones from the bones they attach to
-			for (var i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < Fragments.Count; i++)
 			{
-				m_listFragments[i].RemoveFromModel();
+				Fragments[i].RemoveFromModel();
 			}
 		}
 
@@ -121,29 +98,29 @@ namespace AnimationLib
 		/// <summary>
 		/// set all the data for the garment bones in this dude after they have been read in
 		/// </summary>
-		/// <param name="rRootNode"></param>
-		private void SetGarmentBones(Bone rRootNode)
+		/// <param name="rootBone"></param>
+		private void SetGarmentBones(Bone rootBone)
 		{
 			//set garment name in all bones
-			Debug.Assert(m_strName.Length > 0);
-			for (var i = 0; i < m_listFragments.Count; i++)
+			Debug.Assert(Name.Length > 0);
+			for (var i = 0; i < Fragments.Count; i++)
 			{
-				m_listFragments[i].GarmentName = Name;
+				Fragments[i].GarmentName = Name;
 			}
 
 			//set the parent bone of all those root node garment bones
-			for (var i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < Fragments.Count; i++)
 			{
-				m_listFragments[i].SetGarmentBones(rRootNode);
+				Fragments[i].SetGarmentBones(rootBone);
 			}
 
 			//check whether or not there is any physics data in the garment
-			m_bHasPhysics = false;
-			for (var i = 0; i < m_listFragments.Count; i++)
+			HasPhysics = false;
+			for (var i = 0; i < Fragments.Count; i++)
 			{
-				if (m_listFragments[i].AnimationContainer.Model.HasPhysicsData())
+				if (Fragments[i].AnimationContainer.Model.HasPhysicsData())
 				{
-					m_bHasPhysics = true;
+					HasPhysics = true;
 					break;
 				}
 			}
@@ -152,17 +129,17 @@ namespace AnimationLib
 		/// <summary>
 		/// Read from XML!
 		/// </summary>
-		/// <param name="strResource">xml filename to read from</param>
-		/// <param name="rRenderer">renderer to use to load images</param>
+		/// <param name="filename">xml filename to read from</param>
+		/// <param name="renderer">renderer to use to load images</param>
 		/// <param name="rRootNode">bone to attach garments to</param>
 		/// <returns>bool: whether or not it was able to read in the garment</returns>
-		public bool ReadXMLFormat(Filename strResource, IRenderer rRenderer, Bone rRootNode)
+		public bool ReadXmlFormat(Filename filename, IRenderer renderer, Bone rootBone)
 		{
 			//Open the file.
 			#if ANDROID
-			Stream stream = Game.Activity.Assets.Open(strResource.File);
-			#else
-			FileStream stream = File.Open(strResource.File, FileMode.Open, FileAccess.Read);
+			Stream stream = Game.Activity.Assets.Open(filename.File);
+#else
+			FileStream stream = File.Open(filename.File, FileMode.Open, FileAccess.Read);
 			#endif
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
@@ -227,12 +204,12 @@ namespace AnimationLib
 							fragmentNode = fragmentNode.NextSibling)
 						{
 							GarmentFragment childFragment = new GarmentFragment();
-							if (!childFragment.ReadXMLFormat(fragmentNode, rRenderer))
+							if (!childFragment.ReadXmlFormat(fragmentNode, renderer))
 							{
 								Debug.Assert(false);
 								return false;
 							}
-							m_listFragments.Add(childFragment);
+							Fragments.Add(childFragment);
 						}
 					}
 				}
@@ -247,10 +224,10 @@ namespace AnimationLib
 			stream.Close();
 
 			//Setup all the data in the garment bones.
-			SetGarmentBones(rRootNode);
+			SetGarmentBones(rootBone);
 
 			//grab teh filename
-			m_strFilename.File = strResource.File;
+			Filename.File = filename.File;
 
 			return true;
 		}
@@ -277,9 +254,9 @@ namespace AnimationLib
 
 			//write out the garment fragments
 			xmlWriter.WriteStartElement("fragments");
-			for (var i = 0; i < m_listFragments.Count; i++)
+			for (var i = 0; i < Fragments.Count; i++)
 			{
-				m_listFragments[i].WriteXmlFormat(xmlWriter, scale);
+				Fragments[i].WriteXmlFormat(xmlWriter, scale);
 			}
 			xmlWriter.WriteEndElement();
 

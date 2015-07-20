@@ -12,7 +12,7 @@ namespace AnimationLib
 		/// <summary>
 		/// This is our own little timer, since we won't be getting one passed into the update function
 		/// </summary>
-		private GameClock _animationTimer;
+		private readonly GameClock _animationTimer;
 
 		/// <summary>
 		/// The layer to draw this animation container
@@ -85,35 +85,28 @@ namespace AnimationLib
 		/// <summary>
 		/// This gets called by the root garmentbone every frame to update the animation
 		/// </summary>
-		/// <param name="myClock"></param>
-		/// <param name="myPosition"></param>
-		/// <param name="bFlip"></param>
-		/// <param name="fScale"></param>
-		/// <param name="fRotation"></param>
-		/// <param name="bIgnoreRagdoll"></param>
-		/// <param name="iLayer"></param>
-		public void Update(int iTime, 
-			Vector2 myPosition, 
-			bool bFlip, 
-			float fScale, 
-			float fRotation, 
-			bool bIgnoreRagdoll, 
-			int iLayer, 
-			Bone rAttachedBone)
+		public void Update(int time, 
+			Vector2 position, 
+			bool isFlipped, 
+			float scale, 
+			float rotation, 
+			bool ignoreRagdoll, 
+			int layer, 
+			Bone attachedBone)
 		{
-			Debug.Assert(Animations.Count == rAttachedBone.Images.Count);
+			Debug.Assert(Animations.Count == attachedBone.Images.Count);
 
 			//set teh layer to draw this dude at
-			_currentLayer = iLayer;
+			_currentLayer = layer;
 
 			//update the timer
-			_animationTimer.Update(iTime);
+			_animationTimer.Update(time);
 
 			//check if the animation has changed
-			if ((rAttachedBone.ImageIndex != CurrentAnimationIndex) || (null == CurrentAnimation))
+			if ((attachedBone.ImageIndex != CurrentAnimationIndex) || (null == CurrentAnimation))
 			{
 				//the animation has changed!!!
-				SetAnimation(rAttachedBone.ImageIndex, EPlayback.Loop);
+				SetAnimation(attachedBone.ImageIndex, EPlayback.Loop);
 			}
 
 			//if there is no animation, the bone is invisible, hide the garment bone.
@@ -124,35 +117,33 @@ namespace AnimationLib
 			else
 			{
 				//call the base update
-				Update(_animationTimer, myPosition, bFlip, fScale, fRotation, bIgnoreRagdoll);
+				Update(_animationTimer, position, isFlipped, scale, rotation, ignoreRagdoll);
 			}
 		}
 
 		/// <summary>
 		/// Apply the animation at a certain time
 		/// </summary>
-		/// <param name="iTime">the time of teh animation to set</param>
-		/// <param name="rMatrix">the matrix to transform the model by</param>
 		protected override void ApplyAnimation(
-			int iTime,
-			Vector2 myPosition,
-			bool bFlip,
-			float fScale,
-			float fRotation,
-			bool bIgnoreRagdoll)
+			int time,
+			Vector2 position,
+			bool isFlipped,
+			float scale,
+			float rotation,
+			bool ignoreRagdoll)
 		{
 			Debug.Assert(null != Model);
 
 			//Apply teh current animation to the bones and stuff
-			KeyBone rCurrentKeyBone = CurrentAnimation.KeyBone;
-			GarmentModel.UpdateBaseBone(iTime,
-				myPosition,
-				rCurrentKeyBone,
-				fRotation,
-				bFlip,
+			var currentKeyBone = CurrentAnimation.KeyBone;
+			GarmentModel.UpdateBaseBone(time,
+				position,
+				currentKeyBone,
+				rotation,
+				isFlipped,
 				_currentLayer,
-				fScale,
-				bIgnoreRagdoll || ResetRagdoll);
+				scale,
+				ignoreRagdoll || ResetRagdoll);
 
 			//is this the first update after an animation change?
 			if (ResetRagdoll)

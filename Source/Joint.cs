@@ -1,7 +1,7 @@
+using Microsoft.Xna.Framework;
 using System;
 using System.Diagnostics;
 using System.Xml;
-using Microsoft.Xna.Framework;
 
 namespace AnimationLib
 {
@@ -239,7 +239,7 @@ namespace AnimationLib
 		/// <param name="joint">the joints to solve constraint with</param>
 		/// <param name="desiredDistance">the distance from that joint in a perfect world</param>
 		/// <param name="scale">the current scale of the model</param>
-		/// <param name="bMoveMe">whether this joint should be moved</param>
+		/// <param name="movement">whether this joint should be moved</param>
 		public void SolveConstraint(Joint joint, float desiredDistance, float scale, ERagdollMove movement)
 		{
 			//find the current distance bewteen the two joints

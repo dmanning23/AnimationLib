@@ -220,31 +220,27 @@ namespace AnimationLib
 		/// <summary>
 		/// Put a garment on this bone
 		/// </summary>
-		/// <param name="rBone">Add a garment over this bone</param>
-		public void AddGarment(GarmentBone rBone)
+		/// <param name="garmentBone">Add a garment over this bone</param>
+		public void AddGarment(GarmentBone garmentBone)
 		{
 			//just add the bone to the end of the list
-			Bones.Add(rBone);
+			Bones.Add(garmentBone);
 		}
 
 		/// <summary>
 		/// Find and remove a garment from this bone
 		/// </summary>
-		/// <param name="strGarment">name of the garment to remove</param>
-		public void RemoveGarment(string strGarment)
+		/// <param name="garmentName">name of the garment to remove</param>
+		public void RemoveGarment(string garmentName)
 		{
 			//find and remove the garment bone that matches the garment
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				if (Bones[i] is GarmentBone)
+				var myBone = Bones[i] as GarmentBone;
+				if ((null != myBone) && (garmentName == myBone.GarmentName))
 				{
-					GarmentBone myBone = Bones[i] as GarmentBone;
-					Debug.Assert(null != myBone);
-					if (strGarment == myBone.GarmentName)
-					{
-						Bones.RemoveAt(i);
-						return;
-					}
+					Bones.RemoveAt(i);
+					return;
 				}
 			}
 
@@ -467,50 +463,53 @@ namespace AnimationLib
 		/// <summary>
 		/// update all this dude's stuff
 		/// </summary>
-		/// <param name="iTime"></param>
-		/// <param name="myPosition"></param>
-		/// <param name="myKeyBone"></param>
-		/// <param name="fParentRotation"></param>
-		/// <param name="bParentFlip"></param>
-		virtual public void Update(int iTime,
-		                           Vector2 myPosition,
-		                           KeyBone myKeyBone,
-		                           float fParentRotation,
-		                           bool bParentFlip,
-		                           int iParentLayer,
-		                           float fScale,
-		                           bool bIgnoreRagdoll)
+		/// <param name="time"></param>
+		/// <param name="position"></param>
+		/// <param name="keyBone"></param>
+		/// <param name="parentRotation"></param>
+		/// <param name="parentFlip"></param>
+		/// <param name="parentLayer"></param>
+		/// <param name="scale"></param>
+		/// <param name="ignoreRagdoll"></param>
+		virtual public void Update(int time,
+		                           Vector2 position,
+		                           KeyBone keyBone,
+		                           float parentRotation,
+		                           bool parentFlip,
+		                           int parentLayer,
+		                           float scale,
+		                           bool ignoreRagdoll)
 		{
 			Debug.Assert(null != AnchorJoint);
 
 			//update my anchor joint
-			UpdateAnchorJoint(iTime, myKeyBone);
+			UpdateAnchorJoint(time, keyBone);
 
 			//update the image
 			UpdateImage();
 
 			//get the current layer
-			UpdateLayer(iParentLayer);
+			UpdateLayer(parentLayer);
 
 			//update the flip
-			UpdateFlip(bParentFlip);
+			UpdateFlip(parentFlip);
 
 			//update the rotation
-			UpdateRotation(fParentRotation, bParentFlip, bIgnoreRagdoll);
+			UpdateRotation(parentRotation, parentFlip, ignoreRagdoll);
 
 			//update the translation
-			UpdateTranslation(ref myPosition, fParentRotation, fScale, bIgnoreRagdoll);
+			UpdateTranslation(ref position, parentRotation, scale, ignoreRagdoll);
 
 			//Update this bone and all its joint positions
-			UpdateImageAndJoints(myPosition, fScale, bIgnoreRagdoll);
+			UpdateImageAndJoints(position, scale, ignoreRagdoll);
 
-			UpdateChildren(iTime, myKeyBone, fScale, bIgnoreRagdoll);
+			UpdateChildren(time, keyBone, scale, ignoreRagdoll);
 		}
 
-		private void UpdateChildren(int iTime, KeyBone myKeyBone, float fScale, bool bIgnoreRagdoll)
+		private void UpdateChildren(int time, KeyBone keyBone, float scale, bool ignoreRagdoll)
 		{
 			//this layer counter is incremented to layer garments on to pof each other
-			int iCurrentLayer = CurrentLayer;
+			var currentLayer = CurrentLayer;
 
 			//update all the bones
 			for (var i = 0; i < Bones.Count; i++)
@@ -526,23 +525,23 @@ namespace AnimationLib
 
 				//update the chlidren
 				KeyBone childKeyBone = null;
-				if (null != myKeyBone)
+				if (null != keyBone)
 				{
-					childKeyBone = myKeyBone.GetChildBone(i);
+					childKeyBone = keyBone.GetChildBone(i);
 				}
-				Bones[i].Update(iTime,
+				Bones[i].Update(time,
 								childVector,
 								childKeyBone,
 								Rotation,
 								Flipped,
-								iCurrentLayer,
-								fScale,
-								bIgnoreRagdoll);
+								currentLayer,
+								scale,
+								ignoreRagdoll);
 
 				//if that was a garment, increment the counter for the next garment
 				if (EBoneType.Garment == Bones[i].BoneType)
 				{
-					iCurrentLayer--; //subtract to put the next garment on top of this one
+					currentLayer--; //subtract to put the next garment on top of this one
 				}
 			}
 		}
@@ -550,15 +549,15 @@ namespace AnimationLib
 		/// <summary>
 		/// Updates the anchor joint.
 		/// </summary>
-		/// <param name="iTime">The current time of of the animation frames</param>
-		/// <param name="myKeyBone">My key bone.</param>
-		void UpdateAnchorJoint(int iTime, KeyBone myKeyBone)
+		/// <param name="time">The current time of of the animation frames</param>
+		/// <param name="keyBone">My key bone.</param>
+		void UpdateAnchorJoint(int time, KeyBone keyBone)
 		{
 			//first update teh joint by the keyjoint
-			if (null != myKeyBone)//if null == keybone, this is a hack update
+			if (null != keyBone)//if null == keybone, this is a hack update
 			{
-				KeyJoint rChildKeyJoint = myKeyBone.KeyJoint;
-				AnchorJoint.Update(rChildKeyJoint, iTime);
+				KeyJoint rChildKeyJoint = keyBone.KeyJoint;
+				AnchorJoint.Update(rChildKeyJoint, time);
 			}
 		}
 
@@ -573,29 +572,29 @@ namespace AnimationLib
 		/// <summary>
 		/// Update the current layer
 		/// </summary>
-		/// <param name="iParentLayer">the parent's layer.</param>
-		private void UpdateLayer(int iParentLayer)
+		/// <param name="parentLayer">the parent's layer.</param>
+		private void UpdateLayer(int parentLayer)
 		{
-			CurrentLayer = iParentLayer + AnchorJoint.CurrentKeyElement.Layer;
+			CurrentLayer = parentLayer + AnchorJoint.CurrentKeyElement.Layer;
 		}
 
 		/// <summary>
 		/// Updates the flip.
 		/// </summary>
-		/// <param name="bParentFlip">whether or not the parent is flipped</param>
-		private void UpdateFlip(bool bParentFlip)
+		/// <param name="parentFlip">whether or not the parent is flipped</param>
+		private void UpdateFlip(bool parentFlip)
 		{
-			if (bParentFlip && AnchorJoint.CurrentKeyElement.Flip)
+			if (parentFlip && AnchorJoint.CurrentKeyElement.Flip)
 			{
 				//they cancel each other
 				Flipped = false;
 			}
-			else if (bParentFlip && !AnchorJoint.CurrentKeyElement.Flip)
+			else if (parentFlip && !AnchorJoint.CurrentKeyElement.Flip)
 			{	
 				//the parent is flipped
 				Flipped = true;
 			}
-			else if (!bParentFlip && AnchorJoint.CurrentKeyElement.Flip)
+			else if (!parentFlip && AnchorJoint.CurrentKeyElement.Flip)
 			{
 				//I am flipped
 				Flipped = true;
@@ -634,66 +633,66 @@ namespace AnimationLib
 		/// <summary>
 		/// update the rotation of this bone
 		/// </summary>
-		/// <param name="fParentRotation">the parent rotation.</param>
-		/// <param name="bParentFlip">whether or not the parent is flipped</param>
-		/// <param name="bIgnoreRagdoll">If set to <c>true</c> b ignore ragdoll.</param>
-		private void UpdateRotation(float fParentRotation, bool bParentFlip, bool bIgnoreRagdoll)
+		/// <param name="parentRotation">the parent rotation.</param>
+		/// <param name="parentFlip">whether or not the parent is flipped</param>
+		/// <param name="ignoreRagdoll">If set to <c>true</c> b ignore ragdoll.</param>
+		private void UpdateRotation(float parentRotation, bool parentFlip, bool ignoreRagdoll)
 		{
 			if (!AnchorJoint.CurrentKeyElement.RagDoll || 
-				bIgnoreRagdoll || 
+				ignoreRagdoll || 
 				(0 == Joints.Count) || 
 				(AnchorJoint.CurrentKeyElement.RagDoll && AnchorJoint.Data.Floating))
 			{
 				//add my rotation to the parents rotation
-				if (!bParentFlip)
+				if (!parentFlip)
 				{
-					Rotation = fParentRotation + AnchorJoint.CurrentKeyElement.Rotation;
+					Rotation = parentRotation + AnchorJoint.CurrentKeyElement.Rotation;
 				}
 				else
 				{
-					Rotation = fParentRotation - AnchorJoint.CurrentKeyElement.Rotation;
+					Rotation = parentRotation - AnchorJoint.CurrentKeyElement.Rotation;
 				}
 			}
 		}
 
-		private void UpdateTranslation(ref Vector2 myPosition, float fParentRotation, float fScale, bool bIgnoreRagdoll)
+		private void UpdateTranslation(ref Vector2 position, float parentRotation, float scale, bool ignoreRagdoll)
 		{
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
+			if (!AnchorJoint.CurrentKeyElement.RagDoll || ignoreRagdoll)
 			{
 				if (Flipped)
 				{
 					Vector2 animationTrans = AnchorJoint.CurrentKeyElement.Translation;
 					animationTrans.X *= -1.0f;
-					myPosition += MatrixExt.Orientation(fParentRotation).Multiply(animationTrans * fScale);
+					position += MatrixExt.Orientation(parentRotation).Multiply(animationTrans * scale);
 				}
 				else
 				{
-					myPosition += MatrixExt.Orientation(fParentRotation).Multiply(AnchorJoint.CurrentKeyElement.Translation * fScale);
+					position += MatrixExt.Orientation(parentRotation).Multiply(AnchorJoint.CurrentKeyElement.Translation * scale);
 				}
 			}
 			//grab the position (joint location + animation translation)
-			AnchorPosition = myPosition;
+			AnchorPosition = position;
 		}
 
-		private void UpdateImageAndJoints(Vector2 myPosition, float fScale, bool bIgnoreRagdoll)
+		private void UpdateImageAndJoints(Vector2 position, float scale, bool ignoreRagdoll)
 		{
 			//Get the correct location of the anchor coord
-			Image CurrentImage = GetCurrentImage();
-			Vector2 anchorCoord = Vector2.Zero;
-			if (null != CurrentImage)
+			var currentImage = GetCurrentImage();
+			var anchorCoord = Vector2.Zero;
+			if (null != currentImage)
 			{
-				anchorCoord = CurrentImage.GetFlippedAnchorCoord(Flipped, fScale);
+				anchorCoord = currentImage.GetFlippedAnchorCoord(Flipped, scale);
 			}
 
 			//create the rotation matrix and flip it if necessary
 
 			//Create matrix for the position of this dude
 			Matrix myMatrix = Matrix.Identity;
-			MatrixExt.SetPosition(ref myMatrix, myPosition);
+			MatrixExt.SetPosition(ref myMatrix, position);
 
 			//create -translation matrix to move to and from the origin
 			Matrix myTranslation = Matrix.Identity;
-			MatrixExt.SetPosition(ref myTranslation, -myPosition);
+			MatrixExt.SetPosition(ref myTranslation, -position);
 
 			//okay multiply through! move to origin, rotate, move back to my position
 			myTranslation = myTranslation * MatrixExt.Orientation(Rotation);
@@ -704,16 +703,16 @@ namespace AnimationLib
 			//myMatrix = myMatrix * MatrixExt.Orientation(Rotation);
 			//myMatrix = myMatrix * myTranslation;
 
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || !AnchorJoint.Data.Floating || bIgnoreRagdoll)
+			if (!AnchorJoint.CurrentKeyElement.RagDoll || !AnchorJoint.Data.Floating || ignoreRagdoll)
 			{
 				//Update my position based on the offset of the anchor coord
-				Position = myMatrix.Multiply(myPosition - anchorCoord);
+				Position = myMatrix.Multiply(position - anchorCoord);
 			}
 
 			//update all the circle data
-			if (null != CurrentImage)
+			if (null != currentImage)
 			{
-				CurrentImage.Update(Position, Rotation, Flipped, fScale);
+				currentImage.Update(Position, Rotation, Flipped, scale);
 			}
 
 			//update all the joints
@@ -721,20 +720,20 @@ namespace AnimationLib
 			{
 				//update the positions of all the joints
 				Vector2 jointPosition = new Vector2(0.0f);
-				if (null != CurrentImage)
+				if (null != currentImage)
 				{
 					//get my joint translation from my current image
-					jointPosition = CurrentImage.GetFlippedJointCoord(i, Flipped, fScale);
+					jointPosition = currentImage.GetFlippedJointCoord(i, Flipped, scale);
 
 					//get teh joint data
 					Joints[i].Data = Images[ImageIndex].JointCoords[i];
 				}
 
-				if (!AnchorJoint.CurrentKeyElement.RagDoll || bIgnoreRagdoll)
+				if (!AnchorJoint.CurrentKeyElement.RagDoll || ignoreRagdoll)
 				{
 					//to get the joint position, subtract anchor coord from joint position, and add my position
 					jointPosition = jointPosition - anchorCoord;
-					jointPosition = myPosition + jointPosition;
+					jointPosition = position + jointPosition;
 
 					Joints[i].OldPosition = Joints[i].Position;
 					Joints[i].Position = myMatrix.Multiply(jointPosition);
@@ -749,91 +748,92 @@ namespace AnimationLib
 		/// <summary>
 		/// Render this guy out to a draw list
 		/// </summary>
-		/// <param name="DrawList">the draw list to render to</param>
-		public void Render(DrawList MyDrawList, Color PaletteSwap)
+		/// <param name="drawlist">the draw list to render to</param>
+		/// <param name="paletteSwap"></param>
+		public void Render(DrawList drawlist, Color paletteSwap)
 		{
 			//render out all the children first, so that they will be drawn on top if there are any layer clashes
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].Render(MyDrawList, PaletteSwap);
+				Bones[i].Render(drawlist, paletteSwap);
 			}
 
 			//Render out the current image
 			if ((ImageIndex >= 0) && (ImageIndex < Images.Count))
 			{
 				//Does this bone ignore palette swaps?
-				Color FinalColor = Color.White;
+				Color finalColor = Color.White;
 				if (Colorable)
 				{
-					FinalColor = PaletteSwap;
+					finalColor = paletteSwap;
 				}
 
 				Images[ImageIndex].Render(Position,
-				                          MyDrawList,
+										  drawlist,
 				                          CurrentLayer,
 				                          Rotation,
 				                          Flipped,
-				                          FinalColor);
+										  finalColor);
 			}
 		}
 
 		/// <summary>
 		/// draw the joints of either just this bone, or recurse and also draw all joints of all child bones
 		/// </summary>
-		/// <param name="myRenderer">renderer to draw to</param>
-		/// <param name="bRecurse">whether or not to recurse and draw child bones</param>
-		/// <param name="rColor">the color to use</param>
-		public void DrawJoints(IRenderer myRenderer, bool bRecurse, Color rColor)
+		/// <param name="renderer">renderer to draw to</param>
+		/// <param name="recurse">whether or not to recurse and draw child bones</param>
+		/// <param name="color">the color to use</param>
+		public void DrawJoints(IRenderer renderer, bool recurse, Color color)
 		{
 			for (var i = 0; i < Joints.Count; i++)
 			{
-				myRenderer.Primitive.Point(Joints[i].Position, rColor);
+				renderer.Primitive.Point(Joints[i].Position, color);
 			}
 
-			if (bRecurse)
+			if (recurse)
 			{
 				for (var i = 0; i < Bones.Count; i++)
 				{
-					Bones[i].DrawJoints(myRenderer, bRecurse, rColor);
+					Bones[i].DrawJoints(renderer, recurse, color);
 				}
 			}
 		}
 
-		public void DrawSkeleton(IRenderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawSkeleton(IRenderer renderer, bool recurse, Color color)
 		{
 			for (var i = 0; i < Joints.Count; i++)
 			{
-				myRenderer.Primitive.Line(AnchorPosition, Joints[i].Position, rColor);
+				renderer.Primitive.Line(AnchorPosition, Joints[i].Position, color);
 			}
 
-			if (bRecurse)
+			if (recurse)
 			{
 				for (var i = 0; i < Bones.Count; i++)
 				{
-					Bones[i].DrawSkeleton(myRenderer, bRecurse, rColor);
+					Bones[i].DrawSkeleton(renderer, recurse, color);
 				}
 			}
 		}
 
-		public void DrawPhysics(IRenderer myRenderer, bool bRecurse, Color rColor)
+		public void DrawPhysics(IRenderer renderer, bool recurse, Color color)
 		{
 			//draw all my circles
 			if (null != GetCurrentImage())
 			{
-				GetCurrentImage().DrawPhysics(myRenderer, rColor);
+				GetCurrentImage().DrawPhysics(renderer, color);
 			}
 
 			//draw all child circles
-			if (bRecurse)
+			if (recurse)
 			{
 				for (var i = 0; i < Bones.Count; i++)
 				{
-					Bones[i].DrawPhysics(myRenderer, bRecurse, rColor);
+					Bones[i].DrawPhysics(renderer, recurse, color);
 				}
 			}
 		}
 
-		public void DrawOutline(IRenderer myRenderer, float fScale)
+		public void DrawOutline(IRenderer renderer, float scale)
 		{
 			//get the current image
 			if (ImageIndex < 0)
@@ -842,13 +842,13 @@ namespace AnimationLib
 			}
 			Image myImage = Images[ImageIndex];
 
-			myRenderer.Primitive.Rectangle(
+			renderer.Primitive.Rectangle(
 				new Vector2((int)Position.X,
 						  (int)Position.Y),
 				new Vector2((int)(Position.X + myImage.LowerRight.X),
 						  (int)(Position.Y + myImage.LowerRight.Y)),
 				Rotation,
-				fScale,
+				scale,
 				Color.White);
 		}
 
@@ -873,7 +873,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void AccumulateForces(float springStrength, float fScale)
+		public void AccumulateForces(float springStrength, float scale)
 		{
 			//Collect all the forces
 			Vector2 collectedForces = Vector2.Zero;
@@ -893,14 +893,14 @@ namespace AnimationLib
 				//if the joint[i].data is floating, add some spring force
 				if ((ImageIndex >= 0) && AnchorJoint.CurrentKeyElement.RagDoll)
 				{
-					AnchorJoint.SpringFloatingRagdoll(Joints[i], springStrength, Joints[i].Data.Length, fScale);
+					AnchorJoint.SpringFloatingRagdoll(Joints[i], springStrength, Joints[i].Data.Length, scale);
 				}
 			}
 
 			//update the children
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].AccumulateForces(springStrength, fScale);
+				Bones[i].AccumulateForces(springStrength, scale);
 			}
 		}
 
@@ -1218,14 +1218,14 @@ namespace AnimationLib
 		/// <param name="iScreenY">screen y coord</param>
 		/// <param name="iX">the converted x coord</param>
 		/// <param name="iY">the converted y coord</param>
-		public void ConvertCoord(int iScreenX, int iScreenY, ref int iX, ref int iY, float fScale)
+		public void ConvertCoord(int iScreenX, int iScreenY, ref int iX, ref int iY, float scale)
 		{
 			//get teh offset from the bone location
 			var screenLocation = new Vector2(iScreenX, iScreenY);
 			var myLocation = screenLocation - Position;
 
 			//compensate for the graphical scaling
-			myLocation /= fScale;
+			myLocation /= scale;
 
 			//rotate around by the -current rotation
 			Matrix myRotation = MatrixExt.Orientation(-Rotation);
@@ -1242,7 +1242,7 @@ namespace AnimationLib
 		/// <param name="iScreenY">screen y coord</param>
 		/// <param name="iX">the converted x coord</param>
 		/// <param name="iY">the converted y coord</param>
-		public void ConvertTranslation(int iScreenX, int iScreenY, ref int iX, ref int iY, float fScale)
+		public void ConvertTranslation(int iScreenX, int iScreenY, ref int iX, ref int iY, float scale)
 		{
 			if (null == AnchorJoint)
 			{
@@ -1256,7 +1256,7 @@ namespace AnimationLib
 			var myLocation = screenLocation - AnchorJoint.Position;
 
 			//compensate for the graphical scaling
-			myLocation /= fScale;
+			myLocation /= scale;
 
 			//get difference between current angle and the one specified in the animation to get parent rotation
 			float fParentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
@@ -1451,10 +1451,8 @@ namespace AnimationLib
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
 		/// <param name="node">The xml node to read from</param>
-		/// <param name="ParentBone">The parent bone for this dude.</param>
-		/// <param name="MyRenderer">The renderer to use to load images</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public virtual bool ReadXMLFormat(XmlNode node)
+		public virtual bool ReadXmlFormat(XmlNode node)
 		{
 			Debug.Assert(null != node);
 
@@ -1465,7 +1463,7 @@ namespace AnimationLib
 			{
 				//will only have the name attribute
 				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
+				string value = mapAttributes.Item(i).Value;
 				if ("Type" != strName)
 				{
 					Debug.Assert(false);
@@ -1481,7 +1479,7 @@ namespace AnimationLib
 					null != childNode;
 					childNode = childNode.NextSibling)
 				{
-					if (!ParseChildXMLNode(childNode))
+					if (!ParseChildXmlNode(childNode))
 					{
 						Debug.Assert(false);
 						return false;
@@ -1502,30 +1500,28 @@ namespace AnimationLib
 		/// Parse a child node of this BoneXML
 		/// </summary>
 		/// <param name="childNode">teh node to parse</param>
-		/// <param name="ParentBone"></param>
-		/// <param name="rRenderer"></param>
 		/// <returns></returns>
-		protected virtual bool ParseChildXMLNode(XmlNode childNode)
+		protected virtual bool ParseChildXmlNode(XmlNode childNode)
 		{
 			//what is in this node?
-			string strName = childNode.Name;
-			string strValue = childNode.InnerText;
+			var name = childNode.Name;
+			var value = childNode.InnerText;
 
-			switch (strName)
+			switch (name)
 			{
 				case "name":
 				{
 					//set the name of this bone
-					Name = strValue;
+					Name = value;
 				}
 				break;
 				case "type":
 				{
-					if ("Foot" == strValue)
+					if ("Foot" == value)
 					{
 						BoneType = EBoneType.Foot;
 					}
-					else if ("Weapon" == strValue)
+					else if ("Weapon" == value)
 					{
 						BoneType = EBoneType.Weapon;
 					}
@@ -1537,7 +1533,7 @@ namespace AnimationLib
 				break;
 				case "colorable":
 				{
-					Colorable = Convert.ToBoolean(strValue);
+					Colorable = Convert.ToBoolean(value);
 				}
 				break;
 				case "joints":
@@ -1570,7 +1566,7 @@ namespace AnimationLib
 							imageNode = imageNode.NextSibling)
 						{
 							Image childImage = new Image();
-							if (!childImage.ReadXMLFormat(imageNode))
+							if (!childImage.ReadXmlFormat(imageNode))
 							{
 								Debug.Assert(false);
 								return false;
@@ -1590,7 +1586,7 @@ namespace AnimationLib
 							boneNode = boneNode.NextSibling)
 						{
 							Bone childBone = CreateBone();
-							if (!childBone.ReadXMLFormat(boneNode))
+							if (!childBone.ReadXmlFormat(boneNode))
 							{
 								Debug.Assert(false);
 								return false;
@@ -1613,67 +1609,68 @@ namespace AnimationLib
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
-		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		/// <param name="bStartElement">whether to tag element as "Asset" or "Item"</param>
-		public virtual void WriteXMLFormat(XmlTextWriter rXMLFile, bool bStartElement, float fEnbiggify)
+		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
+		/// <param name="startElement">whether to tag element as "Asset" or "Item"</param>
+		/// <param name="scale"></param>
+		public virtual void WriteXmlFormat(XmlTextWriter xmlWriter, bool startElement, float scale)
 		{
 			//add the xml node
-			if (bStartElement)
+			if (startElement)
 			{
-				rXMLFile.WriteStartElement("XnaContent");
-				rXMLFile.WriteStartElement("Asset");
+				xmlWriter.WriteStartElement("XnaContent");
+				xmlWriter.WriteStartElement("Asset");
 			}
 			else
 			{
-				rXMLFile.WriteStartElement("Item");
+				xmlWriter.WriteStartElement("Item");
 			}
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.BoneXML");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.BoneXML");
 
-			WriteChildXMLNode(rXMLFile, fEnbiggify);
+			WriteChildXmlNode(xmlWriter, scale);
 
-			if (bStartElement)
+			if (startElement)
 			{
 				//write out extra end element for XnaContent
-				rXMLFile.WriteEndElement();
+				xmlWriter.WriteEndElement();
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 		}
 
-		public virtual void WriteChildXMLNode(XmlTextWriter rXMLFile, float fEnbiggify)
+		public virtual void WriteChildXmlNode(XmlTextWriter xmlWriter, float scale)
 		{
 			//add the name attribute
-			rXMLFile.WriteStartElement("name");
-			rXMLFile.WriteString(Name);
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("name");
+			xmlWriter.WriteString(Name);
+			xmlWriter.WriteEndElement();
 
 			//add the type attribute
-			rXMLFile.WriteStartElement("type");
-			rXMLFile.WriteString(BoneType.ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("type");
+			xmlWriter.WriteString(BoneType.ToString());
+			xmlWriter.WriteEndElement();
 
 			//add whether or not this bone ignores palette swap
-			rXMLFile.WriteStartElement("colorable");
-			rXMLFile.WriteString(Colorable ? "true" : "false");
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("colorable");
+			xmlWriter.WriteString(Colorable ? "true" : "false");
+			xmlWriter.WriteEndElement();
 
 			//write out joints
-			rXMLFile.WriteStartElement("joints");
+			xmlWriter.WriteStartElement("joints");
 			for (var i = 0; i < Joints.Count; i++)
 			{
-				Joints[i].WriteXmlFormat(rXMLFile);
+				Joints[i].WriteXmlFormat(xmlWriter);
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
 			//write out images
-			rXMLFile.WriteStartElement("images");
+			xmlWriter.WriteStartElement("images");
 			for (var i = 0; i < Images.Count; i++)
 			{
-				Images[i].WriteXMLFormat(rXMLFile, fEnbiggify);
+				Images[i].WriteXmlFormat(xmlWriter, scale);
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
 			//write out child bones
-			rXMLFile.WriteStartElement("bones");
+			xmlWriter.WriteStartElement("bones");
 			for (var i = 0; i < Bones.Count; i++)
 			{
 				//dont write out child garment bones
@@ -1681,9 +1678,9 @@ namespace AnimationLib
 				{
 					continue;
 				}
-				Bones[i].WriteXMLFormat(rXMLFile, false, fEnbiggify);
+				Bones[i].WriteXmlFormat(xmlWriter, false, scale);
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 		}
 
 		#endregion //File IO

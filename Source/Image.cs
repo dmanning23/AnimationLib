@@ -15,17 +15,24 @@ namespace AnimationLib
 	{
 		#region Member Variables
 
-		//The UV coords of this frame
-		//These are where on the bitmap to draw the texture from
-		private Vector2 m_UpperLeftUV;
-		private Vector2 m_LowerRightUV;
+		/// <summary>
+		/// The upper left corner in the file of this image
+		/// </summary>
+		private Vector2 _upperLeft;
 
-		//The anchor point for this frame
-		//this is where the series connects to the joint
-		private Vector2 m_AnchorCoord;
+		/// <summary>
+		/// the lower right corner in the file of this image
+		/// </summary>
+		private Vector2 _lowerRight;
+
+		/// <summary>
+		/// The anchor point for this frame
+		/// this is where the series connects to the joint
+		/// </summary>
+		private Vector2 _anchorCoord;
 
 		//The bitmap for this frame
-		private ITexture m_Image;
+		private ITexture _texture;
 
 		#endregion
 
@@ -33,14 +40,14 @@ namespace AnimationLib
 
 		public Vector2 UpperLeft
 		{
-			get { return m_UpperLeftUV; }
-			set { m_UpperLeftUV = value; }
+			get { return _upperLeft; }
+			set { _upperLeft = value; }
 		}
 
 		public Vector2 LowerRight
 		{
-			get { return m_LowerRightUV; }
-			set { m_LowerRightUV = value; }
+			get { return _lowerRight; }
+			set { _lowerRight = value; }
 		}
 
 		public Filename ImageFile { get; set; }
@@ -50,8 +57,8 @@ namespace AnimationLib
 		/// </summary>
 		public Vector2 AnchorCoord
 		{
-			get { return m_AnchorCoord; }
-			set { m_AnchorCoord = value; }
+			get { return _anchorCoord; }
+			set { _anchorCoord = value; }
 		}
 
 		public float Width
@@ -91,8 +98,8 @@ namespace AnimationLib
 			Lines = new List<PhysicsLine>();
 			UpperLeft = Vector2.Zero;
 			LowerRight = Vector2.Zero;
-			m_AnchorCoord = Vector2.Zero;
-			m_Image = null;
+			_anchorCoord = Vector2.Zero;
+			_texture = null;
 			ImageFile = new Filename();
 		}
 
@@ -129,14 +136,14 @@ namespace AnimationLib
 				//do we need to load the image?
 				if (null != renderer)
 				{
-					m_Image = renderer.LoadImage(ImageFile);
-					if (null == m_Image)
+					_texture = renderer.LoadImage(ImageFile);
+					if (null == _texture)
 					{
 						Debug.Assert(false);
 					}
 
 					UpperLeft = Vector2.Zero;
-					LowerRight = new Vector2(m_Image.Width, m_Image.Height);
+					LowerRight = new Vector2(_texture.Width, _texture.Height);
 				}
 			}
 		}
@@ -144,26 +151,29 @@ namespace AnimationLib
 		/// <summary>
 		/// Render this image
 		/// </summary>
-		/// <param name="rMatrix">The matrix to rtansform by</param>
-		/// <param name="rDrawList">the drawlist to put it in</param>
-		/// <param name="iLayer">the layer to put the image at</param>
-		public void Render(Vector2 myPosition, DrawList rDrawList, int iLayer, float fRotation, bool bFlip, Color myColor)
+		/// <param name="position">where on the screen to draw the image</param>
+		/// <param name="drawList">the drawlist to put it in</param>
+		/// <param name="layer">the layer to put the image at</param>
+		/// <param name="rotation"></param>
+		/// <param name="isFlipped"></param>
+		/// <param name="color"></param>
+		public void Render(Vector2 position, DrawList drawList, int layer, float rotation, bool isFlipped, Color color)
 		{
-			if (null != m_Image)
+			if (null != _texture)
 			{
-				rDrawList.AddQuad(m_Image, myPosition, myColor, fRotation, bFlip, iLayer);
+				drawList.AddQuad(_texture, position, color, rotation, isFlipped, layer);
 			}
 		}
 
 		/// <summary>
 		/// Get a joint vector from this dude
 		/// </summary>
-		/// <param name="iIndex">teh index of the joint location to get</param>
-		public JointData GetJointLocation(int iIndex)
+		/// <param name="index">teh index of the joint location to get</param>
+		public JointData GetJointLocation(int index)
 		{
-			Debug.Assert(iIndex >= 0);
-			Debug.Assert(iIndex < JointCoords.Count);
-			return JointCoords[iIndex];
+			Debug.Assert(index >= 0);
+			Debug.Assert(index < JointCoords.Count);
+			return JointCoords[index];
 		}
 
 		public void AddJoint()
@@ -176,13 +186,13 @@ namespace AnimationLib
 		/// Gets the flipped anchor coordinate.
 		/// </summary>
 		/// <returns>The flipped anchor coordinate.</returns>
-		/// <param name="bFlipped">Whether or not we want the anchor coord flipped</param>
-		/// <param name="fScale">The scale to get the anchor coord</param>
-		public Vector2 GetFlippedAnchorCoord(bool bFlipped, float fScale)
+		/// <param name="isFlipped">Whether or not we want the anchor coord flipped</param>
+		/// <param name="scale">The scale to get the anchor coord</param>
+		public Vector2 GetFlippedAnchorCoord(bool isFlipped, float scale)
 		{
 			//Get the anchor coord
 			Vector2 updatedAnchorCoord = new Vector2(0.0f);
-			if (bFlipped)
+			if (isFlipped)
 			{
 				//flip the x coord
 				updatedAnchorCoord.X = Width - AnchorCoord.X;
@@ -193,37 +203,38 @@ namespace AnimationLib
 				updatedAnchorCoord = AnchorCoord;
 			}
 
-			updatedAnchorCoord *= fScale;
+			updatedAnchorCoord *= scale;
 			return updatedAnchorCoord;
 		}
 
 		/// <summary>
 		/// Gets the flipped anchor coordinate.
 		/// </summary>
+		/// <param name="jointIndex">the index of the joint to get the coord of</param>
+		/// <param name="isFlipped">Whether or not we want the anchor coord flipped</param>
+		/// <param name="scale">The scale to get the anchor coord</param>
 		/// <returns>The flipped anchor coordinate.</returns>
-		/// <param name="bFlipped">Whether or not we want the anchor coord flipped</param>
-		/// <param name="fScale">The scale to get the anchor coord</param>
-		public Vector2 GetFlippedJointCoord(int iJointIndex, bool bFlipped, float fScale)
+		public Vector2 GetFlippedJointCoord(int jointIndex, bool isFlipped, float scale)
 		{
-			Vector2 updatedJointCoord = GetJointLocation(iJointIndex).Location;
-			if (bFlipped)
+			Vector2 updatedJointCoord = GetJointLocation(jointIndex).Location;
+			if (isFlipped)
 			{
 				//flip the x coord
 				updatedJointCoord.X = Width - updatedJointCoord.X;
 			}
 
-			updatedJointCoord *= fScale;
+			updatedJointCoord *= scale;
 			return updatedJointCoord;
 		}
 
-		public void Copy(Image myInst, Macro ActionCollection)
+		public void Copy(Image myInst, Macro actionCollection)
 		{
 			//copy the anchor coord
 			SetAnchorLocation myAnchorAction = new SetAnchorLocation(this, (int)myInst.AnchorCoord.X, (int)myInst.AnchorCoord.Y);
-			ActionCollection.Add(myAnchorAction);
+			actionCollection.Add(myAnchorAction);
 
 			//copy all the joint JointCoords
-			for (int i = 0; ((i < JointCoords.Count) && (i < myInst.JointCoords.Count)); i++)
+			for (var i = 0; ((i < JointCoords.Count) && (i < myInst.JointCoords.Count)); i++)
 			{
 				//create the new joint JointCoords
 				JointData myNewJointCoords = new JointData();
@@ -231,66 +242,66 @@ namespace AnimationLib
 
 				//create the action to set it
 				SetJointCoords mySetJointJointCoordsAction = new SetJointCoords(this, i, myNewJointCoords);
-				ActionCollection.Add(mySetJointJointCoordsAction);
+				actionCollection.Add(mySetJointJointCoordsAction);
 			}
 
 			//copy circles
-			for (int i = 0; ((i < Circles.Count) && (i < myInst.Circles.Count)); i++)
+			for (var i = 0; ((i < Circles.Count) && (i < myInst.Circles.Count)); i++)
 			{
 				PhysicsCircle myCircle = new PhysicsCircle();
 				myCircle.Copy(myInst.Circles[i]);
 
 				//create the action to set it
 				SetCircleData mySetCircleAction = new SetCircleData(this, i, myCircle);
-				ActionCollection.Add(mySetCircleAction);
+				actionCollection.Add(mySetCircleAction);
 			}
 
 			//copy lines
-			for (int i = 0; ((i < Lines.Count) && (i < myInst.Lines.Count)); i++)
+			for (var i = 0; ((i < Lines.Count) && (i < myInst.Lines.Count)); i++)
 			{
 				PhysicsLine myLine = new PhysicsLine();
 				myLine.Copy(myInst.Lines[i]);
 
 				//create the action to set it
 				SetLineData mySetCircleAction = new SetLineData(this, i, myLine);
-				ActionCollection.Add(mySetCircleAction);
+				actionCollection.Add(mySetCircleAction);
 			}
 		}
 
-		public void SetJointCoords(int iIndex, JointData myNewJointCoords)
+		public void SetJointCoords(int index, JointData newJointCoords)
 		{
-			Debug.Assert(iIndex >= 0);
-			Debug.Assert(iIndex < JointCoords.Count);
-			JointCoords[iIndex] = myNewJointCoords;
+			Debug.Assert(index >= 0);
+			Debug.Assert(index < JointCoords.Count);
+			JointCoords[index] = newJointCoords;
 		}
 
-		public void Update(Vector2 BonePosition, float fRotation, bool bFlip, float fScale)
+		public void Update(Vector2 bonePosition, float rotation, bool isFlipped, float scale)
 		{
 			//update all the circles
-			for (int i = 0; i < Circles.Count; i++)
+			for (var i = 0; i < Circles.Count; i++)
 			{
 				Debug.Assert(null != Circles);
 				Debug.Assert(null != Circles[i]);
-				Circles[i].Update(this, BonePosition, fRotation, bFlip, fScale);
+				Circles[i].Update(this, bonePosition, rotation, isFlipped, scale);
 			}
 
 			//update all the lines
-			for (int i = 0; i < Lines.Count; i++)
+			for (var i = 0; i < Lines.Count; i++)
 			{
-				Lines[i].Update(this, BonePosition, fRotation, bFlip, fScale);
+				Lines[i].Update(this, bonePosition, rotation, isFlipped, scale);
 			}
 		}
 
-		public void DrawPhysics(IRenderer rRenderer, Color rColor)
+		public void DrawPhysics(IRenderer renderer, Color color)
 		{
-			for (int i = 0; i < Circles.Count; i++)
+			for (var i = 0; i < Circles.Count; i++)
 			{
-				Circles[i].Render(rRenderer, rColor);
+				Circles[i].Render(renderer, color);
 			}
 
-			for (int i = 0; i < Lines.Count; i++)
+			for (var i = 0; i < Lines.Count; i++)
 			{
-				Lines[i].Render(rRenderer, rColor);
+				Lines[i].Render(renderer, color);
 			}
 		}
 
@@ -317,7 +328,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="node">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode node)
+		public bool ReadXmlFormat(XmlNode node)
 		{
 #if DEBUG
 			if ("Item" != node.Name)
@@ -328,15 +339,15 @@ namespace AnimationLib
 
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = node.Attributes;
-			for (int i = 0; i < mapAttributes.Count; i++)
+			for (var i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
+				string name = mapAttributes.Item(i).Name;
+				string value = mapAttributes.Item(i).Value;
 
-				if ("Type" == strName)
+				if ("Type" == name)
 				{
-					if ("AnimationLib.ImageXML" != strValue)
+					if ("AnimationLib.ImageXML" != value)
 					{
 						Debug.Assert(false);
 						return false;
@@ -353,33 +364,33 @@ namespace AnimationLib
 					childNode = childNode.NextSibling)
 				{
 					//what is in this node?
-					string strName = childNode.Name;
-					string strValue = childNode.InnerText;
+					string name = childNode.Name;
+					string value = childNode.InnerText;
 
-					switch (strName)
+					switch (name)
 					{
 						case "upperleft":
 						{
 							//convert to the correct vector
-							UpperLeft = strValue.ToVector2();
+							UpperLeft = value.ToVector2();
 						}
 						break;
 						case "lowerright":
 						{
 							//convert to the correct vector
-							LowerRight = strValue.ToVector2();
+							LowerRight = value.ToVector2();
 						}
 						break;
 						case "anchorcoord":
 						{
 							//convert to the correct vector
-							m_AnchorCoord = strValue.ToVector2();
+							_anchorCoord = value.ToVector2();
 						}
 						break;
 						case "filename":
 						{
 							//get the correct path & filename
-							ImageFile.SetRelFilename(strValue);
+							ImageFile.SetRelFilename(value);
 						}
 						break;
 						case "joints":
@@ -392,7 +403,7 @@ namespace AnimationLib
 									circleNode = circleNode.NextSibling)
 								{
 									JointData childJointJointCoords = new JointData();
-									if (!childJointJointCoords.ReadXMLFormat(circleNode, this))
+									if (!childJointJointCoords.ReadXmlFormat(circleNode, this))
 									{
 										Debug.Assert(false);
 										return false;
@@ -412,7 +423,7 @@ namespace AnimationLib
 									jointNode = jointNode.NextSibling)
 								{
 									PhysicsCircle myCircle = new PhysicsCircle();
-									if (!myCircle.ReadXMLFormat(jointNode))
+									if (!myCircle.ReadXmlFormat(jointNode))
 									{
 										Debug.Assert(false);
 										return false;
@@ -432,7 +443,7 @@ namespace AnimationLib
 									jointNode = jointNode.NextSibling)
 								{
 									PhysicsLine myCircle = new PhysicsLine();
-									if (!myCircle.ReadXMLFormat(jointNode))
+									if (!myCircle.ReadXmlFormat(jointNode))
 									{
 										Debug.Assert(false);
 										return false;
@@ -457,60 +468,61 @@ namespace AnimationLib
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
-		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		public void WriteXMLFormat(XmlTextWriter rXMLFile, float fEnbiggify)
+		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
+		/// <param name="scale"></param>
+		public void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
 		{
 			//write out the item tag
-			rXMLFile.WriteStartElement("Item");
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.ImageXML");
+			xmlWriter.WriteStartElement("Item");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.ImageXML");
 
 			//write out upper left coords
-			rXMLFile.WriteStartElement("upperleft");
-			rXMLFile.WriteString(UpperLeft.X.ToString() + " " +
+			xmlWriter.WriteStartElement("upperleft");
+			xmlWriter.WriteString(UpperLeft.X.ToString() + " " +
 				UpperLeft.Y.ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
 			//write out lower right coords
-			rXMLFile.WriteStartElement("lowerright");
-			rXMLFile.WriteString(LowerRight.X.ToString() + " " +
+			xmlWriter.WriteStartElement("lowerright");
+			xmlWriter.WriteString(LowerRight.X.ToString() + " " +
 				LowerRight.Y.ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
 			//write out lower right coords
-			rXMLFile.WriteStartElement("anchorcoord");
-			rXMLFile.WriteString((m_AnchorCoord.X * fEnbiggify).ToString() + " " +
-				(m_AnchorCoord.Y * fEnbiggify).ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("anchorcoord");
+			xmlWriter.WriteString((_anchorCoord.X * scale).ToString() + " " +
+				(_anchorCoord.Y * scale).ToString());
+			xmlWriter.WriteEndElement();
 
 			//write out filename to use
-			rXMLFile.WriteStartElement("filename");
-			rXMLFile.WriteString(ImageFile.GetRelFilename());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("filename");
+			xmlWriter.WriteString(ImageFile.GetRelFilename());
+			xmlWriter.WriteEndElement();
 
 			//write out joint locations
-			rXMLFile.WriteStartElement("joints");
-			for (int i = 0; i < JointCoords.Count; i++)
+			xmlWriter.WriteStartElement("joints");
+			for (var i = 0; i < JointCoords.Count; i++)
 			{
-				JointCoords[i].WriteXMLFormat(rXMLFile, fEnbiggify);
+				JointCoords[i].WriteXmlFormat(xmlWriter, scale);
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
 			//write out polygon info
-			rXMLFile.WriteStartElement("circles");
-			for (int i = 0; i < Circles.Count; i++)
+			xmlWriter.WriteStartElement("circles");
+			for (var i = 0; i < Circles.Count; i++)
 			{
-				Circles[i].WriteXMLFormat(rXMLFile);
+				Circles[i].WriteXmlFormat(xmlWriter);
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteStartElement("lines");
-			for (int i = 0; i < Lines.Count; i++)
+			xmlWriter.WriteStartElement("lines");
+			for (var i = 0; i < Lines.Count; i++)
 			{
-				Lines[i].WriteXMLFormat(rXMLFile);
+				Lines[i].WriteXmlFormat(xmlWriter);
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 		}
 
 		#endregion //File IO

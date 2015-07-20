@@ -1,5 +1,5 @@
-using System;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace AnimationLib
 {
@@ -24,7 +24,7 @@ namespace AnimationLib
 			fY *= -1.0f; //flip on y axis for coordinate system
 
 			//get the angle to that vector
-			float fAngle = (float)Math.Atan2((double)fY, (double)fX);
+			var fAngle = (float)Math.Atan2(fY, fX);
 
 			return fAngle;
 		}
@@ -47,9 +47,7 @@ namespace AnimationLib
 
 		public static float Length(float fX, float fY)
 		{
-			Vector2 myVect = new Vector2(0.0f);
-			myVect.X = fX;
-			myVect.Y = fY;
+			var myVect = new Vector2(fX, fY);
 			return myVect.Length();
 		}
 	}

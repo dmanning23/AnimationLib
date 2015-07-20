@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using RenderBuddy;
 using System.Diagnostics;
 using System.Xml;
 
@@ -16,12 +15,12 @@ namespace AnimationLib
 		/// reference to the animation container that owns this bone
 		/// used to change animation when the parent bone changes images
 		/// </summary>
-		private GarmentAnimationContainer m_AnimationContainer;
+		private GarmentAnimationContainer _animationContainer;
 
 		/// <summary>
 		/// flag for whether this garment has been added to the model or not
 		/// </summary>
-		private bool m_bAddedToModel;
+		private bool _isAddedToModel;
 
 		#endregion //Members
 
@@ -49,49 +48,44 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public GarmentBone(GarmentAnimationContainer rOwner)
+		public GarmentBone(GarmentAnimationContainer owner)
 			: base()
 		{
-			Debug.Assert(null != rOwner);
-			m_AnimationContainer = rOwner;
+			Debug.Assert(null != owner);
+			_animationContainer = owner;
 			ParentBone = null;
 			BoneType = EBoneType.Garment;
-			m_bAddedToModel = false;
+			_isAddedToModel = false;
 		}
 
 		/// <summary>
 		/// update all this dude's stuff
 		/// </summary>
-		/// <param name="iTime"></param>
-		/// <param name="myPosition"></param>
-		/// <param name="myKeyBone"></param>
-		/// <param name="fParentRotation"></param>
-		/// <param name="bParentFlip"></param>
-		override public void Update(int iTime,
-			Vector2 myPosition,
-			KeyBone myKeyBone,
-			float fParentRotation,
-			bool bParentFlip,
-			int iParentLayer,
-			float fScale,
-			bool bIgnoreRagdoll)
+		override public void Update(int time,
+			Vector2 position,
+			KeyBone keyBone,
+			float parentRotation,
+			bool parentFlip,
+			int parentLayer,
+			float scale,
+			bool ignoreRagdoll)
 		{
-			Debug.Assert(null != m_AnimationContainer);
+			Debug.Assert(null != _animationContainer);
 
 			//update the animation container, which will update the Bone base class 
-			m_AnimationContainer.Update(iTime, myPosition, bParentFlip, fScale, fParentRotation, bIgnoreRagdoll, iParentLayer, ParentBone);
+			_animationContainer.Update(time, position, parentFlip, scale, parentRotation, ignoreRagdoll, parentLayer, ParentBone);
 		}
 
-		public void UpdateBaseBone(int iTime,
-			Vector2 myPosition,
-			KeyBone myKeyBone,
-			float fParentRotation,
-			bool bParentFlip,
-			int iParentLayer,
-			float fScale,
-			bool bIgnoreRagdoll)
+		public void UpdateBaseBone(int time,
+			Vector2 position,
+			KeyBone keyBone,
+			float parentRotation,
+			bool parentFlip,
+			int parentLayer,
+			float scale,
+			bool ignoreRagdoll)
 		{
-			base.Update(iTime, myPosition, myKeyBone, fParentRotation, bParentFlip, iParentLayer, fScale, bIgnoreRagdoll);
+			base.Update(time, position, keyBone, parentRotation, parentFlip, parentLayer, scale, ignoreRagdoll);
 		}
 
 		/// <summary>
@@ -101,10 +95,10 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != ParentBone);
 
-			if (!m_bAddedToModel)
+			if (!_isAddedToModel)
 			{
 				ParentBone.AddGarment(this);
-				m_bAddedToModel = true;
+				_isAddedToModel = true;
 			}
 		}
 
@@ -115,10 +109,10 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != ParentBone);
 
-			if (m_bAddedToModel)
+			if (_isAddedToModel)
 			{
 				ParentBone.RemoveGarment(GarmentName);
-				m_bAddedToModel = false;
+				_isAddedToModel = false;
 			}
 		}
 
@@ -132,21 +126,21 @@ namespace AnimationLib
 		/// <param name="childNode">teh node to parse</param>
 		/// <param name="rRenderer"></param>
 		/// <returns></returns>
-		protected override bool ParseChildXMLNode(XmlNode childNode)
+		protected override bool ParseChildXmlNode(XmlNode childNode)
 		{
 			//what is in this node?
-			string strName = childNode.Name;
-			string strValue = childNode.InnerText;
+			var name = childNode.Name;
+			var value = childNode.InnerText;
 
-			if (strName == "parentBone")
+			if (name == "parentBone")
 			{
 				//set teh parent bone of this dude
-				ParentBoneName = strValue;
+				ParentBoneName = value;
 			}
 			else
 			{
 				//Let the base class parse the rest of the xml
-				return base.ParseChildXMLNode(childNode);
+				return base.ParseChildXmlNode(childNode);
 			}
 
 			return true;
@@ -155,41 +149,42 @@ namespace AnimationLib
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
-		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		/// <param name="bStartElement">whether to tag element as "Asset" or "Item"</param>
-		public override void WriteXMLFormat(XmlTextWriter rXMLFile, bool bStartElement, float fEnbiggify)
+		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
+		/// <param name="startElement">whether to tag element as "Asset" or "Item"</param>
+		/// <param name="scale"></param>
+		public override void WriteXmlFormat(XmlTextWriter xmlWriter, bool startElement, float scale)
 		{
 			//add the xml node
-			if (bStartElement)
+			if (startElement)
 			{
-				rXMLFile.WriteStartElement("XnaContent");
-				rXMLFile.WriteStartElement("Asset");
+				xmlWriter.WriteStartElement("XnaContent");
+				xmlWriter.WriteStartElement("Asset");
 			}
 			else
 			{
-				rXMLFile.WriteStartElement("Item");
+				xmlWriter.WriteStartElement("Item");
 			}
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.GarmentBoneXML");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.GarmentBoneXML");
 
-			WriteChildXMLNode(rXMLFile, fEnbiggify);
+			WriteChildXmlNode(xmlWriter, scale);
 
-			if (bStartElement)
+			if (startElement)
 			{
 				//write out extra end element for XnaContent
-				rXMLFile.WriteEndElement();
+				xmlWriter.WriteEndElement();
 			}
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 		}
 
-		public override void WriteChildXMLNode(XmlTextWriter rXMLFile, float fEnbiggify)
+		public override void WriteChildXmlNode(XmlTextWriter xmlWriter, float scale)
 		{
 			//write out all the base class xml stuff
-			base.WriteChildXMLNode(rXMLFile, fEnbiggify);
+			base.WriteChildXmlNode(xmlWriter, scale);
 
 			//add the name attribute
-			rXMLFile.WriteStartElement("parentBone");
-			rXMLFile.WriteString(ParentBoneName);
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("parentBone");
+			xmlWriter.WriteString(ParentBoneName);
+			xmlWriter.WriteEndElement();
 		}
 
 		#endregion //File IO

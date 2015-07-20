@@ -1,8 +1,8 @@
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
-using Microsoft.Xna.Framework;
 using Vector2Extensions;
 
 namespace AnimationLib
@@ -215,72 +215,72 @@ namespace AnimationLib
 			}
 
 			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = node.Attributes;
+			var mapAttributes = node.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
 				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
+				string value = mapAttributes.Item(i).Value;
 
 				if ("Type" == strName)
 				{
-					if ("AnimationLib.KeyXML" != strValue)
+					if ("AnimationLib.KeyXML" != value)
 					{
-						throw new Exception("keyelement needs to be AnimationLib.KeyXML not " + strValue);
+						throw new Exception("keyelement needs to be AnimationLib.KeyXML not " + value);
 					}
 				}
 			}
 #endif
 
 			//Read in child nodes
-			for (XmlNode childNode = node.FirstChild;
+			for (var childNode = node.FirstChild;
 				null != childNode;
 				childNode = childNode.NextSibling)
 			{
 				//what is in this node?
-				string strName = childNode.Name;
-				string strValue = childNode.InnerText;
+				var name = childNode.Name;
+				var value = childNode.InnerText;
 
-				switch (strName)
+				switch (name)
 				{
 					case "time":
 					{
-						Time = Convert.ToInt32(strValue);
+						Time = Convert.ToInt32(value);
 					}
 					break;
 					case "rotation":
 					{
-						Rotation = MathHelper.ToRadians(Convert.ToSingle(strValue));
+						Rotation = MathHelper.ToRadians(Convert.ToSingle(value));
 					}
 					break;
 					case "layer":
 					{
-						Layer = Convert.ToInt32(strValue);
+						Layer = Convert.ToInt32(value);
 					}
 					break;
 					case "image":
 					{
-						ImageName = strValue;
+						ImageName = value;
 					}
 					break;
 					case "flip":
 					{
-						Flip = Convert.ToBoolean(strValue);
+						Flip = Convert.ToBoolean(value);
 					}
 					break;
 					case "translation":
 					{
-						Translation = strValue.ToVector2();
+						Translation = value.ToVector2();
 					}
 					break;
 					case "ragdoll":
 					{
-						RagDoll = Convert.ToBoolean(strValue);
+						RagDoll = Convert.ToBoolean(value);
 					}
 					break;
 					case "joint":
 					{
-						JointName = strValue;
+						JointName = value;
 					}
 					break;
 				}
@@ -310,12 +310,14 @@ namespace AnimationLib
 			}
 
 			//create the xml object and add it to the animation
-			var myThing = new KeyXml();
-			myThing.flip = Flip;
-			myThing.image = strImage;
-			myThing.joint = JointName;
-			myThing.layer = Layer;
-			myThing.ragdoll = RagDoll;
+			var myThing = new KeyXml()
+			{
+				flip = Flip,
+				image = strImage,
+				joint = JointName,
+				layer = Layer,
+				ragdoll = RagDoll
+			};
 
 			//Set the rotation to 0 if this dude is using ragdoll
 			if (!RagDoll)

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Diagnostics;
 using System.Xml;
-using Microsoft.Xna.Framework;
 using Vector2Extensions;
 
 namespace AnimationLib
@@ -13,24 +13,24 @@ namespace AnimationLib
 		/// <summary>
 		/// the joint location
 		/// </summary>
-		private Vector2 m_Location;
+		private Vector2 _location;
 
 		/// <summary>
 		/// the first rotation limit for ragdoll
 		/// user -180 and 180 as default limits
 		/// </summary>
-		private float m_FirstLimit = -MathHelper.Pi;
+		private float _firstLimit = -MathHelper.Pi;
 
 		/// <summary>
 		/// the second rotation limit for ragdoll
 		/// user -180 and 180 as default limits
 		/// </summary>
-		private float m_SecondLimit = MathHelper.Pi;
+		private float _secondLimit = MathHelper.Pi;
 
 		/// <summary>
 		/// This is the vector from this joint position to the anchor location
 		/// </summary>
-		private Vector2 m_AnchorVect;
+		private Vector2 _anchorVect;
 
 		#endregion //Members
 
@@ -41,8 +41,8 @@ namespace AnimationLib
 		/// </summary>
 		public Vector2 Location
 		{
-			get { return m_Location; }
-			set { m_Location = value; }
+			get { return _location; }
+			set { _location = value; }
 		}
 
 		/// <summary>
@@ -52,7 +52,7 @@ namespace AnimationLib
 
 		public Vector2 AnchorVect
 		{
-			get { return m_AnchorVect; }
+			get { return _anchorVect; }
 		}
 
 		/// <summary>
@@ -69,20 +69,20 @@ namespace AnimationLib
 
 		public float FirstLimit
 		{
-			get { return m_FirstLimit; }
+			get { return _firstLimit; }
 			set 
-			{ 
-				m_FirstLimit = value;
+			{
+				_firstLimit = value;
 				UpdateFlippedLimits();
 			}
 		}
 
 		public float SecondLimit
 		{
-			get { return m_SecondLimit; }
+			get { return _secondLimit; }
 			set 
 			{ 
-				m_SecondLimit = value;
+				_secondLimit = value;
 				UpdateFlippedLimits();
 			}
 		}
@@ -103,22 +103,22 @@ namespace AnimationLib
 
 		public JointData()
 		{
-			m_Location = new Vector2(0.0f);
-			m_AnchorVect = new Vector2(0.0f);
+			_location = Vector2.Zero;
+			_anchorVect = Vector2.Zero;
 			Length = 0.0f;
 			FloatRadius = 0.0f;
 			Floating = false;
 		}
 
-		public void Copy(JointData myInst)
+		public void Copy(JointData inst)
 		{
-			m_Location = myInst.m_Location;
-			FirstLimit = myInst.FirstLimit;
-			SecondLimit = myInst.SecondLimit;
-			FloatRadius = myInst.FloatRadius;
-			Floating = myInst.Floating;
-			Length = myInst.Length;
-			m_AnchorVect = myInst.m_AnchorVect;
+			_location = inst._location;
+			FirstLimit = inst.FirstLimit;
+			SecondLimit = inst.SecondLimit;
+			FloatRadius = inst.FloatRadius;
+			Floating = inst.Floating;
+			Length = inst.Length;
+			_anchorVect = inst._anchorVect;
 		}
 
 		/// <summary>
@@ -139,8 +139,9 @@ namespace AnimationLib
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
 		/// <param name="node">The xml node to read from</param>
+		/// <param name="image"></param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode node, Image myImage)
+		public bool ReadXmlFormat(XmlNode node, Image image)
 		{
 #if DEBUG
 			if ("Item" != node.Name)
@@ -154,12 +155,12 @@ namespace AnimationLib
 			for (int i = 0; i < mapAttributes.Count; i++)
 			{
 				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
+				var name = mapAttributes.Item(i).Name;
+				var value = mapAttributes.Item(i).Value;
 
-				if ("Type" == strName)
+				if ("Type" == name)
 				{
-					if ("AnimationLib.JointDataXML" != strValue)
+					if ("AnimationLib.JointDataXML" != value)
 					{
 						Debug.Assert(false);
 						return false;
@@ -176,36 +177,36 @@ namespace AnimationLib
 					childNode = childNode.NextSibling)
 				{
 					//what is in this node?
-					string strName = childNode.Name;
-					string strValue = childNode.InnerText;
+					var name = childNode.Name;
+					var value = childNode.InnerText;
 
-					switch (strName)
+					switch (name)
 					{
 						case "location":
 						{
-							Location = strValue.ToVector2();
+							Location = value.ToVector2();
 						}
 						break;
 						case "limit1":
 						{
-							float fMyLimit = Convert.ToSingle(strValue);
+							float fMyLimit = Convert.ToSingle(value);
 							FirstLimit = MathHelper.ToRadians(fMyLimit);
 						}
 						break;
 						case "limit2":
 						{
-							float fMyLimit = Convert.ToSingle(strValue);
+							float fMyLimit = Convert.ToSingle(value);
 							SecondLimit = MathHelper.ToRadians(fMyLimit);
 						}
 						break;
 						case "FloatRadius":
 						{
-							FloatRadius = Convert.ToSingle(strValue);
+							FloatRadius = Convert.ToSingle(value);
 						}
 						break;
 						case "FloatOrRotate":
 						{
-							Floating = Convert.ToBoolean(strValue);
+							Floating = Convert.ToBoolean(value);
 						}
 						break;
 					}
@@ -213,8 +214,8 @@ namespace AnimationLib
 			}
 
 			//get the vector from the anchor position to this joint position
-			m_AnchorVect = Location - myImage.AnchorCoord;
-			Length = m_AnchorVect.Length();
+			_anchorVect = Location - image.AnchorCoord;
+			Length = _anchorVect.Length();
 
 			return true;
 		}
@@ -222,42 +223,43 @@ namespace AnimationLib
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
-		/// <param name="rXMLFile">the xml file to add this dude as a child of</param>
-		public void WriteXMLFormat(XmlTextWriter rXMLFile, float fEnbiggify)
+		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
+		/// <param name="scale"></param>
+		public void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
 		{
 			//write out the item tag
-			rXMLFile.WriteStartElement("Item");
-			rXMLFile.WriteAttributeString("Type", "AnimationLib.JointDataXML");
+			xmlWriter.WriteStartElement("Item");
+			xmlWriter.WriteAttributeString("Type", "AnimationLib.JointDataXML");
 
 			//write out joint offset
-			rXMLFile.WriteStartElement("location");
-			rXMLFile.WriteString((m_Location.X * fEnbiggify).ToString() + " " +
-				(m_Location.Y * fEnbiggify).ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("location");
+			xmlWriter.WriteString((_location.X * scale).ToString() + " " +
+				(_location.Y * scale).ToString());
+			xmlWriter.WriteEndElement();
 
 			//write first limit 
-			rXMLFile.WriteStartElement("limit1");
+			xmlWriter.WriteStartElement("limit1");
 			float fLimit1 = Helper.ClampAngle(FirstLimit);
-			rXMLFile.WriteString(MathHelper.ToDegrees(fLimit1).ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteString(MathHelper.ToDegrees(fLimit1).ToString());
+			xmlWriter.WriteEndElement();
 
 			//write 2nd limit 
-			rXMLFile.WriteStartElement("limit2");
+			xmlWriter.WriteStartElement("limit2");
 			float fLimit2 = Helper.ClampAngle(SecondLimit);
-			rXMLFile.WriteString(MathHelper.ToDegrees(fLimit2).ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteString(MathHelper.ToDegrees(fLimit2).ToString());
+			xmlWriter.WriteEndElement();
 
 			//write out float radius
-			rXMLFile.WriteStartElement("FloatRadius");
-			rXMLFile.WriteString((FloatRadius * fEnbiggify).ToString());
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("FloatRadius");
+			xmlWriter.WriteString((FloatRadius * scale).ToString());
+			xmlWriter.WriteEndElement();
 
 			//write out whether it uses float or rotate ragdoll
-			rXMLFile.WriteStartElement("FloatOrRotate");
-			rXMLFile.WriteString(Floating ? "true" : "false");
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteStartElement("FloatOrRotate");
+			xmlWriter.WriteString(Floating ? "true" : "false");
+			xmlWriter.WriteEndElement();
 
-			rXMLFile.WriteEndElement();
+			xmlWriter.WriteEndElement();
 		}
 
 		#endregion

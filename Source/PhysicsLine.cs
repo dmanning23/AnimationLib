@@ -90,7 +90,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="node">The xml node to read from</param>
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXMLFormat(XmlNode node)
+		public bool ReadXmlFormat(XmlNode node)
 		{
 #if DEBUG
 			if ("Item" != node.Name)
@@ -150,7 +150,7 @@ namespace AnimationLib
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public void WriteXMLFormat(XmlTextWriter xmlWriter)
+		public void WriteXmlFormat(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("Item");
