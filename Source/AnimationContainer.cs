@@ -38,7 +38,7 @@ namespace AnimationLib
 		/// <summary>
 		/// get access to the model thing
 		/// </summary>
-		public Bone Model { get; protected set; }
+		public Skeleton Model { get; protected set; }
 
 		/// <summary>
 		/// The current animation being played
@@ -83,8 +83,6 @@ namespace AnimationLib
 
 		public Filename AnimationFile { get; set; }
 
-		public Filename ModelFile { get; set; }
-
 		/// <summary>
 		/// This flag gets set when the animation is changed, the ragdoll needs to be reset after the first update
 		/// </summary>
@@ -104,7 +102,6 @@ namespace AnimationLib
 			CurrentAnimationIndex = -1;
 			StopWatch = new GameClock();
 			_playback = EPlayback.Forwards;
-			ModelFile = new Filename();
 			AnimationFile = new Filename();
 			ResetRagdoll = false;
 		}
@@ -209,8 +206,8 @@ namespace AnimationLib
 			Debug.Assert(null != CurrentAnimation);
 
 			//Apply teh current animation to the bones and stuff
-			Model.AnchorJoint.Position = position;
-			Model.Update(time,
+			Model.RootBone.AnchorJoint.Position = position;
+			Model.RootBone.Update(time,
 				position,
 				CurrentAnimation.KeyBone,
 				rotation,
@@ -222,7 +219,7 @@ namespace AnimationLib
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
 			{
-				Model.RestartAnimation();
+				Model.RootBone.RestartAnimation();
 				ResetRagdoll = false;
 			}
 		}
@@ -240,29 +237,29 @@ namespace AnimationLib
 			}
 
 			//add gravity to the ragdoll physics
-			Model.AddGravity(RagdollConstants.Gravity);
+			Model.RootBone.AddGravity(RagdollConstants.Gravity);
 
 			//accumulate all the force
-			Model.AccumulateForces(RagdollConstants.Spring, scale);
+			Model.RootBone.AccumulateForces(RagdollConstants.Spring, scale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
 			if (fTimeDelta > 0.0f)
 			{
-				Model.RunVerlet(fTimeDelta);
+				Model.RootBone.RunVerlet(fTimeDelta);
 			}
 
-			Model.SolveLimits(0.0f);
-			Model.SolveConstraints(false, scale);
+			Model.RootBone.SolveLimits(0.0f);
+			Model.RootBone.SolveConstraints(false, scale);
 
 			//solve all the constraints
 			for (int i = 0; i < 2; i++)
 			{
-				Model.SolveConstraints(false, scale);
+				Model.RootBone.SolveConstraints(false, scale);
 			}
 
 			//run through the post update so the matrix is correct
-			Model.PostUpdate(scale, false);
+			Model.RootBone.PostUpdate(scale, false);
 		}
 
 		/// <summary>
@@ -289,7 +286,7 @@ namespace AnimationLib
 			if (null != Model)
 			{
 				//send teh model to teh draw list
-				Model.Render(drawList, paletteSwap);
+				Model.RootBone.Render(drawList, paletteSwap);
 			}
 		}
 
@@ -358,7 +355,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Get teh index of an animation
 		/// </summary>
-		/// <param name="strAnimationName">name of teh animation to find</param>
+		/// <param name="animationName">name of teh animation to find</param>
 		/// <returns>teh index of teh animation with that name, -1 if none found</returns>
 		public int FindAnimationIndex(string animationName)
 		{
@@ -376,15 +373,9 @@ namespace AnimationLib
 		/// <summary>
 		/// Overridden methoed to create the correct type of bone
 		/// </summary>
-		protected virtual void CreateBone()
+		public virtual Bone CreateBone()
 		{
-			Debug.Assert(null == Model);
-			Model = new Bone();
-		}
-
-		public override string ToString()
-		{
-			return "Root";
+			return new Bone();
 		}
 
 		#endregion //Methods
@@ -398,63 +389,8 @@ namespace AnimationLib
 		/// <param name="renderer">renderer to use to load bitmap images</param>
 		public bool ReadModelXml(Filename filename, IRenderer renderer)
 		{
-			CreateBone();
-
-			//gonna have to do this the HARD way
-
-			//Open the file.
-			#if ANDROID
-			Stream stream = Game.Activity.Assets.Open(filename.File);
-#else
-			FileStream stream = File.Open(filename.File, FileMode.Open, FileAccess.Read);
-			#endif
-			XmlDocument xmlDoc = new XmlDocument();
-			xmlDoc.Load(stream);
-			XmlNode rootNode = xmlDoc.DocumentElement;
-
-			//make sure it is actually an xml node
-			if (rootNode.NodeType == XmlNodeType.Element)
-			{
-				//eat up the name of that xml node
-				string strElementName = rootNode.Name;
-
-#if DEBUG
-				if (("XnaContent" != strElementName) || !rootNode.HasChildNodes)
-				{
-					Debug.Assert(false);
-					stream.Close();
-					return false;
-				}
-#endif
-
-				//make sure to read from the the next node
-				if (!Model.ReadXmlFormat(rootNode.FirstChild))
-				{
-					Debug.Assert(false);
-					stream.Close();
-					return false;
-				}
-
-				//Set the anchor joints of the whole model
-				Model.SetAnchorJoint(null);
-
-				//Load all the images
-				Model.LoadImages(renderer);
-			}
-			else
-			{
-				//should be an xml node!!!
-				Debug.Assert(false);
-				stream.Close();
-				return false;
-			}
-
-			// Close the file.
-			stream.Close();
-
-			//grab that filename 
-			ModelFile.File = filename.File;
-			return true;
+			Model = new Skeleton(this, filename, renderer);
+			Model.ReadXmlFile();
 		}
 
 		/// <summary>
@@ -464,24 +400,9 @@ namespace AnimationLib
 		/// <param name="scale">How much to scale the model when writing it out</param>
 		public virtual void WriteModelXml(Filename filename, float scale)
 		{
-			Debug.Assert(null != Model);
-
-			//first rename all the joints so they are correct
-			Model.RenameJoints(this);
-
-			//open the file, create it if it doesnt exist yet
-			var xmlWriter = new XmlTextWriter(filename.File, null);
-			xmlWriter.Formatting = Formatting.Indented;
-			xmlWriter.Indentation = 1;
-			xmlWriter.IndentChar = '\t';
-
-			xmlWriter.WriteStartDocument();
-			Model.WriteXmlFormat(xmlWriter, true, scale);
-			xmlWriter.WriteEndDocument();
-
-			// Close the file.
-			xmlWriter.Flush();
-			xmlWriter.Close();
+			Model.Scale = scale;
+			Model.Filename = filename;
+			Model.WriteXml();
 		}
 
 		#endregion //Model File IO

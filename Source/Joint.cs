@@ -7,7 +7,7 @@ namespace AnimationLib
 {
 	public class Joint
 	{
-		#region Member Variables
+		#region Fields
 
 		/// <summary>
 		/// The position for this dude
@@ -24,7 +24,7 @@ namespace AnimationLib
 		/// </summary>
 		private Vector2 _acceleration;
 
-		#endregion
+		#endregion //Fields
 
 		#region Properties
 
@@ -157,7 +157,7 @@ namespace AnimationLib
 			return Name;
 		}
 
-		#endregion
+		#endregion //Methods
 
 		#region Ragdoll
 

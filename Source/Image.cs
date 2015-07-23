@@ -13,7 +13,7 @@ namespace AnimationLib
 {
 	public class Image
 	{
-		#region Member Variables
+		#region Fields
 
 		/// <summary>
 		/// The upper left corner in the file of this image
@@ -31,10 +31,12 @@ namespace AnimationLib
 		/// </summary>
 		private Vector2 _anchorCoord;
 
-		//The bitmap for this frame
+		/// <summary>
+		/// The bitmap for this frame
+		/// </summary>
 		private ITexture _texture;
 
-		#endregion
+		#endregion //Fields
 
 		#region Properties
 
@@ -84,7 +86,7 @@ namespace AnimationLib
 		/// </summary>
 		public List<PhysicsLine> Lines { get; private set; }
 
-		#endregion
+		#endregion //Properties
 
 		#region Methods
 
@@ -319,7 +321,7 @@ namespace AnimationLib
 			return ImageFile.GetFile();
 		}
 
-		#endregion //methods
+		#endregion //Methods
 
 		#region File IO
 

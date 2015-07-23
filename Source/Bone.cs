@@ -14,7 +14,7 @@ namespace AnimationLib
 {
 	public class Bone
 	{
-		#region Member Variables
+		#region Fields
 
 		/// <summary>
 		/// the joint this guy attachs to
@@ -50,7 +50,7 @@ namespace AnimationLib
 			}
 		}
 
-		#endregion
+		#endregion //Fields
 
 		#region Properties
 
@@ -854,7 +854,7 @@ namespace AnimationLib
 
 		#endregion //Drawing
 
-		#endregion //methods
+		#endregion //Methods
 
 		#region Ragdoll
 
@@ -1612,27 +1612,12 @@ namespace AnimationLib
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
 		/// <param name="startElement">whether to tag element as "Asset" or "Item"</param>
 		/// <param name="scale"></param>
-		public virtual void WriteXmlFormat(XmlTextWriter xmlWriter, bool startElement, float scale)
+		public virtual void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
 		{
-			//add the xml node
-			if (startElement)
-			{
-				xmlWriter.WriteStartElement("XnaContent");
-				xmlWriter.WriteStartElement("Asset");
-			}
-			else
-			{
-				xmlWriter.WriteStartElement("Item");
-			}
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.BoneXML");
+			xmlWriter.WriteStartElement("bone");
 
 			WriteChildXmlNode(xmlWriter, scale);
 
-			if (startElement)
-			{
-				//write out extra end element for XnaContent
-				xmlWriter.WriteEndElement();
-			}
 			xmlWriter.WriteEndElement();
 		}
 
@@ -1678,7 +1663,7 @@ namespace AnimationLib
 				{
 					continue;
 				}
-				Bones[i].WriteXmlFormat(xmlWriter, false, scale);
+				Bones[i].WriteXmlFormat(xmlWriter, scale);
 			}
 			xmlWriter.WriteEndElement();
 		}

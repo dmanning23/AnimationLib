@@ -26,8 +26,7 @@ namespace AnimationLib
 		/// </summary>
 		public PhysicsCircle()
 		{
-			LocalPosition = new Vector2(0.0f);
-			LocalRadius = 0.0f;
+			LocalPosition = Vector2.Zero;
 		}
 
 		public void Reset(Vector2 position)
