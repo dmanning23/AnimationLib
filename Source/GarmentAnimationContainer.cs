@@ -27,27 +27,27 @@ namespace AnimationLib
 		{
 			get
 			{
-				Debug.Assert(null != Model);
-				Debug.Assert(Model is GarmentBone);
-				GarmentBone myModel = Model as GarmentBone;
-				return myModel.GarmentName;
+				Debug.Assert(null != Skeleton);
+				Debug.Assert(Skeleton.RootBone is GarmentBone);
+				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
+				return mySkeleton.GarmentName;
 			}
 			set 
 			{
- 				Debug.Assert(null != Model);
-				Debug.Assert(Model is GarmentBone);
-				GarmentBone myModel = Model as GarmentBone;
-				myModel.GarmentName = value;
+ 				Debug.Assert(null != Skeleton);
+				Debug.Assert(Skeleton.RootBone is GarmentBone);
+				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
+				mySkeleton.GarmentName = value;
 			}
 		}
 
-		private GarmentBone GarmentModel
+		private GarmentBone GarmentSkeleton
 		{
 			get
 			{
-				Debug.Assert(null != Model);
-				Debug.Assert(Model is GarmentBone);
-				return Model as GarmentBone;
+				Debug.Assert(null != Skeleton);
+				Debug.Assert(Skeleton.RootBone is GarmentBone);
+				return Skeleton.RootBone as GarmentBone;
 			}
 		}
 
@@ -67,19 +67,19 @@ namespace AnimationLib
 		/// <summary>
 		/// Add this garment to the skeleton structure
 		/// </summary>
-		public void AddToModel()
+		public void AddToSkeleton()
 		{
 			//add all the garment bones to the bones they attach to
-			GarmentModel.AddToModel();
+			GarmentSkeleton.AddToSkeleton();
 		}
 
 		/// <summary>
 		/// Remove this garment from the skeleton structure
 		/// </summary>
-		public void RemoveFromModel()
+		public void RemoveFromSkeleton()
 		{
 			//remove all the garment bones from the bones they attach to
-			GarmentModel.RemoveFromModel();
+			GarmentSkeleton.RemoveFromSkeleton();
 		}
 
 		/// <summary>
@@ -112,7 +112,7 @@ namespace AnimationLib
 			//if there is no animation, the bone is invisible, hide the garment bone.
 			if (null == CurrentAnimation)
 			{
-				Model.Hide();
+				Skeleton.Hide();
 			}
 			else
 			{
@@ -132,11 +132,11 @@ namespace AnimationLib
 			float rotation,
 			bool ignoreRagdoll)
 		{
-			Debug.Assert(null != Model);
+			Debug.Assert(null != Skeleton);
 
 			//Apply teh current animation to the bones and stuff
 			var currentKeyBone = CurrentAnimation.KeyBone;
-			GarmentModel.UpdateBaseBone(time,
+			GarmentSkeleton.UpdateBaseBone(time,
 				position,
 				currentKeyBone,
 				rotation,
@@ -148,7 +148,7 @@ namespace AnimationLib
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
 			{
-				Model.RestartAnimation();
+				Skeleton.RestartAnimation();
 				ResetRagdoll = false;
 			}
 		}
@@ -156,15 +156,15 @@ namespace AnimationLib
 		/// <summary>
 		/// Overridden methoed to create the correct type of bone
 		/// </summary>
-		protected override void CreateBone()
+		public override Bone CreateBone()
 		{
-			Debug.Assert(null == Model);
-			Model = new GarmentBone(this);
+			Debug.Assert(null == Skeleton);
+			return new GarmentBone(this);
 		}
 
 		public override string ToString()
 		{
-			return GarmentName + "-" + Model.Name;
+			return GarmentName + "-" + Skeleton.Name;
 		}
 
 		#endregion //Methods
@@ -178,7 +178,7 @@ namespace AnimationLib
 		public void SetGarmentBones(Bone model)
 		{
 			//find a Bone with the same name as the garment bone
-			var myGarmentBone = GarmentModel;
+			var myGarmentBone = GarmentSkeleton;
 			var myBone = model.GetBone(myGarmentBone.ParentBoneName);
 			Debug.Assert(null != myBone);
 			myGarmentBone.ParentBone = myBone;

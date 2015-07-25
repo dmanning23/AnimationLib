@@ -68,19 +68,9 @@ namespace AnimationLib
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.CircleXML");
-
-			//write out joint offset
-			xmlWriter.WriteStartElement("center");
-			xmlWriter.WriteString(LocalPosition.X + " " +
+			xmlWriter.WriteAttributeString("center", LocalPosition.X + " " +
 				LocalPosition.Y);
-			xmlWriter.WriteEndElement();
-
-			//write first limit 
-			xmlWriter.WriteStartElement("radius");
-			xmlWriter.WriteString(LocalRadius.ToString());
-			xmlWriter.WriteEndElement();
-
+			xmlWriter.WriteAttributeString("radius", LocalRadius.ToString());
 			xmlWriter.WriteEndElement();
 		}
 

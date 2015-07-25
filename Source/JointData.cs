@@ -143,76 +143,6 @@ namespace AnimationLib
 		/// <returns>bool: whether or not it was able to read from the xml</returns>
 		public bool ReadXmlFormat(XmlNode node, Image image)
 		{
-#if DEBUG
-			if ("Item" != node.Name)
-			{
-				Debug.Assert(false);
-				return false;
-			}
-
-			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = node.Attributes;
-			for (int i = 0; i < mapAttributes.Count; i++)
-			{
-				//will only have the name attribute
-				var name = mapAttributes.Item(i).Name;
-				var value = mapAttributes.Item(i).Value;
-
-				if ("Type" == name)
-				{
-					if ("AnimationLib.JointDataXML" != value)
-					{
-						Debug.Assert(false);
-						return false;
-					}
-				}
-			}
-#endif
-
-			//Read in child nodes
-			if (node.HasChildNodes)
-			{
-				for (XmlNode childNode = node.FirstChild;
-					null != childNode;
-					childNode = childNode.NextSibling)
-				{
-					//what is in this node?
-					var name = childNode.Name;
-					var value = childNode.InnerText;
-
-					switch (name)
-					{
-						case "location":
-						{
-							Location = value.ToVector2();
-						}
-						break;
-						case "limit1":
-						{
-							float fMyLimit = Convert.ToSingle(value);
-							FirstLimit = MathHelper.ToRadians(fMyLimit);
-						}
-						break;
-						case "limit2":
-						{
-							float fMyLimit = Convert.ToSingle(value);
-							SecondLimit = MathHelper.ToRadians(fMyLimit);
-						}
-						break;
-						case "FloatRadius":
-						{
-							FloatRadius = Convert.ToSingle(value);
-						}
-						break;
-						case "FloatOrRotate":
-						{
-							Floating = Convert.ToBoolean(value);
-						}
-						break;
-					}
-				}
-			}
-
 			//get the vector from the anchor position to this joint position
 			_anchorVect = Location - image.AnchorCoord;
 			Length = _anchorVect.Length();
@@ -221,45 +151,14 @@ namespace AnimationLib
 		}
 
 		/// <summary>
-		/// Write this dude out to the xml format
+		/// Redo the whole scale of this model
 		/// </summary>
-		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
 		/// <param name="scale"></param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
+		public void Rescale(float scale)
 		{
-			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.JointDataXML");
+			Location = Location*scale;
 
-			//write out joint offset
-			xmlWriter.WriteStartElement("location");
-			xmlWriter.WriteString((_location.X * scale).ToString() + " " +
-				(_location.Y * scale).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write first limit 
-			xmlWriter.WriteStartElement("limit1");
-			float fLimit1 = Helper.ClampAngle(FirstLimit);
-			xmlWriter.WriteString(MathHelper.ToDegrees(fLimit1).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write 2nd limit 
-			xmlWriter.WriteStartElement("limit2");
-			float fLimit2 = Helper.ClampAngle(SecondLimit);
-			xmlWriter.WriteString(MathHelper.ToDegrees(fLimit2).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out float radius
-			xmlWriter.WriteStartElement("FloatRadius");
-			xmlWriter.WriteString((FloatRadius * scale).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out whether it uses float or rotate ragdoll
-			xmlWriter.WriteStartElement("FloatOrRotate");
-			xmlWriter.WriteString(Floating ? "true" : "false");
-			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteEndElement();
+			FloatRadius *= scale;
 		}
 
 		#endregion

@@ -61,14 +61,8 @@ namespace AnimationLib
 		public void WriteXmlFormat(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.JointXML");
-
-			//write out upper left coords
-			xmlWriter.WriteStartElement("name");
-			xmlWriter.WriteString(Name);
-			xmlWriter.WriteEndElement();
-
+			xmlWriter.WriteStartElement("joint");
+			xmlWriter.WriteAttributeString("name", Name);
 			xmlWriter.WriteEndElement();
 		}
 

@@ -154,11 +154,13 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
 		/// <param name="scale"></param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
+		public void WriteXmlFormat(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.ImageXML");
+			xmlWriter.WriteStartElement("image");
+
+			//write out filename to use
+			xmlWriter.WriteAttributeString("filename", ImageFile.GetRelFilename());
 
 			//write out upper left coords
 			xmlWriter.WriteStartElement("upperleft");
@@ -174,37 +176,41 @@ namespace AnimationLib
 
 			//write out lower right coords
 			xmlWriter.WriteStartElement("anchorcoord");
-			xmlWriter.WriteString((_anchorCoord.X * scale).ToString() + " " +
-				(_anchorCoord.Y * scale).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out filename to use
-			xmlWriter.WriteStartElement("filename");
-			xmlWriter.WriteString(ImageFile.GetRelFilename());
+			xmlWriter.WriteString(AnchorCoord.X.ToString() + " " +
+				AnchorCoord.Y.ToString());
 			xmlWriter.WriteEndElement();
 
 			//write out joint locations
-			xmlWriter.WriteStartElement("joints");
-			for (var i = 0; i < JointCoords.Count; i++)
+			if (JointCoords.Count > 0)
 			{
-				JointCoords[i].WriteXmlFormat(xmlWriter, scale);
+				xmlWriter.WriteStartElement("joints");
+				foreach (var jointCoord in JointCoords)
+				{
+					jointCoord.WriteXmlFormat(xmlWriter);
+				}
+				xmlWriter.WriteEndElement();
 			}
-			xmlWriter.WriteEndElement();
 
 			//write out polygon info
-			xmlWriter.WriteStartElement("circles");
-			for (var i = 0; i < Circles.Count; i++)
+			if (Circles.Count > 0)
 			{
-				Circles[i].WriteXmlFormat(xmlWriter);
+				xmlWriter.WriteStartElement("circles");
+				foreach (var circle in Circles)
+				{
+					circle.WriteXmlFormat(xmlWriter);
+				}
+				xmlWriter.WriteEndElement();
 			}
-			xmlWriter.WriteEndElement();
 
-			xmlWriter.WriteStartElement("lines");
-			for (var i = 0; i < Lines.Count; i++)
+			if (Lines.Count > 0)
 			{
-				Lines[i].WriteXmlFormat(xmlWriter);
+				xmlWriter.WriteStartElement("lines");
+				foreach (var line in Lines)
+				{
+					line.WriteXmlFormat(xmlWriter);
+				}
+				xmlWriter.WriteEndElement();
 			}
-			xmlWriter.WriteEndElement();
 
 			xmlWriter.WriteEndElement();
 		}

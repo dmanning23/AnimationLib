@@ -70,8 +70,7 @@ namespace AnimationLib
 		public void WriteXmlFormat(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.LineXML");
+			xmlWriter.WriteStartElement("line");
 
 			//write out joint offset
 			xmlWriter.WriteStartElement("start");

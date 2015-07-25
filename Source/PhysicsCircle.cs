@@ -93,96 +93,16 @@ namespace AnimationLib
 			Radius = inst.Radius;
 		}
 
+		/// <summary>
+		/// Redo the whole scale of this model
+		/// </summary>
+		/// <param name="scale"></param>
+		public void Rescale(float scale)
+		{
+			LocalPosition = LocalPosition * scale;
+			LocalRadius *= scale;
+		}
+
 		#endregion //Methods
-
-		#region File IO
-
-		/// <summary>
-		/// Read in all the bone information from a file in the serialized XML format
-		/// </summary>
-		/// <param name="node">The xml node to read from</param>
-		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXmlFormat(XmlNode node)
-		{
-#if DEBUG
-			if ("Item" != node.Name)
-			{
-				Debug.Assert(false);
-				return false;
-			}
-
-			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = node.Attributes;
-			for (int i = 0; i < mapAttributes.Count; i++)
-			{
-				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
-				if ("Type" == strName)
-				{
-					if ("AnimationLib.CircleXML" != strValue)
-					{
-						Debug.Assert(false);
-						return false;
-					}
-				}
-			}
-#endif
-
-			//Read in child nodes
-			if (node.HasChildNodes)
-			{
-				for (XmlNode childNode = node.FirstChild;
-					null != childNode;
-					childNode = childNode.NextSibling)
-				{
-					//what is in this node?
-					string strName = childNode.Name;
-					string strValue = childNode.InnerText;
-
-					if (strName == "center")
-					{
-						LocalPosition = strValue.ToVector2();
-					}
-					else if (strName == "radius")
-					{
-						LocalRadius = Convert.ToSingle(strValue);
-					}
-					else
-					{
-						Debug.Assert(false);
-						return false;
-					}
-				}
-			}
-
-			return true;
-		}
-
-		/// <summary>
-		/// Write this dude out to the xml format
-		/// </summary>
-		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter)
-		{
-			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.CircleXML");
-
-			//write out joint offset
-			xmlWriter.WriteStartElement("center");
-			xmlWriter.WriteString(LocalPosition.X + " " +
-				LocalPosition.Y);
-			xmlWriter.WriteEndElement();
-
-			//write first limit 
-			xmlWriter.WriteStartElement("radius");
-			xmlWriter.WriteString(LocalRadius.ToString());
-			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteEndElement();
-		}
-
-		#endregion //File IO
 	}
 }

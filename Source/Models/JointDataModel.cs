@@ -44,8 +44,8 @@ namespace AnimationLib
 		public JointDataModel()
 		{
 			Location = Vector2.Zero;
-			FirstLimit = 0.0f;
-			SecondLimit = 0.0f;
+			FirstLimit = -180.0f;
+			SecondLimit = 180.0f;
 			FloatRadius = 0.0f;
 			Floating = false;
 		}
@@ -101,37 +101,41 @@ namespace AnimationLib
 		public void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
 		{
 			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.JointDataXML");
+			xmlWriter.WriteStartElement("jointData");
+
+			//write first limit
+			if (-180.0f != FirstLimit)
+			{
+				float fLimit1 = Helper.ClampAngle(FirstLimit);
+				xmlWriter.WriteAttributeString("limit1", MathHelper.ToDegrees(fLimit1).ToString());
+			}
+
+			//write 2nd limit 
+			if (180.0f != SecondLimit)
+			{
+				float fLimit2 = Helper.ClampAngle(SecondLimit);
+				xmlWriter.WriteAttributeString("limit2", MathHelper.ToDegrees(fLimit2).ToString());
+			}
+
+			//write out float radius
+			if (0.0f != FloatRadius)
+			{
+				float fLimit2 = Helper.ClampAngle(SecondLimit);
+				xmlWriter.WriteAttributeString("FloatRadius", FloatRadius.ToString());
+			}
+
+			//write out whether it uses float or rotate ragdoll
+			if (Floating)
+			{
+				xmlWriter.WriteAttributeString("FloatOrRotate", "true");
+			}
 
 			//write out joint offset
 			xmlWriter.WriteStartElement("location");
-			xmlWriter.WriteString((_location.X * scale).ToString() + " " +
-				(_location.Y * scale).ToString());
+			xmlWriter.WriteString(Location.X.ToString() + " " +
+				Location.Y.ToString());
 			xmlWriter.WriteEndElement();
-
-			//write first limit 
-			xmlWriter.WriteStartElement("limit1");
-			float fLimit1 = Helper.ClampAngle(FirstLimit);
-			xmlWriter.WriteString(MathHelper.ToDegrees(fLimit1).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write 2nd limit 
-			xmlWriter.WriteStartElement("limit2");
-			float fLimit2 = Helper.ClampAngle(SecondLimit);
-			xmlWriter.WriteString(MathHelper.ToDegrees(fLimit2).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out float radius
-			xmlWriter.WriteStartElement("FloatRadius");
-			xmlWriter.WriteString((FloatRadius * scale).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out whether it uses float or rotate ragdoll
-			xmlWriter.WriteStartElement("FloatOrRotate");
-			xmlWriter.WriteString(Floating ? "true" : "false");
-			xmlWriter.WriteEndElement();
-
+			
 			xmlWriter.WriteEndElement();
 		}
 

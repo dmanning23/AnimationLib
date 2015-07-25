@@ -1443,231 +1443,23 @@ namespace AnimationLib
 			}
 		}
 
-		#endregion //Tools
-
-		#region File IO
-
 		/// <summary>
-		/// Read in all the bone information from a file in the serialized XML format
+		/// Redo the whole scale of this model
 		/// </summary>
-		/// <param name="node">The xml node to read from</param>
-		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public virtual bool ReadXmlFormat(XmlNode node)
-		{
-			Debug.Assert(null != node);
-
-#if DEBUG
-			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = node.Attributes;
-			for (var i = 0; i < mapAttributes.Count; i++)
-			{
-				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string value = mapAttributes.Item(i).Value;
-				if ("Type" != strName)
-				{
-					Debug.Assert(false);
-					return false;
-				}
-			}
-#endif
-
-			//Read in child nodes
-			if (node.HasChildNodes)
-			{
-				for (XmlNode childNode = node.FirstChild;
-					null != childNode;
-					childNode = childNode.NextSibling)
-				{
-					if (!ParseChildXmlNode(childNode))
-					{
-						Debug.Assert(false);
-						return false;
-					}
-				}
-			}
-
-			//set the 'foot' flag as appropriate
-			if (Name == "Left Foot" || Name == "Right Foot")
-			{
-				BoneType = EBoneType.Foot;
-			}
-
-			return true;
-		}
-
-		/// <summary>
-		/// Parse a child node of this BoneXML
-		/// </summary>
-		/// <param name="childNode">teh node to parse</param>
-		/// <returns></returns>
-		protected virtual bool ParseChildXmlNode(XmlNode childNode)
-		{
-			//what is in this node?
-			var name = childNode.Name;
-			var value = childNode.InnerText;
-
-			switch (name)
-			{
-				case "name":
-				{
-					//set the name of this bone
-					Name = value;
-				}
-				break;
-				case "type":
-				{
-					if ("Foot" == value)
-					{
-						BoneType = EBoneType.Foot;
-					}
-					else if ("Weapon" == value)
-					{
-						BoneType = EBoneType.Weapon;
-					}
-					else
-					{
-						BoneType = EBoneType.Normal;
-					}
-				}
-				break;
-				case "colorable":
-				{
-					Colorable = Convert.ToBoolean(value);
-				}
-				break;
-				case "joints":
-				{
-					//Read in all the joints
-					if (childNode.HasChildNodes)
-					{
-						for (XmlNode jointNode = childNode.FirstChild;
-							null != jointNode;
-							jointNode = jointNode.NextSibling)
-						{
-							Joint childJoint = new Joint(Joints.Count);
-							if (!childJoint.ReadXmlFormat(jointNode))
-							{
-								Debug.Assert(false);
-								return false;
-							}
-							Joints.Add(childJoint);
-						}
-					}
-				}
-				break;
-				case "images":
-				{
-					//Read in all the images
-					if (childNode.HasChildNodes)
-					{
-						for (XmlNode imageNode = childNode.FirstChild;
-							null != imageNode;
-							imageNode = imageNode.NextSibling)
-						{
-							Image childImage = new Image();
-							if (!childImage.ReadXmlFormat(imageNode))
-							{
-								Debug.Assert(false);
-								return false;
-							}
-							Images.Add(childImage);
-						}
-					}
-				}
-				break;
-				case "bones":
-				{
-					//read in all the child bones
-					if (childNode.HasChildNodes)
-					{
-						for (XmlNode boneNode = childNode.FirstChild;
-							null != boneNode;
-							boneNode = boneNode.NextSibling)
-						{
-							Bone childBone = CreateBone();
-							if (!childBone.ReadXmlFormat(boneNode))
-							{
-								Debug.Assert(false);
-								return false;
-							}
-							Bones.Add(childBone);
-						}
-					}
-				}
-				break;
-				default:
-				{
-					Debug.Assert(false);
-					return false;
-				}
-			}
-
-			return true;
-		}
-
-		/// <summary>
-		/// Write this dude out to the xml format
-		/// </summary>
-		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		/// <param name="startElement">whether to tag element as "Asset" or "Item"</param>
 		/// <param name="scale"></param>
-		public virtual void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
+		public void Rescale(float scale)
 		{
-			xmlWriter.WriteStartElement("bone");
-
-			WriteChildXmlNode(xmlWriter, scale);
-
-			xmlWriter.WriteEndElement();
-		}
-
-		public virtual void WriteChildXmlNode(XmlTextWriter xmlWriter, float scale)
-		{
-			//add the name attribute
-			xmlWriter.WriteStartElement("name");
-			xmlWriter.WriteString(Name);
-			xmlWriter.WriteEndElement();
-
-			//add the type attribute
-			xmlWriter.WriteStartElement("type");
-			xmlWriter.WriteString(BoneType.ToString());
-			xmlWriter.WriteEndElement();
-
-			//add whether or not this bone ignores palette swap
-			xmlWriter.WriteStartElement("colorable");
-			xmlWriter.WriteString(Colorable ? "true" : "false");
-			xmlWriter.WriteEndElement();
-
-			//write out joints
-			xmlWriter.WriteStartElement("joints");
-			for (var i = 0; i < Joints.Count; i++)
-			{
-				Joints[i].WriteXmlFormat(xmlWriter);
-			}
-			xmlWriter.WriteEndElement();
-
-			//write out images
-			xmlWriter.WriteStartElement("images");
 			for (var i = 0; i < Images.Count; i++)
 			{
-				Images[i].WriteXmlFormat(xmlWriter, scale);
+				Images[i].Rescale(scale);
 			}
-			xmlWriter.WriteEndElement();
 
-			//write out child bones
-			xmlWriter.WriteStartElement("bones");
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				//dont write out child garment bones
-				if (Bones[i] is GarmentBone)
-				{
-					continue;
-				}
-				Bones[i].WriteXmlFormat(xmlWriter, scale);
+				Bones[i].Rescale(scale);
 			}
-			xmlWriter.WriteEndElement();
 		}
 
-		#endregion //File IO
+		#endregion //Tools
 	}
 }

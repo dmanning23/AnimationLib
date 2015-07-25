@@ -91,11 +91,29 @@
     <Compile Include="..\Source\AnimationXml.cs">
       <Link>AnimationXml.cs</Link>
     </Compile>
+    <Compile Include="..\Source\Models\AnimationContainerModel.cs">
+      <Link>Models\AnimationContainerModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Models\AnimationModel.cs">
+      <Link>Models\AnimationModel.cs</Link>
+    </Compile>
     <Compile Include="..\Source\Models\BoneModel.cs">
       <Link>Models\BoneModel.cs</Link>
     </Compile>
+    <Compile Include="..\Source\Models\GarmentAnimationContainerModel.cs">
+      <Link>Models\GarmentAnimationContainerModel.cs</Link>
+    </Compile>
     <Compile Include="..\Source\Models\GarmentBoneModel.cs">
       <Link>Models\GarmentBoneModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Models\GarmentFragmentModel.cs">
+      <Link>Models\GarmentFragmentModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Models\GarmentModel.cs">
+      <Link>Models\GarmentModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Models\GarmentSkeletonModel.cs">
+      <Link>Models\GarmentSkeletonModel.cs</Link>
     </Compile>
     <Compile Include="..\Source\Models\ImageModel.cs">
       <Link>Models\ImageModel.cs</Link>
@@ -105,6 +123,9 @@
     </Compile>
     <Compile Include="..\Source\Models\JointModel.cs">
       <Link>Models\JointModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\Models\KeyJointModel.cs">
+      <Link>Models\KeyJointModel.cs</Link>
     </Compile>
     <Compile Include="..\Source\Models\PhysicsCircleModel.cs">
       <Link>Models\PhysicsCircleModel.cs</Link>
@@ -198,9 +219,7 @@
       <Link>Commands\SetLineData.cs</Link>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\..\BasicPrimitiveBuddy\Windows\BasicPrimitiveBuddy.Windows.csproj">

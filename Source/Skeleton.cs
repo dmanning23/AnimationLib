@@ -19,7 +19,7 @@ namespace AnimationLib
 	/// <summary>
 	/// This is the object that contains the whole skeleton + all animations
 	/// </summary>
-	public class Skeleton : XmlFileBuddy
+	public class Skeleton
 	{
 		#region Properties
 
@@ -43,8 +43,7 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public Skeleton(AnimationContainer animations, Filename filename, IRenderer renderer)
-			: base("skeleton", filename)
+		public Skeleton(AnimationContainer animations, IRenderer renderer)
 		{
 			Animations = animations;
 			Renderer = renderer;
@@ -56,11 +55,11 @@ namespace AnimationLib
 
 		#region File IO
 
-		public override void ReadXmlFile()
+		public void ReadXmlFile()
 		{
 			Animations.CreateBone();
 
-			base.ReadXmlFile();
+			//base.ReadXmlFile();
 
 			//Set the anchor joints of the whole model
 			RootBone.SetAnchorJoint(null);
@@ -69,21 +68,11 @@ namespace AnimationLib
 			RootBone.LoadImages(Renderer);
 		}
 
-		public override void ParseXmlNode(XmlNode xmlNode)
-		{
-			RootBone.ReadXmlFormat(xmlNode);
-		}
-
-		public override void WriteXml()
+		public void WriteXml()
 		{
 			//first rename all the joints so they are correct
 			RootBone.RenameJoints(Animations);
-			base.WriteXml();
-		}
-
-		public override void WriteXmlNodes(XmlTextWriter xmlFile)
-		{
-			RootBone.WriteXmlFormat(xmlFile, Scale);
+			//base.WriteXml();
 		}
 
 		#endregion //Model File IO

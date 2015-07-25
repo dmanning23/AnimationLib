@@ -41,8 +41,8 @@ namespace AnimationLib
 			get 
 			{
 				Debug.Assert(null != _animationContainer);
-				Debug.Assert(null != _animationContainer.Model);
-				return AnimationContainer.Model.Name; 
+				Debug.Assert(null != _animationContainer.Skeleton);
+				return AnimationContainer.Skeleton.Name; 
 			}
 		}
 
@@ -61,19 +61,19 @@ namespace AnimationLib
 		/// <summary>
 		/// Add this garment to the skeleton structure
 		/// </summary>
-		public void AddToModel()
+		public void AddToSkeleton()
 		{
 			//add all the garment bones to the bones they attach to
-			_animationContainer.AddToModel();
+			_animationContainer.AddToSkeleton();
 		}
 
 		/// <summary>
 		/// Remove this garment from the skeleton structure
 		/// </summary>
-		public void RemoveFromModel()
+		public void RemoveFromSkeleton()
 		{
 			//remove all the garment bones from the bones they attach to
-			_animationContainer.RemoveFromModel();
+			_animationContainer.RemoveFromSkeleton();
 		}
 
 		#region Tools
@@ -84,7 +84,7 @@ namespace AnimationLib
 		/// <param name="listWeapons"></param>
 		public void GetAllWeaponBones(List<string> listWeapons)
 		{
-			AnimationContainer.Model.GetAllWeaponBones(listWeapons);
+			AnimationContainer.Skeleton.GetAllWeaponBones(listWeapons);
 		}
 
 		#endregion //Tools
@@ -163,7 +163,7 @@ namespace AnimationLib
 					{
 						//read in the model 
 						var modelFile = new Filename(value);
-						if (!AnimationContainer.ReadModelXml(modelFile, renderer))
+						if (!AnimationContainer.ReadSkeletonXml(modelFile, renderer))
 						{
 							Debug.Assert(false);
 							return false;
@@ -203,7 +203,7 @@ namespace AnimationLib
 
 			//write out model filename to use
 			xmlWriter.WriteStartElement("model");
-			xmlWriter.WriteString(AnimationContainer.ModelFile.GetRelFilename());
+			xmlWriter.WriteString(AnimationContainer.SkeletonFile.GetRelFilename());
 			xmlWriter.WriteEndElement();
 
 			//write out animation filename to use
@@ -214,7 +214,7 @@ namespace AnimationLib
 			xmlWriter.WriteEndElement();
 
 			//write out the model file
-			AnimationContainer.WriteModelXml(AnimationContainer.ModelFile, scale);
+			AnimationContainer.WriteSkeletonXml(AnimationContainer.SkeletonFile, scale);
 
 			//write out the animation file
 			AnimationContainer.WriteAnimationXml(AnimationContainer.AnimationFile);

@@ -38,7 +38,7 @@ namespace AnimationLib
 		/// <summary>
 		/// get access to the model thing
 		/// </summary>
-		public Skeleton Model { get; protected set; }
+		public Skeleton Skeleton { get; protected set; }
 
 		/// <summary>
 		/// The current animation being played
@@ -97,7 +97,7 @@ namespace AnimationLib
 		/// </summary>
 		public AnimationContainer()
 		{
-			Model = null;
+			Skeleton = null;
 			Animations = new List<Animation>();
 			CurrentAnimationIndex = -1;
 			StopWatch = new GameClock();
@@ -202,12 +202,12 @@ namespace AnimationLib
 			float rotation,
 			bool ignoreRagdoll)
 		{
-			Debug.Assert(null != Model);
+			Debug.Assert(null != Skeleton);
 			Debug.Assert(null != CurrentAnimation);
 
 			//Apply teh current animation to the bones and stuff
-			Model.RootBone.AnchorJoint.Position = position;
-			Model.RootBone.Update(time,
+			Skeleton.RootBone.AnchorJoint.Position = position;
+			Skeleton.RootBone.Update(time,
 				position,
 				CurrentAnimation.KeyBone,
 				rotation,
@@ -219,7 +219,7 @@ namespace AnimationLib
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
 			{
-				Model.RootBone.RestartAnimation();
+				Skeleton.RootBone.RestartAnimation();
 				ResetRagdoll = false;
 			}
 		}
@@ -237,29 +237,29 @@ namespace AnimationLib
 			}
 
 			//add gravity to the ragdoll physics
-			Model.RootBone.AddGravity(RagdollConstants.Gravity);
+			Skeleton.RootBone.AddGravity(RagdollConstants.Gravity);
 
 			//accumulate all the force
-			Model.RootBone.AccumulateForces(RagdollConstants.Spring, scale);
+			Skeleton.RootBone.AccumulateForces(RagdollConstants.Spring, scale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
 			if (fTimeDelta > 0.0f)
 			{
-				Model.RootBone.RunVerlet(fTimeDelta);
+				Skeleton.RootBone.RunVerlet(fTimeDelta);
 			}
 
-			Model.RootBone.SolveLimits(0.0f);
-			Model.RootBone.SolveConstraints(false, scale);
+			Skeleton.RootBone.SolveLimits(0.0f);
+			Skeleton.RootBone.SolveConstraints(false, scale);
 
 			//solve all the constraints
 			for (int i = 0; i < 2; i++)
 			{
-				Model.RootBone.SolveConstraints(false, scale);
+				Skeleton.RootBone.SolveConstraints(false, scale);
 			}
 
 			//run through the post update so the matrix is correct
-			Model.RootBone.PostUpdate(scale, false);
+			Skeleton.RootBone.PostUpdate(scale, false);
 		}
 
 		/// <summary>
@@ -283,10 +283,10 @@ namespace AnimationLib
 		/// <param name="paletteSwap">the color to use for the palette swap</param>
 		public void Render(DrawList drawList, Color paletteSwap)
 		{
-			if (null != Model)
+			if (null != Skeleton)
 			{
 				//send teh model to teh draw list
-				Model.RootBone.Render(drawList, paletteSwap);
+				Skeleton.RootBone.Render(drawList, paletteSwap);
 			}
 		}
 
@@ -380,17 +380,17 @@ namespace AnimationLib
 
 		#endregion //Methods
 
-		#region Model File IO
+		#region Skeleton File IO
 
 		/// <summary>
 		/// Read a model file from a serialized xml resource
 		/// </summary>
 		/// <param name="filename">filename of the resource to load</param>
 		/// <param name="renderer">renderer to use to load bitmap images</param>
-		public bool ReadModelXml(Filename filename, IRenderer renderer)
+		public bool ReadSkeletonXml(Filename filename, IRenderer renderer)
 		{
-			Model = new Skeleton(this, filename, renderer);
-			Model.ReadXmlFile();
+			Skeleton = new Skeleton(this, filename, renderer);
+			Skeleton.ReadXmlFile();
 		}
 
 		/// <summary>
@@ -398,14 +398,14 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="filename">name of the file to dump to</param>
 		/// <param name="scale">How much to scale the model when writing it out</param>
-		public virtual void WriteModelXml(Filename filename, float scale)
+		public virtual void WriteSkeletonXml(Filename filename, float scale)
 		{
-			Model.Scale = scale;
-			Model.Filename = filename;
-			Model.WriteXml();
+			Skeleton.Scale = scale;
+			Skeleton.Filename = filename;
+			Skeleton.WriteXml();
 		}
 
-		#endregion //Model File IO
+		#endregion //Skeleton File IO
 
 		#region Animation File IO
 
@@ -415,7 +415,7 @@ namespace AnimationLib
 		/// <param name="filename">filename of the animations to load</param>
 		public virtual bool ReadAnimationXml(Filename filename)
 		{
-			Debug.Assert(null != Model); //need a model to read in animations
+			Debug.Assert(null != Skeleton); //need a model to read in animations
 			Animations.Clear();
 
 			//gonna have to do this the HARD way
@@ -519,9 +519,9 @@ namespace AnimationLib
 				null != childNode;
 				childNode = childNode.NextSibling)
 			{
-				Animation myAnimation = new Animation(Model);
-				Debug.Assert(null != Model);
-				if (!myAnimation.ReadXmlFormat(childNode, Model))
+				Animation myAnimation = new Animation(Skeleton);
+				Debug.Assert(null != Skeleton);
+				if (!myAnimation.ReadXmlFormat(childNode, Skeleton))
 				{
 					Debug.Assert(false);
 					return false;
@@ -535,8 +535,8 @@ namespace AnimationLib
 		public void WriteAnimationXml(Filename fileName)
 		{
 			//first rename all the joints so they are correct
-			Debug.Assert(null != Model);
-			Model.RenameJoints(this);
+			Debug.Assert(null != Skeleton);
+			Skeleton.RenameJoints(this);
 
 			//open the file, create it if it doesnt exist yet
 			var xmlWriter = new XmlTextWriter(fileName.File, null);
@@ -555,8 +555,8 @@ namespace AnimationLib
 			xmlWriter.WriteStartElement("animations");
 			for (int i = 0; i < Animations.Count; i++)
 			{
-				Debug.Assert(null != Model);
-				Animations[i].WriteXmlFormat(xmlWriter, Model);
+				Debug.Assert(null != Skeleton);
+				Animations[i].WriteXmlFormat(xmlWriter, Skeleton);
 			}
 			xmlWriter.WriteEndElement();
 

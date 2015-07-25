@@ -321,10 +321,6 @@ namespace AnimationLib
 			return ImageFile.GetFile();
 		}
 
-		#endregion //Methods
-
-		#region File IO
-
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
@@ -468,65 +464,29 @@ namespace AnimationLib
 		}
 
 		/// <summary>
-		/// Write this dude out to the xml format
+		/// Redo the whole scale of this model
 		/// </summary>
-		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
 		/// <param name="scale"></param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
+		public void Rescale(float scale)
 		{
-			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.ImageXML");
+			AnchorCoord = AnchorCoord * scale;
 
-			//write out upper left coords
-			xmlWriter.WriteStartElement("upperleft");
-			xmlWriter.WriteString(UpperLeft.X.ToString() + " " +
-				UpperLeft.Y.ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out lower right coords
-			xmlWriter.WriteStartElement("lowerright");
-			xmlWriter.WriteString(LowerRight.X.ToString() + " " +
-				LowerRight.Y.ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out lower right coords
-			xmlWriter.WriteStartElement("anchorcoord");
-			xmlWriter.WriteString((_anchorCoord.X * scale).ToString() + " " +
-				(_anchorCoord.Y * scale).ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out filename to use
-			xmlWriter.WriteStartElement("filename");
-			xmlWriter.WriteString(ImageFile.GetRelFilename());
-			xmlWriter.WriteEndElement();
-
-			//write out joint locations
-			xmlWriter.WriteStartElement("joints");
 			for (var i = 0; i < JointCoords.Count; i++)
 			{
-				JointCoords[i].WriteXmlFormat(xmlWriter, scale);
+				JointCoords[i].Rescale(scale);
 			}
-			xmlWriter.WriteEndElement();
-
-			//write out polygon info
-			xmlWriter.WriteStartElement("circles");
+			
 			for (var i = 0; i < Circles.Count; i++)
 			{
-				Circles[i].WriteXmlFormat(xmlWriter);
+				Circles[i].Rescale(scale);
 			}
-			xmlWriter.WriteEndElement();
 
-			xmlWriter.WriteStartElement("lines");
 			for (var i = 0; i < Lines.Count; i++)
 			{
-				Lines[i].WriteXmlFormat(xmlWriter);
+				Lines[i].Rescale(scale);
 			}
-			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteEndElement();
 		}
 
-		#endregion //File IO
+		#endregion //Methods
 	}
 }

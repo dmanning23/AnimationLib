@@ -197,48 +197,57 @@ namespace AnimationLib
 		public virtual void WriteChildXmlNode(XmlTextWriter xmlWriter)
 		{
 			//add the name attribute
-			xmlWriter.WriteStartElement("name");
-			xmlWriter.WriteString(Name);
-			xmlWriter.WriteEndElement();
+			xmlWriter.WriteAttributeString("name", Name);
 
 			//add the type attribute
-			xmlWriter.WriteStartElement("type");
-			xmlWriter.WriteString(BoneType.ToString());
-			xmlWriter.WriteEndElement();
+			if (BoneType != EBoneType.Normal)
+			{
+				xmlWriter.WriteAttributeString("type", BoneType.ToString());
+			}
 
 			//add whether or not this bone ignores palette swap
-			xmlWriter.WriteStartElement("colorable");
-			xmlWriter.WriteString(Colorable ? "true" : "false");
-			xmlWriter.WriteEndElement();
+			if (Colorable)
+			{
+				xmlWriter.WriteAttributeString("colorable", "true");
+			}
 
 			//write out joints
-			xmlWriter.WriteStartElement("joints");
-			for (var i = 0; i < Joints.Count; i++)
+			if (Joints.Count > 0)
 			{
-				Joints[i].WriteXmlFormat(xmlWriter);
+				xmlWriter.WriteStartElement("joints");
+				foreach (var joint in Joints)
+				{
+					joint.WriteXmlFormat(xmlWriter);
+				}
+				xmlWriter.WriteEndElement();
 			}
-			xmlWriter.WriteEndElement();
 
 			//write out images
-			xmlWriter.WriteStartElement("images");
-			for (var i = 0; i < Images.Count; i++)
+			if (Images.Count > 0)
 			{
-				Images[i].WriteXmlFormat(xmlWriter);
+				xmlWriter.WriteStartElement("images");
+				foreach (var image in Images)
+				{
+					image.WriteXmlFormat(xmlWriter);
+				}
+				xmlWriter.WriteEndElement();
 			}
-			xmlWriter.WriteEndElement();
 
 			//write out child bones
-			xmlWriter.WriteStartElement("bones");
-			for (var i = 0; i < Bones.Count; i++)
+			if (Bones.Count > 0)
 			{
-				//dont write out child garment bones
-				if (Bones[i] is GarmentBone)
+				xmlWriter.WriteStartElement("bones");
+				foreach (var bone in Bones)
 				{
-					continue;
+					//dont write out child garment bones
+					if (bone is GarmentBone)
+					{
+						continue;
+					}
+					bone.WriteXmlNode(xmlWriter);
 				}
-				Bones[i].WriteXmlFormat(xmlWriter, scale);
+				xmlWriter.WriteEndElement();
 			}
-			xmlWriter.WriteEndElement();
 		}
 
 		#endregion //Methods

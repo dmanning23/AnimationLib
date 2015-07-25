@@ -65,9 +65,7 @@ namespace AnimationLib
 			xmlWriter.WriteStartElement("garmentbone");
 
 			//add the name attribute
-			xmlWriter.WriteStartElement("parentBone");
-			xmlWriter.WriteString(ParentBoneName);
-			xmlWriter.WriteEndElement();
+			xmlWriter.WriteAttributeString("parentBone", ParentBoneName);
 
 			WriteChildXmlNode(xmlWriter);
 

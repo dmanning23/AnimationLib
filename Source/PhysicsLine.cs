@@ -24,7 +24,7 @@ namespace AnimationLib
 
 		#endregion //Members
 
-		#region Members
+		#region Methods
 
 		public PhysicsLine()
 		{
@@ -81,95 +81,16 @@ namespace AnimationLib
 			Direction = inst.Direction;
 		}
 
-		#endregion //Members
-
-		#region File IO
-
 		/// <summary>
-		/// Read in all the bone information from a file in the serialized XML format
+		/// Redo the whole scale of this model
 		/// </summary>
-		/// <param name="node">The xml node to read from</param>
-		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXmlFormat(XmlNode node)
+		/// <param name="scale"></param>
+		public void Rescale(float scale)
 		{
-#if DEBUG
-			if ("Item" != node.Name)
-			{
-				Debug.Assert(false);
-				return false;
-			}
-
-			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = node.Attributes;
-			for (int i = 0; i < mapAttributes.Count; i++)
-			{
-				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
-				if ("Type" == strName)
-				{
-					if ("AnimationLib.LineXML" != strValue)
-					{
-						Debug.Assert(false);
-						return false;
-					}
-				}
-			}
-#endif
-
-			//Read in child nodes
-			if (node.HasChildNodes)
-			{
-				for (XmlNode childNode = node.FirstChild;
-					null != childNode;
-					childNode = childNode.NextSibling)
-				{
-					//what is in this node?
-					string strName = childNode.Name;
-					string strValue = childNode.InnerText;
-
-					if (strName == "start")
-					{
-						LocalStart = strValue.ToVector2();
-					}
-					else if (strName == "end")
-					{
-						LocalEnd = strValue.ToVector2();
-					}
-					else
-					{
-						Debug.Assert(false);
-					}
-				}
-			}
-
-			return true;
+			LocalStart = LocalStart * scale;
+			LocalEnd = LocalEnd * scale;
 		}
 
-		/// <summary>
-		/// Write this dude out to the xml format
-		/// </summary>
-		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter)
-		{
-			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.LineXML");
-
-			//write out joint offset
-			xmlWriter.WriteStartElement("start");
-			xmlWriter.WriteString(LocalStart.X + " " +
-				LocalStart.Y);
-			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteStartElement("end");
-			xmlWriter.WriteString(LocalEnd.X + " " +
-				LocalEnd.Y);
-			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteEndElement();
-		}
-
-		#endregion //File IO
+		#endregion //Methods
 	}
 }

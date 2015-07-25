@@ -20,7 +20,7 @@ namespace AnimationLib
 		/// <summary>
 		/// flag for whether this garment has been added to the model or not
 		/// </summary>
-		private bool _isAddedToModel;
+		private bool _isAddedToSkeleton;
 
 		#endregion //Members
 
@@ -55,7 +55,7 @@ namespace AnimationLib
 			_animationContainer = owner;
 			ParentBone = null;
 			BoneType = EBoneType.Garment;
-			_isAddedToModel = false;
+			_isAddedToSkeleton = false;
 		}
 
 		/// <summary>
@@ -91,102 +91,31 @@ namespace AnimationLib
 		/// <summary>
 		/// add to model
 		/// </summary>
-		public void AddToModel()
+		public void AddToSkeleton()
 		{
 			Debug.Assert(null != ParentBone);
 
-			if (!_isAddedToModel)
+			if (!_isAddedToSkeleton)
 			{
 				ParentBone.AddGarment(this);
-				_isAddedToModel = true;
+				_isAddedToSkeleton = true;
 			}
 		}
 
 		/// <summary>
 		/// remove from model
 		/// </summary>
-		public void RemoveFromModel()
+		public void RemoveFromSkeleton()
 		{
 			Debug.Assert(null != ParentBone);
 
-			if (_isAddedToModel)
+			if (_isAddedToSkeleton)
 			{
 				ParentBone.RemoveGarment(GarmentName);
-				_isAddedToModel = false;
+				_isAddedToSkeleton = false;
 			}
 		}
 
 		#endregion //Methods
-
-		#region File IO
-
-		/// <summary>
-		/// Parse a child node of this BoneXML
-		/// </summary>
-		/// <param name="childNode">teh node to parse</param>
-		/// <param name="rRenderer"></param>
-		/// <returns></returns>
-		protected override bool ParseChildXmlNode(XmlNode childNode)
-		{
-			//what is in this node?
-			var name = childNode.Name;
-			var value = childNode.InnerText;
-
-			if (name == "parentBone")
-			{
-				//set teh parent bone of this dude
-				ParentBoneName = value;
-			}
-			else
-			{
-				//Let the base class parse the rest of the xml
-				return base.ParseChildXmlNode(childNode);
-			}
-
-			return true;
-		}
-
-		/// <summary>
-		/// Write this dude out to the xml format
-		/// </summary>
-		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		/// <param name="startElement">whether to tag element as "Asset" or "Item"</param>
-		/// <param name="scale"></param>
-		public override void WriteXmlFormat(XmlTextWriter xmlWriter, bool startElement, float scale)
-		{
-			//add the xml node
-			if (startElement)
-			{
-				xmlWriter.WriteStartElement("XnaContent");
-				xmlWriter.WriteStartElement("Asset");
-			}
-			else
-			{
-				xmlWriter.WriteStartElement("Item");
-			}
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.GarmentBoneXML");
-
-			WriteChildXmlNode(xmlWriter, scale);
-
-			if (startElement)
-			{
-				//write out extra end element for XnaContent
-				xmlWriter.WriteEndElement();
-			}
-			xmlWriter.WriteEndElement();
-		}
-
-		public override void WriteChildXmlNode(XmlTextWriter xmlWriter, float scale)
-		{
-			//write out all the base class xml stuff
-			base.WriteChildXmlNode(xmlWriter, scale);
-
-			//add the name attribute
-			xmlWriter.WriteStartElement("parentBone");
-			xmlWriter.WriteString(ParentBoneName);
-			xmlWriter.WriteEndElement();
-		}
-
-		#endregion //File IO
 	}
 }
