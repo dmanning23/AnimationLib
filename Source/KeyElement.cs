@@ -1,23 +1,8 @@
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Xml;
-using Vector2Extensions;
 
 namespace AnimationLib
 {
-	/// <summary>
-	/// class for sorting the keyframe XML by time
-	/// </summary>
-	class KeyXmlSort : IComparer<KeyXml>
-	{
-		public int Compare(KeyXml key1, KeyXml key2)
-		{
-			return key1.time.CompareTo(key2.time);
-		}
-	}
-
 	/// <summary>
 	/// class for sorting the keyframes by time
 	/// </summary>
@@ -31,14 +16,14 @@ namespace AnimationLib
 
 	public class KeyElement
 	{
-		#region Member Variables
+		#region Fields
 
 		/// <summary>
 		/// the translation for this frame
 		/// </summary>
 		private Vector2 _translation;
 
-		#endregion
+		#endregion //Fields
 
 		#region Properties
 
@@ -107,9 +92,9 @@ namespace AnimationLib
 		/// </summary>
 		public string JointName { get; set; }
 
-		#endregion
+		#endregion //Properties
 
-		#region Methods
+		#region Initialization
 
 		/// <summary>
 		/// hello, standard constructor!
@@ -126,6 +111,24 @@ namespace AnimationLib
 			RagDoll = false;
 		}
 
+		public KeyElement(KeyElementModel key, Skeleton skeleton)
+			: this()
+		{
+			Time = key.Time;
+			Rotation = MathHelper.ToRadians(key.Rotation);
+			Layer = key.Layer;
+			Flip = key.Flip;
+			Translation = key.Translation;
+			RagDoll = key.Ragdoll;
+			
+			//set the image index
+			var bone = skeleton.RootBone.GetBone(key.Joint);
+			if (bone != null)
+			{
+				ImageIndex = bone.GetImageIndex(key.Image);
+			}
+		}
+
 		public void Copy(KeyElement inst)
 		{
 			_translation = inst._translation;
@@ -137,6 +140,10 @@ namespace AnimationLib
 			KeyFrame = inst.KeyFrame;
 			RagDoll = inst.RagDoll;
 		}
+
+		#endregion //Initialization
+
+		#region Methods
 
 		public bool Compare(KeyElement inst)
 		{
@@ -191,145 +198,6 @@ namespace AnimationLib
 			}
 		}
 
-		#endregion //Methods
-
-		#region File IO
-
-		/// <summary>
-		/// Read in all the bone information from a file in the serialized XML format
-		/// </summary>
-		/// <param name="node">The xml node to read from</param>
-		public void ReadXmlFormat(XmlNode node)
-		{
-			KeyFrame = true;
-
-#if DEBUG
-			if ("Item" != node.Name)
-			{
-				throw new Exception("keyelement nodes need to be Item not " + node.Name);
-			}
-
-			if (!node.HasChildNodes)
-			{
-				throw new Exception("keyelement with no child nodes");
-			}
-
-			//should have an attribute Type
-			var mapAttributes = node.Attributes;
-			for (int i = 0; i < mapAttributes.Count; i++)
-			{
-				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string value = mapAttributes.Item(i).Value;
-
-				if ("Type" == strName)
-				{
-					if ("AnimationLib.KeyXML" != value)
-					{
-						throw new Exception("keyelement needs to be AnimationLib.KeyXML not " + value);
-					}
-				}
-			}
-#endif
-
-			//Read in child nodes
-			for (var childNode = node.FirstChild;
-				null != childNode;
-				childNode = childNode.NextSibling)
-			{
-				//what is in this node?
-				var name = childNode.Name;
-				var value = childNode.InnerText;
-
-				switch (name)
-				{
-					case "time":
-					{
-						Time = Convert.ToInt32(value);
-					}
-					break;
-					case "rotation":
-					{
-						Rotation = MathHelper.ToRadians(Convert.ToSingle(value));
-					}
-					break;
-					case "layer":
-					{
-						Layer = Convert.ToInt32(value);
-					}
-					break;
-					case "image":
-					{
-						ImageName = value;
-					}
-					break;
-					case "flip":
-					{
-						Flip = Convert.ToBoolean(value);
-					}
-					break;
-					case "translation":
-					{
-						Translation = value.ToVector2();
-					}
-					break;
-					case "ragdoll":
-					{
-						RagDoll = Convert.ToBoolean(value);
-					}
-					break;
-					case "joint":
-					{
-						JointName = value;
-					}
-					break;
-				}
-			}
-		}
-
-		/// <summary>
-		/// write all this dude's stuff out to xml
-		/// </summary>
-		/// <param name="animationXml">the animtion object to add all the keyframes to</param>
-		/// <param name="myBone">the bone this dude references</param>
-		public void WriteXmlFormat(AnimationXml animationXml, Bone myBone)
-		{
-			Debug.Assert(null != myBone);
-
-			//find the image this key element uses
-			string strImage = "";
-			if (-1 != ImageIndex)
-			{
-				//find the bone that uses this dudes joint as a keyjoint
-				Bone rChildBone = myBone.GetBone(JointName);
-				if (null != rChildBone)
-				{
-					Debug.Assert(ImageIndex < rChildBone.Images.Count);
-					strImage = rChildBone.Images[ImageIndex].ImageFile.GetFile();
-				}
-			}
-
-			//create the xml object and add it to the animation
-			var myThing = new KeyXml()
-			{
-				flip = Flip,
-				image = strImage,
-				joint = JointName,
-				layer = Layer,
-				ragdoll = RagDoll
-			};
-
-			//Set the rotation to 0 if this dude is using ragdoll
-			if (!RagDoll)
-			{
-				myThing.rotation = MathHelper.ToDegrees(Rotation);
-			}
-			myThing.time = Time;
-			myThing.translation = Translation;
-
-			animationXml.keys.Add(myThing);
-		}
-
 		/// <summary>
 		/// Multiply all the layers to spread out the model
 		/// </summary>
@@ -339,6 +207,6 @@ namespace AnimationLib
 			Layer *= multiply;
 		}
 
-		#endregion //File IO
+		#endregion //Methods
 	}
 }

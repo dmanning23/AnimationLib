@@ -29,6 +29,12 @@ namespace AnimationLib
 			RootBone = new BoneModel();
 		}
 
+		public SkeletonModel(Skeleton skeleton, Filename filename)
+			: base("skeleton", filename)
+		{
+			RootBone = new BoneModel(skeleton.RootBone);
+		}
+
 		#endregion //Methods
 
 		#region File IO

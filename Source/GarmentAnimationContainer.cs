@@ -1,5 +1,6 @@
 ﻿using GameTimer;
 using Microsoft.Xna.Framework;
+using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -12,13 +13,13 @@ namespace AnimationLib
 		/// <summary>
 		/// This is our own little timer, since we won't be getting one passed into the update function
 		/// </summary>
-		private readonly GameClock _animationTimer;
+		private GameClock AnimationTimer { get; set; }
 
 		/// <summary>
 		/// The layer to draw this animation container
 		/// </summary>
-		int _currentLayer;
-		
+		private int _currentLayer;
+
 		#endregion //Fields
 
 		#region Properties
@@ -32,9 +33,9 @@ namespace AnimationLib
 				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
 				return mySkeleton.GarmentName;
 			}
-			set 
+			set
 			{
- 				Debug.Assert(null != Skeleton);
+				Debug.Assert(null != Skeleton);
 				Debug.Assert(Skeleton.RootBone is GarmentBone);
 				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
 				mySkeleton.GarmentName = value;
@@ -59,9 +60,17 @@ namespace AnimationLib
 		/// constructor!
 		/// </summary>
 		public GarmentAnimationContainer()
+			: base()
 		{
-			_animationTimer = new GameClock();
+			Skeleton = new GarmentSkeleton(this);
+			AnimationTimer = new GameClock();
 			_currentLayer = 0;
+		}
+
+		public GarmentAnimationContainer(AnimationsModel animations, GarmentSkeletonModel skeleton, IRenderer renderer)
+			: this()
+		{
+			Load(animations, skeleton, renderer);
 		}
 
 		/// <summary>
@@ -100,7 +109,7 @@ namespace AnimationLib
 			_currentLayer = layer;
 
 			//update the timer
-			_animationTimer.Update(time);
+			AnimationTimer.Update(time);
 
 			//check if the animation has changed
 			if ((attachedBone.ImageIndex != CurrentAnimationIndex) || (null == CurrentAnimation))
@@ -112,12 +121,12 @@ namespace AnimationLib
 			//if there is no animation, the bone is invisible, hide the garment bone.
 			if (null == CurrentAnimation)
 			{
-				Skeleton.Hide();
+				Skeleton.RootBone.Hide();
 			}
 			else
 			{
 				//call the base update
-				Update(_animationTimer, position, isFlipped, scale, rotation, ignoreRagdoll);
+				Update(AnimationTimer, position, isFlipped, scale, rotation, ignoreRagdoll);
 			}
 		}
 
@@ -148,38 +157,19 @@ namespace AnimationLib
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
 			{
-				Skeleton.RestartAnimation();
+				Skeleton.RootBone.RestartAnimation();
 				ResetRagdoll = false;
 			}
 		}
 
 		/// <summary>
-		/// Overridden methoed to create the correct type of bone
-		/// </summary>
-		public override Bone CreateBone()
-		{
-			Debug.Assert(null == Skeleton);
-			return new GarmentBone(this);
-		}
-
-		public override string ToString()
-		{
-			return GarmentName + "-" + Skeleton.Name;
-		}
-
-		#endregion //Methods
-
-		#region File IO
-
-		/// <summary>
 		/// set all the data for the garment bones in this dude after they have been read in
 		/// </summary>
-		/// <param name="model"></param>
-		public void SetGarmentBones(Bone model)
+		public void SetGarmentBones(Skeleton characterSkeleton)
 		{
 			//find a Bone with the same name as the garment bone
 			var myGarmentBone = GarmentSkeleton;
-			var myBone = model.GetBone(myGarmentBone.ParentBoneName);
+			var myBone = characterSkeleton.RootBone.GetBone(myGarmentBone.ParentBoneName);
 			Debug.Assert(null != myBone);
 			myGarmentBone.ParentBone = myBone;
 
@@ -210,6 +200,11 @@ namespace AnimationLib
 			Animations = myAnimations;
 		}
 
-		#endregion //File IO
+		public override string ToString()
+		{
+			return GarmentName + "-" + Skeleton.RootBone.Name;
+		}
+
+		#endregion //Methods
 	}
 }

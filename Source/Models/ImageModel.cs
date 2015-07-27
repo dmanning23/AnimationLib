@@ -1,12 +1,7 @@
-using AnimationLib.Commands;
-using DrawListBuddy;
 using FilenameBuddy;
 using Microsoft.Xna.Framework;
-using RenderBuddy;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Xml;
-using UndoRedoBuddy;
 using Vector2Extensions;
 using XmlBuddy;
 
@@ -60,6 +55,27 @@ namespace AnimationLib
 			ImageFile = new Filename();
 		}
 
+		public ImageModel(Image image)
+			: this()
+		{
+			UpperLeft = image.UpperLeft;
+			LowerRight = image.LowerRight;
+			AnchorCoord = image.AnchorCoord;
+			ImageFile = image.ImageFile;
+			foreach (var jointCoord in image.JointCoords)
+			{
+				JointCoords.Add(new JointDataModel(jointCoord));
+			}
+			foreach (var circle in image.Circles)
+			{
+				Circles.Add(new PhysicsCircleModel(circle));
+			}
+			foreach (var line in image.Lines)
+			{
+				Lines.Add(new PhysicsLineModel(line));
+			}
+		}
+
 		public override string ToString()
 		{
 			return ImageFile.GetFile();
@@ -77,6 +93,11 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "upperleft":
 				{
 					//convert to the correct vector
@@ -131,21 +152,21 @@ namespace AnimationLib
 		public void ReadJointData(XmlNode node)
 		{
 			var jointData = new JointDataModel();
-			jointData.ParseXmlNode(node);
+			XmlFileBuddy.ReadChildNodes(node, jointData.ParseXmlNode);
 			JointCoords.Add(jointData);
 		}
 
 		public void ReadCircle(XmlNode node)
 		{
 			var circle= new PhysicsCircleModel();
-			circle.ParseXmlNode(node);
+			XmlFileBuddy.ReadChildNodes(node, circle.ParseXmlNode);
 			Circles.Add(circle);
 		}
 
 		public void ReadLine(XmlNode node)
 		{
 			var line = new PhysicsLineModel();
-			line.ParseXmlNode(node);
+			XmlFileBuddy.ReadChildNodes(node, line.ParseXmlNode);
 			Lines.Add(line);
 		}
 
@@ -154,7 +175,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
 		/// <param name="scale"></param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter)
+		public override void WriteXmlNode(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("image");
@@ -164,20 +185,17 @@ namespace AnimationLib
 
 			//write out upper left coords
 			xmlWriter.WriteStartElement("upperleft");
-			xmlWriter.WriteString(UpperLeft.X.ToString() + " " +
-				UpperLeft.Y.ToString());
+			xmlWriter.WriteString(UpperLeft.StringFromVector());
 			xmlWriter.WriteEndElement();
 
 			//write out lower right coords
 			xmlWriter.WriteStartElement("lowerright");
-			xmlWriter.WriteString(LowerRight.X.ToString() + " " +
-				LowerRight.Y.ToString());
+			xmlWriter.WriteString(LowerRight.StringFromVector());
 			xmlWriter.WriteEndElement();
 
 			//write out lower right coords
 			xmlWriter.WriteStartElement("anchorcoord");
-			xmlWriter.WriteString(AnchorCoord.X.ToString() + " " +
-				AnchorCoord.Y.ToString());
+			xmlWriter.WriteString(AnchorCoord.StringFromVector());
 			xmlWriter.WriteEndElement();
 
 			//write out joint locations
@@ -186,7 +204,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("joints");
 				foreach (var jointCoord in JointCoords)
 				{
-					jointCoord.WriteXmlFormat(xmlWriter);
+					jointCoord.WriteXmlNode(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}
@@ -197,7 +215,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("circles");
 				foreach (var circle in Circles)
 				{
-					circle.WriteXmlFormat(xmlWriter);
+					circle.WriteXmlNode(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}
@@ -207,7 +225,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("lines");
 				foreach (var line in Lines)
 				{
-					line.WriteXmlFormat(xmlWriter);
+					line.WriteXmlNode(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}

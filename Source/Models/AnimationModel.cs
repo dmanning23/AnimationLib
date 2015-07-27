@@ -1,9 +1,7 @@
 using System;
 using System.Diagnostics;
-using System.Xml;
-using UndoRedoBuddy;
-using Vector2Extensions;
 using System.Collections.Generic;
+using System.Xml;
 using XmlBuddy;
 
 namespace AnimationLib
@@ -14,6 +12,12 @@ namespace AnimationLib
 	public class AnimationModel : XmlObject
 	{
 		#region Properties
+
+		/// <summary>
+		/// name of the animation
+		/// </summary>
+		/// <value>The name.</value>
+		public string Name { get; set; }
 		
 		/// <summary>
 		/// length of this animation
@@ -22,16 +26,9 @@ namespace AnimationLib
 		public float Length { get; set; }
 
 		/// <summary>
-		/// the root key series
+		/// All the key elements for this animation
 		/// </summary>
-		/// <value>The key bone.</value>
-		public List<KeyJointModel> KeyJoints { get; private set; }
-
-		/// <summary>
-		/// name of the animation
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name { get; set; }
+		public List<KeyElementModel> KeyElements { get; private set; }
 
 		#endregion
 
@@ -42,212 +39,131 @@ namespace AnimationLib
 		/// </summary>
 		public AnimationModel()
 		{
-			KeyJoints = new List<KeyJointModel>();
+			KeyElements = new List<KeyElementModel>();
+		}
+
+		public AnimationModel(Animation animation, Skeleton skeleton)
+			: this()
+		{
+			KeyElements = new List<KeyElementModel>();
+			GetKeys(animation.KeyBone, skeleton.RootBone);
+			KeyElements.Sort(new KeyElementModelSort());
+		}
+
+		private void GetKeys(KeyBone keyBone, Bone bone)
+		{
+			//write out all my joints
+			GetKeys(keyBone.KeyJoint, bone);
+
+			//write out all the children's joints
+			foreach (var childKeyBone in keyBone.Bones)
+			{
+				//find the bone for this keybone
+				var childBone = bone.GetBone(childKeyBone.Name);
+				Debug.Assert(null != childBone);
+				GetKeys(childKeyBone, childBone);
+			}
+		}
+
+		private void GetKeys(KeyJoint joint, Bone bone)
+		{
+			//add all the key elements to that dude
+			for (int i = 0; i < joint.Elements.Count; i++)
+			{
+				var key = joint.Elements[i];
+
+				//don't write out fucked up shit?
+				Debug.Assert(key.KeyFrame);
+
+				//don't write out reduntant key elements
+				if ((i > 0) && (i < (joint.Elements.Count - 1)))
+				{
+					if (key.Compare(joint.Elements[i - 1]) && key.Compare(joint.Elements[i + 1]))
+					{
+						//dont write out if this matches the previous and next keys
+						continue;
+					}
+
+					if ((i == joint.Elements.Count - 1) && key.Compare(joint.Elements[i - 1]))
+					{
+						//dont write out if this is last key and matches prev
+						continue;
+					}
+				}
+
+				KeyElements.Add(new KeyElementModel(key, bone));
+			}
 		}
 
 		#endregion //Methods
 
 		#region File IO
 
-		/// <summary>
-		/// Read in all the bone information from a file in the serialized XML format
-		/// </summary>
-		/// <param name="node">The xml node to read from</param>
-		/// <param name="model">the root node of the model that this dude animates</param>
-		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXmlFormat(XmlNode node, Bone model)
+		public override void ParseXmlNode(XmlNode node)
 		{
-#if DEBUG
-			if ("Item" != node.Name)
-			{
-				Debug.Assert(false);
-				return false;
-			}
+			string name = node.Name;
+			string value = node.InnerText;
 
-			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = node.Attributes;
-			for (int i = 0; i < mapAttributes.Count; i++)
+			switch (name)
 			{
-				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
-
-				if ("Type" == strName)
+				case "name":
 				{
-					if ("AnimationLib.AnimationXML" != strValue)
-					{
-						Debug.Assert(false);
-						return false;
-					}
+					Name = value;
 				}
-			}
-#endif
+				break;
 
-			//make sure to setup the bones model
-			KeyBone = new KeyBone(model);
-
-			//Read in child nodes
-			if (node.HasChildNodes)
-			{
-				for (XmlNode childNode = node.FirstChild;
-					null != childNode;
-					childNode = childNode.NextSibling)
+				case "length":
 				{
-					//what is in this node?
-					string strName = childNode.Name;
-					string strValue = childNode.InnerText;
-
-					switch (strName)
-					{
-						case "name":
-						{
-							Name = strValue;
-						}
-						break;
-
-						case "length":
-						{
-							Length = Convert.ToSingle(strValue);
-						}
-						break;
-
-						case "keys":
-						{
-							//get the animation length in frames
-							int iLengthFrames = Length.ToFrames();
-
-							if (childNode.HasChildNodes)
-							{
-								for (var keyNode = childNode.FirstChild;
-									null != keyNode;
-									keyNode = keyNode.NextSibling)
-								{
-									//read in the key element
-									var myKey = new KeyElement();
-									myKey.ReadXmlFormat(keyNode);
-
-									//is this keyelement worth keeping?
-									if ((myKey.KeyFrame) && (iLengthFrames >= myKey.Time))
-									{
-										//set the image index
-										var rMyBone = model.GetBone(myKey.JointName);
-										if (rMyBone != null)
-										{
-											myKey.ImageIndex = rMyBone.GetImageIndex(myKey.ImageName);
-										}
-
-										//add to the correct keyjoint
-										var myKeyJoint = KeyBone.GetKeyJoint(myKey.JointName);
-										if (null != myKeyJoint)
-										{
-											myKeyJoint.AddKeyElement(myKey);
-										}
-									}
-								}
-							}
-						}
-						break;
-					}
+					Length = Convert.ToSingle(value);
 				}
-			}
+				break;
 
-			return true;
+				case "keys":
+				{
+					XmlFileBuddy.ReadChildNodes(node, ReadKeyElements);
+
+					//now sort all those keyframes
+					KeyElements.Sort(new KeyElementModelSort());
+				}
+				break;
+				default:
+				{
+					base.ParseXmlNode(node);
+				}
+				break;
+			}
 		}
 
-		/// <summary>
-		/// Write this dude out to the xml format
-		/// </summary>
-		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		/// <param name="model">the root bone of the model this dude references</param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter, Bone model)
+		public void ReadKeyElements(XmlNode node)
 		{
-			Debug.Assert(null != model);
+			//read in the key element
+			var key = new KeyElementModel();
+			XmlFileBuddy.ReadChildNodes(node, key.ParseXmlNode);
+			KeyElements.Add(key);
+		}
 
-			//first get a list of all the keyframes
-			var animationXml = new AnimationXml();
-			KeyBone.WriteXmlFormat(animationXml, model);
-
-			//now sort all those keyframes
-			animationXml.keys.Sort(new KeyXmlSort());
-
+		public override void WriteXmlNode(XmlTextWriter xmlWriter)
+		{
 			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.AnimationXML");
+			xmlWriter.WriteStartElement("animation");
 
-			//write out animation name
-			xmlWriter.WriteStartElement("name");
-			xmlWriter.WriteString(Name);
-			xmlWriter.WriteEndElement();
+			xmlWriter.WriteAttributeString("name", Name);
+			xmlWriter.WriteAttributeString("length", Length.ToString());
 
-			//write out animation length
-			xmlWriter.WriteStartElement("length");
-			xmlWriter.WriteString(Length.ToString());
-			xmlWriter.WriteEndElement();
+			xmlWriter.WriteStartElement("animation");
 
-			//write out all the keyframes
-			xmlWriter.WriteStartElement("keys");
-			for (int i = 0; i < animationXml.keys.Count; i++)
+			//make sure thos dudes are sorted first
+			KeyElements.Sort(new KeyElementModelSort());
+
+			foreach (var key in KeyElements)
 			{
-				xmlWriter.WriteStartElement("Item");
-				xmlWriter.WriteAttributeString("Type", "AnimationLib.KeyXML");
-
-				xmlWriter.WriteStartElement("time");
-				xmlWriter.WriteString(animationXml.keys[i].time.ToString());
-				xmlWriter.WriteEndElement();
-
-				if (!animationXml.keys[i].SkipRotation)
-				{
-					xmlWriter.WriteStartElement("rotation");
-					xmlWriter.WriteString(animationXml.keys[i].rotation.ToString());
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipLayer)
-				{
-					xmlWriter.WriteStartElement("layer");
-					xmlWriter.WriteString(animationXml.keys[i].layer.ToString());
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipImage)
-				{
-					xmlWriter.WriteStartElement("image");
-					xmlWriter.WriteString(animationXml.keys[i].image.ToString());
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipFlip)
-				{
-					xmlWriter.WriteStartElement("flip");
-					xmlWriter.WriteString(animationXml.keys[i].flip ? "true" : "false");
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipTranslation)
-				{
-					xmlWriter.WriteStartElement("translation");
-					xmlWriter.WriteString(animationXml.keys[i].translation.StringFromVector());
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipRagDoll)
-				{
-					xmlWriter.WriteStartElement("ragdoll");
-					xmlWriter.WriteString(animationXml.keys[i].ragdoll ? "true" : "false");
-					xmlWriter.WriteEndElement();
-				}
-
-				xmlWriter.WriteStartElement("joint");
-				xmlWriter.WriteString(animationXml.keys[i].joint.ToString());
-				xmlWriter.WriteEndElement();
-
-				xmlWriter.WriteEndElement();
+				key.WriteXmlNode(xmlWriter);
 			}
-			xmlWriter.WriteEndElement();
 
+			xmlWriter.WriteEndElement();
 			xmlWriter.WriteEndElement();
 		}
 
-		#endregion
+		#endregion //File IO
 	}
 }

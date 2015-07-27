@@ -1,15 +1,10 @@
+using DrawListBuddy;
+using FilenameBuddy;
+using GameTimer;
+using Microsoft.Xna.Framework;
+using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Xml;
-using Microsoft.Xna.Framework;
-using GameTimer;
-using FilenameBuddy;
-using DrawListBuddy;
-using RenderBuddy;
-#if OUYA
-using Ouya.Console.Api;
-#endif
 using Vector2Extensions;
 
 namespace AnimationLib
@@ -90,14 +85,14 @@ namespace AnimationLib
 
 		#endregion
 
-		#region Methods
+		#region Initialization
 
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
 		public AnimationContainer()
 		{
-			Skeleton = null;
+			Skeleton = new Skeleton(this);
 			Animations = new List<Animation>();
 			CurrentAnimationIndex = -1;
 			StopWatch = new GameClock();
@@ -105,6 +100,25 @@ namespace AnimationLib
 			AnimationFile = new Filename();
 			ResetRagdoll = false;
 		}
+
+		public AnimationContainer(AnimationsModel animations, SkeletonModel skeleton, IRenderer renderer)
+			: this()
+		{
+			Load(animations, skeleton, renderer);
+		}
+
+		protected void Load(AnimationsModel animations, SkeletonModel skeleton, IRenderer renderer)
+		{
+			Skeleton.Load(skeleton, renderer);
+			foreach (var animation in animations.Animations)
+			{
+				Animations.Add(new Animation(Skeleton, animation));
+			}
+		}
+
+		#endregion //Initialization
+
+		#region Methods
 
 		/// <summary>
 		/// Update the model with the current animation
@@ -371,11 +385,15 @@ namespace AnimationLib
 		}
 
 		/// <summary>
-		/// Overridden methoed to create the correct type of bone
+		/// Multiply all the layers to spread out the model
 		/// </summary>
-		public virtual Bone CreateBone()
+		/// <param name="multiply"></param>
+		public void MultiplyLayers(int multiply)
 		{
-			return new Bone();
+			foreach (var animation in Animations)
+			{
+				animation.MultiplyLayers(multiply);
+			}
 		}
 
 		#endregion //Methods
@@ -387,10 +405,11 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="filename">filename of the resource to load</param>
 		/// <param name="renderer">renderer to use to load bitmap images</param>
-		public bool ReadSkeletonXml(Filename filename, IRenderer renderer)
+		public virtual void ReadSkeletonXml(Filename filename, IRenderer renderer)
 		{
-			Skeleton = new Skeleton(this, filename, renderer);
-			Skeleton.ReadXmlFile();
+			var skelModel = new SkeletonModel(filename);
+			skelModel.ReadXmlFile();
+			Skeleton.Load(skelModel, renderer);
 		}
 
 		/// <summary>
@@ -398,11 +417,13 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="filename">name of the file to dump to</param>
 		/// <param name="scale">How much to scale the model when writing it out</param>
-		public virtual void WriteSkeletonXml(Filename filename, float scale)
+		public virtual void WriteSkeletonXml(Filename filename)
 		{
-			Skeleton.Scale = scale;
-			Skeleton.Filename = filename;
-			Skeleton.WriteXml();
+			//first rename all the joints so they are correct
+			Skeleton.RenameJoints(this);
+
+			var skelModel = new SkeletonModel(Skeleton, filename);
+			skelModel.WriteXml();
 		}
 
 		#endregion //Skeleton File IO
@@ -413,173 +434,28 @@ namespace AnimationLib
 		/// read in a list of animations from a serialized xml format file
 		/// </summary>
 		/// <param name="filename">filename of the animations to load</param>
-		public virtual bool ReadAnimationXml(Filename filename)
+		public virtual void ReadAnimationXml(Filename filename)
 		{
-			Debug.Assert(null != Skeleton); //need a model to read in animations
-			Animations.Clear();
+			//load up the animations from file
+			Debug.Assert(null != Skeleton);
+			var animations = new AnimationsModel(filename);
+			animations.ReadXmlFile();
 
-			//gonna have to do this the HARD way
-
-			//Open the file.
-			#if ANDROID
-			Stream stream = Game.Activity.Assets.Open(filename.File);
-#else
-			FileStream stream = File.Open(filename.File, FileMode.Open, FileAccess.Read);
-			#endif
-			XmlDocument xmlDoc = new XmlDocument();
-			xmlDoc.Load(stream);
-			XmlNode rootNode = xmlDoc.DocumentElement;
-
-			//make sure it is actually an xml node
-			if (rootNode.NodeType == XmlNodeType.Element)
+			//create each animation
+			foreach (var animationModel in animations.Animations)
 			{
-				//eat up the name of that xml node
-				string strElementName = rootNode.Name;
-
-#if DEBUG
-				if (("XnaContent" != strElementName) || !rootNode.HasChildNodes)
-				{
-					Debug.Assert(false);
-					return false;
-				}
-				if (!rootNode.HasChildNodes)
-				{
-					Debug.Assert(false);
-					return false;
-				}
-#endif
-
-				//next node is "Asset"
-				XmlNode assetNode = rootNode.FirstChild;
-
-#if DEBUG
-				if (null == assetNode)
-				{
-					Debug.Assert(false);
-					return false;
-				}
-				if (!assetNode.HasChildNodes)
-				{
-					Debug.Assert(false);
-					return false;
-				}
-#endif
-
-				//next node is "Animations"
-				XmlNode animationsNode = assetNode.FirstChild;
-
-#if DEBUG
-				if (null == animationsNode)
-				{
-					Debug.Assert(false);
-					return false;
-				}
-				if (!animationsNode.HasChildNodes)
-				{
-					Debug.Assert(false);
-					return false;
-				}
-#endif
-
-				//the rest of the nodes are animations
-				if (!ReadAnimationsNode(animationsNode))
-				{
-					Debug.Assert(false);
-					return false;
-				}
+				Animations.Add(new Animation(Skeleton, animationModel));
 			}
-			else
-			{
-				//should be an xml node!!!
-				Debug.Assert(false);
-				return false;
-			}
-
-			// Close the file.
-			stream.Close();
-
-			//grab teh filename
-			AnimationFile = filename;
 
 			_playback = EPlayback.Forwards;
 			CurrentAnimation = null;
 			RestartAnimation();
-
-			return true;
 		}
 
-		/// <summary>
-		/// This node reads in all the animations from an xml node
-		/// </summary>
-		/// <param name="animationsNode">the xml node with all the animations underneath it</param>
-		/// <returns>bool: whether or not an error occurred.</returns>
-		protected virtual bool ReadAnimationsNode(XmlNode animationsNode)
+		public void WriteAnimationXml(Filename filename)
 		{
-			for (var childNode = animationsNode.FirstChild;
-				null != childNode;
-				childNode = childNode.NextSibling)
-			{
-				Animation myAnimation = new Animation(Skeleton);
-				Debug.Assert(null != Skeleton);
-				if (!myAnimation.ReadXmlFormat(childNode, Skeleton))
-				{
-					Debug.Assert(false);
-					return false;
-				}
-				Animations.Add(myAnimation);
-			}
-
-			return true;
-		}
-
-		public void WriteAnimationXml(Filename fileName)
-		{
-			//first rename all the joints so they are correct
-			Debug.Assert(null != Skeleton);
-			Skeleton.RenameJoints(this);
-
-			//open the file, create it if it doesnt exist yet
-			var xmlWriter = new XmlTextWriter(fileName.File, null);
-			xmlWriter.Formatting = Formatting.Indented;
-			xmlWriter.Indentation = 1;
-			xmlWriter.IndentChar = '\t';
-
-			xmlWriter.WriteStartDocument();
-
-			//add the xml node
-			xmlWriter.WriteStartElement("XnaContent");
-			xmlWriter.WriteStartElement("Asset");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.AnimationContainerXML");
-
-			//write out joints
-			xmlWriter.WriteStartElement("animations");
-			for (int i = 0; i < Animations.Count; i++)
-			{
-				Debug.Assert(null != Skeleton);
-				Animations[i].WriteXmlFormat(xmlWriter, Skeleton);
-			}
-			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteEndElement();
-			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteEndDocument();
-
-			// Close the file.
-			xmlWriter.Flush();
-			xmlWriter.Close();
-		}
-
-		/// <summary>
-		/// Multiply all the layers to spread out the model
-		/// </summary>
-		/// <param name="multiply"></param>
-		public void MultiplyLayers(int multiply)
-		{
-			foreach (var animation in Animations)
-			{
-				animation.MultiplyLayers(multiply);
-			}
+			var animations = new AnimationsModel(filename, this);
+			animations.WriteXml();
 		}
 
 		#endregion //Animation File IO

@@ -1,8 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Diagnostics;
-using System.Xml;
-using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -99,7 +95,7 @@ namespace AnimationLib
 
 		#endregion
 
-		#region Methods
+		#region Initialization
 
 		public JointData()
 		{
@@ -108,6 +104,20 @@ namespace AnimationLib
 			Length = 0.0f;
 			FloatRadius = 0.0f;
 			Floating = false;
+		}
+
+		public JointData(JointDataModel jointData, Image image)
+			: this()
+		{
+			Location = jointData.Location;
+			Floating = jointData.Floating;
+			FloatRadius = jointData.FloatRadius;
+			FirstLimit = jointData.FirstLimit;
+			SecondLimit = jointData.SecondLimit;
+
+			//get the vector from the anchor position to this joint position
+			_anchorVect = Location - image.AnchorCoord;
+			Length = _anchorVect.Length();
 		}
 
 		public void Copy(JointData inst)
@@ -121,6 +131,10 @@ namespace AnimationLib
 			_anchorVect = inst._anchorVect;
 		}
 
+		#endregion //Initialization
+
+		#region Methods
+
 		/// <summary>
 		/// Called when one of the limits is set to update the flipped limits
 		/// </summary>
@@ -129,25 +143,6 @@ namespace AnimationLib
 			//Subtract the limits from 180 and switch them
 			SecondLimitFlipped = -1.0f * FirstLimit;
 			FirstLimitFlipped = -1.0f * SecondLimit;
-		}
-
-		#endregion //Methods
-
-		#region File IO
-
-		/// <summary>
-		/// Read in all the bone information from a file in the serialized XML format
-		/// </summary>
-		/// <param name="node">The xml node to read from</param>
-		/// <param name="image"></param>
-		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXmlFormat(XmlNode node, Image image)
-		{
-			//get the vector from the anchor position to this joint position
-			_anchorVect = Location - image.AnchorCoord;
-			Length = _anchorVect.Length();
-
-			return true;
 		}
 
 		/// <summary>
@@ -161,6 +156,6 @@ namespace AnimationLib
 			FloatRadius *= scale;
 		}
 
-		#endregion
+		#endregion //Methods
 	}
 }

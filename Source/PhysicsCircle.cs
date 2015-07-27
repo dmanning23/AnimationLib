@@ -2,10 +2,6 @@ using CollisionBuddy;
 using MatrixExtensions;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
-using System;
-using System.Diagnostics;
-using System.Xml;
-using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -27,6 +23,13 @@ namespace AnimationLib
 		public PhysicsCircle()
 		{
 			LocalPosition = Vector2.Zero;
+		}
+
+		public PhysicsCircle(PhysicsCircleModel circle)
+			: this()
+		{
+			LocalPosition = circle.Center;
+			LocalRadius = circle.Radius;
 		}
 
 		public void Reset(Vector2 position)

@@ -16,7 +16,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Teh list of key elements for this dude
 		/// </summary>
-		private List<KeyElement> Elements { get; set; }
+		public List<KeyElement> Elements { get; private set; }
 
 		/// <summary>
 		/// this dude's name
@@ -343,47 +343,6 @@ namespace AnimationLib
 			}
 		}
 
-		public override string ToString()
-		{
-			return Name;
-		}
-
-		#endregion //Methods
-
-		#region File IO
-
-		/// <summary>
-		/// write all this dude's stuff out to xml
-		/// </summary>
-		/// <param name="animationXml">the animtion object to add all the keyframes to</param>
-		/// <param name="myBone">the bone this dude references</param>
-		public void WriteXmlFormat(AnimationXml animationXml, Bone myBone)
-		{
-			//add all the key elements to that dude
-			for (int i = 0; i < Elements.Count; i++)
-			{
-				//don't write out fucked up shit?
-				Debug.Assert(Elements[i].KeyFrame);
-
-				//don't write out reduntant key elements
-				if ((i > 0) && (i < (Elements.Count - 1)))
-				{
-					if (Elements[i].Compare(Elements[i - 1]) && Elements[i].Compare(Elements[i + 1]))
-					{
-						//dont write out if this matches the previous and next keys
-						continue;
-					}
-
-					if  ((i == Elements.Count - 1) && Elements[i].Compare(Elements[i - 1]))
-					{
-						//dont write out if this is last key and matches prev
-						continue;
-					}
-				}
-				Elements[i].WriteXmlFormat(animationXml, myBone);
-			}
-		}
-
 		/// <summary>
 		/// Multiply all the layers to spread out the model
 		/// </summary>
@@ -396,6 +355,11 @@ namespace AnimationLib
 			}
 		}
 
-		#endregion
+		public override string ToString()
+		{
+			return Name;
+		}
+
+		#endregion //Methods
 	}
 }

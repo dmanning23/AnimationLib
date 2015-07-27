@@ -5,9 +5,7 @@ using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Xml;
 using UndoRedoBuddy;
-using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -88,7 +86,7 @@ namespace AnimationLib
 
 		#endregion //Properties
 
-		#region Methods
+		#region Initialization
 
 		/// <summary>
 		/// hello, standard constructor!
@@ -103,6 +101,27 @@ namespace AnimationLib
 			_anchorCoord = Vector2.Zero;
 			_texture = null;
 			ImageFile = new Filename();
+		}
+
+		public Image(ImageModel image)
+			: this()
+		{
+			UpperLeft = image.UpperLeft;
+			LowerRight = image.LowerRight;
+			AnchorCoord = image.AnchorCoord;
+			ImageFile = image.ImageFile;
+			foreach (var jointCoord in image.JointCoords)
+			{
+				JointCoords.Add(new JointData(jointCoord, this));
+			}
+			foreach (var circle in image.Circles)
+			{
+				Circles.Add(new PhysicsCircle(circle));
+			}
+			foreach (var line in image.Lines)
+			{
+				Lines.Add(new PhysicsLine(line));
+			}
 		}
 
 		/// <summary>
@@ -149,6 +168,10 @@ namespace AnimationLib
 				}
 			}
 		}
+
+		#endregion //Initialization
+
+		#region Methods
 
 		/// <summary>
 		/// Render this image
@@ -316,153 +339,6 @@ namespace AnimationLib
 			return ((Circles.Count > 0) || (Lines.Count > 0));
 		}
 
-		public override string ToString()
-		{
-			return ImageFile.GetFile();
-		}
-
-		/// <summary>
-		/// Read in all the bone information from a file in the serialized XML format
-		/// </summary>
-		/// <param name="node">The xml node to read from</param>
-		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXmlFormat(XmlNode node)
-		{
-#if DEBUG
-			if ("Item" != node.Name)
-			{
-				Debug.Assert(false);
-				return false;
-			}
-
-			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = node.Attributes;
-			for (var i = 0; i < mapAttributes.Count; i++)
-			{
-				//will only have the name attribute
-				string name = mapAttributes.Item(i).Name;
-				string value = mapAttributes.Item(i).Value;
-
-				if ("Type" == name)
-				{
-					if ("AnimationLib.ImageXML" != value)
-					{
-						Debug.Assert(false);
-						return false;
-					}
-				}
-			}
-#endif
-
-			//Read in child nodes
-			if (node.HasChildNodes)
-			{
-				for (XmlNode childNode = node.FirstChild;
-					null != childNode;
-					childNode = childNode.NextSibling)
-				{
-					//what is in this node?
-					string name = childNode.Name;
-					string value = childNode.InnerText;
-
-					switch (name)
-					{
-						case "upperleft":
-						{
-							//convert to the correct vector
-							UpperLeft = value.ToVector2();
-						}
-						break;
-						case "lowerright":
-						{
-							//convert to the correct vector
-							LowerRight = value.ToVector2();
-						}
-						break;
-						case "anchorcoord":
-						{
-							//convert to the correct vector
-							_anchorCoord = value.ToVector2();
-						}
-						break;
-						case "filename":
-						{
-							//get the correct path & filename
-							ImageFile.SetRelFilename(value);
-						}
-						break;
-						case "joints":
-						{
-							//Read in all the joint JointCoords
-							if (childNode.HasChildNodes)
-							{
-								for (XmlNode circleNode = childNode.FirstChild;
-									null != circleNode;
-									circleNode = circleNode.NextSibling)
-								{
-									JointData childJointJointCoords = new JointData();
-									if (!childJointJointCoords.ReadXmlFormat(circleNode, this))
-									{
-										Debug.Assert(false);
-										return false;
-									}
-									JointCoords.Add(childJointJointCoords);
-								}
-							}
-						}
-						break;
-						case "circles":
-						{
-							//Read in all the circles
-							if (childNode.HasChildNodes)
-							{
-								for (XmlNode jointNode = childNode.FirstChild;
-									null != jointNode;
-									jointNode = jointNode.NextSibling)
-								{
-									PhysicsCircle myCircle = new PhysicsCircle();
-									if (!myCircle.ReadXmlFormat(jointNode))
-									{
-										Debug.Assert(false);
-										return false;
-									}
-									Circles.Add(myCircle);
-								}
-							}
-						}
-						break;
-						case "lines":
-						{
-							//Read in all the lines
-							if (childNode.HasChildNodes)
-							{
-								for (XmlNode jointNode = childNode.FirstChild;
-									null != jointNode;
-									jointNode = jointNode.NextSibling)
-								{
-									PhysicsLine myCircle = new PhysicsLine();
-									if (!myCircle.ReadXmlFormat(jointNode))
-									{
-										Debug.Assert(false);
-										return false;
-									}
-									Lines.Add(myCircle);
-								}
-							}
-						}
-						break;
-						default:
-						{
-							Debug.Assert(false);
-							return false;
-						}
-					}
-				}
-			}
-
-			return true;
-		}
-
 		/// <summary>
 		/// Redo the whole scale of this model
 		/// </summary>
@@ -485,6 +361,11 @@ namespace AnimationLib
 			{
 				Lines[i].Rescale(scale);
 			}
+		}
+
+		public override string ToString()
+		{
+			return ImageFile.GetFile();
 		}
 
 		#endregion //Methods

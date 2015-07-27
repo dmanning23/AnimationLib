@@ -23,6 +23,11 @@ namespace AnimationLib
 		{
 		}
 
+		public JointModel(Joint joint)
+		{
+			Name = joint.Name;
+		}
+
 		public override string ToString()
 		{
 			return Name;
@@ -40,6 +45,11 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "name":
 				{
 					//set the name of this joint
@@ -58,7 +68,7 @@ namespace AnimationLib
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter)
+		public override void WriteXmlNode(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("joint");

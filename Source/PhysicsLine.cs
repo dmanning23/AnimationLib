@@ -2,9 +2,6 @@
 using MatrixExtensions;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
-using System.Diagnostics;
-using System.Xml;
-using Vector2Extensions;
 
 namespace AnimationLib
 {
@@ -30,6 +27,13 @@ namespace AnimationLib
 		{
 			LocalStart = Vector2.Zero;
 			LocalEnd = Vector2.Zero;
+		}
+
+		public PhysicsLine(PhysicsLineModel line)
+			: this()
+		{
+			LocalStart = line.Start;
+			LocalEnd = line.End;
 		}
 
 		public void Update(Image owner, Vector2 bonePosition, float rotation, bool isFlipped, float scale)

@@ -1,9 +1,5 @@
-using CollisionBuddy;
-using MatrixExtensions;
 using Microsoft.Xna.Framework;
-using RenderBuddy;
 using System;
-using System.Diagnostics;
 using System.Xml;
 using Vector2Extensions;
 using XmlBuddy;
@@ -14,9 +10,9 @@ namespace AnimationLib
 	{
 		#region Properties
 
-		public Vector2 LocalPosition { get; set; }
+		public Vector2 Center { get; set; }
 
-		public float LocalRadius{ get; set; }
+		public float Radius{ get; set; }
 
 		#endregion //Properties
 
@@ -27,7 +23,14 @@ namespace AnimationLib
 		/// </summary>
 		public PhysicsCircleModel()
 		{
-			LocalPosition = Vector2.Zero;
+			Center = Vector2.Zero;
+		}
+
+		public PhysicsCircleModel(PhysicsCircle circle)
+			: this()
+		{
+			Center = circle.LocalPosition;
+			Radius = circle.LocalRadius;
 		}
 
 		#endregion //Methods
@@ -42,14 +45,19 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "center":
 				{
-					LocalPosition = value.ToVector2();
+					Center = value.ToVector2();
 				}
 				break;
 				case "radius":
 				{
-					LocalRadius = Convert.ToSingle(value);
+					Radius = Convert.ToSingle(value);
 				}
 				break;
 				default:
@@ -64,13 +72,12 @@ namespace AnimationLib
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter)
+		public override void WriteXmlNode(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("center", LocalPosition.X + " " +
-				LocalPosition.Y);
-			xmlWriter.WriteAttributeString("radius", LocalRadius.ToString());
+			xmlWriter.WriteAttributeString("center", Center.StringFromVector());
+			xmlWriter.WriteAttributeString("radius", Radius.ToString());
 			xmlWriter.WriteEndElement();
 		}
 

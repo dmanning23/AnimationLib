@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System.Diagnostics;
-using System.Xml;
+﻿using System.Xml;
 
 namespace AnimationLib
 {
@@ -26,6 +24,13 @@ namespace AnimationLib
 		public GarmentBoneModel()
 			: base()
 		{
+			BoneType = EBoneType.Garment;
+		}
+
+		public GarmentBoneModel(GarmentBone bone)
+			: base(bone)
+		{
+			ParentBoneName = bone.ParentBoneName;
 			BoneType = EBoneType.Garment;
 		}
 

@@ -1,8 +1,4 @@
-﻿using CollisionBuddy;
-using MatrixExtensions;
-using Microsoft.Xna.Framework;
-using RenderBuddy;
-using System.Diagnostics;
+﻿using Microsoft.Xna.Framework;
 using System.Xml;
 using Vector2Extensions;
 using XmlBuddy;
@@ -16,12 +12,12 @@ namespace AnimationLib
 		/// <summary>
 		/// the start of the line, local to the bone
 		/// </summary>
-		public Vector2 LocalStart { get; set; }
+		public Vector2 Start { get; set; }
 
 		/// <summary>
 		/// the end of the line, local to the bone
 		/// </summary>
-		public Vector2 LocalEnd { get; set; }
+		public Vector2 End { get; set; }
 
 		#endregion //Members
 
@@ -29,8 +25,15 @@ namespace AnimationLib
 
 		public PhysicsLineModel()
 		{
-			LocalStart = Vector2.Zero;
-			LocalEnd = Vector2.Zero;
+			Start = Vector2.Zero;
+			End = Vector2.Zero;
+		}
+
+		public PhysicsLineModel(PhysicsLine line)
+			: this()
+		{
+			Start = line.LocalStart;
+			End = line.LocalEnd;
 		}
 
 		#endregion //Members
@@ -45,14 +48,19 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "start":
 				{
-					LocalStart = value.ToVector2();
+					Start = value.ToVector2();
 				}
 				break;
 				case "end":
 				{
-					LocalEnd = value.ToVector2();
+					End = value.ToVector2();
 				}
 				break;
 				default:
@@ -67,20 +75,18 @@ namespace AnimationLib
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter)
+		public override void WriteXmlNode(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("line");
 
 			//write out joint offset
 			xmlWriter.WriteStartElement("start");
-			xmlWriter.WriteString(LocalStart.X + " " +
-				LocalStart.Y);
+			xmlWriter.WriteString(Start.StringFromVector());
 			xmlWriter.WriteEndElement();
 
 			xmlWriter.WriteStartElement("end");
-			xmlWriter.WriteString(LocalEnd.X + " " +
-				LocalEnd.Y);
+			xmlWriter.WriteString(End.StringFromVector());
 			xmlWriter.WriteEndElement();
 
 			xmlWriter.WriteEndElement();

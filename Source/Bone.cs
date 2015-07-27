@@ -6,7 +6,6 @@ using RenderBuddy;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Xml;
 using UndoRedoBuddy;
 using Vector2Extensions;
 
@@ -149,6 +148,26 @@ namespace AnimationLib
 			RagdollForces = new List<Vector2>();
 		}
 
+		public Bone(BoneModel bone)
+			: this()
+		{
+			Name = bone.Name;
+			Colorable = bone.Colorable;
+			BoneType = bone.BoneType;
+			for (int i = 0; i < bone.Joints.Count; i++)
+			{
+				Joints.Add(new Joint(bone.Joints[i], i));
+			}
+			foreach (var image in bone.Images)
+			{
+				Images.Add(new Image(image));
+			}
+			foreach (var childBone in bone.Bones)
+			{
+				Bones.Add(new Bone(childBone));
+			}
+		}
+
 		/// <summary>
 		/// After the model has been read in from file, set all the anchor joints
 		/// </summary>
@@ -261,7 +280,7 @@ namespace AnimationLib
 					return Joints[i];
 				}
 			}
-			
+
 			//didnt find a joint with that name
 			return null;
 		}
@@ -472,13 +491,13 @@ namespace AnimationLib
 		/// <param name="scale"></param>
 		/// <param name="ignoreRagdoll"></param>
 		virtual public void Update(int time,
-		                           Vector2 position,
-		                           KeyBone keyBone,
-		                           float parentRotation,
-		                           bool parentFlip,
-		                           int parentLayer,
-		                           float scale,
-		                           bool ignoreRagdoll)
+								   Vector2 position,
+								   KeyBone keyBone,
+								   float parentRotation,
+								   bool parentFlip,
+								   int parentLayer,
+								   float scale,
+								   bool ignoreRagdoll)
 		{
 			Debug.Assert(null != AnchorJoint);
 
@@ -590,7 +609,7 @@ namespace AnimationLib
 				Flipped = false;
 			}
 			else if (parentFlip && !AnchorJoint.CurrentKeyElement.Flip)
-			{	
+			{
 				//the parent is flipped
 				Flipped = true;
 			}
@@ -638,9 +657,9 @@ namespace AnimationLib
 		/// <param name="ignoreRagdoll">If set to <c>true</c> b ignore ragdoll.</param>
 		private void UpdateRotation(float parentRotation, bool parentFlip, bool ignoreRagdoll)
 		{
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || 
-				ignoreRagdoll || 
-				(0 == Joints.Count) || 
+			if (!AnchorJoint.CurrentKeyElement.RagDoll ||
+				ignoreRagdoll ||
+				(0 == Joints.Count) ||
 				(AnchorJoint.CurrentKeyElement.RagDoll && AnchorJoint.Data.Floating))
 			{
 				//add my rotation to the parents rotation
@@ -770,9 +789,9 @@ namespace AnimationLib
 
 				Images[ImageIndex].Render(Position,
 										  drawlist,
-				                          CurrentLayer,
-				                          Rotation,
-				                          Flipped,
+										  CurrentLayer,
+										  Rotation,
+										  Flipped,
 										  finalColor);
 			}
 		}
@@ -968,7 +987,7 @@ namespace AnimationLib
 		public void SolveLimits(float parentRotation)
 		{
 			if (AnchorJoint.CurrentKeyElement.RagDoll &&
-			    !AnchorJoint.Data.Floating &&
+				!AnchorJoint.Data.Floating &&
 				(0 <= ImageIndex) &&
 				((-Math.PI < AnchorJoint.FirstLimit) && (Math.PI > AnchorJoint.SecondLimit)))//are there any limits on this bone, or just letting it spin?
 			{
@@ -1148,7 +1167,7 @@ namespace AnimationLib
 				parentFlip,
 				0,
 				scale,
-				true); 
+				true);
 		}
 
 		/// <summary>
@@ -1198,7 +1217,7 @@ namespace AnimationLib
 				rotation,
 				currentElement.Translation,
 				false);
-				//true); //Ragdoll doesnt work on base skeleton :P
+			//true); //Ragdoll doesnt work on base skeleton :P
 
 			//re-update from this guy onward
 			Update(AnchorJoint.CurrentKeyElement.Time,
@@ -1208,7 +1227,7 @@ namespace AnimationLib
 				GetParentFlip(),
 				CurrentLayer - AnchorJoint.CurrentKeyElement.Layer,
 				1.0f,
-				false); 
+				false);
 		}
 
 		/// <summary>
@@ -1316,10 +1335,10 @@ namespace AnimationLib
 			return Helper.ClampAngle(Helper.atan2(diff));
 		}
 
-		public void AddJoint(string strJointName)
+		public void AddJoint(string jointName)
 		{
 			Joint myJoint = new Joint(Joints.Count);
-			myJoint.Name = strJointName;
+			myJoint.Name = jointName;
 			Joints.Add(myJoint);
 
 			//add the data for that joint to all the images
@@ -1330,23 +1349,14 @@ namespace AnimationLib
 		}
 
 		/// <summary>
-		/// factory method to create a new bone
-		/// override in child methods if want a differnt type.
-		/// </summary>
-		/// <returns>The bone.</returns>
-		public virtual Bone CreateBone()
-		{
-			return new Bone();
-		}
-
-		/// <summary>
 		/// Take this bone, see if there is a matching bone on teh right side of the model,
 		/// copy its info into this dude.
 		/// </summary>
-		/// <param name="RootBone">the root bone of the model, used to search for matching bones</param>
-		public void MirrorRightToLeft(Bone RootBone, Macro ActionCollection)
+		/// <param name="rootBone">the root bone of the model, used to search for matching bones</param>
+		/// <param name="actionCollection"></param>
+		public void MirrorRightToLeft(Bone rootBone, Macro actionCollection)
 		{
-			Debug.Assert(null != RootBone);
+			Debug.Assert(null != rootBone);
 
 			//Check if this bone starts with the work "left"
 			string[] nameTokens = Name.Split(new Char[] { ' ' });
@@ -1359,36 +1369,37 @@ namespace AnimationLib
 					strRightBone += " ";
 					strRightBone += nameTokens[i];
 				}
-				Bone MirrorBone = RootBone.GetBone(strRightBone);
-				if (null != MirrorBone)
+				Bone mirrorBone = rootBone.GetBone(strRightBone);
+				if (null != mirrorBone)
 				{
 					//copy that dude's info into this guy
-					Copy(MirrorBone, ActionCollection);
+					Copy(mirrorBone, actionCollection);
 				}
 			}
 
 			//mirror all the child bones too
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].MirrorRightToLeft(RootBone, ActionCollection);
+				Bones[i].MirrorRightToLeft(rootBone, actionCollection);
 			}
 		}
 
 		/// <summary>
 		/// Copy another bone's data into this dude
 		/// </summary>
-		/// <param name="SourceBone">the source to copy from</param>
-		private void Copy(Bone SourceBone, Macro ActionCollection)
+		/// <param name="sourceBone">the source to copy from</param>
+		/// <param name="actionCollection"></param>
+		private void Copy(Bone sourceBone, Macro actionCollection)
 		{
-			Debug.Assert(null != SourceBone);
+			Debug.Assert(null != sourceBone);
 
 			for (var i = 0; i < Images.Count; i++)
 			{
 				//check if the other bone uses this image
-				Image matchingImage = SourceBone.GetImage(Images[i].ImageFile);
+				Image matchingImage = sourceBone.GetImage(Images[i].ImageFile);
 				if (null != matchingImage)
 				{
-					Images[i].Copy(matchingImage, ActionCollection);
+					Images[i].Copy(matchingImage, actionCollection);
 				}
 			}
 		}
@@ -1396,17 +1407,17 @@ namespace AnimationLib
 		/// <summary>
 		/// Rename all the joints to name of the bone that attaches to them
 		/// </summary>
-		/// <param name="rAnimations">null or an animation container to also rename joints</param>
-		public void RenameJoints(AnimationContainer rAnimations)
+		/// <param name="animations">null or an animation container to also rename joints</param>
+		public void RenameJoints(AnimationContainer animations)
 		{
 			//rename the joints in the animations
 			if (null != AnchorJoint.Name)
 			{
-				if (null != rAnimations)
+				if (null != animations)
 				{
-					for (var i = 0; i < rAnimations.Animations.Count; i++)
+					for (var i = 0; i < animations.Animations.Count; i++)
 					{
-						rAnimations.Animations[i].RenameJoint(AnchorJoint.Name, Name);
+						animations.Animations[i].RenameJoint(AnchorJoint.Name, Name);
 					}
 				}
 
@@ -1417,7 +1428,7 @@ namespace AnimationLib
 			//recurse into all the child bones
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].RenameJoints(rAnimations);
+				Bones[i].RenameJoints(animations);
 			}
 		}
 

@@ -1,14 +1,6 @@
-using DrawListBuddy;
-using FilenameBuddy;
-using MatrixExtensions;
-using Microsoft.Xna.Framework;
-using RenderBuddy;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Xml;
-using UndoRedoBuddy;
-using Vector2Extensions;
 using XmlBuddy;
 
 namespace AnimationLib
@@ -67,16 +59,28 @@ namespace AnimationLib
 			BoneType = EBoneType.Normal;
 		}
 
+		/// <summary>
+		/// copy all the bone info into this dude
+		/// </summary>
+		/// <param name="bone"></param>
 		public BoneModel(Bone bone)
+			: this()
 		{
-			//TODO: copy all the bone info into this dude
-
-			Bones = new List<BoneModel>();
-			Joints = new List<JointModel>();
-			Images = new List<ImageModel>();
-			Name = "Root";
-			Colorable = false;
-			BoneType = EBoneType.Normal;
+			Name = bone.Name;
+			Colorable = bone.Colorable;
+			BoneType = bone.BoneType;
+			foreach (var joint in bone.Joints)
+			{
+				Joints.Add(new JointModel(joint));
+			}
+			foreach (var image in bone.Images)
+			{
+				Images.Add(new ImageModel(image));
+			}
+			foreach (var childBone in bone.Bones)
+			{
+				Bones.Add(new BoneModel(childBone));
+			}
 		}
 
 		public override string ToString()
@@ -96,6 +100,11 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "name":
 				{
 					//set the name of this bone
@@ -163,29 +172,29 @@ namespace AnimationLib
 		public void ReadJoint(XmlNode node)
 		{
 			var joint = new JointModel();
-			joint.ReadXmlFormat(node);
+			XmlFileBuddy.ReadChildNodes(node, joint.ParseXmlNode);
 			Joints.Add(joint);
 		}
 
 		public void ReadImage(XmlNode node)
 		{
-			var image = new Image();
-			image.ReadXmlFormat(node);
+			var image = new ImageModel();
+			XmlFileBuddy.ReadChildNodes(node, image.ParseXmlNode);
 			Images.Add(image);
 		}
 
 		public void ReadChildBone(XmlNode node)
 		{
-			var childBone = CreateBone();
-			childBone.ReadXmlFormat(node);
-			Bones.Add(childBone);
+			var bone = new BoneModel();
+			XmlFileBuddy.ReadChildNodes(node, bone.ParseXmlNode);
+			Bones.Add(bone);
 		}
 
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public virtual void WriteXmlNode(XmlTextWriter xmlWriter)
+		public override void WriteXmlNode(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("bone");
 
@@ -217,7 +226,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("joints");
 				foreach (var joint in Joints)
 				{
-					joint.WriteXmlFormat(xmlWriter);
+					joint.WriteXmlNode(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}
@@ -228,7 +237,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("images");
 				foreach (var image in Images)
 				{
-					image.WriteXmlFormat(xmlWriter);
+					image.WriteXmlNode(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}
@@ -239,11 +248,6 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("bones");
 				foreach (var bone in Bones)
 				{
-					//dont write out child garment bones
-					if (bone is GarmentBone)
-					{
-						continue;
-					}
 					bone.WriteXmlNode(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();

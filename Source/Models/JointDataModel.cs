@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Diagnostics;
 using System.Xml;
 using Vector2Extensions;
 using XmlBuddy;
@@ -15,11 +14,6 @@ namespace AnimationLib
 		/// get the joint location
 		/// </summary>
 		public Vector2 Location { get; set; }
-
-		/// <summary>
-		/// The distance from teh anchor position to this joint position
-		/// </summary>
-		public float Length { get; private set; }
 
 		/// <summary>
 		/// Whether this joint will use floating or rotating ragdoll
@@ -50,6 +44,15 @@ namespace AnimationLib
 			Floating = false;
 		}
 
+		public JointDataModel(JointData jointData)
+		{
+			Location = jointData.Location;
+			Floating = jointData.Floating;
+			FloatRadius = jointData.FloatRadius;
+			FirstLimit = jointData.FirstLimit;
+			SecondLimit = jointData.SecondLimit;
+		}
+
 		public override void ParseXmlNode(XmlNode node)
 		{
 			//what is in this node?
@@ -58,6 +61,11 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "location":
 				{
 					Location = value.ToVector2();
@@ -98,7 +106,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
 		/// <param name="scale"></param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter, float scale)
+		public override void WriteXmlNode(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("jointData");
@@ -132,8 +140,7 @@ namespace AnimationLib
 
 			//write out joint offset
 			xmlWriter.WriteStartElement("location");
-			xmlWriter.WriteString(Location.X.ToString() + " " +
-				Location.Y.ToString());
+			xmlWriter.WriteString(Location.StringFromVector());
 			xmlWriter.WriteEndElement();
 			
 			xmlWriter.WriteEndElement();

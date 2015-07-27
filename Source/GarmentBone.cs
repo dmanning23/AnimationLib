@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Diagnostics;
-using System.Xml;
 
 namespace AnimationLib
 {
@@ -43,7 +42,7 @@ namespace AnimationLib
 
 		#endregion //Properties
 
-		#region Methods
+		#region Initialization
 
 		/// <summary>
 		/// hello, standard constructor!
@@ -51,12 +50,27 @@ namespace AnimationLib
 		public GarmentBone(GarmentAnimationContainer owner)
 			: base()
 		{
+			Setup(owner);
+		}
+
+		public GarmentBone(GarmentAnimationContainer owner, GarmentBoneModel bone)
+			: base(bone)
+		{
+			Setup(owner);
+			ParentBoneName = bone.ParentBoneName;
+		}
+
+		private void Setup(GarmentAnimationContainer owner)
+		{
 			Debug.Assert(null != owner);
 			_animationContainer = owner;
-			ParentBone = null;
 			BoneType = EBoneType.Garment;
 			_isAddedToSkeleton = false;
 		}
+
+		#endregion //Initialization
+
+		#region Methods
 
 		/// <summary>
 		/// update all this dude's stuff

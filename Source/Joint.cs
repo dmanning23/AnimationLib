@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
 using System;
-using System.Diagnostics;
-using System.Xml;
 
 namespace AnimationLib
 {
@@ -119,7 +117,7 @@ namespace AnimationLib
 
 		#endregion //Properties
 
-		#region Methods
+		#region Initialization
 
 		/// <summary>
 		/// hello, standard constructor!
@@ -135,6 +133,16 @@ namespace AnimationLib
 			Name = "";
 			ParentFlip = false;
 		}
+
+		public Joint(JointModel joint, int index)
+			: this(index)
+		{
+			Name = joint.Name;
+		}
+
+		#endregion //Initialization
+
+		#region Methods
 
 		/// <summary>
 		/// Update the joints stuff

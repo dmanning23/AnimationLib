@@ -1,18 +1,5 @@
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Xml;
-using Microsoft.Xna.Framework;
-using GameTimer;
 using FilenameBuddy;
-using DrawListBuddy;
-using Microsoft.Xna.Framework.Graphics;
 using RenderBuddy;
-#if OUYA
-using Ouya.Console.Api;
-#endif
-using Vector2Extensions;
-using XmlBuddy;
 
 namespace AnimationLib
 {
@@ -28,13 +15,7 @@ namespace AnimationLib
 		/// </summary>
 		public Bone RootBone { get; protected set; }
 
-		public Filename ModelFile { get; set; }
-
-		private IRenderer Renderer { get; set; }
-
-		private AnimationContainer Animations { get; set; }
-
-		public float Scale { get; set; }
+		protected AnimationContainer Animations { get; set; }
 
 		#endregion
 
@@ -43,36 +24,47 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public Skeleton(AnimationContainer animations, IRenderer renderer)
+		public Skeleton(AnimationContainer animations)
 		{
 			Animations = animations;
-			Renderer = renderer;
-			RootBone = null;
-			ModelFile = new Filename();
+		}
+
+		/// <summary>
+		/// This method goes through the skeleton and makes sure the joints and bone names match
+		/// </summary>
+		/// <param name="animations"></param>
+		public void RenameJoints(AnimationContainer animations)
+		{
+			RootBone.RenameJoints(animations);
 		}
 
 		#endregion //Methods
 
 		#region File IO
 
-		public void ReadXmlFile()
+		protected virtual Bone CreateBone(SkeletonModel skeleton)
 		{
-			Animations.CreateBone();
+			return new Bone(skeleton.RootBone);
+		}
 
-			//base.ReadXmlFile();
+		public void Load(SkeletonModel skeleton, IRenderer renderer)
+		{
+			RootBone = CreateBone(skeleton);
 
 			//Set the anchor joints of the whole model
 			RootBone.SetAnchorJoint(null);
 
 			//Load all the images
-			RootBone.LoadImages(Renderer);
+			RootBone.LoadImages(renderer);
 		}
 
-		public void WriteXml()
+		public virtual void WriteXml(Filename filename, AnimationContainer animations)
 		{
 			//first rename all the joints so they are correct
-			RootBone.RenameJoints(Animations);
-			//base.WriteXml();
+			RootBone.RenameJoints(animations);
+
+			var skeleton = new SkeletonModel(this, filename);
+			skeleton.WriteXml();
 		}
 
 		#endregion //Model File IO

@@ -1,6 +1,4 @@
-using System;
 using System.Diagnostics;
-using System.Xml;
 using UndoRedoBuddy;
 using Vector2Extensions;
 
@@ -12,6 +10,12 @@ namespace AnimationLib
 	public class Animation
 	{
 		#region Properties
+
+		/// <summary>
+		/// name of the animation
+		/// </summary>
+		/// <value>The name.</value>
+		public string Name { get; private set; }
 		
 		/// <summary>
 		/// length of this animation
@@ -25,15 +29,9 @@ namespace AnimationLib
 		/// <value>The key bone.</value>
 		public KeyBone KeyBone { get; private set; }
 
-		/// <summary>
-		/// name of the animation
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name { get; private set; }
-
 		#endregion
 
-		#region Methods
+		#region Initialization
 
 		/// <summary>
 		/// hello, standard constructor!
@@ -43,12 +41,43 @@ namespace AnimationLib
 			Length = 0.0f;
 		}
 
-		public Animation(Bone boneStructure)
+		public Animation(Skeleton skeleton)
+			: this()
 		{
-			Debug.Assert(null != boneStructure);
-			KeyBone = new KeyBone(boneStructure);
-			Length = 0.0f;
+			Debug.Assert(null != skeleton);
+			KeyBone = new KeyBone(skeleton.RootBone);
 		}
+
+		public Animation(Skeleton skeleton, AnimationModel animation)
+			: this(skeleton)
+		{
+			Name = animation.Name;
+			Length = animation.Length;
+
+			//get the animation length in frames
+			int iLengthFrames = Length.ToFrames();
+
+			foreach (var keyModel in animation.KeyElements)
+			{
+				//read in the key element
+				var key = new KeyElement(keyModel, skeleton);
+
+				//is this keyelement worth keeping?
+				if ((key.KeyFrame) && (iLengthFrames >= key.Time))
+				{
+					//add to the correct keyjoint
+					var keyJoint = KeyBone.GetKeyJoint(key.JointName);
+					if (null != keyJoint)
+					{
+						keyJoint.AddKeyElement(key);
+					}
+				}
+			}
+		}
+
+		#endregion //Initialization
+
+		#region Methods
 
 		public bool AddKeyframe(KeyElement key)
 		{
@@ -172,214 +201,6 @@ namespace AnimationLib
 			KeyBone.RenameJoint(oldName, newName);
 		}
 
-		public override string ToString()
-		{
-			return Name;
-		}
-
-		#endregion //Methods
-
-		#region File IO
-
-		/// <summary>
-		/// Read in all the bone information from a file in the serialized XML format
-		/// </summary>
-		/// <param name="node">The xml node to read from</param>
-		/// <param name="model">the root node of the model that this dude animates</param>
-		/// <returns>bool: whether or not it was able to read from the xml</returns>
-		public bool ReadXmlFormat(XmlNode node, Bone model)
-		{
-#if DEBUG
-			if ("Item" != node.Name)
-			{
-				Debug.Assert(false);
-				return false;
-			}
-
-			//should have an attribute Type
-			XmlNamedNodeMap mapAttributes = node.Attributes;
-			for (int i = 0; i < mapAttributes.Count; i++)
-			{
-				//will only have the name attribute
-				string strName = mapAttributes.Item(i).Name;
-				string strValue = mapAttributes.Item(i).Value;
-
-				if ("Type" == strName)
-				{
-					if ("AnimationLib.AnimationXML" != strValue)
-					{
-						Debug.Assert(false);
-						return false;
-					}
-				}
-			}
-#endif
-
-			//make sure to setup the bones model
-			KeyBone = new KeyBone(model);
-
-			//Read in child nodes
-			if (node.HasChildNodes)
-			{
-				for (XmlNode childNode = node.FirstChild;
-					null != childNode;
-					childNode = childNode.NextSibling)
-				{
-					//what is in this node?
-					string strName = childNode.Name;
-					string strValue = childNode.InnerText;
-
-					switch (strName)
-					{
-						case "name":
-						{
-							Name = strValue;
-						}
-						break;
-
-						case "length":
-						{
-							Length = Convert.ToSingle(strValue);
-						}
-						break;
-
-						case "keys":
-						{
-							//get the animation length in frames
-							int iLengthFrames = Length.ToFrames();
-
-							if (childNode.HasChildNodes)
-							{
-								for (var keyNode = childNode.FirstChild;
-									null != keyNode;
-									keyNode = keyNode.NextSibling)
-								{
-									//read in the key element
-									var myKey = new KeyElement();
-									myKey.ReadXmlFormat(keyNode);
-
-									//is this keyelement worth keeping?
-									if ((myKey.KeyFrame) && (iLengthFrames >= myKey.Time))
-									{
-										//set the image index
-										var rMyBone = model.GetBone(myKey.JointName);
-										if (rMyBone != null)
-										{
-											myKey.ImageIndex = rMyBone.GetImageIndex(myKey.ImageName);
-										}
-
-										//add to the correct keyjoint
-										var myKeyJoint = KeyBone.GetKeyJoint(myKey.JointName);
-										if (null != myKeyJoint)
-										{
-											myKeyJoint.AddKeyElement(myKey);
-										}
-									}
-								}
-							}
-						}
-						break;
-					}
-				}
-			}
-
-			return true;
-		}
-
-		/// <summary>
-		/// Write this dude out to the xml format
-		/// </summary>
-		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		/// <param name="model">the root bone of the model this dude references</param>
-		public void WriteXmlFormat(XmlTextWriter xmlWriter, Bone model)
-		{
-			Debug.Assert(null != model);
-
-			//first get a list of all the keyframes
-			var animationXml = new AnimationXml();
-			KeyBone.WriteXmlFormat(animationXml, model);
-
-			//now sort all those keyframes
-			animationXml.keys.Sort(new KeyXmlSort());
-
-			//write out the item tag
-			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("Type", "AnimationLib.AnimationXML");
-
-			//write out animation name
-			xmlWriter.WriteStartElement("name");
-			xmlWriter.WriteString(Name);
-			xmlWriter.WriteEndElement();
-
-			//write out animation length
-			xmlWriter.WriteStartElement("length");
-			xmlWriter.WriteString(Length.ToString());
-			xmlWriter.WriteEndElement();
-
-			//write out all the keyframes
-			xmlWriter.WriteStartElement("keys");
-			for (int i = 0; i < animationXml.keys.Count; i++)
-			{
-				xmlWriter.WriteStartElement("Item");
-				xmlWriter.WriteAttributeString("Type", "AnimationLib.KeyXML");
-
-				xmlWriter.WriteStartElement("time");
-				xmlWriter.WriteString(animationXml.keys[i].time.ToString());
-				xmlWriter.WriteEndElement();
-
-				if (!animationXml.keys[i].SkipRotation)
-				{
-					xmlWriter.WriteStartElement("rotation");
-					xmlWriter.WriteString(animationXml.keys[i].rotation.ToString());
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipLayer)
-				{
-					xmlWriter.WriteStartElement("layer");
-					xmlWriter.WriteString(animationXml.keys[i].layer.ToString());
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipImage)
-				{
-					xmlWriter.WriteStartElement("image");
-					xmlWriter.WriteString(animationXml.keys[i].image.ToString());
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipFlip)
-				{
-					xmlWriter.WriteStartElement("flip");
-					xmlWriter.WriteString(animationXml.keys[i].flip ? "true" : "false");
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipTranslation)
-				{
-					xmlWriter.WriteStartElement("translation");
-					xmlWriter.WriteString(animationXml.keys[i].translation.StringFromVector());
-					xmlWriter.WriteEndElement();
-				}
-
-				if (!animationXml.keys[i].SkipRagDoll)
-				{
-					xmlWriter.WriteStartElement("ragdoll");
-					xmlWriter.WriteString(animationXml.keys[i].ragdoll ? "true" : "false");
-					xmlWriter.WriteEndElement();
-				}
-
-				xmlWriter.WriteStartElement("joint");
-				xmlWriter.WriteString(animationXml.keys[i].joint.ToString());
-				xmlWriter.WriteEndElement();
-
-				xmlWriter.WriteEndElement();
-			}
-			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteEndElement();
-		}
-
 		/// <summary>
 		/// Multiply all the layers to spread out the model
 		/// </summary>
@@ -389,6 +210,11 @@ namespace AnimationLib
 			KeyBone.MultiplyLayers(multiply);
 		}
 
-		#endregion
+		public override string ToString()
+		{
+			return Name;
+		}
+
+		#endregion //Methods
 	}
 }

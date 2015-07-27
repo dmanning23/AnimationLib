@@ -1,6 +1,4 @@
 using FilenameBuddy;
-using System.Xml;
-using XmlBuddy;
 
 namespace AnimationLib
 {
@@ -18,6 +16,12 @@ namespace AnimationLib
 			: base(filename)
 		{
 			RootBone = new GarmentBoneModel();
+		}
+
+		public GarmentSkeletonModel(Filename filename, GarmentSkeleton skeleton)
+			: base(filename)
+		{
+			RootBone = new GarmentBoneModel(skeleton.RootBone as GarmentBone);
 		}
 
 		#endregion //Methods

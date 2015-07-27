@@ -204,37 +204,6 @@ namespace AnimationLib
 			}
 		}
 
-		public override string ToString()
-		{
-			return Name;
-		}
-
-		#endregion //Methods
-
-		#region File IO
-
-		/// <summary>
-		/// write all this dude's stuff out to xml
-		/// </summary>
-		/// <param name="animationXml">the animtion object to add all the keyframes to</param>
-		/// <param name="myBone">the bone this keybone references</param>
-		public void WriteXmlFormat(AnimationXml animationXml, Bone myBone)
-		{
-			Debug.Assert(null != myBone);
-
-			//write out all my joints
-			KeyJoint.WriteXmlFormat(animationXml, myBone);
-			
-			//write out all the children's joints
-			for (var i = 0; i < Bones.Count; i++)
-			{
-				//find the bone for this keybone
-				Bone rChildBone = myBone.GetBone(Bones[i].Name);
-				Debug.Assert(null != rChildBone);
-				Bones[i].WriteXmlFormat(animationXml, rChildBone);
-			}
-		}
-
 		/// <summary>
 		/// Multiply all the layers to spread out the model
 		/// </summary>
@@ -249,6 +218,11 @@ namespace AnimationLib
 			}
 		}
 
-		#endregion
+		public override string ToString()
+		{
+			return Name;
+		}
+
+		#endregion //Methods
 	}
 }

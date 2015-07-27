@@ -88,20 +88,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Source\AnimationXml.cs">
-      <Link>AnimationXml.cs</Link>
-    </Compile>
-    <Compile Include="..\Source\Models\AnimationContainerModel.cs">
-      <Link>Models\AnimationContainerModel.cs</Link>
+    <Compile Include="..\Source\GarmentSkeleton.cs">
+      <Link>GarmentSkeleton.cs</Link>
     </Compile>
     <Compile Include="..\Source\Models\AnimationModel.cs">
       <Link>Models\AnimationModel.cs</Link>
     </Compile>
+    <Compile Include="..\Source\Models\AnimationsModel.cs">
+      <Link>Models\AnimationsModel.cs</Link>
+    </Compile>
     <Compile Include="..\Source\Models\BoneModel.cs">
       <Link>Models\BoneModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Source\Models\GarmentAnimationContainerModel.cs">
-      <Link>Models\GarmentAnimationContainerModel.cs</Link>
     </Compile>
     <Compile Include="..\Source\Models\GarmentBoneModel.cs">
       <Link>Models\GarmentBoneModel.cs</Link>
@@ -124,8 +121,8 @@
     <Compile Include="..\Source\Models\JointModel.cs">
       <Link>Models\JointModel.cs</Link>
     </Compile>
-    <Compile Include="..\Source\Models\KeyJointModel.cs">
-      <Link>Models\KeyJointModel.cs</Link>
+    <Compile Include="..\Source\Models\KeyElementModel.cs">
+      <Link>Models\KeyElementModel.cs</Link>
     </Compile>
     <Compile Include="..\Source\Models\PhysicsCircleModel.cs">
       <Link>Models\PhysicsCircleModel.cs</Link>
