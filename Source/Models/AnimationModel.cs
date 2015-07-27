@@ -106,18 +106,21 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "name":
 				{
 					Name = value;
 				}
 				break;
-
 				case "length":
 				{
 					Length = Convert.ToSingle(value);
 				}
 				break;
-
 				case "keys":
 				{
 					XmlFileBuddy.ReadChildNodes(node, ReadKeyElements);

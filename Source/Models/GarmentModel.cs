@@ -62,6 +62,11 @@ namespace AnimationLib
 					XmlFileBuddy.ReadChildNodes(node, ParseXmlNode);
 				}
 				break;
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "name":
 				{
 					Name = value;
@@ -70,6 +75,11 @@ namespace AnimationLib
 				case "fragments":
 				{
 					XmlFileBuddy.ReadChildNodes(node, ReadFragments);
+				}
+				break;
+				default:
+				{
+					NodeError(node);
 				}
 				break;
 			}

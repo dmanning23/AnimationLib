@@ -51,9 +51,25 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Asset":
+				{
+					//This is an old garment file that still has the XNA format.
+					XmlFileBuddy.ReadChildNodes(node, ParseXmlNode);
+				}
+				break;
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "animations":
 				{
 					XmlFileBuddy.ReadChildNodes(node, ReadAnimation);
+				}
+				break;
+				default:
+				{
+					NodeError(node);
 				}
 				break;
 			}
