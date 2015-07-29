@@ -71,7 +71,7 @@ namespace AnimationLib
 			//Set the rotation to 0 if this dude is using ragdoll
 			if (!Ragdoll)
 			{
-				Rotation = MathHelper.ToDegrees(key.Rotation);
+				Rotation = key.Rotation;
 			}
 			Time = key.Time;
 			Translation = key.Translation;
@@ -152,7 +152,7 @@ namespace AnimationLib
 
 			if (!SkipRotation)
 			{
-				xmlWriter.WriteAttributeString("rotation", Rotation.ToString());
+				xmlWriter.WriteAttributeString("rotation", MathHelper.ToDegrees(Rotation).ToString());
 			}
 
 			if (!SkipLayer)

@@ -114,12 +114,14 @@ namespace AnimationLib
 		public KeyElement(KeyElementModel key, Skeleton skeleton)
 			: this()
 		{
+			KeyFrame = true;
 			Time = key.Time;
-			Rotation = MathHelper.ToRadians(key.Rotation);
+			Rotation = key.Rotation;
 			Layer = key.Layer;
 			Flip = key.Flip;
 			Translation = key.Translation;
 			RagDoll = key.Ragdoll;
+			JointName = key.Joint;
 			
 			//set the image index
 			var bone = skeleton.RootBone.GetBone(key.Joint);
