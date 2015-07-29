@@ -89,6 +89,11 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "time":
 				{
 					Time = Convert.ToInt32(value);
@@ -127,6 +132,11 @@ namespace AnimationLib
 				case "joint":
 				{
 					Joint = value;
+				}
+				break;
+				default:
+				{
+					base.ParseXmlNode(node);
 				}
 				break;
 			}

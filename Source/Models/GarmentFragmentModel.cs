@@ -48,6 +48,11 @@ namespace AnimationLib
 
 			switch (name)
 			{
+				case "Type":
+				{
+					//throw these attributes out
+				}
+				break;
 				case "model":
 				{
 					//read in the model 
@@ -62,6 +67,11 @@ namespace AnimationLib
 					var animationFile = new Filename(value);
 					AnimationContainer = new AnimationsModel(animationFile);
 					AnimationContainer.ReadXmlFile();
+				}
+				break;
+				default:
+				{
+					base.ParseXmlNode(node);
 				}
 				break;
 			}

@@ -145,7 +145,6 @@ namespace AnimationLib
 					base.ParseXmlNode(node);
 				}
 				break;
-
 			}
 		}
 
