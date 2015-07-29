@@ -27,6 +27,11 @@ namespace AnimationLib
 		/// </summary>
 		public bool HasPhysics { get; private set; }
 
+		/// <summary>
+		/// The file this garment was laoded from
+		/// </summary>
+		public Filename GarmentFile { get; private set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -43,6 +48,7 @@ namespace AnimationLib
 		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer)
 			: this()
 		{
+			GarmentFile = filename;
 			var garmentModel = new GarmentModel(filename);
 			garmentModel.ReadXmlFile();
 			Name = garmentModel.Name;
@@ -113,8 +119,6 @@ namespace AnimationLib
 			}
 		}
 
-		#region Tools
-
 		/// <summary>
 		/// Get a list of all the weapon
 		/// </summary>
@@ -127,7 +131,12 @@ namespace AnimationLib
 			}
 		}
 
-		#endregion //Tools
+		public void WriteXmlFile(Filename filename)
+		{
+			GarmentFile = filename;
+			var garment = new GarmentModel(filename, this);
+			garment.WriteXml();
+		}
 
 		#endregion //Methods
 	}

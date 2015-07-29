@@ -76,6 +76,8 @@ namespace AnimationLib
 		/// <value>The stop watch.</value>
 		public GameClock StopWatch { get; protected set; }
 
+		public Filename SkeletonFile { get; set; }
+
 		public Filename AnimationFile { get; set; }
 
 		/// <summary>
@@ -407,6 +409,7 @@ namespace AnimationLib
 		/// <param name="renderer">renderer to use to load bitmap images</param>
 		public virtual void ReadSkeletonXml(Filename filename, IRenderer renderer)
 		{
+			SkeletonFile = filename;
 			var skelModel = new SkeletonModel(filename);
 			skelModel.ReadXmlFile();
 			Skeleton.Load(skelModel, renderer);
@@ -419,6 +422,8 @@ namespace AnimationLib
 		/// <param name="scale">How much to scale the model when writing it out</param>
 		public virtual void WriteSkeletonXml(Filename filename)
 		{
+			SkeletonFile = filename;
+
 			//first rename all the joints so they are correct
 			Skeleton.RenameJoints(this);
 
@@ -436,6 +441,8 @@ namespace AnimationLib
 		/// <param name="filename">filename of the animations to load</param>
 		public virtual void ReadAnimationXml(Filename filename)
 		{
+			AnimationFile = filename;
+
 			//load up the animations from file
 			Debug.Assert(null != Skeleton);
 			var animations = new AnimationsModel(filename);
@@ -454,6 +461,7 @@ namespace AnimationLib
 
 		public void WriteAnimationXml(Filename filename)
 		{
+			AnimationFile = filename;
 			var animations = new AnimationsModel(filename, this);
 			animations.WriteXml();
 		}
