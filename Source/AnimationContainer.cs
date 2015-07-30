@@ -299,7 +299,8 @@ namespace AnimationLib
 		/// <param name="paletteSwap">the color to use for the palette swap</param>
 		public void Render(DrawList drawList, Color paletteSwap)
 		{
-			if (null != Skeleton)
+			if (null != Skeleton &&
+				null != Skeleton.RootBone)
 			{
 				//send teh model to teh draw list
 				Skeleton.RootBone.Render(drawList, paletteSwap);
