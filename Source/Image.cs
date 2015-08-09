@@ -176,17 +176,24 @@ namespace AnimationLib
 		/// <summary>
 		/// Render this image
 		/// </summary>
-		/// <param name="position">where on the screen to draw the image</param>
 		/// <param name="drawList">the drawlist to put it in</param>
-		/// <param name="layer">the layer to put the image at</param>
+		/// <param name="position">where on the screen to draw the image</param>
+		/// <param name="primaryColor"></param>
+		/// <param name="secondaryColor"></param>
 		/// <param name="rotation"></param>
 		/// <param name="isFlipped"></param>
-		/// <param name="color"></param>
-		public void Render(Vector2 position, DrawList drawList, int layer, float rotation, bool isFlipped, Color color)
+		/// <param name="layer">the layer to put the image at</param>
+		public void Render(DrawList drawList, 
+			Vector2 position,
+			Color primaryColor,
+			Color secondaryColor,
+			float rotation, 
+			bool isFlipped, 
+			int layer)
 		{
 			if (null != _texture)
 			{
-				drawList.AddQuad(_texture, position, color, rotation, isFlipped, layer);
+				drawList.AddQuad(_texture, position, primaryColor, secondaryColor, rotation, isFlipped, layer);
 			}
 		}
 

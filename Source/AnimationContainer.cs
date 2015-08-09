@@ -296,13 +296,12 @@ namespace AnimationLib
 		/// Render the animation out to a drawlist
 		/// </summary>
 		/// <param name="drawList">the drawlist to render out to</param>
-		/// <param name="paletteSwap">the color to use for the palette swap</param>
-		public void Render(DrawList drawList, Color paletteSwap)
+		public void Render(DrawList drawList)
 		{
 			if (null != Skeleton)
 			{
 				//send teh model to teh draw list
-				Skeleton.RootBone.Render(drawList, paletteSwap);
+				Skeleton.RootBone.Render(drawList);
 			}
 		}
 

@@ -125,6 +125,18 @@ namespace AnimationLib
 		/// </summary>
 		public List<Vector2> RagdollForces { get; private set; }
 
+		/// <summary>
+		/// The color to draw this bone with. 
+		/// Only used if Colorable flag is true
+		/// </summary>
+		private Color PrimaryColor { get; set; }
+
+		/// <summary>
+		/// The color to draw the secondary color mask with. 
+		/// Only used if there is a ColorMask texture on the current Image
+		/// </summary>
+		private Color SecondaryColor { get; set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -146,6 +158,8 @@ namespace AnimationLib
 			Colorable = false;
 			BoneType = EBoneType.Normal;
 			RagdollForces = new List<Vector2>();
+			PrimaryColor = Color.White;
+			SecondaryColor = Color.White;
 		}
 
 		public Bone(BoneModel bone)
@@ -477,6 +491,46 @@ namespace AnimationLib
 			}
 		}
 
+		#region Color Methods
+
+		/// <summary>
+		/// Set the primary color of this bone, if the colorable flag is true.
+		/// Also recurses into all child bones
+		/// </summary>
+		/// <param name="color"></param>
+		public void SetPrimaryColor(Color color)
+		{
+			//If this bone is colorable, change the color
+			if (Colorable)
+			{
+				PrimaryColor = color;
+			}
+
+			//Set the color in all the child bones
+			foreach (var bone in Bones)
+			{
+				bone.SetPrimaryColor(color);
+			}
+		}
+
+		/// <summary>
+		/// Set the secondary color of this bone.
+		/// Also recurses into all child bones
+		/// </summary>
+		/// <param name="color"></param>
+		public void SetSecondaryColor(Color color)
+		{
+			SecondaryColor = color;
+
+			//Set the color in all the child bones
+			foreach (var bone in Bones)
+			{
+				bone.SetSecondaryColor(color);
+			}
+		}
+
+		#endregion //Color Methods
+
 		#region Update Methods
 
 		/// <summary>
@@ -768,31 +822,18 @@ namespace AnimationLib
 		/// Render this guy out to a draw list
 		/// </summary>
 		/// <param name="drawlist">the draw list to render to</param>
-		/// <param name="paletteSwap"></param>
-		public void Render(DrawList drawlist, Color paletteSwap)
+		public void Render(DrawList drawlist)
 		{
 			//render out all the children first, so that they will be drawn on top if there are any layer clashes
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].Render(drawlist, paletteSwap);
+				Bones[i].Render(drawlist);
 			}
 
 			//Render out the current image
 			if ((ImageIndex >= 0) && (ImageIndex < Images.Count))
 			{
-				//Does this bone ignore palette swaps?
-				Color finalColor = Color.White;
-				if (Colorable)
-				{
-					finalColor = paletteSwap;
-				}
-
-				Images[ImageIndex].Render(Position,
-										  drawlist,
-										  CurrentLayer,
-										  Rotation,
-										  Flipped,
-										  finalColor);
+				Images[ImageIndex].Render(drawlist, Position, PrimaryColor, SecondaryColor, Rotation, Flipped, CurrentLayer);
 			}
 		}
 
@@ -813,7 +854,7 @@ namespace AnimationLib
 			{
 				for (var i = 0; i < Bones.Count; i++)
 				{
-					Bones[i].DrawJoints(renderer, recurse, color);
+					Bones[i].DrawJoints(renderer, true, color);
 				}
 			}
 		}
