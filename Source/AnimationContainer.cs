@@ -298,7 +298,8 @@ namespace AnimationLib
 		/// <param name="drawList">the drawlist to render out to</param>
 		public void Render(DrawList drawList)
 		{
-			if (null != Skeleton)
+			if (null != Skeleton &&
+				null != Skeleton.RootBone)
 			{
 				//send teh model to teh draw list
 				Skeleton.RootBone.Render(drawList);
