@@ -2,6 +2,7 @@
 using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
 
 namespace AnimationLib
 {
@@ -93,6 +94,28 @@ namespace AnimationLib
 			//set the parent bone of all those root node garment bones
 			AnimationContainer.SetGarmentBones(characterSkeleton);
 		}
+
+		#region Color Methods
+
+		/// <summary>
+		/// Set the primary color of this garment
+		/// </summary>
+		/// <param name="color"></param>
+		public void SetPrimaryColor(Color color)
+		{
+			AnimationContainer.Skeleton.RootBone.SetPrimaryColor(color);
+		}
+
+		/// <summary>
+		/// Set the secondary color of this garment
+		/// </summary>
+		/// <param name="color"></param>
+		public void SetSecondaryColor(Color color)
+		{
+			AnimationContainer.Skeleton.RootBone.SetSecondaryColor(color);
+		}
+
+		#endregion //Color Methods
 
 		#endregion //Methods
 	}

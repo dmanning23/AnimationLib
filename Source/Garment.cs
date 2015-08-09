@@ -2,6 +2,7 @@
 using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
 
 namespace AnimationLib
 {
@@ -137,6 +138,36 @@ namespace AnimationLib
 			var garment = new GarmentModel(filename, this);
 			garment.WriteXml();
 		}
+
+		#region Color Methods
+
+		/// <summary>
+		/// Set the primary color of this garment
+		/// </summary>
+		/// <param name="color"></param>
+		public void SetPrimaryColor(Color color)
+		{
+			//Set the color in all the garment fragments
+			foreach (var fragment in Fragments)
+			{
+				fragment.SetPrimaryColor(color);
+			}
+		}
+
+		/// <summary>
+		/// Set the secondary color of this garment
+		/// </summary>
+		/// <param name="color"></param>
+		public void SetSecondaryColor(Color color)
+		{
+			//Set the color in all the garment fragments
+			foreach (var fragment in Fragments)
+			{
+				fragment.SetSecondaryColor(color);
+			}
+		}
+
+		#endregion //Color Methods
 
 		#endregion //Methods
 	}
