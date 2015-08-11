@@ -34,6 +34,13 @@ namespace AnimationLib
 		/// </summary>
 		private ITexture _texture;
 
+		/// <summary>
+		/// The amount of gravity to apply to ragdoll physics when this image is active
+		/// </summary>
+		private Vector2 _ragdollGravity;
+
+		private float _ragdollSpring;
+
 		#endregion //Fields
 
 		#region Properties
@@ -60,6 +67,42 @@ namespace AnimationLib
 			get { return _anchorCoord; }
 			set { _anchorCoord = value; }
 		}
+
+		public Vector2 RagdollGravity
+		{
+			get
+			{
+				return _ragdollGravity;
+			}
+			set
+			{
+				_ragdollGravity = value;
+				SpringForce = RagdollGravity.Length() * _ragdollSpring;
+			}
+		}
+
+		/// <summary>
+		/// The amount to spring back to center for this image.
+		/// This is a percentage of gravity.
+		/// This has to be bigger than 1.0 to beat gravity
+		/// </summary>
+		public float RagdollSpring 
+		{
+			get
+			{
+				return _ragdollSpring;
+			}
+			set
+			{
+				_ragdollSpring = value;
+				SpringForce = RagdollGravity.Length() * _ragdollSpring;
+			}
+		}
+
+		/// <summary>
+		/// This is the actual numeric amount to bounce back to center
+		/// </summary>
+		public float SpringForce { get; set; }
 
 		public float Width
 		{
@@ -101,6 +144,8 @@ namespace AnimationLib
 			_anchorCoord = Vector2.Zero;
 			_texture = null;
 			ImageFile = new Filename();
+			_ragdollGravity = new Vector2(0, 1500f);
+			RagdollSpring = 1.5f;
 		}
 
 		public Image(ImageModel image)
@@ -109,6 +154,8 @@ namespace AnimationLib
 			UpperLeft = image.UpperLeft;
 			LowerRight = image.LowerRight;
 			AnchorCoord = image.AnchorCoord;
+			RagdollGravity = image.RagdollGravity;
+			RagdollSpring = image.RagdollSpring;
 			ImageFile = image.ImageFile;
 			foreach (var jointCoord in image.JointCoords)
 			{

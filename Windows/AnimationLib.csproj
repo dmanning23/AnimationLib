@@ -133,9 +133,6 @@
     <Compile Include="..\Source\Models\SkeletonModel.cs">
       <Link>Models\SkeletonModel.cs</Link>
     </Compile>
-    <Compile Include="..\Source\RagdollConstants.cs">
-      <Link>RagdollConstants.cs</Link>
-    </Compile>
     <Compile Include="..\Source\Skeleton.cs">
       <Link>Skeleton.cs</Link>
     </Compile>

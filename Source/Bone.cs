@@ -922,18 +922,22 @@ namespace AnimationLib
 		/// Add gravity to the forces for this bone add recurse into child bones
 		/// </summary>
 		/// <param name="gravity"></param>
-		public virtual void AddGravity(Vector2 gravity)
+		public virtual void AddGravity()
 		{
-			RagdollForces.Add(gravity);
+			var image = GetCurrentImage();
+			if (null != image)
+			{
+				RagdollForces.Add(image.RagdollGravity);
+			}
 
 			//update the children
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].AddGravity(gravity);
+				Bones[i].AddGravity();
 			}
 		}
 
-		public void AccumulateForces(float springStrength, float scale)
+		public void AccumulateForces(float scale)
 		{
 			//Collect all the forces
 			Vector2 collectedForces = Vector2.Zero;
@@ -945,22 +949,25 @@ namespace AnimationLib
 			//clear out forces so they dont accumulate
 			RagdollForces.Clear();
 
+			//get the spring strength
+			var image = GetCurrentImage();
+
 			//update the children
 			for (var i = 0; i < Joints.Count; i++)
 			{
 				Joints[i].Acceleration = collectedForces;
 
 				//if the joint[i].data is floating, add some spring force
-				if ((ImageIndex >= 0) && AnchorJoint.CurrentKeyElement.RagDoll)
+				if ((null != image) && AnchorJoint.CurrentKeyElement.RagDoll)
 				{
-					AnchorJoint.SpringFloatingRagdoll(Joints[i], springStrength, Joints[i].Data.Length, scale);
+					AnchorJoint.SpringFloatingRagdoll(Joints[i], image.SpringForce, Joints[i].Data.Length, scale);
 				}
 			}
 
 			//update the children
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].AccumulateForces(springStrength, scale);
+				Bones[i].AccumulateForces(scale);
 			}
 		}
 

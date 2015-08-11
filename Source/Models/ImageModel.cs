@@ -1,3 +1,4 @@
+using System;
 using FilenameBuddy;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -16,6 +17,10 @@ namespace AnimationLib
 		public Vector2 LowerRight { get; set; }
 
 		public Vector2 AnchorCoord { get; set; }
+
+		public Vector2 RagdollGravity { get; set; }
+
+		public float RagdollSpring { get; set; }
 
 		public Filename ImageFile { get; set; }
 
@@ -52,6 +57,8 @@ namespace AnimationLib
 			UpperLeft = Vector2.Zero;
 			LowerRight = Vector2.Zero;
 			AnchorCoord = Vector2.Zero;
+			RagdollGravity = new Vector2(0f, 1500f);
+			RagdollSpring = 1.5f;
 			ImageFile = new Filename();
 		}
 
@@ -61,6 +68,8 @@ namespace AnimationLib
 			UpperLeft = image.UpperLeft;
 			LowerRight = image.LowerRight;
 			AnchorCoord = image.AnchorCoord;
+			RagdollSpring = image.RagdollSpring;
+			RagdollGravity = image.RagdollGravity;
 			ImageFile = image.ImageFile;
 			foreach (var jointCoord in image.JointCoords)
 			{
@@ -116,6 +125,17 @@ namespace AnimationLib
 					AnchorCoord = value.ToVector2();
 				}
 				break;
+				case "RagdollGravity":
+				{
+					//convert to the correct vector
+					RagdollGravity = value.ToVector2();
+				}
+				break;
+				case "RagdollSpring":
+				{
+					RagdollSpring = Convert.ToSingle(value);
+				}
+				break;
 				case "filename":
 				{
 					//get the correct path & filename
@@ -157,7 +177,7 @@ namespace AnimationLib
 
 		public void ReadCircle(XmlNode node)
 		{
-			var circle= new PhysicsCircleModel();
+			var circle = new PhysicsCircleModel();
 			XmlFileBuddy.ReadChildNodes(node, circle.ParseXmlNode);
 			Circles.Add(circle);
 		}

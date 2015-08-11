@@ -253,10 +253,10 @@ namespace AnimationLib
 			}
 
 			//add gravity to the ragdoll physics
-			Skeleton.RootBone.AddGravity(RagdollConstants.Gravity);
+			Skeleton.RootBone.AddGravity();
 
 			//accumulate all the force
-			Skeleton.RootBone.AccumulateForces(RagdollConstants.Spring, scale);
+			Skeleton.RootBone.AccumulateForces(scale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
