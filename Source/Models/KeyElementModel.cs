@@ -146,7 +146,6 @@ namespace AnimationLib
 		{
 			xmlWriter.WriteStartElement("key");
 
-			xmlWriter.WriteStartElement("time");
 			xmlWriter.WriteAttributeString("time", Time.ToString());
 			xmlWriter.WriteAttributeString("joint", Joint);
 

@@ -45,6 +45,8 @@ namespace AnimationLib
 		public AnimationModel(Animation animation, Skeleton skeleton)
 			: this()
 		{
+			Name = animation.Name;
+			Length = animation.Length;
 			KeyElements = new List<KeyElementModel>();
 			GetKeys(animation.KeyBone, skeleton.RootBone);
 			KeyElements.Sort(new KeyElementModelSort());
@@ -153,17 +155,16 @@ namespace AnimationLib
 			xmlWriter.WriteAttributeString("name", Name);
 			xmlWriter.WriteAttributeString("length", Length.ToString());
 
-			xmlWriter.WriteStartElement("animation");
-
 			//make sure thos dudes are sorted first
 			KeyElements.Sort(new KeyElementModelSort());
 
+			xmlWriter.WriteStartElement("keys");
 			foreach (var key in KeyElements)
 			{
 				key.WriteXmlNode(xmlWriter);
 			}
-
 			xmlWriter.WriteEndElement();
+
 			xmlWriter.WriteEndElement();
 		}
 

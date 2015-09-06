@@ -49,7 +49,9 @@ namespace AnimationLib
 		public GarmentFragment(GarmentFragmentModel fragment, IRenderer renderer)
 			: this()
 		{
-			AnimationContainer = new GarmentAnimationContainer(fragment.AnimationContainer, fragment.Skeleton, renderer);
+            SkeletonFile = new Filename(fragment.Skeleton.Filename);
+            AnimationFile = new Filename(fragment.AnimationContainer.Filename);
+            AnimationContainer = new GarmentAnimationContainer(fragment.AnimationContainer, fragment.Skeleton, renderer);
 		}
 
 		#endregion //Initialization

@@ -79,7 +79,11 @@ namespace AnimationLib
 			}
 			foreach (var childBone in bone.Bones)
 			{
-				Bones.Add(new BoneModel(childBone));
+				//Don't add garment bones to the model
+				if (childBone.BoneType != EBoneType.Garment)
+				{
+					Bones.Add(new BoneModel(childBone));
+				}
 			}
 		}
 

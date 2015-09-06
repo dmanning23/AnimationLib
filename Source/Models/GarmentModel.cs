@@ -94,7 +94,6 @@ namespace AnimationLib
 
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
-			xmlWriter.WriteStartElement("garment");
 			xmlWriter.WriteAttributeString("name", Name);
 
 			//write out the garment fragments
@@ -103,8 +102,6 @@ namespace AnimationLib
 			{
 				fragment.WriteXmlNode(xmlWriter);
 			}
-			xmlWriter.WriteEndElement();
-
 			xmlWriter.WriteEndElement();
 		}
 

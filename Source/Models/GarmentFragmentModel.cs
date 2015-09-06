@@ -79,8 +79,10 @@ namespace AnimationLib
 
 		public override void WriteXmlNode(XmlTextWriter xmlWriter)
 		{
-			//write out model filename to use
-			xmlWriter.WriteStartElement("model");
+            xmlWriter.WriteStartElement("fragment");
+
+            //write out model filename to use
+            xmlWriter.WriteStartElement("model");
 			xmlWriter.WriteString(Skeleton.Filename.GetRelFilename());
 			xmlWriter.WriteEndElement();
 
@@ -89,8 +91,10 @@ namespace AnimationLib
 			xmlWriter.WriteString(AnimationContainer.Filename.GetRelFilename());
 			xmlWriter.WriteEndElement();
 
-			//write out the model file
-			Skeleton.WriteXml();
+            xmlWriter.WriteEndElement();
+
+            //write out the model file
+            Skeleton.WriteXml();
 
 			//write out the animation file
 			AnimationContainer.WriteXml();
