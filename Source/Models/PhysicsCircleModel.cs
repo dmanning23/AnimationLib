@@ -72,7 +72,7 @@ namespace AnimationLib
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public override void WriteXmlNode(XmlTextWriter xmlWriter)
+		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("Item");

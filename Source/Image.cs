@@ -32,7 +32,7 @@ namespace AnimationLib
 		/// <summary>
 		/// The bitmap for this frame
 		/// </summary>
-		private ITexture _texture;
+		private TextureInfo _texture;
 
 		/// <summary>
 		/// The amount of gravity to apply to ragdoll physics when this image is active
@@ -306,7 +306,7 @@ namespace AnimationLib
 			return updatedJointCoord;
 		}
 
-		public void Copy(Image myInst, Macro actionCollection)
+		public void Copy(Image myInst, UndoRedoStack actionCollection)
 		{
 			//copy the anchor coord
 			SetAnchorLocation myAnchorAction = new SetAnchorLocation(this, (int)myInst.AnchorCoord.X, (int)myInst.AnchorCoord.Y);

@@ -77,7 +77,7 @@ namespace AnimationLib
 			}
 		}
 
-		public override void WriteXmlNode(XmlTextWriter xmlWriter)
+		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
             xmlWriter.WriteStartElement("fragment");
 

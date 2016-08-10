@@ -100,7 +100,7 @@ namespace AnimationLib
 			xmlWriter.WriteStartElement("fragments");
 			foreach (var fragment in Fragments)
 			{
-				fragment.WriteXmlNode(xmlWriter);
+				fragment.WriteXmlNodes(xmlWriter);
 			}
 			xmlWriter.WriteEndElement();
 		}

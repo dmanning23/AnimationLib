@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B7AD05AF-3EC3-4524-9334-37456F395E09}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AnimationLib.Android</RootNamespace>
+    <AssemblyName>AnimationLib.Android</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CameraBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CameraBuddy.1.0.1\lib\MonoAndroid10\CameraBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CollisionBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CollisionBuddy.1.0.0\lib\MonoAndroid10\CollisionBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DrawlistBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DrawlistBuddy.1.0.0\lib\MonoAndroid10\DrawlistBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FilenameBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FilenameBuddy.1.0.2\lib\MonoAndroid10\FilenameBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GameTimer.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GameTimer.1.0.1\lib\MonoAndroid10\GameTimer.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MatrixExtensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MatrixExtensions.1.0.1\lib\MonoAndroid10\MatrixExtensions.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Android" />
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.Android.3.5.1.1679\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="PrimitiveBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PrimitiveBuddy.1.0.0\lib\MonoAndroid10\PrimitiveBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RandomExtensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.2\lib\MonoAndroid10\RandomExtensions.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RenderBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RenderBuddy.1.0.1\lib\MonoAndroid10\RenderBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ResolutionBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ResolutionBuddy.1.0.2\lib\MonoAndroid10\ResolutionBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UndoRedoBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UndoRedoBuddy.1.0.0\lib\MonoAndroid10\UndoRedoBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vector2Extensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vector2Extensions.1.0.1\lib\MonoAndroid10\Vector2Extensions.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XmlBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XmlBuddy.1.0.4\lib\MonoAndroid10\XmlBuddy.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Source\Animation.cs">
+      <Link>Animation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\AnimationContainer.cs">
+      <Link>AnimationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Bone.cs">
+      <Link>Bone.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\BoneType.cs">
+      <Link>BoneType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\RemoveKeyElement.cs">
+      <Link>Commands\RemoveKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetAnchorLocation.cs">
+      <Link>Commands\SetAnchorLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetCircleData.cs">
+      <Link>Commands\SetCircleData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetJointCoords.cs">
+      <Link>Commands\SetJointCoords.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetKeyElement.cs">
+      <Link>Commands\SetKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetLineData.cs">
+      <Link>Commands\SetLineData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Garment.cs">
+      <Link>Garment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\GarmentAnimationContainer.cs">
+      <Link>GarmentAnimationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\GarmentBone.cs">
+      <Link>GarmentBone.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\GarmentFragment.cs">
+      <Link>GarmentFragment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\GarmentSkeleton.cs">
+      <Link>GarmentSkeleton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Helper.cs">
+      <Link>Helper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Image.cs">
+      <Link>Image.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Joint.cs">
+      <Link>Joint.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\JointData.cs">
+      <Link>JointData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\KeyBone.cs">
+      <Link>KeyBone.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\KeyElement.cs">
+      <Link>KeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\KeyJoint.cs">
+      <Link>KeyJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\AnimationModel.cs">
+      <Link>Models\AnimationModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\AnimationsModel.cs">
+      <Link>Models\AnimationsModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\BoneModel.cs">
+      <Link>Models\BoneModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\GarmentBoneModel.cs">
+      <Link>Models\GarmentBoneModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\GarmentFragmentModel.cs">
+      <Link>Models\GarmentFragmentModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\GarmentModel.cs">
+      <Link>Models\GarmentModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\GarmentSkeletonModel.cs">
+      <Link>Models\GarmentSkeletonModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\ImageModel.cs">
+      <Link>Models\ImageModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\JointDataModel.cs">
+      <Link>Models\JointDataModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\JointModel.cs">
+      <Link>Models\JointModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\KeyElementModel.cs">
+      <Link>Models\KeyElementModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\PhysicsCircleModel.cs">
+      <Link>Models\PhysicsCircleModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\PhysicsLineModel.cs">
+      <Link>Models\PhysicsLineModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\SkeletonModel.cs">
+      <Link>Models\SkeletonModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\PhysicsCircle.cs">
+      <Link>PhysicsCircle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\PhysicsLine.cs">
+      <Link>PhysicsLine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Playback.cs">
+      <Link>Playback.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\RagdollMove.cs">
+      <Link>RagdollMove.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Skeleton.cs">
+      <Link>Skeleton.cs</Link>
+    </Compile>
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

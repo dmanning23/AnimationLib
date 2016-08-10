@@ -104,7 +104,7 @@ namespace AnimationLib
 			return false;
 		}
 
-		public bool RemoveKeyframe(Macro myAction, Bone copyBone, int time)
+		public bool RemoveKeyframe(UndoRedoStack myAction, Bone copyBone, int time)
 		{
 			//find that bone
 			KeyBone myKeyBone = GetKeyBone(copyBone.Name);
@@ -134,7 +134,7 @@ namespace AnimationLib
 		/// <param name="sourceTime">the time to copy from this animation</param>
 		/// <param name="targetTime">the time to paste into the other animation</param>
 		/// <param name="selectiveCopy">if this is true, it means only copy image, layer, ragdoll, flip</param>
-		public void Copy(Macro myAction, 
+		public void Copy(UndoRedoStack myAction, 
 		                 Bone copyBone, 
 		                 Animation myTargetAnimation, 
 		                 int sourceTime, 

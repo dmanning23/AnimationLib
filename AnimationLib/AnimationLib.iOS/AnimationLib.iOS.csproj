@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C79395F-698A-4B95-92E5-B8613D0D64D0}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AnimationLib.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>AnimationLib.iOS</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CameraBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CameraBuddy.1.0.1\lib\Xamarin.iOS10\CameraBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CollisionBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CollisionBuddy.1.0.0\lib\Xamarin.iOS10\CollisionBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DrawlistBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DrawlistBuddy.1.0.0\lib\Xamarin.iOS10\DrawlistBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FilenameBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FilenameBuddy.1.0.2\lib\Xamarin.iOS10\FilenameBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GameTimer.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GameTimer.1.0.1\lib\Xamarin.iOS10\GameTimer.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MatrixExtensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MatrixExtensions.1.0.1\lib\Xamarin.iOS10\MatrixExtensions.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.iOS.3.5.1.1679\lib\XamariniOS\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PrimitiveBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PrimitiveBuddy.1.0.0\lib\Xamarin.iOS10\PrimitiveBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RandomExtensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.2\lib\Xamarin.iOS10\RandomExtensions.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RenderBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RenderBuddy.1.0.1\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ResolutionBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ResolutionBuddy.1.0.2\lib\Xamarin.iOS10\ResolutionBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="UndoRedoBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UndoRedoBuddy.1.0.0\lib\Xamarin.iOS10\UndoRedoBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vector2Extensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vector2Extensions.1.0.1\lib\Xamarin.iOS10\Vector2Extensions.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="XmlBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XmlBuddy.1.0.4\lib\Xamarin.iOS10\XmlBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Source\Animation.cs">
+      <Link>Animation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\AnimationContainer.cs">
+      <Link>AnimationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Bone.cs">
+      <Link>Bone.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\BoneType.cs">
+      <Link>BoneType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\RemoveKeyElement.cs">
+      <Link>Commands\RemoveKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetAnchorLocation.cs">
+      <Link>Commands\SetAnchorLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetCircleData.cs">
+      <Link>Commands\SetCircleData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetJointCoords.cs">
+      <Link>Commands\SetJointCoords.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetKeyElement.cs">
+      <Link>Commands\SetKeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Commands\SetLineData.cs">
+      <Link>Commands\SetLineData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Garment.cs">
+      <Link>Garment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\GarmentAnimationContainer.cs">
+      <Link>GarmentAnimationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\GarmentBone.cs">
+      <Link>GarmentBone.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\GarmentFragment.cs">
+      <Link>GarmentFragment.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\GarmentSkeleton.cs">
+      <Link>GarmentSkeleton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Helper.cs">
+      <Link>Helper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Image.cs">
+      <Link>Image.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Joint.cs">
+      <Link>Joint.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\JointData.cs">
+      <Link>JointData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\KeyBone.cs">
+      <Link>KeyBone.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\KeyElement.cs">
+      <Link>KeyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\KeyJoint.cs">
+      <Link>KeyJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\AnimationModel.cs">
+      <Link>Models\AnimationModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\AnimationsModel.cs">
+      <Link>Models\AnimationsModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\BoneModel.cs">
+      <Link>Models\BoneModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\GarmentBoneModel.cs">
+      <Link>Models\GarmentBoneModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\GarmentFragmentModel.cs">
+      <Link>Models\GarmentFragmentModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\GarmentModel.cs">
+      <Link>Models\GarmentModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\GarmentSkeletonModel.cs">
+      <Link>Models\GarmentSkeletonModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\ImageModel.cs">
+      <Link>Models\ImageModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\JointDataModel.cs">
+      <Link>Models\JointDataModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\JointModel.cs">
+      <Link>Models\JointModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\KeyElementModel.cs">
+      <Link>Models\KeyElementModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\PhysicsCircleModel.cs">
+      <Link>Models\PhysicsCircleModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\PhysicsLineModel.cs">
+      <Link>Models\PhysicsLineModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Models\SkeletonModel.cs">
+      <Link>Models\SkeletonModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\PhysicsCircle.cs">
+      <Link>PhysicsCircle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\PhysicsLine.cs">
+      <Link>PhysicsLine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Playback.cs">
+      <Link>Playback.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\RagdollMove.cs">
+      <Link>RagdollMove.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Skeleton.cs">
+      <Link>Skeleton.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

@@ -46,7 +46,7 @@ namespace AnimationLib
 
 		public override void WriteXmlNodes(XmlTextWriter xmlFile)
 		{
-			RootBone.WriteXmlNode(xmlFile);
+			RootBone.WriteXmlNodes(xmlFile);
 		}
 
 		#endregion //Model File IO

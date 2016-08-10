@@ -123,7 +123,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void Copy(Macro pasteAction,
+		public void Copy(UndoRedoStack pasteAction,
 			Animation targetAnimation, 
 			int sourceTime, 
 			int targetTime,
@@ -139,7 +139,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void RemoveKeyElement(Macro pasteAction, int time, Animation animation)
+		public void RemoveKeyElement(UndoRedoStack pasteAction, int time, Animation animation)
 		{
 			//go through each joint
 			KeyJoint.RemoveKeyElement(pasteAction, time, animation);
@@ -151,7 +151,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void MirrorRightToLeft(KeyBone rootBone, Macro pasteAction, int time, Animation animation)
+		public void MirrorRightToLeft(KeyBone rootBone, UndoRedoStack pasteAction, int time, Animation animation)
 		{
 			//mirror all the keyjoints
 			KeyJoint.MirrorRightToLeft(rootBone, pasteAction, time, animation);

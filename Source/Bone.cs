@@ -1402,7 +1402,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="rootBone">the root bone of the model, used to search for matching bones</param>
 		/// <param name="actionCollection"></param>
-		public void MirrorRightToLeft(Bone rootBone, Macro actionCollection)
+		public void MirrorRightToLeft(Bone rootBone, UndoRedoStack actionCollection)
 		{
 			Debug.Assert(null != rootBone);
 
@@ -1437,7 +1437,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="sourceBone">the source to copy from</param>
 		/// <param name="actionCollection"></param>
-		private void Copy(Bone sourceBone, Macro actionCollection)
+		private void Copy(Bone sourceBone, UndoRedoStack actionCollection)
 		{
 			Debug.Assert(null != sourceBone);
 

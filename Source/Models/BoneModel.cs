@@ -198,7 +198,7 @@ namespace AnimationLib
 		/// Write this dude out to the xml format
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
-		public override void WriteXmlNode(XmlTextWriter xmlWriter)
+		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("bone");
 
@@ -230,7 +230,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("joints");
 				foreach (var joint in Joints)
 				{
-					joint.WriteXmlNode(xmlWriter);
+					joint.WriteXmlNodes(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}
@@ -241,7 +241,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("images");
 				foreach (var image in Images)
 				{
-					image.WriteXmlNode(xmlWriter);
+					image.WriteXmlNodes(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}
@@ -252,7 +252,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("bones");
 				foreach (var bone in Bones)
 				{
-					bone.WriteXmlNode(xmlWriter);
+					bone.WriteXmlNodes(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}

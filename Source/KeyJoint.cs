@@ -151,7 +151,7 @@ namespace AnimationLib
 			return bFound;
 		}
 
-		public void RemoveKeyElement(Macro pasteAction, int time, Animation myAnimation)
+		public void RemoveKeyElement(UndoRedoStack pasteAction, int time, Animation myAnimation)
 		{
 			//get teh key element at that time
 			KeyElement currentKeyElement = new KeyElement();
@@ -173,7 +173,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void MirrorRightToLeft(KeyBone rootBone, Macro pasteAction, int time, Animation myAnimation)
+		public void MirrorRightToLeft(KeyBone rootBone, UndoRedoStack pasteAction, int time, Animation myAnimation)
 		{
 			//Check if this bone starts with the work "left"
 			string[] nameTokens = Name.Split(new Char[] { ' ' });
@@ -248,7 +248,7 @@ namespace AnimationLib
 			Elements.Sort(new KeyElementSort());
 		}
 
-		public void Copy(Macro pasteAction,
+		public void Copy(UndoRedoStack pasteAction,
 			Animation targetAnimation, 
 			int sourceTime, 
 			int targetTime,

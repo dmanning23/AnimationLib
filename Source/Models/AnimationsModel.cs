@@ -91,7 +91,7 @@ namespace AnimationLib
 			xmlWriter.WriteStartElement("animations");
 			foreach (var animation in Animations)
 			{
-				animation.WriteXmlNode(xmlWriter);
+				animation.WriteXmlNodes(xmlWriter);
 			}
 			xmlWriter.WriteEndElement();
 		}

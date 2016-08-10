@@ -142,7 +142,7 @@ namespace AnimationLib
 			}
 		}
 
-		public override void WriteXmlNode(System.Xml.XmlTextWriter xmlWriter)
+		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("key");
 

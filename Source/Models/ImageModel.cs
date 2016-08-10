@@ -194,7 +194,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="xmlWriter">the xml file to add this dude as a child of</param>
 		/// <param name="scale"></param>
-		public override void WriteXmlNode(XmlTextWriter xmlWriter)
+		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("image");
@@ -223,7 +223,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("joints");
 				foreach (var jointCoord in JointCoords)
 				{
-					jointCoord.WriteXmlNode(xmlWriter);
+					jointCoord.WriteXmlNodes(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}
@@ -234,7 +234,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("circles");
 				foreach (var circle in Circles)
 				{
-					circle.WriteXmlNode(xmlWriter);
+					circle.WriteXmlNodes(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}
@@ -244,7 +244,7 @@ namespace AnimationLib
 				xmlWriter.WriteStartElement("lines");
 				foreach (var line in Lines)
 				{
-					line.WriteXmlNode(xmlWriter);
+					line.WriteXmlNodes(xmlWriter);
 				}
 				xmlWriter.WriteEndElement();
 			}

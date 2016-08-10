@@ -147,7 +147,7 @@ namespace AnimationLib
 			KeyElements.Add(key);
 		}
 
-		public override void WriteXmlNode(XmlTextWriter xmlWriter)
+		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("animation");
@@ -161,7 +161,7 @@ namespace AnimationLib
 			xmlWriter.WriteStartElement("keys");
 			foreach (var key in KeyElements)
 			{
-				key.WriteXmlNode(xmlWriter);
+				key.WriteXmlNodes(xmlWriter);
 			}
 			xmlWriter.WriteEndElement();
 
