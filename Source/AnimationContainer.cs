@@ -31,6 +31,17 @@ namespace AnimationLib
 		#region Properties
 
 		/// <summary>
+		/// The name of this animation container.
+		/// </summary>
+		public virtual string Name
+		{
+			get
+			{
+				return "Base";
+			}
+		}
+
+		/// <summary>
 		/// get access to the model thing
 		/// </summary>
 		public Skeleton Skeleton { get; protected set; }

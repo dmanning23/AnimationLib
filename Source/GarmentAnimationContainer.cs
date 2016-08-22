@@ -24,6 +24,14 @@ namespace AnimationLib
 
 		#region Properties
 
+		public override string Name
+		{
+			get
+			{
+				return GarmentName;
+			}
+		}
+
 		public string GarmentName
 		{
 			get
