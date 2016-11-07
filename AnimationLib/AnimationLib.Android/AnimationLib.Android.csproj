@@ -99,129 +99,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Source\Animation.cs">
-      <Link>Animation.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\AnimationContainer.cs">
-      <Link>AnimationContainer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Bone.cs">
-      <Link>Bone.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\BoneType.cs">
-      <Link>BoneType.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Commands\RemoveKeyElement.cs">
-      <Link>Commands\RemoveKeyElement.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Commands\SetAnchorLocation.cs">
-      <Link>Commands\SetAnchorLocation.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Commands\SetCircleData.cs">
-      <Link>Commands\SetCircleData.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Commands\SetJointCoords.cs">
-      <Link>Commands\SetJointCoords.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Commands\SetKeyElement.cs">
-      <Link>Commands\SetKeyElement.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Commands\SetLineData.cs">
-      <Link>Commands\SetLineData.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Garment.cs">
-      <Link>Garment.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\GarmentAnimationContainer.cs">
-      <Link>GarmentAnimationContainer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\GarmentBone.cs">
-      <Link>GarmentBone.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\GarmentFragment.cs">
-      <Link>GarmentFragment.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\GarmentSkeleton.cs">
-      <Link>GarmentSkeleton.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Helper.cs">
-      <Link>Helper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Image.cs">
-      <Link>Image.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Joint.cs">
-      <Link>Joint.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\JointData.cs">
-      <Link>JointData.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\KeyBone.cs">
-      <Link>KeyBone.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\KeyElement.cs">
-      <Link>KeyElement.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\KeyJoint.cs">
-      <Link>KeyJoint.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\AnimationModel.cs">
-      <Link>Models\AnimationModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\AnimationsModel.cs">
-      <Link>Models\AnimationsModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\BoneModel.cs">
-      <Link>Models\BoneModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\GarmentBoneModel.cs">
-      <Link>Models\GarmentBoneModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\GarmentFragmentModel.cs">
-      <Link>Models\GarmentFragmentModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\GarmentModel.cs">
-      <Link>Models\GarmentModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\GarmentSkeletonModel.cs">
-      <Link>Models\GarmentSkeletonModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\ImageModel.cs">
-      <Link>Models\ImageModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\JointDataModel.cs">
-      <Link>Models\JointDataModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\JointModel.cs">
-      <Link>Models\JointModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\KeyElementModel.cs">
-      <Link>Models\KeyElementModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\PhysicsCircleModel.cs">
-      <Link>Models\PhysicsCircleModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\PhysicsLineModel.cs">
-      <Link>Models\PhysicsLineModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Models\SkeletonModel.cs">
-      <Link>Models\SkeletonModel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\PhysicsCircle.cs">
-      <Link>PhysicsCircle.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\PhysicsLine.cs">
-      <Link>PhysicsLine.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Playback.cs">
-      <Link>Playback.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\RagdollMove.cs">
-      <Link>RagdollMove.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Skeleton.cs">
-      <Link>Skeleton.cs</Link>
-    </Compile>
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -232,6 +109,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
+  <Import Project="..\AnimationLib.SharedProject\AnimationLib.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

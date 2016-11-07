@@ -19,7 +19,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		buildNugetPackages.ps1 = buildNugetPackages.ps1
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AnimationLib.SharedProject", "AnimationLib.SharedProject\AnimationLib.SharedProject.shproj", "{1B14667A-06BE-436F-8A98-59B30D7B9170}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{b7ad05af-3ec3-4524-9334-37456f395e09}*SharedItemsImports = 4
+		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{3c79395f-698a-4b95-92e5-b8613d0d64d0}*SharedItemsImports = 4
+		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{1b14667a-06be-436f-8a98-59b30d7b9170}*SharedItemsImports = 13
+		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{e308f2d3-5868-4efa-82fb-dcf21a6666f6}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
 		AppStore|ARM = AppStore|ARM

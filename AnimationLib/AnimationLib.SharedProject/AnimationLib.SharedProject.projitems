@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>1b14667a-06be-436f-8a98-59b30d7b9170</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AnimationLib.SharedProject</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Animation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnimationContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Bone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BoneType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\RemoveKeyElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetAnchorLocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetCircleData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetJointCoords.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetKeyElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetLineData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Garment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GarmentAnimationContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GarmentBone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GarmentFragment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GarmentSkeleton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Image.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Joint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JointData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)KeyBone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)KeyElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)KeyJoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\AnimationModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\AnimationsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BoneModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GarmentBoneModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GarmentFragmentModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GarmentModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GarmentSkeletonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ImageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\JointDataModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\JointModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\KeyElementModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PhysicsCircleModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PhysicsLineModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SkeletonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PhysicsCircle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PhysicsLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Playback.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RagdollMove.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Skeleton.cs" />
+  </ItemGroup>
+</Project>
