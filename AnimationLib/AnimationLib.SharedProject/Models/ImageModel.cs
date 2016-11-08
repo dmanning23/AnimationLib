@@ -24,6 +24,10 @@ namespace AnimationLib
 
 		public Filename ImageFile { get; set; }
 
+		public Filename NormalMapFile { get; set; }
+
+		public Filename ColorMaskFile { get; set; }
+
 		/// <summary>
 		/// list of joint locations
 		/// These are the coordinates of the joints for this frame
@@ -60,6 +64,8 @@ namespace AnimationLib
 			RagdollGravity = new Vector2(0f, 1500f);
 			RagdollSpring = 1.5f;
 			ImageFile = new Filename();
+			NormalMapFile = new Filename();
+			ColorMaskFile = new Filename();
 		}
 
 		public ImageModel(Image image)
@@ -71,6 +77,8 @@ namespace AnimationLib
 			RagdollSpring = image.RagdollSpring;
 			RagdollGravity = image.RagdollGravity;
 			ImageFile = image.ImageFile;
+			NormalMapFile = image.NormalMapFile;
+			ColorMaskFile = image.ColorMaskFile;
 			foreach (var jointCoord in image.JointCoords)
 			{
 				JointCoords.Add(new JointDataModel(jointCoord));
@@ -142,6 +150,18 @@ namespace AnimationLib
 					ImageFile.SetRelFilename(value);
 				}
 				break;
+				case "normalMapFilename":
+					{
+						//get the correct path & filename
+						NormalMapFile.SetRelFilename(value);
+					}
+					break;
+				case "colorMaskFilename":
+					{
+						//get the correct path & filename
+						ColorMaskFile.SetRelFilename(value);
+					}
+					break;
 				case "joints":
 				{
 					//Read in all the joint JointCoords
@@ -201,6 +221,16 @@ namespace AnimationLib
 
 			//write out filename to use
 			xmlWriter.WriteAttributeString("filename", ImageFile.GetRelFilename());
+
+			if (!string.IsNullOrEmpty(NormalMapFile.File))
+			{
+				xmlWriter.WriteAttributeString("normalMapFilename", NormalMapFile.GetRelFilename());
+			}
+
+			if (!string.IsNullOrEmpty(ColorMaskFile.File))
+			{
+				xmlWriter.WriteAttributeString("colorMaskFilename", ColorMaskFile.GetRelFilename());
+			}
 
 			//write out upper left coords
 			xmlWriter.WriteStartElement("upperleft");

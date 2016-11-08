@@ -59,6 +59,10 @@ namespace AnimationLib
 
 		public Filename ImageFile { get; set; }
 
+		public Filename NormalMapFile { get; set; }
+
+		public Filename ColorMaskFile { get; set; }
+
 		/// <summary>
 		/// Get or set the m_AnchorCoord member variable
 		/// </summary>
@@ -144,6 +148,8 @@ namespace AnimationLib
 			_anchorCoord = Vector2.Zero;
 			_texture = null;
 			ImageFile = new Filename();
+			NormalMapFile = new Filename();
+			ColorMaskFile = new Filename();
 			_ragdollGravity = new Vector2(0, 1500f);
 			RagdollSpring = 1.5f;
 		}
@@ -157,6 +163,8 @@ namespace AnimationLib
 			RagdollGravity = image.RagdollGravity;
 			RagdollSpring = image.RagdollSpring;
 			ImageFile = image.ImageFile;
+			NormalMapFile = image.NormalMapFile;
+			ColorMaskFile = image.ColorMaskFile;
 			foreach (var jointCoord in image.JointCoords)
 			{
 				JointCoords.Add(new JointData(jointCoord, this));
@@ -204,7 +212,7 @@ namespace AnimationLib
 				//do we need to load the image?
 				if (null != renderer)
 				{
-					_texture = renderer.LoadImage(ImageFile);
+					_texture = renderer.LoadImage(ImageFile, NormalMapFile, ColorMaskFile);
 					if (null == _texture)
 					{
 						Debug.Assert(false);
