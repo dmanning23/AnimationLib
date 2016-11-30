@@ -50,6 +50,5 @@ namespace AnimationLib.Commands
 		}
 
 		#endregion //Methods
-
 	}
 }

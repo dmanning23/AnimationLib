@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System;
 using UndoRedoBuddy;
 
 namespace AnimationLib.Commands
@@ -6,45 +6,63 @@ namespace AnimationLib.Commands
 	/// <summary>
 	/// this object moves the location of a joint
 	/// </summary>
-	public class SetJointCoords : ICommand
+	public class SetJointCoords : IStackableCommand
 	{
-		#region Members
+		#region Fields
+
+		Bone Bone;
 
 		/// <summary>
 		/// teh image that has that the joint data to set
 		/// </summary>
-		Image m_Image;
+		Image Image;
 
 		/// <summary>
 		/// the index of the joint data to set
 		/// </summary>
-		int m_iJointIndex;
+		int JointIndex;
 
 		/// <summary>
 		/// The previous joint data
 		/// </summary>
-		JointData m_OldData;
+		JointData PrevData;
 
 		/// <summary>
 		/// The data that is replacing the old stuff
 		/// </summary>
-		JointData m_NewData;
+		JointData NextData;
 
-		#endregion //Members
+		#endregion //Fields
 
 		#region Methods
 
-		public SetJointCoords(Image myImage, int iJointIndex, JointData myNewData)
+		public SetJointCoords(Bone bone, Image image, int jointIndex, JointData nextData)
 		{
-			Debug.Assert(null != myImage);
-			Debug.Assert(null != myNewData);
-			Debug.Assert(iJointIndex >= 0);
-			Debug.Assert(iJointIndex < myImage.JointCoords.Count);
+			if (bone == null)
+			{
+				throw new ArgumentNullException("bone");
+			}
 
-			m_Image = myImage;
-			m_NewData = myNewData;
-			m_iJointIndex = iJointIndex;
-			m_OldData = myImage.GetJointLocation(iJointIndex);
+			if (image == null)
+			{
+				throw new ArgumentNullException("image");
+			}
+
+			if (0 > jointIndex)
+			{
+				throw new Exception("jointIndex must be >= 0");
+			}
+
+			if (image.JointCoords.Count <= jointIndex)
+			{
+				throw new Exception("jointIndex must be < image.JointCoords.Count");
+			}
+
+			Bone = bone;
+			Image = image;
+			JointIndex = jointIndex;
+			NextData = nextData;
+			PrevData = Image.GetJointLocation(JointIndex);
 		}
 
 		/// <summary>
@@ -53,7 +71,7 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action executed successfully</returns>
 		public bool Execute()
 		{
-			m_Image.SetJointCoords(m_iJointIndex, m_NewData);
+			Image.SetJointCoords(JointIndex, NextData);
 			return true;
 		}
 
@@ -63,8 +81,26 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action was undone successfully</returns>
 		public bool Undo()
 		{
-			m_Image.SetJointCoords(m_iJointIndex, m_OldData);
+			Image.SetJointCoords(JointIndex, PrevData);
 			return true;
+		}
+
+		public bool CompareWithNextCommand(IStackableCommand nextCommand)
+		{
+			var next = nextCommand as SetJointCoords;
+			return ((next != null) &&
+				(Bone.Name == next.Bone.Name) &&
+				(Image.ImageFile.File == next.Image.ImageFile.File) &&
+				(JointIndex == next.JointIndex));
+		}
+
+		public void StackWithNextCommand(IStackableCommand nextCommand)
+		{
+			var next = nextCommand as SetJointCoords;
+			if (next != null)
+			{
+				NextData = next.NextData;
+			}
 		}
 
 		#endregion //Methods

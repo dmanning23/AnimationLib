@@ -1,18 +1,27 @@
-using NUnit.Framework;
-using System;
 using AnimationLib;
 using FilenameBuddy;
 using GameTimer;
 using Microsoft.Xna.Framework;
+using NUnit.Framework;
 
 namespace Animationlib.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class BoneTests
 	{
+		#region Setup
+
+		[SetUp]
+		public void Setup()
+		{
+			Filename.SetCurrentDirectory(@"C:\Projects\animationlib\AnimationLib\AnimationLib.Tests\Content\");
+		}
+
+		#endregion //Setup
+
 		#region Type Tests
 
-		[Test()]
+		[Test]
 		public void WeaponTypeTest()
 		{
 			Bone test = new Bone();
@@ -20,7 +29,7 @@ namespace Animationlib.Tests
 			Assert.IsTrue(test.IsWeapon);
 		}
 
-		[Test()]
+		[Test]
 		public void FootTypeTest()
 		{
 			Bone test = new Bone();
@@ -28,7 +37,7 @@ namespace Animationlib.Tests
 			Assert.IsTrue(test.IsFoot);
 		}
 
-		[Test()]
+		[Test]
 		public void TestDefaultType()
 		{
 			Bone test = new Bone();
@@ -41,7 +50,7 @@ namespace Animationlib.Tests
 
 		#region load tests
 
-		[Test()]
+		[Test]
 		public void LoadedCrotch()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -52,7 +61,7 @@ namespace Animationlib.Tests
 			Assert.IsNotNull(test.Skeleton.RootBone);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedCrotchName()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -63,7 +72,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual("Crotch", test.Skeleton.RootBone.Name);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedCrotchType()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -74,7 +83,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(EBoneType.Normal, test.Skeleton.RootBone.BoneType);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedCrotchColorable()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -85,7 +94,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(false, test.Skeleton.RootBone.Colorable);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedCrotchJoints()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -96,7 +105,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(1, test.Skeleton.RootBone.Joints.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedCrotchImages()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -107,7 +116,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(3, test.Skeleton.RootBone.Images.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedCrotchBones()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -118,7 +127,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(1, test.Skeleton.RootBone.Bones.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedTorso()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -129,7 +138,7 @@ namespace Animationlib.Tests
 			Assert.IsNotNull(test.Skeleton.RootBone.GetBone("Torso"));
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedTorsoType()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -140,7 +149,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(EBoneType.Foot, test.Skeleton.RootBone.GetBone("Torso").BoneType);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedTorsoColorable()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -151,7 +160,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(true, test.Skeleton.RootBone.GetBone("Torso").Colorable);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedChesticle()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -162,7 +171,7 @@ namespace Animationlib.Tests
 			Assert.IsNotNull(test.Skeleton.RootBone.GetBone("Chesticle"));
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedChesticleType()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -177,7 +186,7 @@ namespace Animationlib.Tests
 
 		#region Update tests
 
-		[Test()]
+		[Test]
 		public void LoadedAnimation()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -193,7 +202,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(Vector2.Zero, test.Skeleton.RootBone.AnchorPosition);
 		}
 
-		[Test()]
+		[Test]
 		public void CrotchLocation()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -212,7 +221,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(Vector2.Zero, crotch.AnchorPosition);
 		}
 
-		[Test()]
+		[Test]
 		public void jointlocation()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -229,7 +238,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(new Vector2(-7.0f, -18.0f), torso.AnchorPosition);
 		}
 
-		[Test()]
+		[Test]
 		public void CrotchImageLocation()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -246,7 +255,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(new Vector2(-74.0f, -62.0f), Crotch.Position);
 		}
 
-		[Test()]
+		[Test]
 		public void TorsoImageLocation()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -263,7 +272,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(new Vector2(-44.0f, -117.0f), Crotch.Position);
 		}
 
-		[Test()]
+		[Test]
 		public void TorsoImageLocation1()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -281,5 +290,29 @@ namespace Animationlib.Tests
 		}
 
 		#endregion //Update tests
+
+		#region Initialization Tests
+
+		[Test]
+		void AddChildBone()
+		{
+			var parent = new Bone()
+			{
+				Name = "parent"
+			};
+			parent.AddJoint("child");
+			//var child = new Bone()
+			//{
+			//	Name = "child"
+			//};
+			//parent.Bones.Add(child);
+
+			//parent.SetAnchorJoint(null);
+
+			Assert.AreEqual(1, parent.Bones.Count);
+			Assert.AreEqual(1, parent.Joints.Count);
+		}
+
+		#endregion //Initialization Tests
 	}
 }

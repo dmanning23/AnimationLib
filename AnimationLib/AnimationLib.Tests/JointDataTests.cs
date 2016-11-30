@@ -1,20 +1,20 @@
-using NUnit.Framework;
-using System;
 using AnimationLib;
 using FilenameBuddy;
-using RenderBuddy;
 using Microsoft.Xna.Framework;
+using NUnit.Framework;
 
 namespace Animationlib.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class JointDataTests
 	{
 		Image image;
 
-		[SetUp()]
+		[SetUp]
 		public void Setup()
 		{
+			Filename.SetCurrentDirectory(@"C:\Projects\animationlib\AnimationLib\AnimationLib.Tests\Content\");
+
 			AnimationContainer test = new AnimationContainer();
 			Filename testFile = new Filename();
 			testFile.SetRelFilename("SuperSimple\\Simple Model.xml");
@@ -25,49 +25,49 @@ namespace Animationlib.Tests
 			image = crotch.GetImage(file);
 		}
 
-		[Test()]
+		[Test]
 		public void Loaded()
 		{
 			Assert.AreEqual(1, image.JointCoords.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void Location()
 		{
 			Assert.AreEqual(new Vector2(67.0f, 44.0f), image.JointCoords[0].Location);
 		}
 
-		[Test()]
+		[Test]
 		public void Limit1()
 		{
 			Assert.AreEqual(-180.0f, MathHelper.ToDegrees(image.JointCoords[0].FirstLimit));
 		}
 
-		[Test()]
+		[Test]
 		public void Limit2()
 		{
 			Assert.AreEqual(260.0f, MathHelper.ToDegrees(image.JointCoords[0].SecondLimit));
 		}
 
-		[Test()]
+		[Test]
 		public void Limit1Flip()
 		{
 			Assert.AreEqual(-260.0f, MathHelper.ToDegrees(image.JointCoords[0].FirstLimitFlipped));
 		}
 
-		[Test()]
+		[Test]
 		public void Limit2Flip()
 		{
 			Assert.AreEqual(180.0f, MathHelper.ToDegrees(image.JointCoords[0].SecondLimitFlipped));
 		}
 
-		[Test()]
+		[Test]
 		public void Floated()
 		{
 			Assert.IsTrue(image.JointCoords[0].Floating);
 		}
 
-		[Test()]
+		[Test]
 		public void Length()
 		{
 			Assert.AreEqual(10.0f, image.JointCoords[0].FloatRadius);

@@ -314,10 +314,10 @@ namespace AnimationLib
 			return updatedJointCoord;
 		}
 
-		public void Copy(Image myInst, UndoRedoStack actionCollection)
+		public void Copy(Bone parent, Image myInst, UndoRedoStack actionCollection)
 		{
 			//copy the anchor coord
-			SetAnchorLocation myAnchorAction = new SetAnchorLocation(this, (int)myInst.AnchorCoord.X, (int)myInst.AnchorCoord.Y);
+			SetAnchorLocation myAnchorAction = new SetAnchorLocation(parent, this, myInst.AnchorCoord);
 			actionCollection.Add(myAnchorAction);
 
 			//copy all the joint JointCoords
@@ -328,19 +328,16 @@ namespace AnimationLib
 				myNewJointCoords.Copy(myInst.JointCoords[i]);
 
 				//create the action to set it
-				SetJointCoords mySetJointJointCoordsAction = new SetJointCoords(this, i, myNewJointCoords);
+				SetJointCoords mySetJointJointCoordsAction = new SetJointCoords(parent, this, i, myNewJointCoords);
 				actionCollection.Add(mySetJointJointCoordsAction);
 			}
 
 			//copy circles
 			for (var i = 0; ((i < Circles.Count) && (i < myInst.Circles.Count)); i++)
 			{
-				PhysicsCircle myCircle = new PhysicsCircle();
-				myCircle.Copy(myInst.Circles[i]);
-
-				//create the action to set it
-				SetCircleData mySetCircleAction = new SetCircleData(this, i, myCircle);
-				actionCollection.Add(mySetCircleAction);
+				//create the actions to set the ciurcle
+				actionCollection.Add(new SetCircleRadius(Circles[i], myInst.Circles[i].LocalRadius));
+				actionCollection.Add(new SetCirclePosition(Circles[i], myInst.Circles[i].LocalPosition));
 			}
 
 			//copy lines

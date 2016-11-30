@@ -13,22 +13,12 @@ namespace AnimationLib
 {
 	public class Bone
 	{
-		#region Fields
+		#region Properties
 
 		/// <summary>
 		/// the joint this guy attachs to
 		/// </summary>
 		public Joint AnchorJoint { get; protected set; }
-
-		/// <summary>
-		/// The current position of this guys upper-left corner in screen cooridnates
-		/// </summary>
-		private Vector2 _position;
-
-		/// <summary>
-		/// The position of this dude's anchor joint in screen coordinates
-		/// </summary>
-		private Vector2 _anchorPosition;
 
 		/// <summary>
 		/// whether to flip this dude or not when rendering
@@ -49,10 +39,6 @@ namespace AnimationLib
 			}
 		}
 
-		#endregion //Fields
-
-		#region Properties
-
 		/// <summary>
 		/// the child bones of this guy
 		/// </summary>
@@ -68,22 +54,20 @@ namespace AnimationLib
 		/// </summary>
 		public List<Image> Images { get; private set; }
 
-		public Vector2 Position
-		{
-			get { return _position; }
-			set { _position = value; }
-		}
+		/// <summary>
+		/// The current position of this guys upper-left corner in screen cooridnates
+		/// </summary>
+		public Vector2 Position { get; set; }
 
-		public Vector2 AnchorPosition
-		{
-			get { return _anchorPosition; }
-			protected set { _anchorPosition = value; }
-		}
+		/// <summary>
+		/// The position of this dude's anchor joint in screen coordinates
+		/// </summary>
+		public Vector2 AnchorPosition { get; private set; }
 
 		/// <summary>
 		/// The name of this bone
 		/// </summary>
-		public string Name { get; protected set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// the rotation to render this guy at
@@ -300,6 +284,24 @@ namespace AnimationLib
 		}
 
 		/// <summary>
+		/// Get the index specific joint from the list
+		/// </summary>
+		/// <param name="jointName">name index of the joint to get</param>
+		public int GetJointIndex(Joint joint)
+		{
+			for (var i = 0; i < Joints.Count; i++)
+			{
+				if (Joints[i].Name == joint.Name)
+				{
+					return i;
+				}
+			}
+
+			//didnt find a joint with that name
+			return -1;
+		}
+
+		/// <summary>
 		/// get a bone by name.  Recurse into teh tree until we find it!!!
 		/// </summary>
 		/// <param name="boneName">the name of teh bone we are looking for</param>
@@ -406,6 +408,25 @@ namespace AnimationLib
 				}
 			}
 
+			return -1;
+		}
+
+		/// <summary>
+		/// Get the index of an image, norecursively
+		/// </summary>
+		/// <param name="image"></param>
+		/// <returns></returns>
+		public int GetImageIndex(Image image)
+		{
+			//check my images
+			for (var i = 0; i < Images.Count; i++)
+			{
+				if (Images[i].ImageFile.ToString() == image.ImageFile.ToString())
+				{
+					return i;
+				}
+			}
+			
 			return -1;
 		}
 
@@ -1281,59 +1302,56 @@ namespace AnimationLib
 		/// <summary>
 		/// Given some screen coordinates, convert to an offset from this bone's location
 		/// </summary>
-		/// <param name="iScreenX">screen x coord</param>
-		/// <param name="iScreenY">screen y coord</param>
-		/// <param name="iX">the converted x coord</param>
-		/// <param name="iY">the converted y coord</param>
-		public void ConvertCoord(int iScreenX, int iScreenY, ref int iX, ref int iY, float scale)
+		/// <param name="screenLocation">screen coord</param>
+		/// <return></return>
+		public Vector2 ConvertCoord(Vector2 screenLocation, float scale, Vector2? prevLocation = null)
 		{
+			if (!prevLocation.HasValue)
+			{
+				prevLocation = Position;
+			}
+
+			//rotate both points around by the -current rotation
+			Matrix myRotation = MatrixExt.Orientation(-Rotation);
+			var rotatedPrev = myRotation.Multiply(prevLocation.Value);
+			var rotatedScreen = myRotation.Multiply(screenLocation);
+
 			//get teh offset from the bone location
-			var screenLocation = new Vector2(iScreenX, iScreenY);
-			var myLocation = screenLocation - Position;
+			var myLocation = rotatedScreen - rotatedPrev;
+			if (Flipped)
+			{
+				myLocation.X *= -1f;
+			}
 
 			//compensate for the graphical scaling
 			myLocation /= scale;
 
-			//rotate around by the -current rotation
-			Matrix myRotation = MatrixExt.Orientation(-Rotation);
-
-			myLocation = myRotation.Multiply(myLocation);
-			iX = (int)myLocation.X;
-			iY = (int)myLocation.Y;
+			return myLocation;
 		}
 
 		/// <summary>
-		/// Given some screen coordinates, convert to an offset from this bone's location
+		/// Given some screen coordinates, convert to an offset from the anchor location
 		/// </summary>
-		/// <param name="iScreenX">screen x coord</param>
-		/// <param name="iScreenY">screen y coord</param>
-		/// <param name="iX">the converted x coord</param>
-		/// <param name="iY">the converted y coord</param>
-		public void ConvertTranslation(int iScreenX, int iScreenY, ref int iX, ref int iY, float scale)
+		/// <param name="screenLocation">screen coord</param>
+		/// <return></return>
+		public Vector2 ConvertTranslation(Vector2 screenLocation, float scale)
 		{
-			if (null == AnchorJoint)
-			{
-				iX = 0;
-				iY = 0;
-				return;
-			}
+			//get difference between current angle and the one specified in the animation to get parent rotation
+			float parentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
+			Matrix myRotation = MatrixExt.Orientation(-parentAngle);
+			var rotatedPrev = myRotation.Multiply(AnchorJoint.Position);
+			var rotatedScreen = myRotation.Multiply(screenLocation);
 
-			//get teh offset from the bone location
-			var screenLocation = new Vector2((float)iScreenX, (float)iScreenY);
-			var myLocation = screenLocation - AnchorJoint.Position;
+			var myLocation = rotatedScreen - rotatedPrev;
+			if (Flipped)
+			{
+				myLocation.X *= -1f;
+			}
 
 			//compensate for the graphical scaling
 			myLocation /= scale;
 
-			//get difference between current angle and the one specified in the animation to get parent rotation
-			float fParentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
-
-			//rotate around by the -current rotation
-			Matrix myRotation = MatrixExt.Orientation(-fParentAngle);
-
-			myLocation = myRotation.Multiply(myLocation);
-			iX = (int)myLocation.X;
-			iY = (int)myLocation.Y;
+			return myRotation.Multiply(myLocation);
 		}
 
 		public float GetAngle(Vector2 screenPos)
@@ -1344,24 +1362,31 @@ namespace AnimationLib
 			}
 
 			//get teh offset from the bone location
-			var myLocation = screenPos - AnchorJoint.Position;
+			var myLocation = screenPos - (AnchorJoint.Position + AnchorJoint.CurrentKeyElement.Translation);
 
 			//get the angle to that vector
-			float fAngle = Helper.atan2(myLocation);
+			float angle = Helper.atan2(myLocation);
 
 			//get difference between current angle and the one specified in the animation to get parent rotation
-			float fParentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
+			float parentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
 
-			float fDiff = 0.0f;
 			if (Flipped && !AnchorJoint.CurrentKeyElement.Flip)
 			{
-				fDiff = fAngle + fParentAngle;
+				angle = angle - parentAngle;
+				angle = GetBoneAngle() + angle;
 			}
 			else
 			{
-				fDiff = fAngle - fParentAngle;
+				angle = angle + parentAngle;
+				angle = GetBoneAngle() - angle;
 			}
-			return Helper.ClampAngle(fDiff);
+
+			return Helper.ClampAngle(angle);
+		}
+
+		public float GetParentAngle()
+		{
+			return Rotation - AnchorJoint.CurrentKeyElement.Rotation;
 		}
 
 		/// <summary>
@@ -1447,7 +1472,7 @@ namespace AnimationLib
 				Image matchingImage = sourceBone.GetImage(Images[i].ImageFile);
 				if (null != matchingImage)
 				{
-					Images[i].Copy(matchingImage, actionCollection);
+					Images[i].Copy(this, matchingImage, actionCollection);
 				}
 			}
 		}

@@ -36,11 +36,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="CollisionBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CollisionBuddy.1.0.0\lib\Xamarin.iOS10\CollisionBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\CollisionBuddy.1.0.1\lib\Xamarin.iOS10\CollisionBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DrawlistBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DrawlistBuddy.1.0.1\lib\Xamarin.iOS10\DrawlistBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\DrawlistBuddy.1.0.2\lib\Xamarin.iOS10\DrawlistBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FilenameBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -68,7 +68,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RenderBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.1.0.3\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.1.0.8\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ResolutionBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -79,7 +79,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="UndoRedoBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UndoRedoBuddy.1.0.0\lib\Xamarin.iOS10\UndoRedoBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\UndoRedoBuddy.1.0.1\lib\Xamarin.iOS10\UndoRedoBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Vector2Extensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -100,6 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AnimationBuddyShader.fx" />
   </ItemGroup>
   <Import Project="..\AnimationLib.SharedProject\AnimationLib.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

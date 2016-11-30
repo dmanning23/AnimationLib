@@ -38,11 +38,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="CollisionBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CollisionBuddy.1.0.0\lib\net451\CollisionBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\CollisionBuddy.1.0.1\lib\net451\CollisionBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DrawlistBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DrawlistBuddy.1.0.1\lib\net451\DrawlistBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\DrawlistBuddy.1.0.2\lib\net451\DrawlistBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FilenameBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -82,7 +82,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RenderBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.1.0.3\lib\net451\RenderBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.1.0.8\lib\net451\RenderBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ResolutionBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -91,7 +91,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="UndoRedoBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UndoRedoBuddy.1.0.0\lib\net451\UndoRedoBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\UndoRedoBuddy.1.0.1\lib\net451\UndoRedoBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Vector2Extensions.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -114,6 +114,7 @@
     <Compile Include="AnimationContainerTests.cs" />
     <Compile Include="AnimationTests.cs" />
     <Compile Include="BoneTests.cs" />
+    <Compile Include="BoneToolTests.cs" />
     <Compile Include="GarmentAnimationContainerTests.cs" />
     <Compile Include="GarmentBoneTests.cs" />
     <Compile Include="GarmentFragmentTests.cs" />
@@ -132,5 +133,43 @@
       <Project>{e308f2d3-5868-4efa-82fb-dcf21a6666f6}</Project>
       <Name>AnimationLib.DesktopGL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AnimationBuddyShader.fx" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\CenterPieceFront.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\Chesticle Animations.xml" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\Chesticle Model.xml" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleBack.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleFront.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\ChesticleSide.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\LTittyFront.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\LTittySide.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Chesticle\RTittyFront.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\Crotch Animations.xml" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\Crotch Model.xml" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchBack.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchFront.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Crotch\CrotchSide.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\Torso Animations.xml" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\Torso Model.xml" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\TorsoBack.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\TorsoFront.png" />
+    <Content Include="Content\Simple\Clothes\Nekkid\Torso\TorsoSide.png" />
+    <Content Include="Content\Simple\Clothes\Simple Garment.xml" />
+    <Content Include="Content\Simple\Simple Animations.xml" />
+    <Content Include="Content\Simple\Simple Model.xml" />
+    <Content Include="Content\Simple\Tabby Animations.xml" />
+    <Content Include="Content\Simple\Tabby Model.xml" />
+    <Content Include="Content\SuperSimple\ChesticleBack.png" />
+    <Content Include="Content\SuperSimple\ChesticleFront.png" />
+    <Content Include="Content\SuperSimple\ChesticleSide.png" />
+    <Content Include="Content\SuperSimple\CrotchBack.png" />
+    <Content Include="Content\SuperSimple\CrotchFront.png" />
+    <Content Include="Content\SuperSimple\CrotchSide.png" />
+    <Content Include="Content\SuperSimple\Simple Animations.xml" />
+    <Content Include="Content\SuperSimple\Simple Model.xml" />
+    <Content Include="Content\SuperSimple\TorsoBack.png" />
+    <Content Include="Content\SuperSimple\TorsoFront.png" />
+    <Content Include="Content\SuperSimple\TorsoSide.png" />
   </ItemGroup>
 </Project>

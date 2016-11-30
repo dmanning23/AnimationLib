@@ -15,10 +15,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)BoneType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RemoveKeyElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetAnchorLocation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetCircleData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetCirclePosition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetCircleRadius.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetJointCoords.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetKeyElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetLineData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetRagdollRadius.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetRagdollType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Garment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GarmentAnimationContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GarmentBone.cs" />

@@ -28,7 +28,10 @@ namespace AnimationLib
 		{
 			get
 			{
-				return GarmentName;
+				Debug.Assert(null != Skeleton);
+				Debug.Assert(Skeleton.RootBone is GarmentBone);
+				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
+				return mySkeleton.Name;
 			}
 		}
 

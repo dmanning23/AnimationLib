@@ -1,18 +1,27 @@
-using Microsoft.Xna.Framework;
-using NUnit.Framework;
-using System;
 using AnimationLib;
 using FilenameBuddy;
 using GameTimer;
+using Microsoft.Xna.Framework;
+using NUnit.Framework;
 
 namespace Animationlib.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class ImageTests
 	{
+		#region Setup
+
+		[SetUp]
+		public void Setup()
+		{
+			Filename.SetCurrentDirectory(@"C:\Projects\animationlib\AnimationLib\AnimationLib.Tests\Content\");
+		}
+
+		#endregion //Setup
+
 		#region load tests
 
-		[Test()]
+		[Test]
 		public void LoadFile()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -22,7 +31,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 		}
 
-		[Test()]
+		[Test]
 		public void GotBone()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -35,7 +44,7 @@ namespace Animationlib.Tests
 			Assert.IsNotNull(crotch);
 		}
 
-		[Test()]
+		[Test]
 		public void GotImage()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -48,7 +57,7 @@ namespace Animationlib.Tests
 			Assert.IsNotEmpty(crotch.Images);
 		}
 
-		[Test()]
+		[Test]
 		public void GotImage1()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -61,7 +70,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(3, crotch.Images.Count);
 		}
 
-		[Test()]
+		[Test]
 		public void GetImageIndex()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -74,7 +83,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(0, crotch.GetImageIndex("CrotchFront.png"));
 		}
 
-		[Test()]
+		[Test]
 		public void GetImage()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -93,7 +102,7 @@ namespace Animationlib.Tests
 
 		#region coord tests
 
-		[Test()]
+		[Test]
 		public void GetAnchorCoord()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -109,7 +118,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(new Vector2(74.0f, 62.0f), image.AnchorCoord);
 		}
 
-		[Test()]
+		[Test]
 		public void GetUL_UV()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -125,7 +134,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(Vector2.Zero, image.UpperLeft);
 		}
 
-		[Test()]
+		[Test]
 		public void SetGetLR_UV()
 		{
 			Vector2 test = new Vector2(137.0f, 150.0f);
@@ -135,7 +144,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(test, image.LowerRight);
 		}
 
-		[Test()]
+		[Test]
 		public void GetWidth()
 		{
 			Vector2 test = new Vector2(137.0f, 150.0f);
@@ -145,7 +154,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(137.0f, image.Width);
 		}
 
-		[Test()]
+		[Test]
 		public void GetLR_UV()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -161,7 +170,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(new Vector2(129.0f, 116.0f), image.LowerRight);
 		}
 
-		[Test()]
+		[Test]
 		public void GetWidth1()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -177,7 +186,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(129.0f, image.Width);
 		}
 
-		[Test()]
+		[Test]
 		public void GetFlippedAnchorCoord()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -193,7 +202,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(new Vector2(74.0f, 62.0f), image.GetFlippedAnchorCoord(false, 1.0f));
 		}
 
-		[Test()]
+		[Test]
 		public void GetFlippedAnchorCoord1()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -209,7 +218,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(new Vector2(55.0f, 62.0f), image.GetFlippedAnchorCoord(true, 1.0f));
 		}
 
-		[Test()]
+		[Test]
 		public void GetFlippedAnchorCoord2()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -229,7 +238,7 @@ namespace Animationlib.Tests
 
 		#region Update Tests
 
-		[Test()]
+		[Test]
 		public void UpdateIndex()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -245,7 +254,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(0, test.Skeleton.RootBone.ImageIndex);
 		}
 
-		[Test()]
+		[Test]
 		public void UpdateImage()
 		{
 			AnimationContainer test = new AnimationContainer();

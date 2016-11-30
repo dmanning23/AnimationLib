@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using UndoRedoBuddy;
 
 namespace AnimationLib.Commands
@@ -6,25 +7,38 @@ namespace AnimationLib.Commands
 	/// <summary>
 	/// This object moves the anchor location of a bone
 	/// </summary>
-	public class SetAnchorLocation : ICommand
+	public class SetAnchorLocation : IStackableCommand
 	{
-		#region Members
+		#region Fields
 
-		Image m_Image;
+		Bone Bone; 
 
-		Vector2 m_Old;
+		Image Image;
 
-		Vector2 m_New;
+		Vector2 PrevPosition { get; set; }
 
-		#endregion //Members
+		Vector2 NextPosition { get; set; }
+
+		#endregion //Fields
 
 		#region Methods
 
-		public SetAnchorLocation(Image myImage, int iNewX, int iNewY)
+		public SetAnchorLocation(Bone bone, Image image, Vector2 nextPosition)
 		{
-			m_Image = myImage;
-			m_Old = myImage.AnchorCoord;
-			m_New =  new Vector2((float)iNewX, (float)iNewY);
+			if (bone == null)
+			{
+				throw new ArgumentNullException("bone");
+			}
+
+			if (image == null)
+			{
+				throw new ArgumentNullException("image");
+			}
+
+			Bone = bone;
+			Image = image;
+			PrevPosition = image.AnchorCoord;
+			NextPosition = nextPosition;
 		}
 
 		/// <summary>
@@ -33,12 +47,8 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action executed successfully</returns>
 		public bool Execute()
 		{
-			if (null != m_Image)
-			{
-				//set the anchor location of that image
-				m_Image.AnchorCoord = m_New;
-			}
-
+			//set the anchor location of that image
+			Image.AnchorCoord = NextPosition;
 			return true;
 		}
 
@@ -48,13 +58,26 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action was undone successfully</returns>
 		public bool Undo()
 		{
-			if (null != m_Image)
-			{
-				//set the anchor location of that image
-				m_Image.AnchorCoord = m_Old;
-			}
-
+			//set the anchor location of that image
+			Image.AnchorCoord = PrevPosition;
 			return true;
+		}
+
+		public bool CompareWithNextCommand(IStackableCommand nextCommand)
+		{
+			var next = nextCommand as SetAnchorLocation;
+			return ((next != null) &&
+				(Bone.Name == next.Bone.Name) &&
+				(Image.ImageFile.File == next.Image.ImageFile.File));
+		}
+
+		public void StackWithNextCommand(IStackableCommand nextCommand)
+		{
+			var next = nextCommand as SetAnchorLocation;
+			if (next != null)
+			{
+				NextPosition = next.NextPosition;
+			}
 		}
 
 		#endregion //Methods

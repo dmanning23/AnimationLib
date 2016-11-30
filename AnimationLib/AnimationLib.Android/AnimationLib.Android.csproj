@@ -40,11 +40,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="CollisionBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CollisionBuddy.1.0.0\lib\MonoAndroid10\CollisionBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\CollisionBuddy.1.0.1\lib\MonoAndroid10\CollisionBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DrawlistBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DrawlistBuddy.1.0.1\lib\MonoAndroid10\DrawlistBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\DrawlistBuddy.1.0.2\lib\MonoAndroid10\DrawlistBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FilenameBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -74,7 +74,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RenderBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.1.0.3\lib\MonoAndroid10\RenderBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.1.0.8\lib\MonoAndroid10\RenderBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ResolutionBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -86,7 +86,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="UndoRedoBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UndoRedoBuddy.1.0.0\lib\MonoAndroid10\UndoRedoBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\UndoRedoBuddy.1.0.1\lib\MonoAndroid10\UndoRedoBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Vector2Extensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -108,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AnimationBuddyShader.fx" />
   </ItemGroup>
   <Import Project="..\AnimationLib.SharedProject\AnimationLib.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

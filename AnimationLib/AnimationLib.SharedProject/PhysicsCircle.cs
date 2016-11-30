@@ -78,11 +78,6 @@ namespace AnimationLib
 			renderer.Primitive.Circle(Pos, Radius, color);
 		}
 
-		public float DistanceToPoint(int screenX, int screenY)
-		{
-			return DistanceToPoint(new Vector2(screenX, screenY));
-		}
-
 		/// <summary>
 		/// Copy another circle's data into this one
 		/// </summary>

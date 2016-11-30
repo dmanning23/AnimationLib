@@ -1,16 +1,27 @@
-using NUnit.Framework;
-using System;
 using AnimationLib;
 using FilenameBuddy;
 using GameTimer;
 using Microsoft.Xna.Framework;
+using NUnit.Framework;
 
 namespace Animationlib.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class JointTests
 	{
-		[Test()]
+		#region Setup
+
+		[SetUp]
+		public void Setup()
+		{
+			Filename.SetCurrentDirectory(@"C:\Projects\animationlib\AnimationLib\AnimationLib.Tests\Content\");
+		}
+
+		#endregion //Setup
+
+		#region Tests
+
+		[Test]
 		public void Loaded()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -24,7 +35,7 @@ namespace Animationlib.Tests
 			Assert.NotNull(torso);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadLocation()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -40,7 +51,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(0.0f, torso.Position.Y);
 		}
 
-		[Test()]
+		[Test]
 		public void UpdateLocation()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -57,7 +68,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(new Vector2(-7.0f, -18.0f), torso.Position);
 		}
 
-		[Test()]
+		[Test]
 		public void UpdateLocation1()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -73,7 +84,7 @@ namespace Animationlib.Tests
 			Assert.NotNull(torso.Data);
 		}
 
-		[Test()]
+		[Test]
 		public void UpdateLocation2()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -90,6 +101,7 @@ namespace Animationlib.Tests
 			Assert.AreEqual(67.0f, torso.Data.Location.X);
 			Assert.AreEqual(44.0f, torso.Data.Location.Y);
 		}
+
+		#endregion //tests
 	}
 }
-

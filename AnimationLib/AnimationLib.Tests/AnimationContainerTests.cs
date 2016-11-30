@@ -1,16 +1,26 @@
-using NUnit.Framework;
-using System;
 using AnimationLib;
 using FilenameBuddy;
+using NUnit.Framework;
 
 namespace Animationlib.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class AnimationContainerTests
 	{
+		#region Setup
+
+		[SetUp]
+		public void Setup()
+		{
+			Filename.SetCurrentDirectory(@"C:\Projects\animationlib\AnimationLib\AnimationLib.Tests\Content\");
+		}
+
+		#endregion //Setup
+
+
 		#region load tests
 
-		[Test()]
+		[Test]
 		public void LoadedModel()
 		{
 			AnimationContainer test = new AnimationContainer();
@@ -19,7 +29,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 		}
 
-		[Test()]
+		[Test]
 		public void LoadedAnimation()
 		{
 			AnimationContainer test = new AnimationContainer();
