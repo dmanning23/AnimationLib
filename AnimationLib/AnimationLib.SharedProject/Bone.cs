@@ -289,11 +289,14 @@ namespace AnimationLib
 		/// <param name="jointName">name index of the joint to get</param>
 		public int GetJointIndex(Joint joint)
 		{
-			for (var i = 0; i < Joints.Count; i++)
+			if (null != joint)
 			{
-				if (Joints[i].Name == joint.Name)
+				for (var i = 0; i < Joints.Count; i++)
 				{
-					return i;
+					if (Joints[i].Name == joint.Name)
+					{
+						return i;
+					}
 				}
 			}
 
@@ -732,10 +735,10 @@ namespace AnimationLib
 		/// <param name="ignoreRagdoll">If set to <c>true</c> b ignore ragdoll.</param>
 		private void UpdateRotation(float parentRotation, bool parentFlip, bool ignoreRagdoll)
 		{
-			if (!AnchorJoint.CurrentKeyElement.RagDoll ||
+			if (!AnchorJoint.CurrentKeyElement.Ragdoll ||
 				ignoreRagdoll ||
 				(0 == Joints.Count) ||
-				(AnchorJoint.CurrentKeyElement.RagDoll && AnchorJoint.Data.Floating))
+				(AnchorJoint.CurrentKeyElement.Ragdoll && AnchorJoint.Data.Floating))
 			{
 				//add my rotation to the parents rotation
 				if (!parentFlip)
@@ -751,7 +754,7 @@ namespace AnimationLib
 
 		private void UpdateTranslation(ref Vector2 position, float parentRotation, float scale, bool ignoreRagdoll)
 		{
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || ignoreRagdoll)
+			if (!AnchorJoint.CurrentKeyElement.Ragdoll || ignoreRagdoll)
 			{
 				if (Flipped)
 				{
@@ -797,7 +800,7 @@ namespace AnimationLib
 			//myMatrix = myMatrix * MatrixExt.Orientation(Rotation);
 			//myMatrix = myMatrix * myTranslation;
 
-			if (!AnchorJoint.CurrentKeyElement.RagDoll || !AnchorJoint.Data.Floating || ignoreRagdoll)
+			if (!AnchorJoint.CurrentKeyElement.Ragdoll || !AnchorJoint.Data.Floating || ignoreRagdoll)
 			{
 				//Update my position based on the offset of the anchor coord
 				Position = myMatrix.Multiply(position - anchorCoord);
@@ -823,7 +826,7 @@ namespace AnimationLib
 					Joints[i].Data = Images[ImageIndex].JointCoords[i];
 				}
 
-				if (!AnchorJoint.CurrentKeyElement.RagDoll || ignoreRagdoll)
+				if (!AnchorJoint.CurrentKeyElement.Ragdoll || ignoreRagdoll)
 				{
 					//to get the joint position, subtract anchor coord from joint position, and add my position
 					jointPosition = jointPosition - anchorCoord;
@@ -979,7 +982,7 @@ namespace AnimationLib
 				Joints[i].Acceleration = collectedForces;
 
 				//if the joint[i].data is floating, add some spring force
-				if ((null != image) && AnchorJoint.CurrentKeyElement.RagDoll)
+				if ((null != image) && AnchorJoint.CurrentKeyElement.Ragdoll)
 				{
 					AnchorJoint.SpringFloatingRagdoll(Joints[i], image.SpringForce, Joints[i].Data.Length, scale);
 				}
@@ -997,7 +1000,7 @@ namespace AnimationLib
 			Debug.Assert(null != AnchorJoint);
 
 			//solve all the joints
-			if (AnchorJoint.CurrentKeyElement.RagDoll)
+			if (AnchorJoint.CurrentKeyElement.Ragdoll)
 			{
 				for (var i = 0; i < Joints.Count; i++)
 				{
@@ -1016,7 +1019,7 @@ namespace AnimationLib
 		{
 			Debug.Assert(null != AnchorJoint);
 
-			if ((ImageIndex >= 0) && (AnchorJoint.CurrentKeyElement.RagDoll || isParentRagdoll))
+			if ((ImageIndex >= 0) && (AnchorJoint.CurrentKeyElement.Ragdoll || isParentRagdoll))
 			{
 				//update all the joints
 				for (var i = 0; i < Joints.Count; i++)
@@ -1049,13 +1052,13 @@ namespace AnimationLib
 			//update the children
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].SolveConstraints(AnchorJoint.CurrentKeyElement.RagDoll, scale);
+				Bones[i].SolveConstraints(AnchorJoint.CurrentKeyElement.Ragdoll, scale);
 			}
 		}
 
 		public void SolveLimits(float parentRotation)
 		{
-			if (AnchorJoint.CurrentKeyElement.RagDoll &&
+			if (AnchorJoint.CurrentKeyElement.Ragdoll &&
 				!AnchorJoint.Data.Floating &&
 				(0 <= ImageIndex) &&
 				((-Math.PI < AnchorJoint.FirstLimit) && (Math.PI > AnchorJoint.SecondLimit)))//are there any limits on this bone, or just letting it spin?
@@ -1149,7 +1152,7 @@ namespace AnimationLib
 			//update this dudes rotation
 			Debug.Assert(null != AnchorJoint);
 			Debug.Assert(null != AnchorJoint.CurrentKeyElement);
-			if ((0 <= ImageIndex) && (AnchorJoint.CurrentKeyElement.RagDoll || isParentRagdoll))
+			if ((0 <= ImageIndex) && (AnchorJoint.CurrentKeyElement.Ragdoll || isParentRagdoll))
 			{
 				if (AnchorJoint.Data.Floating && (0 < Joints.Count))
 				{
@@ -1196,7 +1199,7 @@ namespace AnimationLib
 			//go through & update the children too
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].PostUpdate(scale, AnchorJoint.CurrentKeyElement.RagDoll);
+				Bones[i].PostUpdate(scale, AnchorJoint.CurrentKeyElement.Ragdoll);
 			}
 		}
 
@@ -1266,7 +1269,7 @@ namespace AnimationLib
 			//hack the rotation
 			myElement.Rotation = rotation;
 
-			myElement.RagDoll = ragdoll;
+			myElement.Ragdoll = ragdoll;
 
 			//inject the hacked keyframe into the anchor joint
 			AnchorJoint.CurrentKeyElement = myElement;
@@ -1337,7 +1340,7 @@ namespace AnimationLib
 		public Vector2 ConvertTranslation(Vector2 screenLocation, float scale)
 		{
 			//get difference between current angle and the one specified in the animation to get parent rotation
-			float parentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
+			float parentAngle = GetParentAngle();
 			Matrix myRotation = MatrixExt.Orientation(-parentAngle);
 			var rotatedPrev = myRotation.Multiply(AnchorJoint.Position);
 			var rotatedScreen = myRotation.Multiply(screenLocation);
@@ -1368,11 +1371,11 @@ namespace AnimationLib
 			float angle = Helper.atan2(myLocation);
 
 			//get difference between current angle and the one specified in the animation to get parent rotation
-			float parentAngle = Rotation - AnchorJoint.CurrentKeyElement.Rotation;
+			float parentAngle = GetParentAngle();
 
 			if (Flipped && !AnchorJoint.CurrentKeyElement.Flip)
 			{
-				angle = angle - parentAngle;
+				angle = angle + parentAngle;
 				angle = GetBoneAngle() + angle;
 			}
 			else
@@ -1384,9 +1387,22 @@ namespace AnimationLib
 			return Helper.ClampAngle(angle);
 		}
 
+		/// <summary>
+		/// Get the amount of rotation that this bone inherited from its parent
+		/// </summary>
+		/// <returns></returns>
 		public float GetParentAngle()
 		{
 			return Rotation - AnchorJoint.CurrentKeyElement.Rotation;
+		}
+
+		/// <summary>
+		/// Get if this bone is flipped from the parent
+		/// </summary>
+		/// <returns></returns>
+		public bool IsParentFlip()
+		{
+			return (Flipped && !AnchorJoint.CurrentKeyElement.Flip);
 		}
 
 		/// <summary>
@@ -1542,6 +1558,23 @@ namespace AnimationLib
 			{
 				Bones[i].Rescale(scale);
 			}
+		}
+
+		public void GetLimitRotations(out float limit1, out float limit2)
+		{
+			var firstLimit = AnchorJoint.FirstLimit;
+			var secondLimit = AnchorJoint.SecondLimit;
+
+			//swap the limits if the bone is flipped
+			if (Flipped)
+			{
+				var temp = firstLimit;
+				firstLimit = secondLimit * -1.0f;
+				secondLimit = temp * -1.0f;
+			}
+
+			limit1 = GetParentAngle() + firstLimit;
+			limit2 = GetParentAngle() + secondLimit;
 		}
 
 		#endregion //Tools

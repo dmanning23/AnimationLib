@@ -8,10 +8,10 @@ namespace AnimationLib.Commands
 		#region Members
 
 		//the animation the element is in
-		private Animation m_Animation;
+		private Animation _animation;
 
 		//the old element 
-		private KeyElement m_OldKeyElement;
+		private KeyElement _oldKeyElement;
 
 		#endregion // Members
 
@@ -20,14 +20,14 @@ namespace AnimationLib.Commands
 		/// <summary>
 		/// hello, standard constructor!  Set all the data for this action
 		/// </summary>
-		public RemoveKeyElement(Animation myAnimation, KeyElement OldElement)
+		public RemoveKeyElement(Animation animation, KeyElement oldElement)
 		{
-			Debug.Assert(null != myAnimation);
-			Debug.Assert(null != OldElement);
-			m_Animation = myAnimation;
-			m_OldKeyElement = new KeyElement();
-			m_OldKeyElement.Copy(OldElement);
-			m_OldKeyElement.JointName = OldElement.JointName;
+			Debug.Assert(null != animation);
+			Debug.Assert(null != oldElement);
+			_animation = animation;
+			_oldKeyElement = new KeyElement();
+			_oldKeyElement.Copy(oldElement);
+			_oldKeyElement.JointName = oldElement.JointName;
 		}
 
 		/// <summary>
@@ -36,7 +36,7 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action executed successfully</returns>
 		public bool Execute()
 		{
-			return m_Animation.RemoveKeyframe(m_OldKeyElement);
+			return _animation.RemoveKeyframe(_oldKeyElement);
 		}
 
 		/// <summary>
@@ -46,7 +46,7 @@ namespace AnimationLib.Commands
 		public bool Undo()
 		{
 			//replace the "new" key element with the "old" one
-			return m_Animation.AddKeyframe(m_OldKeyElement);
+			return _animation.AddKeyframe(_oldKeyElement);
 		}
 
 		#endregion //Methods

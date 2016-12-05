@@ -66,7 +66,7 @@ namespace AnimationLib
 			Flip = key.Flip;
 			Joint = key.JointName;
 			Layer = key.Layer;
-			Ragdoll = key.RagDoll;
+			Ragdoll = key.Ragdoll;
 
 			//Set the rotation to 0 if this dude is using ragdoll
 			if (!Ragdoll)
@@ -106,7 +106,7 @@ namespace AnimationLib
 				break;
 				case "layer":
 				{
-					Layer = Convert.ToInt32(value);
+					Layer = Convert.ToInt32(value) * -1;
 				}
 				break;
 				case "image":
@@ -156,7 +156,8 @@ namespace AnimationLib
 
 			if (!SkipLayer)
 			{
-				xmlWriter.WriteAttributeString("layer", Layer.ToString());
+				var layer = Layer * -1;
+				xmlWriter.WriteAttributeString("layer", layer.ToString());
 			}
 
 			if (!SkipImage)

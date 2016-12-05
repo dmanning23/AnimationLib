@@ -294,23 +294,23 @@ namespace Animationlib.Tests
 		#region Initialization Tests
 
 		[Test]
-		void AddChildBone()
+		public void AddChildBone()
 		{
 			var parent = new Bone()
 			{
 				Name = "parent"
 			};
 			parent.AddJoint("child");
-			//var child = new Bone()
-			//{
-			//	Name = "child"
-			//};
-			//parent.Bones.Add(child);
-
-			//parent.SetAnchorJoint(null);
+			var child = new Bone()
+			{
+				Name = "child"
+			};
+			parent.Bones.Add(child);
+			parent.SetAnchorJoint(null);
 
 			Assert.AreEqual(1, parent.Bones.Count);
 			Assert.AreEqual(1, parent.Joints.Count);
+			Assert.AreEqual("child", child.AnchorJoint.Name);
 		}
 
 		#endregion //Initialization Tests

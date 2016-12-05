@@ -72,20 +72,10 @@ namespace AnimationLib
 			set { _translation = value; }
 		}
 
-		public float TranslationX
-		{
-			set { _translation.X = value; }
-		}
-
-		public float TranslationY
-		{
-			set { _translation.Y = value; }
-		}
-
 		/// <summary>
 		/// whether or not to turn on ragdoll physics
 		/// </summary>
-		public bool RagDoll { get; set; }
+		public bool Ragdoll { get; set; }
 
 		/// <summary>
 		/// The name of the joint that this keyframe describes
@@ -108,7 +98,7 @@ namespace AnimationLib
 			ImageIndex = -1;
 			Flip = false;
 			KeyFrame = false;
-			RagDoll = false;
+			Ragdoll = false;
 		}
 
 		public KeyElement(KeyElementModel key, Skeleton skeleton)
@@ -120,7 +110,7 @@ namespace AnimationLib
 			Layer = key.Layer;
 			Flip = key.Flip;
 			Translation = key.Translation;
-			RagDoll = key.Ragdoll;
+			Ragdoll = key.Ragdoll;
 			JointName = key.Joint;
 			
 			//set the image index
@@ -140,7 +130,7 @@ namespace AnimationLib
 			ImageIndex = inst.ImageIndex;
 			Flip = inst.Flip;
 			KeyFrame = inst.KeyFrame;
-			RagDoll = inst.RagDoll;
+			Ragdoll = inst.Ragdoll;
 		}
 
 		#endregion //Initialization
@@ -173,7 +163,7 @@ namespace AnimationLib
 			{
 				return false;
 			}
-			else if (RagDoll != inst.RagDoll)
+			else if (Ragdoll != inst.Ragdoll)
 			{
 				return false;
 			}

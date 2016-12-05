@@ -1,4 +1,5 @@
 using AnimationLib.Commands;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -58,42 +59,42 @@ namespace AnimationLib
 			}
 
 			//so there are 2 or more elements...
-			int iPrevIndex = 0;
-			int iNextIndex = iPrevIndex + 1;
-			while (iNextIndex < Elements.Count)
+			int prevIndex = 0;
+			int nextIndex = prevIndex + 1;
+			while (nextIndex < Elements.Count)
 			{
 				//check if the time falls on or between the two keyframes
-				if ((Elements[iPrevIndex].Time <= time) &&
-					(Elements[iNextIndex].Time >= time))
+				if ((Elements[prevIndex].Time <= time) &&
+					(Elements[nextIndex].Time >= time))
 				{
-					KeyElement rPrev = Elements[iPrevIndex];
-					KeyElement rNext = Elements[iNextIndex];
+					KeyElement prevElement = Elements[prevIndex];
+					KeyElement nextElement = Elements[nextIndex];
 
-					if (time == rPrev.Time)
+					if (time == prevElement.Time)
 					{
 						//it is the previous element
-						keyElement.Copy(rPrev);
+						keyElement.Copy(prevElement);
 						return true;
 					}
-					else if (time == rNext.Time)
+					else if (time == nextElement.Time)
 					{
 						//it is the next element
-						keyElement.Copy(rNext);
+						keyElement.Copy(nextElement);
 						return true;
 					}
 
 					//okay, copy the first one and add the changes
-					keyElement.Copy(rPrev);
+					keyElement.Copy(prevElement);
 					keyElement.Time = time;
 
 					//find the ratio of rotation/time for the whole step
-					float fWholeTimeDelta = rNext.Time - rPrev.Time;
+					float wholeTimeDelta = nextElement.Time - prevElement.Time;
 
 					//so if it rotates x degrees in y seconds, it rotates z degrees in w seconds
-					float fStepTimeDelta = time - rPrev.Time;
+					float stepTimeDelta = time - prevElement.Time;
 
 					//if step is less than 1/60 second, use teh previous one
-					if (fWholeTimeDelta <= 1.0f)
+					if (wholeTimeDelta <= 1.0f)
 					{
 						return true;
 					}
@@ -101,23 +102,19 @@ namespace AnimationLib
 					keyElement.KeyFrame = false; //not a keyframe!
 
 					//get the step 
-					float fWholeRotationDelta = rNext.Rotation - rPrev.Rotation;
-					float fStepRotationDelta = ((fWholeRotationDelta * fStepTimeDelta) / fWholeTimeDelta);
-					keyElement.Rotation = rPrev.Rotation + fStepRotationDelta;
+					float wholeRotationDelta = nextElement.Rotation - prevElement.Rotation;
+					float stepRotationDelta = ((wholeRotationDelta * stepTimeDelta) / wholeTimeDelta);
+					keyElement.Rotation = prevElement.Rotation + stepRotationDelta;
 
-					float fWholeXDelta = rNext.Translation.X - rPrev.Translation.X;
-					float fStepXDelta = ((fWholeXDelta * fStepTimeDelta) / fWholeTimeDelta);
-					keyElement.TranslationX = rPrev.Translation.X + fStepXDelta;
-
-					float fWholeYDelta = rNext.Translation.Y - rPrev.Translation.Y;
-					float fStepYDelta = ((fWholeYDelta * fStepTimeDelta) / fWholeTimeDelta);
-					keyElement.TranslationY = rPrev.Translation.Y + fStepYDelta;
+					Vector2 wholeDelta = nextElement.Translation - prevElement.Translation;
+					Vector2 stepDelta = ((wholeDelta * stepTimeDelta) / wholeTimeDelta);
+					keyElement.Translation = prevElement.Translation + stepDelta;
 
 					return true;
 				}
 
-				iPrevIndex++;
-				iNextIndex++;
+				prevIndex++;
+				nextIndex++;
 			}
 
 			//if it gets here, it is past the animation, return the last element
@@ -281,7 +278,7 @@ namespace AnimationLib
 				{
 					sourceKeyElement.ImageIndex = oldKeyElement.ImageIndex;
 					sourceKeyElement.Flip = oldKeyElement.Flip;
-					sourceKeyElement.RagDoll = oldKeyElement.RagDoll;
+					sourceKeyElement.Ragdoll = oldKeyElement.Ragdoll;
 				}
 			}
 
