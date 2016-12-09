@@ -413,6 +413,12 @@ namespace AnimationLib
 
 		#region Skeleton File IO
 
+		public void Write()
+		{
+			WriteSkeletonXml();
+			WriteAnimationXml();
+		}
+
 		/// <summary>
 		/// Read a model file from a serialized xml resource
 		/// </summary>
@@ -424,6 +430,11 @@ namespace AnimationLib
 			var skelModel = new SkeletonModel(filename);
 			skelModel.ReadXmlFile();
 			Skeleton.Load(skelModel, renderer);
+		}
+
+		public void WriteSkeletonXml()
+		{
+			WriteSkeletonXml(SkeletonFile);
 		}
 
 		/// <summary>
@@ -468,6 +479,11 @@ namespace AnimationLib
 			_playback = EPlayback.Forwards;
 			CurrentAnimation = null;
 			RestartAnimation();
+		}
+
+		public void WriteAnimationXml()
+		{
+			WriteAnimationXml(AnimationFile);
 		}
 
 		public void WriteAnimationXml(Filename filename)

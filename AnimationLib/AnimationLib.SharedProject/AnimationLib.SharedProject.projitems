@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetCircleRadius.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetJointCoords.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetKeyElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetKeyElementImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetKeyElementRotation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetKeyElementLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetKeyElementTranslation.cs" />

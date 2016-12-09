@@ -87,7 +87,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Flag used to tell the difference between the bone types for collision purposes
 		/// </summary>
-		public EBoneType BoneType { get; set; }
+public EBoneType BoneType { get; set; }
 
 		/// <summary>
 		/// this guys current image to render
@@ -1375,16 +1375,27 @@ namespace AnimationLib
 
 			if (Flipped && !AnchorJoint.CurrentKeyElement.Flip)
 			{
-				angle = angle + parentAngle;
-				angle = GetBoneAngle() + angle;
+				angle = parentAngle + GetBoneAngle() - angle;
+			}
+			else if (!Flipped && AnchorJoint.CurrentKeyElement.Flip)
+			{
+				angle = parentAngle + GetBoneAngle() - angle;
 			}
 			else
 			{
-				angle = angle + parentAngle;
-				angle = GetBoneAngle() - angle;
+				angle = parentAngle + GetBoneAngle() - angle;
 			}
 
 			return Helper.ClampAngle(angle);
+		}
+
+		public float GetAngleToScreenPosition(Vector2 screenPos)
+		{
+			//get teh offset from the bone location
+			var myLocation = screenPos - (AnchorJoint.Position + AnchorJoint.CurrentKeyElement.Translation);
+
+			//get the angle to that vector
+			return Helper.atan2(myLocation) * -1f;
 		}
 
 		/// <summary>
@@ -1417,9 +1428,7 @@ namespace AnimationLib
 			}
 
 			//get the difference between the anchor position and the joint
-			Vector2 anchorPos = GetCurrentImage().AnchorCoord;
-			Vector2 jointPos = Joints[0].Data.Location;
-			Vector2 diff = jointPos - anchorPos;
+			Vector2 diff = Joints[0].Data.Location - GetCurrentImage().AnchorCoord;
 
 			return Helper.ClampAngle(Helper.atan2(diff));
 		}
@@ -1443,7 +1452,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="rootBone">the root bone of the model, used to search for matching bones</param>
 		/// <param name="actionCollection"></param>
-		public void MirrorRightToLeft(Bone rootBone, UndoRedoStack actionCollection)
+		public void MirrorRightToLeft(Bone rootBone, CommandStack actionCollection)
 		{
 			Debug.Assert(null != rootBone);
 
@@ -1478,7 +1487,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="sourceBone">the source to copy from</param>
 		/// <param name="actionCollection"></param>
-		private void Copy(Bone sourceBone, UndoRedoStack actionCollection)
+		private void Copy(Bone sourceBone, CommandStack actionCollection)
 		{
 			Debug.Assert(null != sourceBone);
 

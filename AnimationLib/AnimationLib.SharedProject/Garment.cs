@@ -132,6 +132,11 @@ namespace AnimationLib
 			}
 		}
 
+		public void Write()
+		{
+			WriteXmlFile(GarmentFile);
+		}
+
 		public void WriteXmlFile(Filename filename)
 		{
 			GarmentFile = filename;

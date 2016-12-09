@@ -314,7 +314,7 @@ namespace AnimationLib
 			return updatedJointCoord;
 		}
 
-		public void Copy(Bone parent, Image myInst, UndoRedoStack actionCollection)
+		public void Copy(Bone parent, Image myInst, CommandStack actionCollection)
 		{
 			//copy the anchor coord
 			SetAnchorLocation myAnchorAction = new SetAnchorLocation(parent, this, myInst.AnchorCoord);

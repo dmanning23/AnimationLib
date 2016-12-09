@@ -1,5 +1,7 @@
 using FilenameBuddy;
+using Microsoft.Xna.Framework;
 using RenderBuddy;
+using UndoRedoBuddy;
 
 namespace AnimationLib
 {
@@ -36,6 +38,25 @@ namespace AnimationLib
 		public void RenameJoints(AnimationContainer animations)
 		{
 			RootBone.RenameJoints(animations);
+		}
+
+		public Bone GetBone(string boneName)
+		{
+			return RootBone.GetBone(boneName);
+		}
+
+		/// <summary>
+		/// This method goes through the skeleton and makes sure the joints and bone names match
+		/// </summary>
+		/// <param name="animations"></param>
+		public void Mirror(CommandStack command)
+		{
+			RootBone.MirrorRightToLeft(RootBone, command);
+		}
+
+		public void DrawPhysics(IRenderer renderer, Color color)
+		{
+			RootBone.DrawPhysics(renderer, true, color);
 		}
 
 		#endregion //Methods

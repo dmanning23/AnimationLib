@@ -48,11 +48,6 @@ namespace AnimationLib
 		public int ImageIndex { get; set; }
 
 		/// <summary>
-		/// teh name of the image to use, will be filename with no path info
-		/// </summary>
-		public string ImageName { get; set; }
-
-		/// <summary>
 		/// whether it should be reversed on the x plane(drawn backwards)
 		/// </summary>
 		public bool Flip { get; set; }
