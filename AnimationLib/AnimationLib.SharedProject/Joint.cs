@@ -247,28 +247,21 @@ namespace AnimationLib
 				var desiredAngle = (firstLimit + secondLimit) / 2f;
 				float springRatio = 0f;
 
-				//get the vector pointing from the current position to the desried position
-				//var desiredVect = Position + MatrixExt.Orientation(desiredAngle).Multiply(new Vector2(joint.Data.Length, 0));
-
 				//get the direction to point the spring
 				float springAngle = 0f;
 				if (currentAngle < desiredAngle)
 				{
 					//if > desired angle, get the unit vector pointing +90 degrees
 					springAngle = currentAngle + MathHelper.PiOver2;
-
 					springRatio = ((currentAngle - desiredAngle) / (firstLimit - desiredAngle));
 				}
 				else if (currentAngle > desiredAngle)
 				{
 					//else is < desired angle, get the unit vector pointing -90 degrees
 					springAngle = currentAngle - MathHelper.PiOver2;
-
 					springRatio = ((currentAngle - desiredAngle) / (secondLimit - desiredAngle));
 				}
 				Vector2 deltaVector = MatrixExt.Orientation(springAngle).Multiply(new Vector2(1f, 0));
-				//var deltaVector = desiredVect - joint.Position;
-				//deltaVector.Normalize();
 
 				//get the total force to apply to the child joint
 				Vector2 springForce = (deltaVector * springStrength) * springRatio;
