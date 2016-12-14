@@ -29,6 +29,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetLineData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetRagdollLimit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetRagdollRadius.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetRagdollGravity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetRagdollSpring.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetRagdollType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Garment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GarmentAnimationContainer.cs" />

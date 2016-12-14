@@ -961,7 +961,7 @@ public EBoneType BoneType { get; set; }
 			}
 		}
 
-		public void AccumulateForces(float scale)
+		public void AccumulateForces(float parentAngle, float scale)
 		{
 			//Collect all the forces
 			Vector2 collectedForces = Vector2.Zero;
@@ -984,14 +984,14 @@ public EBoneType BoneType { get; set; }
 				//if the joint[i].data is floating, add some spring force
 				if ((null != image) && AnchorJoint.CurrentKeyElement.Ragdoll)
 				{
-					AnchorJoint.SpringFloatingRagdoll(Joints[i], image.SpringForce, Joints[i].Data.Length, scale);
+					AnchorJoint.SolveRagdollSpring(parentAngle, this, Joints[i], image.SpringForce, scale);
 				}
 			}
 
 			//update the children
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].AccumulateForces(scale);
+				Bones[i].AccumulateForces(this.Rotation, scale);
 			}
 		}
 
@@ -1065,38 +1065,29 @@ public EBoneType BoneType { get; set; }
 			{
 				//Get the current rotation
 				Rotation = GetRagDollRotation();
-				float fMyActualRotation = Helper.ClampAngle(Rotation - parentRotation);
+				var actualRotation = Helper.ClampAngle(Rotation - parentRotation);
+				float firstLimit, secondLimit;
+				GetLimits(out firstLimit, out secondLimit);
 
-				float fFirstLimit = AnchorJoint.FirstLimit;
-				float fSecondLimit = AnchorJoint.SecondLimit;
-
-				//swap the limits if the bone is flipped
-				if (Flipped)
-				{
-					float temp = fFirstLimit;
-					fFirstLimit = fSecondLimit * -1.0f;
-					fSecondLimit = temp * -1.0f;
-				}
-
-				bool bHitLimit = false;
-				if (fMyActualRotation < fFirstLimit)
+				bool hitLimit = false;
+				if (actualRotation < firstLimit)
 				{
 					//if it is less than the first limit, update rotation and move the joints to fit 
 
 					//use the first limit as the rotation
-					bHitLimit = true;
-					Rotation = parentRotation + fFirstLimit;
+					hitLimit = true;
+					Rotation = parentRotation + firstLimit;
 				}
-				else if (fMyActualRotation > fSecondLimit)
+				else if (actualRotation > secondLimit)
 				{
 					//if it is more than the second limit, update rotation and move the joints to fit
 
 					//use the second limit as the rotation
-					bHitLimit = true;
-					Rotation = parentRotation + fSecondLimit;
+					hitLimit = true;
+					Rotation = parentRotation + secondLimit;
 				}
 
-				if (bHitLimit)
+				if (hitLimit)
 				{
 					//update joint positions
 					Matrix myMatrix = MatrixExt.Orientation(Rotation);
@@ -1119,6 +1110,37 @@ public EBoneType BoneType { get; set; }
 			{
 				Bones[i].SolveLimits(Rotation);
 			}
+		}
+
+		public void GetLimits(out float firstLimit, out float secondLimit)
+		{
+			firstLimit = AnchorJoint.FirstLimit;
+			secondLimit = AnchorJoint.SecondLimit;
+
+			//swap the limits if the bone is flipped
+			if (Flipped)
+			{
+				float temp = firstLimit;
+				firstLimit = secondLimit * -1.0f;
+				secondLimit = temp * -1.0f;
+			}
+		}
+
+		public void GetRotatedLimits(float parentAngle, out float firstLimit, out float secondLimit)
+		{
+			firstLimit = AnchorJoint.FirstLimit;
+			secondLimit = AnchorJoint.SecondLimit;
+
+			//swap the limits if the bone is flipped
+			if (Flipped)
+			{
+				float temp = firstLimit;
+				firstLimit = secondLimit * -1.0f;
+				secondLimit = temp * -1.0f;
+			}
+
+			firstLimit = parentAngle + firstLimit;
+			secondLimit = parentAngle + secondLimit;
 		}
 
 		public float GetRagDollRotation()
@@ -1237,7 +1259,7 @@ public EBoneType BoneType { get; set; }
 				null,
 				0.0f,
 				parentFlip,
-				0,
+				CurrentLayer - AnchorJoint.CurrentKeyElement.Layer,
 				scale,
 				true);
 		}
@@ -1571,19 +1593,7 @@ public EBoneType BoneType { get; set; }
 
 		public void GetLimitRotations(out float limit1, out float limit2)
 		{
-			var firstLimit = AnchorJoint.FirstLimit;
-			var secondLimit = AnchorJoint.SecondLimit;
-
-			//swap the limits if the bone is flipped
-			if (Flipped)
-			{
-				var temp = firstLimit;
-				firstLimit = secondLimit * -1.0f;
-				secondLimit = temp * -1.0f;
-			}
-
-			limit1 = GetParentAngle() + firstLimit;
-			limit2 = GetParentAngle() + secondLimit;
+			GetRotatedLimits(GetParentAngle(), out limit1, out limit2);
 		}
 
 		#endregion //Tools

@@ -151,7 +151,7 @@ namespace AnimationLib
 			NormalMapFile = new Filename();
 			ColorMaskFile = new Filename();
 			_ragdollGravity = new Vector2(0, 1500f);
-			RagdollSpring = 1.5f;
+			RagdollSpring = 2.5f;
 		}
 
 		public Image(ImageModel image)

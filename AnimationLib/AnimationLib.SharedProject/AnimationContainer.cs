@@ -56,7 +56,7 @@ namespace AnimationLib
 		/// Index of the current animation being played
 		/// </summary>
 		/// <value>The index of the current animation.</value>
-		public int CurrentAnimationIndex 
+		protected int CurrentAnimationIndex 
 		{
 			get { return _animationIndex; }
 			set
@@ -256,18 +256,13 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="ignoreRagdoll"></param>
 		/// <param name="scale">how much to scale the animation</param>
-		public void UpdateRagdoll(bool ignoreRagdoll, float scale)
+		public void UpdateRagdoll(float scale)
 		{
-			if (ignoreRagdoll)
-			{
-				return;
-			}
-
 			//add gravity to the ragdoll physics
 			Skeleton.RootBone.AddGravity();
 
 			//accumulate all the force
-			Skeleton.RootBone.AccumulateForces(scale);
+			Skeleton.RootBone.AccumulateForces(0f, scale);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
