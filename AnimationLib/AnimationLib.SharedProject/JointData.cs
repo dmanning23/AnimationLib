@@ -56,7 +56,7 @@ namespace AnimationLib
 		/// Float uses the ragdollradius to float around the anchor joint
 		/// chained uses the limits to rotate around the anchor joint
 		/// </summary>
-		public bool Floating { get; set; }
+		public RagdollType RagdollType { get; set; }
 
 		/// <summary>
 		/// The radius of the circle that ragdoll is allowed to float around
@@ -103,14 +103,14 @@ namespace AnimationLib
 			_anchorVect = Vector2.Zero;
 			Length = 0.0f;
 			FloatRadius = 0.0f;
-			Floating = false;
+			RagdollType = RagdollType.None;
 		}
 
 		public JointData(JointDataModel jointData, Image image)
 			: this()
 		{
 			Location = jointData.Location;
-			Floating = jointData.Floating;
+			RagdollType = jointData.RagdollType;
 			FloatRadius = jointData.FloatRadius;
 			FirstLimit = jointData.FirstLimit;
 			SecondLimit = jointData.SecondLimit;
@@ -126,7 +126,7 @@ namespace AnimationLib
 			FirstLimit = inst.FirstLimit;
 			SecondLimit = inst.SecondLimit;
 			FloatRadius = inst.FloatRadius;
-			Floating = inst.Floating;
+			RagdollType = inst.RagdollType;
 			Length = inst.Length;
 			_anchorVect = inst._anchorVect;
 		}

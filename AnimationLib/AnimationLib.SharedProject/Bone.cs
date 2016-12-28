@@ -738,7 +738,8 @@ public EBoneType BoneType { get; set; }
 			if (!AnchorJoint.CurrentKeyElement.Ragdoll ||
 				ignoreRagdoll ||
 				(0 == Joints.Count) ||
-				(AnchorJoint.CurrentKeyElement.Ragdoll && AnchorJoint.Data.Floating))
+				(AnchorJoint.CurrentKeyElement.Ragdoll && 
+				RagdollType.Float == AnchorJoint.Data.RagdollType))
 			{
 				//add my rotation to the parents rotation
 				if (!parentFlip)
@@ -800,7 +801,9 @@ public EBoneType BoneType { get; set; }
 			//myMatrix = myMatrix * MatrixExt.Orientation(Rotation);
 			//myMatrix = myMatrix * myTranslation;
 
-			if (!AnchorJoint.CurrentKeyElement.Ragdoll || !AnchorJoint.Data.Floating || ignoreRagdoll)
+			if (!AnchorJoint.CurrentKeyElement.Ragdoll || 
+				RagdollType.Float != AnchorJoint.Data.RagdollType || 
+				ignoreRagdoll)
 			{
 				//Update my position based on the offset of the anchor coord
 				Position = myMatrix.Multiply(position - anchorCoord);
@@ -1059,7 +1062,7 @@ public EBoneType BoneType { get; set; }
 		public void SolveLimits(float parentRotation)
 		{
 			if (AnchorJoint.CurrentKeyElement.Ragdoll &&
-				!AnchorJoint.Data.Floating &&
+				RagdollType.Limit == AnchorJoint.Data.RagdollType &&
 				(0 <= ImageIndex) &&
 				((-Math.PI < AnchorJoint.FirstLimit) && (Math.PI > AnchorJoint.SecondLimit)))//are there any limits on this bone, or just letting it spin?
 			{
@@ -1145,7 +1148,9 @@ public EBoneType BoneType { get; set; }
 
 		public float GetRagDollRotation()
 		{
-			if (!AnchorJoint.Data.Floating && (0 <= ImageIndex) && (0 < Joints.Count))
+			if (RagdollType.Float != AnchorJoint.Data.RagdollType && 
+				(0 <= ImageIndex) &&
+				(0 < Joints.Count))
 			{
 				//get the difference between the anchor position and the joint
 				Vector2 diff = Joints[0].Position - AnchorPosition;
@@ -1176,7 +1181,7 @@ public EBoneType BoneType { get; set; }
 			Debug.Assert(null != AnchorJoint.CurrentKeyElement);
 			if ((0 <= ImageIndex) && (AnchorJoint.CurrentKeyElement.Ragdoll || isParentRagdoll))
 			{
-				if (AnchorJoint.Data.Floating && (0 < Joints.Count))
+				if (RagdollType.Float == AnchorJoint.Data.RagdollType && (0 < Joints.Count))
 				{
 					//Float based on the joint position
 

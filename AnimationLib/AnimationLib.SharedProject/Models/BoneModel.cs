@@ -141,7 +141,6 @@ namespace AnimationLib
 							BoneType = EBoneType.Normal;
 						}
 						break;
-
 					}
 				}
 				break;

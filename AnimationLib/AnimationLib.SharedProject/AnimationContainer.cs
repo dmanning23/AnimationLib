@@ -2,6 +2,7 @@ using DrawListBuddy;
 using FilenameBuddy;
 using GameTimer;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -427,6 +428,14 @@ namespace AnimationLib
 			Skeleton.Load(skelModel, renderer);
 		}
 
+		public virtual void ReadSkeletonXml(ContentManager content, Filename filename, IRenderer renderer)
+		{
+			SkeletonFile = filename;
+			var skelModel = new SkeletonModel(filename);
+			skelModel.ReadXmlFile(content);
+			Skeleton.Load(skelModel, renderer);
+		}
+
 		public void WriteSkeletonXml()
 		{
 			WriteSkeletonXml(SkeletonFile);
@@ -464,7 +473,22 @@ namespace AnimationLib
 			Debug.Assert(null != Skeleton);
 			var animations = new AnimationsModel(filename);
 			animations.ReadXmlFile();
+			LoadAnimations(animations);
+		}
 
+		public virtual void ReadAnimationXml(ContentManager content, Filename filename)
+		{
+			AnimationFile = filename;
+
+			//load up the animations from file
+			Debug.Assert(null != Skeleton);
+			var animations = new AnimationsModel(filename);
+			animations.ReadXmlFile(content);
+			LoadAnimations(animations);
+		}
+
+		private void LoadAnimations(AnimationsModel animations)
+		{
 			//create each animation
 			foreach (var animationModel in animations.Animations)
 			{

@@ -15,15 +15,15 @@ namespace AnimationLib.Commands
 		/// <summary>
 		/// The data that is replacing the old stuff
 		/// </summary>
-		bool _nextType;
+		RagdollType _nextType;
 
-		bool _prevType;
+		RagdollType _prevType;
 
 		#endregion //Fields
 
 		#region Methods
 
-		public SetRagdollType(JointData jointData, bool nextType)
+		public SetRagdollType(JointData jointData, RagdollType nextType)
 		{
 			if (jointData == null)
 			{
@@ -32,7 +32,7 @@ namespace AnimationLib.Commands
 
 			_jointData = jointData;
 			_nextType = nextType;
-			_prevType = _jointData.Floating;
+			_prevType = _jointData.RagdollType;
 		}
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action executed successfully</returns>
 		public bool Execute()
 		{
-			_jointData.Floating = _nextType;
+			_jointData.RagdollType = _nextType;
 			return true;
 		}
 
@@ -51,7 +51,7 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action was undone successfully</returns>
 		public bool Undo()
 		{
-			_jointData.Floating = _prevType;
+			_jointData.RagdollType = _prevType;
 			return true;
 		}
 

@@ -62,9 +62,9 @@ namespace Animationlib.Tests
 		}
 
 		[Test]
-		public void Floated()
+		public void DeafultRagdollType()
 		{
-			Assert.IsTrue(image.JointCoords[0].Floating);
+			Assert.AreEqual(RagdollType.Float, image.JointCoords[0].RagdollType);
 		}
 
 		[Test]

@@ -20,7 +20,7 @@ namespace AnimationLib
 		/// Float uses the ragdollradius to float around the anchor joint
 		/// chained uses the limits to rotate around the anchor joint
 		/// </summary>
-		public bool Floating { get; set; }
+		public RagdollType RagdollType { get; set; }
 
 		/// <summary>
 		/// The radius of the circle that ragdoll is allowed to float around
@@ -41,13 +41,13 @@ namespace AnimationLib
 			FirstLimit = -180.0f;
 			SecondLimit = 180.0f;
 			FloatRadius = 0.0f;
-			Floating = false;
+			RagdollType = RagdollType.None;
 		}
 
 		public JointDataModel(JointData jointData)
 		{
 			Location = jointData.Location;
-			Floating = jointData.Floating;
+			RagdollType = jointData.RagdollType;
 			FloatRadius = jointData.FloatRadius;
 			FirstLimit = jointData.FirstLimit;
 			SecondLimit = jointData.SecondLimit;
@@ -90,9 +90,40 @@ namespace AnimationLib
 				break;
 				case "FloatOrRotate":
 				{
-					Floating = Convert.ToBoolean(value);
+					var ragdollType = Convert.ToBoolean(value);
+					if (ragdollType)
+					{
+						RagdollType = RagdollType.Float;
+					}
+					else
+					{
+						RagdollType = RagdollType.Limit;
+					}
 				}
 				break;
+				case "RagdollType":
+					{
+						switch (value)
+						{
+							case "Float":
+								{
+									RagdollType = RagdollType.Float;
+								}
+								break;
+
+							case "Limit":
+								{
+									RagdollType = RagdollType.Limit;
+								}
+								break;
+							default:
+								{
+									RagdollType = RagdollType.None;
+								}
+								break;
+						}
+					}
+					break;
 				default:
 				{
 					base.ParseXmlNode(node);
@@ -111,31 +142,39 @@ namespace AnimationLib
 			//write out the item tag
 			xmlWriter.WriteStartElement("jointData");
 
-			//write first limit
-			if (-180.0f != FirstLimit)
+			switch (RagdollType)
 			{
-				float fLimit1 = Helper.ClampAngle(FirstLimit);
-				xmlWriter.WriteAttributeString("limit1", MathHelper.ToDegrees(fLimit1).ToString());
-			}
+				case RagdollType.Float:
+					{
+						xmlWriter.WriteAttributeString("RagdollType", "Float");
 
-			//write 2nd limit 
-			if (180.0f != SecondLimit)
-			{
-				float fLimit2 = Helper.ClampAngle(SecondLimit);
-				xmlWriter.WriteAttributeString("limit2", MathHelper.ToDegrees(fLimit2).ToString());
-			}
+						//write out float radius
+						if (0.0f != FloatRadius)
+						{
+							float fLimit2 = Helper.ClampAngle(SecondLimit);
+							xmlWriter.WriteAttributeString("FloatRadius", FloatRadius.ToString());
+						}
+					}
+					break;
+				case RagdollType.Limit:
+					{
+						xmlWriter.WriteAttributeString("RagdollType", "Limit");
 
-			//write out float radius
-			if (0.0f != FloatRadius)
-			{
-				float fLimit2 = Helper.ClampAngle(SecondLimit);
-				xmlWriter.WriteAttributeString("FloatRadius", FloatRadius.ToString());
-			}
+						//write first limit
+						if (-180.0f != FirstLimit)
+						{
+							float fLimit1 = Helper.ClampAngle(FirstLimit);
+							xmlWriter.WriteAttributeString("limit1", MathHelper.ToDegrees(fLimit1).ToString());
+						}
 
-			//write out whether it uses float or rotate ragdoll
-			if (Floating)
-			{
-				xmlWriter.WriteAttributeString("FloatOrRotate", "true");
+						//write 2nd limit 
+						if (180.0f != SecondLimit)
+						{
+							float fLimit2 = Helper.ClampAngle(SecondLimit);
+							xmlWriter.WriteAttributeString("limit2", MathHelper.ToDegrees(fLimit2).ToString());
+						}
+					}
+					break;
 			}
 
 			//write out joint offset

@@ -62,6 +62,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)PhysicsLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Playback.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RagdollMove.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RagdollType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Skeleton.cs" />
   </ItemGroup>
 </Project>

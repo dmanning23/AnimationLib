@@ -175,8 +175,10 @@ namespace AnimationLib
 			//Get the velocity we are going to apply
 			Vector2 vel = ((_position - _oldPosition) + (_acceleration * (timeDelta * timeDelta)));
 
+			//TODO: does this need to be different for each one?
+
 			//simulate friction to add damping into the equation
-			if (Data.Floating)
+			if (RagdollType.Float == Data.RagdollType)
 			{
 				vel *= .9f;
 			}
@@ -214,58 +216,63 @@ namespace AnimationLib
 		/// <param name="scale"></param>
 		public void SolveRagdollSpring(float parentAngle, Bone bone, Joint joint, float springStrength, float scale)
 		{
-			if (Data.Floating)
+			switch (Data.RagdollType)
 			{
-				//get the deisred float radius of this dude
-				float desiredDistance = Data.FloatRadius * scale;
-				if (0.0f < desiredDistance) //the float radius can't be 0 or negative
-				{
-					//find the current distance bewteen the two joints
-					Vector2 deltaVector = Position - joint.Position; //swap this so it points from joint -> anchor
-					float currentDistance = deltaVector.Length();
-					deltaVector /= currentDistance; //normalize
+				case RagdollType.Float:
+					{
+						//get the deisred float radius of this dude
+						float desiredDistance = Data.FloatRadius * scale;
+						if (0.0f < desiredDistance) //the float radius can't be 0 or negative
+						{
+							//find the current distance bewteen the two joints
+							Vector2 deltaVector = Position - joint.Position; //swap this so it points from joint -> anchor
+							float currentDistance = deltaVector.Length();
+							deltaVector /= currentDistance; //normalize
 
-					//what is the ratio of the distance between the current position and desired position? 
-					//0.0 = at same position
-					//1.0 = fully extended
-					float springRatio = currentDistance / desiredDistance;
-					springRatio = Math.Min(Math.Max(0.0f, springRatio), 1.0f); //constrain the springratio
+							//what is the ratio of the distance between the current position and desired position? 
+							//0.0 = at same position
+							//1.0 = fully extended
+							float springRatio = currentDistance / desiredDistance;
+							springRatio = Math.Min(Math.Max(0.0f, springRatio), 1.0f); //constrain the springratio
 
-					//get the total force to apply to the child joint
-					Vector2 springForce = (deltaVector * springStrength) * springRatio;
-					joint._acceleration += springForce;
-				}
-			}
-			else
-			{
-				//get the current angle of the bone
-				float firstLimit, secondLimit;
-				bone.GetRotatedLimits(parentAngle, out firstLimit, out secondLimit);
-				var currentAngle = bone.GetRagDollRotation();
+							//get the total force to apply to the child joint
+							Vector2 springForce = (deltaVector * springStrength) * springRatio;
+							joint._acceleration += springForce;
+						}
+					}
+					break;
+				case RagdollType.Limit:
+					{
+						//get the current angle of the bone
+						float firstLimit, secondLimit;
+						bone.GetRotatedLimits(parentAngle, out firstLimit, out secondLimit);
+						var currentAngle = bone.GetRagDollRotation();
 
-				//what is the ratio of the current angle between the current position and desired position?
-				var desiredAngle = (firstLimit + secondLimit) / 2f;
-				float springRatio = 0f;
+						//what is the ratio of the current angle between the current position and desired position?
+						var desiredAngle = (firstLimit + secondLimit) / 2f;
+						float springRatio = 0f;
 
-				//get the direction to point the spring
-				float springAngle = 0f;
-				if (currentAngle < desiredAngle)
-				{
-					//if > desired angle, get the unit vector pointing +90 degrees
-					springAngle = currentAngle + MathHelper.PiOver2;
-					springRatio = ((currentAngle - desiredAngle) / (firstLimit - desiredAngle));
-				}
-				else if (currentAngle > desiredAngle)
-				{
-					//else is < desired angle, get the unit vector pointing -90 degrees
-					springAngle = currentAngle - MathHelper.PiOver2;
-					springRatio = ((currentAngle - desiredAngle) / (secondLimit - desiredAngle));
-				}
-				Vector2 deltaVector = MatrixExt.Orientation(springAngle).Multiply(new Vector2(1f, 0));
+						//get the direction to point the spring
+						float springAngle = 0f;
+						if (currentAngle < desiredAngle)
+						{
+							//if > desired angle, get the unit vector pointing +90 degrees
+							springAngle = currentAngle + MathHelper.PiOver2;
+							springRatio = ((currentAngle - desiredAngle) / (firstLimit - desiredAngle));
+						}
+						else if (currentAngle > desiredAngle)
+						{
+							//else is < desired angle, get the unit vector pointing -90 degrees
+							springAngle = currentAngle - MathHelper.PiOver2;
+							springRatio = ((currentAngle - desiredAngle) / (secondLimit - desiredAngle));
+						}
+						Vector2 deltaVector = MatrixExt.Orientation(springAngle).Multiply(new Vector2(1f, 0));
 
-				//get the total force to apply to the child joint
-				Vector2 springForce = (deltaVector * springStrength) * springRatio;
-				joint._acceleration += springForce;
+						//get the total force to apply to the child joint
+						Vector2 springForce = (deltaVector * springStrength) * springRatio;
+						joint._acceleration += springForce;
+					}
+					break;
 			}
 		}
 
@@ -285,7 +292,7 @@ namespace AnimationLib
 
 			//Check if we are floating instead of rotating
 			float fDiff = 0.0f;
-			if (Data.Floating)
+			if (RagdollType.Float == Data.RagdollType)
 			{
 				float fMyFloatRadius = Data.FloatRadius * scale;
 				if (fCurDistance < fMyFloatRadius)
