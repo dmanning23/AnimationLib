@@ -147,6 +147,7 @@ namespace AnimationLib
 			KeyElements.Add(key);
 		}
 
+#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag
@@ -167,6 +168,7 @@ namespace AnimationLib
 
 			xmlWriter.WriteEndElement();
 		}
+#endif
 
 		#endregion //File IO
 	}

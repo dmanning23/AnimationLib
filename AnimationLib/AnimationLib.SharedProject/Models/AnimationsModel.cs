@@ -85,6 +85,7 @@ namespace AnimationLib
 			Animations.Add(animation);
 		}
 
+#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			//write out joints
@@ -95,6 +96,7 @@ namespace AnimationLib
 			}
 			xmlWriter.WriteEndElement();
 		}
+#endif
 
 		#endregion //File IO
 	}

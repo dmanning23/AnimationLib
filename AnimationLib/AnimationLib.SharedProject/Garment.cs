@@ -3,6 +3,7 @@ using RenderBuddy;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
 namespace AnimationLib
 {
@@ -52,6 +53,20 @@ namespace AnimationLib
 			GarmentFile = filename;
 			var garmentModel = new GarmentModel(filename);
 			garmentModel.ReadXmlFile();
+			InitializeGarment(skeleton, renderer, garmentModel);
+		}
+
+		public Garment(ContentManager content, Filename filename, Skeleton skeleton, IRenderer renderer)
+			: this()
+		{
+			GarmentFile = filename;
+			var garmentModel = new GarmentModel(filename);
+			garmentModel.ReadXmlFile(content);
+			InitializeGarment(skeleton, renderer, garmentModel);
+		}
+
+		private void InitializeGarment(Skeleton skeleton, IRenderer renderer, GarmentModel garmentModel)
+		{
 			Name = garmentModel.Name;
 			foreach (var fragment in garmentModel.Fragments)
 			{

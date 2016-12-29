@@ -44,10 +44,12 @@ namespace AnimationLib
 			ReadChildNodes(node, RootBone.ParseXmlNode);
 		}
 
+#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlFile)
 		{
 			RootBone.WriteXmlNodes(xmlFile);
 		}
+#endif
 
 		#endregion //Model File IO
 	}

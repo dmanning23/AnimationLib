@@ -1,4 +1,5 @@
 ﻿using FilenameBuddy;
+using Microsoft.Xna.Framework.Content;
 using System.Xml;
 using XmlBuddy;
 
@@ -15,6 +16,8 @@ namespace AnimationLib
 
 		public GarmentSkeletonModel Skeleton { get; set; }
 
+		private ContentManager Content { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -22,8 +25,9 @@ namespace AnimationLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentFragmentModel()
+		public GarmentFragmentModel(ContentManager content = null)
 		{
+			Content = content;
 		}
 
 		/// <summary>
@@ -49,40 +53,41 @@ namespace AnimationLib
 			switch (name)
 			{
 				case "Type":
-				{
-					//throw these attributes out
-				}
-				break;
+					{
+						//throw these attributes out
+					}
+					break;
 				case "model":
-				{
-					//read in the model 
-					var skeletonFile = new Filename(value);
-					Skeleton = new GarmentSkeletonModel(skeletonFile);
-					Skeleton.ReadXmlFile();
-				}
-				break;
+					{
+						//read in the model 
+						var skeletonFile = new Filename(value);
+						Skeleton = new GarmentSkeletonModel(skeletonFile);
+						Skeleton.ReadXmlFile(Content);
+					}
+					break;
 				case "animation":
-				{
-					//read in the animations
-					var animationFile = new Filename(value);
-					AnimationContainer = new AnimationsModel(animationFile);
-					AnimationContainer.ReadXmlFile();
-				}
-				break;
+					{
+						//read in the animations
+						var animationFile = new Filename(value);
+						AnimationContainer = new AnimationsModel(animationFile);
+						AnimationContainer.ReadXmlFile(Content);
+					}
+					break;
 				default:
-				{
-					base.ParseXmlNode(node);
-				}
-				break;
+					{
+						base.ParseXmlNode(node);
+					}
+					break;
 			}
 		}
 
+#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
-            xmlWriter.WriteStartElement("fragment");
+			xmlWriter.WriteStartElement("fragment");
 
-            //write out model filename to use
-            xmlWriter.WriteStartElement("model");
+			//write out model filename to use
+			xmlWriter.WriteStartElement("model");
 			xmlWriter.WriteString(Skeleton.Filename.GetRelFilename());
 			xmlWriter.WriteEndElement();
 
@@ -91,15 +96,16 @@ namespace AnimationLib
 			xmlWriter.WriteString(AnimationContainer.Filename.GetRelFilename());
 			xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteEndElement();
+			xmlWriter.WriteEndElement();
 
-            //write out the model file
-            Skeleton.WriteXml();
+			//write out the model file
+			Skeleton.WriteXml();
 
 			//write out the animation file
 			AnimationContainer.WriteXml();
 		}
+#endif
 
-		#endregion File IO
+		#endregion //File IO
 	}
 }

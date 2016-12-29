@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimationLib.Tests", "AnimationLib.Tests\AnimationLib.Tests.csproj", "{7F8C6BD9-8051-4536-A06C-ED0A4626AB5B}"
 EndProject
@@ -23,10 +23,11 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AnimationLib.SharedProject"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{b7ad05af-3ec3-4524-9334-37456f395e09}*SharedItemsImports = 4
-		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{3c79395f-698a-4b95-92e5-b8613d0d64d0}*SharedItemsImports = 4
 		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{1b14667a-06be-436f-8a98-59b30d7b9170}*SharedItemsImports = 13
+		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{3c79395f-698a-4b95-92e5-b8613d0d64d0}*SharedItemsImports = 4
+		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{b7ad05af-3ec3-4524-9334-37456f395e09}*SharedItemsImports = 4
 		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{e308f2d3-5868-4efa-82fb-dcf21a6666f6}*SharedItemsImports = 4
+		AnimationLib.SharedProject\AnimationLib.SharedProject.projitems*{e9ec0c7f-e1c9-467a-af97-70352a25fb3a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU

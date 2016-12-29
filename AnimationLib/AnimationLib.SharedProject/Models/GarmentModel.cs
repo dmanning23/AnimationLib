@@ -87,11 +87,12 @@ namespace AnimationLib
 
 		public void ReadFragments(XmlNode node)
 		{
-			var fragment = new GarmentFragmentModel();
+			var fragment = new GarmentFragmentModel(Content);
 			XmlFileBuddy.ReadChildNodes(node, fragment.ParseXmlNode);
 			Fragments.Add(fragment);
 		}
 
+#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteAttributeString("name", Name);
@@ -104,6 +105,7 @@ namespace AnimationLib
 			}
 			xmlWriter.WriteEndElement();
 		}
+#endif
 
 		#endregion //File IO
 	}

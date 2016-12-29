@@ -209,6 +209,7 @@ namespace AnimationLib
 			Lines.Add(line);
 		}
 
+#if !WINDOWS_UWP
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
@@ -281,6 +282,7 @@ namespace AnimationLib
 
 			xmlWriter.WriteEndElement();
 		}
+#endif
 
 		#endregion //Methods
 	}

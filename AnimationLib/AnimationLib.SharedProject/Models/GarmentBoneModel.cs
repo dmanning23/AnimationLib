@@ -61,6 +61,7 @@ namespace AnimationLib
 			}
 		}
 
+#if !WINDOWS_UWP
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
@@ -76,6 +77,7 @@ namespace AnimationLib
 
 			xmlWriter.WriteEndElement();
 		}
+#endif
 
 		#endregion //File IO
 	}

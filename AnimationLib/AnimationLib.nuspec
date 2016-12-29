@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>AnimationLib</id>
-		<version>1.0.7</version>
+		<version>1.0.9</version>
 		<title>AnimationLib</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -100,8 +100,8 @@
 		<file src="AnimationLib.iOS\bin\Release\AnimationLib.iOS.dll" target="lib\Xamarin.iOS10\AnimationLib.iOS.dll" />
 
 		<!--Windows Universal-->
-		<!--<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.pdb" target="lib\uap10.0\AnimationLib.WindowsUniversal.pdb" />
-		<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.dll" target="lib\uap10.0\AnimationLib.WindowsUniversal.dll" />-->
+		<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.pdb" target="lib\uap10.0\AnimationLib.WindowsUniversal.pdb" />
+		<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.dll" target="lib\uap10.0\AnimationLib.WindowsUniversal.dll" />
 
 		<!--DesktopGL-->
 		<file src="AnimationLib.DesktopGL\bin\Release\AnimationLib.DesktopGL.pdb" target="lib\net451\AnimationLib.DesktopGL.pdb" />

@@ -142,6 +142,7 @@ namespace AnimationLib
 			}
 		}
 
+#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("key");
@@ -182,6 +183,7 @@ namespace AnimationLib
 
 			xmlWriter.WriteEndElement();
 		}
+#endif
 
 		public bool SkipRotation
 		{
