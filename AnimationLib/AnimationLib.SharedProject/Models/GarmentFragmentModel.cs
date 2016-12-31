@@ -1,5 +1,6 @@
 ﻿using FilenameBuddy;
 using Microsoft.Xna.Framework.Content;
+using System;
 using System.Xml;
 using XmlBuddy;
 
@@ -49,35 +50,42 @@ namespace AnimationLib
 			//what is in this node?
 			var name = node.Name;
 			var value = node.InnerText;
-
-			switch (name)
+			try
 			{
-				case "Type":
-					{
-						//throw these attributes out
-					}
-					break;
-				case "model":
-					{
-						//read in the model 
-						var skeletonFile = new Filename(value);
-						Skeleton = new GarmentSkeletonModel(skeletonFile);
-						Skeleton.ReadXmlFile(Content);
-					}
-					break;
-				case "animation":
-					{
-						//read in the animations
-						var animationFile = new Filename(value);
-						AnimationContainer = new AnimationsModel(animationFile);
-						AnimationContainer.ReadXmlFile(Content);
-					}
-					break;
-				default:
-					{
-						base.ParseXmlNode(node);
-					}
-					break;
+
+				switch (name)
+				{
+					case "Type":
+						{
+							//throw these attributes out
+						}
+						break;
+					case "model":
+						{
+							//read in the model 
+							var skeletonFile = new Filename(value);
+							Skeleton = new GarmentSkeletonModel(skeletonFile);
+							Skeleton.ReadXmlFile(Content);
+						}
+						break;
+					case "animation":
+						{
+							//read in the animations
+							var animationFile = new Filename(value);
+							AnimationContainer = new AnimationsModel(animationFile);
+							AnimationContainer.ReadXmlFile(Content);
+						}
+						break;
+					default:
+						{
+							base.ParseXmlNode(node);
+						}
+						break;
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(string.Format("error in garment fragment file \"{0}\"", value), ex);
 			}
 		}
 
