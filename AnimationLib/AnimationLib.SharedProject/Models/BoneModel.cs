@@ -42,6 +42,8 @@ namespace AnimationLib
 		/// </summary>
 		public bool Colorable { get; set; }
 
+		public float RagdollWeightRatio { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -57,6 +59,7 @@ namespace AnimationLib
 			Name = "Root";
 			Colorable = false;
 			BoneType = EBoneType.Normal;
+			RagdollWeightRatio = 0.5f;
 		}
 
 		/// <summary>
@@ -69,6 +72,8 @@ namespace AnimationLib
 			Name = bone.Name;
 			Colorable = bone.Colorable;
 			BoneType = bone.BoneType;
+			RagdollWeightRatio = bone.RagdollWeightRatio;
+
 			foreach (var joint in bone.Joints)
 			{
 				Joints.Add(new JointModel(joint));

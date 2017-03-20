@@ -283,7 +283,8 @@ namespace AnimationLib
 		/// <param name="desiredDistance">the distance from that joint in a perfect world</param>
 		/// <param name="scale">the current scale of the model</param>
 		/// <param name="movement">whether this joint should be moved</param>
-		public void SolveConstraint(Joint joint, float desiredDistance, float scale, ERagdollMove movement)
+		/// <param name="weightRatio">if movement = is moveall, this is how to ratio the weight between this guy and the other</param>
+		public void SolveConstraint(Joint joint, float desiredDistance, float scale, ERagdollMove movement, float weightRatio)
 		{
 			//find the current distance bewteen the two joints
 			Vector2 deltaVector = joint.Position - Position;
@@ -316,41 +317,32 @@ namespace AnimationLib
 				switch (movement)
 				{
 					case ERagdollMove.MoveAll:
-					{
-						//find the amount to move them by
-						Vector2 halfVector = deltaVector*0.5f*fDiff;
-						joint.Position = joint.Position - halfVector;
-						_position = Position + halfVector;
-					}
-					break;
+						{
+							//Find the amount to move this guy by
+							var halfVector = deltaVector * (1f - weightRatio) * fDiff;
+							_position = Position + halfVector;
+
+							//find the amount to move the other guy by
+							halfVector = deltaVector * weightRatio * fDiff;
+							joint.Position = joint.Position - halfVector;
+						}
+						break;
 					case ERagdollMove.OnlyHim:
-					{
-						//only move the other dude
-						Vector2 halfVector = deltaVector*fDiff;
-						joint.Position = joint.Position - halfVector;
-					}
-					break;
+						{
+							//only move the other dude
+							Vector2 halfVector = deltaVector * fDiff;
+							joint.Position = joint.Position - halfVector;
+						}
+						break;
 					default:
-					{
-						//only move me
-						Vector2 halfVector = deltaVector*fDiff;
-						_position = Position + halfVector;
-					}
-					break;
+						{
+							//only move me
+							Vector2 halfVector = deltaVector * fDiff;
+							_position = Position + halfVector;
+						}
+						break;
 				}
 			}
-
-			////meak sure the position stays in the board
-			//if (m_Position.Y() < FLOOR)
-			//{
-			//    m_Position.Y(FLOOR);
-			//}
-
-			////meak sure the other dude's position stays in the board
-			//if (rJoint.m_Position.Y() < FLOOR)
-			//{
-			//    rJoint.m_Position.Y(FLOOR);
-			//}
 		}
 
 		#endregion //Ragdoll

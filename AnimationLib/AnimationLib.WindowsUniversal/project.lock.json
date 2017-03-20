@@ -20,7 +20,7 @@
           "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
         }
       },
-      "CollisionBuddy/1.0.1": {
+      "CollisionBuddy/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -2378,7 +2378,7 @@
           "lib/uap10.0/UndoRedoBuddy.WindowsUniversal.dll": {}
         }
       },
-      "Vector2Extensions/1.0.1": {
+      "Vector2Extensions/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -2395,7 +2395,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.12": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -2429,7 +2429,7 @@
           "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
         }
       },
-      "CollisionBuddy/1.0.1": {
+      "CollisionBuddy/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -4897,7 +4897,7 @@
           "lib/uap10.0/UndoRedoBuddy.WindowsUniversal.dll": {}
         }
       },
-      "Vector2Extensions/1.0.1": {
+      "Vector2Extensions/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -4914,7 +4914,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.12": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -4948,7 +4948,7 @@
           "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
         }
       },
-      "CollisionBuddy/1.0.1": {
+      "CollisionBuddy/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -7455,7 +7455,7 @@
           "lib/uap10.0/UndoRedoBuddy.WindowsUniversal.dll": {}
         }
       },
-      "Vector2Extensions/1.0.1": {
+      "Vector2Extensions/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -7472,7 +7472,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.12": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -7506,7 +7506,7 @@
           "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
         }
       },
-      "CollisionBuddy/1.0.1": {
+      "CollisionBuddy/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -9983,7 +9983,7 @@
           "lib/uap10.0/UndoRedoBuddy.WindowsUniversal.dll": {}
         }
       },
-      "Vector2Extensions/1.0.1": {
+      "Vector2Extensions/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -10000,7 +10000,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.12": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -10034,7 +10034,7 @@
           "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
         }
       },
-      "CollisionBuddy/1.0.1": {
+      "CollisionBuddy/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -12550,7 +12550,7 @@
           "lib/uap10.0/UndoRedoBuddy.WindowsUniversal.dll": {}
         }
       },
-      "Vector2Extensions/1.0.1": {
+      "Vector2Extensions/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -12567,7 +12567,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.12": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -12601,7 +12601,7 @@
           "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
         }
       },
-      "CollisionBuddy/1.0.1": {
+      "CollisionBuddy/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -15078,7 +15078,7 @@
           "lib/uap10.0/UndoRedoBuddy.WindowsUniversal.dll": {}
         }
       },
-      "Vector2Extensions/1.0.1": {
+      "Vector2Extensions/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -15095,7 +15095,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.12": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -15129,7 +15129,7 @@
           "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
         }
       },
-      "CollisionBuddy/1.0.1": {
+      "CollisionBuddy/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -17645,7 +17645,7 @@
           "lib/uap10.0/UndoRedoBuddy.WindowsUniversal.dll": {}
         }
       },
-      "Vector2Extensions/1.0.1": {
+      "Vector2Extensions/1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -17662,7 +17662,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.12": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -17695,13 +17695,13 @@
         "lib/uap10.0/CameraBuddy.WindowsUniversal.pdb"
       ]
     },
-    "CollisionBuddy/1.0.1": {
-      "sha512": "kuTdjRsuJYsEgsotgEpyHvXAqJZHqRhZdKOaxCZcSIuWG/fn5Zin0cX4DWoSaUgUg1kbbXarnhZeECbBxHtwoQ==",
+    "CollisionBuddy/1.0.3": {
+      "sha512": "GAA0MayvotB/GTu3faLlTFdjFuru7VyJ7h8RZGx6lmgzLYr4VF9hzpELLef25bCZTJQkL6qyKKZUuOQ1fYX73Q==",
       "type": "package",
-      "path": "collisionbuddy/1.0.1",
+      "path": "collisionbuddy/1.0.3",
       "files": [
-        "CollisionBuddy.1.0.1.nupkg.sha512",
-        "CollisionBuddy.nuspec",
+        "collisionbuddy.1.0.3.nupkg.sha512",
+        "collisionbuddy.nuspec",
         "lib/MonoAndroid10/CollisionBuddy.Android.dll",
         "lib/MonoAndroid10/CollisionBuddy.Android.pdb",
         "lib/Xamarin.iOS10/CollisionBuddy.iOS.dll",
@@ -24411,12 +24411,11 @@
         "lib/uap10.0/UndoRedoBuddy.WindowsUniversal.pdb"
       ]
     },
-    "Vector2Extensions/1.0.1": {
-      "sha512": "TOJFGeNhfeqUX93OdYXiro8bprLIy5NaqMPBEed72lJuISQe/3a8PZkucmA64IqyfcjWoHdT+QY7yXRhe933aA==",
+    "Vector2Extensions/1.0.3": {
+      "sha512": "usIFjdSKxBSzoDPSM0syhBqpRHV4iTlvIeHzLdI/iNf713+3B9UO+nju21sDvHb6DZjlGzCRH24j54qlzepPkQ==",
       "type": "package",
+      "path": "vector2extensions/1.0.3",
       "files": [
-        "Vector2Extensions.1.0.1.nupkg.sha512",
-        "Vector2Extensions.nuspec",
         "lib/MonoAndroid10/Vector2Extensions.Android.dll",
         "lib/MonoAndroid10/Vector2Extensions.Android.pdb",
         "lib/Xamarin.iOS10/Vector2Extensions.iOS.dll",
@@ -24424,13 +24423,15 @@
         "lib/net451/Vector2Extensions.DesktopGL.dll",
         "lib/net451/Vector2Extensions.DesktopGL.pdb",
         "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll",
-        "lib/uap10.0/Vector2Extensions.WindowsUniversal.pdb"
+        "lib/uap10.0/Vector2Extensions.WindowsUniversal.pdb",
+        "vector2extensions.1.0.3.nupkg.sha512",
+        "vector2extensions.nuspec"
       ]
     },
-    "XmlBuddy/1.0.12": {
-      "sha512": "WVEABSlTTpjVzjD5iemIyLU1T0DEnktJdgbcB0Y5OGjItFixShioYvdqS3JZdjOUjOfxHCDBhqMJMLJAieywqw==",
+    "XmlBuddy/1.0.13": {
+      "sha512": "wEeylTI8GR89RuYTFjiX73PK+J0/h490jw42sDuMNPwdAwsdcl9DWisBkyopbdzt8yN+nwYxy73T1SQDkMgrKg==",
       "type": "package",
-      "path": "xmlbuddy/1.0.12",
+      "path": "xmlbuddy/1.0.13",
       "files": [
         "lib/MonoAndroid10/XmlBuddy.Android.dll",
         "lib/MonoAndroid10/XmlBuddy.Android.pdb",
@@ -24440,7 +24441,7 @@
         "lib/net451/XmlBuddy.DesktopGL.pdb",
         "lib/uap10.0/XmlBuddy.WindowsUniversal.dll",
         "lib/uap10.0/XmlBuddy.WindowsUniversal.pdb",
-        "xmlbuddy.1.0.12.nupkg.sha512",
+        "xmlbuddy.1.0.13.nupkg.sha512",
         "xmlbuddy.nuspec"
       ]
     }
@@ -24448,7 +24449,7 @@
   "projectFileDependencyGroups": {
     "": [
       "CameraBuddy >= 1.0.1",
-      "CollisionBuddy >= 1.0.1",
+      "CollisionBuddy >= 1.0.3",
       "DrawlistBuddy >= 1.0.2",
       "FilenameBuddy >= 1.0.3",
       "GameTimer >= 1.0.1",
@@ -24462,8 +24463,8 @@
       "System.Xml.ReaderWriter >= 4.3.0",
       "System.Xml.XmlDocument >= 4.3.0",
       "UndoRedoBuddy >= 1.0.1",
-      "Vector2Extensions >= 1.0.1",
-      "XmlBuddy >= 1.0.12"
+      "Vector2Extensions >= 1.0.3",
+      "XmlBuddy >= 1.0.13"
     ],
     "UAP,Version=v10.0": []
   },

@@ -87,7 +87,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Flag used to tell the difference between the bone types for collision purposes
 		/// </summary>
-public EBoneType BoneType { get; set; }
+		public EBoneType BoneType { get; set; }
 
 		/// <summary>
 		/// this guys current image to render
@@ -121,6 +121,23 @@ public EBoneType BoneType { get; set; }
 		/// </summary>
 		private Color SecondaryColor { get; set; }
 
+		private float _ragdollWeightRatio = 0.5f;
+		/// <summary>
+		/// If both parent and this guy are ragdolling, what is the weight ratio of this guy to the parent?
+		/// </summary>
+		public float RagdollWeightRatio
+		{
+			get
+			{
+				return _ragdollWeightRatio;
+			}
+			set
+			{
+				//make sure the weight ratio stays between 0-1
+				_ragdollWeightRatio = Math.Max(0f, Math.Min(value, 1f));
+			}
+		}
+
 		#endregion //Properties
 
 		#region Initialization
@@ -152,6 +169,8 @@ public EBoneType BoneType { get; set; }
 			Name = bone.Name;
 			Colorable = bone.Colorable;
 			BoneType = bone.BoneType;
+			RagdollWeightRatio = bone.RagdollWeightRatio;
+
 			for (int i = 0; i < bone.Joints.Count; i++)
 			{
 				Joints.Add(new Joint(bone.Joints[i], i));
@@ -1031,7 +1050,7 @@ public EBoneType BoneType { get; set; }
 
 					//solve constraints from anchor to each joint location
 					AnchorJoint.SolveConstraint(Joints[i], Joints[i].Data.Length, scale,
-						(isParentRagdoll ? ERagdollMove.MoveAll : ERagdollMove.OnlyHim));
+						(isParentRagdoll ? ERagdollMove.MoveAll : ERagdollMove.OnlyHim), RagdollWeightRatio);
 
 					//solve constraints from each joint to each other joint
 					for (var j = (i + 1); j < Joints.Count; j++)
@@ -1047,7 +1066,7 @@ public EBoneType BoneType { get; set; }
 
 						//move them joints
 						Joints[i].SolveConstraint(Joints[j], fDistance, scale,
-							((0 == i) ? ERagdollMove.OnlyHim : ERagdollMove.MoveAll)); //don't pull on the first joint though
+							((0 == i) ? ERagdollMove.OnlyHim : ERagdollMove.MoveAll), 0.5f); //don't pull on the first joint though
 					}
 				}
 			}
