@@ -2,7 +2,7 @@
   "dependencies": {
     "CameraBuddy": "1.0.1",
     "CollisionBuddy": "1.0.3",
-    "DrawlistBuddy": "1.0.3",
+    "DrawlistBuddy": "1.0.4",
     "FilenameBuddy": "1.0.3",
     "GameTimer": "1.0.1",
     "MatrixExtensions": "1.0.2",
@@ -10,7 +10,7 @@
     "MonoGame.Framework.WindowsUniversal": "3.5.1.1679",
     "PrimitiveBuddy": "1.0.3",
     "RandomExtensions.dmanning23": "1.0.3",
-    "RenderBuddy": "1.0.10",
+    "RenderBuddy": "1.0.11",
     "ResolutionBuddy": "1.0.8",
     "System.Xml.ReaderWriter": "4.3.0",
     "System.Xml.XmlDocument": "4.3.0",
