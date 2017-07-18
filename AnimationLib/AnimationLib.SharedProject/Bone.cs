@@ -951,8 +951,8 @@ namespace AnimationLib
 			renderer.Primitive.Rectangle(
 				new Vector2((int)Position.X,
 						  (int)Position.Y),
-				new Vector2((int)(Position.X + myImage.LowerRight.X),
-						  (int)(Position.Y + myImage.LowerRight.Y)),
+				new Vector2((int)(Position.X + myImage.Width),
+						  (int)(Position.Y + myImage.Height)),
 				Rotation,
 				scale,
 				Color.White);

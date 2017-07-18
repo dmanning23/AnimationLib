@@ -71,8 +71,8 @@ namespace AnimationLib
 		public ImageModel(Image image)
 			: this()
 		{
-			UpperLeft = image.UpperLeft;
-			LowerRight = image.LowerRight;
+			UpperLeft = new Vector2(image.SourceRectangle.Left, image.SourceRectangle.Top);
+			LowerRight = new Vector2(image.SourceRectangle.Right, image.SourceRectangle.Bottom);
 			AnchorCoord = image.AnchorCoord;
 			RagdollSpring = image.RagdollSpring;
 			RagdollGravity = image.RagdollGravity;

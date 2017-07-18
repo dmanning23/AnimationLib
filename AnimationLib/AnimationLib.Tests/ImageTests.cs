@@ -131,17 +131,8 @@ namespace Animationlib.Tests
 			file.SetRelFilename(@"SuperSimple\CrotchFront.png");
 			Image image = crotch.GetImage(file);
 
-			Assert.AreEqual(Vector2.Zero, image.UpperLeft);
-		}
-
-		[Test]
-		public void SetGetLR_UV()
-		{
-			Vector2 test = new Vector2(137.0f, 150.0f);
-			Image image = new Image();
-			image.LowerRight = test;
-
-			Assert.AreEqual(test, image.LowerRight);
+			Assert.AreEqual(0, image.SourceRectangle.Left);
+			Assert.AreEqual(0, image.SourceRectangle.Top);
 		}
 
 		[Test]
@@ -149,7 +140,7 @@ namespace Animationlib.Tests
 		{
 			Vector2 test = new Vector2(137.0f, 150.0f);
 			Image image = new Image();
-			image.LowerRight = test;
+			image.SourceRectangle = new Rectangle(Point.Zero, test.ToPoint());
 
 			Assert.AreEqual(137.0f, image.Width);
 		}
@@ -167,7 +158,8 @@ namespace Animationlib.Tests
 			file.SetRelFilename(@"SuperSimple\CrotchFront.png");
 			Image image = crotch.GetImage(file);
 
-			Assert.AreEqual(new Vector2(129.0f, 116.0f), image.LowerRight);
+			Assert.AreEqual(129, image.SourceRectangle.Right);
+			Assert.AreEqual(116, image.SourceRectangle.Bottom);
 		}
 
 		[Test]

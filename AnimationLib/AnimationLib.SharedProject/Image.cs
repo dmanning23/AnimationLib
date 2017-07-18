@@ -14,16 +14,6 @@ namespace AnimationLib
 		#region Fields
 
 		/// <summary>
-		/// The upper left corner in the file of this image
-		/// </summary>
-		private Vector2 _upperLeft;
-
-		/// <summary>
-		/// the lower right corner in the file of this image
-		/// </summary>
-		private Vector2 _lowerRight;
-
-		/// <summary>
 		/// The anchor point for this frame
 		/// this is where the series connects to the joint
 		/// </summary>
@@ -45,17 +35,7 @@ namespace AnimationLib
 
 		#region Properties
 
-		public Vector2 UpperLeft
-		{
-			get { return _upperLeft; }
-			set { _upperLeft = value; }
-		}
-
-		public Vector2 LowerRight
-		{
-			get { return _lowerRight; }
-			set { _lowerRight = value; }
-		}
+		public Rectangle SourceRectangle { get; set; }
 
 		public Filename ImageFile { get; set; }
 
@@ -108,11 +88,6 @@ namespace AnimationLib
 		/// </summary>
 		public float SpringForce { get; set; }
 
-		public float Width
-		{
-			get { return LowerRight.X - UpperLeft.X; }
-		}
-
 		/// <summary>
 		/// list of joint locations
 		/// These are the coordinates of the joints for this frame
@@ -131,6 +106,16 @@ namespace AnimationLib
 		/// </summary>
 		public List<PhysicsLine> Lines { get; private set; }
 
+		public float Width
+		{
+			get { return SourceRectangle.Width; }
+		}
+
+		public float Height
+		{
+			get { return SourceRectangle.Height; }
+		}
+
 		#endregion //Properties
 
 		#region Initialization
@@ -143,8 +128,7 @@ namespace AnimationLib
 			JointCoords = new List<JointData>();
 			Circles = new List<PhysicsCircle>();
 			Lines = new List<PhysicsLine>();
-			UpperLeft = Vector2.Zero;
-			LowerRight = Vector2.Zero;
+			SourceRectangle = Rectangle.Empty;
 			_anchorCoord = Vector2.Zero;
 			_texture = null;
 			ImageFile = new Filename();
@@ -157,8 +141,10 @@ namespace AnimationLib
 		public Image(ImageModel image)
 			: this()
 		{
-			UpperLeft = image.UpperLeft;
-			LowerRight = image.LowerRight;
+			SourceRectangle = new Rectangle((int)image.UpperLeft.X,
+				(int)image.UpperLeft.Y,
+				(int)(image.LowerRight.X - image.UpperLeft.X),
+				(int)(image.LowerRight.Y - image.UpperLeft.Y));
 			AnchorCoord = image.AnchorCoord;
 			RagdollGravity = image.RagdollGravity;
 			RagdollSpring = image.RagdollSpring;
@@ -213,13 +199,13 @@ namespace AnimationLib
 				if (null != renderer)
 				{
 					_texture = renderer.LoadImage(ImageFile, NormalMapFile, ColorMaskFile);
-					if (null == _texture)
-					{
-						Debug.Assert(false);
-					}
 
-					UpperLeft = Vector2.Zero;
-					LowerRight = new Vector2(_texture.Width, _texture.Height);
+					//if the image is less than one pixel, set to the full image
+					if (Width <= 0 || Height <= 0)
+					{
+						SourceRectangle = new Rectangle(Point.Zero, new Point(_texture.Width, _texture.Height));
+					}
+					_texture.SourceRectangle = SourceRectangle;
 				}
 			}
 		}
