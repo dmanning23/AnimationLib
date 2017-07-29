@@ -149,6 +149,11 @@ namespace AnimationLib
 					}
 				}
 				break;
+				case "RagdollWeightRatio":
+					{
+						RagdollWeightRatio = Convert.ToSingle(value);
+					}
+					break;
 				case "colorable":
 				{
 					Colorable = Convert.ToBoolean(value);
@@ -221,6 +226,11 @@ namespace AnimationLib
 			if (BoneType != EBoneType.Normal)
 			{
 				xmlWriter.WriteAttributeString("type", BoneType.ToString());
+			}
+
+			if (0.5f != RagdollWeightRatio)
+			{
+				xmlWriter.WriteAttributeString("RagdollWeightRatio", RagdollWeightRatio.ToString());
 			}
 
 			//add whether or not this bone ignores palette swap

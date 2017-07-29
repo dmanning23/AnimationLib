@@ -68,7 +68,8 @@ namespace AnimationLib.Commands
 			var next = nextCommand as SetAnchorLocation;
 			return ((next != null) &&
 				(Bone.Name == next.Bone.Name) &&
-				(Image.ImageFile.File == next.Image.ImageFile.File));
+				(Image.ImageFile.File == next.Image.ImageFile.File) &&
+				(Image.Name == next.Image.Name));
 		}
 
 		public void StackWithNextCommand(IStackableCommand nextCommand)

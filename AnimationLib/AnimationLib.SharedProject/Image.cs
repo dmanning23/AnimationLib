@@ -35,6 +35,8 @@ namespace AnimationLib
 
 		#region Properties
 
+		public string Name { get; protected set; }
+
 		public Rectangle SourceRectangle { get; set; }
 
 		public Filename ImageFile { get; set; }
@@ -135,12 +137,13 @@ namespace AnimationLib
 			NormalMapFile = new Filename();
 			ColorMaskFile = new Filename();
 			_ragdollGravity = new Vector2(0, 1500f);
-			RagdollSpring = 2.5f;
+			RagdollSpring = 1.5f;
 		}
 
 		public Image(ImageModel image)
 			: this()
 		{
+			Name = image.Name;
 			SourceRectangle = new Rectangle((int)image.UpperLeft.X,
 				(int)image.UpperLeft.Y,
 				(int)(image.LowerRight.X - image.UpperLeft.X),
@@ -162,6 +165,11 @@ namespace AnimationLib
 			foreach (var line in image.Lines)
 			{
 				Lines.Add(new PhysicsLine(line));
+			}
+
+			if (string.IsNullOrEmpty(Name))
+			{
+				Name = ImageFile.GetFile();
 			}
 		}
 
@@ -289,7 +297,7 @@ namespace AnimationLib
 		/// <returns>The flipped anchor coordinate.</returns>
 		public Vector2 GetFlippedJointCoord(int jointIndex, bool isFlipped, float scale)
 		{
-			Vector2 updatedJointCoord = GetJointLocation(jointIndex).Location;
+			var updatedJointCoord = GetJointLocation(jointIndex).Location;
 			if (isFlipped)
 			{
 				//flip the x coord
@@ -303,18 +311,18 @@ namespace AnimationLib
 		public void Copy(Bone parent, Image myInst, CommandStack actionCollection)
 		{
 			//copy the anchor coord
-			SetAnchorLocation myAnchorAction = new SetAnchorLocation(parent, this, myInst.AnchorCoord);
+			var myAnchorAction = new SetAnchorLocation(parent, this, myInst.AnchorCoord);
 			actionCollection.Add(myAnchorAction);
 
 			//copy all the joint JointCoords
 			for (var i = 0; ((i < JointCoords.Count) && (i < myInst.JointCoords.Count)); i++)
 			{
 				//create the new joint JointCoords
-				JointData myNewJointCoords = new JointData();
+				var myNewJointCoords = new JointData();
 				myNewJointCoords.Copy(myInst.JointCoords[i]);
 
 				//create the action to set it
-				SetJointCoords mySetJointJointCoordsAction = new SetJointCoords(parent, this, i, myNewJointCoords);
+				var mySetJointJointCoordsAction = new SetJointCoords(parent, this, i, myNewJointCoords);
 				actionCollection.Add(mySetJointJointCoordsAction);
 			}
 
@@ -329,11 +337,11 @@ namespace AnimationLib
 			//copy lines
 			for (var i = 0; ((i < Lines.Count) && (i < myInst.Lines.Count)); i++)
 			{
-				PhysicsLine myLine = new PhysicsLine();
+				var myLine = new PhysicsLine();
 				myLine.Copy(myInst.Lines[i]);
 
 				//create the action to set it
-				SetLineData mySetCircleAction = new SetLineData(this, i, myLine);
+				var mySetCircleAction = new SetLineData(this, i, myLine);
 				actionCollection.Add(mySetCircleAction);
 			}
 		}
@@ -410,7 +418,7 @@ namespace AnimationLib
 
 		public override string ToString()
 		{
-			return ImageFile.GetFile();
+			return Name;
 		}
 
 		#endregion //Methods

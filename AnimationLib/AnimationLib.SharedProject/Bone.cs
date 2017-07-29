@@ -288,13 +288,26 @@ namespace AnimationLib
 		/// Get a specific joint from the list
 		/// </summary>
 		/// <param name="jointName">name index of the joint to get</param>
-		public Joint GetJoint(string jointName)
+		public Joint GetJoint(string jointName, bool recurse = false)
 		{
 			for (var i = 0; i < Joints.Count; i++)
 			{
 				if (Joints[i].Name == jointName)
 				{
 					return Joints[i];
+				}
+			}
+
+			if (recurse)
+			{
+				//is the requested joint underneath this dude?
+				for (var i = 0; i < Bones.Count; i++)
+				{
+					var myJoint = Bones[i].GetJoint(jointName);
+					if (null != myJoint)
+					{
+						return myJoint;
+					}
 				}
 			}
 
@@ -401,12 +414,12 @@ namespace AnimationLib
 		/// <summary>
 		/// Find and return the index of an image that this bone uses (non-recursively)
 		/// </summary>
-		/// <param name="filename">filename of the image to find (no path info!)</param>
+		/// <param name="imageName">filename of the image to find (no path info!)</param>
 		/// <returns>the index of the first instance of an image using that name, -1 if not found</returns>
-		public int GetImageIndex(string filename)
+		public int GetImageIndex(string imageName)
 		{
 			//don't check for default value
-			if ("" == filename)
+			if (string.IsNullOrEmpty(imageName))
 			{
 				return -1;
 			}
@@ -414,7 +427,7 @@ namespace AnimationLib
 			//check my images
 			for (var i = 0; i < Images.Count; i++)
 			{
-				if (Images[i].ImageFile.GetFile() == filename)
+				if (Images[i].Name == imageName)
 				{
 					return i;
 				}
@@ -423,7 +436,7 @@ namespace AnimationLib
 			//check child bones images
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				int iResult = Bones[i].GetImageIndex(filename);
+				int iResult = Bones[i].GetImageIndex(imageName);
 				if (-1 != iResult)
 				{
 					return iResult;
@@ -443,7 +456,7 @@ namespace AnimationLib
 			//check my images
 			for (var i = 0; i < Images.Count; i++)
 			{
-				if (Images[i].ImageFile.ToString() == image.ImageFile.ToString())
+				if (Images[i].Name == image.Name)
 				{
 					return i;
 				}

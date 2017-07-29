@@ -1,9 +1,11 @@
 using DrawListBuddy;
+using System.Linq;
 using FilenameBuddy;
 using GameTimer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using RenderBuddy;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Vector2Extensions;
@@ -402,6 +404,32 @@ namespace AnimationLib
 			foreach (var animation in Animations)
 			{
 				animation.MultiplyLayers(multiply);
+			}
+		}
+
+		public void EditImageName(string oldName, string newName)
+		{
+		}
+
+		public void RemoveBone(string boneName)
+		{
+		}
+
+		public void RemoveJoint(string jointName)
+		{
+		}
+
+		public void RemoveImage(int imageIndex, string parentBoneName)
+		{
+		}
+
+		public void RemoveAnimation(string animationName)
+		{
+			//find the animation and remove it
+			var animation = Animations.Where(x => x.Name == animationName).FirstOrDefault();
+			if (null != animation)
+			{
+				Animations.Remove(animation);
 			}
 		}
 

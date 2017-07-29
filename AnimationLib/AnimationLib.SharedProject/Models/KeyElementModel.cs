@@ -31,9 +31,9 @@ namespace AnimationLib
 		public int Layer { get; set; }
 		public string Image { get; set; }
 		public bool Flip { get; set; }
-		public Vector2 Translation  { get; set; }
-		public bool Ragdoll  { get; set; }
-		public string Joint  { get; set; }
+		public Vector2 Translation { get; set; }
+		public bool Ragdoll { get; set; }
+		public string Joint { get; set; }
 
 		#endregion //Properties
 
@@ -58,7 +58,7 @@ namespace AnimationLib
 				if (null != childBone)
 				{
 					Debug.Assert(key.ImageIndex < childBone.Images.Count);
-					Image = childBone.Images[key.ImageIndex].ImageFile.GetFile();
+					Image = childBone.Images[key.ImageIndex].Name;
 				}
 			}
 
@@ -90,55 +90,55 @@ namespace AnimationLib
 			switch (name)
 			{
 				case "Type":
-				{
-					//throw these attributes out
-				}
-				break;
+					{
+						//throw these attributes out
+					}
+					break;
 				case "time":
-				{
-					Time = Convert.ToInt32(value);
-				}
-				break;
+					{
+						Time = Convert.ToInt32(value);
+					}
+					break;
 				case "rotation":
-				{
-					Rotation = MathHelper.ToRadians(Convert.ToSingle(value));
-				}
-				break;
+					{
+						Rotation = MathHelper.ToRadians(Convert.ToSingle(value));
+					}
+					break;
 				case "layer":
-				{
-					Layer = Convert.ToInt32(value) * -1;
-				}
-				break;
+					{
+						Layer = Convert.ToInt32(value) * -1;
+					}
+					break;
 				case "image":
-				{
-					Image = value;
-				}
-				break;
+					{
+						Image = value;
+					}
+					break;
 				case "flip":
-				{
-					Flip = Convert.ToBoolean(value);
-				}
-				break;
+					{
+						Flip = Convert.ToBoolean(value);
+					}
+					break;
 				case "translation":
-				{
-					Translation = value.ToVector2();
-				}
-				break;
+					{
+						Translation = value.ToVector2();
+					}
+					break;
 				case "ragdoll":
-				{
-					Ragdoll = Convert.ToBoolean(value);
-				}
-				break;
+					{
+						Ragdoll = Convert.ToBoolean(value);
+					}
+					break;
 				case "joint":
-				{
-					Joint = value;
-				}
-				break;
+					{
+						Joint = value;
+					}
+					break;
 				default:
-				{
-					base.ParseXmlNode(node);
-				}
-				break;
+					{
+						base.ParseXmlNode(node);
+					}
+					break;
 			}
 		}
 

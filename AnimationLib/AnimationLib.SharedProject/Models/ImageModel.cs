@@ -12,6 +12,8 @@ namespace AnimationLib
 	{
 		#region Properties
 
+		public string Name { get; set; }
+
 		public Vector2 UpperLeft { get; set; }
 
 		public Vector2 LowerRight { get; set; }
@@ -71,6 +73,7 @@ namespace AnimationLib
 		public ImageModel(Image image)
 			: this()
 		{
+			Name = image.Name;
 			UpperLeft = new Vector2(image.SourceRectangle.Left, image.SourceRectangle.Top);
 			LowerRight = new Vector2(image.SourceRectangle.Right, image.SourceRectangle.Bottom);
 			AnchorCoord = image.AnchorCoord;
@@ -95,7 +98,7 @@ namespace AnimationLib
 
 		public override string ToString()
 		{
-			return ImageFile.GetFile();
+			return Name;
 		}
 
 		/// <summary>
@@ -111,45 +114,50 @@ namespace AnimationLib
 			switch (name)
 			{
 				case "Type":
-				{
-					//throw these attributes out
-				}
-				break;
+					{
+						//throw these attributes out
+					}
+					break;
+				case "name":
+					{
+						Name = value;
+					}
+					break;
 				case "upperleft":
-				{
-					//convert to the correct vector
-					UpperLeft = value.ToVector2();
-				}
-				break;
+					{
+						//convert to the correct vector
+						UpperLeft = value.ToVector2();
+					}
+					break;
 				case "lowerright":
-				{
-					//convert to the correct vector
-					LowerRight = value.ToVector2();
-				}
-				break;
+					{
+						//convert to the correct vector
+						LowerRight = value.ToVector2();
+					}
+					break;
 				case "anchorcoord":
-				{
-					//convert to the correct vector
-					AnchorCoord = value.ToVector2();
-				}
-				break;
+					{
+						//convert to the correct vector
+						AnchorCoord = value.ToVector2();
+					}
+					break;
 				case "RagdollGravity":
-				{
-					//convert to the correct vector
-					RagdollGravity = value.ToVector2();
-				}
-				break;
+					{
+						//convert to the correct vector
+						RagdollGravity = value.ToVector2();
+					}
+					break;
 				case "RagdollSpring":
-				{
-					RagdollSpring = Convert.ToSingle(value);
-				}
-				break;
+					{
+						RagdollSpring = Convert.ToSingle(value);
+					}
+					break;
 				case "filename":
-				{
-					//get the correct path & filename
-					ImageFile.SetRelFilename(value);
-				}
-				break;
+					{
+						//get the correct path & filename
+						ImageFile.SetRelFilename(value);
+					}
+					break;
 				case "normalMapFilename":
 					{
 						//get the correct path & filename
@@ -163,28 +171,28 @@ namespace AnimationLib
 					}
 					break;
 				case "joints":
-				{
-					//Read in all the joint JointCoords
-					XmlFileBuddy.ReadChildNodes(node, ReadJointData);
-				}
-				break;
+					{
+						//Read in all the joint JointCoords
+						XmlFileBuddy.ReadChildNodes(node, ReadJointData);
+					}
+					break;
 				case "circles":
-				{
-					//Read in all the circles
-					XmlFileBuddy.ReadChildNodes(node, ReadCircle);
-				}
-				break;
+					{
+						//Read in all the circles
+						XmlFileBuddy.ReadChildNodes(node, ReadCircle);
+					}
+					break;
 				case "lines":
-				{
-					//Read in all the lines
-					XmlFileBuddy.ReadChildNodes(node, ReadLine);
-				}
-				break;
+					{
+						//Read in all the lines
+						XmlFileBuddy.ReadChildNodes(node, ReadLine);
+					}
+					break;
 				default:
-				{
-					base.ParseXmlNode(node);
-				}
-				break;
+					{
+						base.ParseXmlNode(node);
+					}
+					break;
 			}
 		}
 
@@ -219,6 +227,21 @@ namespace AnimationLib
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("image");
+
+			if (!string.IsNullOrEmpty(Name) && Name != ImageFile.GetFile())
+			{
+				xmlWriter.WriteAttributeString("name", Name);
+			}
+
+			if (RagdollGravity.X != 0f || RagdollGravity.Y != 1500f)
+			{
+				xmlWriter.WriteAttributeString("RagdollGravity", RagdollGravity.StringFromVector());
+			}
+
+			if (RagdollSpring != 1.5f)
+			{
+				xmlWriter.WriteAttributeString("RagdollSpring", RagdollSpring.ToString());
+			}
 
 			//write out filename to use
 			xmlWriter.WriteAttributeString("filename", ImageFile.GetRelFilename());

@@ -45,6 +45,11 @@ namespace AnimationLib
 			return RootBone.GetBone(boneName);
 		}
 
+		public Joint GetJoint(string jointName)
+		{
+			return RootBone.GetJoint(jointName, true);
+		}
+
 		/// <summary>
 		/// This method goes through the skeleton and makes sure the joints and bone names match
 		/// </summary>

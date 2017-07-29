@@ -13,6 +13,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)AnimationContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Bone.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoneType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddBone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddJoint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\BaseSetKeyElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RemoveKeyElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetAnchorLocation.cs" />

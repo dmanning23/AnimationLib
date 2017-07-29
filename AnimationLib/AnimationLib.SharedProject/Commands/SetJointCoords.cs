@@ -91,6 +91,7 @@ namespace AnimationLib.Commands
 			return ((next != null) &&
 				(Bone.Name == next.Bone.Name) &&
 				(Image.ImageFile.File == next.Image.ImageFile.File) &&
+				(Image.Name == next.Image.Name) &&
 				(JointIndex == next.JointIndex));
 		}
 
