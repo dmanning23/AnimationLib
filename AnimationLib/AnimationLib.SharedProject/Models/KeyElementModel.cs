@@ -54,7 +54,7 @@ namespace AnimationLib
 			if (-1 != key.ImageIndex)
 			{
 				//find the bone that uses this dudes joint as a keyjoint
-				var childBone = bone.GetBone(key.JointName);
+				var childBone = bone.GetBone(key.BoneName);
 				if (null != childBone)
 				{
 					Debug.Assert(key.ImageIndex < childBone.Images.Count);
@@ -64,7 +64,7 @@ namespace AnimationLib
 
 			//create the xml object and add it to the animation
 			Flip = key.Flip;
-			Joint = key.JointName;
+			Joint = key.BoneName;
 			Layer = key.Layer;
 			Ragdoll = key.Ragdoll;
 

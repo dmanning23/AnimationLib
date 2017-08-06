@@ -11,14 +11,17 @@ namespace AnimationLib.Commands
 
 		string ParentBoneName { get; set; }
 
+		string ImageName { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
 
-		public AddImage(AnimationContainer animationContainer, string parentBoneName)
+		public AddImage(AnimationContainer animationContainer, string parentBoneName, string imageName)
 		{
 			AnimationContainer = animationContainer;
 			ParentBoneName = parentBoneName;
+			ImageName = imageName;
 		}
 
 		public bool Execute()
@@ -31,7 +34,10 @@ namespace AnimationLib.Commands
 			}
 
 			//create the image
-			var image = new Image();
+			var image = new Image()
+			{
+				Name = ImageName
+			};
 
 			//set the bone & joint data
 			image.SetAnchorJoint(parent);

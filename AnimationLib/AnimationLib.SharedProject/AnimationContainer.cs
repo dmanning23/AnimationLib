@@ -470,9 +470,6 @@ namespace AnimationLib
 		{
 			SkeletonFile = filename;
 
-			//first rename all the joints so they are correct
-			Skeleton.RenameJoints(this);
-
 			var skelModel = new SkeletonModel(Skeleton, filename);
 			skelModel.WriteXml();
 		}

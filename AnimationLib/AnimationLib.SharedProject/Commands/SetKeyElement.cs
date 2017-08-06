@@ -18,12 +18,8 @@ namespace AnimationLib.Commands
 			Debug.Assert(null != oldElement);
 			Debug.Assert(null != newElement);
 			Animation = animation;
-			PrevKeyElement = new KeyElement();
-			PrevKeyElement.Copy(oldElement);
-			PrevKeyElement.JointName = oldElement.JointName;
-			NextKeyElement = new KeyElement();
-			NextKeyElement.Copy(newElement);
-			NextKeyElement.JointName = newElement.JointName;
+			PrevKeyElement = new KeyElement(oldElement);
+			NextKeyElement = new KeyElement(newElement);
 		}
 
 		#endregion //Methods

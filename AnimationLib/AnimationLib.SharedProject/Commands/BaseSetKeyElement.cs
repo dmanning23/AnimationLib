@@ -34,18 +34,14 @@ namespace AnimationLib.Commands
 		protected void PopulateKeyElements(Bone bone, int time)
 		{
 			//create the new keyframe
-			PrevKeyElement = new KeyElement();
-			NextKeyElement = new KeyElement();
+			PrevKeyElement = new KeyElement(bone);
+			NextKeyElement = new KeyElement(bone);
 
 			//get the old keyelement
 			Animation.GetKeyJoint(bone.Name).GetKeyElement(time, PrevKeyElement);
 
 			//copy from the current keyframe
 			NextKeyElement.Copy(PrevKeyElement);
-
-			//set the joint name
-			PrevKeyElement.JointName = bone.Name;
-			NextKeyElement.JointName = bone.Name;
 		}
 
 		/// <summary>
@@ -73,13 +69,13 @@ namespace AnimationLib.Commands
 			Debug.Assert(null != replacementKey);
 			Debug.Assert(null != Animation);
 
-			if (replacedKey.JointName != replacementKey.JointName)
+			if (replacedKey.BoneName != replacementKey.BoneName)
 			{
 				return false;
 			}
 
 			//find the keyjoint we want 
-			KeyJoint myKeyJoint = Animation.KeyBone.GetKeyJoint(replacementKey.JointName);
+			KeyJoint myKeyJoint = Animation.KeyBone.GetKeyJoint(replacementKey.BoneName);
 			if (null == myKeyJoint)
 			{
 				return false;

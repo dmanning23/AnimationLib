@@ -66,7 +66,7 @@ namespace AnimationLib
 				if ((key.KeyFrame) && (iLengthFrames >= key.Time))
 				{
 					//add to the correct keyjoint
-					var keyJoint = KeyBone.GetKeyJoint(key.JointName);
+					var keyJoint = KeyBone.GetKeyJoint(key.BoneName);
 					if (null != keyJoint)
 					{
 						keyJoint.AddKeyElement(key);
@@ -82,7 +82,7 @@ namespace AnimationLib
 		public bool AddKeyframe(KeyElement key)
 		{
 			//find the correct keyjoint
-			KeyJoint myKeyJoint = KeyBone.GetKeyJoint(key.JointName);
+			KeyJoint myKeyJoint = KeyBone.GetKeyJoint(key.BoneName);
 			if (null != myKeyJoint)
 			{
 				//add the keyframe to the keyjoint
@@ -95,7 +95,7 @@ namespace AnimationLib
 		public bool RemoveKeyframe(KeyElement key)
 		{
 			//find the correct keyjoint
-			KeyJoint myKeyJoint = KeyBone.GetKeyJoint(key.JointName);
+			KeyJoint myKeyJoint = KeyBone.GetKeyJoint(key.BoneName);
 			if (null != myKeyJoint)
 			{
 				//remove all keyframes at that time
@@ -184,21 +184,6 @@ namespace AnimationLib
 
 			//grab the time
 			Length = time;
-		}
-
-		/// <summary>
-		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
-		/// </summary>
-		/// <param name="oldName">the name of the joint to be renamed</param>
-		/// <param name="newName">the new name for that joint.</param>
-		public void RenameJoint(string oldName, string newName)
-		{
-			if (oldName == newName)
-			{
-				return;
-			}
-
-			KeyBone.RenameJoint(oldName, newName);
 		}
 
 		/// <summary>

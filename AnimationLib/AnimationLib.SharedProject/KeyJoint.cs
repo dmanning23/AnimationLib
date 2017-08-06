@@ -14,6 +14,8 @@ namespace AnimationLib
 	{
 		#region Properties
 
+		private readonly Bone _bone;
+
 		/// <summary>
 		/// Teh list of key elements for this dude
 		/// </summary>
@@ -22,7 +24,13 @@ namespace AnimationLib
 		/// <summary>
 		/// this dude's name
 		/// </summary>
-		public string Name { get; private set; }
+		public string Name
+		{
+			get
+			{
+				return _bone.Name;
+			}
+		}
 
 		#endregion
 
@@ -31,10 +39,10 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public KeyJoint(string name)
+		public KeyJoint(Bone bone)
 		{
 			Elements = new List<KeyElement>();
-			Name = name;
+			_bone = bone;
 		}
 
 		/// <summary>
@@ -151,7 +159,7 @@ namespace AnimationLib
 		public void RemoveKeyElement(CommandStack pasteAction, int time, Animation myAnimation)
 		{
 			//get teh key element at that time
-			KeyElement currentKeyElement = new KeyElement();
+			KeyElement currentKeyElement = new KeyElement(_bone);
 			if (!GetKeyElement(time, currentKeyElement))
 			{
 				//no key elements, so cant remove from this dude
@@ -161,9 +169,6 @@ namespace AnimationLib
 			//check if this is a key frame at this time
 			if (currentKeyElement.KeyFrame)
 			{
-				//set the joint name
-				currentKeyElement.JointName = Name;
-
 				//create the remove action
 				RemoveKeyElement myAction = new RemoveKeyElement(myAnimation, currentKeyElement);
 				pasteAction.Add(myAction);
@@ -201,15 +206,14 @@ namespace AnimationLib
 					if (null != mirrorJoint)
 					{
 						//get the current keyframe of the mirror joint
-						KeyElement currentKeyElement = new KeyElement();
+						KeyElement currentKeyElement = new KeyElement(_bone);
 						if (!mirrorJoint.GetKeyElement(time, currentKeyElement))
 						{
 							return;
 						}
-						currentKeyElement.JointName = strJointName;
 
 						//okay, fake up a new keyframe
-						KeyElement replacementKeyElement = new KeyElement();
+						KeyElement replacementKeyElement = new KeyElement(_bone);
 						if (!GetKeyElement(time, replacementKeyElement))
 						{
 							//no key elements, so cant finish operation
@@ -218,7 +222,6 @@ namespace AnimationLib
 
 						//set the keyframe up for the other dude
 						replacementKeyElement.KeyFrame = true;
-						replacementKeyElement.JointName = strJointName;
 						replacementKeyElement.Layer = currentKeyElement.Layer;
 
 						//add to the pasteaction
@@ -252,10 +255,9 @@ namespace AnimationLib
 			bool selectiveCopy)
 		{
 			//get the keyelement to copy into the animation
-			var sourceKeyElement = new KeyElement();
+			var sourceKeyElement = new KeyElement(_bone);
 			GetKeyElement(sourceTime, sourceKeyElement);
 			sourceKeyElement.Time = targetTime;
-			sourceKeyElement.JointName = Name;
 			sourceKeyElement.KeyFrame = true;
 
 			//get the current keyelement out of that animtion
@@ -264,9 +266,8 @@ namespace AnimationLib
 			{
 				return;
 			}
-			var oldKeyElement = new KeyElement();
+			var oldKeyElement = new KeyElement(_bone);
 			targetJoint.GetKeyElement(targetTime, oldKeyElement);
-			oldKeyElement.JointName = targetJoint.Name;
 
 			//if this is a selective copy, set the rotation & translation to the old value
 			if (selectiveCopy)
@@ -285,35 +286,6 @@ namespace AnimationLib
 			//add to the animation
 			var myAction = new SetKeyElement(targetAnimation, oldKeyElement, sourceKeyElement);
 			pasteAction.Add(myAction);
-		}
-
-		/// <summary>
-		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
-		/// </summary>
-		/// <param name="oldName">the name of the joint to be renamed</param>
-		/// <param name="newName">the new name for that joint.</param>
-		public bool RenameJoint(string oldName, string newName)
-		{
-			//is it this joint?
-			if (Name == oldName)
-			{
-				//rename all the key elements
-				for (int i = 0; i < Elements.Count; i++)
-				{
-					Debug.Assert(Elements[i].JointName == oldName);
-					Elements[i].RenameJoint(oldName, newName);
-					Debug.Assert(Elements[i].JointName == newName);
-				}
-
-				//rename this dude
-				Name = newName;
-
-				return true;
-			}
-			else
-			{
-				return false;
-			}
 		}
 
 		/// <summary>

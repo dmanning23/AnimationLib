@@ -19,7 +19,7 @@ namespace AnimationLib.Commands
 			var next = nextCommand as SetKeyElementRotation;
 			return ((next != null) &&
 				(Animation.Name == next.Animation.Name) &&
-				(PrevKeyElement.JointName == next.PrevKeyElement.JointName) &&
+				(PrevKeyElement.BoneName == next.PrevKeyElement.BoneName) &&
 				(PrevKeyElement.Time == next.PrevKeyElement.Time));
 		}
 

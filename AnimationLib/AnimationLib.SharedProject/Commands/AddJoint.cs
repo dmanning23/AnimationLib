@@ -1,7 +1,7 @@
 ﻿using System;
 using UndoRedoBuddy;
 
-namespace AnimationLib.SharedProject.Commands
+namespace AnimationLib.Commands
 {
 	public class AddJoint : ICommand
 	{

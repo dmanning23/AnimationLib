@@ -42,7 +42,7 @@ namespace AnimationLib.Commands
 			}
 
 			//add a matching joint to the parent
-			parent.AddJoint(BoneName);
+			joint = parent.AddJoint(BoneName);
 
 			//create the new bone & add it to the parent
 			bone = new Bone()
@@ -52,7 +52,7 @@ namespace AnimationLib.Commands
 			parent.Bones.Add(bone);
 
 			//update the anchor joint
-			parent.SetAnchorJoint(null);
+			bone.SetAnchorJoint(parent);
 
 			//Add the bone to each animation
 			foreach (var animation in AnimationContainer.Animations)

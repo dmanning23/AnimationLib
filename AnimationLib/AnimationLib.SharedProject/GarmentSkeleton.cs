@@ -34,9 +34,6 @@ namespace AnimationLib
 
 		public void WriteXml(Filename filename)
 		{
-			//first rename all the joints so they are correct
-			RootBone.RenameJoints(Animations);
-
 			var skeleton = new GarmentSkeletonModel(filename, this);
 			skeleton.WriteXml();
 		}

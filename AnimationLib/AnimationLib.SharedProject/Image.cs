@@ -35,7 +35,7 @@ namespace AnimationLib
 
 		#region Properties
 
-		public string Name { get; protected set; }
+		public string Name { get; set; }
 
 		public Rectangle SourceRectangle { get; set; }
 
@@ -242,7 +242,7 @@ namespace AnimationLib
 		{
 			if (null != _texture)
 			{
-				drawList.AddQuad(_texture, position, primaryColor, secondaryColor, rotation, isFlipped, layer);
+				//drawList.AddQuad(_texture, position, primaryColor, secondaryColor, rotation, isFlipped, layer);
 			}
 		}
 

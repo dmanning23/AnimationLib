@@ -27,7 +27,6 @@ namespace AnimationLib.Commands
 			_animation = animation;
 			_oldKeyElement = new KeyElement();
 			_oldKeyElement.Copy(oldElement);
-			_oldKeyElement.JointName = oldElement.JointName;
 		}
 
 		/// <summary>

@@ -1492,7 +1492,7 @@ namespace AnimationLib
 			return Helper.ClampAngle(Helper.atan2(diff));
 		}
 
-		public void AddJoint(string jointName)
+		public Joint AddJoint(string jointName)
 		{
 			Joint myJoint = new Joint(Joints.Count);
 			myJoint.Name = jointName;
@@ -1503,6 +1503,8 @@ namespace AnimationLib
 			{
 				Images[i].AddJoint();
 			}
+
+			return myJoint;
 		}
 
 		/// <summary>
@@ -1558,34 +1560,6 @@ namespace AnimationLib
 				{
 					Images[i].Copy(this, matchingImage, actionCollection);
 				}
-			}
-		}
-
-		/// <summary>
-		/// Rename all the joints to name of the bone that attaches to them
-		/// </summary>
-		/// <param name="animations">null or an animation container to also rename joints</param>
-		public void RenameJoints(AnimationContainer animations)
-		{
-			//rename the joints in the animations
-			if (null != AnchorJoint.Name)
-			{
-				if (null != animations)
-				{
-					for (var i = 0; i < animations.Animations.Count; i++)
-					{
-						animations.Animations[i].RenameJoint(AnchorJoint.Name, Name);
-					}
-				}
-
-				//rename my dude
-				AnchorJoint.Name = Name;
-			}
-
-			//recurse into all the child bones
-			for (var i = 0; i < Bones.Count; i++)
-			{
-				Bones[i].RenameJoints(animations);
 			}
 		}
 

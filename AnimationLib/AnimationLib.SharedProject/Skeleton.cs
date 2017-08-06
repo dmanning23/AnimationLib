@@ -31,15 +31,6 @@ namespace AnimationLib
 			Animations = animations;
 		}
 
-		/// <summary>
-		/// This method goes through the skeleton and makes sure the joints and bone names match
-		/// </summary>
-		/// <param name="animations"></param>
-		public void RenameJoints(AnimationContainer animations)
-		{
-			RootBone.RenameJoints(animations);
-		}
-
 		public Bone GetBone(string boneName)
 		{
 			return RootBone.GetBone(boneName);
@@ -86,9 +77,6 @@ namespace AnimationLib
 
 		public virtual void WriteXml(Filename filename, AnimationContainer animations)
 		{
-			//first rename all the joints so they are correct
-			RootBone.RenameJoints(animations);
-
 			var skeleton = new SkeletonModel(this, filename);
 			skeleton.WriteXml();
 		}

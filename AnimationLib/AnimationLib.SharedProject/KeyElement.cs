@@ -23,6 +23,8 @@ namespace AnimationLib
 		/// </summary>
 		private Vector2 _translation;
 
+		private Bone _bone;
+
 		#endregion //Fields
 
 		#region Properties
@@ -75,7 +77,13 @@ namespace AnimationLib
 		/// <summary>
 		/// The name of the joint that this keyframe describes
 		/// </summary>
-		public string JointName { get; set; }
+		public string BoneName
+		{
+			get
+			{
+				return _bone.Name;
+			}
+		}
 
 		#endregion //Properties
 
@@ -94,6 +102,28 @@ namespace AnimationLib
 			Flip = false;
 			KeyFrame = false;
 			Ragdoll = false;
+			_bone = null;
+		}
+
+		public KeyElement(Bone bone) : this()
+		{
+			_translation = Vector2.Zero;
+			Time = 0;
+			Rotation = 0.0f;
+			Layer = -1;
+			ImageIndex = -1;
+			Flip = false;
+			KeyFrame = false;
+			Ragdoll = false;
+			_bone = bone;
+		}
+
+		/// <summary>
+		/// hello, standard constructor!
+		/// </summary>
+		public KeyElement(KeyElement inst)
+		{
+			Copy(inst);
 		}
 
 		public KeyElement(KeyElementModel key, Skeleton skeleton)
@@ -106,13 +136,12 @@ namespace AnimationLib
 			Flip = key.Flip;
 			Translation = key.Translation;
 			Ragdoll = key.Ragdoll;
-			JointName = key.Joint;
-			
+
 			//set the image index
-			var bone = skeleton.RootBone.GetBone(key.Joint);
-			if (bone != null)
+			_bone = skeleton.RootBone.GetBone(key.Joint);
+			if (_bone != null)
 			{
-				ImageIndex = bone.GetImageIndex(key.Image);
+				ImageIndex = _bone.GetImageIndex(key.Image);
 			}
 		}
 
@@ -126,6 +155,7 @@ namespace AnimationLib
 			Flip = inst.Flip;
 			KeyFrame = inst.KeyFrame;
 			Ragdoll = inst.Ragdoll;
+			_bone = inst._bone;
 		}
 
 		#endregion //Initialization
@@ -162,26 +192,13 @@ namespace AnimationLib
 			{
 				return false;
 			}
-			else if (JointName != inst.JointName)
+			else if (BoneName != inst.BoneName)
 			{
 				return false;
 			}
 			else
 			{
 				return true;
-			}
-		}
-
-		/// <summary>
-		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
-		/// </summary>
-		/// <param name="oldName">the name of the joint to be renamed</param>
-		/// <param name="newName">the new name for that joint.</param>
-		public void RenameJoint(string oldName, string newName)
-		{
-			if (JointName == oldName)
-			{
-				JointName = newName;
 			}
 		}
 

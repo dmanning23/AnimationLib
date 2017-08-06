@@ -11,10 +11,18 @@ namespace AnimationLib
 	{
 		#region Properties
 
+		private readonly Bone _bone;
+
 		/// <summary>
 		/// name of the bone this dude represents
 		/// </summary>
-		public string Name { get; private set; }
+		public string Name
+		{
+			get
+			{
+				return _bone.Name;
+			}
+		}
 
 		/// <summary>
 		/// the list of child keybones for this dude
@@ -37,7 +45,7 @@ namespace AnimationLib
 		public KeyBone(Bone bone)
 		{
 			//grab the name of this bone
-			Name = bone.Name;
+			_bone = bone;
 
 			//setup the child bones
 			Bones = new List<KeyBone>();
@@ -49,7 +57,7 @@ namespace AnimationLib
 			}
 
 			//setup the key joint
-			KeyJoint = new KeyJoint(Name);
+			KeyJoint = new KeyJoint(_bone);
 		}
 
 		/// <summary>
@@ -161,30 +169,6 @@ namespace AnimationLib
 			{
 				Bones[i].MirrorRightToLeft(rootBone, pasteAction, time, animation);
 			}
-		}
-
-		/// <summary>
-		/// rename a joint in this animation.  rename all the keyjoint and fix name in keyelements
-		/// </summary>
-		/// <param name="oldName">the name of the joint to be renamed</param>
-		/// <param name="newName">the new name for that joint.</param>
-		public bool RenameJoint(string oldName, string newName)
-		{
-			if (KeyJoint.RenameJoint(oldName, newName))
-			{
-				return true;
-			}
-
-			for (var i = 0; i < Bones.Count; i++)
-			{
-				if (Bones[i].RenameJoint(oldName, newName))
-				{
-					return true;
-				}
-			}
-
-			//the joint wasnt found yet
-			return false;
 		}
 
 		/// <summary>

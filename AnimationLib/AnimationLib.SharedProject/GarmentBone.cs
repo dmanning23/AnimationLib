@@ -35,10 +35,22 @@ namespace AnimationLib
 		/// </summary>
 		public Bone ParentBone { get; set; }
 
+		private string _parentBoneName;
+
 		/// <summary>
 		/// The bone in the skeleton that this garment attaches to
 		/// </summary>
-		public string ParentBoneName { get; protected set; }
+		public string ParentBoneName
+		{
+			get
+			{
+				return (null != ParentBone) ? ParentBone.Name : _parentBoneName;
+			}
+			protected set
+			{
+				_parentBoneName = value;
+			}
+		}
 
 		#endregion //Properties
 
