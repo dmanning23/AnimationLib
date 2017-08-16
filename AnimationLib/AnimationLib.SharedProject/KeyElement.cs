@@ -85,6 +85,8 @@ namespace AnimationLib
 			}
 		}
 
+		public Bone Bone { get { return _bone; } }
+
 		#endregion //Properties
 
 		#region Initialization

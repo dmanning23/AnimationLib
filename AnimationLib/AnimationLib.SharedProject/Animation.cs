@@ -63,7 +63,7 @@ namespace AnimationLib
 				var key = new KeyElement(keyModel, skeleton);
 
 				//is this keyelement worth keeping?
-				if ((key.KeyFrame) && (iLengthFrames >= key.Time))
+				if ((key.KeyFrame) && (iLengthFrames >= key.Time) && (null != key.Bone))
 				{
 					//add to the correct keyjoint
 					var keyJoint = KeyBone.GetKeyJoint(key.BoneName);

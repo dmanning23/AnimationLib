@@ -35,7 +35,7 @@ namespace AnimationLib
 		/// <summary>
 		/// The index of this joint in the bone who owns it
 		/// </summary>
-		public int Index { get; private set; }
+		public int Index { get; set; }
 
 		/// <summary>
 		/// Get or set the m_JointMatrix property
@@ -250,29 +250,42 @@ namespace AnimationLib
 
 						//what is the ratio of the current angle between the current position and desired position?
 						var desiredAngle = (firstLimit + secondLimit) / 2f;
-						float springRatio = 0f;
-
-						//get the direction to point the spring
-						float springAngle = 0f;
-						if (currentAngle < desiredAngle)
-						{
-							//if > desired angle, get the unit vector pointing +90 degrees
-							springAngle = currentAngle + MathHelper.PiOver2;
-							springRatio = ((currentAngle - desiredAngle) / (firstLimit - desiredAngle));
-						}
-						else if (currentAngle > desiredAngle)
-						{
-							//else is < desired angle, get the unit vector pointing -90 degrees
-							springAngle = currentAngle - MathHelper.PiOver2;
-							springRatio = ((currentAngle - desiredAngle) / (secondLimit - desiredAngle));
-						}
-						Vector2 deltaVector = MatrixExt.Orientation(springAngle).Multiply(new Vector2(1f, 0));
+						float springRatio, springAngle;
+						GetLimitSpring(firstLimit, secondLimit, currentAngle, desiredAngle, out springRatio, out springAngle);
+						Vector2 deltaVector = AngleToUnitVector(springAngle);
 
 						//get the total force to apply to the child joint
 						Vector2 springForce = (deltaVector * springStrength) * springRatio;
 						joint._acceleration += springForce;
 					}
 					break;
+			}
+		}
+
+		public static Vector2 AngleToUnitVector(float springAngle)
+		{
+			return new Vector2((float)Math.Cos(springAngle), (float)Math.Sin(springAngle));
+		}
+
+		private static void GetLimitSpring(float firstLimit, float secondLimit, float currentAngle, float desiredAngle, out float springRatio, out float springAngle)
+		{
+			//get the direction to point the spring
+			if (currentAngle < desiredAngle)
+			{
+				//if > desired angle, get the unit vector pointing +90 degrees
+				springAngle = currentAngle + MathHelper.PiOver2;
+				springRatio = ((currentAngle - desiredAngle) / (firstLimit - desiredAngle));
+			}
+			else if (currentAngle > desiredAngle)
+			{
+				//else is < desired angle, get the unit vector pointing -90 degrees
+				springAngle = currentAngle - MathHelper.PiOver2;
+				springRatio = ((currentAngle - desiredAngle) / (secondLimit - desiredAngle));
+			}
+			else
+			{
+				springAngle = 0f;
+				springRatio = 0f;
 			}
 		}
 

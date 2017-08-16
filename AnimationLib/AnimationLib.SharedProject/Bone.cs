@@ -416,6 +416,39 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="imageName">filename of the image to find (no path info!)</param>
 		/// <returns>the index of the first instance of an image using that name, -1 if not found</returns>
+		public Image GetImage(string imageName)
+		{
+			//don't check for default value
+			if (!string.IsNullOrEmpty(imageName))
+			{
+				//check my images
+				for (var i = 0; i < Images.Count; i++)
+				{
+					if (Images[i].Name == imageName)
+					{
+						return Images[i];
+					}
+				}
+
+				//check child bones images
+				for (var i = 0; i < Bones.Count; i++)
+				{
+					var result = Bones[i].GetImage(imageName);
+					if (null != result)
+					{
+						return result;
+					}
+				}
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// Find and return the index of an image that this bone uses (non-recursively)
+		/// </summary>
+		/// <param name="imageName">filename of the image to find (no path info!)</param>
+		/// <returns>the index of the first instance of an image using that name, -1 if not found</returns>
 		public int GetImageIndex(string imageName)
 		{
 			//don't check for default value
@@ -1492,16 +1525,30 @@ namespace AnimationLib
 			return Helper.ClampAngle(Helper.atan2(diff));
 		}
 
-		public Joint AddJoint(string jointName)
+		public Joint AddJoint(string jointName, bool insertBeginning)
 		{
 			Joint myJoint = new Joint(Joints.Count);
 			myJoint.Name = jointName;
-			Joints.Add(myJoint);
+
+			if (insertBeginning)
+			{
+				Joints.Insert(0, myJoint);
+
+				//renumber all the joints
+				for (int i = 0; i < Joints.Count; i++)
+				{
+					Joints[i].Index = i;
+				}
+			}
+			else
+			{
+				Joints.Add(myJoint);
+			}
 
 			//add the data for that joint to all the images
 			for (var i = 0; i < Images.Count; i++)
 			{
-				Images[i].AddJoint();
+				Images[i].AddJoint(insertBeginning);
 			}
 
 			return myJoint;
@@ -1555,7 +1602,7 @@ namespace AnimationLib
 			for (var i = 0; i < Images.Count; i++)
 			{
 				//check if the other bone uses this image
-				Image matchingImage = sourceBone.GetImage(Images[i].ImageFile);
+				Image matchingImage = sourceBone.GetImage(Images[i].Name);
 				if (null != matchingImage)
 				{
 					Images[i].Copy(this, matchingImage, actionCollection);

@@ -37,7 +37,22 @@ namespace AnimationLib
 
 		public string Name { get; set; }
 
-		public Rectangle SourceRectangle { get; set; }
+		private Rectangle _sourceRectangle;
+		public Rectangle SourceRectangle
+		{
+			get
+			{
+				return _sourceRectangle;
+			}
+			set
+			{
+				_sourceRectangle = value;
+				if (null != TextureInfo)
+				{
+					TextureInfo.SourceRectangle = value;
+				}
+			}
+		}
 
 		public Filename ImageFile { get; set; }
 
@@ -88,7 +103,7 @@ namespace AnimationLib
 		/// <summary>
 		/// This is the actual numeric amount to bounce back to center
 		/// </summary>
-		public float SpringForce { get; set; }
+		public float SpringForce { get; protected set; }
 
 		/// <summary>
 		/// list of joint locations
@@ -117,6 +132,8 @@ namespace AnimationLib
 		{
 			get { return SourceRectangle.Height; }
 		}
+
+		public TextureInfo TextureInfo => _texture;
 
 		#endregion //Properties
 
@@ -201,7 +218,7 @@ namespace AnimationLib
 		public void LoadImage(IRenderer renderer)
 		{
 			//add the ability to have blank image, which means a skeletal structure that is not displayed
-			if (ImageFile.GetFileExt().Length > 0)
+			if (!string.IsNullOrEmpty(ImageFile.GetFileExt()))
 			{
 				//do we need to load the image?
 				if (null != renderer)
@@ -242,7 +259,7 @@ namespace AnimationLib
 		{
 			if (null != _texture)
 			{
-				//drawList.AddQuad(_texture, position, primaryColor, secondaryColor, rotation, isFlipped, layer);
+				drawList.AddQuad(_texture, position, primaryColor, secondaryColor, rotation, isFlipped, layer);
 			}
 		}
 
@@ -257,10 +274,19 @@ namespace AnimationLib
 			return JointCoords[index];
 		}
 
-		public void AddJoint()
+		public void AddJoint(bool insertBeginning)
 		{
 			JointData myJointCoords = new JointData();
-			JointCoords.Add(myJointCoords);
+
+			if (insertBeginning)
+			{
+				JointCoords.Insert(0, myJointCoords);
+			}
+			else
+			{
+				JointCoords.Add(myJointCoords);
+			}
+
 		}
 
 		/// <summary>
@@ -310,6 +336,13 @@ namespace AnimationLib
 
 		public void Copy(Bone parent, Image myInst, CommandStack actionCollection)
 		{
+			_texture = new TextureInfo(myInst.TextureInfo);
+			ImageFile = new Filename(myInst.ImageFile);
+			NormalMapFile = new Filename(myInst.NormalMapFile);
+			ColorMaskFile = new Filename(myInst.ColorMaskFile);
+			RagdollGravity = myInst.RagdollGravity;
+			RagdollSpring = myInst.RagdollSpring;
+
 			//copy the anchor coord
 			var myAnchorAction = new SetAnchorLocation(parent, this, myInst.AnchorCoord);
 			actionCollection.Add(myAnchorAction);

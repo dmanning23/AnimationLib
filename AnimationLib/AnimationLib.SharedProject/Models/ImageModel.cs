@@ -79,7 +79,7 @@ namespace AnimationLib
 			AnchorCoord = image.AnchorCoord;
 			RagdollSpring = image.RagdollSpring;
 			RagdollGravity = image.RagdollGravity;
-			ImageFile = image.ImageFile;
+			ImageFile = image.TextureInfo != null ? image.ImageFile : new Filename();
 			NormalMapFile = image.NormalMapFile;
 			ColorMaskFile = image.ColorMaskFile;
 			foreach (var jointCoord in image.JointCoords)
@@ -243,8 +243,11 @@ namespace AnimationLib
 				xmlWriter.WriteAttributeString("RagdollSpring", RagdollSpring.ToString());
 			}
 
-			//write out filename to use
-			xmlWriter.WriteAttributeString("filename", ImageFile.GetRelFilename());
+			if (!string.IsNullOrEmpty(ImageFile.File))
+			{
+				//write out filename to use
+				xmlWriter.WriteAttributeString("filename", ImageFile.GetRelFilename());
+			}
 
 			if (!string.IsNullOrEmpty(NormalMapFile.File))
 			{

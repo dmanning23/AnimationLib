@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UndoRedoBuddy;
 
 namespace AnimationLib.Commands
@@ -26,17 +27,22 @@ namespace AnimationLib.Commands
 
 		public bool Execute()
 		{
+			return ExecuteAddImage(AnimationContainer, ParentBoneName, ImageName);
+		}
+
+		private static bool ExecuteAddImage(AnimationContainer animationContainer, string parentBoneName, string imageName)
+		{
 			//Find the parent bone
-			var parent = AnimationContainer.Skeleton.GetBone(ParentBoneName);
+			var parent = animationContainer.Skeleton.GetBone(parentBoneName);
 			if (parent == null)
 			{
-				throw new Exception($"Couldn't find parent bone with name {ParentBoneName}");
+				throw new Exception($"Couldn't find parent bone with name {parentBoneName}");
 			}
 
 			//create the image
 			var image = new Image()
 			{
-				Name = ImageName
+				Name = imageName
 			};
 
 			//set the bone & joint data
@@ -44,6 +50,14 @@ namespace AnimationLib.Commands
 
 			//add to the bone
 			parent.Images.Add(image);
+
+			//if there are any garment bones attached to the parent, add images to them as well
+			var garmentBones = parent.Bones.Where(x => x.BoneType == EBoneType.Garment);
+			foreach (var bone in garmentBones)
+			{
+				var garmentBone = bone as GarmentBone;
+				AddAnimation.ExecuteAddAnimation(garmentBone.GarmentAnimationContainer, imageName, 0);
+			}
 
 			return true;
 		}

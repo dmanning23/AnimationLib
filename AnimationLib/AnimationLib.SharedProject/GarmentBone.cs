@@ -11,12 +11,6 @@ namespace AnimationLib
 		#region Members
 
 		/// <summary>
-		/// reference to the animation container that owns this bone
-		/// used to change animation when the parent bone changes images
-		/// </summary>
-		private GarmentAnimationContainer _animationContainer;
-
-		/// <summary>
 		/// flag for whether this garment has been added to the model or not
 		/// </summary>
 		private bool _isAddedToSkeleton;
@@ -24,6 +18,12 @@ namespace AnimationLib
 		#endregion //Members
 
 		#region Properties
+
+		/// <summary>
+		/// reference to the animation container that owns this bone
+		/// used to change animation when the parent bone changes images
+		/// </summary>
+		public GarmentAnimationContainer GarmentAnimationContainer { get; private set; }
 
 		/// <summary>
 		/// The peice of clothing that this bone is part of
@@ -75,7 +75,7 @@ namespace AnimationLib
 		private void Setup(GarmentAnimationContainer owner)
 		{
 			Debug.Assert(null != owner);
-			_animationContainer = owner;
+			GarmentAnimationContainer = owner;
 			BoneType = EBoneType.Garment;
 			_isAddedToSkeleton = false;
 		}
@@ -96,10 +96,10 @@ namespace AnimationLib
 			float scale,
 			bool ignoreRagdoll)
 		{
-			Debug.Assert(null != _animationContainer);
+			Debug.Assert(null != GarmentAnimationContainer);
 
 			//update the animation container, which will update the Bone base class 
-			_animationContainer.Update(time, position, parentFlip, scale, parentRotation, ignoreRagdoll, parentLayer, ParentBone);
+			GarmentAnimationContainer.Update(time, position, parentFlip, scale, parentRotation, ignoreRagdoll, parentLayer, ParentBone);
 		}
 
 		public void UpdateBaseBone(int time,

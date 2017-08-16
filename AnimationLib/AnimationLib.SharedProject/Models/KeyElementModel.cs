@@ -67,12 +67,7 @@ namespace AnimationLib
 			Joint = key.BoneName;
 			Layer = key.Layer;
 			Ragdoll = key.Ragdoll;
-
-			//Set the rotation to 0 if this dude is using ragdoll
-			if (!Ragdoll)
-			{
-				Rotation = key.Rotation;
-			}
+			Rotation = key.Rotation;
 			Time = key.Time;
 			Translation = key.Translation;
 		}

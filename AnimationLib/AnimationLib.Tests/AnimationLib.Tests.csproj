@@ -53,6 +53,10 @@
       <HintPath>..\packages\GameTimer.1.0.1\lib\net452\GameTimer.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.20.0\lib\net40\MathNet.Numerics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MatrixExtensions.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MatrixExtensions.1.0.2\lib\net451\MatrixExtensions.DesktopGL.dll</HintPath>
       <Private>True</Private>
@@ -82,14 +86,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RenderBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.1.0.11\lib\net451\RenderBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.1.0.13\lib\net451\RenderBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ResolutionBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ResolutionBuddy.1.0.8\lib\net451\ResolutionBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Shouldly, Version=2.8.3.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
+      <HintPath>..\packages\Shouldly.2.8.3\lib\net451\Shouldly.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Numerics" />
     <Reference Include="UndoRedoBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UndoRedoBuddy.1.0.1\lib\net451\UndoRedoBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>

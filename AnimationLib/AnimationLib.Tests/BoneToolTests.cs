@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MathNet.Numerics;
+using Microsoft.Xna.Framework;
 using NUnit.Framework;
+using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -594,6 +596,64 @@ namespace AnimationLib.Tests
 			_bone.GetLimitRotations(out limit1, out limit2);
 
 			Assert.AreEqual(150f, MathHelper.ToDegrees(limit2));
+		}
+
+		[Test]
+		public void GetRotatedLimits_ParentRotation0_Rotation45()
+		{
+			_bone.Rotation = MathHelper.ToRadians(45f);
+			
+			_bone.AnchorJoint.Data.FirstLimit = MathHelper.ToRadians(15f);
+			_bone.AnchorJoint.Data.SecondLimit = MathHelper.ToRadians(60f);
+			float limit1, limit2;
+			_bone.GetLimitRotations(out limit1, out limit2);
+
+			Assert.AreEqual(60f, MathHelper.ToDegrees(limit1));
+		}
+
+		[Test]
+		public void GetRotatedLimits_ParentRotation0_Rotation45_2()
+		{
+			_bone.Rotation = MathHelper.ToRadians(45f);
+
+			_bone.AnchorJoint.Data.FirstLimit = MathHelper.ToRadians(15f);
+			_bone.AnchorJoint.Data.SecondLimit = MathHelper.ToRadians(60f);
+			float limit1, limit2;
+			_bone.GetLimitRotations(out limit1, out limit2);
+
+			Assert.AreEqual(105f, MathHelper.ToDegrees(limit2));
+		}
+
+		[Test]
+		public void AngleToUnitVector_0()
+		{
+			var unitVect = Joint.AngleToUnitVector(MathHelper.ToRadians(0f));
+			Assert.AreEqual(1f, unitVect.X);
+			Assert.AreEqual(0f, unitVect.Y);
+		}
+
+		[Test]
+		public void AngleToUnitVector_90()
+		{
+			var unitVect = Joint.AngleToUnitVector(MathHelper.ToRadians(90f));
+			unitVect.X.AlmostEqual(0).ShouldBeTrue();
+			unitVect.Y.AlmostEqual(1).ShouldBeTrue();
+		}
+
+		[Test]
+		public void AngleToUnitVector_180()
+		{
+			var unitVect = Joint.AngleToUnitVector(MathHelper.ToRadians(180f));
+			unitVect.X.AlmostEqual(-1).ShouldBeTrue();
+			unitVect.Y.AlmostEqual(0).ShouldBeTrue();
+		}
+
+		[Test]
+		public void AngleToUnitVector_min90()
+		{
+			var unitVect = Joint.AngleToUnitVector(MathHelper.ToRadians(-90f));
+			unitVect.X.AlmostEqual(0).ShouldBeTrue();
+			unitVect.Y.AlmostEqual(-1).ShouldBeTrue();
 		}
 
 		/*

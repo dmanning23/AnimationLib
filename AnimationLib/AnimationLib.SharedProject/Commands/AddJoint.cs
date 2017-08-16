@@ -13,15 +13,18 @@ namespace AnimationLib.Commands
 
 		string ParentBoneName { get; set; }
 
+		bool InsertBeginning { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
 
-		public AddJoint(AnimationContainer animationContainer, string jointName, string parentBoneName)
+		public AddJoint(AnimationContainer animationContainer, string jointName, string parentBoneName, bool insertBeginning)
 		{
 			AnimationContainer = animationContainer;
 			JointName = jointName;
 			ParentBoneName = parentBoneName;
+			InsertBeginning = insertBeginning;
 		}
 
 		public bool Execute()
@@ -41,7 +44,7 @@ namespace AnimationLib.Commands
 			}
 
 			//add a matching joint to the parent
-			parent.AddJoint(JointName);
+			parent.AddJoint(JointName, InsertBeginning);
 
 			return true;
 		}

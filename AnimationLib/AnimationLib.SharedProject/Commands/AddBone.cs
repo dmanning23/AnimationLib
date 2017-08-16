@@ -42,7 +42,7 @@ namespace AnimationLib.Commands
 			}
 
 			//add a matching joint to the parent
-			joint = parent.AddJoint(BoneName);
+			joint = parent.AddJoint(BoneName, false);
 
 			//create the new bone & add it to the parent
 			bone = new Bone()

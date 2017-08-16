@@ -300,7 +300,7 @@ namespace Animationlib.Tests
 			{
 				Name = "parent"
 			};
-			parent.AddJoint("child");
+			parent.AddJoint("child", false);
 			var child = new Bone()
 			{
 				Name = "child"
