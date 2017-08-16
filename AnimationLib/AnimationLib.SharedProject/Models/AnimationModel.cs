@@ -30,6 +30,8 @@ namespace AnimationLib
 		/// </summary>
 		public List<KeyElementModel> KeyElements { get; private set; }
 
+		private float Scale { get; set; }
+
 		#endregion
 
 		#region Methods
@@ -37,13 +39,14 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public AnimationModel()
+		public AnimationModel(float scale)
 		{
+			Scale = scale;
 			KeyElements = new List<KeyElementModel>();
 		}
 
 		public AnimationModel(Animation animation, Skeleton skeleton)
-			: this()
+			: this(1f)
 		{
 			Name = animation.Name;
 			Length = animation.Length;
@@ -142,7 +145,7 @@ namespace AnimationLib
 		public void ReadKeyElements(XmlNode node)
 		{
 			//read in the key element
-			var key = new KeyElementModel();
+			var key = new KeyElementModel(Scale);
 			XmlFileBuddy.ReadChildNodes(node, key.ParseXmlNode);
 			KeyElements.Add(key);
 		}

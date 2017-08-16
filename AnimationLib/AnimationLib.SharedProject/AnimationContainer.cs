@@ -99,6 +99,8 @@ namespace AnimationLib
 		/// </summary>
 		protected bool ResetRagdoll { get; set; }
 
+		public float Scale { get; set; }
+
 		#endregion
 
 		#region Initialization
@@ -106,7 +108,7 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public AnimationContainer()
+		public AnimationContainer(float scale = 1f)
 		{
 			Skeleton = new Skeleton(this);
 			Animations = new List<Animation>();
@@ -115,6 +117,7 @@ namespace AnimationLib
 			_playback = EPlayback.Forwards;
 			AnimationFile = new Filename();
 			ResetRagdoll = false;
+			Scale = scale;
 		}
 
 		public AnimationContainer(AnimationsModel animations, SkeletonModel skeleton, IRenderer renderer)
@@ -142,10 +145,9 @@ namespace AnimationLib
 		/// <param name="time">the clock to update this dude with</param>
 		/// <param name="position">this dude's screen location</param>
 		/// <param name="isFlipped">whether or not to flip this dude on the y axis</param>
-		/// <param name="scale">how much to scale the animation</param>
 		/// <param name="rotation">how much to rotate the animation</param>
 		/// <param name="ignoreRagdoll">whether or not to apply the ragdoll physics</param>
-		public void Update(GameClock time, Vector2 position, bool isFlipped, float scale, float rotation, bool ignoreRagdoll)
+		public void Update(GameClock time, Vector2 position, bool isFlipped, float rotation, bool ignoreRagdoll)
 		{
 			if ((null == Animations) || (null == CurrentAnimation))
 			{
@@ -156,7 +158,7 @@ namespace AnimationLib
 			StopWatch.Update(time);
 
 			//apply the animation
-			ApplyAnimation(GetAnimationTime(), position, isFlipped, scale, rotation, ignoreRagdoll);
+			ApplyAnimation(GetAnimationTime(), position, isFlipped, rotation, ignoreRagdoll);
 		}
 
 		/// <summary>
@@ -221,14 +223,12 @@ namespace AnimationLib
 		/// <param name="time"></param>
 		/// <param name="position"></param>
 		/// <param name="flip"></param>
-		/// <param name="scale"></param>
 		/// <param name="rotation"></param>
 		/// <param name="ignoreRagdoll"></param>
 		protected virtual void ApplyAnimation(
 			int time,
 			Vector2 position,
 			bool flip,
-			float scale,
 			float rotation,
 			bool ignoreRagdoll)
 		{
@@ -243,7 +243,6 @@ namespace AnimationLib
 				rotation,
 				flip,
 				0,
-				scale,
 				ignoreRagdoll || ResetRagdoll);
 
 			//is this the first update after an animation change?
@@ -259,13 +258,13 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="ignoreRagdoll"></param>
 		/// <param name="scale">how much to scale the animation</param>
-		public void UpdateRagdoll(float scale)
+		public void UpdateRagdoll()
 		{
 			//add gravity to the ragdoll physics
 			Skeleton.RootBone.AddGravity();
 
 			//accumulate all the force
-			Skeleton.RootBone.AccumulateForces(0f, scale);
+			Skeleton.RootBone.AccumulateForces(0f);
 
 			//run the integrator
 			float fTimeDelta = StopWatch.TimeDelta;
@@ -275,16 +274,16 @@ namespace AnimationLib
 			}
 
 			Skeleton.RootBone.SolveLimits(0.0f);
-			Skeleton.RootBone.SolveConstraints(false, scale);
+			Skeleton.RootBone.SolveConstraints(false);
 
 			//solve all the constraints
 			for (int i = 0; i < 2; i++)
 			{
-				Skeleton.RootBone.SolveConstraints(false, scale);
+				Skeleton.RootBone.SolveConstraints(false);
 			}
 
 			//run through the post update so the matrix is correct
-			Skeleton.RootBone.PostUpdate(scale, false);
+			Skeleton.RootBone.PostUpdate(false);
 		}
 
 		/// <summary>
@@ -310,6 +309,9 @@ namespace AnimationLib
 			if (null != Skeleton &&
 				null != Skeleton.RootBone)
 			{
+				//set the scale of the drawlist to the current character's scale
+				drawList.Scale = Scale;
+
 				//send teh model to teh draw list
 				Skeleton.RootBone.Render(drawList);
 			}
@@ -451,7 +453,7 @@ namespace AnimationLib
 		public virtual void ReadSkeletonXml(Filename filename, IRenderer renderer, ContentManager content = null)
 		{
 			SkeletonFile = filename;
-			var skelModel = new SkeletonModel(filename);
+			var skelModel = new SkeletonModel(filename, Scale);
 			skelModel.ReadXmlFile(content);
 			Skeleton.Load(skelModel, renderer);
 		}
@@ -488,7 +490,7 @@ namespace AnimationLib
 
 			//load up the animations from file
 			Debug.Assert(null != Skeleton);
-			var animations = new AnimationsModel(filename);
+			var animations = new AnimationsModel(filename, Scale);
 			animations.ReadXmlFile(content);
 			LoadAnimations(animations);
 		}

@@ -48,6 +48,8 @@ namespace AnimationLib
 		/// </summary>
 		public List<PhysicsLineModel> Lines { get; private set; }
 
+		private float Scale { get; set; }
+
 		#endregion
 
 		#region Methods
@@ -55,8 +57,9 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public ImageModel()
+		public ImageModel(float scale)
 		{
+			Scale = scale;
 			JointCoords = new List<JointDataModel>();
 			Circles = new List<PhysicsCircleModel>();
 			Lines = new List<PhysicsLineModel>();
@@ -71,7 +74,7 @@ namespace AnimationLib
 		}
 
 		public ImageModel(Image image)
-			: this()
+			: this(1f)
 		{
 			Name = image.Name;
 			UpperLeft = new Vector2(image.SourceRectangle.Left, image.SourceRectangle.Top);
@@ -138,7 +141,7 @@ namespace AnimationLib
 				case "anchorcoord":
 					{
 						//convert to the correct vector
-						AnchorCoord = value.ToVector2();
+						AnchorCoord = value.ToVector2() * Scale;
 					}
 					break;
 				case "RagdollGravity":
@@ -198,21 +201,21 @@ namespace AnimationLib
 
 		public void ReadJointData(XmlNode node)
 		{
-			var jointData = new JointDataModel();
+			var jointData = new JointDataModel(Scale);
 			XmlFileBuddy.ReadChildNodes(node, jointData.ParseXmlNode);
 			JointCoords.Add(jointData);
 		}
 
 		public void ReadCircle(XmlNode node)
 		{
-			var circle = new PhysicsCircleModel();
+			var circle = new PhysicsCircleModel(Scale);
 			XmlFileBuddy.ReadChildNodes(node, circle.ParseXmlNode);
 			Circles.Add(circle);
 		}
 
 		public void ReadLine(XmlNode node)
 		{
-			var line = new PhysicsLineModel();
+			var line = new PhysicsLineModel(Scale);
 			XmlFileBuddy.ReadChildNodes(node, line.ParseXmlNode);
 			Lines.Add(line);
 		}

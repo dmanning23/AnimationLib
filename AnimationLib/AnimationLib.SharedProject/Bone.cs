@@ -631,7 +631,6 @@ namespace AnimationLib
 		/// <param name="parentRotation"></param>
 		/// <param name="parentFlip"></param>
 		/// <param name="parentLayer"></param>
-		/// <param name="scale"></param>
 		/// <param name="ignoreRagdoll"></param>
 		virtual public void Update(int time,
 								   Vector2 position,
@@ -639,7 +638,6 @@ namespace AnimationLib
 								   float parentRotation,
 								   bool parentFlip,
 								   int parentLayer,
-								   float scale,
 								   bool ignoreRagdoll)
 		{
 			Debug.Assert(null != AnchorJoint);
@@ -660,15 +658,15 @@ namespace AnimationLib
 			UpdateRotation(parentRotation, parentFlip, ignoreRagdoll);
 
 			//update the translation
-			UpdateTranslation(ref position, parentRotation, scale, ignoreRagdoll);
+			UpdateTranslation(ref position, parentRotation, ignoreRagdoll);
 
 			//Update this bone and all its joint positions
-			UpdateImageAndJoints(position, scale, ignoreRagdoll);
+			UpdateImageAndJoints(position, ignoreRagdoll);
 
-			UpdateChildren(time, keyBone, scale, ignoreRagdoll);
+			UpdateChildren(time, keyBone, ignoreRagdoll);
 		}
 
-		private void UpdateChildren(int time, KeyBone keyBone, float scale, bool ignoreRagdoll)
+		private void UpdateChildren(int time, KeyBone keyBone, bool ignoreRagdoll)
 		{
 			//this layer counter is incremented to layer garments on to pof each other
 			var currentLayer = CurrentLayer;
@@ -697,7 +695,6 @@ namespace AnimationLib
 								Rotation,
 								Flipped,
 								currentLayer,
-								scale,
 								ignoreRagdoll);
 
 				//if that was a garment, increment the counter for the next garment
@@ -818,7 +815,7 @@ namespace AnimationLib
 			}
 		}
 
-		private void UpdateTranslation(ref Vector2 position, float parentRotation, float scale, bool ignoreRagdoll)
+		private void UpdateTranslation(ref Vector2 position, float parentRotation, bool ignoreRagdoll)
 		{
 			if (!AnchorJoint.CurrentKeyElement.Ragdoll || ignoreRagdoll)
 			{
@@ -826,25 +823,25 @@ namespace AnimationLib
 				{
 					Vector2 animationTrans = AnchorJoint.CurrentKeyElement.Translation;
 					animationTrans.X *= -1.0f;
-					position += MatrixExt.Orientation(parentRotation).Multiply(animationTrans * scale);
+					position += MatrixExt.Orientation(parentRotation).Multiply(animationTrans);
 				}
 				else
 				{
-					position += MatrixExt.Orientation(parentRotation).Multiply(AnchorJoint.CurrentKeyElement.Translation * scale);
+					position += MatrixExt.Orientation(parentRotation).Multiply(AnchorJoint.CurrentKeyElement.Translation);
 				}
 			}
 			//grab the position (joint location + animation translation)
 			AnchorPosition = position;
 		}
 
-		private void UpdateImageAndJoints(Vector2 position, float scale, bool ignoreRagdoll)
+		private void UpdateImageAndJoints(Vector2 position, bool ignoreRagdoll)
 		{
 			//Get the correct location of the anchor coord
 			var currentImage = GetCurrentImage();
 			var anchorCoord = Vector2.Zero;
 			if (null != currentImage)
 			{
-				anchorCoord = currentImage.GetFlippedAnchorCoord(Flipped, scale);
+				anchorCoord = currentImage.GetFlippedAnchorCoord(Flipped);
 			}
 
 			//create the rotation matrix and flip it if necessary
@@ -877,7 +874,7 @@ namespace AnimationLib
 			//update all the circle data
 			if (null != currentImage)
 			{
-				currentImage.Update(Position, Rotation, Flipped, scale);
+				currentImage.Update(Position, Rotation, Flipped);
 			}
 
 			//update all the joints
@@ -888,7 +885,7 @@ namespace AnimationLib
 				if (null != currentImage)
 				{
 					//get my joint translation from my current image
-					jointPosition = currentImage.GetFlippedJointCoord(i, Flipped, scale);
+					jointPosition = currentImage.GetFlippedJointCoord(i, Flipped);
 
 					//get teh joint data
 					Joints[i].Data = Images[ImageIndex].JointCoords[i];
@@ -1029,7 +1026,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void AccumulateForces(float parentAngle, float scale)
+		public void AccumulateForces(float parentRotation)
 		{
 			//Collect all the forces
 			Vector2 collectedForces = Vector2.Zero;
@@ -1041,7 +1038,6 @@ namespace AnimationLib
 			//clear out forces so they dont accumulate
 			RagdollForces.Clear();
 
-			//get the spring strength
 			var image = GetCurrentImage();
 
 			//update the children
@@ -1052,14 +1048,14 @@ namespace AnimationLib
 				//if the joint[i].data is floating, add some spring force
 				if ((null != image) && AnchorJoint.CurrentKeyElement.Ragdoll)
 				{
-					AnchorJoint.SolveRagdollSpring(parentAngle, this, Joints[i], image.SpringForce, scale);
+					//AnchorJoint.SolveRagdollSpring(parentRotation, this, Joints[i], image.SpringForce, scale);
 				}
 			}
 
 			//update the children
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].AccumulateForces(this.Rotation, scale);
+				Bones[i].AccumulateForces(Rotation);
 			}
 		}
 
@@ -1083,7 +1079,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void SolveConstraints(bool isParentRagdoll, float scale)
+		public void SolveConstraints(bool isParentRagdoll)
 		{
 			Debug.Assert(null != AnchorJoint);
 
@@ -1095,7 +1091,7 @@ namespace AnimationLib
 					//if there is no image, all the joints go to the loc of the anchor joint
 
 					//solve constraints from anchor to each joint location
-					AnchorJoint.SolveConstraint(Joints[i], Joints[i].Data.Length, scale,
+					AnchorJoint.SolveConstraint(Joints[i], Joints[i].Data.Length,
 						(isParentRagdoll ? ERagdollMove.MoveAll : ERagdollMove.OnlyHim), RagdollWeightRatio);
 
 					//solve constraints from each joint to each other joint
@@ -1111,7 +1107,7 @@ namespace AnimationLib
 						}
 
 						//move them joints
-						Joints[i].SolveConstraint(Joints[j], fDistance, scale,
+						Joints[i].SolveConstraint(Joints[j], fDistance,
 							((0 == i) ? ERagdollMove.OnlyHim : ERagdollMove.MoveAll), 0.5f); //don't pull on the first joint though
 					}
 				}
@@ -1120,7 +1116,7 @@ namespace AnimationLib
 			//update the children
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].SolveConstraints(AnchorJoint.CurrentKeyElement.Ragdoll, scale);
+				Bones[i].SolveConstraints(AnchorJoint.CurrentKeyElement.Ragdoll);
 			}
 		}
 
@@ -1239,7 +1235,7 @@ namespace AnimationLib
 			}
 		}
 
-		public void PostUpdate(float scale, bool isParentRagdoll)
+		public void PostUpdate(bool isParentRagdoll)
 		{
 			//update this dudes rotation
 			Debug.Assert(null != AnchorJoint);
@@ -1252,7 +1248,7 @@ namespace AnimationLib
 
 					//Get the vector from the current joint position
 					Matrix myRotation = MatrixExt.Orientation(Rotation);
-					Vector2 jointPos = GetCurrentImage().JointCoords[0].Location * scale;
+					Vector2 jointPos = GetCurrentImage().JointCoords[0].Location;
 					if (Flipped)
 					{
 						//it flipped?
@@ -1275,7 +1271,7 @@ namespace AnimationLib
 						//it flipped?
 						anchorCoord.X = GetCurrentImage().Width - anchorCoord.X;
 					}
-					anchorCoord = (myRotation.Multiply(anchorCoord)) * scale;
+					anchorCoord = (myRotation.Multiply(anchorCoord));
 
 					//update this dude's position 
 					Position = AnchorJoint.Position - anchorCoord;
@@ -1285,13 +1281,13 @@ namespace AnimationLib
 			//update the current image
 			if (ImageIndex >= 0)
 			{
-				Images[ImageIndex].Update(Position, Rotation, Flipped, scale);
+				Images[ImageIndex].Update(Position, Rotation, Flipped);
 			}
 
 			//go through & update the children too
 			for (var i = 0; i < Bones.Count; i++)
 			{
-				Bones[i].PostUpdate(scale, AnchorJoint.CurrentKeyElement.Ragdoll);
+				Bones[i].PostUpdate(AnchorJoint.CurrentKeyElement.Ragdoll);
 			}
 		}
 
@@ -1313,7 +1309,6 @@ namespace AnimationLib
 			int imageIndex,
 			float rotation,
 			bool parentFlip,
-			float scale,
 			Vector2 translationHack)
 		{
 			if (null == AnchorJoint)
@@ -1330,7 +1325,6 @@ namespace AnimationLib
 				0.0f,
 				parentFlip,
 				CurrentLayer - AnchorJoint.CurrentKeyElement.Layer,
-				scale,
 				true);
 		}
 
@@ -1390,7 +1384,6 @@ namespace AnimationLib
 				0.0f,
 				GetParentFlip(),
 				CurrentLayer - AnchorJoint.CurrentKeyElement.Layer,
-				1.0f,
 				false);
 		}
 

@@ -23,10 +23,10 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public SkeletonModel(Filename filename)
+		public SkeletonModel(Filename filename, float scale)
 			: base("skeleton", filename)
 		{
-			RootBone = new BoneModel();
+			RootBone = new BoneModel(scale);
 		}
 
 		public SkeletonModel(Skeleton skeleton, Filename filename)

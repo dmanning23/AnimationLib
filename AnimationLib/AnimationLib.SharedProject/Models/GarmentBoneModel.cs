@@ -21,8 +21,8 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public GarmentBoneModel()
-			: base()
+		public GarmentBoneModel(float scale)
+			: base(scale)
 		{
 			BoneType = EBoneType.Garment;
 		}

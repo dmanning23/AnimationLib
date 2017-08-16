@@ -295,7 +295,7 @@ namespace AnimationLib
 		/// <returns>The flipped anchor coordinate.</returns>
 		/// <param name="isFlipped">Whether or not we want the anchor coord flipped</param>
 		/// <param name="scale">The scale to get the anchor coord</param>
-		public Vector2 GetFlippedAnchorCoord(bool isFlipped, float scale)
+		public Vector2 GetFlippedAnchorCoord(bool isFlipped)
 		{
 			//Get the anchor coord
 			Vector2 updatedAnchorCoord = new Vector2(0.0f);
@@ -309,8 +309,7 @@ namespace AnimationLib
 			{
 				updatedAnchorCoord = AnchorCoord;
 			}
-
-			updatedAnchorCoord *= scale;
+			
 			return updatedAnchorCoord;
 		}
 
@@ -321,7 +320,7 @@ namespace AnimationLib
 		/// <param name="isFlipped">Whether or not we want the anchor coord flipped</param>
 		/// <param name="scale">The scale to get the anchor coord</param>
 		/// <returns>The flipped anchor coordinate.</returns>
-		public Vector2 GetFlippedJointCoord(int jointIndex, bool isFlipped, float scale)
+		public Vector2 GetFlippedJointCoord(int jointIndex, bool isFlipped)
 		{
 			var updatedJointCoord = GetJointLocation(jointIndex).Location;
 			if (isFlipped)
@@ -330,7 +329,6 @@ namespace AnimationLib
 				updatedJointCoord.X = Width - updatedJointCoord.X;
 			}
 
-			updatedJointCoord *= scale;
 			return updatedJointCoord;
 		}
 
@@ -386,20 +384,20 @@ namespace AnimationLib
 			JointCoords[index] = newJointCoords;
 		}
 
-		public void Update(Vector2 bonePosition, float rotation, bool isFlipped, float scale)
+		public void Update(Vector2 bonePosition, float rotation, bool isFlipped)
 		{
 			//update all the circles
 			for (var i = 0; i < Circles.Count; i++)
 			{
 				Debug.Assert(null != Circles);
 				Debug.Assert(null != Circles[i]);
-				Circles[i].Update(this, bonePosition, rotation, isFlipped, scale);
+				Circles[i].Update(this, bonePosition, rotation, isFlipped);
 			}
 
 			//update all the lines
 			for (var i = 0; i < Lines.Count; i++)
 			{
-				Lines[i].Update(this, bonePosition, rotation, isFlipped, scale);
+				Lines[i].Update(this, bonePosition, rotation, isFlipped);
 			}
 		}
 

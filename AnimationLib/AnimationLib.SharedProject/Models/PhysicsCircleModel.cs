@@ -14,6 +14,8 @@ namespace AnimationLib
 
 		public float Radius{ get; set; }
 
+		private float Scale { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -21,13 +23,14 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public PhysicsCircleModel()
+		public PhysicsCircleModel(float scale)
 		{
+			Scale = scale;
 			Center = Vector2.Zero;
 		}
 
 		public PhysicsCircleModel(PhysicsCircle circle)
-			: this()
+			: this(1f)
 		{
 			Center = circle.LocalPosition;
 			Radius = circle.LocalRadius;
@@ -52,12 +55,12 @@ namespace AnimationLib
 				break;
 				case "center":
 				{
-					Center = value.ToVector2();
+					Center = value.ToVector2() * Scale;
 				}
 				break;
 				case "radius":
 				{
-					Radius = Convert.ToSingle(value);
+					Radius = Convert.ToSingle(value) * Scale;
 				}
 				break;
 				default:

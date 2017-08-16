@@ -22,6 +22,8 @@ namespace AnimationLib
 		/// </summary>
 		public List<GarmentFragmentModel> Fragments { get; private set; }
 
+		private float Scale { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -29,14 +31,15 @@ namespace AnimationLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentModel(Filename filename)
+		public GarmentModel(Filename filename, float scale)
 			: base("garment", filename)
 		{
+			Scale = scale;
 			Fragments = new List<GarmentFragmentModel>();
 		}
 
 		public GarmentModel(Filename filename, Garment garment)
-			: this(filename)
+			: this(filename, 1f)
 		{
 			Name = garment.Name;
 			foreach (var fragment in garment.Fragments)
@@ -87,7 +90,7 @@ namespace AnimationLib
 
 		public void ReadFragments(XmlNode node)
 		{
-			var fragment = new GarmentFragmentModel(Content);
+			var fragment = new GarmentFragmentModel(Scale, Content);
 			XmlFileBuddy.ReadChildNodes(node, fragment.ParseXmlNode);
 			Fragments.Add(fragment);
 		}

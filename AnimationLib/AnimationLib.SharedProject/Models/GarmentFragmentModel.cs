@@ -19,6 +19,8 @@ namespace AnimationLib
 
 		private ContentManager Content { get; set; }
 
+		private float Scale { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -26,8 +28,9 @@ namespace AnimationLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentFragmentModel(ContentManager content = null)
+		public GarmentFragmentModel(float scale, ContentManager content = null)
 		{
+			Scale = scale;
 			Content = content;
 		}
 
@@ -35,6 +38,7 @@ namespace AnimationLib
 		/// constructor!
 		/// </summary>
 		public GarmentFragmentModel(GarmentFragment fragment)
+			: this(1f)
 		{
 			Skeleton = new GarmentSkeletonModel(fragment.SkeletonFile, fragment.AnimationContainer.Skeleton as GarmentSkeleton);
 
@@ -64,7 +68,7 @@ namespace AnimationLib
 						{
 							//read in the model 
 							var skeletonFile = new Filename(value);
-							Skeleton = new GarmentSkeletonModel(skeletonFile);
+							Skeleton = new GarmentSkeletonModel(skeletonFile, Scale);
 							Skeleton.ReadXmlFile(Content);
 						}
 						break;
@@ -72,7 +76,7 @@ namespace AnimationLib
 						{
 							//read in the animations
 							var animationFile = new Filename(value);
-							AnimationContainer = new AnimationsModel(animationFile);
+							AnimationContainer = new AnimationsModel(animationFile, Scale);
 							AnimationContainer.ReadXmlFile(Content);
 						}
 						break;

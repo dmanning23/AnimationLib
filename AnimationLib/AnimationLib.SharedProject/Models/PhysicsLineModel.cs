@@ -19,18 +19,21 @@ namespace AnimationLib
 		/// </summary>
 		public Vector2 End { get; set; }
 
+		private float Scale { get; set; }
+
 		#endregion //Members
 
 		#region Members
 
-		public PhysicsLineModel()
+		public PhysicsLineModel(float scale)
 		{
+			Scale = scale;
 			Start = Vector2.Zero;
 			End = Vector2.Zero;
 		}
 
 		public PhysicsLineModel(PhysicsLine line)
-			: this()
+			: this(1f)
 		{
 			Start = line.LocalStart;
 			End = line.LocalEnd;
@@ -55,12 +58,12 @@ namespace AnimationLib
 				break;
 				case "start":
 				{
-					Start = value.ToVector2();
+					Start = value.ToVector2() * Scale;
 				}
 				break;
 				case "end":
 				{
-					End = value.ToVector2();
+					End = value.ToVector2() * Scale;
 				}
 				break;
 				default:

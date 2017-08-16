@@ -36,18 +36,18 @@ namespace AnimationLib
 			LocalEnd = line.End;
 		}
 
-		public void Update(Image owner, Vector2 bonePosition, float rotation, bool isFlipped, float scale)
+		public void Update(Image owner, Vector2 bonePosition, float rotation, bool isFlipped)
 		{
 			//set to local coord
-			Vector2 worldStart = LocalStart * scale;
-			Vector2 worldEnd = LocalEnd * scale;
+			Vector2 worldStart = LocalStart;
+			Vector2 worldEnd = LocalEnd;
 
 			//is it flipped?
 			if (isFlipped)
 			{
 				//flip from the edge of the image
-				worldStart.X = (owner.Width * scale) - worldStart.X;
-				worldEnd.X = (owner.Width * scale) - worldEnd.X;
+				worldStart.X = (owner.Width) - worldStart.X;
+				worldEnd.X = (owner.Width) - worldEnd.X;
 			}
 
 			//rotate correctly

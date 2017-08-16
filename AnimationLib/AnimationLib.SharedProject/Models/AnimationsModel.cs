@@ -18,6 +18,8 @@ namespace AnimationLib
 		/// <value>The animations.</value>
 		public List<AnimationModel> Animations { get; protected set; }
 
+		private float Scale { get; set; }
+
 		#endregion
 
 		#region Methods
@@ -25,14 +27,15 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public AnimationsModel(Filename filename)
+		public AnimationsModel(Filename filename, float scale)
 			: base("animationContainer", filename)
 		{
+			Scale = scale;
 			Animations = new List<AnimationModel>();
 		}
 
 		public AnimationsModel(Filename filename, AnimationContainer animations)
-			: this(filename)
+			: this(filename, 1f)
 		{
 			foreach (var animation in animations.Animations)
 			{
@@ -80,7 +83,7 @@ namespace AnimationLib
 		/// </summary>
 		public void ReadAnimation(XmlNode node)
 		{
-			var animation = new AnimationModel();
+			var animation = new AnimationModel(Scale);
 			XmlFileBuddy.ReadChildNodes(node, animation.ParseXmlNode);
 			Animations.Add(animation);
 		}

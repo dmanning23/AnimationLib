@@ -34,6 +34,8 @@ namespace AnimationLib
 		/// </summary>
 		public Filename GarmentFile { get; private set; }
 
+		private float Scale { get; set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -41,20 +43,21 @@ namespace AnimationLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public Garment()
+		public Garment(float scale = 1f)
 		{
+			Scale = scale;
 			Fragments = new List<GarmentFragment>();
 			HasPhysics = false;
 		}
 
-		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer)
-			: this()
+		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer, float scale = 1f)
+			: this(scale)
 		{
 			InitializeGarment(null, filename, skeleton, renderer);
 		}
 
-		public Garment(ContentManager content, Filename filename, Skeleton skeleton, IRenderer renderer)
-			: this()
+		public Garment(ContentManager content, Filename filename, Skeleton skeleton, IRenderer renderer, float scale = 1f)
+			: this(scale)
 		{
 			InitializeGarment(content, filename, skeleton, renderer);
 		}
@@ -62,7 +65,7 @@ namespace AnimationLib
 		private void InitializeGarment(ContentManager content, Filename filename, Skeleton skeleton, IRenderer renderer)
 		{
 			GarmentFile = filename;
-			var garmentModel = new GarmentModel(filename);
+			var garmentModel = new GarmentModel(filename, Scale);
 			garmentModel.ReadXmlFile(content);
 
 			Name = garmentModel.Name;

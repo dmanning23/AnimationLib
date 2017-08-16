@@ -39,16 +39,16 @@ namespace AnimationLib
 			Radius = Radius;
 		}
 
-		public void Update(Image owner, Vector2 bonePosition, float rotation, bool isFlipped, float scale)
+		public void Update(Image owner, Vector2 bonePosition, float rotation, bool isFlipped)
 		{
 			//set to local coord
-			Vector2 worldPosition = LocalPosition * scale;
+			Vector2 worldPosition = LocalPosition;
 
 			//is it flipped?
 			if (isFlipped && (null != owner))
 			{
 				//flip from the edge of the image
-				worldPosition.X = (owner.Width * scale) - worldPosition.X;
+				worldPosition.X = (owner.Width) - worldPosition.X;
 			}
 
 			//rotate correctly
@@ -57,7 +57,7 @@ namespace AnimationLib
 			//move to the correct position
 			worldPosition = bonePosition + worldPosition;
 
-			Update(worldPosition, scale);
+			Update(worldPosition);
 		}
 
 		/// <summary>
@@ -65,12 +65,12 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="myPosition">the location of this dude in the world</param>
 		/// <param name="scale">how much to scale the physics item</param>
-		public void Update(Vector2 myPosition, float scale)
+		public void Update(Vector2 myPosition)
 		{
 			Pos = myPosition;
 
 			//set teh world radius
-			Radius = LocalRadius * scale;
+			Radius = LocalRadius;
 		}
 
 		public void Render(IRenderer renderer, Color color)

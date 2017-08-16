@@ -93,13 +93,12 @@ namespace AnimationLib
 			float parentRotation,
 			bool parentFlip,
 			int parentLayer,
-			float scale,
 			bool ignoreRagdoll)
 		{
 			Debug.Assert(null != GarmentAnimationContainer);
 
 			//update the animation container, which will update the Bone base class 
-			GarmentAnimationContainer.Update(time, position, parentFlip, scale, parentRotation, ignoreRagdoll, parentLayer, ParentBone);
+			GarmentAnimationContainer.Update(time, position, parentFlip, parentRotation, ignoreRagdoll, parentLayer, ParentBone);
 		}
 
 		public void UpdateBaseBone(int time,
@@ -108,10 +107,9 @@ namespace AnimationLib
 			float parentRotation,
 			bool parentFlip,
 			int parentLayer,
-			float scale,
 			bool ignoreRagdoll)
 		{
-			base.Update(time, position, keyBone, parentRotation, parentFlip, parentLayer, scale, ignoreRagdoll);
+			base.Update(time, position, keyBone, parentRotation, parentFlip, parentLayer, ignoreRagdoll);
 		}
 
 		/// <summary>

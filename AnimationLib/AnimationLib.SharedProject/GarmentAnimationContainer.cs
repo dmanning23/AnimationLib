@@ -108,7 +108,6 @@ namespace AnimationLib
 		public void Update(int time, 
 			Vector2 position, 
 			bool isFlipped, 
-			float scale, 
 			float rotation, 
 			bool ignoreRagdoll, 
 			int layer, 
@@ -137,7 +136,7 @@ namespace AnimationLib
 			else
 			{
 				//call the base update
-				Update(AnimationTimer, position, isFlipped, scale, rotation, ignoreRagdoll);
+				Update(AnimationTimer, position, isFlipped, rotation, ignoreRagdoll);
 			}
 		}
 
@@ -148,7 +147,6 @@ namespace AnimationLib
 			int time,
 			Vector2 position,
 			bool isFlipped,
-			float scale,
 			float rotation,
 			bool ignoreRagdoll)
 		{
@@ -162,7 +160,6 @@ namespace AnimationLib
 				rotation,
 				isFlipped,
 				_currentLayer,
-				scale,
 				ignoreRagdoll || ResetRagdoll);
 
 			//is this the first update after an animation change?

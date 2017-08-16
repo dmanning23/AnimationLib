@@ -39,7 +39,7 @@ namespace AnimationLib.Commands
 			}
 
 			//create the animation model
-			var animationModel = new AnimationModel()
+			var animationModel = new AnimationModel(1f)
 			{
 				Name = animationName,
 				Length = length

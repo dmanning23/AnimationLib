@@ -34,19 +34,21 @@ namespace AnimationLib
 		public Vector2 Translation { get; set; }
 		public bool Ragdoll { get; set; }
 		public string Joint { get; set; }
+		private float Scale { get; set; }
 
 		#endregion //Properties
 
 		#region Methods
 
-		public KeyElementModel()
+		public KeyElementModel(float scale)
 		{
+			Scale = scale;
 			Flip = false;
 			Translation = Vector2.Zero;
 			Ragdoll = false;
 		}
 
-		public KeyElementModel(KeyElement key, Bone bone)
+		public KeyElementModel(KeyElement key, Bone bone) : this(1f)
 		{
 			Debug.Assert(null != bone);
 
@@ -116,7 +118,7 @@ namespace AnimationLib
 					break;
 				case "translation":
 					{
-						Translation = value.ToVector2();
+						Translation = value.ToVector2() * Scale;
 					}
 					break;
 				case "ragdoll":
