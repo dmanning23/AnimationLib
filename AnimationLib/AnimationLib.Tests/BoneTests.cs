@@ -197,7 +197,7 @@ namespace Animationlib.Tests
 			test.ReadAnimationXml(testFile);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 
 			Assert.AreEqual(Vector2.Zero, test.Skeleton.RootBone.AnchorPosition);
 		}
@@ -214,7 +214,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 
 			Bone crotch = test.Skeleton.RootBone.GetBone("Crotch");
 
@@ -233,7 +233,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 			Bone torso = test.Skeleton.RootBone.GetBone("Torso");
 			Assert.AreEqual(new Vector2(-7.0f, -18.0f), torso.AnchorPosition);
 		}
@@ -250,7 +250,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 			Bone Crotch = test.Skeleton.RootBone.GetBone("Crotch");
 			Assert.AreEqual(new Vector2(-74.0f, -62.0f), Crotch.Position);
 		}
@@ -267,7 +267,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 			Bone Crotch = test.Skeleton.RootBone.GetBone("Torso");
 			Assert.AreEqual(new Vector2(-44.0f, -117.0f), Crotch.Position);
 		}
@@ -284,7 +284,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, new Vector2(200.0f, 300.0f), false, 1.0f, 0.0f, true);
+			test.Update(timer, new Vector2(200.0f, 300.0f), false, 0.0f, true);
 			Bone Crotch = test.Skeleton.RootBone.GetBone("Torso");
 			Assert.AreEqual(new Vector2(156.0f, 183.0f), Crotch.Position);
 		}

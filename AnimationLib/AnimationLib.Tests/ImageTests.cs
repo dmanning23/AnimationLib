@@ -191,7 +191,7 @@ namespace Animationlib.Tests
 			file.SetRelFilename(@"SuperSimple\CrotchFront.png");
 			Image image = crotch.GetImage(file);
 
-			Assert.AreEqual(new Vector2(74.0f, 62.0f), image.GetFlippedAnchorCoord(false, 1.0f));
+			Assert.AreEqual(new Vector2(74.0f, 62.0f), image.GetFlippedAnchorCoord(false));
 		}
 
 		[Test]
@@ -207,23 +207,7 @@ namespace Animationlib.Tests
 			file.SetRelFilename(@"SuperSimple\CrotchFront.png");
 			Image image = crotch.GetImage(file);
 
-			Assert.AreEqual(new Vector2(55.0f, 62.0f), image.GetFlippedAnchorCoord(true, 1.0f));
-		}
-
-		[Test]
-		public void GetFlippedAnchorCoord2()
-		{
-			AnimationContainer test = new AnimationContainer();
-			Filename testFile = new Filename();
-			testFile.SetRelFilename("SuperSimple\\Simple Model.xml");
-			//TestRenderer renderer = new TestRenderer();
-			test.ReadSkeletonXml(testFile, null);
-			Bone crotch = test.Skeleton.RootBone.GetBone("Crotch");
-			Filename file = new Filename();
-			file.SetRelFilename(@"SuperSimple\CrotchFront.png");
-			Image image = crotch.GetImage(file);
-
-			Assert.AreEqual(new Vector2(110.0f, 124.0f), image.GetFlippedAnchorCoord(true, 2.0f));
+			Assert.AreEqual(new Vector2(55.0f, 62.0f), image.GetFlippedAnchorCoord(true));
 		}
 
 		#endregion //coord tests
@@ -242,7 +226,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 			Assert.AreEqual(0, test.Skeleton.RootBone.ImageIndex);
 		}
 
@@ -258,7 +242,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 			Assert.NotNull(test.Skeleton.RootBone.GetCurrentImage());
 		}
 

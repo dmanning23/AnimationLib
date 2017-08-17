@@ -63,7 +63,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 			Joint torso = test.Skeleton.RootBone.GetJoint("Torso");
 			Assert.AreEqual(new Vector2(-7.0f, -18.0f), torso.Position);
 		}
@@ -79,7 +79,7 @@ namespace Animationlib.Tests
 			test.ReadAnimationXml(testFile);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 			Joint torso = test.Skeleton.RootBone.GetJoint("Torso");
 			Assert.NotNull(torso.Data);
 		}
@@ -96,7 +96,7 @@ namespace Animationlib.Tests
 			test.SetAnimation(0, EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
-			test.Update(timer, Vector2.Zero, false, 1.0f, 0.0f, true);
+			test.Update(timer, Vector2.Zero, false, 0.0f, true);
 			Joint torso = test.Skeleton.RootBone.GetJoint("Torso");
 			Assert.AreEqual(67.0f, torso.Data.Location.X);
 			Assert.AreEqual(44.0f, torso.Data.Location.Y);

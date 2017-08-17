@@ -553,7 +553,7 @@ namespace AnimationLib.Tests
 			float limit1, limit2;
 			_bone.GetLimitRotations(out limit1, out limit2);
 
-			Assert.AreEqual(105f, MathHelper.ToDegrees(limit1));
+			MathHelper.ToDegrees(limit1).ShouldBe(105f);
 		}
 
 		[Test]
@@ -581,7 +581,7 @@ namespace AnimationLib.Tests
 			float limit1, limit2;
 			_bone.GetLimitRotations(out limit1, out limit2);
 
-			Assert.AreEqual(105f, MathHelper.ToDegrees(limit1));
+			MathHelper.ToDegrees(limit1).ShouldBe(105f);
 		}
 
 		[Test]
@@ -621,7 +621,7 @@ namespace AnimationLib.Tests
 			float limit1, limit2;
 			_bone.GetLimitRotations(out limit1, out limit2);
 
-			Assert.AreEqual(105f, MathHelper.ToDegrees(limit2));
+			MathHelper.ToDegrees(limit2).ShouldBe(105f);
 		}
 
 		[Test]
