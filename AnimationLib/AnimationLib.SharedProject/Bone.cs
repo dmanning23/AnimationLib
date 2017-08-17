@@ -1048,7 +1048,7 @@ namespace AnimationLib
 				//if the joint[i].data is floating, add some spring force
 				if ((null != image) && AnchorJoint.CurrentKeyElement.Ragdoll)
 				{
-					//AnchorJoint.SolveRagdollSpring(parentRotation, this, Joints[i], image.SpringForce, scale);
+					AnchorJoint.SolveRagdollSpring(parentRotation, this, Joints[i], image.SpringForce);
 				}
 			}
 

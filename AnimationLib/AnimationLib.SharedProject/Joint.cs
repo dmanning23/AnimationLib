@@ -214,14 +214,14 @@ namespace AnimationLib
 		/// <param name="springStrength"></param>
 		/// <param name="desiredDistance"></param>
 		/// <param name="scale"></param>
-		public void SolveRagdollSpring(float parentRotation, Bone bone, Joint joint, float springStrength, float scale)
+		public void SolveRagdollSpring(float parentRotation, Bone bone, Joint joint, float springStrength)
 		{
 			switch (Data.RagdollType)
 			{
 				case RagdollType.Float:
 					{
 						//get the deisred float radius of this dude
-						float desiredDistance = Data.FloatRadius * scale;
+						float desiredDistance = Data.FloatRadius;
 						if (0.0f < desiredDistance) //the float radius can't be 0 or negative
 						{
 							//find the current distance bewteen the two joints
@@ -244,7 +244,7 @@ namespace AnimationLib
 				case RagdollType.Limit:
 					{
 						//GetLimitSpring1(parentRotation, bone, joint, springStrength);
-						//GetLimitSpring2(parentRotation, bone, joint, springStrength);
+						GetLimitSpring2(parentRotation, bone, joint, springStrength);
 					}
 					break;
 			}

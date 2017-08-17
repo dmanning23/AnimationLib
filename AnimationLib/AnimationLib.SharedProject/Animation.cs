@@ -15,7 +15,7 @@ namespace AnimationLib
 		/// name of the animation
 		/// </summary>
 		/// <value>The name.</value>
-		public string Name { get; private set; }
+		public string Name { get; set; }
 		
 		/// <summary>
 		/// length of this animation
