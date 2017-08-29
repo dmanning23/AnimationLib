@@ -334,12 +334,14 @@ namespace AnimationLib
 
 		public void Copy(Bone parent, Image myInst, CommandStack actionCollection)
 		{
+			Name = myInst.Name;
 			_texture = new TextureInfo(myInst.TextureInfo);
 			ImageFile = new Filename(myInst.ImageFile);
 			NormalMapFile = new Filename(myInst.NormalMapFile);
 			ColorMaskFile = new Filename(myInst.ColorMaskFile);
 			RagdollGravity = myInst.RagdollGravity;
 			RagdollSpring = myInst.RagdollSpring;
+			SourceRectangle = myInst.SourceRectangle;
 
 			//copy the anchor coord
 			var myAnchorAction = new SetAnchorLocation(parent, this, myInst.AnchorCoord);

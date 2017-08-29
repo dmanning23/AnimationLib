@@ -243,51 +243,13 @@ namespace AnimationLib
 					break;
 				case RagdollType.Limit:
 					{
-						//GetLimitSpring1(parentRotation, bone, joint, springStrength);
-						GetLimitSpring2(parentRotation, bone, joint, springStrength);
+						SolveLimitSpring(parentRotation, bone, joint, springStrength);
 					}
 					break;
 			}
 		}
 
-		private void GetLimitSpring1(float parentRotation, Bone bone, Joint joint, float springStrength)
-		{
-			//get the current angle of the bone
-			float firstLimit, secondLimit;
-			bone.GetRotatedLimits(parentRotation, out firstLimit, out secondLimit);
-			var currentAngle = bone.GetRagDollRotation();
-
-			//what is the ratio of the current angle between the current position and desired position?
-			var desiredAngle = (firstLimit + secondLimit) / 2f;
-			float springRatio, springAngle;
-
-			//get the direction to point the spring
-			if (currentAngle < desiredAngle)
-			{
-				//if > desired angle, get the unit vector pointing +90 degrees
-				springAngle = currentAngle + MathHelper.PiOver2;
-				springRatio = ((currentAngle - desiredAngle) / (firstLimit - desiredAngle));
-			}
-			else if (currentAngle > desiredAngle)
-			{
-				//else is < desired angle, get the unit vector pointing -90 degrees
-				springAngle = currentAngle - MathHelper.PiOver2;
-				springRatio = ((currentAngle - desiredAngle) / (secondLimit - desiredAngle));
-			}
-			else
-			{
-				springAngle = 0f;
-				springRatio = 0f;
-			}
-
-			Vector2 deltaVector = AngleToUnitVector(springAngle);
-
-			//get the total force to apply to the child joint
-			Vector2 springForce = (deltaVector * springStrength) * springRatio;
-			joint._acceleration += springForce;
-		}
-
-		private void GetLimitSpring2(float parentRotation, Bone bone, Joint joint, float springStrength)
+		private void SolveLimitSpring(float parentRotation, Bone bone, Joint joint, float springStrength)
 		{
 			//Get the current rotation
 			var rotation = bone.GetRagDollRotation();
@@ -298,23 +260,18 @@ namespace AnimationLib
 			var desiredAngle = (firstLimit + secondLimit) / 2f;
 
 			//get the direction to point the spring
-			float springRatio, springAngle;
+			float springRatio = 0f, springAngle = 0f;
 			if (actualRotation < desiredAngle)
 			{
 				//if > desired angle, get the unit vector pointing +90 degrees
-				springAngle = rotation + MathHelper.PiOver2;
+				springAngle = bone.Flipped ? rotation - MathHelper.PiOver2  : rotation + MathHelper.PiOver2;
 				springRatio = ((actualRotation - desiredAngle) / (firstLimit - desiredAngle));
 			}
 			else if (actualRotation > desiredAngle)
 			{
 				//else is < desired angle, get the unit vector pointing -90 degrees
-				springAngle = rotation - MathHelper.PiOver2;
+				springAngle = bone.Flipped ? rotation + MathHelper.PiOver2 : rotation - MathHelper.PiOver2;
 				springRatio = ((actualRotation - desiredAngle) / (secondLimit - desiredAngle));
-			}
-			else
-			{
-				springAngle = 0f;
-				springRatio = 0f;
 			}
 
 			Vector2 deltaVector = AngleToUnitVector(springAngle);
@@ -322,10 +279,6 @@ namespace AnimationLib
 			//get the total force to apply to the child joint
 			Vector2 springForce = (deltaVector * springStrength) * springRatio;
 			joint._acceleration += springForce;
-
-			var TESTrotation = MathHelper.ToDegrees(rotation);
-			var TESTactualRotation = MathHelper.ToDegrees(actualRotation);
-			var TESTspringAngle = MathHelper.ToDegrees(springAngle);
 		}
 
 		public static Vector2 AngleToUnitVector(float springAngle)
