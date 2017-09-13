@@ -125,15 +125,18 @@ namespace AnimationLib
 
 		public float Width
 		{
-			get { return SourceRectangle.Width; }
+			get { return SourceRectangle.Width * Scale; }
 		}
 
 		public float Height
 		{
-			get { return SourceRectangle.Height; }
+			get { return SourceRectangle.Height * Scale; }
 		}
 
 		public TextureInfo TextureInfo => _texture;
+
+		public float Scale { get; private set; }
+		public float FragmentScale { get; private set; }
 
 		#endregion //Properties
 
@@ -155,12 +158,16 @@ namespace AnimationLib
 			ColorMaskFile = new Filename();
 			_ragdollGravity = new Vector2(0, 1500f);
 			RagdollSpring = 1.5f;
+			Scale = 1f;
+			FragmentScale = 1f;
 		}
 
 		public Image(ImageModel image)
 			: this()
 		{
 			Name = image.Name;
+			Scale = image.Scale;
+			FragmentScale = image.FragmentScale;
 			SourceRectangle = new Rectangle((int)image.UpperLeft.X,
 				(int)image.UpperLeft.Y,
 				(int)(image.LowerRight.X - image.UpperLeft.X),
@@ -259,7 +266,7 @@ namespace AnimationLib
 		{
 			if (null != _texture)
 			{
-				drawList.AddQuad(_texture, position, primaryColor, secondaryColor, rotation, isFlipped, layer);
+				drawList.AddQuad(_texture, position, primaryColor, secondaryColor, rotation, isFlipped, layer, FragmentScale);
 			}
 		}
 
@@ -294,7 +301,6 @@ namespace AnimationLib
 		/// </summary>
 		/// <returns>The flipped anchor coordinate.</returns>
 		/// <param name="isFlipped">Whether or not we want the anchor coord flipped</param>
-		/// <param name="scale">The scale to get the anchor coord</param>
 		public Vector2 GetFlippedAnchorCoord(bool isFlipped)
 		{
 			//Get the anchor coord
@@ -318,7 +324,6 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="jointIndex">the index of the joint to get the coord of</param>
 		/// <param name="isFlipped">Whether or not we want the anchor coord flipped</param>
-		/// <param name="scale">The scale to get the anchor coord</param>
 		/// <returns>The flipped anchor coordinate.</returns>
 		public Vector2 GetFlippedJointCoord(int jointIndex, bool isFlipped)
 		{

@@ -453,7 +453,7 @@ namespace AnimationLib
 		public virtual void ReadSkeletonXml(Filename filename, IRenderer renderer, ContentManager content = null)
 		{
 			SkeletonFile = filename;
-			var skelModel = new SkeletonModel(filename, Scale);
+			var skelModel = new SkeletonModel(filename, Scale, 1f);
 			skelModel.ReadXmlFile(content);
 			Skeleton.Load(skelModel, renderer);
 		}

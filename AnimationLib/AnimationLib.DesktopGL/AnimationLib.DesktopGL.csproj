@@ -39,7 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="DrawlistBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DrawlistBuddy.1.0.4\lib\net451\DrawlistBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\DrawlistBuddy.1.0.6\lib\net451\DrawlistBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FilenameBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -75,7 +75,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RenderBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\AnimationTool\packages\RenderBuddy.1.0.13\lib\net451\RenderBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.1.0.15\lib\net451\RenderBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ResolutionBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

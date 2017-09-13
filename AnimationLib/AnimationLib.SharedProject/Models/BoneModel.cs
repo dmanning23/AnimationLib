@@ -45,6 +45,7 @@ namespace AnimationLib
 		public float RagdollWeightRatio { get; set; }
 
 		private float Scale { get; set; }
+		private float FragmentScale { get; set; }
 
 		#endregion //Properties
 
@@ -53,9 +54,10 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public BoneModel(float scale)
+		public BoneModel(float scale, float fragmentScale)
 		{
 			Scale = scale;
+			FragmentScale = fragmentScale;
 			Bones = new List<BoneModel>();
 			Joints = new List<JointModel>();
 			Images = new List<ImageModel>();
@@ -70,7 +72,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="bone"></param>
 		public BoneModel(Bone bone)
-			: this(1f)
+			: this(1f, 1f)
 		{
 			Name = bone.Name;
 			Colorable = bone.Colorable;
@@ -194,14 +196,14 @@ namespace AnimationLib
 
 		public void ReadImage(XmlNode node)
 		{
-			var image = new ImageModel(Scale);
+			var image = new ImageModel(Scale, FragmentScale);
 			XmlFileBuddy.ReadChildNodes(node, image.ParseXmlNode);
 			Images.Add(image);
 		}
 
 		public void ReadChildBone(XmlNode node)
 		{
-			var bone = new BoneModel(Scale);
+			var bone = new BoneModel(Scale, FragmentScale);
 			XmlFileBuddy.ReadChildNodes(node, bone.ParseXmlNode);
 			Bones.Add(bone);
 		}

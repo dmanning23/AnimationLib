@@ -21,6 +21,17 @@ namespace AnimationLib
 
 		private float Scale { get; set; }
 
+		private float _fragmentScale;
+		public float FragmentScale
+		{
+			get { return _fragmentScale; }
+			set
+			{
+				_fragmentScale = value;
+				Scale *= _fragmentScale;
+			}
+		}
+
 		#endregion //Properties
 
 		#region Methods
@@ -31,6 +42,7 @@ namespace AnimationLib
 		public GarmentFragmentModel(float scale, ContentManager content = null)
 		{
 			Scale = scale;
+			_fragmentScale = 1f;
 			Content = content;
 		}
 
@@ -41,8 +53,8 @@ namespace AnimationLib
 			: this(1f)
 		{
 			Skeleton = new GarmentSkeletonModel(fragment.SkeletonFile, fragment.AnimationContainer.Skeleton as GarmentSkeleton);
-
 			AnimationContainer = new AnimationsModel(fragment.AnimationFile, fragment.AnimationContainer);
+			FragmentScale = fragment.FragmentScale;
 		}
 
 		#endregion //Methods
@@ -68,7 +80,7 @@ namespace AnimationLib
 						{
 							//read in the model 
 							var skeletonFile = new Filename(value);
-							Skeleton = new GarmentSkeletonModel(skeletonFile, Scale);
+							Skeleton = new GarmentSkeletonModel(skeletonFile, Scale, FragmentScale);
 							Skeleton.ReadXmlFile(Content);
 						}
 						break;
@@ -78,6 +90,12 @@ namespace AnimationLib
 							var animationFile = new Filename(value);
 							AnimationContainer = new AnimationsModel(animationFile, Scale);
 							AnimationContainer.ReadXmlFile(Content);
+						}
+						break;
+					case "scale":
+						{
+							//Make sure to put the scale first in the file!
+							FragmentScale = Convert.ToSingle(value);
 						}
 						break;
 					default:
@@ -97,6 +115,13 @@ namespace AnimationLib
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("fragment");
+
+			if (1f != FragmentScale)
+			{
+				xmlWriter.WriteStartElement("scale");
+				xmlWriter.WriteString(Scale.ToString());
+				xmlWriter.WriteEndElement();
+			}
 
 			//write out model filename to use
 			xmlWriter.WriteStartElement("model");

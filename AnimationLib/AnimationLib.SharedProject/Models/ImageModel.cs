@@ -48,7 +48,8 @@ namespace AnimationLib
 		/// </summary>
 		public List<PhysicsLineModel> Lines { get; private set; }
 
-		private float Scale { get; set; }
+		public float Scale { get; private set; }
+		public float FragmentScale { get; set; }
 
 		#endregion
 
@@ -57,9 +58,10 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public ImageModel(float scale)
+		public ImageModel(float scale, float fragmentScale)
 		{
 			Scale = scale;
+			FragmentScale = fragmentScale;
 			JointCoords = new List<JointDataModel>();
 			Circles = new List<PhysicsCircleModel>();
 			Lines = new List<PhysicsLineModel>();
@@ -74,8 +76,10 @@ namespace AnimationLib
 		}
 
 		public ImageModel(Image image)
-			: this(1f)
+			: this(1f, 1f)
 		{
+			Scale = image.Scale;
+			FragmentScale = image.FragmentScale;
 			Name = image.Name;
 			UpperLeft = new Vector2(image.SourceRectangle.Left, image.SourceRectangle.Top);
 			LowerRight = new Vector2(image.SourceRectangle.Right, image.SourceRectangle.Bottom);
@@ -274,7 +278,8 @@ namespace AnimationLib
 
 			//write out lower right coords
 			xmlWriter.WriteStartElement("anchorcoord");
-			xmlWriter.WriteString(AnchorCoord.StringFromVector());
+			var anchor = AnchorCoord / FragmentScale;
+			xmlWriter.WriteString(anchor.StringFromVector());
 			xmlWriter.WriteEndElement();
 
 			//write out joint locations

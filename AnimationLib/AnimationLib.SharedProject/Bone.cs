@@ -1422,23 +1422,17 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="screenLocation">screen coord</param>
 		/// <return></return>
-		public Vector2 ConvertTranslation(Vector2 screenLocation, float scale)
+		public Vector2 ConvertTranslation(Vector2 screenLocation)
 		{
-			//get difference between current angle and the one specified in the animation to get parent rotation
-			float parentAngle = GetParentAngle();
-			Matrix myRotation = MatrixExt.Orientation(-parentAngle);
-			var rotatedPrev = myRotation.Multiply(AnchorJoint.Position);
-			var rotatedScreen = myRotation.Multiply(screenLocation);
-
-			var myLocation = rotatedScreen - rotatedPrev;
+			//get the vector from this dude to the screen location
+			var myLocation = screenLocation - AnchorJoint.Position;
 			if (Flipped)
 			{
 				myLocation.X *= -1f;
 			}
 
-			//compensate for the graphical scaling
-			myLocation /= scale;
-
+			float parentAngle = GetParentAngle();
+			Matrix myRotation = MatrixExt.Orientation(-parentAngle);
 			return myRotation.Multiply(myLocation);
 		}
 

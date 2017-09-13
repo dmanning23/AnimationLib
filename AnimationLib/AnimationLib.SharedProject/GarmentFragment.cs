@@ -26,13 +26,15 @@ namespace AnimationLib
 
 		public string BoneName
 		{
-			get 
+			get
 			{
 				Debug.Assert(null != AnimationContainer);
 				Debug.Assert(null != AnimationContainer.Skeleton);
-				return AnimationContainer.Skeleton.RootBone.Name; 
+				return AnimationContainer.Skeleton.RootBone.Name;
 			}
 		}
+
+		public float FragmentScale { get; set; }
 
 		#endregion //Properties
 
@@ -44,14 +46,17 @@ namespace AnimationLib
 		public GarmentFragment()
 		{
 			AnimationContainer = new GarmentAnimationContainer();
+			FragmentScale = 1f;
 		}
 
 		public GarmentFragment(GarmentFragmentModel fragment, IRenderer renderer)
 			: this()
 		{
-            SkeletonFile = new Filename(fragment.Skeleton.Filename);
-            AnimationFile = new Filename(fragment.AnimationContainer.Filename);
-            AnimationContainer = new GarmentAnimationContainer(fragment.AnimationContainer, fragment.Skeleton, renderer);
+			SkeletonFile = new Filename(fragment.Skeleton.Filename);
+			AnimationFile = new Filename(fragment.AnimationContainer.Filename);
+			AnimationContainer = new GarmentAnimationContainer(fragment.AnimationContainer, fragment.Skeleton, renderer);
+			AnimationContainer.Scale = fragment.FragmentScale;
+			FragmentScale = fragment.FragmentScale;
 		}
 
 		#endregion //Initialization

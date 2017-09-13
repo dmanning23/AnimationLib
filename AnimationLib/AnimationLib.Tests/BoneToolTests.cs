@@ -128,7 +128,7 @@ namespace AnimationLib.Tests
 		public void ConvertTranslation_Regular_X()
 		{
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
-			var result = _bone.ConvertTranslation(new Vector2(25f, 45f), 1f);
+			var result = _bone.ConvertTranslation(new Vector2(25f, 45f));
 			Assert.AreEqual(5f, result.X);
 		}
 
@@ -136,7 +136,7 @@ namespace AnimationLib.Tests
 		public void ConvertTranslation_Regular_Y()
 		{
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
-			var result = _bone.ConvertTranslation(new Vector2(25f, 45f), 1f);
+			var result = _bone.ConvertTranslation(new Vector2(25f, 45f));
 			Assert.AreEqual(15f, result.Y);
 		}
 
@@ -144,7 +144,7 @@ namespace AnimationLib.Tests
 		public void ConvertTranslation_Scaled_X()
 		{
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
-			var result = _bone.ConvertTranslation(new Vector2(30f, 60f), 2f);
+			var result = _bone.ConvertTranslation(new Vector2(30f, 60f));
 			Assert.AreEqual(5f, result.X);
 		}
 
@@ -152,7 +152,7 @@ namespace AnimationLib.Tests
 		public void ConvertTranslation_Scaled_Y()
 		{
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
-			var result = _bone.ConvertTranslation(new Vector2(30f, 60f), 2f);
+			var result = _bone.ConvertTranslation(new Vector2(30f, 60f));
 			Assert.AreEqual(15f, result.Y);
 		}
 
@@ -162,7 +162,7 @@ namespace AnimationLib.Tests
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
 			_bone.AnchorJoint.CurrentKeyElement.Rotation = MathHelper.ToRadians(90f);
 			_bone.Rotation = MathHelper.ToRadians(90f);
-			var result = _bone.ConvertTranslation(new Vector2(25f, 45f), 1f);
+			var result = _bone.ConvertTranslation(new Vector2(25f, 45f));
 			Assert.AreEqual(5f, result.X);
 		}
 
@@ -172,7 +172,7 @@ namespace AnimationLib.Tests
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
 			_bone.AnchorJoint.CurrentKeyElement.Rotation = MathHelper.ToRadians(90f);
 			_bone.Rotation = MathHelper.ToRadians(90f);
-			var result = _bone.ConvertTranslation(new Vector2(15f, 45f), 1f);
+			var result = _bone.ConvertTranslation(new Vector2(15f, 45f));
 			Assert.AreEqual(15f, result.Y);
 		}
 
@@ -181,7 +181,7 @@ namespace AnimationLib.Tests
 		{
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
 			_bone.Flipped = true;
-			var result = _bone.ConvertTranslation(new Vector2(25f, 45f), 1f);
+			var result = _bone.ConvertTranslation(new Vector2(25f, 45f));
 			Assert.AreEqual(-5f, result.X);
 		}
 
@@ -190,7 +190,7 @@ namespace AnimationLib.Tests
 		{
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
 			_bone.Flipped = true;
-			var result = _bone.ConvertTranslation(new Vector2(25f, 45f), 1f);
+			var result = _bone.ConvertTranslation(new Vector2(25f, 45f));
 			Assert.AreEqual(15f, result.Y);
 		}
 
@@ -199,7 +199,7 @@ namespace AnimationLib.Tests
 		{
 			_bone.AnchorJoint.Position = new Vector2(20f, 30f);
 			_bone.Flipped = true;
-			var result = _bone.ConvertTranslation(new Vector2(30f, 60f), 2f);
+			var result = _bone.ConvertTranslation(new Vector2(30f, 60f));
 			Assert.AreEqual(-5f, result.X);
 		}
 
@@ -210,7 +210,7 @@ namespace AnimationLib.Tests
 			_bone.Flipped = true;
 			_bone.AnchorJoint.CurrentKeyElement.Rotation = MathHelper.ToRadians(90f);
 			_bone.Rotation = MathHelper.ToRadians(90f);
-			var result = _bone.ConvertTranslation(new Vector2(25f, 45f), 1f);
+			var result = _bone.ConvertTranslation(new Vector2(25f, 45f));
 			Assert.AreEqual(-5f, result.X);
 		}
 
