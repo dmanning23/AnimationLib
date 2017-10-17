@@ -71,10 +71,6 @@ namespace AnimationLib
 				{
 					CurrentAnimation = Animations[_animationIndex];
 				}
-				else
-				{
-					CurrentAnimation = null;
-				}
 			}
 		}
 
