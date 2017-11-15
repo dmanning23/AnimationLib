@@ -418,26 +418,22 @@ namespace AnimationLib
 		/// <returns>the index of the first instance of an image using that name, -1 if not found</returns>
 		public Image GetImage(string imageName)
 		{
-			//don't check for default value
-			if (!string.IsNullOrEmpty(imageName))
+			//check my images
+			for (var i = 0; i < Images.Count; i++)
 			{
-				//check my images
-				for (var i = 0; i < Images.Count; i++)
+				if (Images[i].Name == imageName)
 				{
-					if (Images[i].Name == imageName)
-					{
-						return Images[i];
-					}
+					return Images[i];
 				}
+			}
 
-				//check child bones images
-				for (var i = 0; i < Bones.Count; i++)
+			//check child bones images
+			for (var i = 0; i < Bones.Count; i++)
+			{
+				var result = Bones[i].GetImage(imageName);
+				if (null != result)
 				{
-					var result = Bones[i].GetImage(imageName);
-					if (null != result)
-					{
-						return result;
-					}
+					return result;
 				}
 			}
 
