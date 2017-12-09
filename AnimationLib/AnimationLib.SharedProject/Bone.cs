@@ -482,12 +482,15 @@ namespace AnimationLib
 		/// <returns></returns>
 		public int GetImageIndex(Image image)
 		{
-			//check my images
-			for (var i = 0; i < Images.Count; i++)
+			if (null != image)
 			{
-				if (Images[i].Name == image.Name)
+				//check my images
+				for (var i = 0; i < Images.Count; i++)
 				{
-					return i;
+					if (Images[i].Name == image.Name)
+					{
+						return i;
+					}
 				}
 			}
 			

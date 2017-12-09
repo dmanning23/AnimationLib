@@ -126,8 +126,7 @@ float4 main(float4 position : SV_POSITION, float4 color : COLOR0, float2 texCoor
 				}
 
 				//Compute lighting.
-				//float lightAmount = saturate(dot(normal.xyz, rotatedLight)) * PointLightBrightness[i];
-				float lightAmount = max(dot(normal.xyz, rotatedLight), 0.0) * PointLightBrightness[i];
+				float lightAmount = saturate(dot(normal.xyz, rotatedLight)) * PointLightBrightness[i];
 				lightColor += (lightAmount * PointLightColors[i]);
 
 				//if (lightAmount > 0.0)
