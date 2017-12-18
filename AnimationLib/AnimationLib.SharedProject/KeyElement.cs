@@ -157,7 +157,10 @@ namespace AnimationLib
 			Flip = inst.Flip;
 			KeyFrame = inst.KeyFrame;
 			Ragdoll = inst.Ragdoll;
-			_bone = inst._bone;
+			if (inst._bone != null)
+			{
+				_bone = inst._bone;
+			}
 		}
 
 		#endregion //Initialization

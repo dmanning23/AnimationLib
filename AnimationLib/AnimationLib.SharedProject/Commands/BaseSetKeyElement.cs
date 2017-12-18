@@ -69,11 +69,6 @@ namespace AnimationLib.Commands
 			Debug.Assert(null != replacementKey);
 			Debug.Assert(null != Animation);
 
-			if (replacedKey.BoneName != replacementKey.BoneName)
-			{
-				return false;
-			}
-
 			//find the keyjoint we want 
 			KeyJoint myKeyJoint = Animation.KeyBone.GetKeyJoint(replacementKey.BoneName);
 			if (null == myKeyJoint)
