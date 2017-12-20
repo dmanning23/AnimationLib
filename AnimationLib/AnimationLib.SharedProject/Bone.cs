@@ -1181,7 +1181,7 @@ namespace AnimationLib
 			secondLimit = AnchorJoint.SecondLimit;
 
 			//swap the limits if the bone is flipped
-			if (Flipped)
+			if (AnchorJoint.CurrentKeyElement.Flip)
 			{
 				float temp = firstLimit;
 				firstLimit = secondLimit * -1.0f;
@@ -1195,7 +1195,7 @@ namespace AnimationLib
 			secondLimit = AnchorJoint.SecondLimit;
 
 			//swap the limits if the bone is flipped
-			if (Flipped)
+			if (AnchorJoint.CurrentKeyElement.Flip)
 			{
 				float temp = firstLimit;
 				firstLimit = secondLimit * -1.0f;
