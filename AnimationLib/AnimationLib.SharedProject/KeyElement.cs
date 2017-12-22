@@ -85,7 +85,17 @@ namespace AnimationLib
 			}
 		}
 
-		public Bone Bone { get { return _bone; } }
+		public Bone Bone
+		{
+			get
+			{
+				return _bone;
+			}
+			set
+			{
+				_bone = value;
+			}
+		}
 
 		#endregion //Properties
 

@@ -32,6 +32,14 @@ namespace AnimationLib
 			}
 		}
 
+		public Bone Bone
+		{
+			get
+			{
+				return _bone;
+			}
+		}
+
 		#endregion
 
 		#region Methods
@@ -182,27 +190,27 @@ namespace AnimationLib
 			if (nameTokens.Length >= 2)
 			{
 				//check if this bone needs to be mirrored
-				string strJointName = "";
-				bool bCopy = false;
+				string jointName = "";
+				bool copy = false;
 				if (nameTokens[0] == "Left")
 				{
-					strJointName = "Right";
-					bCopy = true;
+					jointName = "Right";
+					copy = true;
 				}
 				else if (nameTokens[0] == "Right")
 				{
-					strJointName = "Left";
-					bCopy = true;
+					jointName = "Left";
+					copy = true;
 				}
 
-				if (bCopy)
+				if (copy)
 				{
 					for (int i = 1; i < nameTokens.Length; i++)
 					{
-						strJointName += " ";
-						strJointName += nameTokens[i];
+						jointName += " ";
+						jointName += nameTokens[i];
 					}
-					KeyJoint mirrorJoint = rootBone.GetKeyJoint(strJointName);
+					KeyJoint mirrorJoint = rootBone.GetKeyJoint(jointName);
 					if (null != mirrorJoint)
 					{
 						//get the current keyframe of the mirror joint
@@ -221,6 +229,8 @@ namespace AnimationLib
 						}
 
 						//set the keyframe up for the other dude
+						currentKeyElement.Bone = mirrorJoint.Bone;
+						replacementKeyElement.Bone = mirrorJoint.Bone;
 						replacementKeyElement.KeyFrame = true;
 						replacementKeyElement.Layer = currentKeyElement.Layer;
 
