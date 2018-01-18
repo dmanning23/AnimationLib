@@ -4,22 +4,22 @@
     "CollisionBuddy": "1.0.3",
     "DrawlistBuddy": "1.0.16",
     "FilenameBuddy": "1.0.9",
-    "GameTimer": "1.0.4",
+    "GameTimer": "1.0.5",
     "MatrixExtensions": "1.0.2",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "MonoGame.Framework.WindowsUniversal": "3.5.1.1679",
+    "MonoGame.Framework.WindowsUniversal": "3.6.0.1625",
     "PrimitiveBuddy": "1.0.3",
-    "RandomExtensions.dmanning23": "1.0.3",
-    "RenderBuddy": "1.0.22",
-    "ResolutionBuddy": "1.0.11",
-    "System.Xml.ReaderWriter": "4.3.0",
+    "RandomExtensions.dmanning23": "1.0.4",
+    "RenderBuddy": "1.0.23",
+    "ResolutionBuddy": "1.0.12",
+    "System.Xml.ReaderWriter": "4.3.1",
     "System.Xml.XmlDocument": "4.3.0",
     "UndoRedoBuddy": "1.0.1",
     "Vector2Extensions": "1.0.8",
     "XmlBuddy": "1.0.16"
   },
   "frameworks": {
-    "uap10.0": {}
+    "uap10.0.10240": {}
   },
   "runtimes": {
     "win10-arm": {},

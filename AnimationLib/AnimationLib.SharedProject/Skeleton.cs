@@ -17,7 +17,7 @@ namespace AnimationLib
 		/// </summary>
 		public Bone RootBone { get; protected set; }
 
-		protected AnimationContainer Animations { get; set; }
+		public AnimationContainer Animations { get; private set; }
 
 		#endregion
 

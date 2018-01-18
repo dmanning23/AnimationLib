@@ -50,14 +50,14 @@ namespace AnimationLib
 			HasPhysics = false;
 		}
 
-		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer, float scale = 1f)
-			: this(scale)
+		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer)
+			: this(skeleton.Animations.Scale)
 		{
 			InitializeGarment(null, filename, skeleton, renderer);
 		}
 
-		public Garment(ContentManager content, Filename filename, Skeleton skeleton, IRenderer renderer, float scale = 1f)
-			: this(scale)
+		public Garment(ContentManager content, Filename filename, Skeleton skeleton, IRenderer renderer)
+			: this(skeleton.Animations.Scale)
 		{
 			InitializeGarment(content, filename, skeleton, renderer);
 		}
