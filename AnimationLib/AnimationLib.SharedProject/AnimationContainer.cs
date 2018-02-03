@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Vector2Extensions;
+using RandomExtensions;
 
 namespace AnimationLib
 {
@@ -17,7 +18,9 @@ namespace AnimationLib
 	/// </summary>
 	public class AnimationContainer
 	{
-		#region Member Variables
+		#region Fields
+
+		private static Random _random = new Random();
 
 		/// <summary>
 		/// The way the current animation is being played
@@ -29,7 +32,7 @@ namespace AnimationLib
 		/// </summary>
 		private int _animationIndex;
 
-		#endregion
+		#endregion //Fields
 
 		#region Properties
 
@@ -97,7 +100,7 @@ namespace AnimationLib
 
 		public float Scale { get; set; }
 
-		#endregion
+		#endregion //Properties
 
 		#region Initialization
 
@@ -191,6 +194,7 @@ namespace AnimationLib
 				}
 				break;
 
+				case EPlayback.LoopRandom:
 				case EPlayback.Loop:
 				{
 					//apply the stop watch to the aniiterator
@@ -319,6 +323,13 @@ namespace AnimationLib
 		public void RestartAnimation()
 		{
 			StopWatch.Start();
+
+			//Add a little bit of time for a randomloop animation
+			if (_playback == EPlayback.LoopRandom)
+			{
+				StopWatch.AppendTime(_random.NextFloat());
+			}
+
 			ResetRagdoll = true;
 		}
 

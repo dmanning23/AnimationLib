@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>AnimationLib</id>
-		<version>1.0.25</version>
+		<version>1.0.27</version>
 		<title>AnimationLib</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -71,7 +71,7 @@
 			</group>
 
 			<group targetFramework="net451">
-				<dependency id="MonoGame.Framework.DesktopGL" version="3.5"/>
+				<dependency id="MonoGame.Framework.WindowsDX" version="3.5"/>
 				<dependency id="CameraBuddy" version="1.0.1"/>
 				<dependency id="CollisionBuddy" version="1.0"/>
 				<dependency id="DrawListBuddy" version="1.0"/>
@@ -103,9 +103,9 @@
 		<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.pdb" target="lib\uap10.0\AnimationLib.WindowsUniversal.pdb" />
 		<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.dll" target="lib\uap10.0\AnimationLib.WindowsUniversal.dll" />
 
-		<!--DesktopGL-->
-		<file src="AnimationLib.DesktopGL\bin\Release\AnimationLib.DesktopGL.pdb" target="lib\net451\AnimationLib.DesktopGL.pdb" />
-		<file src="AnimationLib.DesktopGL\bin\Release\AnimationLib.DesktopGL.dll" target="lib\net451\AnimationLib.DesktopGL.dll" />
+		<!--WindowsDX-->
+		<file src="AnimationLib.WindowsDX\bin\Release\AnimationLib.WindowsDX.pdb" target="lib\net451\AnimationLib.WindowsDX.pdb" />
+		<file src="AnimationLib.WindowsDX\bin\Release\AnimationLib.WindowsDX.dll" target="lib\net451\AnimationLib.WindowsDX.dll" />
 
 	</files>
 </package>
