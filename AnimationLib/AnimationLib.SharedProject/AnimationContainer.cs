@@ -457,11 +457,12 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="filename">filename of the resource to load</param>
 		/// <param name="renderer">renderer to use to load bitmap images</param>
-		public virtual void ReadSkeletonXml(Filename filename, IRenderer renderer, ContentManager content = null)
+		/// <param name="xmlContent">this is a content manager specifically created to load xml content</param>
+		public virtual void ReadSkeletonXml(Filename filename, IRenderer renderer, ContentManager xmlContent = null)
 		{
 			SkeletonFile = filename;
 			var skelModel = new SkeletonModel(filename, Scale, 1f);
-			skelModel.ReadXmlFile(content);
+			skelModel.ReadXmlFile(xmlContent);
 			Skeleton.Load(skelModel, renderer);
 		}
 
@@ -491,14 +492,15 @@ namespace AnimationLib
 		/// read in a list of animations from a serialized xml format file
 		/// </summary>
 		/// <param name="filename">filename of the animations to load</param>
-		public virtual void ReadAnimationXml(Filename filename, ContentManager content = null)
+		/// <param name="xmlContent">this is a content manager specifically created to load xml content</param>
+		public virtual void ReadAnimationXml(Filename filename, ContentManager xmlContent = null)
 		{
 			AnimationFile = filename;
 
 			//load up the animations from file
 			Debug.Assert(null != Skeleton);
 			var animations = new AnimationsModel(filename, Scale);
-			animations.ReadXmlFile(content);
+			animations.ReadXmlFile(xmlContent);
 			LoadAnimations(animations);
 		}
 
