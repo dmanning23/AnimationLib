@@ -1,15 +1,14 @@
 using DrawListBuddy;
-using System.Linq;
 using FilenameBuddy;
 using GameTimer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using RandomExtensions;
 using RenderBuddy;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using Vector2Extensions;
-using RandomExtensions;
 
 namespace AnimationLib
 {
@@ -232,9 +231,6 @@ namespace AnimationLib
 			float rotation,
 			bool ignoreRagdoll)
 		{
-			Debug.Assert(null != Skeleton);
-			Debug.Assert(null != CurrentAnimation);
-
 			//Apply teh current animation to the bones and stuff
 			Skeleton.RootBone.AnchorJoint.Position = position;
 			Skeleton.RootBone.Update(time,
@@ -498,7 +494,6 @@ namespace AnimationLib
 			AnimationFile = filename;
 
 			//load up the animations from file
-			Debug.Assert(null != Skeleton);
 			var animations = new AnimationsModel(filename, Scale);
 			animations.ReadXmlFile(xmlContent);
 			LoadAnimations(animations);

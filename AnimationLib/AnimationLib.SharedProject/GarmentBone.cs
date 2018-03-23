@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System.Diagnostics;
 
 namespace AnimationLib
 {
@@ -74,7 +73,6 @@ namespace AnimationLib
 
 		private void Setup(GarmentAnimationContainer owner)
 		{
-			Debug.Assert(null != owner);
 			GarmentAnimationContainer = owner;
 			BoneType = EBoneType.Garment;
 			_isAddedToSkeleton = false;
@@ -95,8 +93,6 @@ namespace AnimationLib
 			int parentLayer,
 			bool ignoreRagdoll)
 		{
-			Debug.Assert(null != GarmentAnimationContainer);
-
 			//update the animation container, which will update the Bone base class 
 			GarmentAnimationContainer.Update(time, position, parentFlip, parentRotation, ignoreRagdoll, parentLayer, ParentBone);
 		}
@@ -117,8 +113,6 @@ namespace AnimationLib
 		/// </summary>
 		public void AddToSkeleton()
 		{
-			Debug.Assert(null != ParentBone);
-
 			if (!_isAddedToSkeleton)
 			{
 				ParentBone.AddGarment(this);
@@ -131,8 +125,6 @@ namespace AnimationLib
 		/// </summary>
 		public void RemoveFromSkeleton()
 		{
-			Debug.Assert(null != ParentBone);
-
 			if (_isAddedToSkeleton)
 			{
 				ParentBone.RemoveGarment(GarmentName);

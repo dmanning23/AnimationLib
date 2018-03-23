@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using UndoRedoBuddy;
 using Vector2Extensions;
 
@@ -44,7 +43,6 @@ namespace AnimationLib
 		public Animation(Skeleton skeleton)
 			: this()
 		{
-			Debug.Assert(null != skeleton);
 			KeyBone = new KeyBone(skeleton.RootBone);
 		}
 

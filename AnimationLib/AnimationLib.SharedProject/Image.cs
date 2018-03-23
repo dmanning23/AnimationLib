@@ -4,7 +4,6 @@ using FilenameBuddy;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UndoRedoBuddy;
 
 namespace AnimationLib
@@ -203,8 +202,6 @@ namespace AnimationLib
 		/// <param name="bone">the bone that owns this image</param>
 		public void SetAnchorJoint(Bone bone)
 		{
-			Debug.Assert(null != bone);
-
 			//check if there are too many joint JointCoords objects
 			while (JointCoords.Count > bone.Joints.Count)
 			{
@@ -276,8 +273,6 @@ namespace AnimationLib
 		/// <param name="index">teh index of the joint location to get</param>
 		public JointData GetJointLocation(int index)
 		{
-			Debug.Assert(index >= 0);
-			Debug.Assert(index < JointCoords.Count);
 			return JointCoords[index];
 		}
 
@@ -386,8 +381,6 @@ namespace AnimationLib
 
 		public void SetJointCoords(int index, JointData newJointCoords)
 		{
-			Debug.Assert(index >= 0);
-			Debug.Assert(index < JointCoords.Count);
 			JointCoords[index] = newJointCoords;
 		}
 
@@ -396,8 +389,6 @@ namespace AnimationLib
 			//update all the circles
 			for (var i = 0; i < Circles.Count; i++)
 			{
-				Debug.Assert(null != Circles);
-				Debug.Assert(null != Circles[i]);
 				Circles[i].Update(this, bonePosition, rotation, isFlipped);
 			}
 

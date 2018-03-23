@@ -1,9 +1,8 @@
 ﻿using FilenameBuddy;
-using RenderBuddy;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using RenderBuddy;
+using System.Collections.Generic;
 
 namespace AnimationLib
 {
@@ -84,7 +83,6 @@ namespace AnimationLib
 		private void SetGarmentBones(Skeleton skeleton)
 		{
 			//set garment name in all bones
-			Debug.Assert(Name.Length > 0);
 			for (var i = 0; i < Fragments.Count; i++)
 			{
 				Fragments[i].GarmentName = Name;

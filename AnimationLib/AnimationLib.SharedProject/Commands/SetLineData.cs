@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using UndoRedoBuddy;
+﻿using UndoRedoBuddy;
 
 namespace AnimationLib.Commands
 {
@@ -33,12 +32,6 @@ namespace AnimationLib.Commands
 
 		public SetLineData(Image myImage, int iLineIndex, PhysicsLine myNewData)
 		{
-			Debug.Assert(null != myImage);
-			Debug.Assert(null != myNewData);
-			Debug.Assert(iLineIndex >= 0);
-			Debug.Assert(iLineIndex < myImage.Lines.Count);
-			Debug.Assert(null != myImage.Lines[iLineIndex]);
-
 			m_Image = myImage;
 			m_NewData = myNewData;
 			m_iLineIndex = iLineIndex;
@@ -51,11 +44,6 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action executed successfully</returns>
 		public bool Execute()
 		{
-			Debug.Assert(null != m_Image);
-			Debug.Assert(null != m_NewData);
-			Debug.Assert(0 <= m_iLineIndex);
-			Debug.Assert(m_iLineIndex < m_Image.Lines.Count);
-
 			m_Image.Lines[m_iLineIndex] = m_NewData;
 			return true;
 		}
@@ -66,11 +54,6 @@ namespace AnimationLib.Commands
 		/// <returns>bool: whether or not the action was undone successfully</returns>
 		public bool Undo()
 		{
-			Debug.Assert(null != m_Image);
-			Debug.Assert(null != m_NewData);
-			Debug.Assert(0 <= m_iLineIndex);
-			Debug.Assert(m_iLineIndex < m_Image.Lines.Count);
-
 			m_Image.Lines[m_iLineIndex] = m_OldData;
 			return true;
 		}

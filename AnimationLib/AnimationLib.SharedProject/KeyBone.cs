@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using UndoRedoBuddy;
 
 namespace AnimationLib
@@ -120,7 +119,6 @@ namespace AnimationLib
 		/// <param name="index">the index of the child to get</param>
 		public KeyBone GetChildBone(int index)
 		{
-			Debug.Assert(index >= 0);
 			if (index < Bones.Count)
 			{
 				return Bones[index];

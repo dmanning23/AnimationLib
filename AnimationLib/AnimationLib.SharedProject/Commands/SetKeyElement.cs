@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using UndoRedoBuddy;
+﻿using UndoRedoBuddy;
 
 namespace AnimationLib.Commands
 {
@@ -14,9 +13,6 @@ namespace AnimationLib.Commands
 			KeyElement oldElement, 
 			KeyElement newElement) : base(animation)
 		{
-			Debug.Assert(null != animation);
-			Debug.Assert(null != oldElement);
-			Debug.Assert(null != newElement);
 			Animation = animation;
 			PrevKeyElement = new KeyElement(oldElement);
 			NextKeyElement = new KeyElement(newElement);

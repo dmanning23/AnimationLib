@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using UndoRedoBuddy;
 
 namespace AnimationLib.Commands
@@ -65,10 +64,6 @@ namespace AnimationLib.Commands
 
 		private bool ReplaceKeyElement(KeyElement replacedKey, KeyElement replacementKey)
 		{
-			Debug.Assert(null != replacedKey);
-			Debug.Assert(null != replacementKey);
-			Debug.Assert(null != Animation);
-
 			//find the keyjoint we want 
 			KeyJoint myKeyJoint = Animation.KeyBone.GetKeyJoint(replacementKey.BoneName);
 			if (null == myKeyJoint)

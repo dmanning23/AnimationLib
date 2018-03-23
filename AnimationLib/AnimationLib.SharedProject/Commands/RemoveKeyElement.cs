@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using UndoRedoBuddy;
+﻿using UndoRedoBuddy;
 
 namespace AnimationLib.Commands
 {
@@ -22,8 +21,6 @@ namespace AnimationLib.Commands
 		/// </summary>
 		public RemoveKeyElement(Animation animation, KeyElement oldElement)
 		{
-			Debug.Assert(null != animation);
-			Debug.Assert(null != oldElement);
 			_animation = animation;
 			_oldKeyElement = new KeyElement();
 			_oldKeyElement.Copy(oldElement);

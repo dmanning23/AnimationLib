@@ -1,8 +1,7 @@
 ﻿using FilenameBuddy;
+using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Microsoft.Xna.Framework;
 
 namespace AnimationLib
 {
@@ -28,8 +27,6 @@ namespace AnimationLib
 		{
 			get
 			{
-				Debug.Assert(null != AnimationContainer);
-				Debug.Assert(null != AnimationContainer.Skeleton);
 				return AnimationContainer.Skeleton.RootBone.Name;
 			}
 		}

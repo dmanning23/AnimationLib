@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Collections.Generic;
 using System.Xml;
 using XmlBuddy;
@@ -65,7 +64,6 @@ namespace AnimationLib
 			{
 				//find the bone for this keybone
 				var childBone = bone.GetBone(childKeyBone.Name);
-				Debug.Assert(null != childBone);
 				GetKeys(childKeyBone, childBone);
 			}
 		}
@@ -76,9 +74,6 @@ namespace AnimationLib
 			for (int i = 0; i < joint.Elements.Count; i++)
 			{
 				var key = joint.Elements[i];
-
-				//don't write out fucked up shit?
-				Debug.Assert(key.KeyFrame);
 
 				//don't write out reduntant key elements
 				if ((i > 0) && (i < (joint.Elements.Count - 1)))

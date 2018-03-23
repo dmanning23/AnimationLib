@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UndoRedoBuddy;
 using Vector2Extensions;
 
@@ -279,9 +278,6 @@ namespace AnimationLib
 					return;
 				}
 			}
-
-			//if it gets here, for some reason that garment wasnt found
-			Debug.Assert(false);
 		}
 
 		/// <summary>
@@ -639,8 +635,6 @@ namespace AnimationLib
 								   int parentLayer,
 								   bool ignoreRagdoll)
 		{
-			Debug.Assert(null != AnchorJoint);
-
 			//update my anchor joint
 			UpdateAnchorJoint(time, keyBone);
 
@@ -1060,8 +1054,6 @@ namespace AnimationLib
 
 		public void RunVerlet(float timeStep)
 		{
-			Debug.Assert(null != AnchorJoint);
-
 			//solve all the joints
 			if (AnchorJoint.CurrentKeyElement.Ragdoll)
 			{
@@ -1080,8 +1072,6 @@ namespace AnimationLib
 
 		public void SolveConstraints(bool isParentRagdoll)
 		{
-			Debug.Assert(null != AnchorJoint);
-
 			if ((ImageIndex >= 0) && (AnchorJoint.CurrentKeyElement.Ragdoll || isParentRagdoll))
 			{
 				//update all the joints
@@ -1216,7 +1206,6 @@ namespace AnimationLib
 				Vector2 diff = Joints[0].Position - AnchorPosition;
 
 				//get the desired rotation 
-				Debug.Assert(null != Joints[0].Data);
 				Vector2 anchorVect = Joints[0].Data.AnchorVect;
 
 				//adjust for the flip
@@ -1237,8 +1226,6 @@ namespace AnimationLib
 		public void PostUpdate(bool isParentRagdoll)
 		{
 			//update this dudes rotation
-			Debug.Assert(null != AnchorJoint);
-			Debug.Assert(null != AnchorJoint.CurrentKeyElement);
 			if ((0 <= ImageIndex) && (AnchorJoint.CurrentKeyElement.Ragdoll || isParentRagdoll))
 			{
 				if (RagdollType.Float == AnchorJoint.Data.RagdollType && (0 < Joints.Count))
@@ -1548,8 +1535,6 @@ namespace AnimationLib
 		/// <param name="actionCollection"></param>
 		public void MirrorRightToLeft(Bone rootBone, CommandStack actionCollection)
 		{
-			Debug.Assert(null != rootBone);
-
 			//Check if this bone starts with the work "left"
 			string[] nameTokens = Name.Split(new Char[] { ' ' });
 			if ((nameTokens.Length >= 2) && (nameTokens[0] == "Left"))
@@ -1583,8 +1568,6 @@ namespace AnimationLib
 		/// <param name="actionCollection"></param>
 		private void Copy(Bone sourceBone, CommandStack actionCollection)
 		{
-			Debug.Assert(null != sourceBone);
-
 			for (var i = 0; i < Images.Count; i++)
 			{
 				//check if the other bone uses this image

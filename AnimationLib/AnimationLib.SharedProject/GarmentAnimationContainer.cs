@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace AnimationLib
 {
@@ -28,8 +27,6 @@ namespace AnimationLib
 		{
 			get
 			{
-				Debug.Assert(null != Skeleton);
-				Debug.Assert(Skeleton.RootBone is GarmentBone);
 				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
 				return mySkeleton.Name;
 			}
@@ -39,15 +36,11 @@ namespace AnimationLib
 		{
 			get
 			{
-				Debug.Assert(null != Skeleton);
-				Debug.Assert(Skeleton.RootBone is GarmentBone);
 				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
 				return mySkeleton.GarmentName;
 			}
 			set
 			{
-				Debug.Assert(null != Skeleton);
-				Debug.Assert(Skeleton.RootBone is GarmentBone);
 				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
 				mySkeleton.GarmentName = value;
 			}
@@ -57,8 +50,6 @@ namespace AnimationLib
 		{
 			get
 			{
-				Debug.Assert(null != Skeleton);
-				Debug.Assert(Skeleton.RootBone is GarmentBone);
 				return Skeleton.RootBone as GarmentBone;
 			}
 		}
@@ -113,8 +104,6 @@ namespace AnimationLib
 			int layer, 
 			Bone attachedBone)
 		{
-			Debug.Assert(Animations.Count == attachedBone.Images.Count);
-
 			//set teh layer to draw this dude at
 			_currentLayer = layer;
 
@@ -150,8 +139,6 @@ namespace AnimationLib
 			float rotation,
 			bool ignoreRagdoll)
 		{
-			Debug.Assert(null != Skeleton);
-
 			//Apply teh current animation to the bones and stuff
 			var currentKeyBone = CurrentAnimation.KeyBone;
 			GarmentSkeleton.UpdateBaseBone(time,
@@ -178,11 +165,7 @@ namespace AnimationLib
 			//find a Bone with the same name as the garment bone
 			var myGarmentBone = GarmentSkeleton;
 			var myBone = characterSkeleton.RootBone.GetBone(myGarmentBone.ParentBoneName);
-			Debug.Assert(null != myBone);
 			myGarmentBone.ParentBone = myBone;
-
-			//Make sure this animation container has the correct number of animations
-			Debug.Assert(Animations.Count == myBone.Images.Count);
 
 			//ok, if we are in one of the tools, reorder the animations to match the image order.
 			var myAnimations = new List<Animation>();
@@ -200,7 +183,6 @@ namespace AnimationLib
 				}
 
 				//add it to the list!
-				Debug.Assert(null != foundAnimation);
 				myAnimations.Add(foundAnimation);
 			}
 

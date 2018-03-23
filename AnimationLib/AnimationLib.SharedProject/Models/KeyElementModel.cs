@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Xml;
 using Vector2Extensions;
 using XmlBuddy;
@@ -50,8 +49,6 @@ namespace AnimationLib
 
 		public KeyElementModel(KeyElement key, Bone bone) : this(1f)
 		{
-			Debug.Assert(null != bone);
-
 			//find the image this key element uses
 			if (-1 != key.ImageIndex)
 			{
@@ -59,7 +56,6 @@ namespace AnimationLib
 				var childBone = bone.GetBone(key.BoneName);
 				if (null != childBone)
 				{
-					Debug.Assert(key.ImageIndex < childBone.Images.Count);
 					Image = childBone.Images[key.ImageIndex].Name;
 				}
 			}
