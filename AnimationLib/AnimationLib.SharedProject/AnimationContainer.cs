@@ -271,12 +271,7 @@ namespace AnimationLib
 
 			Skeleton.RootBone.SolveLimits(0.0f);
 			Skeleton.RootBone.SolveConstraints(false);
-
-			//solve all the constraints
-			for (int i = 0; i < 2; i++)
-			{
-				Skeleton.RootBone.SolveConstraints(false);
-			}
+			Skeleton.RootBone.SolveConstraints(false);
 
 			//run through the post update so the matrix is correct
 			Skeleton.RootBone.PostUpdate(false);
