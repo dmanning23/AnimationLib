@@ -670,9 +670,10 @@ namespace AnimationLib
 				//set the bones position to the anchor pos
 				Vector2 childVector = Bones[i].AnchorJoint.Position;
 
-				//if the anchor pos is not in this bone, set it to the bones pos
-				if (i >= Joints.Count)
+				//if this is def a garment, set it to the bones pos & update the anchor position too
+				if (EBoneType.Garment == Bones[i].BoneType)
 				{
+					Bones[i].AnchorJoint.Position = AnchorPosition;
 					childVector = AnchorPosition;
 				}
 
