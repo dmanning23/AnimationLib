@@ -289,7 +289,6 @@ namespace AnimationLib
 				{
 					sourceKeyElement.ImageIndex = oldKeyElement.ImageIndex;
 					sourceKeyElement.Flip = oldKeyElement.Flip;
-					sourceKeyElement.Ragdoll = oldKeyElement.Ragdoll;
 				}
 			}
 
