@@ -318,7 +318,7 @@ namespace AnimationLib
 			//Add a little bit of time for a randomloop animation
 			if (_playback == EPlayback.LoopRandom)
 			{
-				StopWatch.AppendTime(_random.NextFloat());
+				StopWatch.CurrentTime = _random.NextFloat(0f, CurrentAnimation.Length);
 			}
 
 			ResetRagdoll = true;

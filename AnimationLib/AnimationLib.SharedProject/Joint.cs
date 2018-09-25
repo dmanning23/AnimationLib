@@ -297,29 +297,36 @@ namespace AnimationLib
 		public void SolveConstraint(Joint joint, float desiredDistance, ERagdollMove movement, float weightRatio)
 		{
 			//find the current distance bewteen the two joints
-			Vector2 deltaVector = joint.Position - Position;
-			float fCurDistance = deltaVector.Length();
-			deltaVector /= fCurDistance; //normalize
+			var deltaVector = joint.Position - Position;
+			var currentDistance = deltaVector.Length();
+			if (float.IsNaN(currentDistance))
+			{
+				joint.Position = Position;
+				currentDistance = 0f;
+			}
+			else
+			{
+				deltaVector /= currentDistance; //normalize
+			}
 
 			//Check if we are floating instead of rotating
-			float fDiff = 0.0f;
+			var fDiff = 0.0f;
 			if (RagdollType.Float == Data.RagdollType)
 			{
-				float fMyFloatRadius = Data.FloatRadius;
-				if (fCurDistance < fMyFloatRadius)
+				if (currentDistance < Data.FloatRadius)
 				{
 					//The distance is less that the amount of float, dont bother constraining
 					return;
 				}
 				else
 				{
-					fDiff = (fCurDistance - fMyFloatRadius);
+					fDiff = (currentDistance - Data.FloatRadius);
 				}
 			}
 			else
 			{
 				//find the diff between the two
-				fDiff = (fCurDistance - desiredDistance);
+				fDiff = (currentDistance - desiredDistance);
 			}
 
 			if (0.0f != fDiff)
@@ -340,14 +347,14 @@ namespace AnimationLib
 					case ERagdollMove.OnlyHim:
 						{
 							//only move the other dude
-							Vector2 halfVector = deltaVector * fDiff;
+							var halfVector = deltaVector * fDiff;
 							joint.Position = joint.Position - halfVector;
 						}
 						break;
 					default:
 						{
 							//only move me
-							Vector2 halfVector = deltaVector * fDiff;
+							var halfVector = deltaVector * fDiff;
 							_position = Position + halfVector;
 						}
 						break;

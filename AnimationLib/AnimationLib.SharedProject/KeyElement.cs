@@ -16,17 +16,6 @@ namespace AnimationLib
 
 	public class KeyElement
 	{
-		#region Fields
-
-		/// <summary>
-		/// the translation for this frame
-		/// </summary>
-		private Vector2 _translation;
-
-		private Bone _bone;
-
-		#endregion //Fields
-
 		#region Properties
 
 		/// <summary>
@@ -61,13 +50,9 @@ namespace AnimationLib
 		public bool KeyFrame { get; set; }
 
 		/// <summary>
-		/// Get or set the m_Translation member variable
+		/// the translation for this frame
 		/// </summary>
-		public Vector2 Translation
-		{
-			get { return _translation; }
-			set { _translation = value; }
-		}
+		public Vector2 Translation { get; set; }
 
 		/// <summary>
 		/// whether or not to turn on ragdoll physics
@@ -81,21 +66,11 @@ namespace AnimationLib
 		{
 			get
 			{
-				return _bone.Name;
+				return Bone.Name;
 			}
 		}
 
-		public Bone Bone
-		{
-			get
-			{
-				return _bone;
-			}
-			set
-			{
-				_bone = value;
-			}
-		}
+		public Bone Bone { get; set; }
 
 		#endregion //Properties
 
@@ -106,7 +81,7 @@ namespace AnimationLib
 		/// </summary>
 		public KeyElement()
 		{
-			_translation = Vector2.Zero;
+			Translation = Vector2.Zero;
 			Time = 0;
 			Rotation = 0.0f;
 			Layer = -1;
@@ -114,12 +89,12 @@ namespace AnimationLib
 			Flip = false;
 			KeyFrame = false;
 			Ragdoll = false;
-			_bone = null;
+			Bone = null;
 		}
 
 		public KeyElement(Bone bone) : this()
 		{
-			_translation = Vector2.Zero;
+			Translation = Vector2.Zero;
 			Time = 0;
 			Rotation = 0.0f;
 			Layer = -1;
@@ -127,7 +102,7 @@ namespace AnimationLib
 			Flip = false;
 			KeyFrame = false;
 			Ragdoll = false;
-			_bone = bone;
+			Bone = bone;
 		}
 
 		/// <summary>
@@ -150,16 +125,16 @@ namespace AnimationLib
 			Ragdoll = key.Ragdoll;
 
 			//set the image index
-			_bone = skeleton.RootBone.GetBone(key.Joint);
-			if (_bone != null)
+			Bone = skeleton.RootBone.GetBone(key.Joint);
+			if (Bone != null)
 			{
-				ImageIndex = _bone.GetImageIndex(key.Image);
+				ImageIndex = Bone.GetImageIndex(key.Image);
 			}
 		}
 
 		public void Copy(KeyElement inst)
 		{
-			_translation = inst._translation;
+			Translation = inst.Translation;
 			Time = inst.Time;
 			Rotation = inst.Rotation;
 			Layer = inst.Layer;
@@ -167,9 +142,9 @@ namespace AnimationLib
 			Flip = inst.Flip;
 			KeyFrame = inst.KeyFrame;
 			Ragdoll = inst.Ragdoll;
-			if (inst._bone != null)
+			if (inst.Bone != null)
 			{
-				_bone = inst._bone;
+				Bone = inst.Bone;
 			}
 		}
 
