@@ -1536,29 +1536,35 @@ namespace AnimationLib
 		/// <param name="actionCollection"></param>
 		public void MirrorRightToLeft(Bone rootBone, CommandStack actionCollection)
 		{
-			//Check if this bone starts with the work "left"
-			string[] nameTokens = Name.Split(new Char[] { ' ' });
-			if ((nameTokens.Length >= 2) && (nameTokens[0] == "Left"))
-			{
-				//find if there is a matching bone that starts with "Right"
-				string strRightBone = "Right";
-				for (var i = 1; i < nameTokens.Length; i++)
-				{
-					strRightBone += " ";
-					strRightBone += nameTokens[i];
-				}
-				Bone mirrorBone = rootBone.GetBone(strRightBone);
-				if (null != mirrorBone)
-				{
-					//copy that dude's info into this guy
-					Copy(mirrorBone, actionCollection);
-				}
-			}
+			MirrorRightToBoneName(rootBone, actionCollection, "Left");
+			MirrorRightToBoneName(rootBone, actionCollection, "Middle");
 
 			//mirror all the child bones too
 			for (var i = 0; i < Bones.Count; i++)
 			{
 				Bones[i].MirrorRightToLeft(rootBone, actionCollection);
+			}
+		}
+
+		private void MirrorRightToBoneName(Bone rootBone, CommandStack actionCollection, string bonePrefix)
+		{
+			//Check if this bone starts with a word that matches the bone prefix
+			var nameTokens = Name.Split(new Char[] { ' ' });
+			if ((nameTokens.Length >= 2) && (nameTokens[0] == bonePrefix))
+			{
+				//find if there is a matching bone that starts with "Right"
+				var matchingRightBone = "Right";
+				for (var i = 1; i < nameTokens.Length; i++)
+				{
+					matchingRightBone += " ";
+					matchingRightBone += nameTokens[i];
+				}
+				var mirrorBone = rootBone.GetBone(matchingRightBone);
+				if (null != mirrorBone)
+				{
+					//copy that dude's info into this guy
+					Copy(mirrorBone, actionCollection);
+				}
 			}
 		}
 

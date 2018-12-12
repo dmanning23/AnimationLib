@@ -202,6 +202,11 @@ namespace AnimationLib
 					jointName = "Left";
 					copy = true;
 				}
+				else if (nameTokens[0] == "Middle")
+				{
+					jointName = "Right";
+					copy = true;
+				}
 
 				if (copy)
 				{
