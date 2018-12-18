@@ -335,7 +335,7 @@ namespace AnimationLib
 		public void Copy(Bone parent, Image myInst, CommandStack actionCollection)
 		{
 			Name = myInst.Name;
-			_texture = new TextureInfo(myInst.TextureInfo);
+			_texture = (null != myInst.TextureInfo) ? new TextureInfo(myInst.TextureInfo) : null;
 			ImageFile = new Filename(myInst.ImageFile);
 			NormalMapFile = new Filename(myInst.NormalMapFile);
 			ColorMaskFile = new Filename(myInst.ColorMaskFile);
