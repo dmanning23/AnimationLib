@@ -51,6 +51,8 @@ namespace AnimationLib
 			}
 		}
 
+		public override bool IsGarment => true;
+
 		#endregion //Properties
 
 		#region Initialization
@@ -74,7 +76,6 @@ namespace AnimationLib
 		private void Setup(GarmentAnimationContainer owner)
 		{
 			GarmentAnimationContainer = owner;
-			BoneType = EBoneType.Garment;
 			_isAddedToSkeleton = false;
 		}
 

@@ -49,7 +49,7 @@ namespace AnimationLib.Commands
 			animation = new Animation(animationContainer.Skeleton, animationModel);
 
 			//add the animation
-			animationContainer.Animations.Add(animation);
+			animationContainer.Animations[animationName] = animation;
 
 			return true;
 		}

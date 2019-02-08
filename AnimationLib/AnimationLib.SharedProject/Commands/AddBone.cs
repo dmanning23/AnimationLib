@@ -58,7 +58,7 @@ namespace AnimationLib.Commands
 			foreach (var animation in AnimationContainer.Animations)
 			{
 				//find the parent keybone
-				var parentKeyBone = animation.GetKeyBone(ParentBoneName);
+				var parentKeyBone = animation.Value.GetKeyBone(ParentBoneName);
 				if (null == parentKeyBone)
 				{
 					throw new Exception($"Couldn't find parentKeyBone with name {ParentBoneName}");

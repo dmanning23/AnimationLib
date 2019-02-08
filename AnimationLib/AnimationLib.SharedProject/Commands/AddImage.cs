@@ -52,7 +52,7 @@ namespace AnimationLib.Commands
 			parent.Images.Add(image);
 
 			//if there are any garment bones attached to the parent, add images to them as well
-			var garmentBones = parent.Bones.Where(x => x.BoneType == EBoneType.Garment);
+			var garmentBones = parent.Bones.Where(x => x.IsGarment);
 			foreach (var bone in garmentBones)
 			{
 				var garmentBone = bone as GarmentBone;

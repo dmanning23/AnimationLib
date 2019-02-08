@@ -44,7 +44,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadAnimationXml(testFile);
-			test.SetAnimation(0, EPlayback.Forwards);
+			test.SetAnimation("NEUTRAL front", EPlayback.Forwards);
 
 			Joint torso = test.Skeleton.RootBone.GetJoint("Torso");
 			Assert.AreEqual(0.0f, torso.Position.X);
@@ -60,7 +60,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadAnimationXml(testFile);
-			test.SetAnimation(0, EPlayback.Forwards);
+			test.SetAnimation("NEUTRAL front", EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
 			test.Update(timer, Vector2.Zero, false, 0.0f, true);
@@ -93,7 +93,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadAnimationXml(testFile);
-			test.SetAnimation(0, EPlayback.Forwards);
+			test.SetAnimation("NEUTRAL front", EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
 			test.Update(timer, Vector2.Zero, false, 0.0f, true);

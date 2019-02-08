@@ -10,6 +10,5 @@ namespace AnimationLib
 		Foot, //this bone collides with the floor (also a "normal" bone)
 		Weapon, //this bone only collides when it is in an active attack
 		Normal, //this bone only collides with active weapons
-		Garment //this bone is part of a garment and doesn't collide with anything
 	}
 }

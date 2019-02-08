@@ -39,7 +39,7 @@ namespace AnimationLib
 		{
 			foreach (var animation in animations.Animations)
 			{
-				Animations.Add(new AnimationModel(animation, animations.Skeleton));
+				Animations.Add(new AnimationModel(animation.Value, animations.Skeleton));
 			}
 		}
 

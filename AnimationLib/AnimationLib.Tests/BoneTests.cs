@@ -211,7 +211,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadAnimationXml(testFile);
-			test.SetAnimation(0, EPlayback.Forwards);
+			test.SetAnimation("NEUTRAL front", EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
 			test.Update(timer, Vector2.Zero, false, 0.0f, true);
@@ -230,7 +230,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadAnimationXml(testFile);
-			test.SetAnimation(0, EPlayback.Forwards);
+			test.SetAnimation("NEUTRAL front", EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
 			test.Update(timer, Vector2.Zero, false, 0.0f, true);
@@ -247,7 +247,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadAnimationXml(testFile);
-			test.SetAnimation(0, EPlayback.Forwards);
+			test.SetAnimation("NEUTRAL front", EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
 			test.Update(timer, Vector2.Zero, false, 0.0f, true);
@@ -264,7 +264,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadAnimationXml(testFile);
-			test.SetAnimation(0, EPlayback.Forwards);
+			test.SetAnimation("NEUTRAL front", EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
 			test.Update(timer, Vector2.Zero, false, 0.0f, true);
@@ -281,7 +281,7 @@ namespace Animationlib.Tests
 			test.ReadSkeletonXml(testFile, null);
 			testFile.SetRelFilename("Simple\\Simple Animations.xml");
 			test.ReadAnimationXml(testFile);
-			test.SetAnimation(0, EPlayback.Forwards);
+			test.SetAnimation("NEUTRAL front", EPlayback.Forwards);
 
 			GameClock timer = new GameClock();
 			test.Update(timer, new Vector2(200.0f, 300.0f), false, 0.0f, true);

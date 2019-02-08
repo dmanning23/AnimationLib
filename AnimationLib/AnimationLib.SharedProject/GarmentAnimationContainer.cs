@@ -111,10 +111,10 @@ namespace AnimationLib
 			AnimationTimer.Update(time);
 
 			//check if the animation has changed
-			if ((attachedBone.ImageIndex != CurrentAnimationIndex) || (null == CurrentAnimation))
+			if ((attachedBone.GetCurrentImage().Name != CurrentAnimationName) || (null == CurrentAnimation))
 			{
 				//the animation has changed!!!
-				SetAnimation(attachedBone.ImageIndex, EPlayback.Loop);
+				SetAnimation(attachedBone.GetCurrentImage().Name, EPlayback.Loop);
 			}
 
 			//if there is no animation, the bone is invisible, hide the garment bone.
@@ -166,28 +166,6 @@ namespace AnimationLib
 			var myGarmentBone = GarmentSkeleton;
 			var myBone = characterSkeleton.RootBone.GetBone(myGarmentBone.ParentBoneName);
 			myGarmentBone.ParentBone = myBone;
-
-			//ok, if we are in one of the tools, reorder the animations to match the image order.
-			var myAnimations = new List<Animation>();
-			foreach (Image myImage in myBone.Images)
-			{
-				//find an animation that has the same name as this image
-				Animation foundAnimation = null;
-				foreach (var curAnimation in Animations)
-				{
-					if (curAnimation.Name == myImage.Name)
-					{
-						foundAnimation = curAnimation;
-						break;
-					}
-				}
-
-				//add it to the list!
-				myAnimations.Add(foundAnimation);
-			}
-
-			//now hold onto the sorted list
-			Animations = myAnimations;
 		}
 
 		public override string ToString()

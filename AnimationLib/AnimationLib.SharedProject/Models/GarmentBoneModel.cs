@@ -24,14 +24,12 @@ namespace AnimationLib
 		public GarmentBoneModel(float scale, float fragmentScale)
 			: base(scale, fragmentScale)
 		{
-			BoneType = EBoneType.Garment;
 		}
 
 		public GarmentBoneModel(GarmentBone bone)
 			: base(bone)
 		{
 			ParentBoneName = bone.ParentBoneName;
-			BoneType = EBoneType.Garment;
 		}
 
 		#endregion //Methods

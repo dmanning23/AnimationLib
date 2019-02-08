@@ -137,6 +137,8 @@ namespace AnimationLib
 			}
 		}
 
+		public virtual bool IsGarment => false;
+
 		#endregion //Properties
 
 		#region Initialization
@@ -671,7 +673,7 @@ namespace AnimationLib
 				Vector2 childVector = Bones[i].AnchorJoint.Position;
 
 				//if this is def a garment, set it to the bones pos & update the anchor position too
-				if (EBoneType.Garment == Bones[i].BoneType)
+				if (Bones[i].IsGarment)
 				{
 					Bones[i].AnchorJoint.Position = AnchorPosition;
 					childVector = AnchorPosition;
@@ -692,7 +694,7 @@ namespace AnimationLib
 								ignoreRagdoll);
 
 				//if that was a garment, increment the counter for the next garment
-				if (EBoneType.Garment == Bones[i].BoneType)
+				if (Bones[i].IsGarment)
 				{
 					currentLayer--; //subtract to put the next garment on top of this one
 				}

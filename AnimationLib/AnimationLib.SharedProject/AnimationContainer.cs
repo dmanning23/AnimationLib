@@ -29,7 +29,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Index of the current animation being played
 		/// </summary>
-		private int _animationIndex;
+		private string _currentAnimationName;
 
 		#endregion //Fields
 
@@ -61,17 +61,17 @@ namespace AnimationLib
 		/// Index of the current animation being played
 		/// </summary>
 		/// <value>The index of the current animation.</value>
-		protected int CurrentAnimationIndex 
+		protected string CurrentAnimationName
 		{
-			get { return _animationIndex; }
+			get { return _currentAnimationName; }
 			set
 			{
-				_animationIndex = value;
+				_currentAnimationName = value;
 
 				//If there is an animation at that index, use it.
-				if ((0 <= value) && (Animations.Count > value))
+				if (Animations.ContainsKey(_currentAnimationName))
 				{
-					CurrentAnimation = Animations[_animationIndex];
+					CurrentAnimation = Animations[_currentAnimationName];
 				}
 			}
 		}
@@ -80,7 +80,7 @@ namespace AnimationLib
 		/// the list of animations 
 		/// </summary>
 		/// <value>The animations.</value>
-		public List<Animation> Animations { get; protected set; }
+		public Dictionary<string, Animation> Animations { get; protected set; }
 
 		/// <summary>
 		/// Timer for timing the animations, both backwards and forwards
@@ -109,8 +109,7 @@ namespace AnimationLib
 		public AnimationContainer(float scale = 1f)
 		{
 			Skeleton = new Skeleton(this);
-			Animations = new List<Animation>();
-			CurrentAnimationIndex = -1;
+			Animations = new Dictionary<string, Animation>();
 			StopWatch = new GameClock();
 			_playback = EPlayback.Forwards;
 			AnimationFile = new Filename();
@@ -129,7 +128,7 @@ namespace AnimationLib
 			Skeleton.Load(skeleton, renderer);
 			foreach (var animation in animations.Animations)
 			{
-				Animations.Add(new Animation(Skeleton, animation));
+				Animations[animation.Name] = new Animation(Skeleton, animation);
 			}
 		}
 
@@ -172,45 +171,45 @@ namespace AnimationLib
 			switch (_playback)
 			{
 				case EPlayback.Backwards:
-				{
-					//apply the eggtimer to the animationiterator
-					time = CurrentAnimation.Length - StopWatch.CurrentTime;
-					if (time < 0.0f)
 					{
-						time = 0.0f;
+						//apply the eggtimer to the animationiterator
+						time = CurrentAnimation.Length - StopWatch.CurrentTime;
+						if (time < 0.0f)
+						{
+							time = 0.0f;
+						}
 					}
-				}
-				break;
+					break;
 
 				case EPlayback.Forwards:
-				{
-					//apply the stop watch to the aniiterator
-					time = StopWatch.CurrentTime;
-					if (time > CurrentAnimation.Length)
 					{
-						time = CurrentAnimation.Length;
+						//apply the stop watch to the aniiterator
+						time = StopWatch.CurrentTime;
+						if (time > CurrentAnimation.Length)
+						{
+							time = CurrentAnimation.Length;
+						}
 					}
-				}
-				break;
+					break;
 
 				case EPlayback.LoopRandom:
 				case EPlayback.Loop:
-				{
-					//apply the stop watch to the aniiterator
-					int numTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
-					float timeDiff = (CurrentAnimation.Length * (float)numTimes);
-					time = (StopWatch.CurrentTime - timeDiff);
-				}
-				break;
+					{
+						//apply the stop watch to the aniiterator
+						int numTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
+						float timeDiff = (CurrentAnimation.Length * (float)numTimes);
+						time = (StopWatch.CurrentTime - timeDiff);
+					}
+					break;
 
 				case EPlayback.LoopBackwards:
-				{
-					//apply the eggtimer to the animationiterator
-					int numTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
-					float timeDiff = (CurrentAnimation.Length * (float)numTimes);
-					time = CurrentAnimation.Length - (StopWatch.CurrentTime - timeDiff);
-				}
-				break;
+					{
+						//apply the eggtimer to the animationiterator
+						int numTimes = (int)(StopWatch.CurrentTime / CurrentAnimation.Length);
+						float timeDiff = (CurrentAnimation.Length * (float)numTimes);
+						time = CurrentAnimation.Length - (StopWatch.CurrentTime - timeDiff);
+					}
+					break;
 			}
 
 			return time.ToFrames();
@@ -282,11 +281,11 @@ namespace AnimationLib
 		/// </summary>
 		/// <param name="index">the index of the animation to set</param>
 		/// <param name="playbackMode">the playback mode to use</param>
-		public void SetAnimation(int index, EPlayback playbackMode)
+		public void SetAnimation(string animation, EPlayback playbackMode)
 		{
 			//set teh stuff
 			_playback = playbackMode;
-			CurrentAnimationIndex = index;
+			CurrentAnimationName = animation;
 
 			RestartAnimation();
 		}
@@ -366,33 +365,14 @@ namespace AnimationLib
 
 		public Animation FindAnimation(string animationName)
 		{
-			for (var i = 0; i < Animations.Count; i++)
+			if (Animations.ContainsKey(animationName))
 			{
-				if (Animations[i].Name == animationName)
-				{
-					return Animations[i];
-				}
+				return Animations[animationName];
 			}
-
-			return null;
-		}
-
-		/// <summary>
-		/// Get teh index of an animation
-		/// </summary>
-		/// <param name="animationName">name of teh animation to find</param>
-		/// <returns>teh index of teh animation with that name, -1 if none found</returns>
-		public int FindAnimationIndex(string animationName)
-		{
-			for (var i = 0; i < Animations.Count; i++)
+			else
 			{
-				if (Animations[i].Name == animationName)
-				{
-					return i;
-				}
+				return null;
 			}
-
-			return -1;
 		}
 
 		/// <summary>
@@ -403,7 +383,7 @@ namespace AnimationLib
 		{
 			foreach (var animation in Animations)
 			{
-				animation.MultiplyLayers(multiply);
+				animation.Value.MultiplyLayers(multiply);
 			}
 		}
 
@@ -423,14 +403,23 @@ namespace AnimationLib
 		{
 		}
 
+		public void AddAnimations(AnimationContainer animations)
+		{
+			foreach (var animation in animations.Animations)
+			{
+				AddAnimation(animation.Value);
+			}
+		}
+
+		public void AddAnimation(Animation animation)
+		{
+			Animations[animation.Name] = animation;
+		}
+
 		public void RemoveAnimation(string animationName)
 		{
 			//find the animation and remove it
-			var animation = Animations.Where(x => x.Name == animationName).FirstOrDefault();
-			if (null != animation)
-			{
-				Animations.Remove(animation);
-			}
+			Animations.Remove(animationName);
 		}
 
 		#endregion //Methods
@@ -489,9 +478,11 @@ namespace AnimationLib
 			AnimationFile = filename;
 
 			//load up the animations from file
-			var animations = new AnimationsModel(filename, Scale);
-			animations.ReadXmlFile(xmlContent);
-			LoadAnimations(animations);
+			using (var animations = new AnimationsModel(filename, Scale))
+			{
+				animations.ReadXmlFile(xmlContent);
+				LoadAnimations(animations);
+			}
 		}
 
 		private void LoadAnimations(AnimationsModel animations)
@@ -499,7 +490,7 @@ namespace AnimationLib
 			//create each animation
 			foreach (var animationModel in animations.Animations)
 			{
-				Animations.Add(new Animation(Skeleton, animationModel));
+				Animations[animationModel.Name] = new Animation(Skeleton, animationModel);
 			}
 
 			_playback = EPlayback.Forwards;
