@@ -55,17 +55,17 @@ namespace AnimationLib
 			InitializeGarment(null, filename, skeleton, renderer);
 		}
 
-		public Garment(ContentManager content, Filename filename, Skeleton skeleton, IRenderer renderer)
+		public Garment(ContentManager xmlContent, Filename filename, Skeleton skeleton, IRenderer renderer)
 			: this(skeleton.Animations.Scale)
 		{
-			InitializeGarment(content, filename, skeleton, renderer);
+			InitializeGarment(xmlContent, filename, skeleton, renderer);
 		}
 
-		private void InitializeGarment(ContentManager content, Filename filename, Skeleton skeleton, IRenderer renderer)
+		private void InitializeGarment(ContentManager xmlContent, Filename filename, Skeleton skeleton, IRenderer renderer)
 		{
 			GarmentFile = filename;
 			var garmentModel = new GarmentModel(filename, Scale);
-			garmentModel.ReadXmlFile(content);
+			garmentModel.ReadXmlFile(xmlContent);
 
 			Name = garmentModel.Name;
 			foreach (var fragment in garmentModel.Fragments)

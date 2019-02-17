@@ -416,6 +416,14 @@ namespace AnimationLib
 			Animations[animation.Name] = animation;
 		}
 
+		public void RemoveAnimations(AnimationContainer animations)
+		{
+			foreach (var animation in animations.Animations)
+			{
+				RemoveAnimation(animation.Key);
+			}
+		}
+
 		public void RemoveAnimation(string animationName)
 		{
 			//find the animation and remove it
@@ -487,15 +495,20 @@ namespace AnimationLib
 
 		private void LoadAnimations(AnimationsModel animations)
 		{
-			//create each animation
-			foreach (var animationModel in animations.Animations)
-			{
-				Animations[animationModel.Name] = new Animation(Skeleton, animationModel);
-			}
+			CreateAnimations(Skeleton, animations);
 
 			_playback = EPlayback.Forwards;
 			CurrentAnimation = null;
 			RestartAnimation();
+		}
+
+		public void CreateAnimations(Skeleton skeleton, AnimationsModel animations)
+		{
+			//create each animation
+			foreach (var animationModel in animations.Animations)
+			{
+				Animations[animationModel.Name] = new Animation(skeleton, animationModel);
+			}
 		}
 
 		public void WriteAnimationXml()
