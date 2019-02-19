@@ -111,10 +111,11 @@ namespace AnimationLib
 			AnimationTimer.Update(time);
 
 			//check if the animation has changed
-			if ((attachedBone.GetCurrentImage().Name != CurrentAnimationName) || (null == CurrentAnimation))
+			var currentImage = attachedBone.GetCurrentImage();
+			if ((null != currentImage) && ((currentImage.Name != CurrentAnimationName) || (null == CurrentAnimation)))
 			{
 				//the animation has changed!!!
-				SetAnimation(attachedBone.GetCurrentImage().Name, EPlayback.Loop);
+				SetAnimation(currentImage.Name, EPlayback.Loop);
 			}
 
 			//if there is no animation, the bone is invisible, hide the garment bone.
