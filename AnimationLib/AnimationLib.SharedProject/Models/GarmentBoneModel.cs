@@ -21,13 +21,13 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public GarmentBoneModel(float scale, float fragmentScale)
-			: base(scale, fragmentScale)
+		public GarmentBoneModel(SkeletonModel skeleton, float scale, float fragmentScale)
+			: base(skeleton, scale, fragmentScale)
 		{
 		}
 
-		public GarmentBoneModel(GarmentBone bone)
-			: base(bone)
+		public GarmentBoneModel(SkeletonModel skeleton, GarmentBone bone)
+			: base(skeleton, bone)
 		{
 			ParentBoneName = bone.ParentBoneName;
 		}

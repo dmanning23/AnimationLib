@@ -12,6 +12,8 @@ namespace AnimationLib
 	{
 		#region Properties
 
+		SkeletonModel SkeletonModel { get; set; }
+
 		public string Name { get; set; }
 
 		public Vector2 UpperLeft { get; set; }
@@ -58,7 +60,7 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public ImageModel(float scale, float fragmentScale)
+		public ImageModel(SkeletonModel skeleton, float scale, float fragmentScale)
 		{
 			Scale = scale;
 			FragmentScale = fragmentScale;
@@ -73,10 +75,11 @@ namespace AnimationLib
 			ImageFile = new Filename();
 			NormalMapFile = new Filename();
 			ColorMaskFile = new Filename();
+			SkeletonModel = skeleton;
 		}
 
-		public ImageModel(Image image)
-			: this(1f, 1f)
+		public ImageModel(SkeletonModel skeleton, Image image)
+			: this(skeleton, 1f, 1f)
 		{
 			Scale = image.Scale;
 			FragmentScale = image.FragmentScale;
@@ -177,6 +180,24 @@ namespace AnimationLib
 						ColorMaskFile.SetRelFilename(value);
 					}
 					break;
+				case "imageFile1":
+					{
+						//read in a relative to the model file
+						ImageFile.SetFilenameRelativeToPath(SkeletonModel.Filename, value);
+					}
+					break;
+				case "normalMap1":
+					{
+						//get the correct path & filename
+						NormalMapFile.SetFilenameRelativeToPath(SkeletonModel.Filename, value);
+					}
+					break;
+				case "colorMask1":
+					{
+						//get the correct path & filename
+						ColorMaskFile.SetFilenameRelativeToPath(SkeletonModel.Filename, value);
+					}
+					break;
 				case "joints":
 					{
 						//Read in all the joint JointCoords
@@ -253,17 +274,17 @@ namespace AnimationLib
 			if (!string.IsNullOrEmpty(ImageFile.File))
 			{
 				//write out filename to use
-				xmlWriter.WriteAttributeString("filename", ImageFile.GetRelFilename());
+				xmlWriter.WriteAttributeString("imageFile1", ImageFile.GetFilenameRelativeToPath(SkeletonModel.Filename));
 			}
 
 			if (!string.IsNullOrEmpty(NormalMapFile.File))
 			{
-				xmlWriter.WriteAttributeString("normalMapFilename", NormalMapFile.GetRelFilename());
+				xmlWriter.WriteAttributeString("normalMap1", NormalMapFile.GetFilenameRelativeToPath(SkeletonModel.Filename));
 			}
 
 			if (!string.IsNullOrEmpty(ColorMaskFile.File))
 			{
-				xmlWriter.WriteAttributeString("colorMaskFilename", ColorMaskFile.GetRelFilename());
+				xmlWriter.WriteAttributeString("colorMask1", ColorMaskFile.GetFilenameRelativeToPath(SkeletonModel.Filename));
 			}
 
 			//write out upper left coords

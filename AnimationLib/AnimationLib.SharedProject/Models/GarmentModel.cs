@@ -128,13 +128,16 @@ namespace AnimationLib
 			}
 			xmlWriter.WriteEndElement();
 
-			//write out the garment colors
-			xmlWriter.WriteStartElement("colors");
-			foreach (var color in Colors)
+			if (Colors.Count > 0)
 			{
-				color.WriteXmlNodes(xmlWriter);
+				//write out the garment colors
+				xmlWriter.WriteStartElement("colors");
+				foreach (var color in Colors)
+				{
+					color.WriteXmlNodes(xmlWriter);
+				}
+				xmlWriter.WriteEndElement();
 			}
-			xmlWriter.WriteEndElement();
 		}
 #endif
 

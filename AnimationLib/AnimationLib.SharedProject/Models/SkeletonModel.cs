@@ -26,13 +26,13 @@ namespace AnimationLib
 		public SkeletonModel(Filename filename, float scale, float fragmentScale)
 			: base("skeleton", filename)
 		{
-			RootBone = new BoneModel(scale, fragmentScale);
+			RootBone = new BoneModel(this, scale, fragmentScale);
 		}
 
 		public SkeletonModel(Skeleton skeleton, Filename filename)
 			: base("skeleton", filename)
 		{
-			RootBone = new BoneModel(skeleton.RootBone);
+			RootBone = new BoneModel(this, skeleton.RootBone);
 		}
 
 		#endregion //Methods

@@ -12,6 +12,8 @@ namespace AnimationLib
 	{
 		#region Properties
 
+		public SkeletonModel SkeletonModel { get; private set; }
+
 		/// <summary>
 		/// the child bones of this guy
 		/// </summary>
@@ -57,7 +59,7 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public BoneModel(float scale, float fragmentScale)
+		public BoneModel(SkeletonModel skeleton, float scale, float fragmentScale)
 		{
 			Scale = scale;
 			FragmentScale = fragmentScale;
@@ -68,14 +70,15 @@ namespace AnimationLib
 			Colorable = false;
 			BoneType = EBoneType.Normal;
 			RagdollWeightRatio = 0.5f;
+			SkeletonModel = skeleton;
 		}
 
 		/// <summary>
 		/// copy all the bone info into this dude
 		/// </summary>
 		/// <param name="bone"></param>
-		public BoneModel(Bone bone)
-			: this(1f, 1f)
+		public BoneModel(SkeletonModel skeleton, Bone bone)
+			: this(skeleton, 1f, 1f)
 		{
 			Name = bone.Name;
 			Colorable = bone.Colorable;
@@ -90,14 +93,14 @@ namespace AnimationLib
 			}
 			foreach (var image in bone.Images)
 			{
-				Images.Add(new ImageModel(image));
+				Images.Add(new ImageModel(SkeletonModel, image));
 			}
 			foreach (var childBone in bone.Bones)
 			{
 				//Don't add garment bones to the model
 				if (!childBone.IsGarment)
 				{
-					Bones.Add(new BoneModel(childBone));
+					Bones.Add(new BoneModel(SkeletonModel, childBone));
 				}
 			}
 		}
@@ -211,14 +214,14 @@ namespace AnimationLib
 
 		public void ReadImage(XmlNode node)
 		{
-			var image = new ImageModel(Scale, FragmentScale);
+			var image = new ImageModel(SkeletonModel, Scale, FragmentScale);
 			XmlFileBuddy.ReadChildNodes(node, image.ParseXmlNode);
 			Images.Add(image);
 		}
 
 		public void ReadChildBone(XmlNode node)
 		{
-			var bone = new BoneModel(Scale, FragmentScale);
+			var bone = new BoneModel(SkeletonModel, Scale, FragmentScale);
 			XmlFileBuddy.ReadChildNodes(node, bone.ParseXmlNode);
 			Bones.Add(bone);
 		}
@@ -259,14 +262,14 @@ namespace AnimationLib
 				xmlWriter.WriteAttributeString("colorable", "true");
 			}
 
-			if (!string.IsNullOrEmpty(SecondaryColorTag))
-			{
-				xmlWriter.WriteAttributeString("primaryColorTag", SecondaryColorTag);
-			}
-
 			if (!string.IsNullOrEmpty(PrimaryColorTag))
 			{
-				xmlWriter.WriteAttributeString("secondaryColorTag", PrimaryColorTag);
+				xmlWriter.WriteAttributeString("primaryColorTag", PrimaryColorTag);
+			}
+
+			if (!string.IsNullOrEmpty(SecondaryColorTag))
+			{
+				xmlWriter.WriteAttributeString("secondaryColorTag", SecondaryColorTag);
 			}
 
 			//write out joints
