@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AnimationContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Bone.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BoneType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ColorRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddBone.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddImage.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\AnimationModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\AnimationsModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BoneModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ColorTagModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GarmentBoneModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GarmentFragmentModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GarmentModel.cs" />

@@ -35,6 +35,8 @@ namespace AnimationLib
 
 		private float Scale { get; set; }
 
+		public ColorRepository Colors { get; private set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -47,6 +49,7 @@ namespace AnimationLib
 			Scale = scale;
 			Fragments = new List<GarmentFragment>();
 			HasPhysics = false;
+			Colors = new ColorRepository();
 		}
 
 		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer)
@@ -71,6 +74,11 @@ namespace AnimationLib
 			foreach (var fragment in garmentModel.Fragments)
 			{
 				Fragments.Add(new GarmentFragment(fragment, renderer));
+			}
+
+			foreach (var color in garmentModel.Colors)
+			{
+				Colors.AddColor(color.Tag, color.Color);
 			}
 
 			SetGarmentBones(skeleton);
@@ -104,6 +112,27 @@ namespace AnimationLib
 					break;
 				}
 			}
+
+			UpdateColors();
+		}
+
+		private void UpdateColors()
+		{
+			if (Colors.Colors.ContainsKey("primary"))
+			{
+				SetPrimaryColor(Colors.GetColor("primary"));
+			}
+
+			if (Colors.Colors.ContainsKey("secondary"))
+			{
+				SetSecondaryColor(Colors.GetColor("secondary"));
+			}
+		}
+
+		public void SetColor(string tag, Color color)
+		{
+			Colors.AddColor(tag, color);
+			UpdateColors();
 		}
 
 		#endregion //Initialization

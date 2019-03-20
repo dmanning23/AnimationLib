@@ -47,6 +47,9 @@ namespace AnimationLib
 		private float Scale { get; set; }
 		private float FragmentScale { get; set; }
 
+		public string PrimaryColorTag { get; set; }
+		public string SecondaryColorTag { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -78,6 +81,8 @@ namespace AnimationLib
 			Colorable = bone.Colorable;
 			BoneType = bone.BoneType;
 			RagdollWeightRatio = bone.RagdollWeightRatio;
+			PrimaryColorTag = bone.PrimaryColorTag;
+			SecondaryColorTag = bone.SecondaryColorTag;
 
 			foreach (var joint in bone.Joints)
 			{
@@ -164,6 +169,16 @@ namespace AnimationLib
 					Colorable = Convert.ToBoolean(value);
 				}
 				break;
+				case "primaryColorTag":
+				{
+					PrimaryColorTag = value;
+				}
+				break;
+				case "secondaryColorTag":
+				{
+					SecondaryColorTag = value;
+				}
+				break;
 				case "joints":
 				{
 					XmlFileBuddy.ReadChildNodes(node, ReadJoint);
@@ -242,6 +257,16 @@ namespace AnimationLib
 			if (Colorable)
 			{
 				xmlWriter.WriteAttributeString("colorable", "true");
+			}
+
+			if (!string.IsNullOrEmpty(SecondaryColorTag))
+			{
+				xmlWriter.WriteAttributeString("primaryColorTag", SecondaryColorTag);
+			}
+
+			if (!string.IsNullOrEmpty(PrimaryColorTag))
+			{
+				xmlWriter.WriteAttributeString("secondaryColorTag", PrimaryColorTag);
 			}
 
 			//write out joints

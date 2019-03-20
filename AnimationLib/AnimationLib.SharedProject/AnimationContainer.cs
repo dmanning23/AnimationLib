@@ -99,6 +99,8 @@ namespace AnimationLib
 
 		public float Scale { get; set; }
 
+		public ColorRepository Colors { get; set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -115,6 +117,7 @@ namespace AnimationLib
 			AnimationFile = new Filename();
 			ResetRagdoll = false;
 			Scale = scale;
+			Colors = new ColorRepository();
 		}
 
 		public AnimationContainer(AnimationsModel animations, SkeletonModel skeleton, IRenderer renderer)
@@ -428,6 +431,12 @@ namespace AnimationLib
 		{
 			//find the animation and remove it
 			Animations.Remove(animationName);
+		}
+
+		public void SetColor(string tag, Color color)
+		{
+			Colors.AddColor(tag, color);
+			Skeleton.SetColor(tag, color);
 		}
 
 		#endregion //Methods

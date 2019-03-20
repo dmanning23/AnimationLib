@@ -24,6 +24,8 @@ namespace AnimationLib
 
 		private float Scale { get; set; }
 
+		public List<ColorTagModel> Colors { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -36,6 +38,7 @@ namespace AnimationLib
 		{
 			Scale = scale;
 			Fragments = new List<GarmentFragmentModel>();
+			Colors = new List<ColorTagModel>();
 		}
 
 		public GarmentModel(Filename filename, Garment garment)
@@ -45,6 +48,11 @@ namespace AnimationLib
 			foreach (var fragment in garment.Fragments)
 			{
 				Fragments.Add(new GarmentFragmentModel(fragment));
+			}
+
+			foreach (var color in garment.Colors.Colors)
+			{
+				Colors.Add(new ColorTagModel(color.Key, color.Value));
 			}
 		}
 
@@ -80,6 +88,11 @@ namespace AnimationLib
 					XmlFileBuddy.ReadChildNodes(node, ReadFragments);
 				}
 				break;
+				case "colors":
+					{
+						XmlFileBuddy.ReadChildNodes(node, ReadColors);
+					}
+					break;
 				default:
 				{
 					NodeError(node);
@@ -95,6 +108,13 @@ namespace AnimationLib
 			Fragments.Add(fragment);
 		}
 
+		public void ReadColors(XmlNode node)
+		{
+			var colorModel = new ColorTagModel();
+			XmlFileBuddy.ReadChildNodes(node, colorModel.ParseXmlNode);
+			Colors.Add(colorModel);
+		}
+
 #if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
@@ -105,6 +125,14 @@ namespace AnimationLib
 			foreach (var fragment in Fragments)
 			{
 				fragment.WriteXmlNodes(xmlWriter);
+			}
+			xmlWriter.WriteEndElement();
+
+			//write out the garment colors
+			xmlWriter.WriteStartElement("colors");
+			foreach (var color in Colors)
+			{
+				color.WriteXmlNodes(xmlWriter);
 			}
 			xmlWriter.WriteEndElement();
 		}

@@ -41,6 +41,11 @@ namespace AnimationLib
 			return RootBone.GetJoint(jointName, true);
 		}
 
+		public void SetColor(string tag, Color color)
+		{
+			RootBone.SetColor(tag, color);
+		}
+
 		/// <summary>
 		/// This method goes through the skeleton and makes sure the joints and bone names match
 		/// </summary>

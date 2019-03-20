@@ -108,6 +108,10 @@ namespace AnimationLib
 		/// </summary>
 		public List<Vector2> RagdollForces { get; private set; }
 
+		public string PrimaryColorTag { get; private set; }
+
+		public string SecondaryColorTag { get; private set; }
+
 		/// <summary>
 		/// The color to draw this bone with. 
 		/// Only used if Colorable flag is true
@@ -171,6 +175,8 @@ namespace AnimationLib
 			Colorable = bone.Colorable;
 			BoneType = bone.BoneType;
 			RagdollWeightRatio = bone.RagdollWeightRatio;
+			PrimaryColorTag = bone.PrimaryColorTag;
+			SecondaryColorTag = bone.SecondaryColorTag;
 
 			for (int i = 0; i < bone.Joints.Count; i++)
 			{
@@ -578,6 +584,23 @@ namespace AnimationLib
 		}
 
 		#region Color Methods
+
+		public void SetColor(string tag, Color color)
+		{
+			if (PrimaryColorTag == tag)
+			{
+				PrimaryColor = color;
+			}
+			if (SecondaryColorTag == tag)
+			{
+				SecondaryColor = color;
+			}
+
+			foreach (var bone in Bones)
+			{
+				bone.SetColor(tag, color);
+			}
+		}
 
 		/// <summary>
 		/// Set the primary color of this bone, if the colorable flag is true.
