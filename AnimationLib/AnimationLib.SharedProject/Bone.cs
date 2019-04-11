@@ -66,7 +66,7 @@ namespace AnimationLib
 		/// <summary>
 		/// The name of this bone
 		/// </summary>
-		public string Name { get; set; }
+		public virtual string Name { get; set; }
 
 		/// <summary>
 		/// the rotation to render this guy at
@@ -141,7 +141,17 @@ namespace AnimationLib
 			}
 		}
 
+		/// <summary>
+		/// Reference to the bone this guy attaches too.  Should have the same name as this guy
+		/// </summary>
+		public virtual Bone ParentBone { get; set; }
+
 		public virtual bool IsGarment => false;
+
+		/// <summary>
+		/// An id for this bone that is unique in the entire skeleton.
+		/// </summary>
+		public virtual string Id => Name;
 
 		#endregion //Properties
 
@@ -201,6 +211,7 @@ namespace AnimationLib
 			//get the anchor joint from the parent bone
 			if (null != parentBone)
 			{
+				ParentBone = parentBone;
 				AnchorJoint = parentBone.GetJoint(Name);
 				if (null == AnchorJoint)
 				{
@@ -357,6 +368,28 @@ namespace AnimationLib
 			for (var i = 0; i < Bones.Count; i++)
 			{
 				Bone myBone = Bones[i].GetBone(boneName);
+				if (null != myBone)
+				{
+					return myBone;
+				}
+			}
+
+			//didnt find a joint with that name :(
+			return null;
+		}
+
+		public Bone GetBoneById(string boneId)
+		{
+			//is this the dude?
+			if (Id == boneId)
+			{
+				return this;
+			}
+
+			//is the requested bone underneath this dude?
+			for (var i = 0; i < Bones.Count; i++)
+			{
+				Bone myBone = Bones[i].GetBoneById(boneId);
 				if (null != myBone)
 				{
 					return myBone;
@@ -534,7 +567,7 @@ namespace AnimationLib
 
 		public override string ToString()
 		{
-			return Name;
+			return Id;
 		}
 
 		/// <summary>
@@ -744,7 +777,14 @@ namespace AnimationLib
 		/// </summary>
 		private void UpdateImage()
 		{
-			ImageIndex = AnchorJoint.CurrentKeyElement.ImageIndex;
+			if (BoneType == EBoneType.Anchor && ParentBone.ImageIndex < Images.Count)
+			{
+				ImageIndex = ParentBone.ImageIndex;
+			}
+			else
+			{
+				ImageIndex = AnchorJoint.CurrentKeyElement.ImageIndex;
+			}
 		}
 
 		/// <summary>
@@ -1574,7 +1614,7 @@ namespace AnimationLib
 		private void MirrorRightToBoneName(Bone rootBone, CommandStack actionCollection, string bonePrefix)
 		{
 			//Check if this bone starts with a word that matches the bone prefix
-			var nameTokens = Name.Split(new Char[] { ' ' });
+			var nameTokens = Id.Split(new Char[] { ' ' });
 			if ((nameTokens.Length >= 2) && (nameTokens[0] == bonePrefix))
 			{
 				//find if there is a matching bone that starts with "Right"
@@ -1584,7 +1624,7 @@ namespace AnimationLib
 					matchingRightBone += " ";
 					matchingRightBone += nameTokens[i];
 				}
-				var mirrorBone = rootBone.GetBone(matchingRightBone);
+				var mirrorBone = rootBone.GetBoneById(matchingRightBone);
 				if (null != mirrorBone)
 				{
 					//copy that dude's info into this guy

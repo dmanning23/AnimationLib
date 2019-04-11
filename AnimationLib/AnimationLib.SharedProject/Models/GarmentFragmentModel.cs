@@ -32,6 +32,13 @@ namespace AnimationLib
 			}
 		}
 
+		/// <summary>
+		/// The bone in the skeleton that this garment attaches to
+		/// </summary>
+		public string ParentBoneName { get; set; }
+
+		private GarmentModel Garment { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -39,22 +46,25 @@ namespace AnimationLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentFragmentModel(float scale, ContentManager content = null)
+		public GarmentFragmentModel(float scale, GarmentModel garment, ContentManager content = null)
 		{
 			Scale = scale;
 			_fragmentScale = 1f;
 			Content = content;
+			Garment = garment;
 		}
 
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentFragmentModel(GarmentFragment fragment)
-			: this(1f)
+		public GarmentFragmentModel(GarmentFragment fragment, GarmentModel garment)
+			: this(1f, garment)
 		{
-			Skeleton = new GarmentSkeletonModel(fragment.SkeletonFile, fragment.AnimationContainer.Skeleton as GarmentSkeleton);
+			Skeleton = new GarmentSkeletonModel(fragment.SkeletonFile, fragment.AnimationContainer.Skeleton as GarmentSkeleton, this);
 			AnimationContainer = new AnimationsModel(fragment.AnimationFile, fragment.AnimationContainer);
 			FragmentScale = fragment.FragmentScale;
+
+			ParentBoneName = fragment.ParentBoneName;
 		}
 
 		#endregion //Methods
@@ -80,22 +90,42 @@ namespace AnimationLib
 						{
 							//read in the model 
 							var skeletonFile = new Filename(value);
-							Skeleton = new GarmentSkeletonModel(skeletonFile, Scale, FragmentScale);
-							Skeleton.ReadXmlFile(Content);
+							ReadModel(skeletonFile);
 						}
 						break;
 					case "animation":
 						{
 							//read in the animations
 							var animationFile = new Filename(value);
-							AnimationContainer = new AnimationsModel(animationFile, Scale);
-							AnimationContainer.ReadXmlFile(Content);
+							ReadAnimations(animationFile);
+						}
+						break;
+					case "model1":
+						{
+							//read in the model, relative to the garment file
+							var skeletonFile = new Filename();
+							skeletonFile.SetFilenameRelativeToPath(Garment.Filename, value);
+							ReadModel(skeletonFile);
+						}
+						break;
+					case "animation1":
+						{
+							//read in the animations, relative to the garment file
+							var animationFile = new Filename();
+							animationFile.SetFilenameRelativeToPath(Garment.Filename, value);
+							ReadAnimations(animationFile);
 						}
 						break;
 					case "scale":
 						{
 							//Make sure to put the scale first in the file!
 							FragmentScale = Convert.ToSingle(value);
+						}
+						break;
+					case "parentBone":
+						{
+							//set teh parent bone of this dude
+							ParentBoneName = value;
 						}
 						break;
 					default:
@@ -111,6 +141,18 @@ namespace AnimationLib
 			}
 		}
 
+		private void ReadAnimations(Filename animationFile)
+		{
+			AnimationContainer = new AnimationsModel(animationFile, Scale);
+			AnimationContainer.ReadXmlFile(Content);
+		}
+
+		private void ReadModel(Filename skeletonFile)
+		{
+			Skeleton = new GarmentSkeletonModel(skeletonFile, Scale, this);
+			Skeleton.ReadXmlFile(Content);
+		}
+
 #if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
@@ -124,13 +166,18 @@ namespace AnimationLib
 			}
 
 			//write out model filename to use
-			xmlWriter.WriteStartElement("model");
-			xmlWriter.WriteString(Skeleton.Filename.GetRelFilename());
+			xmlWriter.WriteStartElement("model1");
+			xmlWriter.WriteString(Skeleton.Filename.GetFilenameRelativeToPath(Garment.Filename));
 			xmlWriter.WriteEndElement();
 
 			//write out animation filename to use
-			xmlWriter.WriteStartElement("animation");
-			xmlWriter.WriteString(AnimationContainer.Filename.GetRelFilename());
+			xmlWriter.WriteStartElement("animation1");
+			xmlWriter.WriteString(AnimationContainer.Filename.GetFilenameRelativeToPath(Garment.Filename));
+			xmlWriter.WriteEndElement();
+
+			//add the parentBone
+			xmlWriter.WriteStartElement("parentBone");
+			xmlWriter.WriteString(ParentBoneName);
 			xmlWriter.WriteEndElement();
 
 			xmlWriter.WriteEndElement();

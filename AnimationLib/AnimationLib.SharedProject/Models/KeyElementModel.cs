@@ -54,7 +54,7 @@ namespace AnimationLib
 			{
 				//find the bone that uses this dudes joint as a keyjoint
 				var childBone = bone.GetBone(key.BoneName);
-				if (null != childBone)
+				if (null != childBone && childBone.Images.Count > key.ImageIndex)
 				{
 					Image = childBone.Images[key.ImageIndex].Name;
 				}

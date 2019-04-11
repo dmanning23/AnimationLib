@@ -28,7 +28,7 @@ namespace AnimationLib
 			get
 			{
 				GarmentBone mySkeleton = Skeleton.RootBone as GarmentBone;
-				return mySkeleton.Name;
+				return mySkeleton.Id;
 			}
 		}
 
@@ -161,12 +161,48 @@ namespace AnimationLib
 		/// <summary>
 		/// set all the data for the garment bones in this dude after they have been read in
 		/// </summary>
-		public void SetGarmentBones(Skeleton characterSkeleton)
+		public void SetGarmentBones(Skeleton characterSkeleton, string parentBoneName)
 		{
 			//find a Bone with the same name as the garment bone
 			var myGarmentBone = GarmentSkeleton;
-			var myBone = characterSkeleton.RootBone.GetBone(myGarmentBone.ParentBoneName);
-			myGarmentBone.ParentBone = myBone;
+			var parentBone = characterSkeleton.RootBone.GetBone(parentBoneName);
+			myGarmentBone.ParentBone = parentBone;
+
+			//Make sure the garment bone has the correct animations
+			foreach (var image in parentBone.Images)
+			{
+				if (!Animations.ContainsKey(image.Name) && myGarmentBone.Images.Count > 0)
+				{
+					//create a new animation
+					var animation = new Animation(Skeleton)
+					{
+						Name = image.Name,
+						Length = 0.1f,
+					};
+
+					//create a keyframe at time 0
+					var model = new KeyElementModel(Scale)
+					{
+						Time = 0,
+						Image = myGarmentBone.Images[0].Name,
+						Joint = myGarmentBone.Name,
+					};
+					var key = new KeyElement(model, Skeleton);
+					animation.AddKeyframe(key);
+
+					//create a keyframe at time 0.1 (6)
+					model = new KeyElementModel(Scale)
+					{
+						Time = 6,
+						Image = myGarmentBone.Images[0].Name,
+						Joint = myGarmentBone.Name,
+					};
+					animation.AddKeyframe(new KeyElement(model, Skeleton));
+
+					//store the animation
+					Animations[image.Name] = animation;
+				}
+			}
 		}
 
 		public override string ToString()

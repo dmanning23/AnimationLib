@@ -165,14 +165,14 @@ namespace AnimationLib
 						xmlWriter.WriteAttributeString("RagdollType", "Limit");
 
 						//write first limit
-						if (-180.0f != FirstLimit)
+						if (-180f != FirstLimit)
 						{
 							float fLimit1 = Helper.ClampAngle(FirstLimit);
 							xmlWriter.WriteAttributeString("limit1", MathHelper.ToDegrees(fLimit1).ToString());
 						}
 
 						//write 2nd limit 
-						if (180.0f != SecondLimit)
+						if (180f != SecondLimit)
 						{
 							float fLimit2 = Helper.ClampAngle(SecondLimit);
 							xmlWriter.WriteAttributeString("limit2", MathHelper.ToDegrees(fLimit2).ToString());
@@ -182,9 +182,12 @@ namespace AnimationLib
 			}
 
 			//write out joint offset
-			xmlWriter.WriteStartElement("location");
-			xmlWriter.WriteString(Location.StringFromVector());
-			xmlWriter.WriteEndElement();
+			if (Location != Vector2.Zero)
+			{
+				xmlWriter.WriteStartElement("location");
+				xmlWriter.WriteString(Location.StringFromVector());
+				xmlWriter.WriteEndElement();
+			}
 
 			xmlWriter.WriteEndElement();
 		}

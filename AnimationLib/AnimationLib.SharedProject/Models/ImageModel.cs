@@ -288,20 +288,29 @@ namespace AnimationLib
 			}
 
 			//write out upper left coords
-			xmlWriter.WriteStartElement("upperleft");
-			xmlWriter.WriteString(UpperLeft.StringFromVector());
-			xmlWriter.WriteEndElement();
+			if (UpperLeft != Vector2.Zero)
+			{
+				xmlWriter.WriteStartElement("upperleft");
+				xmlWriter.WriteString(UpperLeft.StringFromVector());
+				xmlWriter.WriteEndElement();
+			}
 
 			//write out lower right coords
-			xmlWriter.WriteStartElement("lowerright");
-			xmlWriter.WriteString(LowerRight.StringFromVector());
-			xmlWriter.WriteEndElement();
+			if (LowerRight != Vector2.Zero)
+			{
+				xmlWriter.WriteStartElement("lowerright");
+				xmlWriter.WriteString(LowerRight.StringFromVector());
+				xmlWriter.WriteEndElement();
+			}
 
 			//write out lower right coords
-			xmlWriter.WriteStartElement("anchorcoord");
-			var anchor = AnchorCoord / FragmentScale;
-			xmlWriter.WriteString(anchor.StringFromVector());
-			xmlWriter.WriteEndElement();
+			if (AnchorCoord != Vector2.Zero)
+			{
+				xmlWriter.WriteStartElement("anchorcoord");
+				var anchor = AnchorCoord / FragmentScale;
+				xmlWriter.WriteString(anchor.StringFromVector());
+				xmlWriter.WriteEndElement();
+			}
 
 			//write out joint locations
 			if (JointCoords.Count > 0)

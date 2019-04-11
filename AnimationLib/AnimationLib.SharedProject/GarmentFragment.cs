@@ -33,6 +33,11 @@ namespace AnimationLib
 
 		public float FragmentScale { get; set; }
 
+		/// <summary>
+		/// The bone in the skeleton that this garment attaches to
+		/// </summary>
+		public string ParentBoneName { get; set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -54,6 +59,7 @@ namespace AnimationLib
 			AnimationContainer = new GarmentAnimationContainer(fragment.AnimationContainer, fragment.Skeleton, renderer);
 			AnimationContainer.Scale *= fragment.FragmentScale;
 			FragmentScale = fragment.FragmentScale;
+			ParentBoneName = fragment.ParentBoneName;
 		}
 
 		#endregion //Initialization
@@ -96,7 +102,7 @@ namespace AnimationLib
 			AnimationContainer.GarmentName = GarmentName;
 
 			//set the parent bone of all those root node garment bones
-			AnimationContainer.SetGarmentBones(characterSkeleton);
+			AnimationContainer.SetGarmentBones(characterSkeleton, ParentBoneName);
 		}
 
 		#region Color Methods

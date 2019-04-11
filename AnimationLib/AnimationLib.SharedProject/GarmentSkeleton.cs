@@ -32,9 +32,9 @@ namespace AnimationLib
 			return new GarmentBone(Animations as GarmentAnimationContainer, garmentBone);
 		}
 
-		public void WriteXml(Filename filename)
+		public void WriteXml(Filename filename, GarmentFragmentModel fragment)
 		{
-			var skeleton = new GarmentSkeletonModel(filename, this);
+			var skeleton = new GarmentSkeletonModel(filename, this, fragment);
 			skeleton.WriteXml();
 		}
 

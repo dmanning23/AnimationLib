@@ -71,9 +71,10 @@ namespace AnimationLib
 			garmentModel.ReadXmlFile(xmlContent);
 
 			Name = garmentModel.Name;
-			foreach (var fragment in garmentModel.Fragments)
+			foreach (var fragmentModel in garmentModel.Fragments)
 			{
-				Fragments.Add(new GarmentFragment(fragment, renderer));
+				var fragment = new GarmentFragment(fragmentModel, renderer);
+				Fragments.Add(fragment);
 			}
 
 			foreach (var color in garmentModel.Colors)

@@ -12,16 +12,16 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public GarmentSkeletonModel(Filename filename, float scale, float fragmentScale)
-			: base(filename, scale, fragmentScale)
+		public GarmentSkeletonModel(Filename filename, float scale, GarmentFragmentModel fragment)
+			: base(filename, scale, fragment.FragmentScale)
 		{
-			RootBone = new GarmentBoneModel(this, scale, fragmentScale);
+			RootBone = new GarmentBoneModel(this, scale, fragment);
 		}
 
-		public GarmentSkeletonModel(Filename filename, GarmentSkeleton skeleton)
-			: base(filename, 1f, 1f)
+		public GarmentSkeletonModel(Filename filename, GarmentSkeleton skeleton, GarmentFragmentModel fragment)
+			: base(filename, 1f, fragment.FragmentScale)
 		{
-			RootBone = new GarmentBoneModel(this, skeleton.RootBone as GarmentBone);
+			RootBone = new GarmentBoneModel(this, skeleton.RootBone as GarmentBone, fragment);
 		}
 
 		#endregion //Methods

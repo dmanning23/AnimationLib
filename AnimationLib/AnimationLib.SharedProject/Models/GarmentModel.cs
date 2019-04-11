@@ -47,7 +47,7 @@ namespace AnimationLib
 			Name = garment.Name;
 			foreach (var fragment in garment.Fragments)
 			{
-				Fragments.Add(new GarmentFragmentModel(fragment));
+				Fragments.Add(new GarmentFragmentModel(fragment, this));
 			}
 
 			foreach (var color in garment.Colors.Colors)
@@ -68,42 +68,42 @@ namespace AnimationLib
 			switch (name)
 			{
 				case "Asset":
-				{
-					//This is an old garment file that still has the XNA format.
-					XmlFileBuddy.ReadChildNodes(node, ParseXmlNode);
-				}
-				break;
+					{
+						//This is an old garment file that still has the XNA format.
+						XmlFileBuddy.ReadChildNodes(node, ParseXmlNode);
+					}
+					break;
 				case "Type":
-				{
-					//throw these attributes out
-				}
-				break;
+					{
+						//throw these attributes out
+					}
+					break;
 				case "name":
-				{
-					Name = value;
-				}
-				break;
+					{
+						Name = value;
+					}
+					break;
 				case "fragments":
-				{
-					XmlFileBuddy.ReadChildNodes(node, ReadFragments);
-				}
-				break;
+					{
+						XmlFileBuddy.ReadChildNodes(node, ReadFragments);
+					}
+					break;
 				case "colors":
 					{
 						XmlFileBuddy.ReadChildNodes(node, ReadColors);
 					}
 					break;
 				default:
-				{
-					NodeError(node);
-				}
-				break;
+					{
+						NodeError(node);
+					}
+					break;
 			}
 		}
 
 		public void ReadFragments(XmlNode node)
 		{
-			var fragment = new GarmentFragmentModel(Scale, Content);
+			var fragment = new GarmentFragmentModel(Scale, this, Content);
 			XmlFileBuddy.ReadChildNodes(node, fragment.ParseXmlNode);
 			Fragments.Add(fragment);
 		}

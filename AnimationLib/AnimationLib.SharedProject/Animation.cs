@@ -20,7 +20,7 @@ namespace AnimationLib
 		/// length of this animation
 		/// </summary>
 		/// <value>The length.</value>
-		public float Length { get; private set; }
+		public float Length { get; set; }
 
 		/// <summary>
 		/// the root key series

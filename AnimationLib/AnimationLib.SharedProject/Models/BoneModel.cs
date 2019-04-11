@@ -123,85 +123,90 @@ namespace AnimationLib
 			switch (name)
 			{
 				case "Type":
-				{
-					//throw these attributes out
-				}
-				break;
-				case "name":
-				{
-					//set the name of this bone
-					Name = value;
-
-					//set the 'foot' flag as appropriate
-					if (Name == "Left Foot" || Name == "Right Foot")
 					{
-						BoneType = EBoneType.Foot;
+						//throw these attributes out
 					}
-				}
-				break;
-				case "type":
-				{
-					switch (value)
+					break;
+				case "name":
 					{
-						case "Foot":
+						//set the name of this bone
+						Name = value;
+
+						//set the 'foot' flag as appropriate
+						if (Name == "Left Foot" || Name == "Right Foot")
 						{
 							BoneType = EBoneType.Foot;
 						}
-						break;
-
-						case "Weapon":
-						{
-							BoneType = EBoneType.Weapon;
-						}
-						break;
-						default:
-						{
-							BoneType = EBoneType.Normal;
-						}
-						break;
 					}
-				}
-				break;
+					break;
+				case "type":
+					{
+						switch (value)
+						{
+							case "Foot":
+								{
+									BoneType = EBoneType.Foot;
+								}
+								break;
+
+							case "Weapon":
+								{
+									BoneType = EBoneType.Weapon;
+								}
+								break;
+							case "Anchor":
+								{
+									BoneType = EBoneType.Anchor;
+								}
+								break;
+							default:
+								{
+									BoneType = EBoneType.Normal;
+								}
+								break;
+						}
+					}
+					break;
 				case "RagdollWeightRatio":
 					{
 						RagdollWeightRatio = Convert.ToSingle(value);
 					}
 					break;
 				case "colorable":
-				{
-					Colorable = Convert.ToBoolean(value);
-				}
-				break;
+					{
+						Colorable = Convert.ToBoolean(value);
+					}
+					break;
 				case "primaryColorTag":
-				{
-					PrimaryColorTag = value;
-				}
-				break;
+					{
+						PrimaryColorTag = value;
+					}
+					break;
 				case "secondaryColorTag":
-				{
-					SecondaryColorTag = value;
-				}
-				break;
+					{
+						SecondaryColorTag = value;
+					}
+					break;
 				case "joints":
-				{
-					XmlFileBuddy.ReadChildNodes(node, ReadJoint);
-				}
-				break;
+					{
+						XmlFileBuddy.ReadChildNodes(node, ReadJoint);
+					}
+					break;
 				case "images":
-				{
-					XmlFileBuddy.ReadChildNodes(node, ReadImage);
-				}
-				break;
+					{
+						XmlFileBuddy.ReadChildNodes(node, ReadImage);
+					}
+					break;
 				case "bones":
-				{
-					XmlFileBuddy.ReadChildNodes(node, ReadChildBone);
-				}
-				break;
+					{
+						XmlFileBuddy.ReadChildNodes(node, ReadChildBone);
+					}
+					break;
 				default:
-				{
-					base.ParseXmlNode(node);
-				}
-				break;
+					{
+						base.ParseXmlNode(node);
+					}
+					break;
 			}
 		}
 

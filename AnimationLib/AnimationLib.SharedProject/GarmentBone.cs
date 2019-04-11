@@ -32,26 +32,30 @@ namespace AnimationLib
 		/// <summary>
 		/// Reference to the bone this guy attaches too.  Should have the same name as this guy
 		/// </summary>
-		public Bone ParentBone { get; set; }
-
-		private string _parentBoneName;
-
-		/// <summary>
-		/// The bone in the skeleton that this garment attaches to
-		/// </summary>
-		public string ParentBoneName
+		public override Bone ParentBone
 		{
-			get
+			get => base.ParentBone;
+			set
 			{
-				return (null != ParentBone) ? ParentBone.Name : _parentBoneName;
+				base.ParentBone = value;
+				SetId();
 			}
-			protected set
+		}
+
+		public override string Name
+		{
+			get => base.Name;
+			set
 			{
-				_parentBoneName = value;
+				base.Name = value;
+				SetId();
 			}
 		}
 
 		public override bool IsGarment => true;
+
+		private string _id;
+		public override string Id => _id;
 
 		#endregion //Properties
 
@@ -70,7 +74,14 @@ namespace AnimationLib
 			: base(bone)
 		{
 			Setup(owner);
-			ParentBoneName = bone.ParentBoneName;
+		}
+
+		private void SetId()
+		{
+			if (null != ParentBone)
+			{
+				_id = $"{ParentBone.Name}_{Name}";
+			}
 		}
 
 		private void Setup(GarmentAnimationContainer owner)

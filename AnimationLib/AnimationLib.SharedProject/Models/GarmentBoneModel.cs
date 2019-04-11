@@ -9,10 +9,7 @@ namespace AnimationLib
 	{
 		#region Properties
 
-		/// <summary>
-		/// The bone in the skeleton that this garment attaches to
-		/// </summary>
-		public string ParentBoneName { get; protected set; }
+		private GarmentFragmentModel FragmentModel { get; set; }
 
 		#endregion //Properties
 
@@ -21,15 +18,16 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public GarmentBoneModel(SkeletonModel skeleton, float scale, float fragmentScale)
-			: base(skeleton, scale, fragmentScale)
+		public GarmentBoneModel(SkeletonModel skeleton, float scale, GarmentFragmentModel fragment)
+			: base(skeleton, scale, fragment.FragmentScale)
 		{
+			FragmentModel = fragment;
 		}
 
-		public GarmentBoneModel(SkeletonModel skeleton, GarmentBone bone)
+		public GarmentBoneModel(SkeletonModel skeleton, GarmentBone bone, GarmentFragmentModel fragment)
 			: base(skeleton, bone)
 		{
-			ParentBoneName = bone.ParentBoneName;
+			FragmentModel = fragment;
 		}
 
 		#endregion //Methods
@@ -46,8 +44,8 @@ namespace AnimationLib
 			{
 				case "parentBone":
 				{
-					//set teh parent bone of this dude
-					ParentBoneName = value;
+					//this is the legacy stuff
+					FragmentModel.ParentBoneName = value;
 				}
 				break;
 				default:
@@ -67,9 +65,6 @@ namespace AnimationLib
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("garmentbone");
-
-			//add the name attribute
-			xmlWriter.WriteAttributeString("parentBone", ParentBoneName);
 
 			WriteChildXmlNode(xmlWriter);
 
