@@ -57,6 +57,8 @@ namespace AnimationLib
 		private string _id;
 		public override string Id => _id;
 
+		public Garment Garment { get; private set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -64,16 +66,16 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public GarmentBone(GarmentAnimationContainer owner)
+		public GarmentBone(GarmentAnimationContainer owner, Garment garment)
 			: base()
 		{
-			Setup(owner);
+			Setup(owner, garment);
 		}
 
-		public GarmentBone(GarmentAnimationContainer owner, GarmentBoneModel bone)
+		public GarmentBone(GarmentAnimationContainer owner, GarmentBoneModel bone, Garment garment)
 			: base(bone)
 		{
-			Setup(owner);
+			Setup(owner, garment);
 		}
 
 		private void SetId()
@@ -84,8 +86,9 @@ namespace AnimationLib
 			}
 		}
 
-		private void Setup(GarmentAnimationContainer owner)
+		private void Setup(GarmentAnimationContainer owner, Garment garment)
 		{
+			Garment = garment;
 			GarmentAnimationContainer = owner;
 			_isAddedToSkeleton = false;
 		}
@@ -127,6 +130,12 @@ namespace AnimationLib
 		{
 			if (!_isAddedToSkeleton)
 			{
+				//first check if there is already a garment attached to this bone, if so remove it
+				if (null != ParentBone.ChildGarmentBone)
+				{
+					ParentBone.ChildGarmentBone.Garment.RemoveFromSkeleton();
+				}
+
 				ParentBone.AddGarment(this);
 				_isAddedToSkeleton = true;
 			}

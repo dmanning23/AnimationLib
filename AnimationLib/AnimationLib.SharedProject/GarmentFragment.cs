@@ -45,18 +45,17 @@ namespace AnimationLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentFragment()
+		public GarmentFragment(Garment garment)
 		{
-			AnimationContainer = new GarmentAnimationContainer();
+			AnimationContainer = new GarmentAnimationContainer(garment);
 			FragmentScale = 1f;
 		}
 
-		public GarmentFragment(GarmentFragmentModel fragment, IRenderer renderer)
-			: this()
+		public GarmentFragment(GarmentFragmentModel fragment, IRenderer renderer, Garment garment)
 		{
 			SkeletonFile = new Filename(fragment.Skeleton.Filename);
 			AnimationFile = new Filename(fragment.AnimationContainer.Filename);
-			AnimationContainer = new GarmentAnimationContainer(fragment.AnimationContainer, fragment.Skeleton, renderer);
+			AnimationContainer = new GarmentAnimationContainer(fragment.AnimationContainer, fragment.Skeleton, renderer, garment);
 			AnimationContainer.Scale *= fragment.FragmentScale;
 			FragmentScale = fragment.FragmentScale;
 			ParentBoneName = fragment.ParentBoneName;
@@ -123,6 +122,11 @@ namespace AnimationLib
 		public void SetSecondaryColor(Color color)
 		{
 			AnimationContainer.Skeleton.RootBone.SetSecondaryColor(color);
+		}
+
+		public void SetColors(ColorRepository colors)
+		{
+			AnimationContainer.Skeleton.RootBone.SetColors(colors);
 		}
 
 		#endregion //Color Methods

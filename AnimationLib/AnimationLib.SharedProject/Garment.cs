@@ -37,6 +37,10 @@ namespace AnimationLib
 
 		public ColorRepository Colors { get; private set; }
 
+		public bool IsAdded { get; private set; }
+
+		private Skeleton _parentSkeleton;
+
 		#endregion //Properties
 
 		#region Initialization
@@ -50,6 +54,7 @@ namespace AnimationLib
 			Fragments = new List<GarmentFragment>();
 			HasPhysics = false;
 			Colors = new ColorRepository();
+			IsAdded = false;
 		}
 
 		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer)
@@ -73,7 +78,7 @@ namespace AnimationLib
 			Name = garmentModel.Name;
 			foreach (var fragmentModel in garmentModel.Fragments)
 			{
-				var fragment = new GarmentFragment(fragmentModel, renderer);
+				var fragment = new GarmentFragment(fragmentModel, renderer, this);
 				Fragments.Add(fragment);
 			}
 
@@ -82,6 +87,7 @@ namespace AnimationLib
 				Colors.AddColor(color.Tag, color.Color);
 			}
 
+			_parentSkeleton = skeleton;
 			SetGarmentBones(skeleton);
 		}
 
@@ -148,8 +154,13 @@ namespace AnimationLib
 			//add all the garment bones to the bones they attach to
 			for (var i = 0; i < Fragments.Count; i++)
 			{
+				//add to the skeleton
 				Fragments[i].AddToSkeleton();
+
+				//update the colors from the parent skeleton
+				Fragments[i].SetColors(_parentSkeleton.Animations.Colors);
 			}
+			IsAdded = true;
 		}
 
 		/// <summary>
@@ -162,6 +173,7 @@ namespace AnimationLib
 			{
 				Fragments[i].RemoveFromSkeleton();
 			}
+			IsAdded = false;
 		}
 
 		/// <summary>

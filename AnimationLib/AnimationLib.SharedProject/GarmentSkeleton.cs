@@ -8,14 +8,21 @@ namespace AnimationLib
 	/// </summary>
 	public class GarmentSkeleton : Skeleton
 	{
+		#region Properties
+
+		public Garment Garment { get; private set; }
+
+		#endregion //Properties
+
 		#region Methods
 
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public GarmentSkeleton(GarmentAnimationContainer animations)
+		public GarmentSkeleton(GarmentAnimationContainer animations, Garment garment)
 			: base(animations)
 		{
+			Garment = garment;
 		}
 
 		#endregion //Methods
@@ -29,7 +36,7 @@ namespace AnimationLib
 			{
 				throw new Exception("wrong bone type passed to GarmentSkeleton.CreateBone");
 			}
-			return new GarmentBone(Animations as GarmentAnimationContainer, garmentBone);
+			return new GarmentBone(Animations as GarmentAnimationContainer, garmentBone, Garment);
 		}
 
 		public void WriteXml(Filename filename, GarmentFragmentModel fragment)

@@ -97,6 +97,12 @@ namespace AnimationLib
 		/// </summary>
 		protected bool ResetRagdoll { get; set; }
 
+		/// <summary>
+		/// Whether or not to reset the ragdoll when the animation changes.
+		/// If the animations aren't changing images very often, might not be bad idea to set this to false.
+		/// </summary>
+		public bool ResetRagdollOnAnimationChange { get; set; }
+
 		public float Scale { get; set; }
 
 		public ColorRepository Colors { get; set; }
@@ -118,6 +124,7 @@ namespace AnimationLib
 			ResetRagdoll = false;
 			Scale = scale;
 			Colors = new ColorRepository();
+			ResetRagdollOnAnimationChange = true;
 		}
 
 		public AnimationContainer(AnimationsModel animations, SkeletonModel skeleton, IRenderer renderer)
@@ -323,7 +330,10 @@ namespace AnimationLib
 				StopWatch.CurrentTime = _random.NextFloat(0f, CurrentAnimation.Length);
 			}
 
-			ResetRagdoll = true;
+			if (ResetRagdollOnAnimationChange)
+			{
+				ResetRagdoll = true;
+			}
 		}
 
 		/// <summary>

@@ -61,16 +61,16 @@ namespace AnimationLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentAnimationContainer()
+		public GarmentAnimationContainer(Garment garment)
 			: base()
 		{
-			Skeleton = new GarmentSkeleton(this);
+			Skeleton = new GarmentSkeleton(this, garment);
 			AnimationTimer = new GameClock();
 			_currentLayer = 0;
 		}
 
-		public GarmentAnimationContainer(AnimationsModel animations, GarmentSkeletonModel skeleton, IRenderer renderer)
-			: this()
+		public GarmentAnimationContainer(AnimationsModel animations, GarmentSkeletonModel skeleton, IRenderer renderer, Garment garment)
+			: this(garment)
 		{
 			Load(animations, skeleton, renderer);
 		}

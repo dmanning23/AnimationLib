@@ -1,6 +1,6 @@
-using System;
 using FilenameBuddy;
 using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Xml;
 using Vector2Extensions;

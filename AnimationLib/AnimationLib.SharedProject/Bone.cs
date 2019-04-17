@@ -153,6 +153,11 @@ namespace AnimationLib
 		/// </summary>
 		public virtual string Id => Name;
 
+		/// <summary>
+		/// A garment bone that is currently attached to this dude
+		/// </summary>
+		public GarmentBone ChildGarmentBone { get; private set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -277,6 +282,8 @@ namespace AnimationLib
 		/// <param name="garmentBone">Add a garment over this bone</param>
 		public void AddGarment(GarmentBone garmentBone)
 		{
+			ChildGarmentBone = garmentBone;
+
 			//just add the bone to the end of the list
 			Bones.Add(garmentBone);
 		}
@@ -294,6 +301,7 @@ namespace AnimationLib
 				if ((null != myBone) && (garmentName == myBone.GarmentName))
 				{
 					Bones.RemoveAt(i);
+					ChildGarmentBone = null;
 					return;
 				}
 			}
@@ -632,6 +640,24 @@ namespace AnimationLib
 			foreach (var bone in Bones)
 			{
 				bone.SetColor(tag, color);
+			}
+		}
+
+		public void SetColors(ColorRepository colors)
+		{
+			if (!string.IsNullOrEmpty(PrimaryColorTag))
+			{
+				PrimaryColor = colors.GetColor(PrimaryColorTag);
+			}
+
+			if (!string.IsNullOrEmpty(SecondaryColorTag))
+			{
+				SecondaryColor = colors.GetColor(SecondaryColorTag);
+			}
+
+			foreach (var bone in Bones)
+			{
+				bone.SetColors(colors);
 			}
 		}
 
