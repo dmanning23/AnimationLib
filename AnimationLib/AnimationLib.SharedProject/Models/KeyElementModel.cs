@@ -140,7 +140,11 @@ namespace AnimationLib
 		{
 			xmlWriter.WriteStartElement("key");
 
-			xmlWriter.WriteAttributeString("time", Time.ToString());
+			if (!SkipTime)
+			{
+				xmlWriter.WriteAttributeString("time", Time.ToString());
+			}
+
 			xmlWriter.WriteAttributeString("joint", Joint);
 
 			if (!SkipRotation)
@@ -178,53 +182,19 @@ namespace AnimationLib
 		}
 #endif
 
-		public bool SkipRotation
-		{
-			get
-			{
-				return 0.0f == Rotation;
-			}
-		}
+		public bool SkipTime => 0 == Time;
 
-		public bool SkipLayer
-		{
-			get
-			{
-				return 0 == Layer;
-			}
-		}
+		public bool SkipRotation => 0f == Rotation;
 
-		public bool SkipImage
-		{
-			get
-			{
-				return string.IsNullOrEmpty(Image);
-			}
-		}
+		public bool SkipLayer=> 0 == Layer;
 
-		public bool SkipFlip
-		{
-			get
-			{
-				return false == Flip;
-			}
-		}
+		public bool SkipImage => string.IsNullOrEmpty(Image);
 
-		public bool SkipTranslation
-		{
-			get
-			{
-				return Vector2.Zero == Translation;
-			}
-		}
+		public bool SkipFlip => false == Flip;
 
-		public bool SkipRagDoll
-		{
-			get
-			{
-				return false == Ragdoll;
-			}
-		}
+		public bool SkipTranslation => Vector2.Zero == Translation;
+
+		public bool SkipRagDoll => false == Ragdoll;
 
 		#endregion //File IO
 	}
