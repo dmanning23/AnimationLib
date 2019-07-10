@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using RenderBuddy;
+using System;
 using System.Collections.Generic;
 
 namespace AnimationLib
@@ -40,6 +41,8 @@ namespace AnimationLib
 		public bool IsAdded { get; private set; }
 
 		private Skeleton _parentSkeleton;
+
+		public event EventHandler OnGarmentRemoved;
 
 		#endregion //Properties
 
@@ -174,6 +177,11 @@ namespace AnimationLib
 				Fragments[i].RemoveFromSkeleton();
 			}
 			IsAdded = false;
+
+			if (null != OnGarmentRemoved)
+			{
+				OnGarmentRemoved(this, new EventArgs());
+			}
 		}
 
 		/// <summary>
