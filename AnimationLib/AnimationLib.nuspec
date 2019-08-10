@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>AnimationLib</id>
-		<version>2.0.20</version>
+		<version>2.0.21</version>
 		<title>AnimationLib</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -51,7 +51,7 @@
 				<dependency id="XmlBuddy" version="2.0"/>
 			</group>
 
-			<!--Win Universal-->
+			<!--Win Universal
 			<group targetFramework="uap10.0">
 				<dependency id="MonoGame.Framework.WindowsUniversal" version="3.7"/>
 				<dependency id="Microsoft.NETCore.UniversalWindowsPlatform" version="6.1"/>
@@ -68,7 +68,7 @@
 				<dependency id="UndoRedoBuddy" version="2.0"/>
 				<dependency id="Vector2Extensions" version="2.0"/>
 				<dependency id="XmlBuddy" version="2.0"/>
-			</group>
+			</group>-->
 
 			<group targetFramework="net451">
 				<dependency id="MonoGame.Framework.WindowsDX" version="3.7"/>
@@ -99,9 +99,9 @@
 		<file src="AnimationLib.iOS\bin\Release\AnimationLib.iOS.pdb" target="lib\Xamarin.iOS10\AnimationLib.iOS.pdb" />
 		<file src="AnimationLib.iOS\bin\Release\AnimationLib.iOS.dll" target="lib\Xamarin.iOS10\AnimationLib.iOS.dll" />
 
-		<!--Windows Universal-->
+		<!--Windows Universal
 		<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.pdb" target="lib\uap10.0\AnimationLib.WindowsUniversal.pdb" />
-		<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.dll" target="lib\uap10.0\AnimationLib.WindowsUniversal.dll" />
+		<file src="AnimationLib.WindowsUniversal\bin\Release\AnimationLib.WindowsUniversal.dll" target="lib\uap10.0\AnimationLib.WindowsUniversal.dll" />-->
 
 		<!--WindowsDX-->
 		<file src="AnimationLib.WindowsDX\bin\Release\AnimationLib.WindowsDX.pdb" target="lib\net451\AnimationLib.WindowsDX.pdb" />
