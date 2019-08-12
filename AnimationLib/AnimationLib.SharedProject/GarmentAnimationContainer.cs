@@ -1,6 +1,7 @@
 ﻿using GameTimer;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
+using System;
 using System.Collections.Generic;
 
 namespace AnimationLib
@@ -166,6 +167,12 @@ namespace AnimationLib
 			//find a Bone with the same name as the garment bone
 			var myGarmentBone = GarmentSkeleton;
 			var parentBone = characterSkeleton.RootBone.GetBone(parentBoneName);
+
+			if (null == parentBone)
+			{
+				throw new Exception($"Unable to find parent bone {parentBoneName} in {Name}");
+			}
+
 			myGarmentBone.ParentBone = parentBone;
 
 			//Make sure the garment bone has the correct animations
