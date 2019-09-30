@@ -192,6 +192,8 @@ namespace AnimationLib
 			RagdollWeightRatio = bone.RagdollWeightRatio;
 			PrimaryColorTag = bone.PrimaryColorTag;
 			SecondaryColorTag = bone.SecondaryColorTag;
+			PrimaryColor = Color.White;
+			SecondaryColor = Color.White;
 
 			for (int i = 0; i < bone.Joints.Count; i++)
 			{
@@ -645,12 +647,12 @@ namespace AnimationLib
 
 		public void SetColors(ColorRepository colors)
 		{
-			if (!string.IsNullOrEmpty(PrimaryColorTag))
+			if (!string.IsNullOrEmpty(PrimaryColorTag) && colors.HasColor(PrimaryColorTag))
 			{
 				PrimaryColor = colors.GetColor(PrimaryColorTag);
 			}
 
-			if (!string.IsNullOrEmpty(SecondaryColorTag))
+			if (!string.IsNullOrEmpty(SecondaryColorTag) && colors.HasColor(SecondaryColorTag))
 			{
 				SecondaryColor = colors.GetColor(SecondaryColorTag);
 			}

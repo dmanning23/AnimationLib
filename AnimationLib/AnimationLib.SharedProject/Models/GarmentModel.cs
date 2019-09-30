@@ -47,13 +47,27 @@ namespace AnimationLib
 			Name = garment.Name;
 			foreach (var fragment in garment.Fragments)
 			{
-				Fragments.Add(new GarmentFragmentModel(fragment, this));
+				Fragments.Add(CreateFragmentModel(fragment));
 			}
 
 			foreach (var color in garment.Colors.Colors)
 			{
 				Colors.Add(new ColorTagModel(color.Key, color.Value));
 			}
+		}
+
+		protected virtual GarmentFragmentModel CreateFragmentModel(GarmentFragment fragment)
+		{
+			return new GarmentFragmentModel(fragment, this);
+		}
+
+		/// <summary>
+		/// Factory method for creating fragments
+		/// </summary>
+		/// <returns></returns>
+		protected virtual GarmentFragmentModel CreateFragmentModel()
+		{
+			return new GarmentFragmentModel(Scale, this, Content);
 		}
 
 		#endregion //Methods
@@ -103,7 +117,7 @@ namespace AnimationLib
 
 		public void ReadFragments(XmlNode node)
 		{
-			var fragment = new GarmentFragmentModel(Scale, this, Content);
+			GarmentFragmentModel fragment = CreateFragmentModel();
 			XmlFileBuddy.ReadChildNodes(node, fragment.ParseXmlNode);
 			Fragments.Add(fragment);
 		}

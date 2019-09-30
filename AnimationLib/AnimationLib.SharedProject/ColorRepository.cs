@@ -23,6 +23,11 @@ namespace AnimationLib
 			Colors[tag] = color;
 		}
 
+		public bool HasColor(string tag)
+		{
+			return (!string.IsNullOrEmpty(tag) && Colors.ContainsKey(tag));
+		}
+
 		public Color GetColor(string tag)
 		{
 			if (string.IsNullOrEmpty(tag) || !Colors.ContainsKey(tag))

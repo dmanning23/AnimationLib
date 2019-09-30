@@ -158,6 +158,19 @@ namespace AnimationLib
 		{
 			xmlWriter.WriteStartElement("fragment");
 
+			WriteFragmentData(xmlWriter);
+
+			xmlWriter.WriteEndElement();
+
+			//write out the model file
+			Skeleton.WriteXml();
+
+			//write out the animation file
+			AnimationContainer.WriteXml();
+		}
+
+		protected virtual void WriteFragmentData(XmlTextWriter xmlWriter)
+		{
 			if (1f != FragmentScale)
 			{
 				xmlWriter.WriteStartElement("scale");
@@ -179,14 +192,6 @@ namespace AnimationLib
 			xmlWriter.WriteStartElement("parentBone");
 			xmlWriter.WriteString(ParentBoneName);
 			xmlWriter.WriteEndElement();
-
-			xmlWriter.WriteEndElement();
-
-			//write out the model file
-			Skeleton.WriteXml();
-
-			//write out the animation file
-			AnimationContainer.WriteXml();
 		}
 #endif
 
