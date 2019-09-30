@@ -75,13 +75,13 @@ namespace AnimationLib
 		private void InitializeGarment(ContentManager xmlContent, Filename filename, Skeleton skeleton, IRenderer renderer)
 		{
 			GarmentFile = filename;
-			var garmentModel = CreateGarmentModel(filename, Scale);
+			var garmentModel = new GarmentModel(filename, Scale);
 			garmentModel.ReadXmlFile(xmlContent);
 
 			Name = garmentModel.Name;
 			foreach (var fragmentModel in garmentModel.Fragments)
 			{
-				var fragment = CreateGarmentFragment(fragmentModel, renderer);
+				var fragment = new GarmentFragment(fragmentModel, renderer, this);
 				Fragments.Add(fragment);
 			}
 
@@ -92,21 +92,6 @@ namespace AnimationLib
 
 			_parentSkeleton = skeleton;
 			SetGarmentBones(skeleton);
-		}
-
-		private GarmentFragment CreateGarmentFragment(GarmentFragmentModel fragmentModel, IRenderer renderer)
-		{
-			return new GarmentFragment(fragmentModel, renderer, this);
-		}
-
-		private GarmentModel CreateGarmentModel(Filename filename, float scale)
-		{
-			return new GarmentModel(filename, scale);
-		}
-
-		private GarmentModel CreateGarmentModel(Filename filename)
-		{
-			return new GarmentModel(filename, this);
 		}
 
 		/// <summary>
@@ -229,7 +214,7 @@ namespace AnimationLib
 		public void WriteXmlFile(Filename filename)
 		{
 			GarmentFile = filename;
-			var garment = CreateGarmentModel(filename);
+			var garment = new GarmentModel(filename, this);
 			garment.WriteXml();
 		}
 

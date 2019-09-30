@@ -1,4 +1,5 @@
 ﻿using FilenameBuddy;
+using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 using System.Xml;
 using XmlBuddy;
@@ -47,27 +48,13 @@ namespace AnimationLib
 			Name = garment.Name;
 			foreach (var fragment in garment.Fragments)
 			{
-				Fragments.Add(CreateFragmentModel(fragment));
+				Fragments.Add(new GarmentFragmentModel(fragment, this));
 			}
 
 			foreach (var color in garment.Colors.Colors)
 			{
 				Colors.Add(new ColorTagModel(color.Key, color.Value));
 			}
-		}
-
-		protected virtual GarmentFragmentModel CreateFragmentModel(GarmentFragment fragment)
-		{
-			return new GarmentFragmentModel(fragment, this);
-		}
-
-		/// <summary>
-		/// Factory method for creating fragments
-		/// </summary>
-		/// <returns></returns>
-		protected virtual GarmentFragmentModel CreateFragmentModel()
-		{
-			return new GarmentFragmentModel(Scale, this, Content);
 		}
 
 		#endregion //Methods
@@ -117,7 +104,7 @@ namespace AnimationLib
 
 		public void ReadFragments(XmlNode node)
 		{
-			GarmentFragmentModel fragment = CreateFragmentModel();
+			GarmentFragmentModel fragment = new GarmentFragmentModel(Scale, this, Content);
 			XmlFileBuddy.ReadChildNodes(node, fragment.ParseXmlNode);
 			Fragments.Add(fragment);
 		}

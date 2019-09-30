@@ -39,6 +39,11 @@ namespace AnimationLib
 
 		private GarmentModel Garment { get; set; }
 
+		/// <summary>
+		/// Flag for whether or not this fragment completely covers other fragments underneath it.
+		/// </summary>
+		public bool DoesCover { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -52,6 +57,7 @@ namespace AnimationLib
 			_fragmentScale = 1f;
 			Content = content;
 			Garment = garment;
+			DoesCover = false;
 		}
 
 		/// <summary>
@@ -65,6 +71,7 @@ namespace AnimationLib
 			FragmentScale = fragment.FragmentScale;
 
 			ParentBoneName = fragment.ParentBoneName;
+			DoesCover = fragment.DoesCover;
 		}
 
 		#endregion //Methods
@@ -78,7 +85,6 @@ namespace AnimationLib
 			var value = node.InnerText;
 			try
 			{
-
 				switch (name)
 				{
 					case "Type":
@@ -128,6 +134,11 @@ namespace AnimationLib
 							ParentBoneName = value;
 						}
 						break;
+					case "doesCover":
+						{
+							DoesCover = Convert.ToBoolean(value);
+						}
+						break;
 					default:
 						{
 							base.ParseXmlNode(node);
@@ -158,19 +169,6 @@ namespace AnimationLib
 		{
 			xmlWriter.WriteStartElement("fragment");
 
-			WriteFragmentData(xmlWriter);
-
-			xmlWriter.WriteEndElement();
-
-			//write out the model file
-			Skeleton.WriteXml();
-
-			//write out the animation file
-			AnimationContainer.WriteXml();
-		}
-
-		protected virtual void WriteFragmentData(XmlTextWriter xmlWriter)
-		{
 			if (1f != FragmentScale)
 			{
 				xmlWriter.WriteStartElement("scale");
@@ -192,6 +190,21 @@ namespace AnimationLib
 			xmlWriter.WriteStartElement("parentBone");
 			xmlWriter.WriteString(ParentBoneName);
 			xmlWriter.WriteEndElement();
+
+			if (DoesCover)
+			{
+				xmlWriter.WriteStartElement("doesCover");
+				xmlWriter.WriteString(DoesCover.ToString());
+				xmlWriter.WriteEndElement();
+			}
+
+			xmlWriter.WriteEndElement();
+
+			//write out the model file
+			Skeleton.WriteXml();
+
+			//write out the animation file
+			AnimationContainer.WriteXml();
 		}
 #endif
 

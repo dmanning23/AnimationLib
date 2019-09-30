@@ -38,6 +38,11 @@ namespace AnimationLib
 		/// </summary>
 		public string ParentBoneName { get; set; }
 
+		/// <summary>
+		/// Flag for whether or not this fragment completely covers other fragments underneath it.
+		/// </summary>
+		public bool DoesCover { get; set; }
+
 		#endregion //Properties
 
 		#region Initialization
@@ -49,6 +54,7 @@ namespace AnimationLib
 		{
 			AnimationContainer = new GarmentAnimationContainer(garment);
 			FragmentScale = 1f;
+			DoesCover = false;
 		}
 
 		public GarmentFragment(GarmentFragmentModel fragment, IRenderer renderer, Garment garment)
@@ -59,6 +65,7 @@ namespace AnimationLib
 			AnimationContainer.Scale *= fragment.FragmentScale;
 			FragmentScale = fragment.FragmentScale;
 			ParentBoneName = fragment.ParentBoneName;
+			DoesCover = fragment.DoesCover;
 		}
 
 		#endregion //Initialization
