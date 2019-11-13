@@ -37,7 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CameraBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CameraBuddy.2.0.4\lib\MonoAndroid10\CameraBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\CameraBuddy.2.0.6\lib\MonoAndroid10\CameraBuddy.Android.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="CollisionBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CollisionBuddy.2.0.1\lib\MonoAndroid10\CollisionBuddy.Android.dll</HintPath>

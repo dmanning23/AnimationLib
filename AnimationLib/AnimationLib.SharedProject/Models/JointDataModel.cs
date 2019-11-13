@@ -47,7 +47,7 @@ namespace AnimationLib
 			RagdollType = RagdollType.None;
 		}
 
-		public JointDataModel(JointData jointData) : this(1f)
+		public JointDataModel(JointData jointData, float scale = 1f) : this(scale)
 		{
 			Location = jointData.Location;
 			RagdollType = jointData.RagdollType;
@@ -165,17 +165,17 @@ namespace AnimationLib
 						xmlWriter.WriteAttributeString("RagdollType", "Limit");
 
 						//write first limit
-						if (-180f != FirstLimit)
+						float fLimit1 = MathHelper.ToDegrees(Helper.ClampAngle(FirstLimit));
+						if (-180f < fLimit1)
 						{
-							float fLimit1 = Helper.ClampAngle(FirstLimit);
-							xmlWriter.WriteAttributeString("limit1", MathHelper.ToDegrees(fLimit1).ToString());
+							xmlWriter.WriteAttributeString("limit1", fLimit1.ToString());
 						}
 
 						//write 2nd limit 
-						if (180f != SecondLimit)
+						float fLimit2 = MathHelper.ToDegrees(Helper.ClampAngle(SecondLimit));
+						if (180f > fLimit2)
 						{
-							float fLimit2 = Helper.ClampAngle(SecondLimit);
-							xmlWriter.WriteAttributeString("limit2", MathHelper.ToDegrees(fLimit2).ToString());
+							xmlWriter.WriteAttributeString("limit2", fLimit2.ToString());
 						}
 					}
 					break;
@@ -185,7 +185,7 @@ namespace AnimationLib
 			if (Location != Vector2.Zero)
 			{
 				xmlWriter.WriteStartElement("location");
-				xmlWriter.WriteString(Location.StringFromVector());
+				xmlWriter.WriteString((Location / Scale).StringFromVector());
 				xmlWriter.WriteEndElement();
 			}
 

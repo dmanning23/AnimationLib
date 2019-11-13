@@ -1113,6 +1113,17 @@ namespace AnimationLib
 			}
 		}
 
+		public virtual void AddGravity(Vector2 gravity)
+		{
+			RagdollForces.Add(gravity);
+
+			//update the children
+			for (var i = 0; i < Bones.Count; i++)
+			{
+				Bones[i].AddGravity(gravity);
+			}
+		}
+
 		public void AccumulateForces(float parentRotation)
 		{
 			//Collect all the forces

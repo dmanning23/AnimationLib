@@ -94,7 +94,7 @@ namespace AnimationLib
 			ColorMaskFile = image.ColorMaskFile;
 			foreach (var jointCoord in image.JointCoords)
 			{
-				JointCoords.Add(new JointDataModel(jointCoord));
+				JointCoords.Add(new JointDataModel(jointCoord, FragmentScale));
 			}
 			foreach (var circle in image.Circles)
 			{

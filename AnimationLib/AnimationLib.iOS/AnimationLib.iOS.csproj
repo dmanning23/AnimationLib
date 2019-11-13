@@ -34,7 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CameraBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CameraBuddy.2.0.4\lib\Xamarin.iOS10\CameraBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\CameraBuddy.2.0.6\lib\Xamarin.iOS10\CameraBuddy.iOS.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="CollisionBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CollisionBuddy.2.0.1\lib\Xamarin.iOS10\CollisionBuddy.iOS.dll</HintPath>

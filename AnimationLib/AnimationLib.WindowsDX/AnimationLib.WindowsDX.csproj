@@ -33,7 +33,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CameraBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CameraBuddy.2.0.4\lib\net451\CameraBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\CameraBuddy.2.0.6\lib\net451\CameraBuddy.WindowsDX.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="CollisionBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CollisionBuddy.2.0.1\lib\net451\CollisionBuddy.WindowsDX.dll</HintPath>

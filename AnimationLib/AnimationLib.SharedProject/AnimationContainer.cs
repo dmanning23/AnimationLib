@@ -258,6 +258,11 @@ namespace AnimationLib
 			}
 		}
 
+		public virtual void AddRagdollGravity(Vector2 gravity)
+		{
+			Skeleton.RootBone.AddGravity(gravity);
+		}
+
 		/// <summary>
 		/// this needs to get run after the velocity is added to the model
 		/// </summary>
