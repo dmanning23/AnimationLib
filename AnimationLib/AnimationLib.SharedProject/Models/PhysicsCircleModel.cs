@@ -16,6 +16,8 @@ namespace AnimationLib
 
 		private float Scale { get; set; }
 
+		public float FragmentScale { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -23,14 +25,15 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public PhysicsCircleModel(float scale)
+		public PhysicsCircleModel(float scale, float fragmentScale)
 		{
 			Scale = scale;
+			FragmentScale = fragmentScale;
 			Center = Vector2.Zero;
 		}
 
-		public PhysicsCircleModel(PhysicsCircle circle)
-			: this(1f)
+		public PhysicsCircleModel(PhysicsCircle circle, float scale, float fragmentScale)
+			: this(scale, fragmentScale)
 		{
 			Center = circle.LocalPosition;
 			Radius = circle.LocalRadius;
@@ -80,8 +83,8 @@ namespace AnimationLib
 		{
 			//write out the item tag
 			xmlWriter.WriteStartElement("Item");
-			xmlWriter.WriteAttributeString("center", Center.StringFromVector());
-			xmlWriter.WriteAttributeString("radius", Radius.ToString());
+			xmlWriter.WriteAttributeString("center", (Center / FragmentScale).StringFromVector());
+			xmlWriter.WriteAttributeString("radius", (Radius / FragmentScale).ToString());
 			xmlWriter.WriteEndElement();
 		}
 #endif

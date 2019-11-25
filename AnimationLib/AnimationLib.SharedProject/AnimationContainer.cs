@@ -73,6 +73,10 @@ namespace AnimationLib
 				{
 					CurrentAnimation = Animations[_currentAnimationName];
 				}
+				else
+				{
+					throw new Exception($"No animation found with the name {_currentAnimationName}");
+				}
 			}
 		}
 

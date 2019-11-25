@@ -98,7 +98,7 @@ namespace AnimationLib
 			}
 			foreach (var circle in image.Circles)
 			{
-				Circles.Add(new PhysicsCircleModel(circle));
+				Circles.Add(new PhysicsCircleModel(circle, Scale, FragmentScale));
 			}
 			foreach (var line in image.Lines)
 			{
@@ -233,7 +233,7 @@ namespace AnimationLib
 
 		public void ReadCircle(XmlNode node)
 		{
-			var circle = new PhysicsCircleModel(Scale);
+			var circle = new PhysicsCircleModel(Scale, FragmentScale);
 			XmlFileBuddy.ReadChildNodes(node, circle.ParseXmlNode);
 			Circles.Add(circle);
 		}

@@ -76,6 +76,8 @@ namespace AnimationLib
 				var key = joint.Elements[i];
 
 				//don't write out reduntant key elements
+
+				//Check if this key matches the previous and next keys
 				if ((i > 0) && (i < (joint.Elements.Count - 1)))
 				{
 					if (key.Compare(joint.Elements[i - 1]) && key.Compare(joint.Elements[i + 1]))
@@ -83,7 +85,11 @@ namespace AnimationLib
 						//dont write out if this matches the previous and next keys
 						continue;
 					}
+				}
 
+				//Check if this is the last key and it matches the previous key
+				if ((i > 0) && (i <= (joint.Elements.Count - 1)))
+				{
 					if ((i == joint.Elements.Count - 1) && key.Compare(joint.Elements[i - 1]))
 					{
 						//dont write out if this is last key and matches prev
