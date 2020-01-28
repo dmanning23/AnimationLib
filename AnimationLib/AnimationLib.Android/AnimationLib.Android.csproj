@@ -14,7 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -67,7 +67,7 @@
       <HintPath>..\packages\RandomExtensions.dmanning23.2.0.0\lib\MonoAndroid10\RandomExtensions.Android.dll</HintPath>
     </Reference>
     <Reference Include="RenderBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.2.0.8\lib\MonoAndroid10\RenderBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.2.0.9\lib\MonoAndroid10\RenderBuddy.Android.dll</HintPath>
     </Reference>
     <Reference Include="ResolutionBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ResolutionBuddy.2.0.1\lib\MonoAndroid10\ResolutionBuddy.Android.dll</HintPath>

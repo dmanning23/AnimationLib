@@ -1177,7 +1177,8 @@ namespace AnimationLib
 
 		public void SolveConstraints(bool isParentRagdoll)
 		{
-			if ((ImageIndex >= 0) && (AnchorJoint.CurrentKeyElement.Ragdoll || isParentRagdoll))
+			if ((ImageIndex >= 0) && 
+				(AnchorJoint.CurrentKeyElement.Ragdoll || isParentRagdoll))
 			{
 				//update all the joints
 				for (var i = 0; i < Joints.Count; i++)
