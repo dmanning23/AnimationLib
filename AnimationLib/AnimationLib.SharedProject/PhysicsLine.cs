@@ -77,8 +77,8 @@ namespace AnimationLib
 		{
 			LocalStart = inst.LocalStart;
 			LocalEnd = inst.LocalEnd;
-			_Start = inst._Start;
-			_End = inst.End;
+			_start = inst._start;
+			_end = inst._end;
 			OldStart = inst.OldStart;
 			OldEnd = inst.OldEnd;
 			Length = inst.Length;

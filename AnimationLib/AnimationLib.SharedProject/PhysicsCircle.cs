@@ -86,7 +86,7 @@ namespace AnimationLib
 		{
 			LocalPosition = inst.LocalPosition;
 			LocalRadius = inst.LocalRadius;
-			_Position = inst._Position;
+			_position = inst._position;
 			OldPos = inst.OldPos;
 			Radius = inst.Radius;
 		}

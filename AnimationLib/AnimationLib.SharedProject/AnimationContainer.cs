@@ -425,6 +425,19 @@ namespace AnimationLib
 		{
 		}
 
+		public void AddAnimations(AnimationsModel animationsModel)
+		{
+			//Load the animations into a container
+			var animations = new AnimationContainer()
+			{
+				Scale = this.Scale,
+			};
+			animations.CreateAnimations(Skeleton, animationsModel);
+
+			//add the created animations
+			AddAnimations(animations);
+		}
+
 		public void AddAnimations(AnimationContainer animations)
 		{
 			foreach (var animation in animations.Animations)
@@ -436,6 +449,14 @@ namespace AnimationLib
 		public void AddAnimation(Animation animation)
 		{
 			Animations[animation.Name] = animation;
+		}
+
+		public void RemoveAnimations(AnimationsModel animations)
+		{
+			foreach (var animation in animations.Animations)
+			{
+				RemoveAnimation(animation.Name);
+			}
 		}
 
 		public void RemoveAnimations(AnimationContainer animations)
