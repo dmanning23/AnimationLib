@@ -80,7 +80,7 @@ namespace AnimationLib
 
 		private void InitializeGarment(ContentManager xmlContent, Filename filename, Skeleton skeleton, IRenderer renderer)
 		{
-			GarmentFile = filename;
+			
 			var garmentModel = new GarmentModel(filename, Scale);
 			garmentModel.ReadXmlFile(xmlContent);
 
@@ -89,6 +89,7 @@ namespace AnimationLib
 
 		private void InitializeGarment(GarmentModel garmentModel, Skeleton skeleton, IRenderer renderer)
 		{
+			GarmentFile = garmentModel.Filename;
 			Name = garmentModel.Name;
 			foreach (var fragmentModel in garmentModel.Fragments)
 			{
