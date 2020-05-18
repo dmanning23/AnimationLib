@@ -10,7 +10,7 @@ namespace AnimationLib
 	/// <summary>
 	/// This is a class that is used to put together a garment that can be added to a model skeleton
 	/// </summary>
-	public class Garment
+	public class Garment : IDisposable
 	{
 		#region Properties
 
@@ -78,9 +78,18 @@ namespace AnimationLib
 			InitializeGarment(garmentModel, skeleton, renderer);
 		}
 
+		public void UnloadContent()
+		{
+			OnGarmentRemoved = null;
+		}
+
+		public void Dispose()
+		{
+			UnloadContent();
+		}
+
 		private void InitializeGarment(ContentManager xmlContent, Filename filename, Skeleton skeleton, IRenderer renderer)
 		{
-			
 			var garmentModel = new GarmentModel(filename, Scale);
 			garmentModel.ReadXmlFile(xmlContent);
 
