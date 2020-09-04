@@ -11,7 +11,7 @@ namespace AnimationLib.Commands
 
 		string JointName { get; set; }
 
-		string ParentBoneName { get; set; }
+		Bone ParentBone { get; set; }
 
 		bool InsertBeginning { get; set; }
 
@@ -19,23 +19,16 @@ namespace AnimationLib.Commands
 
 		#region Methods
 
-		public AddJoint(AnimationContainer animationContainer, string jointName, string parentBoneName, bool insertBeginning)
+		public AddJoint(AnimationContainer animationContainer, string jointName, Bone bone, bool insertBeginning)
 		{
 			AnimationContainer = animationContainer;
 			JointName = jointName;
-			ParentBoneName = parentBoneName;
+			ParentBone = bone;
 			InsertBeginning = insertBeginning;
 		}
 
 		public bool Execute()
 		{
-			//Find the parent bone
-			var parent = AnimationContainer.Skeleton.GetBone(ParentBoneName);
-			if (parent == null)
-			{
-				throw new Exception($"Couldn't find parent bone with name {ParentBoneName}");
-			}
-
 			//make sure it is a unique bone & joint name
 			var joint = AnimationContainer.Skeleton.GetJoint(JointName);
 			if (null != joint)
@@ -44,7 +37,7 @@ namespace AnimationLib.Commands
 			}
 
 			//add a matching joint to the parent
-			parent.AddJoint(JointName, InsertBeginning);
+			ParentBone.AddJoint(JointName, InsertBeginning);
 
 			return true;
 		}

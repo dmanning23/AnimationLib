@@ -4,7 +4,7 @@ using UndoRedoBuddy;
 namespace AnimationLib
 {
 	/// <summary>
-	/// There is one keybone for every keybone in every animation.
+	/// There is one keybone for every bone in every animation.
 	/// </summary>
 	public class KeyBone
 	{
