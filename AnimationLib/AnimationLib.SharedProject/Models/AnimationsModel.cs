@@ -1,6 +1,8 @@
 using FilenameBuddy;
 using System.Collections.Generic;
+#if !BRIDGE
 using System.Xml;
+#endif
 using XmlBuddy;
 
 namespace AnimationLib
@@ -47,6 +49,7 @@ namespace AnimationLib
 
 		#region File IO
 
+#if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
 		{
 			string name = node.Name;
@@ -88,7 +91,6 @@ namespace AnimationLib
 			Animations.Add(animation);
 		}
 
-#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			//write out joints

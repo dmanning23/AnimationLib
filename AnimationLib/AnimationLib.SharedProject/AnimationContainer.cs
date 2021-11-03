@@ -7,8 +7,10 @@ using RandomExtensions;
 using RenderBuddy;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Vector2Extensions;
+using XmlBuddy;
 
 namespace AnimationLib
 {
@@ -483,10 +485,16 @@ namespace AnimationLib
 
 		#region Skeleton File IO
 
-		public void Write()
+		public void WriteXml()
 		{
 			WriteSkeletonXml();
 			WriteAnimationXml();
+		}
+
+		public void WriteJson()
+		{
+			WriteSkeletonJson();
+			WriteAnimationJson();
 		}
 
 		/// <summary>
@@ -498,9 +506,20 @@ namespace AnimationLib
 		public virtual void ReadSkeletonXml(Filename filename, IRenderer renderer, ContentManager xmlContent = null)
 		{
 			SkeletonFile = filename;
-			var skelModel = new SkeletonModel(filename, Scale, 1f);
-			skelModel.ReadXmlFile(xmlContent);
-			Skeleton.Load(skelModel, renderer);
+			using (var skelModel = new SkeletonModel(filename, Scale, 1f))
+			{
+				skelModel.ReadXmlFile(xmlContent);
+				Skeleton.Load(skelModel, renderer);
+			}
+		}
+
+		public virtual void ReadSkeletonJson(Filename filename, IRenderer renderer, ContentManager xmlContent = null)
+		{
+			SkeletonFile = filename;
+			using (var skelModel = XmlFileBuddy.ReadJsonFile<SkeletonModel>(filename, xmlContent))
+			{
+				Skeleton.Load(skelModel, renderer);
+			}
 		}
 
 		public void WriteSkeletonXml()
@@ -516,9 +535,24 @@ namespace AnimationLib
 		public virtual void WriteSkeletonXml(Filename filename)
 		{
 			SkeletonFile = filename;
+			using (var skelModel = new SkeletonModel(Skeleton, filename))
+			{
+				skelModel.WriteXml();
+			}
+		}
 
-			var skelModel = new SkeletonModel(Skeleton, filename);
-			skelModel.WriteXml();
+		public void WriteSkeletonJson()
+		{
+			WriteSkeletonJson(SkeletonFile);
+		}
+
+		public virtual void WriteSkeletonJson(Filename filename)
+		{
+			SkeletonFile = filename;
+			using (var skelModel = new SkeletonModel(Skeleton, filename))
+			{
+				skelModel.WriteJson();
+			}
 		}
 
 		#endregion //Skeleton File IO
@@ -533,11 +567,18 @@ namespace AnimationLib
 		public virtual void ReadAnimationXml(Filename filename, ContentManager xmlContent = null)
 		{
 			AnimationFile = filename;
-
-			//load up the animations from file
 			using (var animations = new AnimationsModel(filename, Scale))
 			{
 				animations.ReadXmlFile(xmlContent);
+				LoadAnimations(animations);
+			}
+		}
+
+		public virtual void ReadAnimationJson(Filename filename, ContentManager xmlContent = null)
+		{
+			AnimationFile = filename;
+			using (var animations = XmlFileBuddy.ReadJsonFile<AnimationsModel>(filename, xmlContent))
+			{
 				LoadAnimations(animations);
 			}
 		}
@@ -568,8 +609,24 @@ namespace AnimationLib
 		public void WriteAnimationXml(Filename filename)
 		{
 			AnimationFile = filename;
-			var animations = new AnimationsModel(filename, this);
-			animations.WriteXml();
+			using (var animations = new AnimationsModel(filename, this))
+			{
+				animations.WriteXml();
+			}
+		}
+
+		public void WriteAnimationJson()
+		{
+			WriteAnimationJson(AnimationFile);
+		}
+
+		public void WriteAnimationJson(Filename filename)
+		{
+			AnimationFile = filename;
+			using (var animations = new AnimationsModel(filename, this))
+			{
+				animations.WriteJson();
+			}
 		}
 
 		#endregion //Animation File IO

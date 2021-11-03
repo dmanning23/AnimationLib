@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+#if !BRIDGE
 using System.Xml;
+#endif
 using Vector2Extensions;
 using XmlBuddy;
 
@@ -21,6 +23,7 @@ namespace AnimationLib
 			Color = color;
 		}
 
+#if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
 		{
 			//what is in this node?
@@ -47,7 +50,6 @@ namespace AnimationLib
 			}
 		}
 
-#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("color");

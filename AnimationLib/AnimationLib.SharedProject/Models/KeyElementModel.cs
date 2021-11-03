@@ -1,7 +1,10 @@
 using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+#if !BRIDGE
 using System.Xml;
+#endif
 using Vector2Extensions;
 using XmlBuddy;
 
@@ -74,6 +77,7 @@ namespace AnimationLib
 
 		#region File IO
 
+#if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
 		{
 			//what is in this node?
@@ -135,7 +139,6 @@ namespace AnimationLib
 			}
 		}
 
-#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("key");
@@ -182,18 +185,25 @@ namespace AnimationLib
 		}
 #endif
 
+		[JsonIgnore]
 		public bool SkipTime => 0 == Time;
 
+		[JsonIgnore]
 		public bool SkipRotation => 0f == Rotation;
 
-		public bool SkipLayer=> 0 == Layer;
+		[JsonIgnore]
+		public bool SkipLayer => 0 == Layer;
 
+		[JsonIgnore]
 		public bool SkipImage => string.IsNullOrEmpty(Image);
 
+		[JsonIgnore]
 		public bool SkipFlip => false == Flip;
 
+		[JsonIgnore]
 		public bool SkipTranslation => Vector2.Zero == Translation;
 
+		[JsonIgnore]
 		public bool SkipRagDoll => false == Ragdoll;
 
 		#endregion //File IO

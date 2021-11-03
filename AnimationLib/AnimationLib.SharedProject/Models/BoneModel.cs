@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+#if !BRIDGE
 using System.Xml;
+#endif
 using XmlBuddy;
 
 namespace AnimationLib
@@ -109,6 +111,8 @@ namespace AnimationLib
 		{
 			return Name;
 		}
+
+#if !BRIDGE
 
 		/// <summary>
 		/// Parse a child node of this BoneXML
@@ -231,7 +235,7 @@ namespace AnimationLib
 			Bones.Add(bone);
 		}
 
-#if !WINDOWS_UWP
+
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>

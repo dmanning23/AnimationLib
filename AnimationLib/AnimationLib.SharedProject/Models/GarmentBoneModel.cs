@@ -1,4 +1,6 @@
-﻿using System.Xml;
+﻿#if !BRIDGE
+using System.Xml;
+#endif
 
 namespace AnimationLib
 {
@@ -34,6 +36,7 @@ namespace AnimationLib
 
 		#region File IO
 
+#if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
 		{
 			//what is in this node?
@@ -57,7 +60,6 @@ namespace AnimationLib
 			}
 		}
 
-#if !WINDOWS_UWP
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>

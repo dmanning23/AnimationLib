@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+#if !BRIDGE
 using System.Xml;
+#endif
 using XmlBuddy;
 
 namespace AnimationLib
@@ -17,7 +19,7 @@ namespace AnimationLib
 		/// </summary>
 		/// <value>The name.</value>
 		public string Name { get; set; }
-		
+
 		/// <summary>
 		/// length of this animation
 		/// </summary>
@@ -105,6 +107,7 @@ namespace AnimationLib
 
 		#region File IO
 
+#if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
 		{
 			string name = node.Name;
@@ -151,7 +154,7 @@ namespace AnimationLib
 			KeyElements.Add(key);
 		}
 
-#if !WINDOWS_UWP
+
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			//write out the item tag

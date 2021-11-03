@@ -1,5 +1,7 @@
 using FilenameBuddy;
+#if !BRIDGE
 using System.Xml;
+#endif
 using XmlBuddy;
 
 namespace AnimationLib
@@ -39,12 +41,12 @@ namespace AnimationLib
 
 		#region File IO
 
+#if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
 		{
 			ReadChildNodes(node, RootBone.ParseXmlNode);
 		}
 
-#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlFile)
 		{
 			RootBone.WriteXmlNodes(xmlFile);

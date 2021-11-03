@@ -2,7 +2,9 @@ using FilenameBuddy;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+#if !BRIDGE
 using System.Xml;
+#endif
 using Vector2Extensions;
 using XmlBuddy;
 
@@ -111,6 +113,7 @@ namespace AnimationLib
 			return Name;
 		}
 
+#if !BRIDGE
 		/// <summary>
 		/// Read in all the bone information from a file in the serialized XML format
 		/// </summary>
@@ -245,7 +248,6 @@ namespace AnimationLib
 			Lines.Add(line);
 		}
 
-#if !WINDOWS_UWP
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>

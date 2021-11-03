@@ -1,7 +1,9 @@
 ﻿using FilenameBuddy;
 using Microsoft.Xna.Framework.Content;
 using System;
+#if !BRIDGE
 using System.Xml;
+#endif
 using XmlBuddy;
 
 namespace AnimationLib
@@ -78,6 +80,7 @@ namespace AnimationLib
 
 		#region File IO
 
+#if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
 		{
 			//what is in this node?
@@ -164,7 +167,6 @@ namespace AnimationLib
 			Skeleton.ReadXmlFile(Content);
 		}
 
-#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("fragment");

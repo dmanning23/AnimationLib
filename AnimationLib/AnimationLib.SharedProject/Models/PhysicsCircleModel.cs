@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using System;
+#if !BRIDGE
 using System.Xml;
+#endif
 using Vector2Extensions;
 using XmlBuddy;
 
@@ -12,7 +14,7 @@ namespace AnimationLib
 
 		public Vector2 Center { get; set; }
 
-		public float Radius{ get; set; }
+		public float Radius { get; set; }
 
 		private float Scale { get; set; }
 
@@ -43,6 +45,7 @@ namespace AnimationLib
 
 		#region File IO
 
+#if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
 		{
 			//what is in this node?
@@ -74,7 +77,6 @@ namespace AnimationLib
 			}
 		}
 
-#if !WINDOWS_UWP
 		/// <summary>
 		/// Write this dude out to the xml format
 		/// </summary>
