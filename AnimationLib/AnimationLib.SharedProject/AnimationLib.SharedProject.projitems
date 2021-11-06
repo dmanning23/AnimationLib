@@ -6,7 +6,7 @@
     <SharedGUID>1b14667a-06be-436f-8a98-59b30d7b9170</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AnimationLib.SharedProject</Import_RootNamespace>
+    <Import_RootNamespace>AnimationLib.Core</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Animation.cs" />
@@ -46,6 +46,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)Image.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Joint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)JointData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\AnimationJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\AnimationsJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\BoneJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\ColorTagJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\GarmentFragmentJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\GarmentJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\ImageJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\JointDataJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\JointJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\KeyElementJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\PhysicsCircleJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\PhysicsLineJsonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Json\SkeletonJsonModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)KeyBone.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)KeyElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)KeyJoint.cs" />

@@ -16,11 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		buildNugetPackages.ps1 = buildNugetPackages.ps1
 	EndProjectSection
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AnimationLib.SharedProject", "AnimationLib.SharedProject\AnimationLib.SharedProject.shproj", "{1B14667A-06BE-436F-8A98-59B30D7B9170}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimationLib.WindowsDX", "AnimationLib.WindowsDX\AnimationLib.WindowsDX.csproj", "{66083926-1A1F-4DD9-9B89-5ECD1A58C47B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimationLib.Bridge", "AnimationLib.Bridge\AnimationLib.Bridge.csproj", "{D4DD6CC8-898A-4A98-8190-8CC49B58B507}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AnimationLib.Core", "AnimationLib.SharedProject\AnimationLib.Core.shproj", "{1B14667A-06BE-436F-8A98-59B30D7B9170}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

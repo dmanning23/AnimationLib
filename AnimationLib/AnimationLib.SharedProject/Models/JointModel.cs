@@ -1,3 +1,4 @@
+using AnimationLib.Core.Json;
 #if !BRIDGE
 using System.Xml;
 #endif
@@ -23,6 +24,11 @@ namespace AnimationLib
 		/// </summary>
 		public JointModel()
 		{
+		}
+
+		public JointModel(JointJsonModel joint)
+		{
+			Name = joint.Name;
 		}
 
 		public JointModel(Joint joint)

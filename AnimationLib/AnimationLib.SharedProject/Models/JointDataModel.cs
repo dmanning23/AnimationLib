@@ -1,5 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AnimationLib.Core.Json;
+using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
+#if !BRIDGE
+using Newtonsoft.Json.Converters;
+#endif
 using System;
+using System.ComponentModel;
 #if !BRIDGE
 using System.Xml;
 #endif
@@ -10,7 +16,7 @@ namespace AnimationLib
 {
 	public class JointDataModel : XmlObject
 	{
-		#region Properties
+#region Properties
 
 		/// <summary>
 		/// get the joint location
@@ -22,6 +28,10 @@ namespace AnimationLib
 		/// Float uses the ragdollradius to float around the anchor joint
 		/// chained uses the limits to rotate around the anchor joint
 		/// </summary>
+#if !BRIDGE
+		[JsonConverter(typeof(StringEnumConverter))]
+#endif
+		[DefaultValue(RagdollType.None)]
 		public RagdollType RagdollType { get; set; }
 
 		/// <summary>
@@ -35,9 +45,9 @@ namespace AnimationLib
 
 		private float Scale { get; set; }
 
-		#endregion
+#endregion
 
-		#region Methods
+#region Methods
 
 		public JointDataModel(float scale)
 		{
@@ -47,6 +57,15 @@ namespace AnimationLib
 			SecondLimit = 180.0f;
 			FloatRadius = 0.0f;
 			RagdollType = RagdollType.None;
+		}
+
+		public JointDataModel(JointDataJsonModel jointData, float scale = 1f) : this(scale)
+		{
+			Location = new Vector2(jointData.Location.X, jointData.Location.Y);
+			RagdollType = jointData.RagdollType;
+			FloatRadius = jointData.FloatRadius;
+			FirstLimit = jointData.FirstLimit;
+			SecondLimit = jointData.SecondLimit;
 		}
 
 		public JointDataModel(JointData jointData, float scale = 1f) : this(scale)
@@ -195,6 +214,6 @@ namespace AnimationLib
 		}
 #endif
 
-		#endregion //Methods
+#endregion //Methods
 	}
 }

@@ -42,7 +42,7 @@
       <HintPath>..\packages\DrawlistBuddy.2.0.2\lib\net451\DrawListBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="FilenameBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.2.0.11\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.2.0.12\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="GameTimer.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GameTimer.2.3.0\lib\net452\GameTimer.WindowsDX.dll</HintPath>
@@ -110,7 +110,7 @@
       <HintPath>..\packages\Vector2Extensions.2.0.3\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="XmlBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XmlBuddy.2.0.4\lib\net451\XmlBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\XmlBuddy.2.0.7\lib\net451\XmlBuddy.WindowsDX.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

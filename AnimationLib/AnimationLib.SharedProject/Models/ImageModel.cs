@@ -1,7 +1,10 @@
+using AnimationLib.Core.Json;
 using FilenameBuddy;
 using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 #if !BRIDGE
 using System.Xml;
 #endif
@@ -14,7 +17,7 @@ namespace AnimationLib
 	{
 		#region Properties
 
-		SkeletonModel SkeletonModel { get; set; }
+		private SkeletonModel SkeletonModel { get; set; }
 
 		public string Name { get; set; }
 
@@ -26,13 +29,65 @@ namespace AnimationLib
 
 		public Vector2 RagdollGravity { get; set; }
 
+		[DefaultValue(1.5f)]
 		public float RagdollSpring { get; set; }
 
+		[JsonIgnore]
 		public Filename ImageFile { get; set; }
 
+		[DefaultValue("")]
+		public string Image
+		{
+			get
+			{
+				return ImageFile.HasFilename ? ImageFile.GetFilenameRelativeToPath(SkeletonModel.Filename) : string.Empty;
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					ImageFile.SetFilenameRelativeToPath(SkeletonModel.Filename, value);
+				}
+			}
+		}
+
+		[JsonIgnore]
 		public Filename NormalMapFile { get; set; }
 
+		[DefaultValue("")]
+		public string NormalMap
+		{
+			get
+			{
+				return NormalMapFile.HasFilename ? NormalMapFile.GetFilenameRelativeToPath(SkeletonModel.Filename) : string.Empty;
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					NormalMapFile.SetFilenameRelativeToPath(SkeletonModel.Filename, value);
+				}
+			}
+		}
+
+		[JsonIgnore]
 		public Filename ColorMaskFile { get; set; }
+
+		[DefaultValue("")]
+		public string ColorMask
+		{
+			get
+			{
+				return ColorMaskFile.HasFilename ? ColorMaskFile.GetFilenameRelativeToPath(SkeletonModel.Filename) : string.Empty;
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					ColorMaskFile.SetFilenameRelativeToPath(SkeletonModel.Filename, value);
+				}
+			}
+		}
 
 		/// <summary>
 		/// list of joint locations
@@ -52,8 +107,11 @@ namespace AnimationLib
 		/// </summary>
 		public List<PhysicsLineModel> Lines { get; private set; }
 
+		[JsonIgnore]
 		public float Scale { get; private set; }
-		public float FragmentScale { get; set; }
+
+		[JsonIgnore]
+		public float FragmentScale { get; private set; }
 
 		#endregion
 
@@ -78,6 +136,32 @@ namespace AnimationLib
 			NormalMapFile = new Filename();
 			ColorMaskFile = new Filename();
 			SkeletonModel = skeleton;
+		}
+
+		public ImageModel(SkeletonModel skeleton, ImageJsonModel image, float scale, float fragmentScale)
+			: this(skeleton, scale, fragmentScale)
+		{
+			Name = image.Name;
+			UpperLeft = image.UpperLeft;
+			LowerRight = image.LowerRight;
+			AnchorCoord = image.AnchorCoord;
+			RagdollSpring = image.RagdollSpring;
+			RagdollGravity = image.RagdollGravity;
+			Image = image.Image;
+			NormalMap = image.NormalMap;
+			ColorMask = image.ColorMask;
+			foreach (var jointCoord in image.JointCoords)
+			{
+				JointCoords.Add(new JointDataModel(jointCoord, FragmentScale));
+			}
+			foreach (var circle in image.Circles)
+			{
+				Circles.Add(new PhysicsCircleModel(circle, Scale, FragmentScale));
+			}
+			foreach (var line in image.Lines)
+			{
+				Lines.Add(new PhysicsLineModel(line, Scale));
+			}
 		}
 
 		public ImageModel(SkeletonModel skeleton, Image image)

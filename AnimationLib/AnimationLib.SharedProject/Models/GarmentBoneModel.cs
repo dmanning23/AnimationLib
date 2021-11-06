@@ -1,4 +1,6 @@
-﻿#if !BRIDGE
+﻿using AnimationLib.Core.Json;
+using Newtonsoft.Json;
+#if !BRIDGE
 using System.Xml;
 #endif
 
@@ -11,7 +13,8 @@ namespace AnimationLib
 	{
 		#region Properties
 
-		private GarmentFragmentModel FragmentModel { get; set; }
+		[JsonIgnore]
+		public GarmentFragmentModel FragmentModel { get; private set; }
 
 		#endregion //Properties
 
@@ -22,6 +25,12 @@ namespace AnimationLib
 		/// </summary>
 		public GarmentBoneModel(SkeletonModel skeleton, float scale, GarmentFragmentModel fragment)
 			: base(skeleton, scale, fragment.FragmentScale)
+		{
+			FragmentModel = fragment;
+		}
+
+		public GarmentBoneModel(SkeletonModel skeleton, BoneJsonModel bone, float scale, float fragmentScale, GarmentFragmentModel fragment)
+			: base(skeleton, bone, scale, fragmentScale)
 		{
 			FragmentModel = fragment;
 		}

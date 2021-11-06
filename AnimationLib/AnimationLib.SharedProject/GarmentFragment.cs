@@ -111,6 +111,11 @@ namespace AnimationLib
 			AnimationContainer.SetGarmentBones(characterSkeleton, ParentBoneName);
 		}
 
+		public override string ToString()
+		{
+			return ParentBoneName;
+		}
+
 		#region Color Methods
 
 		/// <summary>

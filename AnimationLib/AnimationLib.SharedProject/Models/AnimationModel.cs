@@ -1,3 +1,4 @@
+using AnimationLib.Core.Json;
 using System;
 using System.Collections.Generic;
 #if !BRIDGE
@@ -46,12 +47,26 @@ namespace AnimationLib
 			KeyElements = new List<KeyElementModel>();
 		}
 
+		public AnimationModel(AnimationJsonModel animation, float scale)
+			: this(scale)
+		{
+			Name = animation.Name;
+			Length = animation.Length;
+			KeyElements = new List<KeyElementModel>();
+
+			foreach (var key in animation.KeyElements)
+			{
+				KeyElements.Add(new KeyElementModel(key, scale));
+			}
+
+			KeyElements.Sort(new KeyElementModelSort());
+		}
+
 		public AnimationModel(Animation animation, Skeleton skeleton)
 			: this(1f)
 		{
 			Name = animation.Name;
 			Length = animation.Length;
-			KeyElements = new List<KeyElementModel>();
 			GetKeys(animation.KeyBone, skeleton.RootBone);
 			KeyElements.Sort(new KeyElementModelSort());
 		}

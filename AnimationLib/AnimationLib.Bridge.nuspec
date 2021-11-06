@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>AnimationLib.Bridge</id>
-		<version>2.0.38</version>
+		<version>2.0.41</version>
 		<title>AnimationLib.Bridge</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>

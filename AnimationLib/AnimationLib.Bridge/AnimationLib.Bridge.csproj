@@ -48,7 +48,7 @@
       <HintPath>..\packages\DrawlistBuddy.Bridge.2.0.2\lib\net47\DrawListBuddy.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="FilenameBuddy.Bridge, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.Bridge.2.0.11\lib\net47\FilenameBuddy.Bridge.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.Bridge.2.0.12\lib\net47\FilenameBuddy.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="GameTimer.Bridge, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GameTimer.Bridge.2.3.0\lib\net47\GameTimer.Bridge.dll</HintPath>
@@ -99,7 +99,7 @@
       <HintPath>..\packages\Vector2Extensions.Bridge.2.0.3\lib\net47\Vector2Extensions.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="XmlBuddy.Bridge, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XmlBuddy.Bridge.2.0.4\lib\net47\XmlBuddy.Bridge.dll</HintPath>
+      <HintPath>..\packages\XmlBuddy.Bridge.2.0.7\lib\net47\XmlBuddy.Bridge.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

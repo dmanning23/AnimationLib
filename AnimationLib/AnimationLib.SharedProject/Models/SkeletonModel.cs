@@ -1,4 +1,7 @@
+using AnimationLib.Core.Json;
 using FilenameBuddy;
+using Microsoft.Xna.Framework.Content;
+using Newtonsoft.Json;
 #if !BRIDGE
 using System.Xml;
 #endif
@@ -52,6 +55,20 @@ namespace AnimationLib
 			RootBone.WriteXmlNodes(xmlFile);
 		}
 #endif
+
+		public override void ReadJsonFile(ContentManager content = null)
+		{
+			using (var jsonModel = new SkeletonJsonModel(this.ContentName, this.Filename))
+			{
+				//read the json file
+				jsonModel.ReadJsonFile(content);
+
+				//load from the json structure
+				var scale = RootBone.Scale;
+				var fragmentScale = RootBone.FragmentScale;
+				RootBone = new BoneModel(this, jsonModel.RootBone, scale, fragmentScale);
+			}
+		}
 
 		#endregion //Model File IO
 	}

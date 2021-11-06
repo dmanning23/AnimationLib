@@ -1,4 +1,6 @@
+using AnimationLib.Core.Json;
 using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 using System;
 #if !BRIDGE
 using System.Xml;
@@ -16,9 +18,11 @@ namespace AnimationLib
 
 		public float Radius { get; set; }
 
+		[JsonProperty]
 		private float Scale { get; set; }
 
-		public float FragmentScale { get; set; }
+		[JsonProperty]
+		private float FragmentScale { get; set; }
 
 		#endregion //Properties
 
@@ -27,11 +31,19 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
+		[JsonConstructor]
 		public PhysicsCircleModel(float scale, float fragmentScale)
 		{
 			Scale = scale;
 			FragmentScale = fragmentScale;
 			Center = Vector2.Zero;
+		}
+
+		public PhysicsCircleModel(PhysicsCircleJsonModel circle, float scale, float fragmentScale)
+			: this(scale, fragmentScale)
+		{
+			Center = circle.Center;
+			Radius = circle.Radius;
 		}
 
 		public PhysicsCircleModel(PhysicsCircle circle, float scale, float fragmentScale)

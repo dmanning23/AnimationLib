@@ -60,16 +60,10 @@ namespace AnimationLib
 			IsAdded = false;
 		}
 
-		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer)
+		public Garment(Filename filename, Skeleton skeleton, IRenderer renderer, ContentManager xmlContent = null, bool loadJson = false)
 			: this(skeleton.Animations.Scale)
 		{
-			InitializeGarment(null, filename, skeleton, renderer);
-		}
-
-		public Garment(ContentManager xmlContent, Filename filename, Skeleton skeleton, IRenderer renderer)
-			: this(skeleton.Animations.Scale)
-		{
-			InitializeGarment(xmlContent, filename, skeleton, renderer);
+			InitializeGarment(xmlContent, filename, skeleton, renderer, loadJson);
 		}
 
 		public Garment(GarmentModel garmentModel, Skeleton skeleton, IRenderer renderer)
@@ -88,10 +82,18 @@ namespace AnimationLib
 			UnloadContent();
 		}
 
-		private void InitializeGarment(ContentManager xmlContent, Filename filename, Skeleton skeleton, IRenderer renderer)
+		private void InitializeGarment(ContentManager xmlContent, Filename filename, Skeleton skeleton, IRenderer renderer, bool loadJson = false)
 		{
 			var garmentModel = new GarmentModel(filename, Scale);
-			garmentModel.ReadXmlFile(xmlContent);
+
+			if (loadJson)
+			{
+				garmentModel.ReadJsonFile(xmlContent);
+			}
+			else
+			{
+				garmentModel.ReadXmlFile(xmlContent);
+			}
 
 			InitializeGarment(garmentModel, skeleton, renderer);
 		}
@@ -227,7 +229,7 @@ namespace AnimationLib
 			return this.Name;
 		}
 
-		public void Write()
+		public void WriteXml()
 		{
 			WriteXmlFile(GarmentFile);
 		}
@@ -235,8 +237,22 @@ namespace AnimationLib
 		public void WriteXmlFile(Filename filename)
 		{
 			GarmentFile = filename;
+			GarmentFile.ChangeExtension("xml");
 			var garment = new GarmentModel(filename, this);
 			garment.WriteXml();
+		}
+
+		public void WriteJson()
+		{
+			WriteJsonFile(GarmentFile);
+		}
+
+		public void WriteJsonFile(Filename filename)
+		{
+			GarmentFile = filename;
+			GarmentFile.ChangeExtension("json");
+			var garment = new GarmentModel(filename, this);
+			garment.WriteJson();
 		}
 
 		#region Color Methods

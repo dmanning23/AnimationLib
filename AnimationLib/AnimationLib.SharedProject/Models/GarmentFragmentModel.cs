@@ -1,6 +1,9 @@
-﻿using FilenameBuddy;
+﻿using AnimationLib.Core.Json;
+using FilenameBuddy;
 using Microsoft.Xna.Framework.Content;
+using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 #if !BRIDGE
 using System.Xml;
 #endif
@@ -15,8 +18,10 @@ namespace AnimationLib
 	{
 		#region Properties
 
+		[JsonIgnore]
 		public AnimationsModel AnimationContainer { get; set; }
 
+		[JsonIgnore]
 		public GarmentSkeletonModel Skeleton { get; set; }
 
 		private ContentManager Content { get; set; }
@@ -24,6 +29,7 @@ namespace AnimationLib
 		private float Scale { get; set; }
 
 		private float _fragmentScale;
+		[DefaultValue(1f)]
 		public float FragmentScale
 		{
 			get { return _fragmentScale; }
@@ -46,6 +52,34 @@ namespace AnimationLib
 		/// </summary>
 		public bool DoesCover { get; set; }
 
+		private Filename _modelFile { get; set; }
+
+		private Filename _animationFile { get; set; }
+
+		public string ModelFile
+		{
+			get
+			{
+				return _modelFile.HasFilename ? _modelFile.GetFilenameRelativeToPath(Garment.Filename) : string.Empty;
+			}
+			set
+			{
+				_modelFile.SetFilenameRelativeToPath(Garment.Filename, value);
+			}
+		}
+
+		public string AnimationFile
+		{
+			get
+			{
+				return _animationFile.HasFilename ? _animationFile.GetFilenameRelativeToPath(Garment.Filename) : string.Empty;
+			}
+			set
+			{
+				_animationFile.SetFilenameRelativeToPath(Garment.Filename, value);
+			}
+		}
+
 		#endregion //Properties
 
 		#region Methods
@@ -53,21 +87,35 @@ namespace AnimationLib
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentFragmentModel(float scale, GarmentModel garment, ContentManager content = null)
+		public GarmentFragmentModel(GarmentModel garment, float scale, ContentManager content = null)
 		{
 			Scale = scale;
 			_fragmentScale = 1f;
 			Content = content;
 			Garment = garment;
 			DoesCover = false;
+			_modelFile = new Filename();
+			_animationFile = new Filename();
+		}
+
+		public GarmentFragmentModel(GarmentModel garment, GarmentFragmentJsonModel fragment, float scale, ContentManager content = null) : this(garment, scale, content)
+		{
+			ParentBoneName = fragment.ParentBoneName;
+			ModelFile = fragment.ModelFile;
+			AnimationFile = fragment.AnimationFile;
+			DoesCover = fragment.DoesCover;
+
+			ReadModelJson(_modelFile);
+			ReadAnimationsJson(_animationFile);
 		}
 
 		/// <summary>
 		/// constructor!
 		/// </summary>
-		public GarmentFragmentModel(GarmentFragment fragment, GarmentModel garment)
-			: this(1f, garment)
+		public GarmentFragmentModel(GarmentFragment fragment, GarmentModel garment) : this(garment, 1f)
 		{
+			_modelFile = fragment.SkeletonFile;
+			_animationFile = fragment.AnimationFile;
 			Skeleton = new GarmentSkeletonModel(fragment.SkeletonFile, fragment.AnimationContainer.Skeleton as GarmentSkeleton, this);
 			AnimationContainer = new AnimationsModel(fragment.AnimationFile, fragment.AnimationContainer);
 			FragmentScale = fragment.FragmentScale;
@@ -79,6 +127,18 @@ namespace AnimationLib
 		#endregion //Methods
 
 		#region File IO
+
+		private void ReadAnimationsXml(Filename animationFile)
+		{
+			AnimationContainer = new AnimationsModel(animationFile, Scale);
+			AnimationContainer.ReadXmlFile(Content);
+		}
+
+		private void ReadModelXml(Filename skeletonFile)
+		{
+			Skeleton = new GarmentSkeletonModel(skeletonFile, Scale, this);
+			Skeleton.ReadXmlFile(Content);
+		}
 
 #if !BRIDGE
 		public override void ParseXmlNode(XmlNode node)
@@ -98,31 +158,31 @@ namespace AnimationLib
 					case "model":
 						{
 							//read in the model 
-							var skeletonFile = new Filename(value);
-							ReadModel(skeletonFile);
+							_modelFile = new Filename(value);
+							ReadModelXml(_modelFile);
 						}
 						break;
 					case "animation":
 						{
 							//read in the animations
-							var animationFile = new Filename(value);
-							ReadAnimations(animationFile);
+							_animationFile = new Filename(value);
+							ReadAnimationsXml(_animationFile);
 						}
 						break;
 					case "model1":
 						{
 							//read in the model, relative to the garment file
-							var skeletonFile = new Filename();
-							skeletonFile.SetFilenameRelativeToPath(Garment.Filename, value);
-							ReadModel(skeletonFile);
+							_modelFile = new Filename();
+							_modelFile.SetFilenameRelativeToPath(Garment.Filename, value);
+							ReadModelXml(_modelFile);
 						}
 						break;
 					case "animation1":
 						{
 							//read in the animations, relative to the garment file
-							var animationFile = new Filename();
-							animationFile.SetFilenameRelativeToPath(Garment.Filename, value);
-							ReadAnimations(animationFile);
+							_animationFile = new Filename();
+							_animationFile.SetFilenameRelativeToPath(Garment.Filename, value);
+							ReadAnimationsXml(_animationFile);
 						}
 						break;
 					case "scale":
@@ -155,18 +215,6 @@ namespace AnimationLib
 			}
 		}
 
-		private void ReadAnimations(Filename animationFile)
-		{
-			AnimationContainer = new AnimationsModel(animationFile, Scale);
-			AnimationContainer.ReadXmlFile(Content);
-		}
-
-		private void ReadModel(Filename skeletonFile)
-		{
-			Skeleton = new GarmentSkeletonModel(skeletonFile, Scale, this);
-			Skeleton.ReadXmlFile(Content);
-		}
-
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("fragment");
@@ -179,11 +227,15 @@ namespace AnimationLib
 			}
 
 			//write out model filename to use
+			_modelFile.ChangeExtension("xml");
+			Skeleton.Filename.ChangeExtension("xml");
 			xmlWriter.WriteStartElement("model1");
 			xmlWriter.WriteString(Skeleton.Filename.GetFilenameRelativeToPath(Garment.Filename));
 			xmlWriter.WriteEndElement();
 
 			//write out animation filename to use
+			_animationFile.ChangeExtension("xml");
+			AnimationContainer.Filename.ChangeExtension("xml");
 			xmlWriter.WriteStartElement("animation1");
 			xmlWriter.WriteString(AnimationContainer.Filename.GetFilenameRelativeToPath(Garment.Filename));
 			xmlWriter.WriteEndElement();
@@ -208,7 +260,30 @@ namespace AnimationLib
 			//write out the animation file
 			AnimationContainer.WriteXml();
 		}
+
+		public void WriteJson()
+		{
+			_modelFile.ChangeExtension("json");
+			Skeleton.Filename.ChangeExtension("json");
+			Skeleton.WriteJson();
+
+			_animationFile.ChangeExtension("json");
+			AnimationContainer.Filename.ChangeExtension("json");
+			AnimationContainer.WriteJson();
+		}
 #endif
+
+		private void ReadAnimationsJson(Filename animationFile)
+		{
+			AnimationContainer = new AnimationsModel(animationFile, Scale);
+			AnimationContainer.ReadJsonFile(Content);
+		}
+
+		private void ReadModelJson(Filename skeletonFile)
+		{
+			Skeleton = new GarmentSkeletonModel(skeletonFile, Scale, this);
+			Skeleton.ReadJsonFile(Content);
+		}
 
 		#endregion //File IO
 	}

@@ -516,14 +516,16 @@ namespace AnimationLib
 		public virtual void ReadSkeletonJson(Filename filename, IRenderer renderer, ContentManager xmlContent = null)
 		{
 			SkeletonFile = filename;
-			using (var skelModel = XmlFileBuddy.ReadJsonFile<SkeletonModel>(filename, xmlContent))
+			using (var skelModel = new SkeletonModel(filename, Scale, 1f))
 			{
+				skelModel.ReadJsonFile(xmlContent);
 				Skeleton.Load(skelModel, renderer);
 			}
 		}
 
 		public void WriteSkeletonXml()
 		{
+			SkeletonFile.ChangeExtension("xml");
 			WriteSkeletonXml(SkeletonFile);
 		}
 
@@ -543,6 +545,7 @@ namespace AnimationLib
 
 		public void WriteSkeletonJson()
 		{
+			SkeletonFile.ChangeExtension("json");
 			WriteSkeletonJson(SkeletonFile);
 		}
 
@@ -577,8 +580,9 @@ namespace AnimationLib
 		public virtual void ReadAnimationJson(Filename filename, ContentManager xmlContent = null)
 		{
 			AnimationFile = filename;
-			using (var animations = XmlFileBuddy.ReadJsonFile<AnimationsModel>(filename, xmlContent))
+			using (var animations = new AnimationsModel(filename, Scale))
 			{
+				animations.ReadJsonFile(xmlContent);
 				LoadAnimations(animations);
 			}
 		}
@@ -603,6 +607,7 @@ namespace AnimationLib
 
 		public void WriteAnimationXml()
 		{
+			AnimationFile.ChangeExtension("xml");
 			WriteAnimationXml(AnimationFile);
 		}
 
@@ -617,6 +622,7 @@ namespace AnimationLib
 
 		public void WriteAnimationJson()
 		{
+			AnimationFile.ChangeExtension("json");
 			WriteAnimationJson(AnimationFile);
 		}
 

@@ -1,4 +1,5 @@
-﻿using FilenameBuddy;
+﻿using AnimationLib.Core.Json;
+using FilenameBuddy;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 #if !BRIDGE
@@ -107,7 +108,7 @@ namespace AnimationLib
 
 		public void ReadFragments(XmlNode node)
 		{
-			GarmentFragmentModel fragment = new GarmentFragmentModel(Scale, this, Content);
+			GarmentFragmentModel fragment = new GarmentFragmentModel(this, Scale, Content);
 			XmlFileBuddy.ReadChildNodes(node, fragment.ParseXmlNode);
 			Fragments.Add(fragment);
 		}
@@ -142,7 +143,39 @@ namespace AnimationLib
 				xmlWriter.WriteEndElement();
 			}
 		}
+
+		public override void WriteJson()
+		{
+			foreach (var fragment in Fragments)
+			{
+				fragment.WriteJson();
+			}
+
+			base.WriteJson();
+		}
 #endif
+
+		public override void ReadJsonFile(ContentManager content = null)
+		{
+			using (var jsonModel = new GarmentJsonModel(this.ContentName, this.Filename))
+			{
+				//read the json file
+				jsonModel.ReadJsonFile(content);
+
+				//load from the json structure
+				Name = jsonModel.Name;
+
+				foreach (var fragment in jsonModel.Fragments)
+				{
+					Fragments.Add(new GarmentFragmentModel(this, fragment, Scale, content));
+				}
+
+				foreach (var color in jsonModel.Colors)
+				{
+					Colors.Add(new ColorTagModel(color.Tag, color.Color));
+				}
+			}
+		}
 
 		#endregion //File IO
 	}

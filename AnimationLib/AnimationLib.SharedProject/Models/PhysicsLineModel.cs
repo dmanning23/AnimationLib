@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AnimationLib.Core.Json;
+using Microsoft.Xna.Framework;
 #if !BRIDGE
 using System.Xml;
 #endif
@@ -32,6 +33,13 @@ namespace AnimationLib
 			Scale = scale;
 			Start = Vector2.Zero;
 			End = Vector2.Zero;
+		}
+
+		public PhysicsLineModel(PhysicsLineJsonModel line, float scale)
+			: this(scale)
+		{
+			Start = line.Start;
+			End = line.End;
 		}
 
 		public PhysicsLineModel(PhysicsLine line)

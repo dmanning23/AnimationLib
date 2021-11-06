@@ -1,3 +1,4 @@
+using AnimationLib.Core.Json;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using System;
@@ -48,6 +49,18 @@ namespace AnimationLib
 			Flip = false;
 			Translation = Vector2.Zero;
 			Ragdoll = false;
+		}
+
+		public KeyElementModel(KeyElementJsonModel key, float scale) : this(scale)
+		{
+			Time = key.Time;
+			Rotation = key.Rotation;
+			Layer = key.Layer;
+			Image = key.Image;
+			Flip = key.Flip;
+			Translation = key.Translation;
+			Ragdoll = key.Ragdoll;
+			Joint = key.Joint;
 		}
 
 		public KeyElementModel(KeyElement key, Bone bone) : this(1f)

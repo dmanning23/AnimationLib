@@ -1,5 +1,11 @@
+using AnimationLib.Core.Json;
+using Newtonsoft.Json;
+#if !BRIDGE
+using Newtonsoft.Json.Converters;
+#endif
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 #if !BRIDGE
 using System.Xml;
 #endif
@@ -14,12 +20,38 @@ namespace AnimationLib
 	{
 		#region Properties
 
-		public SkeletonModel SkeletonModel { get; private set; }
+		/// <summary>
+		/// The name of this bone
+		/// </summary>
+		public string Name { get; protected set; }
 
 		/// <summary>
-		/// the child bones of this guy
+		/// Flag used to tell the difference between the bone types for collision purposes
 		/// </summary>
-		public List<BoneModel> Bones { get; private set; }
+#if !BRIDGE
+		[JsonConverter(typeof(StringEnumConverter))]
+#endif
+		[DefaultValue(EBoneType.Normal)]
+		public EBoneType BoneType { get; set; }
+
+		/// <summary>
+		/// Whether or not this bone should be colored by the palette swap
+		/// </summary>
+		public bool Colorable { get; set; }
+
+		[DefaultValue(0.5f)]
+		public float RagdollWeightRatio { get; set; }
+
+		[JsonIgnore]
+		public float Scale { get; private set; }
+
+		[JsonIgnore]
+		public float FragmentScale { get; private set; }
+
+		public string PrimaryColorTag { get; set; }
+		public string SecondaryColorTag { get; set; }
+
+		private SkeletonModel SkeletonModel { get; set; }
 
 		/// <summary>
 		/// The joints in this bone
@@ -32,27 +64,9 @@ namespace AnimationLib
 		public List<ImageModel> Images { get; private set; }
 
 		/// <summary>
-		/// The name of this bone
+		/// the child bones of this guy
 		/// </summary>
-		public string Name { get; protected set; }
-
-		/// <summary>
-		/// Flag used to tell the difference between the bone types for collision purposes
-		/// </summary>
-		public EBoneType BoneType { get; set; }
-
-		/// <summary>
-		/// Whether or not this bone should be colored by the palette swap
-		/// </summary>
-		public bool Colorable { get; set; }
-
-		public float RagdollWeightRatio { get; set; }
-
-		private float Scale { get; set; }
-		private float FragmentScale { get; set; }
-
-		public string PrimaryColorTag { get; set; }
-		public string SecondaryColorTag { get; set; }
+		public List<BoneModel> Bones { get; private set; }
 
 		#endregion //Properties
 
@@ -73,6 +87,30 @@ namespace AnimationLib
 			BoneType = EBoneType.Normal;
 			RagdollWeightRatio = 0.5f;
 			SkeletonModel = skeleton;
+		}
+
+		public BoneModel(SkeletonModel skeleton, BoneJsonModel bone, float scale, float fragmentScale)
+			: this(skeleton, scale, fragmentScale)
+		{
+			Name = bone.Name;
+			Colorable = bone.Colorable;
+			BoneType = bone.BoneType;
+			RagdollWeightRatio = bone.RagdollWeightRatio;
+			PrimaryColorTag = bone.PrimaryColorTag;
+			SecondaryColorTag = bone.SecondaryColorTag;
+
+			foreach (var joint in bone.Joints)
+			{
+				Joints.Add(new JointModel(joint));
+			}
+			foreach (var image in bone.Images)
+			{
+				Images.Add(new ImageModel(SkeletonModel, image, scale, fragmentScale));
+			}
+			foreach (var childBone in bone.Bones)
+			{
+				Bones.Add(new BoneModel(SkeletonModel, childBone, scale, fragmentScale));
+			}
 		}
 
 		/// <summary>

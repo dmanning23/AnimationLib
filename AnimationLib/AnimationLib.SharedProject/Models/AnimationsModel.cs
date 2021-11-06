@@ -1,4 +1,6 @@
+using AnimationLib.Core.Json;
 using FilenameBuddy;
+using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 #if !BRIDGE
 using System.Xml;
@@ -102,6 +104,21 @@ namespace AnimationLib
 			xmlWriter.WriteEndElement();
 		}
 #endif
+
+		public override void ReadJsonFile(ContentManager content = null)
+		{
+			using (var jsonModel = new AnimationsJsonModel(this.ContentName, this.Filename))
+			{
+				//read the json file
+				jsonModel.ReadJsonFile(content);
+
+				//load from the json structure
+				foreach (var animation in jsonModel.Animations)
+				{
+					Animations.Add(new AnimationModel(animation, Scale));
+				}
+			}
+		}
 
 		#endregion //File IO
 	}
