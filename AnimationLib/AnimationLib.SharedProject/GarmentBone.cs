@@ -54,6 +54,8 @@ namespace AnimationLib
 
 		public override bool IsGarment => true;
 
+		public override bool AddToTools { get; set; } = false;
+
 		private string _id;
 		public override string Id => _id;
 
@@ -76,6 +78,7 @@ namespace AnimationLib
 			: base(bone)
 		{
 			Setup(owner, garment);
+			AddToTools = bone.AddToTools;
 		}
 
 		private void SetId()
@@ -100,16 +103,17 @@ namespace AnimationLib
 		/// <summary>
 		/// update all this dude's stuff
 		/// </summary>
-		override public void Update(int time,
+		public override void Update(int time,
 			Vector2 position,
 			KeyBone keyBone,
 			float parentRotation,
 			bool parentFlip,
 			int parentLayer,
-			bool ignoreRagdoll)
+			bool ignoreRagdoll,
+			EPlayback playback)
 		{
 			//update the animation container, which will update the Bone base class 
-			GarmentAnimationContainer.Update(time, position, parentFlip, parentRotation, ignoreRagdoll, parentLayer, ParentBone);
+			GarmentAnimationContainer.Update(time, position, parentFlip, parentRotation, ignoreRagdoll, parentLayer, ParentBone, playback);
 		}
 
 		public void UpdateBaseBone(int time,
@@ -118,9 +122,10 @@ namespace AnimationLib
 			float parentRotation,
 			bool parentFlip,
 			int parentLayer,
-			bool ignoreRagdoll)
+			bool ignoreRagdoll,
+			EPlayback playback)
 		{
-			base.Update(time, position, keyBone, parentRotation, parentFlip, parentLayer, ignoreRagdoll);
+			base.Update(time, position, keyBone, parentRotation, parentFlip, parentLayer, ignoreRagdoll, playback);
 		}
 
 		/// <summary>

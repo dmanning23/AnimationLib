@@ -1,5 +1,6 @@
 ﻿using AnimationLib.Core.Json;
 using Newtonsoft.Json;
+using System;
 #if !BRIDGE
 using System.Xml;
 #endif
@@ -60,6 +61,11 @@ namespace AnimationLib
 					FragmentModel.ParentBoneName = value;
 				}
 				break;
+				case "addToTools":
+					{
+						AddToTools = Convert.ToBoolean(value);
+					}
+					break;
 				default:
 				{
 					//Let the base class parse the rest of the xml
@@ -76,6 +82,12 @@ namespace AnimationLib
 		public override void WriteXmlNodes(XmlTextWriter xmlWriter)
 		{
 			xmlWriter.WriteStartElement("garmentbone");
+
+			//add whether or not this garment is hacked into the bone tools
+			if (AddToTools)
+			{
+				xmlWriter.WriteAttributeString("addToTools", "true");
+			}
 
 			WriteChildXmlNode(xmlWriter);
 

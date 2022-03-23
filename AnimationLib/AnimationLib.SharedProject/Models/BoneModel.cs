@@ -51,6 +51,8 @@ namespace AnimationLib
 		public string PrimaryColorTag { get; set; }
 		public string SecondaryColorTag { get; set; }
 
+		public bool AddToTools { get; set; }
+
 		private SkeletonModel SkeletonModel { get; set; }
 
 		/// <summary>
@@ -126,6 +128,7 @@ namespace AnimationLib
 			RagdollWeightRatio = bone.RagdollWeightRatio;
 			PrimaryColorTag = bone.PrimaryColorTag;
 			SecondaryColorTag = bone.SecondaryColorTag;
+			AddToTools = bone.AddToTools;
 
 			foreach (var joint in bone.Joints)
 			{

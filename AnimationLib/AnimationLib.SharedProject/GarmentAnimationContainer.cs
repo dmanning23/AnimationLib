@@ -103,7 +103,8 @@ namespace AnimationLib
 			float rotation, 
 			bool ignoreRagdoll, 
 			int layer, 
-			Bone attachedBone)
+			Bone attachedBone,
+			EPlayback playback)
 		{
 			//set teh layer to draw this dude at
 			_currentLayer = layer;
@@ -116,7 +117,7 @@ namespace AnimationLib
 			if ((null != currentImage) && ((currentImage.Name != CurrentAnimationName) || (null == CurrentAnimation)))
 			{
 				//the animation has changed!!!
-				SetAnimation(currentImage.Name, EPlayback.Loop);
+				SetAnimation(currentImage.Name, playback);
 			}
 
 			//if there is no animation, the bone is invisible, hide the garment bone.
@@ -139,7 +140,8 @@ namespace AnimationLib
 			Vector2 position,
 			bool isFlipped,
 			float rotation,
-			bool ignoreRagdoll)
+			bool ignoreRagdoll,
+			EPlayback playback)
 		{
 			//Apply teh current animation to the bones and stuff
 			var currentKeyBone = CurrentAnimation.KeyBone;
@@ -149,11 +151,13 @@ namespace AnimationLib
 				rotation,
 				isFlipped,
 				_currentLayer,
-				ignoreRagdoll || ResetRagdoll);
+				ignoreRagdoll || ResetRagdoll,
+				playback);
 
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
 			{
+				RestartAnimation();
 				Skeleton.RootBone.RestartAnimation();
 				ResetRagdoll = false;
 			}
@@ -212,7 +216,14 @@ namespace AnimationLib
 			}
 		}
 
-		public override string ToString()
+        public override void RestartAnimation()
+        {
+            base.RestartAnimation();
+
+			AnimationTimer.Start();
+        }
+
+        public override string ToString()
 		{
 			return GarmentName + "-" + Skeleton.RootBone.Name;
 		}

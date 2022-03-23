@@ -53,7 +53,7 @@ namespace AnimationLib
 			Length = animation.Length;
 
 			//get the animation length in frames
-			int iLengthFrames = Length.ToFrames();
+			var lengthFrames = Length.ToFrames();
 
 			foreach (var keyModel in animation.KeyElements)
 			{
@@ -61,7 +61,7 @@ namespace AnimationLib
 				var key = new KeyElement(keyModel, skeleton);
 
 				//is this keyelement worth keeping?
-				if ((key.KeyFrame) && (iLengthFrames >= key.Time) && (null != key.Bone))
+				if ((key.KeyFrame) && (lengthFrames >= key.Time) && (null != key.Bone))
 				{
 					//add to the correct keyjoint
 					var keyJoint = KeyBone.GetKeyJoint(key.BoneName);

@@ -149,6 +149,12 @@ namespace AnimationLib
 		public virtual bool IsGarment => false;
 
 		/// <summary>
+		/// This hack is specifically added for garment bones like the dragon wings.
+		/// We want to add those bones to the animation tool.
+		/// </summary>
+		public virtual bool AddToTools { get; set; } = true;
+
+		/// <summary>
 		/// An id for this bone that is unique in the entire skeleton.
 		/// </summary>
 		public virtual string Id => Name;
@@ -719,7 +725,8 @@ namespace AnimationLib
 								   float parentRotation,
 								   bool parentFlip,
 								   int parentLayer,
-								   bool ignoreRagdoll)
+								   bool ignoreRagdoll,
+									EPlayback playback)
 		{
 			//update my anchor joint
 			UpdateAnchorJoint(time, keyBone);
@@ -742,10 +749,10 @@ namespace AnimationLib
 			//Update this bone and all its joint positions
 			UpdateImageAndJoints(position, ignoreRagdoll);
 
-			UpdateChildren(time, keyBone, ignoreRagdoll);
+			UpdateChildren(time, keyBone, ignoreRagdoll, playback);
 		}
 
-		private void UpdateChildren(int time, KeyBone keyBone, bool ignoreRagdoll)
+		private void UpdateChildren(int time, KeyBone keyBone, bool ignoreRagdoll, EPlayback playback)
 		{
 			//this layer counter is incremented to layer garments on to pof each other
 			var currentLayer = CurrentLayer;
@@ -775,7 +782,8 @@ namespace AnimationLib
 								Rotation,
 								Flipped,
 								currentLayer,
-								ignoreRagdoll);
+								ignoreRagdoll,
+								playback);
 
 				//if that was a garment, increment the counter for the next garment
 				if (Bones[i].IsGarment)
@@ -1401,7 +1409,8 @@ namespace AnimationLib
 			int imageIndex,
 			float rotation,
 			bool parentFlip,
-			Vector2 translationHack)
+			Vector2 translationHack,
+			EPlayback playback)
 		{
 			if (null == AnchorJoint)
 			{
@@ -1417,7 +1426,8 @@ namespace AnimationLib
 				0.0f,
 				parentFlip,
 				CurrentLayer - AnchorJoint.CurrentKeyElement.Layer,
-				true);
+				true,
+				playback);
 		}
 
 		/// <summary>
@@ -1457,7 +1467,7 @@ namespace AnimationLib
 		/// Manually set the rotation of this bone before updating
 		/// </summary>
 		/// <param name="rotation">the rotation to display this bone at</param>
-		public void ManualRotation(float rotation)
+		public void ManualRotation(float rotation, EPlayback playback)
 		{
 			//get the current key element
 			KeyElement currentElement = AnchorJoint.CurrentKeyElement;
@@ -1476,7 +1486,8 @@ namespace AnimationLib
 				0.0f,
 				GetParentFlip(),
 				CurrentLayer - AnchorJoint.CurrentKeyElement.Layer,
-				false);
+				false,
+				playback);
 		}
 
 		/// <summary>

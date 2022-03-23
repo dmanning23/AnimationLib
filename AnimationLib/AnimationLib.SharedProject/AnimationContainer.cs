@@ -171,7 +171,7 @@ namespace AnimationLib
 			StopWatch.Update(time);
 
 			//apply the animation
-			ApplyAnimation(GetAnimationTime(), position, isFlipped, rotation, ignoreRagdoll);
+			ApplyAnimation(GetAnimationTime(), position, isFlipped, rotation, ignoreRagdoll, _playback);
 		}
 
 		/// <summary>
@@ -244,7 +244,8 @@ namespace AnimationLib
 			Vector2 position,
 			bool flip,
 			float rotation,
-			bool ignoreRagdoll)
+			bool ignoreRagdoll,
+			EPlayback playback)
 		{
 			//Apply teh current animation to the bones and stuff
 			Skeleton.RootBone.AnchorJoint.Position = position;
@@ -254,7 +255,8 @@ namespace AnimationLib
 				rotation,
 				flip,
 				0,
-				ignoreRagdoll || ResetRagdoll);
+				ignoreRagdoll || ResetRagdoll,
+				playback);
 
 			//is this the first update after an animation change?
 			if (ResetRagdoll)
@@ -331,7 +333,7 @@ namespace AnimationLib
 		/// <summary>
 		/// Restart the animation
 		/// </summary>
-		public void RestartAnimation()
+		public virtual void RestartAnimation()
 		{
 			StopWatch.Start();
 
