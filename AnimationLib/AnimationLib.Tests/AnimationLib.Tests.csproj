@@ -11,7 +11,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AnimationLib.Tests</RootNamespace>
     <AssemblyName>AnimationLib.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
