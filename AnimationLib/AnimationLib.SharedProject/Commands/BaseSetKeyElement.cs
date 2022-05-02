@@ -5,7 +5,7 @@ namespace AnimationLib.Commands
 {
 	public abstract class BaseSetKeyElement : ICommand
     {
-		#region Fields
+		#region Properties
 
 		//the animation the element is in
 		protected Animation Animation { get; set; }
@@ -16,7 +16,9 @@ namespace AnimationLib.Commands
 		//the current element to replace it
 		protected KeyElement NextKeyElement { get; set; }
 
-		#endregion // Fields
+		public string BoneId { get; private set; }
+
+		#endregion //Properties
 
 		#region Methods
 
@@ -32,6 +34,8 @@ namespace AnimationLib.Commands
 
 		protected void PopulateKeyElements(Bone bone, int time)
 		{
+			BoneId = bone.Id;
+
 			//create the new keyframe
 			PrevKeyElement = new KeyElement(bone);
 			NextKeyElement = new KeyElement(bone);

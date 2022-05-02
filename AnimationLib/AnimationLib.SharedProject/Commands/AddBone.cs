@@ -45,7 +45,7 @@ namespace AnimationLib.Commands
 			joint = parent.AddJoint(BoneName, false);
 
 			//create the new bone & add it to the parent
-			bone = new Bone()
+			bone = new Bone(parent.IsPartOfGarment)
 			{
 				Name = BoneName
 			};

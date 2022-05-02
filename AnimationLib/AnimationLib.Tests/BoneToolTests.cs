@@ -24,7 +24,7 @@ namespace AnimationLib.Tests
 		[SetUp]
 		public void Setup()
 		{
-			_bone = new Bone();
+			_bone = new Bone(false);
 		}
 
 		#endregion //Setup

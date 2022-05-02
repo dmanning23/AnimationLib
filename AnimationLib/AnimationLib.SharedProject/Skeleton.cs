@@ -66,7 +66,7 @@ namespace AnimationLib
 
 		protected virtual Bone CreateBone(SkeletonModel skeleton)
 		{
-			return new Bone(skeleton.RootBone);
+			return new Bone(skeleton.RootBone, false);
 		}
 
 		public void Load(SkeletonModel skeleton, IRenderer renderer)

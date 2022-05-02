@@ -79,7 +79,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="UndoRedoBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UndoRedoBuddy.2.0.2\lib\MonoAndroid10\UndoRedoBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\UndoRedoBuddy.2.0.3\lib\MonoAndroid10\UndoRedoBuddy.Android.dll</HintPath>
     </Reference>
     <Reference Include="Vector2Extensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Vector2Extensions.2.0.3\lib\MonoAndroid10\Vector2Extensions.Android.dll</HintPath>

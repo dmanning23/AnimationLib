@@ -66,7 +66,16 @@ namespace AnimationLib
 		/// <summary>
 		/// The name of this bone
 		/// </summary>
-		public virtual string Name { get; set; }
+		private string _name;
+		public string Name
+		{
+			get => _name;
+			set
+			{
+				_name = value;
+				SetId(string.Empty);
+			}
+		}
 
 		/// <summary>
 		/// the rotation to render this guy at
@@ -148,6 +157,8 @@ namespace AnimationLib
 
 		public virtual bool IsGarment => false;
 
+		public bool IsPartOfGarment { get; set; } = false;
+
 		/// <summary>
 		/// This hack is specifically added for garment bones like the dragon wings.
 		/// We want to add those bones to the animation tool.
@@ -157,7 +168,7 @@ namespace AnimationLib
 		/// <summary>
 		/// An id for this bone that is unique in the entire skeleton.
 		/// </summary>
-		public virtual string Id => Name;
+		public string Id { get; protected set; }
 
 		/// <summary>
 		/// A garment bone that is currently attached to this dude
@@ -171,7 +182,7 @@ namespace AnimationLib
 		/// <summary>
 		/// hello, standard constructor!
 		/// </summary>
-		public Bone()
+		public Bone(bool isPartOfGarment)
 		{
 			Images = new List<Image>();
 			Joints = new List<Joint>();
@@ -187,10 +198,11 @@ namespace AnimationLib
 			RagdollForces = new List<Vector2>();
 			PrimaryColor = Color.White;
 			SecondaryColor = Color.White;
+			IsPartOfGarment = isPartOfGarment;
 		}
 
-		public Bone(BoneModel bone)
-			: this()
+		public Bone(BoneModel bone, bool isPartOfGarment)
+			: this(isPartOfGarment)
 		{
 			Name = bone.Name;
 			Colorable = bone.Colorable;
@@ -211,7 +223,7 @@ namespace AnimationLib
 			}
 			foreach (var childBone in bone.Bones)
 			{
-				Bones.Add(new Bone(childBone));
+				Bones.Add(new Bone(childBone, isPartOfGarment));
 			}
 		}
 
@@ -262,6 +274,24 @@ namespace AnimationLib
 			for (var i = 0; i < Bones.Count; i++)
 			{
 				Bones[i].LoadImages(renderer);
+			}
+		}
+
+		protected virtual void SetId(string prefix)
+		{
+			if (string.IsNullOrEmpty(prefix))
+			{
+				Id = Name;
+			}
+			else
+			{
+				Id = $"{prefix}_{Name}";
+
+				//Add the prefix to all the child bones as well
+				foreach (var bone in Bones)
+				{
+					bone.SetId(prefix);
+				}
 			}
 		}
 

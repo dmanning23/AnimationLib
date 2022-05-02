@@ -24,7 +24,7 @@ namespace Animationlib.Tests
 		[Test]
 		public void WeaponTypeTest()
 		{
-			Bone test = new Bone();
+			Bone test = new Bone(false);
 			test.BoneType = EBoneType.Weapon;
 			Assert.IsTrue(test.IsWeapon);
 		}
@@ -32,7 +32,7 @@ namespace Animationlib.Tests
 		[Test]
 		public void FootTypeTest()
 		{
-			Bone test = new Bone();
+			Bone test = new Bone(false);
 			test.BoneType = EBoneType.Foot;
 			Assert.IsTrue(test.IsFoot);
 		}
@@ -40,7 +40,7 @@ namespace Animationlib.Tests
 		[Test]
 		public void TestDefaultType()
 		{
-			Bone test = new Bone();
+			Bone test = new Bone(false);
 			Assert.IsFalse(test.IsWeapon);
 			Assert.IsFalse(test.IsFoot);
 			Assert.AreEqual(EBoneType.Normal, test.BoneType);
@@ -296,12 +296,12 @@ namespace Animationlib.Tests
 		[Test]
 		public void AddChildBone()
 		{
-			var parent = new Bone()
+			var parent = new Bone(false)
 			{
 				Name = "parent"
 			};
 			parent.AddJoint("child", false);
-			var child = new Bone()
+			var child = new Bone(false)
 			{
 				Name = "child"
 			};

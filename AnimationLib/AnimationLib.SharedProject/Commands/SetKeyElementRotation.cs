@@ -4,9 +4,9 @@ namespace AnimationLib.Commands
 {
 	public class SetKeyElementRotation : BaseSetKeyElement, IStackableCommand
 	{
-		#region Methods
+        #region Methods
 
-		public SetKeyElementRotation(Animation animation, Bone bone, int time, float rotation) : base(animation)
+        public SetKeyElementRotation(Animation animation, Bone bone, int time, float rotation) : base(animation)
 		{
 			PopulateKeyElements(bone, time);
 
@@ -19,7 +19,7 @@ namespace AnimationLib.Commands
 			var next = nextCommand as SetKeyElementRotation;
 			return ((next != null) &&
 				(Animation.Name == next.Animation.Name) &&
-				(PrevKeyElement.BoneName == next.PrevKeyElement.BoneName) &&
+				(BoneId == next.BoneId) &&
 				(PrevKeyElement.Time == next.PrevKeyElement.Time));
 		}
 

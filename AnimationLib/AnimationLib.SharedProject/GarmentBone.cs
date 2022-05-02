@@ -38,26 +38,13 @@ namespace AnimationLib
 			set
 			{
 				base.ParentBone = value;
-				SetId();
-			}
-		}
-
-		public override string Name
-		{
-			get => base.Name;
-			set
-			{
-				base.Name = value;
-				SetId();
+				SetId(string.Empty);
 			}
 		}
 
 		public override bool IsGarment => true;
 
 		public override bool AddToTools { get; set; } = false;
-
-		private string _id;
-		public override string Id => _id;
 
 		public Garment Garment { get; private set; }
 
@@ -69,23 +56,24 @@ namespace AnimationLib
 		/// hello, standard constructor!
 		/// </summary>
 		public GarmentBone(GarmentAnimationContainer owner, Garment garment)
-			: base()
+			: base(true)
 		{
 			Setup(owner, garment);
 		}
 
 		public GarmentBone(GarmentAnimationContainer owner, GarmentBoneModel bone, Garment garment)
-			: base(bone)
+			: base(bone, true)
 		{
 			Setup(owner, garment);
 			AddToTools = bone.AddToTools;
 		}
 
-		private void SetId()
+		protected override void SetId(string prefix)
 		{
 			if (null != ParentBone)
 			{
-				_id = $"{ParentBone.Name}_{Name}";
+				//Appened the name of the parent bone to this id
+				base.SetId(ParentBone.Name);
 			}
 		}
 

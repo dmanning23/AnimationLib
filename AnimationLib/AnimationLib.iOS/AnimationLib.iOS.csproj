@@ -73,7 +73,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="UndoRedoBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UndoRedoBuddy.2.0.2\lib\Xamarin.iOS10\UndoRedoBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\UndoRedoBuddy.2.0.3\lib\Xamarin.iOS10\UndoRedoBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Vector2Extensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Vector2Extensions.2.0.3\lib\Xamarin.iOS10\Vector2Extensions.iOS.dll</HintPath>
