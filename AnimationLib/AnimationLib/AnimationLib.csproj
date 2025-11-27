@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>AnimationLib</PackageId>
-    <Version>5.0.1</Version>
+    <Version>5.0.2</Version>
     <Title>AnimationLib</Title>
     <Authors>dmanning23</Authors>
     <description>A MonoGame library for 2d animation</description>
