@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Right Foot" name="Right Foot Nekkid" type="Garment">
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Foot\FootBall.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>82 82</lowerright>
+				<anchorcoord>26 32</anchorcoord>
+				<circles>
+					<Item center="40 34" radius="70" />
+				</circles>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Foot\FootFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>82 82</lowerright>
+				<anchorcoord>29 26</anchorcoord>
+				<circles>
+					<Item center="38 34" radius="70" />
+				</circles>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Foot\FootSide.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>82 82</lowerright>
+				<anchorcoord>22 33</anchorcoord>
+				<circles>
+					<Item center="45 35" radius="70" />
+				</circles>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Foot\FootBack.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>82 82</lowerright>
+				<anchorcoord>29 25</anchorcoord>
+				<circles>
+					<Item center="43 38" radius="70" />
+				</circles>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

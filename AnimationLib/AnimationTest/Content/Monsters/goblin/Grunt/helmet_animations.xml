@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="head" length="0.1">
+			<keys>
+				<key time="0" joint="Helmet" layer="-1" image="helmet" />
+				<key time="6" joint="Helmet" layer="-1" image="helmet" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

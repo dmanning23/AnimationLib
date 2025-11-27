@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="SPFSettings.StateContainerXML">
+		<states>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>shoot</name>
+				<actions>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>spin</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>0 2000</velocity>
+						<minYVelocity>2600</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.TrailActionXML">
+						<type>Trail</type>
+						<time>0</time>
+						<R>128</R>
+						<G>128</G>
+						<B>128</B>
+						<A>150</A>
+						<lifeDelta>0.4</lifeDelta>
+						<spawnDelta>0.08</spawnDelta>
+						<timeDelta>0.7</timeDelta>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0</time>
+						<boneName>wind</boneName>
+						<direction>250 -150</direction>
+						<damage>0.1</damage>
+						<timeDelta>0.7</timeDelta>
+						<hitSound></hitSound>
+						<successActions>
+							<Item Type="SPFSettings.SendStateMessageActionXML">
+								<type>SendStateMessage</type>
+								<time>0</time>
+								<message>done</message>
+							</Item>
+						</successActions>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>kill</name>
+				<actions>
+					<Item Type="SPFSettings.DeactivateActionXML">
+						<type>Deactivate</type>
+						<time>0</time>
+					</Item>
+				</actions>
+			</Item>
+		</states>
+	</Asset>
+</XnaContent>

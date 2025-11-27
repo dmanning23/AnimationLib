@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="CrotchFront" length="0.1">
+			<keys>
+				<key joint="Crotch Nekkid" layer="-1" image="CrotchFront.png" />
+				<key joint="Panties" layer="-1111" image="Panty.png" />
+				<key joint="loincloth" layer="-1" image="LoinCloth.png" ragdoll="true" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

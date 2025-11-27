@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<garment name="Grunt">
+	<fragments>
+		<fragment>
+			<model>Monsters\goblin\Grunt\pants_torso_model.xml</model>
+			<animation>Monsters\goblin\Grunt\pants_torso_animations.xml</animation>
+		</fragment>
+		<fragment>
+			<model>Monsters\goblin\Grunt\pants_right_thigh_model.xml</model>
+			<animation>Monsters\goblin\Grunt\pants_right_thigh_animations.xml</animation>
+		</fragment>
+		<fragment>
+			<model>Monsters\goblin\Grunt\pants_right_calf_model.xml</model>
+			<animation>Monsters\goblin\Grunt\pants_right_calf_animations.xml</animation>
+		</fragment>
+		<fragment>
+			<model>Monsters\goblin\Grunt\pants_left_thigh_model.xml</model>
+			<animation>Monsters\goblin\Grunt\pants_left_thigh_animations.xml</animation>
+		</fragment>
+		<fragment>
+			<model>Monsters\goblin\Grunt\pants_left_calf_model.xml</model>
+			<animation>Monsters\goblin\Grunt\pants_left_calf_animations.xml</animation>
+		</fragment>
+	</fragments>
+</garment>

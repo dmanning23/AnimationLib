@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="ShoulderFront" length="0.1">
+			<keys>
+				<key joint="Shoulder Nekkid" layer="-100" image="ShoulderFront.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

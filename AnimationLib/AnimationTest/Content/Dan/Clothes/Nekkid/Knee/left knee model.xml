@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Left Knee Nekkid</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>53 84</lowerright>
+				<anchorcoord>27 23</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Knee\Knee.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Left Knee</parentBone>
+	</Asset>
+</XnaContent>

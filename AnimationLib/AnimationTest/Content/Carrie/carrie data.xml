@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<XnaContent>
+	<Asset Type="SPFSettings.PlayerObjectXML">
+		<model>Carrie\Carrie model.xml</model>
+		<animations>Carrie\Carrie animations.xml</animations>
+		<garments>
+			<Item Type="string">Carrie\Clothes\Nekkid.xml</Item>
+		</garments>
+		<states>
+			<Item Type="SPFSettings.StateContainerXML">
+				<stateMachine>ground state machine.xml</stateMachine>
+				<stateActions>Carrie\Carrie ground states.xml</stateActions>
+			</Item>
+		</states>
+		<height>650</height>
+		<portrait>Carrie\portrait.png</portrait>
+		<deathSound></deathSound>
+	</Asset>
+</XnaContent>

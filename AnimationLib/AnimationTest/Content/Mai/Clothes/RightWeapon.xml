@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentXML">
+		<name>right weapon</name>
+		<fragments>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Mai\Clothes\Weapon\Right weapon Model.xml</model>
+				<animation>Mai\Clothes\Weapon\Right weapon Animations.xml</animation>
+			</Item>
+		</fragments>
+	</Asset>
+</XnaContent>

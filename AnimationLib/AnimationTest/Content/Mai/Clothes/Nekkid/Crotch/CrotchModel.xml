@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone name="Crotch Nekkid">
+		<joints>
+			<joint name="Panties" />
+		</joints>
+		<images>
+			<image imageFile1="CrotchFront.png">
+				<lowerright>128 128</lowerright>
+				<anchorcoord>74 62</anchorcoord>
+				<joints>
+					<jointData>
+						<location>62.14308 62.14308</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="Panties">
+				<joints>
+					<joint name="loincloth" />
+				</joints>
+				<images>
+					<image imageFile1="Panty.png">
+						<lowerright>128 128</lowerright>
+						<anchorcoord>62.14308 62.14308</anchorcoord>
+						<joints>
+							<jointData RagdollType="Limit" limit1="-13.6664" limit2="12.17799">
+								<location>64 63</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="loincloth">
+						<joints>
+							<joint name="loincloth weight" />
+						</joints>
+						<images>
+							<image imageFile1="LoinCloth.png">
+								<lowerright>128 256</lowerright>
+								<anchorcoord>64 59</anchorcoord>
+								<joints>
+									<jointData>
+										<location>65 125</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+					</bone>
+				</bones>
+			</bone>
+		</bones>
+	</garmentbone>
+</skeleton>

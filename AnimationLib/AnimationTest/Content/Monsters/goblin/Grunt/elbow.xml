@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<garment name="Grunt">
+	<fragments>
+		<fragment>
+			<model>Monsters\goblin\Grunt\elbow_right_model.xml</model>
+			<animation>Monsters\goblin\Grunt\elbow_right_animations.xml</animation>
+		</fragment>
+		<fragment>
+			<model>Monsters\goblin\Grunt\elbow_left_model.xml</model>
+			<animation>Monsters\goblin\Grunt\elbow_left_animations.xml</animation>
+		</fragment>
+	</fragments>
+</garment>

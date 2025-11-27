@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="ChesticleFront" length="0.1">
+			<keys>
+				<key joint="Chesticle Nekkid" layer="-1" image="ChesticleFront.png" />
+				<key joint="Cleavage" layer="-200" image="UnderBoob.png" />
+				<key joint="L Titty" layer="-600" image="LTittyFront.png" ragdoll="true" />
+				<key joint="R Titty" layer="-601" image="RTittyFront.png" ragdoll="true" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

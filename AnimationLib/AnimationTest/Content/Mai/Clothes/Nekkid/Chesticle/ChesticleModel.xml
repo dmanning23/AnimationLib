@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone name="Chesticle Nekkid">
+		<joints>
+			<joint name="Cleavage" />
+		</joints>
+		<images>
+			<image imageFile1="ChesticleFront.png">
+				<lowerright>128 256</lowerright>
+				<anchorcoord>61 153</anchorcoord>
+				<joints>
+					<jointData RagdollType="Float" FloatRadius="5">
+						<location>61 106</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="Cleavage">
+				<joints>
+					<joint name="Cleavage weight" />
+					<joint name="L Titty" />
+					<joint name="R Titty" />
+				</joints>
+				<images>
+					<image imageFile1="UnderBoob.png">
+						<lowerright>64 64</lowerright>
+						<anchorcoord>32 26</anchorcoord>
+						<joints>
+							<jointData>
+								<location>31.07154 81.27155</location>
+							</jointData>
+							<jointData RagdollType="Float" FloatRadius="11">
+								<location>63 34</location>
+							</jointData>
+							<jointData RagdollType="Float" FloatRadius="11.5">
+								<location>3 32</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="L Titty">
+						<joints>
+							<joint name="L Titty weight" />
+						</joints>
+						<images>
+							<image imageFile1="LTittyFront.png">
+								<lowerright>128 128</lowerright>
+								<anchorcoord>63 63</anchorcoord>
+								<joints>
+									<jointData>
+										<location>62.14308 62.14308</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+					</bone>
+					<bone name="R Titty">
+						<joints>
+							<joint name="R Titty weight" />
+						</joints>
+						<images>
+							<image imageFile1="RTittyFront.png">
+								<lowerright>128 128</lowerright>
+								<anchorcoord>62 61</anchorcoord>
+								<joints>
+									<jointData>
+										<location>62.14308 62.14308</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+					</bone>
+				</bones>
+			</bone>
+		</bones>
+	</garmentbone>
+</skeleton>

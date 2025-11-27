@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+	<Asset Type="SPFSettings.BaseObjectXML">
+		<model>Carrie\projectiles\model converted.XML</model>
+		<animations>Carrie\projectiles\animations converted.XML</animations>
+		<garments/>
+		<states>
+			<Item Type="SPFSettings.StateContainerXML">
+				<stateMachine>Carrie\projectiles\state machine converted.xml</stateMachine>
+				<stateActions>Carrie\projectiles\states converted.xml</stateActions>
+			</Item>
+		</states>
+		<height>100</height>
+	</Asset>
+</XnaContent>

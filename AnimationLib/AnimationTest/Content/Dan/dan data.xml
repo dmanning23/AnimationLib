@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<XnaContent>
+	<Asset Type="AnimationLib.PlayerObjectXML">
+		<model>Dan\dan model.xml</model>
+		<animations>Dan\dan animations.xml</animations>
+		<garments>
+			<Item Type="string">Dan\Clothes\Nekkid.xml</Item>
+		</garments>
+		<stateMachine></stateMachine>
+		<states></states>
+		<height>650</height>
+		<portrait>Dan\portrait.png</portrait>
+		<deathSound>Mei_Aaiiee</deathSound>
+		<GroundStates>Dan\dan ground states.xml</GroundStates>
+		<UpStates>Dan\dan up states.xml</UpStates>
+		<DownStates></DownStates>
+		<ForwardStates></ForwardStates>
+	</Asset>
+</XnaContent>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="calf" length="0.1">
+			<keys>
+				<key time="0" joint="Left Calf Pants" layer="-1" image="pants" />
+				<key time="6" joint="Left Calf Pants" layer="-1" image="pants" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

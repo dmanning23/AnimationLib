@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Crotch Nekkid</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 148</lowerright>
+				<anchorcoord>74 62</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Crotch\CrotchFront.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>104 131</lowerright>
+				<anchorcoord>62 59</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Crotch\CrotchSide.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>123 133</lowerright>
+				<anchorcoord>54 56</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Crotch\CrotchBack.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Crotch</parentBone>
+	</Asset>
+</XnaContent>

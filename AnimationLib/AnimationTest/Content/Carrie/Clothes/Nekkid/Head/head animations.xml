@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="HeadFront" length="0.1">
+			<keys>
+				<key time="0" joint="Head Nekkid" layer="-1" image="HeadFront.png" />
+				<key time="6" joint="Head Nekkid" layer="-1" image="HeadFront.png" />
+			</keys>
+		</animation>
+		<animation name="HeadSide" length="0.1">
+			<keys>
+				<key time="0" joint="Head Nekkid" layer="-1" image="HeadSide.png" />
+				<key time="6" joint="Head Nekkid" layer="-1" image="HeadSide.png" />
+			</keys>
+		</animation>
+		<animation name="HeadBack" length="0.1">
+			<keys>
+				<key time="0" joint="Head Nekkid" layer="-1" image="HeadBack.png" />
+				<key time="6" joint="Head Nekkid" layer="-1" image="HeadBack.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

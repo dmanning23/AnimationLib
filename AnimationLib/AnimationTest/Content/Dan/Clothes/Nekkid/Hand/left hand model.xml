@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Left Hand Nekkid</name>
+		<type>Weapon</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>68 68</lowerright>
+				<anchorcoord>16 16</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Hand\Ring FistBack.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>27 51</center>
+						<radius>67.18631</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>68 68</lowerright>
+				<anchorcoord>24 24</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Hand\Ring FistFront.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>24 29</center>
+						<radius>62.20129</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>68 68</lowerright>
+				<anchorcoord>18 12</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Hand\Ring FistPalm.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>27 42</center>
+						<radius>67.11929</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>68 68</lowerright>
+				<anchorcoord>48 15</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Hand\FistPinky.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>33 45</center>
+						<radius>64.07027</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>68 68</lowerright>
+				<anchorcoord>48 18</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Hand\FistThumb.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>34 51</center>
+						<radius>66.00758</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>68 68</lowerright>
+				<anchorcoord>26 20</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Hand\FistWrist.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>26 29</center>
+						<radius>61</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Left Hand</parentBone>
+	</Asset>
+</XnaContent>

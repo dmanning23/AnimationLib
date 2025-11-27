@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Left Foot Nekkid</name>
+		<type>Weapon</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>109 54</lowerright>
+				<anchorcoord>27 13</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Foot\FootBall.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>48 2</center>
+						<radius>78.1089</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>109 54</lowerright>
+				<anchorcoord>48 6</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Foot\FootFront.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>54 3</center>
+						<radius>78.1089</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>115 60</lowerright>
+				<anchorcoord>32 20</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Foot\FootSide.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>51 8</center>
+						<radius>78.1089</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>109 54</lowerright>
+				<anchorcoord>47 11</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Foot\FootBack.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>52 -1</center>
+						<radius>78.1089</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>109 54</lowerright>
+				<anchorcoord>23 11</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Foot\FootTop.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>52 13</center>
+						<radius>78.1089</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Left Foot</parentBone>
+	</Asset>
+</XnaContent>

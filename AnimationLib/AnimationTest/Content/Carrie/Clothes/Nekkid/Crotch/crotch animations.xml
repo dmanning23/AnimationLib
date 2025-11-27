@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="CrotchFront" length="0.1">
+			<keys>
+				<key time="0" joint="Crotch Nekkid" layer="-1" image="CrotchFront.png" />
+				<key time="6" joint="Crotch Nekkid" layer="-1" image="CrotchFront.png" />
+			</keys>
+		</animation>
+		<animation name="CrotchSide" length="0.1">
+			<keys>
+				<key time="0" joint="Crotch Nekkid" layer="-1" image="CrotchSide.png" />
+				<key time="6" joint="Crotch Nekkid" layer="-1" image="CrotchSide.png" />
+			</keys>
+		</animation>
+		<animation name="CrotchBack" length="0.1">
+			<keys>
+				<key time="0" joint="Crotch Nekkid" layer="-1" image="CrotchBack.png" />
+				<key time="6" joint="Crotch Nekkid" layer="-1" image="CrotchBack.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

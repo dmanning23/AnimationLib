@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="FootTop" length="0.1">
+			<keys>
+				<key time="0" joint="Left Foot Nekkid" layer="-1" image="bare FootSide.png" />
+				<key time="6" joint="Left Foot Nekkid" layer="-1" image="bare FootSide.png" />
+			</keys>
+		</animation>
+		<animation name="FootBall" length="0.1">
+			<keys>
+				<key time="0" joint="Left Foot Nekkid" layer="-1" image="bare FootBall.png" />
+				<key time="6" joint="Left Foot Nekkid" layer="-1" image="bare FootBall.png" />
+			</keys>
+		</animation>
+		<animation name="FootFront" length="0.1">
+			<keys>
+				<key time="0" joint="Left Foot Nekkid" layer="-1" image="bare FootFront.png" />
+				<key time="6" joint="Left Foot Nekkid" layer="-1" image="bare FootFront.png" />
+			</keys>
+		</animation>
+		<animation name="FootSide" length="0.1">
+			<keys>
+				<key time="0" joint="Left Foot Nekkid" layer="-1" image="bare FootSide.png" />
+				<key time="6" joint="Left Foot Nekkid" layer="-1" image="bare FootSide.png" />
+			</keys>
+		</animation>
+		<animation name="FootBack" length="0.1">
+			<keys>
+				<key time="0" joint="Left Foot Nekkid" layer="-1" image="bare FootBack.png" />
+				<key time="6" joint="Left Foot Nekkid" layer="-1" image="bare FootBack.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

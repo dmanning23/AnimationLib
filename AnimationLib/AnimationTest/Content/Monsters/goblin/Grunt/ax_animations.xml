@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="front" length="0.1">
+			<keys>
+				<key time="0" joint="Ax" rotation="84.95755" layer="1" image="ax" />
+				<key time="6" joint="Ax" rotation="84.95755" layer="1" image="ax" />
+			</keys>
+		</animation>
+		<animation name="back" length="0.1">
+			<keys>
+				<key time="0" joint="Ax" rotation="89.80837" layer="1" image="ax" />
+				<key time="6" joint="Ax" rotation="89.80837" layer="1" image="ax" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentXML">
+		<name>Nekkid</name>
+		<fragments>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Crotch\Crotch Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Crotch\Crotch Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Torso\Torso Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Torso\Torso Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Chesticle\Chesticle Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Chesticle\Chesticle Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Neck\Neck Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Neck\Neck Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Head\Head Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Head\Head Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Bicep\Left Bicep Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Bicep\Left Bicep Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Calf\Left Calf Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Calf\Left Calf Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Foot\Left Foot Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Foot\Left Foot Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Forearm\Left Forearm Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Forearm\Left Forearm Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Hand\Left Hand Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Hand\Left Hand Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Knee\Left Knee Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Knee\Left Knee Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Shoulder\Left Shoulder Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Shoulder\Left Shoulder Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Thigh\Left Thigh Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Thigh\Left Thigh Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Bicep\Right Bicep Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Bicep\Right Bicep Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Calf\Right Calf Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Calf\Right Calf Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Foot\Right Foot Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Foot\Right Foot Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Forearm\Right Forearm Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Forearm\Right Forearm Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Hand\Right Hand Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Hand\Right Hand Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Knee\Right Knee Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Knee\Right Knee Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Shoulder\Right Shoulder Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Shoulder\Right Shoulder Animations.xml</animation>
+			</Item>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Dan\Clothes\Nekkid\Thigh\Right Thigh Model.xml</model>
+				<animation>Dan\Clothes\Nekkid\Thigh\Right Thigh Animations.xml</animation>
+			</Item>
+		</fragments>
+	</Asset>
+</XnaContent>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="Front" length="0.1">
+			<keys>
+				<key time="0" joint="Torso" layer="1" image="torso" />
+				<key time="0" joint="Right Foot" rotation="12.07312" layer="1" image="foot" />
+				<key time="0" joint="Right Calf" rotation="-53.57059" layer="1" image="calf" />
+				<key time="0" joint="Left Thigh" rotation="-41.53177" layer="1" image="thigh" flip="true" />
+				<key time="0" joint="Right Thigh" rotation="43.78112" layer="-1" image="thigh" />
+				<key time="0" joint="Left Calf" rotation="-36.55439" layer="1" image="calf" />
+				<key time="0" joint="Right Hand" rotation="-24.70735" layer="-1" image="back" />
+				<key time="0" joint="Right Bicep" rotation="47.1211" layer="-9" image="bicep" />
+				<key time="0" joint="Right Forearm" rotation="-20.77301" layer="-9" image="forearm" />
+				<key time="0" joint="Left Foot" layer="1" image="foot" />
+				<key time="0" joint="Left Bicep" rotation="-51.11551" layer="11" image="bicep" flip="true" />
+				<key time="0" joint="Left Forearm" rotation="-24.10501" image="forearm" />
+				<key time="0" joint="Left Hand" rotation="-19.19745" layer="-1" image="front" flip="true" />
+				<key time="0" joint="Head" layer="-19" image="head" />
+				<key time="0" joint="Right Eye" layer="-11" image="eye" />
+				<key time="0" joint="Left Eye" layer="-19" image="eye" flip="true" />
+				<key time="0" joint="Right Ear" layer="-12" image="ear" />
+				<key time="0" joint="Left Ear" rotation="11.73857" layer="1" image="ear" flip="true" />
+				<key time="0" joint="Nose" layer="-19" image="nose" />
+				<key time="6" joint="Left Bicep" rotation="-55.95406" layer="11" image="bicep" flip="true" />
+				<key time="6" joint="Right Hand" rotation="-24.70735" layer="-1" image="back" />
+				<key time="6" joint="Left Calf" rotation="-36.55439" layer="1" image="calf" />
+				<key time="6" joint="Right Forearm" rotation="-20.77301" layer="-9" image="forearm" />
+				<key time="6" joint="Right Bicep" rotation="47.1211" layer="-9" image="bicep" />
+				<key time="6" joint="Right Foot" rotation="12.07312" layer="1" image="foot" />
+				<key time="6" joint="Left Thigh" rotation="-41.53177" layer="1" image="thigh" flip="true" />
+				<key time="6" joint="Left Forearm" rotation="-29.49963" image="forearm" />
+				<key time="6" joint="Left Eye" layer="-19" image="eye" flip="true" />
+				<key time="6" joint="Head" layer="-19" image="head" />
+				<key time="6" joint="Right Eye" layer="-11" image="eye" />
+				<key time="6" joint="Right Thigh" rotation="43.78112" layer="-1" image="thigh" />
+				<key time="6" joint="Right Ear" layer="-12" image="ear" />
+				<key time="6" joint="Torso" layer="1" image="torso" />
+				<key time="6" joint="Left Ear" rotation="11.73857" layer="1" image="ear" flip="true" />
+				<key time="6" joint="Left Foot" layer="1" image="foot" />
+				<key time="6" joint="Right Calf" rotation="-53.57059" layer="1" image="calf" />
+				<key time="6" joint="Left Hand" rotation="-19.00243" layer="-1" image="front" flip="true" />
+				<key time="6" joint="Nose" layer="-19" image="nose" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="NEUTRAL front" length="0.1">
+			<keys>
+				<key time="0" joint="Trunk" rotation="-1.27303" layer="1" image="Trunk" />
+				<key time="0" joint="Right Pinky2" rotation="-41.87612" layer="-1" image="finger tip" />
+				<key time="0" joint="Left Bicep" rotation="82.11208" layer="-9" image="bicep" />
+				<key time="0" joint="Left Eye" layer="-9" image="left eye" />
+				<key time="0" joint="Left Forearm" rotation="-63.63892" layer="-1" image="forearm" />
+				<key time="0" joint="Left Hand" layer="-1" image="hand" />
+				<key time="0" joint="Mouth" layer="-1" image="mouth" />
+				<key time="0" joint="Left Thumb" rotation="-25.88705" layer="1" image="thumb base" />
+				<key time="0" joint="Left Thumb2" rotation="33.74903" layer="-1" image="thumb tip" />
+				<key time="0" joint="Left Pointer2" rotation="-65.54561" layer="-1" image="finger tip" />
+				<key time="0" joint="Left Pointer" rotation="20.90319" layer="-1" image="finger base" />
+				<key time="0" joint="Right Thumb2" rotation="47.05338" layer="-1" image="thumb tip" ragdoll="true" />
+				<key time="0" joint="Left Pinky" rotation="46.73576" layer="-5" image="finger base" />
+				<key time="0" joint="Left Pinky2" rotation="-60.07733" layer="-1" image="finger tip" />
+				<key time="0" joint="Right Pointer2" rotation="-67.91446" layer="-1" image="finger tip" />
+				<key time="0" joint="Right Bicep" rotation="-62.10193" layer="-19" image="bicep" flip="true" />
+				<key time="0" joint="Right Eye" layer="-9" image="right eye" />
+				<key time="0" joint="Right Forearm" rotation="-55.77647" layer="-1" image="forearm" />
+				<key time="0" joint="Right Hand" rotation="28.31626" layer="-1" image="hand" />
+				<key time="0" joint="Right Pointer" rotation="4.090567" layer="-1" image="finger base" />
+				<key time="0" joint="Right Thumb" rotation="-72.46438" layer="2" image="thumb base" />
+				<key time="0" joint="Right Pinky" rotation="31.91701" layer="-6" image="finger base" />
+				<key time="6" joint="Left Pointer2" rotation="-65.54561" layer="-1" image="finger tip" />
+				<key time="6" joint="Left Pointer" rotation="20.90319" layer="-1" image="finger base" />
+				<key time="6" joint="Left Thumb2" rotation="33.74903" layer="-1" image="thumb tip" />
+				<key time="6" joint="Trunk" rotation="-6.428748" layer="1" image="Trunk" />
+				<key time="6" joint="Left Hand" layer="-1" image="hand" />
+				<key time="6" joint="Left Forearm" rotation="-63.63892" layer="-1" image="forearm" />
+				<key time="6" joint="Left Bicep" rotation="82.11208" layer="-9" image="bicep" />
+				<key time="6" joint="Left Pinky" rotation="46.73576" layer="-5" image="finger base" />
+				<key time="6" joint="Left Thumb" rotation="-25.88705" layer="1" image="thumb base" />
+				<key time="6" joint="Left Pinky2" rotation="-60.07733" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Pointer" rotation="57.15786" layer="-1" image="finger base" />
+				<key time="6" joint="Right Hand" layer="-1" image="hand" />
+				<key time="6" joint="Right Bicep" rotation="-37.10052" layer="-19" image="bicep" />
+				<key time="6" joint="Left Eye" layer="-9" image="left eye" />
+				<key time="6" joint="Mouth" layer="-1" image="mouth" />
+				<key time="6" joint="Right Pointer2" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Pinky2" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Thumb2" layer="-1" image="thumb tip" ragdoll="true" />
+				<key time="6" joint="Right Pinky" rotation="82.92253" layer="-6" image="finger base" />
+				<key time="6" joint="Right Thumb" rotation="29.75068" layer="2" image="thumb base" />
+				<key time="6" joint="Right Forearm" rotation="13.04404" layer="-1" image="forearm" />
+				<key time="6" joint="Right Eye" layer="-9" image="right eye" />
+			</keys>
+		</animation>
+		<animation name="NEUTRAL front1" length="0.1">
+			<keys>
+				<key time="0" joint="Trunk" rotation="-94.6859" layer="1" image="Trunk" />
+				<key time="0" joint="Right Pinky2" layer="-1" image="finger tip" />
+				<key time="0" joint="Left Bicep" rotation="82.11208" layer="-9" image="bicep" />
+				<key time="0" joint="Left Eye" layer="-9" image="left eye" />
+				<key time="0" joint="Left Forearm" rotation="-63.63892" layer="-1" image="forearm" />
+				<key time="0" joint="Left Hand" layer="-1" image="hand" />
+				<key time="0" joint="Mouth" layer="-1" image="mouth" />
+				<key time="0" joint="Left Thumb" rotation="-25.88705" layer="1" image="thumb base" />
+				<key time="0" joint="Left Thumb2" rotation="33.74903" layer="-1" image="thumb tip" />
+				<key time="0" joint="Left Pointer2" rotation="-65.54561" layer="-1" image="finger tip" />
+				<key time="0" joint="Left Pointer" rotation="20.90319" layer="-1" image="finger base" />
+				<key time="0" joint="Right Thumb2" layer="-1" image="thumb tip" ragdoll="true" />
+				<key time="0" joint="Left Pinky" rotation="46.73576" layer="-5" image="finger base" />
+				<key time="0" joint="Left Pinky2" rotation="-60.07733" layer="-1" image="finger tip" />
+				<key time="0" joint="Right Pointer2" layer="-1" image="finger tip" />
+				<key time="0" joint="Right Bicep" rotation="-37.10052" layer="-19" image="bicep" />
+				<key time="0" joint="Right Eye" layer="-9" image="right eye" />
+				<key time="0" joint="Right Forearm" rotation="13.04404" layer="-1" image="forearm" />
+				<key time="0" joint="Right Hand" layer="-1" image="hand" />
+				<key time="0" joint="Right Pointer" rotation="57.15786" layer="-1" image="finger base" />
+				<key time="0" joint="Right Thumb" rotation="29.75068" layer="2" image="thumb base" />
+				<key time="0" joint="Right Pinky" rotation="82.92253" layer="-6" image="finger base" />
+				<key time="6" joint="Left Pointer2" rotation="-65.54561" layer="-1" image="finger tip" />
+				<key time="6" joint="Left Pointer" rotation="20.90319" layer="-1" image="finger base" />
+				<key time="6" joint="Left Thumb2" rotation="33.74903" layer="-1" image="thumb tip" />
+				<key time="6" joint="Trunk" rotation="-94.6859" layer="1" image="Trunk" />
+				<key time="6" joint="Left Hand" layer="-1" image="hand" />
+				<key time="6" joint="Left Forearm" rotation="-63.63892" layer="-1" image="forearm" />
+				<key time="6" joint="Left Bicep" rotation="82.11208" layer="-9" image="bicep" />
+				<key time="6" joint="Left Pinky" rotation="46.73576" layer="-5" image="finger base" />
+				<key time="6" joint="Left Thumb" rotation="-25.88705" layer="1" image="thumb base" />
+				<key time="6" joint="Left Pinky2" rotation="-60.07733" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Pointer" rotation="57.15786" layer="-1" image="finger base" />
+				<key time="6" joint="Right Hand" layer="-1" image="hand" />
+				<key time="6" joint="Right Bicep" rotation="-37.10052" layer="-19" image="bicep" />
+				<key time="6" joint="Left Eye" layer="-9" image="left eye" />
+				<key time="6" joint="Mouth" layer="-1" image="mouth" />
+				<key time="6" joint="Right Pointer2" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Pinky2" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Thumb2" layer="-1" image="thumb tip" ragdoll="true" />
+				<key time="6" joint="Right Pinky" rotation="82.92253" layer="-6" image="finger base" />
+				<key time="6" joint="Right Thumb" rotation="29.75068" layer="2" image="thumb base" />
+				<key time="6" joint="Right Forearm" rotation="13.04404" layer="-1" image="forearm" />
+				<key time="6" joint="Right Eye" layer="-9" image="right eye" />
+			</keys>
+		</animation>
+		<animation name="NEUTRAL front2" length="0.1">
+			<keys>
+				<key time="0" joint="Trunk" rotation="176.4965" layer="1" image="Trunk" />
+				<key time="0" joint="Right Pinky2" layer="-1" image="finger tip" />
+				<key time="0" joint="Left Bicep" rotation="82.11208" layer="-9" image="bicep" />
+				<key time="0" joint="Left Eye" layer="-9" image="left eye" />
+				<key time="0" joint="Left Forearm" rotation="-63.63892" layer="-1" image="forearm" />
+				<key time="0" joint="Left Hand" layer="-1" image="hand" />
+				<key time="0" joint="Mouth" layer="-1" image="mouth" />
+				<key time="0" joint="Left Thumb" rotation="-25.88705" layer="1" image="thumb base" />
+				<key time="0" joint="Left Thumb2" rotation="33.74903" layer="-1" image="thumb tip" />
+				<key time="0" joint="Left Pointer2" rotation="-65.54561" layer="-1" image="finger tip" />
+				<key time="0" joint="Left Pointer" rotation="20.90319" layer="-1" image="finger base" />
+				<key time="0" joint="Right Thumb2" layer="-1" image="thumb tip" ragdoll="true" />
+				<key time="0" joint="Left Pinky" rotation="46.73576" layer="-5" image="finger base" />
+				<key time="0" joint="Left Pinky2" rotation="-60.07733" layer="-1" image="finger tip" />
+				<key time="0" joint="Right Pointer2" layer="-1" image="finger tip" />
+				<key time="0" joint="Right Bicep" rotation="-37.10052" layer="-19" image="bicep" />
+				<key time="0" joint="Right Eye" layer="-9" image="right eye" />
+				<key time="0" joint="Right Forearm" rotation="13.04404" layer="-1" image="forearm" />
+				<key time="0" joint="Right Hand" layer="-1" image="hand" />
+				<key time="0" joint="Right Pointer" rotation="57.15786" layer="-1" image="finger base" />
+				<key time="0" joint="Right Thumb" rotation="29.75068" layer="2" image="thumb base" />
+				<key time="0" joint="Right Pinky" rotation="82.92253" layer="-6" image="finger base" />
+				<key time="6" joint="Left Pointer2" rotation="-65.54561" layer="-1" image="finger tip" />
+				<key time="6" joint="Left Pointer" rotation="20.90319" layer="-1" image="finger base" />
+				<key time="6" joint="Left Thumb2" rotation="33.74903" layer="-1" image="thumb tip" />
+				<key time="6" joint="Trunk" rotation="176.4965" layer="1" image="Trunk" />
+				<key time="6" joint="Left Hand" layer="-1" image="hand" />
+				<key time="6" joint="Left Forearm" rotation="-63.63892" layer="-1" image="forearm" />
+				<key time="6" joint="Left Bicep" rotation="82.11208" layer="-9" image="bicep" />
+				<key time="6" joint="Left Pinky" rotation="46.73576" layer="-5" image="finger base" />
+				<key time="6" joint="Left Thumb" rotation="-25.88705" layer="1" image="thumb base" />
+				<key time="6" joint="Left Pinky2" rotation="-60.07733" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Pointer" rotation="57.15786" layer="-1" image="finger base" />
+				<key time="6" joint="Right Hand" layer="-1" image="hand" />
+				<key time="6" joint="Right Bicep" rotation="-37.10052" layer="-19" image="bicep" />
+				<key time="6" joint="Left Eye" layer="-9" image="left eye" />
+				<key time="6" joint="Mouth" layer="-1" image="mouth" />
+				<key time="6" joint="Right Pointer2" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Pinky2" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Thumb2" layer="-1" image="thumb tip" ragdoll="true" />
+				<key time="6" joint="Right Pinky" rotation="82.92253" layer="-6" image="finger base" />
+				<key time="6" joint="Right Thumb" rotation="29.75068" layer="2" image="thumb base" />
+				<key time="6" joint="Right Forearm" rotation="13.04404" layer="-1" image="forearm" />
+				<key time="6" joint="Right Eye" layer="-9" image="right eye" />
+			</keys>
+		</animation>
+		<animation name="NEUTRAL front3" length="0.1">
+			<keys>
+				<key time="0" joint="Trunk" rotation="86.82017" layer="1" image="Trunk" />
+				<key time="0" joint="Right Pinky2" layer="-1" image="finger tip" />
+				<key time="0" joint="Left Bicep" rotation="82.11208" layer="-9" image="bicep" />
+				<key time="0" joint="Left Eye" layer="-9" image="left eye" />
+				<key time="0" joint="Left Forearm" rotation="-63.63892" layer="-1" image="forearm" />
+				<key time="0" joint="Left Hand" layer="-1" image="hand" />
+				<key time="0" joint="Mouth" layer="-1" image="mouth" />
+				<key time="0" joint="Left Thumb" rotation="-25.88705" layer="1" image="thumb base" />
+				<key time="0" joint="Left Thumb2" rotation="33.74903" layer="-1" image="thumb tip" />
+				<key time="0" joint="Left Pointer2" rotation="-65.54561" layer="-1" image="finger tip" />
+				<key time="0" joint="Left Pointer" rotation="20.90319" layer="-1" image="finger base" />
+				<key time="0" joint="Right Thumb2" layer="-1" image="thumb tip" ragdoll="true" />
+				<key time="0" joint="Left Pinky" rotation="46.73576" layer="-5" image="finger base" />
+				<key time="0" joint="Left Pinky2" rotation="-60.07733" layer="-1" image="finger tip" />
+				<key time="0" joint="Right Pointer2" layer="-1" image="finger tip" />
+				<key time="0" joint="Right Bicep" rotation="-37.10052" layer="-19" image="bicep" />
+				<key time="0" joint="Right Eye" layer="-9" image="right eye" />
+				<key time="0" joint="Right Forearm" rotation="13.04404" layer="-1" image="forearm" />
+				<key time="0" joint="Right Hand" layer="-1" image="hand" />
+				<key time="0" joint="Right Pointer" rotation="57.15786" layer="-1" image="finger base" />
+				<key time="0" joint="Right Thumb" rotation="29.75068" layer="2" image="thumb base" />
+				<key time="0" joint="Right Pinky" rotation="82.92253" layer="-6" image="finger base" />
+				<key time="6" joint="Left Pointer2" rotation="-65.54561" layer="-1" image="finger tip" />
+				<key time="6" joint="Left Pointer" rotation="20.90319" layer="-1" image="finger base" />
+				<key time="6" joint="Left Thumb2" rotation="33.74903" layer="-1" image="thumb tip" />
+				<key time="6" joint="Trunk" rotation="86.82017" layer="1" image="Trunk" />
+				<key time="6" joint="Left Hand" layer="-1" image="hand" />
+				<key time="6" joint="Left Forearm" rotation="-63.63892" layer="-1" image="forearm" />
+				<key time="6" joint="Left Bicep" rotation="82.11208" layer="-9" image="bicep" />
+				<key time="6" joint="Left Pinky" rotation="46.73576" layer="-5" image="finger base" />
+				<key time="6" joint="Left Thumb" rotation="-25.88705" layer="1" image="thumb base" />
+				<key time="6" joint="Left Pinky2" rotation="-60.07733" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Pointer" rotation="57.15786" layer="-1" image="finger base" />
+				<key time="6" joint="Right Hand" layer="-1" image="hand" />
+				<key time="6" joint="Right Bicep" rotation="-37.10052" layer="-19" image="bicep" />
+				<key time="6" joint="Left Eye" layer="-9" image="left eye" />
+				<key time="6" joint="Mouth" layer="-1" image="mouth" />
+				<key time="6" joint="Right Pointer2" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Pinky2" layer="-1" image="finger tip" />
+				<key time="6" joint="Right Thumb2" layer="-1" image="thumb tip" ragdoll="true" />
+				<key time="6" joint="Right Pinky" rotation="82.92253" layer="-6" image="finger base" />
+				<key time="6" joint="Right Thumb" rotation="29.75068" layer="2" image="thumb base" />
+				<key time="6" joint="Right Forearm" rotation="13.04404" layer="-1" image="forearm" />
+				<key time="6" joint="Right Eye" layer="-9" image="right eye" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

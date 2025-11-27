@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Torso Nekkid</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints>
+			<Item Type="AnimationLib.JointXML">
+				<name>L Tail</name>
+			</Item>
+			<Item Type="AnimationLib.JointXML">
+				<name>R Tail</name>
+			</Item>
+		</joints>
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>105 119</lowerright>
+				<anchorcoord>58 108</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Torso\TorsoFront.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>57 69</location>
+						<limit1>-17</limit1>
+						<limit2>4</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>40 67</location>
+						<limit1>-4</limit1>
+						<limit2>17</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>91 132</lowerright>
+				<anchorcoord>51 110</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Torso\TorsoSide.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>32 63</location>
+						<limit1>-2</limit1>
+						<limit2>14</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>37 63</location>
+						<limit1>-8</limit1>
+						<limit2>12</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>110 149</lowerright>
+				<anchorcoord>56 128</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Torso\TorsoBack.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>43 74</location>
+						<limit1>-4</limit1>
+						<limit2>9.999996</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>59 80</location>
+						<limit1>-11</limit1>
+						<limit2>3</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones>
+			<Item Type="AnimationLib.BoneXML">
+				<name>L Tail</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="AnimationLib.JointXML">
+						<name>L Tail weight</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>116 236</lowerright>
+						<anchorcoord>43 31</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Tails\LeftFront.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>66 197</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>107 248</lowerright>
+						<anchorcoord>86 36</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Tails\LeftSide.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>50 218</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>98 245</lowerright>
+						<anchorcoord>68 22</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Tails\LeftBack.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>42 208</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones />
+			</Item>
+			<Item Type="AnimationLib.BoneXML">
+				<name>R Tail</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="AnimationLib.JointXML">
+						<name>R Tail Weight</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>112 237</lowerright>
+						<anchorcoord>66 31</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Tails\RightFront.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>36 188</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>107 248</lowerright>
+						<anchorcoord>86 36</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Tails\RightSide.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>43 214</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>104 242</lowerright>
+						<anchorcoord>35 19</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Tails\RightBack.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>57 190</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones />
+			</Item>
+		</bones>
+		<parentBone>Torso</parentBone>
+	</Asset>
+</XnaContent>

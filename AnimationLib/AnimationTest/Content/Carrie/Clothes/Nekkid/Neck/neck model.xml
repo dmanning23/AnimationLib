@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Neck" name="Neck Nekkid" type="Garment">
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Neck\NeckFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>79 107</lowerright>
+				<anchorcoord>37 75</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

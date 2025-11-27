@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone name="Hand Nekkid">
+		<joints>
+			<joint name="Right Hand Weapon" />
+		</joints>
+		<images>
+			<image imageFile1="FistPinky.png">
+				<lowerright>128 128</lowerright>
+				<anchorcoord>46 38</anchorcoord>
+				<joints>
+					<jointData>
+						<location>73 54</location>
+					</jointData>
+				</joints>
+			</image>
+			<image imageFile1="FistPinky.png">
+				<lowerright>128 128</lowerright>
+				<anchorcoord>18 24</anchorcoord>
+				<joints>
+					<jointData>
+						<location>47 21</location>
+					</jointData>
+				</joints>
+			</image>
+			<image imageFile1="FistPinky.png">
+				<lowerright>128 128</lowerright>
+				<anchorcoord>15 13</anchorcoord>
+				<joints>
+					<jointData>
+						<location>51 27</location>
+					</jointData>
+				</joints>
+			</image>
+			<image imageFile1="FistPinky.png">
+				<lowerright>128 128</lowerright>
+				<anchorcoord>40 14</anchorcoord>
+				<joints>
+					<jointData>
+						<location>30 36</location>
+					</jointData>
+				</joints>
+			</image>
+			<image imageFile1="FistThumb.png">
+				<lowerright>64 128</lowerright>
+				<anchorcoord>32 41</anchorcoord>
+				<joints>
+					<jointData>
+						<location>19 80</location>
+					</jointData>
+				</joints>
+			</image>
+			<image imageFile1="FistThumb.png">
+				<lowerright>64 128</lowerright>
+				<anchorcoord>19 26</anchorcoord>
+				<joints>
+					<jointData>
+						<location>42 27</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="Right Hand Weapon">
+				<images>
+					<image name="Weapon FistBack">
+						<lowerright>58 58</lowerright>
+						<anchorcoord>14 18</anchorcoord>
+					</image>
+					<image name="Weapon FistFront">
+						<lowerright>58 58</lowerright>
+						<anchorcoord>18 24</anchorcoord>
+					</image>
+					<image name="Weapon FistPalm">
+						<lowerright>58 58</lowerright>
+						<anchorcoord>15 13</anchorcoord>
+					</image>
+					<image name="Weapon FistPinky">
+						<lowerright>58 58</lowerright>
+						<anchorcoord>40 14</anchorcoord>
+					</image>
+					<image name="Weapon FistThumb">
+						<lowerright>58 58</lowerright>
+						<anchorcoord>40 14</anchorcoord>
+					</image>
+					<image name="Weapon FistWrist">
+						<lowerright>58 58</lowerright>
+						<anchorcoord>19 26</anchorcoord>
+					</image>
+				</images>
+			</bone>
+		</bones>
+	</garmentbone>
+</skeleton>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Right Shoulder Nekkid</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>78 76</lowerright>
+				<anchorcoord>57 24</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Shoulder\ShoulderFront.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Right Shoulder</parentBone>
+	</Asset>
+</XnaContent>

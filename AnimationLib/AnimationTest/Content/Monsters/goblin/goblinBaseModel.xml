@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<skeleton>
+	<bone name="Torso">
+		<joints>
+			<joint name="Right Thigh" />
+			<joint name="Left Thigh" />
+			<joint name="Right Bicep" />
+			<joint name="Left Bicep" />
+			<joint name="Head" />
+		</joints>
+		<images>
+			<image name="torso" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>181 194</lowerright>
+				<anchorcoord>75 125</anchorcoord>
+				<joints>
+					<jointData>
+						<location>52 168</location>
+					</jointData>
+					<jointData>
+						<location>140 150</location>
+					</jointData>
+					<jointData>
+						<location>38 23</location>
+					</jointData>
+					<jointData>
+						<location>122 25</location>
+					</jointData>
+					<jointData>
+						<location>81 11</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="Right Thigh">
+				<joints>
+					<joint name="Right Calf" />
+				</joints>
+				<images>
+					<image name="thigh" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+						<upperleft>6 202</upperleft>
+						<lowerright>86 326</lowerright>
+						<anchorcoord>48.3606 26.44388</anchorcoord>
+						<joints>
+							<jointData>
+								<location>42 102</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Right Calf">
+						<joints>
+							<joint name="Right Foot" />
+						</joints>
+						<images>
+							<image name="calf" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>117 191</upperleft>
+								<lowerright>199 286</lowerright>
+								<anchorcoord>32.99313 21.16891</anchorcoord>
+								<joints>
+									<jointData>
+										<location>39 80</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Right Foot" type="Foot">
+								<images>
+									<image name="foot" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+										<upperleft>197 168</upperleft>
+										<lowerright>328 244</lowerright>
+										<anchorcoord>90.79346 19.23392</anchorcoord>
+									</image>
+								</images>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Left Thigh">
+				<joints>
+					<joint name="Left Calf" />
+				</joints>
+				<images>
+					<image name="thigh" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+						<upperleft>6 202</upperleft>
+						<lowerright>86 326</lowerright>
+						<anchorcoord>48.3606 26.44388</anchorcoord>
+						<joints>
+							<jointData>
+								<location>42 102</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Left Calf">
+						<joints>
+							<joint name="Left Foot" />
+						</joints>
+						<images>
+							<image name="calf" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>117 191</upperleft>
+								<lowerright>199 286</lowerright>
+								<anchorcoord>32.99313 21.16891</anchorcoord>
+								<joints>
+									<jointData>
+										<location>39 80</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Left Foot" type="Foot">
+								<images>
+									<image name="foot" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+										<upperleft>197 168</upperleft>
+										<lowerright>328 244</lowerright>
+										<anchorcoord>90.79346 19.23392</anchorcoord>
+									</image>
+								</images>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Right Bicep">
+				<joints>
+					<joint name="Right Forearm" />
+				</joints>
+				<images>
+					<image name="bicep" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+						<upperleft>340 135</upperleft>
+						<lowerright>414 279</lowerright>
+						<anchorcoord>54 21</anchorcoord>
+						<joints>
+							<jointData>
+								<location>32 114</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Right Forearm">
+						<joints>
+							<joint name="Right Hand" />
+						</joints>
+						<images>
+							<image name="forearm" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>207 244</upperleft>
+								<lowerright>306 356</lowerright>
+								<anchorcoord>39 37</anchorcoord>
+								<joints>
+									<jointData>
+										<location>64 94</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Right Hand">
+								<images>
+									<image name="front" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+										<upperleft>333 281</upperleft>
+										<lowerright>414 356</lowerright>
+										<anchorcoord>37.15466 16.5067</anchorcoord>
+									</image>
+									<image name="back" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+										<upperleft>85 287</upperleft>
+										<lowerright>199 356</lowerright>
+										<anchorcoord>41.49539 9.90567</anchorcoord>
+									</image>
+								</images>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Left Bicep">
+				<joints>
+					<joint name="Left Forearm" />
+				</joints>
+				<images>
+					<image name="bicep" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+						<upperleft>340 135</upperleft>
+						<lowerright>414 279</lowerright>
+						<anchorcoord>54 21</anchorcoord>
+						<joints>
+							<jointData>
+								<location>32 114</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Left Forearm">
+						<joints>
+							<joint name="Left Hand" />
+						</joints>
+						<images>
+							<image name="forearm" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>207 244</upperleft>
+								<lowerright>306 356</lowerright>
+								<anchorcoord>39 37</anchorcoord>
+								<joints>
+									<jointData>
+										<location>64 94</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Left Hand">
+								<images>
+									<image name="front" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+										<upperleft>333 281</upperleft>
+										<lowerright>414 356</lowerright>
+										<anchorcoord>37.15466 16.5067</anchorcoord>
+									</image>
+									<image name="back" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+										<upperleft>85 287</upperleft>
+										<lowerright>199 356</lowerright>
+										<anchorcoord>41.49539 9.90567</anchorcoord>
+									</image>
+								</images>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Head">
+				<joints>
+					<joint name="Right Eye" />
+					<joint name="Left Eye" />
+					<joint name="Left Ear" />
+					<joint name="Right Ear" />
+					<joint name="Nose" />
+				</joints>
+				<images>
+					<image name="head" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+						<upperleft>180 0</upperleft>
+						<lowerright>357 165</lowerright>
+						<anchorcoord>80 131</anchorcoord>
+						<joints>
+							<jointData>
+								<location>65 56</location>
+							</jointData>
+							<jointData>
+								<location>138 58</location>
+							</jointData>
+							<jointData>
+								<location>142 72</location>
+							</jointData>
+							<jointData>
+								<location>16 81</location>
+							</jointData>
+							<jointData>
+								<location>111 69</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Right Eye">
+						<images>
+							<image name="eye" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>357 0</upperleft>
+								<lowerright>409 36</lowerright>
+								<anchorcoord>24 18</anchorcoord>
+							</image>
+						</images>
+					</bone>
+					<bone name="Left Eye">
+						<images>
+							<image name="eye" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>357 0</upperleft>
+								<lowerright>409 36</lowerright>
+								<anchorcoord>24 18</anchorcoord>
+							</image>
+						</images>
+					</bone>
+					<bone name="Right Ear">
+						<images>
+							<image name="ear" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>357 44</upperleft>
+								<lowerright>408 128</lowerright>
+								<anchorcoord>30 61</anchorcoord>
+							</image>
+						</images>
+					</bone>
+					<bone name="Left Ear">
+						<images>
+							<image name="ear" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>357 44</upperleft>
+								<lowerright>408 128</lowerright>
+								<anchorcoord>30 61</anchorcoord>
+							</image>
+						</images>
+					</bone>
+					<bone name="Nose">
+						<images>
+							<image name="nose" filename="Monsters\goblin\goblin_Diffuse.png" normalMapFilename="Monsters\goblin\goblin_Normal.png">
+								<upperleft>12 324</upperleft>
+								<lowerright>71 353</lowerright>
+								<anchorcoord>31 17</anchorcoord>
+							</image>
+						</images>
+					</bone>
+				</bones>
+			</bone>
+		</bones>
+	</bone>
+</skeleton>

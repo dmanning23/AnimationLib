@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Right Bicep" name="Right Bicep Nekkid" type="Garment">
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Bicep\Bicep.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>50 123</lowerright>
+				<anchorcoord>25 16</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

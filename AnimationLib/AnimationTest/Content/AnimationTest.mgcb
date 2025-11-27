@@ -1,0 +1,2619 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:DesktopGL
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+/reference:XmlBuddy.Content.dll
+
+#---------------------------------- Content ---------------------------------#
+
+#begin AnimationBuddyShader.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:AnimationBuddyShader.fx
+
+#begin ArialBlack24.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:ArialBlack24.spritefont
+
+#begin Carrie/Carrie animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Carrie animations.xml
+
+#begin Carrie/carrie data.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/carrie data.xml
+
+#begin Carrie/carrie ground states.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/carrie ground states.xml
+
+#begin Carrie/Carrie model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Carrie model.xml
+
+#begin Carrie/carrie up states.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/carrie up states.xml
+
+#begin Carrie/Clothes/LeftWeapon.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/LeftWeapon.xml
+
+#begin Carrie/Clothes/Nekkid.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid.xml
+
+#begin Carrie/Clothes/Nekkid/Ankle/Ankle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Ankle/Ankle.png
+
+#begin Carrie/Clothes/Nekkid/Ankle/left ankle animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Ankle/left ankle animations.xml
+
+#begin Carrie/Clothes/Nekkid/Ankle/left ankle model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Ankle/left ankle model.xml
+
+#begin Carrie/Clothes/Nekkid/Ankle/right ankle animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Ankle/right ankle animations.xml
+
+#begin Carrie/Clothes/Nekkid/Ankle/right ankle model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Ankle/right ankle model.xml
+
+#begin Carrie/Clothes/Nekkid/Bicep/Bicep.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Bicep/Bicep.png
+
+#begin Carrie/Clothes/Nekkid/Bicep/left bicep animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Bicep/left bicep animations.xml
+
+#begin Carrie/Clothes/Nekkid/Bicep/left bicep model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Bicep/left bicep model.xml
+
+#begin Carrie/Clothes/Nekkid/Bicep/right bicep animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Bicep/right bicep animations.xml
+
+#begin Carrie/Clothes/Nekkid/Bicep/right bicep model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Bicep/right bicep model.xml
+
+#begin Carrie/Clothes/Nekkid/Calf/CalfFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Calf/CalfFront.png
+
+#begin Carrie/Clothes/Nekkid/Calf/CalfSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Calf/CalfSide.png
+
+#begin Carrie/Clothes/Nekkid/Calf/left calf animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Calf/left calf animations.xml
+
+#begin Carrie/Clothes/Nekkid/Calf/left calf model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Calf/left calf model.xml
+
+#begin Carrie/Clothes/Nekkid/Calf/right calf animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Calf/right calf animations.xml
+
+#begin Carrie/Clothes/Nekkid/Calf/right calf model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Calf/right calf model.xml
+
+#begin Carrie/Clothes/Nekkid/Chesticle/chesticle animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Chesticle/chesticle animations.xml
+
+#begin Carrie/Clothes/Nekkid/Chesticle/chesticle model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Chesticle/chesticle model.xml
+
+#begin Carrie/Clothes/Nekkid/Chesticle/ChesticleBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Chesticle/ChesticleBack.png
+
+#begin Carrie/Clothes/Nekkid/Chesticle/ChesticleFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Chesticle/ChesticleFront.png
+
+#begin Carrie/Clothes/Nekkid/Chesticle/ChesticleSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Chesticle/ChesticleSide.png
+
+#begin Carrie/Clothes/Nekkid/Chesticle/LTittyFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Chesticle/LTittyFront.png
+
+#begin Carrie/Clothes/Nekkid/Chesticle/LTittySide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Chesticle/LTittySide.png
+
+#begin Carrie/Clothes/Nekkid/Chesticle/RTittyFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Chesticle/RTittyFront.png
+
+#begin Carrie/Clothes/Nekkid/Crotch/crotch animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Crotch/crotch animations.xml
+
+#begin Carrie/Clothes/Nekkid/Crotch/crotch model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Crotch/crotch model.xml
+
+#begin Carrie/Clothes/Nekkid/Crotch/CrotchBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Crotch/CrotchBack.png
+
+#begin Carrie/Clothes/Nekkid/Crotch/CrotchFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Crotch/CrotchFront.png
+
+#begin Carrie/Clothes/Nekkid/Crotch/CrotchSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Crotch/CrotchSide.png
+
+#begin Carrie/Clothes/Nekkid/Foot/Bare FootBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/Bare FootBack.png
+
+#begin Carrie/Clothes/Nekkid/Foot/Bare FootBall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/Bare FootBall.png
+
+#begin Carrie/Clothes/Nekkid/Foot/Bare FootFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/Bare FootFront.png
+
+#begin Carrie/Clothes/Nekkid/Foot/Bare FootSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/Bare FootSide.png
+
+#begin Carrie/Clothes/Nekkid/Foot/FootBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/FootBack.png
+
+#begin Carrie/Clothes/Nekkid/Foot/FootBall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/FootBall.png
+
+#begin Carrie/Clothes/Nekkid/Foot/FootFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/FootFront.png
+
+#begin Carrie/Clothes/Nekkid/Foot/FootSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/FootSide.png
+
+#begin Carrie/Clothes/Nekkid/Foot/FootTop.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Foot/FootTop.png
+
+#begin Carrie/Clothes/Nekkid/Foot/left foot animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Foot/left foot animations.xml
+
+#begin Carrie/Clothes/Nekkid/Foot/left foot model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Foot/left foot model.xml
+
+#begin Carrie/Clothes/Nekkid/Foot/right foot animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Foot/right foot animations.xml
+
+#begin Carrie/Clothes/Nekkid/Foot/right foot model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Foot/right foot model.xml
+
+#begin Carrie/Clothes/Nekkid/Forearm/ForearmFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Forearm/ForearmFront.png
+
+#begin Carrie/Clothes/Nekkid/Forearm/ForearmSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Forearm/ForearmSide.png
+
+#begin Carrie/Clothes/Nekkid/Forearm/left forearm animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Forearm/left forearm animations.xml
+
+#begin Carrie/Clothes/Nekkid/Forearm/left forearm model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Forearm/left forearm model.xml
+
+#begin Carrie/Clothes/Nekkid/Forearm/right forearm animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Forearm/right forearm animations.xml
+
+#begin Carrie/Clothes/Nekkid/Forearm/right forearm model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Forearm/right forearm model.xml
+
+#begin Carrie/Clothes/Nekkid/Fringe/med.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Fringe/med.png
+
+#begin Carrie/Clothes/Nekkid/Fringe/short.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Fringe/short.png
+
+#begin Carrie/Clothes/Nekkid/Hand/FistBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Hand/FistBack.png
+
+#begin Carrie/Clothes/Nekkid/Hand/FistFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Hand/FistFront.png
+
+#begin Carrie/Clothes/Nekkid/Hand/FistPalm.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Hand/FistPalm.png
+
+#begin Carrie/Clothes/Nekkid/Hand/FistPinky.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Hand/FistPinky.png
+
+#begin Carrie/Clothes/Nekkid/Hand/FistThumb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Hand/FistThumb.png
+
+#begin Carrie/Clothes/Nekkid/Hand/FistWrist.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Hand/FistWrist.png
+
+#begin Carrie/Clothes/Nekkid/Hand/left hand animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Hand/left hand animations.xml
+
+#begin Carrie/Clothes/Nekkid/Hand/left hand model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Hand/left hand model.xml
+
+#begin Carrie/Clothes/Nekkid/Hand/right hand animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Hand/right hand animations.xml
+
+#begin Carrie/Clothes/Nekkid/Hand/right hand model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Hand/right hand model.xml
+
+#begin Carrie/Clothes/Nekkid/Head/head animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Head/head animations.xml
+
+#begin Carrie/Clothes/Nekkid/Head/head model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Head/head model.xml
+
+#begin Carrie/Clothes/Nekkid/Head/HeadBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Head/HeadBack.png
+
+#begin Carrie/Clothes/Nekkid/Head/HeadFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Head/HeadFront.png
+
+#begin Carrie/Clothes/Nekkid/Head/HeadSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Head/HeadSide.png
+
+#begin Carrie/Clothes/Nekkid/Knee/Knee.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Knee/Knee.png
+
+#begin Carrie/Clothes/Nekkid/Knee/left knee animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Knee/left knee animations.xml
+
+#begin Carrie/Clothes/Nekkid/Knee/left knee model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Knee/left knee model.xml
+
+#begin Carrie/Clothes/Nekkid/Knee/right knee animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Knee/right knee animations.xml
+
+#begin Carrie/Clothes/Nekkid/Knee/right knee model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Knee/right knee model.xml
+
+#begin Carrie/Clothes/Nekkid/Neck/neck animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Neck/neck animations.xml
+
+#begin Carrie/Clothes/Nekkid/Neck/neck model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Neck/neck model.xml
+
+#begin Carrie/Clothes/Nekkid/Neck/NeckFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Neck/NeckFront.png
+
+#begin Carrie/Clothes/Nekkid/Shoulder/left shoulder animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Shoulder/left shoulder animations.xml
+
+#begin Carrie/Clothes/Nekkid/Shoulder/left shoulder model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Shoulder/left shoulder model.xml
+
+#begin Carrie/Clothes/Nekkid/Shoulder/right shoulder animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Shoulder/right shoulder animations.xml
+
+#begin Carrie/Clothes/Nekkid/Shoulder/right shoulder model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Shoulder/right shoulder model.xml
+
+#begin Carrie/Clothes/Nekkid/Shoulder/ShoulderFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Shoulder/ShoulderFront.png
+
+#begin Carrie/Clothes/Nekkid/Thigh/left thigh animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Thigh/left thigh animations.xml
+
+#begin Carrie/Clothes/Nekkid/Thigh/left thigh model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Thigh/left thigh model.xml
+
+#begin Carrie/Clothes/Nekkid/Thigh/right thigh animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Thigh/right thigh animations.xml
+
+#begin Carrie/Clothes/Nekkid/Thigh/right thigh model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Thigh/right thigh model.xml
+
+#begin Carrie/Clothes/Nekkid/Thigh/ThighFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Thigh/ThighFront.png
+
+#begin Carrie/Clothes/Nekkid/Thigh/ThighSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Thigh/ThighSide.png
+
+#begin Carrie/Clothes/Nekkid/Torso/torso animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Torso/torso animations.xml
+
+#begin Carrie/Clothes/Nekkid/Torso/torso model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Nekkid/Torso/torso model.xml
+
+#begin Carrie/Clothes/Nekkid/Torso/TorsoBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Torso/TorsoBack.png
+
+#begin Carrie/Clothes/Nekkid/Torso/TorsoFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Torso/TorsoFront.png
+
+#begin Carrie/Clothes/Nekkid/Torso/TorsoSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Nekkid/Torso/TorsoSide.png
+
+#begin Carrie/Clothes/RightWeapon.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/RightWeapon.xml
+
+#begin Carrie/Clothes/Weapon/left weapon animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Weapon/left weapon animations.xml
+
+#begin Carrie/Clothes/Weapon/left weapon model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Weapon/left weapon model.xml
+
+#begin Carrie/Clothes/Weapon/Pillow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Clothes/Weapon/Pillow.png
+
+#begin Carrie/Clothes/Weapon/right weapon animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Weapon/right weapon animations.xml
+
+#begin Carrie/Clothes/Weapon/right weapon model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Clothes/Weapon/right weapon model.xml
+
+#begin Carrie/Portrait.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Portrait.png
+
+#begin Carrie/Projectiles/animations converted.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Projectiles/animations converted.xml
+
+#begin Carrie/Projectiles/book.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Carrie/Projectiles/book.png
+
+#begin Carrie/Projectiles/data back.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Projectiles/data back.xml
+
+#begin Carrie/Projectiles/data.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Projectiles/data.xml
+
+#begin Carrie/Projectiles/model converted.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Projectiles/model converted.xml
+
+#begin Carrie/Projectiles/state machine converted.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Projectiles/state machine converted.xml
+
+#begin Carrie/Projectiles/states back.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Projectiles/states back.xml
+
+#begin Carrie/Projectiles/states converted.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Carrie/Projectiles/states converted.xml
+
+#begin Dan/Clothes/Nekkid.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid.xml
+
+#begin Dan/Clothes/Nekkid/Bicep/Bicep.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Bicep/Bicep.png
+
+#begin Dan/Clothes/Nekkid/Bicep/left bicep animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Bicep/left bicep animations.xml
+
+#begin Dan/Clothes/Nekkid/Bicep/left bicep model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Bicep/left bicep model.xml
+
+#begin Dan/Clothes/Nekkid/Bicep/right bicep animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Bicep/right bicep animations.xml
+
+#begin Dan/Clothes/Nekkid/Bicep/right bicep model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Bicep/right bicep model.xml
+
+#begin Dan/Clothes/Nekkid/Calf/CalfFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Calf/CalfFront.png
+
+#begin Dan/Clothes/Nekkid/Calf/CalfSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Calf/CalfSide.png
+
+#begin Dan/Clothes/Nekkid/Calf/left calf animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Calf/left calf animations.xml
+
+#begin Dan/Clothes/Nekkid/Calf/left calf model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Calf/left calf model.xml
+
+#begin Dan/Clothes/Nekkid/Calf/right calf animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Calf/right calf animations.xml
+
+#begin Dan/Clothes/Nekkid/Calf/right calf model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Calf/right calf model.xml
+
+#begin Dan/Clothes/Nekkid/Chesticle/BowTieFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Chesticle/BowTieFront.png
+
+#begin Dan/Clothes/Nekkid/Chesticle/BowTieSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Chesticle/BowTieSide.png
+
+#begin Dan/Clothes/Nekkid/Chesticle/chesticle animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Chesticle/chesticle animations.xml
+
+#begin Dan/Clothes/Nekkid/Chesticle/chesticle model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Chesticle/chesticle model.xml
+
+#begin Dan/Clothes/Nekkid/Chesticle/ChesticleBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Chesticle/ChesticleBack.png
+
+#begin Dan/Clothes/Nekkid/Chesticle/ChesticleFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Chesticle/ChesticleFront.png
+
+#begin Dan/Clothes/Nekkid/Chesticle/ChesticleSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Chesticle/ChesticleSide.png
+
+#begin Dan/Clothes/Nekkid/Chesticle/CollarFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Chesticle/CollarFront.png
+
+#begin Dan/Clothes/Nekkid/Crotch/crotch animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Crotch/crotch animations.xml
+
+#begin Dan/Clothes/Nekkid/Crotch/crotch model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Crotch/crotch model.xml
+
+#begin Dan/Clothes/Nekkid/Crotch/CrotchBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Crotch/CrotchBack.png
+
+#begin Dan/Clothes/Nekkid/Crotch/CrotchFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Crotch/CrotchFront.png
+
+#begin Dan/Clothes/Nekkid/Crotch/CrotchSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Crotch/CrotchSide.png
+
+#begin Dan/Clothes/Nekkid/Foot/FootBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Foot/FootBack.png
+
+#begin Dan/Clothes/Nekkid/Foot/FootBall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Foot/FootBall.png
+
+#begin Dan/Clothes/Nekkid/Foot/FootFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Foot/FootFront.png
+
+#begin Dan/Clothes/Nekkid/Foot/FootSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Foot/FootSide.png
+
+#begin Dan/Clothes/Nekkid/Foot/FootTop.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Foot/FootTop.png
+
+#begin Dan/Clothes/Nekkid/Foot/left foot animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Foot/left foot animations.xml
+
+#begin Dan/Clothes/Nekkid/Foot/left foot model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Foot/left foot model.xml
+
+#begin Dan/Clothes/Nekkid/Foot/right foot animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Foot/right foot animations.xml
+
+#begin Dan/Clothes/Nekkid/Foot/right foot model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Foot/right foot model.xml
+
+#begin Dan/Clothes/Nekkid/Forearm/ForearmFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Forearm/ForearmFront.png
+
+#begin Dan/Clothes/Nekkid/Forearm/ForearmSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Forearm/ForearmSide.png
+
+#begin Dan/Clothes/Nekkid/Forearm/left forearm animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Forearm/left forearm animations.xml
+
+#begin Dan/Clothes/Nekkid/Forearm/left forearm model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Forearm/left forearm model.xml
+
+#begin Dan/Clothes/Nekkid/Forearm/right forearm animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Forearm/right forearm animations.xml
+
+#begin Dan/Clothes/Nekkid/Forearm/right forearm model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Forearm/right forearm model.xml
+
+#begin Dan/Clothes/Nekkid/Hand/FistBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/FistBack.png
+
+#begin Dan/Clothes/Nekkid/Hand/FistFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/FistFront.png
+
+#begin Dan/Clothes/Nekkid/Hand/FistPalm.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/FistPalm.png
+
+#begin Dan/Clothes/Nekkid/Hand/FistPinky.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/FistPinky.png
+
+#begin Dan/Clothes/Nekkid/Hand/FistThumb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/FistThumb.png
+
+#begin Dan/Clothes/Nekkid/Hand/FistWrist.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/FistWrist.png
+
+#begin Dan/Clothes/Nekkid/Hand/left hand animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Hand/left hand animations.xml
+
+#begin Dan/Clothes/Nekkid/Hand/left hand model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Hand/left hand model.xml
+
+#begin Dan/Clothes/Nekkid/Hand/right hand animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Hand/right hand animations.xml
+
+#begin Dan/Clothes/Nekkid/Hand/right hand model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Hand/right hand model.xml
+
+#begin Dan/Clothes/Nekkid/Hand/Ring FistBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/Ring FistBack.png
+
+#begin Dan/Clothes/Nekkid/Hand/Ring FistFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/Ring FistFront.png
+
+#begin Dan/Clothes/Nekkid/Hand/Ring FistPalm.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Hand/Ring FistPalm.png
+
+#begin Dan/Clothes/Nekkid/Head/head animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Head/head animations.xml
+
+#begin Dan/Clothes/Nekkid/Head/head model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Head/head model.xml
+
+#begin Dan/Clothes/Nekkid/Head/HeadBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Head/HeadBack.png
+
+#begin Dan/Clothes/Nekkid/Head/HeadFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Head/HeadFront.png
+
+#begin Dan/Clothes/Nekkid/Head/HeadSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Head/HeadSide.png
+
+#begin Dan/Clothes/Nekkid/Knee/Knee.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Knee/Knee.png
+
+#begin Dan/Clothes/Nekkid/Knee/left knee animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Knee/left knee animations.xml
+
+#begin Dan/Clothes/Nekkid/Knee/left knee model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Knee/left knee model.xml
+
+#begin Dan/Clothes/Nekkid/Knee/right knee animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Knee/right knee animations.xml
+
+#begin Dan/Clothes/Nekkid/Knee/right knee model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Knee/right knee model.xml
+
+#begin Dan/Clothes/Nekkid/Neck/neck animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Neck/neck animations.xml
+
+#begin Dan/Clothes/Nekkid/Neck/neck model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Neck/neck model.xml
+
+#begin Dan/Clothes/Nekkid/Neck/NeckFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Neck/NeckFront.png
+
+#begin Dan/Clothes/Nekkid/Shoulder/left shoulder animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Shoulder/left shoulder animations.xml
+
+#begin Dan/Clothes/Nekkid/Shoulder/left shoulder model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Shoulder/left shoulder model.xml
+
+#begin Dan/Clothes/Nekkid/Shoulder/right shoulder animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Shoulder/right shoulder animations.xml
+
+#begin Dan/Clothes/Nekkid/Shoulder/right shoulder model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Shoulder/right shoulder model.xml
+
+#begin Dan/Clothes/Nekkid/Shoulder/ShoulderFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Shoulder/ShoulderFront.png
+
+#begin Dan/Clothes/Nekkid/Tails/LeftBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Tails/LeftBack.png
+
+#begin Dan/Clothes/Nekkid/Tails/LeftFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Tails/LeftFront.png
+
+#begin Dan/Clothes/Nekkid/Tails/LeftSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Tails/LeftSide.png
+
+#begin Dan/Clothes/Nekkid/Tails/RightBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Tails/RightBack.png
+
+#begin Dan/Clothes/Nekkid/Tails/RightFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Tails/RightFront.png
+
+#begin Dan/Clothes/Nekkid/Tails/RightSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Tails/RightSide.png
+
+#begin Dan/Clothes/Nekkid/Thigh/left thigh animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Thigh/left thigh animations.xml
+
+#begin Dan/Clothes/Nekkid/Thigh/left thigh model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Thigh/left thigh model.xml
+
+#begin Dan/Clothes/Nekkid/Thigh/right thigh animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Thigh/right thigh animations.xml
+
+#begin Dan/Clothes/Nekkid/Thigh/right thigh model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Thigh/right thigh model.xml
+
+#begin Dan/Clothes/Nekkid/Thigh/ThighFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Thigh/ThighFront.png
+
+#begin Dan/Clothes/Nekkid/Thigh/ThighSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Thigh/ThighSide.png
+
+#begin Dan/Clothes/Nekkid/Torso/torso animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Torso/torso animations.xml
+
+#begin Dan/Clothes/Nekkid/Torso/torso model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Clothes/Nekkid/Torso/torso model.xml
+
+#begin Dan/Clothes/Nekkid/Torso/TorsoBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Torso/TorsoBack.png
+
+#begin Dan/Clothes/Nekkid/Torso/TorsoFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Torso/TorsoFront.png
+
+#begin Dan/Clothes/Nekkid/Torso/TorsoSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Clothes/Nekkid/Torso/TorsoSide.png
+
+#begin Dan/Dan animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Dan animations.xml
+
+#begin Dan/dan data.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/dan data.xml
+
+#begin Dan/dan ground states.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/dan ground states.xml
+
+#begin Dan/Dan model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/Dan model.xml
+
+#begin Dan/dan up states.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Dan/dan up states.xml
+
+#begin Dan/Portrait.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dan/Portrait.png
+
+#begin Mai/Clothes/LeftWeapon.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/LeftWeapon.xml
+
+#begin Mai/Clothes/Nekkid.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid.xml
+
+#begin Mai/Clothes/Nekkid/Ankle/Ankle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Ankle/Ankle.png
+
+#begin Mai/Clothes/Nekkid/Ankle/AnkleAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Ankle/AnkleAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Ankle/AnkleModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Ankle/AnkleModel.xml
+
+#begin Mai/Clothes/Nekkid/Bicep/Bicep.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Bicep/Bicep.png
+
+#begin Mai/Clothes/Nekkid/Bicep/BicepAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Bicep/BicepAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Bicep/BicepModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Bicep/BicepModel.xml
+
+#begin Mai/Clothes/Nekkid/Calf/CalfAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Calf/CalfAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Calf/CalfFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Calf/CalfFront.png
+
+#begin Mai/Clothes/Nekkid/Calf/CalfModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Calf/CalfModel.xml
+
+#begin Mai/Clothes/Nekkid/Chesticle/ChesticleAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Chesticle/ChesticleAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Chesticle/ChesticleFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Chesticle/ChesticleFront.png
+
+#begin Mai/Clothes/Nekkid/Chesticle/ChesticleModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Chesticle/ChesticleModel.xml
+
+#begin Mai/Clothes/Nekkid/Chesticle/LTittyFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Chesticle/LTittyFront.png
+
+#begin Mai/Clothes/Nekkid/Chesticle/RTittyFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Chesticle/RTittyFront.png
+
+#begin Mai/Clothes/Nekkid/Chesticle/UnderBoob.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Chesticle/UnderBoob.png
+
+#begin Mai/Clothes/Nekkid/Crotch/CrotchAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Crotch/CrotchAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Crotch/CrotchFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Crotch/CrotchFront.png
+
+#begin Mai/Clothes/Nekkid/Crotch/CrotchModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Crotch/CrotchModel.xml
+
+#begin Mai/Clothes/Nekkid/Crotch/LoinCloth.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Crotch/LoinCloth.png
+
+#begin Mai/Clothes/Nekkid/Crotch/Panty.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Crotch/Panty.png
+
+#begin Mai/Clothes/Nekkid/Foot/FootAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Foot/FootAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Foot/FootBall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Foot/FootBall.png
+
+#begin Mai/Clothes/Nekkid/Foot/FootModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Foot/FootModel.xml
+
+#begin Mai/Clothes/Nekkid/Forearm/ForearmAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Forearm/ForearmAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Forearm/ForearmModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Forearm/ForearmModel.xml
+
+#begin Mai/Clothes/Nekkid/Forearm/ForearmSide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Forearm/ForearmSide.png
+
+#begin Mai/Clothes/Nekkid/Hand/FistPinky.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Hand/FistPinky.png
+
+#begin Mai/Clothes/Nekkid/Hand/FistThumb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Hand/FistThumb.png
+
+#begin Mai/Clothes/Nekkid/Hand/HandAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Hand/HandAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Hand/HandModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Hand/HandModel.xml
+
+#begin Mai/Clothes/Nekkid/Head/BangDark.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Head/BangDark.png
+
+#begin Mai/Clothes/Nekkid/Head/BowThing.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Head/BowThing.png
+
+#begin Mai/Clothes/Nekkid/Head/HeadAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Head/HeadAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Head/HeadFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Head/HeadFront.png
+
+#begin Mai/Clothes/Nekkid/Head/HeadModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Head/HeadModel.xml
+
+#begin Mai/Clothes/Nekkid/Head/Ponytail.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Head/Ponytail.png
+
+#begin Mai/Clothes/Nekkid/Head/RBang.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Head/RBang.png
+
+#begin Mai/Clothes/Nekkid/Knee/Knee.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Knee/Knee.png
+
+#begin Mai/Clothes/Nekkid/Knee/KneeAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Knee/KneeAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Knee/KneeModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Knee/KneeModel.xml
+
+#begin Mai/Clothes/Nekkid/Neck/NeckAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Neck/NeckAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Neck/NeckFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Neck/NeckFront.png
+
+#begin Mai/Clothes/Nekkid/Neck/NeckModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Neck/NeckModel.xml
+
+#begin Mai/Clothes/Nekkid/Shoulder/ShoulderAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Shoulder/ShoulderAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Shoulder/ShoulderFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Shoulder/ShoulderFront.png
+
+#begin Mai/Clothes/Nekkid/Shoulder/ShoulderModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Shoulder/ShoulderModel.xml
+
+#begin Mai/Clothes/Nekkid/Thigh/ThighAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Thigh/ThighAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Thigh/ThighFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Thigh/ThighFront.png
+
+#begin Mai/Clothes/Nekkid/Thigh/ThighModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Thigh/ThighModel.xml
+
+#begin Mai/Clothes/Nekkid/Torso/RedBall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Torso/RedBall.png
+
+#begin Mai/Clothes/Nekkid/Torso/RedBraid.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Torso/RedBraid.png
+
+#begin Mai/Clothes/Nekkid/Torso/RedBraidEnd.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Torso/RedBraidEnd.png
+
+#begin Mai/Clothes/Nekkid/Torso/TorsoAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Torso/TorsoAnimations.xml
+
+#begin Mai/Clothes/Nekkid/Torso/TorsoFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Torso/TorsoFront.png
+
+#begin Mai/Clothes/Nekkid/Torso/TorsoModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Nekkid/Torso/TorsoModel.xml
+
+#begin Mai/Clothes/Nekkid/Torso/WhiteBall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Torso/WhiteBall.png
+
+#begin Mai/Clothes/Nekkid/Torso/WhiteBraid.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Torso/WhiteBraid.png
+
+#begin Mai/Clothes/Nekkid/Torso/WhiteBraidEnd.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Nekkid/Torso/WhiteBraidEnd.png
+
+#begin Mai/Clothes/RightWeapon.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/RightWeapon.xml
+
+#begin Mai/Clothes/Weapon/Fan Rope.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Weapon/Fan Rope.png
+
+#begin Mai/Clothes/Weapon/Fan Tail.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Weapon/Fan Tail.png
+
+#begin Mai/Clothes/Weapon/Fan.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Clothes/Weapon/Fan.png
+
+#begin Mai/Clothes/Weapon/left weapon animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Weapon/left weapon animations.xml
+
+#begin Mai/Clothes/Weapon/left weapon model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Weapon/left weapon model.xml
+
+#begin Mai/Clothes/Weapon/right weapon animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Weapon/right weapon animations.xml
+
+#begin Mai/Clothes/Weapon/right weapon model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/Clothes/Weapon/right weapon model.xml
+
+#begin Mai/MaiAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/MaiAnimations.xml
+
+#begin Mai/MaiData.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/MaiData.xml
+
+#begin Mai/MaiGroundStates.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/MaiGroundStates.xml
+
+#begin Mai/MaiModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Mai/MaiModel.xml
+
+#begin Mai/Portrait.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Mai/Portrait.png
+
+#begin Monsters/goblin/goblin_Diffuse.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/goblin/goblin_Diffuse.png
+
+#begin Monsters/goblin/goblin_Normal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/goblin/goblin_Normal.png
+
+#begin Monsters/goblin/goblin_Specular.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/goblin/goblin_Specular.png
+
+#begin Monsters/goblin/goblinBaseAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/goblinBaseAnimations.xml
+
+#begin Monsters/goblin/goblinBaseModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/goblinBaseModel.xml
+
+#begin Monsters/goblin/goblinGrunt_Diffuse.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/goblin/goblinGrunt_Diffuse.png
+
+#begin Monsters/goblin/goblinGrunt_Normal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/goblin/goblinGrunt_Normal.png
+
+#begin Monsters/goblin/goblinGrunt_Specular.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/goblin/goblinGrunt_Specular.png
+
+#begin Monsters/goblin/Grunt/ax_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/ax_animations.xml
+
+#begin Monsters/goblin/Grunt/ax_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/ax_model.xml
+
+#begin Monsters/goblin/Grunt/ax.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/ax.xml
+
+#begin Monsters/goblin/Grunt/elbow_left_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/elbow_left_animations.xml
+
+#begin Monsters/goblin/Grunt/elbow_left_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/elbow_left_model.xml
+
+#begin Monsters/goblin/Grunt/elbow_right_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/elbow_right_animations.xml
+
+#begin Monsters/goblin/Grunt/elbow_right_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/elbow_right_model.xml
+
+#begin Monsters/goblin/Grunt/elbow.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/elbow.xml
+
+#begin Monsters/goblin/Grunt/goblinGrunt.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/goblinGrunt.xml
+
+#begin Monsters/goblin/Grunt/helmet_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/helmet_animations.xml
+
+#begin Monsters/goblin/Grunt/helmet_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/helmet_model.xml
+
+#begin Monsters/goblin/Grunt/helmet.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/helmet.xml
+
+#begin Monsters/goblin/Grunt/pants_left_calf_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_left_calf_animations.xml
+
+#begin Monsters/goblin/Grunt/pants_left_calf_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_left_calf_model.xml
+
+#begin Monsters/goblin/Grunt/pants_left_thigh_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_left_thigh_animations.xml
+
+#begin Monsters/goblin/Grunt/pants_left_thigh_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_left_thigh_model.xml
+
+#begin Monsters/goblin/Grunt/pants_right_calf_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_right_calf_animations.xml
+
+#begin Monsters/goblin/Grunt/pants_right_calf_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_right_calf_model.xml
+
+#begin Monsters/goblin/Grunt/pants_right_thigh_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_right_thigh_animations.xml
+
+#begin Monsters/goblin/Grunt/pants_right_thigh_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_right_thigh_model.xml
+
+#begin Monsters/goblin/Grunt/pants_torso_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_torso_animations.xml
+
+#begin Monsters/goblin/Grunt/pants_torso_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants_torso_model.xml
+
+#begin Monsters/goblin/Grunt/pants.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/pants.xml
+
+#begin Monsters/goblin/Grunt/shield_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/shield_animations.xml
+
+#begin Monsters/goblin/Grunt/shield_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/shield_model.xml
+
+#begin Monsters/goblin/Grunt/shield.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/goblin/Grunt/shield.xml
+
+#begin Monsters/Tree/tree_animations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/Tree/tree_animations.xml
+
+#begin Monsters/Tree/tree_Bottom.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/Tree/tree_Bottom.png
+
+#begin Monsters/Tree/tree_Diffuse.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/Tree/tree_Diffuse.png
+
+#begin Monsters/Tree/tree_Front.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/Tree/tree_Front.png
+
+#begin Monsters/Tree/tree_Left.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/Tree/tree_Left.png
+
+#begin Monsters/Tree/tree_model.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:Monsters/Tree/tree_model.xml
+
+#begin Monsters/Tree/tree_Normal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/Tree/tree_Normal.png
+
+#begin Monsters/Tree/tree_Right.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/Tree/tree_Right.png
+
+#begin Monsters/Tree/tree_Specular.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/Tree/tree_Specular.png
+
+#begin Monsters/Tree/tree_Top.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Monsters/Tree/tree_Top.png
+

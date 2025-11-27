@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone name="Calf Nekkid">
+		<images>
+			<image imageFile1="CalfFront.png">
+				<lowerright>128 256</lowerright>
+				<anchorcoord>58 40</anchorcoord>
+			</image>
+			<image imageFile1="CalfFront.png">
+				<lowerright>128 256</lowerright>
+				<anchorcoord>34 13</anchorcoord>
+			</image>
+			<image imageFile1="CalfFront.png">
+				<lowerright>128 256</lowerright>
+				<anchorcoord>54 23</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

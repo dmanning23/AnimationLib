@@ -1,0 +1,819 @@
+<?xml version="1.0"?>
+<skeleton>
+	<bone name="Crotch">
+		<joints>
+			<joint name="Crotch Weight" />
+			<joint name="Torso" />
+			<joint name="Left Thigh" />
+			<joint name="Right Thigh" />
+		</joints>
+		<images>
+			<image name="CrotchFront">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 150</lowerright>
+				<anchorcoord>74 62</anchorcoord>
+				<joints>
+					<jointData>
+						<location>74 22</location>
+					</jointData>
+					<jointData>
+						<location>84 59</location>
+					</jointData>
+					<jointData>
+						<location>113 62</location>
+					</jointData>
+					<jointData>
+						<location>46 54</location>
+					</jointData>
+				</joints>
+				<circles>
+					<Item center="69 97" radius="78.1089" />
+				</circles>
+			</image>
+			<image name="CrotchSide">
+				<upperleft>0 0</upperleft>
+				<lowerright>135 159</lowerright>
+				<anchorcoord>66 68</anchorcoord>
+				<joints>
+					<jointData>
+						<location>66 28</location>
+					</jointData>
+					<jointData>
+						<location>72 42</location>
+					</jointData>
+					<jointData>
+						<location>56 47</location>
+					</jointData>
+					<jointData>
+						<location>56 46</location>
+					</jointData>
+				</joints>
+				<circles>
+					<Item center="57 132" radius="73.54591" />
+				</circles>
+			</image>
+			<image name="CrotchBack">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 150</lowerright>
+				<anchorcoord>74 70</anchorcoord>
+				<joints>
+					<jointData>
+						<location>74 30</location>
+					</jointData>
+					<jointData>
+						<location>85 59</location>
+					</jointData>
+					<jointData>
+						<location>60 63</location>
+					</jointData>
+					<jointData>
+						<location>103 65</location>
+					</jointData>
+				</joints>
+				<circles>
+					<Item center="76 104" radius="84.5281" />
+				</circles>
+			</image>
+		</images>
+		<bones>
+			<bone name="Crotch Weight" />
+			<bone name="Torso">
+				<joints>
+					<joint name="Chesticle" />
+				</joints>
+				<images>
+					<image name="TorsoFront">
+						<upperleft>0 0</upperleft>
+						<lowerright>78 126</lowerright>
+						<anchorcoord>37 99</anchorcoord>
+						<joints>
+							<jointData>
+								<location>34 22</location>
+							</jointData>
+						</joints>
+					</image>
+					<image name="TorsoSide">
+						<upperleft>0 0</upperleft>
+						<lowerright>124 167</lowerright>
+						<anchorcoord>60 120</anchorcoord>
+						<joints>
+							<jointData>
+								<location>64 53</location>
+							</jointData>
+						</joints>
+					</image>
+					<image name="TorsoBack">
+						<upperleft>0 0</upperleft>
+						<lowerright>78 126</lowerright>
+						<anchorcoord>37 99</anchorcoord>
+						<joints>
+							<jointData>
+								<location>42 29</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Chesticle">
+						<joints>
+							<joint name="Neck" />
+							<joint name="Left Shoulder" />
+							<joint name="Right Shoulder" />
+						</joints>
+						<images>
+							<image name="ChesticleFront">
+								<upperleft>0 0</upperleft>
+								<lowerright>128 128</lowerright>
+								<anchorcoord>71 94</anchorcoord>
+								<joints>
+									<jointData>
+										<location>68 3</location>
+									</jointData>
+									<jointData>
+										<location>96 10</location>
+									</jointData>
+									<jointData>
+										<location>35 8</location>
+									</jointData>
+								</joints>
+								<circles>
+									<Item center="62 76" radius="75.02666" />
+								</circles>
+							</image>
+							<image name="ChesticleSide">
+								<upperleft>0 0</upperleft>
+								<lowerright>119 139</lowerright>
+								<anchorcoord>63 102</anchorcoord>
+								<joints>
+									<jointData>
+										<location>57 8</location>
+									</jointData>
+									<jointData>
+										<location>59 13</location>
+									</jointData>
+									<jointData>
+										<location>59 12</location>
+									</jointData>
+								</joints>
+								<circles>
+									<Item center="65 109" radius="69.18092" />
+								</circles>
+							</image>
+							<image name="ChesticleBack">
+								<upperleft>0 0</upperleft>
+								<lowerright>128 128</lowerright>
+								<anchorcoord>71 94</anchorcoord>
+								<joints>
+									<jointData>
+										<location>70 8</location>
+									</jointData>
+									<jointData>
+										<location>31 3</location>
+									</jointData>
+									<jointData>
+										<location>108 3</location>
+									</jointData>
+								</joints>
+								<circles>
+									<Item center="66 75" radius="72.02777" />
+								</circles>
+							</image>
+						</images>
+						<bones>
+							<bone name="Neck">
+								<joints>
+									<joint name="Head" />
+								</joints>
+								<images>
+									<image name="NeckFront">
+										<upperleft>0 0</upperleft>
+										<lowerright>47 68</lowerright>
+										<anchorcoord>21 53</anchorcoord>
+										<joints>
+											<jointData>
+												<location>18 9</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Head">
+										<joints>
+											<joint name="Head Weight" />
+										</joints>
+										<images>
+											<image name="HeadFront">
+												<upperleft>0 0</upperleft>
+												<lowerright>145 139</lowerright>
+												<anchorcoord>63 112</anchorcoord>
+												<joints>
+													<jointData>
+														<location>63 72</location>
+													</jointData>
+												</joints>
+												<circles>
+													<Item center="80 72" radius="65.27634" />
+												</circles>
+											</image>
+											<image name="HeadSide">
+												<upperleft>0 0</upperleft>
+												<lowerright>163 146</lowerright>
+												<anchorcoord>70 99</anchorcoord>
+												<joints>
+													<jointData>
+														<location>163 106</location>
+													</jointData>
+												</joints>
+												<circles>
+													<Item center="85 75" radius="64.03124" />
+												</circles>
+											</image>
+											<image name="HeadBack">
+												<upperleft>0 0</upperleft>
+												<lowerright>145 139</lowerright>
+												<anchorcoord>63 112</anchorcoord>
+												<joints>
+													<jointData>
+														<location>145 99</location>
+													</jointData>
+												</joints>
+												<circles>
+													<Item center="73 68" radius="71.38628" />
+												</circles>
+											</image>
+										</images>
+										<bones>
+											<bone name="Head Weight" />
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+							<bone name="Left Shoulder">
+								<joints>
+									<joint name="Left Bicep" />
+								</joints>
+								<images>
+									<image name="ShoulderFront">
+										<upperleft>0 0</upperleft>
+										<lowerright>52 48</lowerright>
+										<anchorcoord>38 22</anchorcoord>
+										<joints>
+											<jointData>
+												<location>24 37</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Left Bicep">
+										<joints>
+											<joint name="Left Forearm" />
+										</joints>
+										<images>
+											<image name="Bicep">
+												<upperleft>0 0</upperleft>
+												<lowerright>54 143</lowerright>
+												<anchorcoord>28 14</anchorcoord>
+												<joints>
+													<jointData>
+														<location>23 108</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Left Forearm">
+												<joints>
+													<joint name="Left Hand" />
+												</joints>
+												<images>
+													<image name="ForearmSide">
+														<upperleft>0 0</upperleft>
+														<lowerright>64 147</lowerright>
+														<anchorcoord>33 18</anchorcoord>
+														<joints>
+															<jointData>
+																<location>38 124</location>
+															</jointData>
+														</joints>
+														<circles>
+															<Item center="31 60" radius="29.38212" />
+														</circles>
+													</image>
+													<image name="ForearmFront">
+														<upperleft>0 0</upperleft>
+														<lowerright>40 61</lowerright>
+														<anchorcoord>22 13</anchorcoord>
+														<joints>
+															<jointData>
+																<location>25 49</location>
+															</jointData>
+														</joints>
+														<circles>
+															<Item center="71 88" radius="71.17584" />
+														</circles>
+													</image>
+												</images>
+												<bones>
+													<bone name="Left Hand">
+														<images>
+															<image name="FistBack">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>19 16</anchorcoord>
+																<circles>
+																	<Item center="32 32" radius="35.05468" />
+																</circles>
+															</image>
+															<image name="FistFront">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>24 24</anchorcoord>
+																<circles>
+																	<Item center="32 27" radius="31.01612" />
+																</circles>
+															</image>
+															<image name="FistPalm">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>18 12</anchorcoord>
+																<circles>
+																	<Item center="32 29" radius="34.0147" />
+																</circles>
+															</image>
+															<image name="FistPinky">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 15</anchorcoord>
+																<circles>
+																	<Item center="40 30" radius="32" />
+																</circles>
+															</image>
+															<image name="FistThumb">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 18</anchorcoord>
+																<circles>
+																	<Item center="36 33" radius="31.85792" />
+																</circles>
+															</image>
+															<image name="FistWrist">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>26 20</anchorcoord>
+																<circles>
+																	<Item center="33 23" radius="31.25392" />
+																</circles>
+															</image>
+														</images>
+													</bone>
+												</bones>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+							<bone name="Right Shoulder">
+								<joints>
+									<joint name="Right Bicep" />
+								</joints>
+								<images>
+									<image name="ShoulderFront">
+										<upperleft>0 0</upperleft>
+										<lowerright>52 48</lowerright>
+										<anchorcoord>38 22</anchorcoord>
+										<joints>
+											<jointData>
+												<location>24 37</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Right Bicep">
+										<joints>
+											<joint name="Right Forearm" />
+										</joints>
+										<images>
+											<image name="Bicep">
+												<upperleft>0 0</upperleft>
+												<lowerright>54 143</lowerright>
+												<anchorcoord>28 14</anchorcoord>
+												<joints>
+													<jointData>
+														<location>23 108</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Right Forearm">
+												<joints>
+													<joint name="Right Hand" />
+												</joints>
+												<images>
+													<image name="ForearmSide">
+														<upperleft>0 0</upperleft>
+														<lowerright>64 147</lowerright>
+														<anchorcoord>33 18</anchorcoord>
+														<joints>
+															<jointData>
+																<location>38 124</location>
+															</jointData>
+														</joints>
+														<circles>
+															<Item center="31 60" radius="29.38212" />
+														</circles>
+													</image>
+													<image name="ForearmFront">
+														<upperleft>0 0</upperleft>
+														<lowerright>40 61</lowerright>
+														<anchorcoord>22 13</anchorcoord>
+														<joints>
+															<jointData>
+																<location>25 49</location>
+															</jointData>
+														</joints>
+														<circles>
+															<Item center="71 88" radius="71.17584" />
+														</circles>
+													</image>
+												</images>
+												<bones>
+													<bone name="Right Hand">
+														<images>
+															<image name="FistBack">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>19 16</anchorcoord>
+																<circles>
+																	<Item center="32 32" radius="35.05468" />
+																</circles>
+															</image>
+															<image name="FistFront">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>24 24</anchorcoord>
+																<circles>
+																	<Item center="32 27" radius="31.01612" />
+																</circles>
+															</image>
+															<image name="FistPalm">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>18 12</anchorcoord>
+																<circles>
+																	<Item center="32 29" radius="34.0147" />
+																</circles>
+															</image>
+															<image name="FistPinky">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 15</anchorcoord>
+																<circles>
+																	<Item center="40 30" radius="32" />
+																</circles>
+															</image>
+															<image name="FistThumb">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 18</anchorcoord>
+																<circles>
+																	<Item center="36 33" radius="31.85792" />
+																</circles>
+															</image>
+															<image name="FistWrist">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>26 20</anchorcoord>
+																<circles>
+																	<Item center="33 23" radius="31.25392" />
+																</circles>
+															</image>
+														</images>
+													</bone>
+												</bones>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Left Thigh">
+				<joints>
+					<joint name="Left Knee" />
+				</joints>
+				<images>
+					<image name="ThighFront">
+						<upperleft>0 0</upperleft>
+						<lowerright>86 213</lowerright>
+						<anchorcoord>40 27</anchorcoord>
+						<joints>
+							<jointData>
+								<location>44 178</location>
+							</jointData>
+						</joints>
+					</image>
+					<image name="ThighSide">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<joints>
+							<jointData>
+								<location>62 238</location>
+							</jointData>
+						</joints>
+					</image>
+					<image name="ThighBack">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<joints>
+							<jointData>
+								<location>55 193</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Left Knee">
+						<joints>
+							<joint name="Left Calf" />
+						</joints>
+						<images>
+							<image name="Knee">
+								<upperleft>0 0</upperleft>
+								<lowerright>43 61</lowerright>
+								<anchorcoord>22 24</anchorcoord>
+								<joints>
+									<jointData>
+										<location>21 33</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Left Calf">
+								<joints>
+									<joint name="Left Ankle" />
+								</joints>
+								<images>
+									<image name="CalfFront">
+										<upperleft>0 0</upperleft>
+										<lowerright>90 216</lowerright>
+										<anchorcoord>56 13</anchorcoord>
+										<joints>
+											<jointData>
+												<location>38 160</location>
+											</jointData>
+										</joints>
+										<circles>
+											<Item center="50 62" radius="46.823" />
+										</circles>
+									</image>
+									<image name="CalfSide">
+										<upperleft>0 0</upperleft>
+										<lowerright>110 211</lowerright>
+										<anchorcoord>54 23</anchorcoord>
+										<joints>
+											<jointData>
+												<location>53 171</location>
+											</jointData>
+										</joints>
+										<circles>
+											<Item center="53 68" radius="46.29329" />
+										</circles>
+									</image>
+								</images>
+								<bones>
+									<bone name="Left Ankle">
+										<joints>
+											<joint name="Left Foot" />
+										</joints>
+										<images>
+											<image name="Ankle">
+												<upperleft>0 0</upperleft>
+												<lowerright>50 66</lowerright>
+												<anchorcoord>24 13</anchorcoord>
+												<joints>
+													<jointData>
+														<location>21 35</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Left Foot" type="Foot">
+												<images>
+													<image name="FootTop">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<circles>
+															<Item center="51 25" radius="36.67424" />
+														</circles>
+													</image>
+													<image name="FootBall">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>36 46</anchorcoord>
+														<circles>
+															<Item center="59 54" radius="37.21559" />
+														</circles>
+													</image>
+													<image name="FootFront">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>44 35</anchorcoord>
+														<circles>
+															<Item center="48 27" radius="38.0526" />
+														</circles>
+													</image>
+													<image name="FootSide">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<circles>
+															<Item center="50 27" radius="34.9285" />
+														</circles>
+													</image>
+													<image name="FootBack">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>47 35</anchorcoord>
+														<circles>
+															<Item center="52 27" radius="35.51056" />
+														</circles>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Right Thigh">
+				<joints>
+					<joint name="Right Knee" />
+				</joints>
+				<images>
+					<image name="ThighFront">
+						<upperleft>0 0</upperleft>
+						<lowerright>86 213</lowerright>
+						<anchorcoord>40 27</anchorcoord>
+						<joints>
+							<jointData>
+								<location>44 178</location>
+							</jointData>
+						</joints>
+					</image>
+					<image name="ThighSide">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<joints>
+							<jointData>
+								<location>62 238</location>
+							</jointData>
+						</joints>
+					</image>
+					<image name="ThighBack">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<joints>
+							<jointData>
+								<location>55 193</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Right Knee">
+						<joints>
+							<joint name="Right Calf" />
+						</joints>
+						<images>
+							<image name="Knee">
+								<upperleft>0 0</upperleft>
+								<lowerright>43 61</lowerright>
+								<anchorcoord>22 24</anchorcoord>
+								<joints>
+									<jointData>
+										<location>21 33</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Right Calf">
+								<joints>
+									<joint name="Right Ankle" />
+								</joints>
+								<images>
+									<image name="CalfFront">
+										<upperleft>0 0</upperleft>
+										<lowerright>90 216</lowerright>
+										<anchorcoord>56 13</anchorcoord>
+										<joints>
+											<jointData>
+												<location>38 160</location>
+											</jointData>
+										</joints>
+										<circles>
+											<Item center="50 62" radius="46.823" />
+										</circles>
+									</image>
+									<image name="CalfSide">
+										<upperleft>0 0</upperleft>
+										<lowerright>110 211</lowerright>
+										<anchorcoord>54 23</anchorcoord>
+										<joints>
+											<jointData>
+												<location>53 171</location>
+											</jointData>
+										</joints>
+										<circles>
+											<Item center="53 68" radius="46.29329" />
+										</circles>
+									</image>
+								</images>
+								<bones>
+									<bone name="Right Ankle">
+										<joints>
+											<joint name="Right Foot" />
+										</joints>
+										<images>
+											<image name="Ankle">
+												<upperleft>0 0</upperleft>
+												<lowerright>50 66</lowerright>
+												<anchorcoord>24 13</anchorcoord>
+												<joints>
+													<jointData>
+														<location>21 35</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Right Foot" type="Foot">
+												<images>
+													<image name="FootTop">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<circles>
+															<Item center="45 43" radius="36.67424" />
+														</circles>
+													</image>
+													<image name="FootBall">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>36 46</anchorcoord>
+														<circles>
+															<Item center="53 53" radius="37.21559" />
+														</circles>
+													</image>
+													<image name="FootFront">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>44 35</anchorcoord>
+														<circles>
+															<Item center="54 48" radius="38.0526" />
+														</circles>
+													</image>
+													<image name="FootSide">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<circles>
+															<Item center="49 39" radius="40.04997" />
+														</circles>
+													</image>
+													<image name="FootBack">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>47 35</anchorcoord>
+														<circles>
+															<Item center="60 48" radius="35.51056" />
+														</circles>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+		</bones>
+	</bone>
+</skeleton>

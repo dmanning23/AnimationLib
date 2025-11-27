@@ -1,0 +1,1 @@
+{"Animations":[{"Name":"ForearmSide","Length":0.1,"KeyElements":[{"Layer":100,"Image":"ForearmSide.png","Joint":"Forearm Nekkid"}]},{"Name":"ForearmFront","Length":0.1,"KeyElements":[{"Image":"ForearmSide.png","Joint":"Forearm Nekkid"}]}]}

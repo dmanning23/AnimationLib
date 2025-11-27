@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Right Calf" name="Right Calf Nekkid" type="Garment">
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Calf\CalfFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>67 179</lowerright>
+				<anchorcoord>43 18</anchorcoord>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Calf\CalfSide.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>52 182</lowerright>
+				<anchorcoord>34 13</anchorcoord>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Calf\CalfFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>67 179</lowerright>
+				<anchorcoord>54 23</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

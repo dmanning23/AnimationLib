@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="Ankle" length="0.1">
+			<keys>
+				<key joint="Ankle Nekkid" layer="-1" image="Ankle.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

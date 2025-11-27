@@ -1,0 +1,1069 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.StateContainerXML">
+		<states>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Quick</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flick</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.07</time>
+						<boneName>Left Hand Nekkid</boneName>
+						<direction>150 -150</direction>
+						<damage>0.1</damage>
+						<timeDelta>0.06</timeDelta>
+						<hitSound>soft hit</hitSound>
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.25</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>QuickUp</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flickup</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.PlaySoundActionXML">
+						<type>PlaySound</type>
+						<time>0</time>
+						<filename>soft swing</filename>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.045</time>
+						<boneName>Left Hand Nekkid</boneName>
+						<direction>75 -450</direction>
+						<damage>0.2</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound>soft hit</hitSound>
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.05</time>
+						<velocity>100 0</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.3</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>QuickDown</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flickdown</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-400 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.05</time>
+						<velocity>500 200</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.08</time>
+						<boneName>Left Foot Nekkid</boneName>
+						<direction>140 350</direction>
+						<damage>0.12</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound>soft hit</hitSound>
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.34</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>QuickForward</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flickforward</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.05</time>
+						<velocity>600 0</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.07</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>320 -100</direction>
+						<damage>0.1</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound>soft hit</hitSound>
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.2</time>
+						<velocity>-2000 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.35</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>QuickBack</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flickback</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.29</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>150 360</direction>
+						<damage>0.1</damage>
+						<timeDelta>0.12</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.5</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Strong</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<velocity>50 300</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-200 1000</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.15</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>100 200</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.25</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>100 420</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.65</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>StrongUp</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong up</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<velocity>850 0</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-700 1000</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.25</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>75 -450</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.12</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.43</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>50 -550</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.45</time>
+						<velocity>0 -1000</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.7</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>150 -500</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>1</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>StrongDown</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong down</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<velocity>350 -750</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-100 500</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.28</time>
+						<velocity>100 750</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.3</time>
+						<boneName>Left Foot Nekkid</boneName>
+						<direction>70 250</direction>
+						<damage>0.14</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.6</time>
+						<boneName>Right Foot Nekkid</boneName>
+						<direction>150 400</direction>
+						<damage>0.14</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.85</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>StrongForward</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong forward</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<velocity>550 -500</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-200 400</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.25</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>170 -100</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.3</time>
+						<velocity>0 500</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.4</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>350 -150</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.2</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.73</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>StrongBack</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong back</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<velocity>400 -500</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-100 1000</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.22</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>-230 -150</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.08</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.4</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>230 -150</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.7</time>
+						<boneName>Right Hand Nekkid</boneName>
+						<direction>400 -200</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>1</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Special</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.4</time>
+						<filename>Dan\Projectiles\data.xml</filename>
+						<startOffset>300 -250</startOffset>
+						<scale>1</scale>
+						<velocity>1600 0</velocity>
+						<useObjectDirection>true</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.75</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>SpecialUp</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>high fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.35</time>
+						<filename>Dan\Projectiles\data.xml</filename>
+						<startOffset>0 -400</startOffset>
+						<scale>1</scale>
+						<velocity>1800 0</velocity>
+						<useObjectDirection>true</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>1</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>SpecialDown</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>low fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.3</time>
+						<filename>Dan\Projectiles\data.xml</filename>
+						<startOffset>300 50</startOffset>
+						<scale>1</scale>
+						<velocity>1800 0</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.65</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>SpecialForward</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.4</time>
+						<filename>Dan\Projectiles\data.xml</filename>
+						<startOffset>300 -220</startOffset>
+						<scale>1</scale>
+						<velocity>2200 0</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>SpecialBack</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>back fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-300 1715</velocity>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.3</time>
+						<filename>Dan\Projectiles\data back.xml</filename>
+						<startOffset>-220 -220</startOffset>
+						<scale>1</scale>
+						<velocity>-1400 -1000</velocity>
+						<useObjectDirection>true</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>SwitchToGroundStateMachine</name>
+				<actions>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>SwitchToUpStateMachine</name>
+				<actions>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Stunned</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Stunned</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.EvadeActionXML">
+						<type>Evade</type>
+						<time>0</time>
+						<timeDelta>0.15</timeDelta>
+					</Item>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0.3</time>
+						<animation>Stunned</animation>
+						<playback>Backwards</playback>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.45</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Evade</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>evade</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>0 2000</velocity>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.EvadeActionXML">
+						<type>Evade</type>
+						<time>0</time>
+						<timeDelta>0.62</timeDelta>
+					</Item>
+					<Item Type="AnimationLib.TrailActionXML">
+						<type>Trail</type>
+						<time>0</time>
+						<R>255</R>
+						<G>255</G>
+						<B>255</B>
+						<A>150</A>
+						<lifeDelta>0.4</lifeDelta>
+						<spawnDelta>0.1</spawnDelta>
+						<timeDelta>0.6</timeDelta>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.05</time>
+						<velocity>1200 -550</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SetVelocityActionXML">
+						<type>SetVelocity</type>
+						<time>0.58</time>
+						<velocity>0 0</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.62</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>TurningAround</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Turning Around</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.1</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Standing</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Standing</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<velocity>800 0</velocity>
+						<maxVelocity>0 0</maxVelocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-800 2000</velocity>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Walking</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Walking</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<velocity>1800 0</velocity>
+						<maxVelocity>1500 0</maxVelocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-100 2000</velocity>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Blocking</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Blocking</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<velocity>800 0</velocity>
+						<maxVelocity>0 0</maxVelocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-800 2000</velocity>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.BlockingStateActionXML">
+						<type>BlockState</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<boneName>Left Weapon</boneName>
+						<hitSound />
+						<successActions />
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>HighBlock</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>HighBlocking</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<velocity>800 0</velocity>
+						<maxVelocity>0 0</maxVelocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-800 2000</velocity>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.BlockingStateActionXML">
+						<type>BlockState</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<boneName>Left Weapon</boneName>
+						<hitSound />
+						<successActions />
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>LowBlock</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>LowBlocking</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<velocity>800 0</velocity>
+						<maxVelocity>0 0</maxVelocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-800 2000</velocity>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.BlockingStateActionXML">
+						<type>BlockState</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<boneName>Left Weapon</boneName>
+						<hitSound />
+						<successActions />
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Braking</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Turning Around Slide</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>-1500 2000</velocity>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.PlaySoundActionXML">
+						<type>PlaySound</type>
+						<time>0</time>
+						<filename>slide</filename>
+					</Item>
+					<Item Type="AnimationLib.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0</time>
+						<bone>Left Foot</bone>
+						<direction>400 0</direction>
+						<StartOffset>0 0</StartOffset>
+						<emitter>
+							<Item Type="AnimationLib.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>153</Alpha>
+								<FadeSpeed>0.8</FadeSpeed>
+								<MaxVelocity>100 -150</MaxVelocity>
+								<MinVelocity>-50 20</MinVelocity>
+								<ParticleSize>60</ParticleSize>
+								<Scale>50 70</Scale>
+								<StartRotation>-180 180</StartRotation>
+								<Spin>-99.99992 99.99992</Spin>
+								<NumStartParticles>0</NumStartParticles>
+								<EmitterLife>0.5</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.04</CreationPeriod>
+								<ParticleGrav>-250</ParticleGrav>
+								<BmpFileName>Resources\particles\puff.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>Jumping</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Jumping</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<velocity>0 -1100</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.PlaySoundActionXML">
+						<type>PlaySound</type>
+						<time>0</time>
+						<filename>highjump</filename>
+					</Item>
+					<Item Type="AnimationLib.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0</time>
+						<bone>Right Foot</bone>
+						<direction>0 -100</direction>
+						<StartOffset>0 0</StartOffset>
+						<emitter>
+							<Item Type="AnimationLib.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>160</Alpha>
+								<FadeSpeed>2</FadeSpeed>
+								<MaxVelocity>500 0</MaxVelocity>
+								<MinVelocity>-500 0</MinVelocity>
+								<ParticleSize>200</ParticleSize>
+								<Scale>-500 -300</Scale>
+								<StartRotation>0 0</StartRotation>
+								<Spin>0 0</Spin>
+								<NumStartParticles>5</NumStartParticles>
+								<EmitterLife>0.4</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.05</CreationPeriod>
+								<ParticleGrav>0</ParticleGrav>
+								<BmpFileName>Resources\Particles\circle.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+					<Item Type="AnimationLib.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0.1</time>
+						<bone />
+						<direction>0 0</direction>
+						<StartOffset>0 350</StartOffset>
+						<emitter>
+							<Item Type="AnimationLib.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>100</Alpha>
+								<FadeSpeed>1</FadeSpeed>
+								<MaxVelocity>1100 70</MaxVelocity>
+								<MinVelocity>-1100 70</MinVelocity>
+								<ParticleSize>300</ParticleSize>
+								<Scale>-600 -600</Scale>
+								<StartRotation>0 0</StartRotation>
+								<Spin>0 0</Spin>
+								<NumStartParticles>5</NumStartParticles>
+								<EmitterLife>0</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.02</CreationPeriod>
+								<ParticleGrav>0</ParticleGrav>
+								<BmpFileName>Resources\Particles\Triangle.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.4</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>EvadeBack</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>evade back</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>0 2000</velocity>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.EvadeActionXML">
+						<type>Evade</type>
+						<time>0</time>
+						<timeDelta>0.62</timeDelta>
+					</Item>
+					<Item Type="AnimationLib.TrailActionXML">
+						<type>Trail</type>
+						<time>0</time>
+						<R>255</R>
+						<G>255</G>
+						<B>255</B>
+						<A>150</A>
+						<lifeDelta>0.4</lifeDelta>
+						<spawnDelta>0.1</spawnDelta>
+						<timeDelta>0.6</timeDelta>
+					</Item>
+					<Item Type="AnimationLib.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.05</time>
+						<velocity>-1400 -400</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SetVelocityActionXML">
+						<type>SetVelocity</type>
+						<time>0.58</time>
+						<velocity>0 0</velocity>
+						<useObjectDirection>false</useObjectDirection>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.62</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+		</states>
+	</Asset>
+</XnaContent>

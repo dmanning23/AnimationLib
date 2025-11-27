@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone name="Forearm Nekkid">
+		<images>
+			<image imageFile1="ForearmSide.png">
+				<lowerright>64 256</lowerright>
+				<anchorcoord>30 65</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<skeleton>
+	<bone name="Trunk">
+		<joints>
+			<joint name="Crotch Weight" />
+			<joint name="Left Bicep" />
+			<joint name="Right Bicep" />
+			<joint name="Mouth" />
+			<joint name="Left Eye" />
+			<joint name="Right Eye" />
+		</joints>
+		<images>
+			<image name="Trunk" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>204 485</lowerright>
+				<anchorcoord>107 268</anchorcoord>
+				<joints>
+					<jointData>
+						<location>106 174</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="15.28135" limit2="136.3013">
+						<location>169 360</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="-92.61988" limit2="-9.23348">
+						<location>50 363</location>
+					</jointData>
+					<jointData>
+						<location>107 303</location>
+					</jointData>
+					<jointData>
+						<location>137 221</location>
+					</jointData>
+					<jointData>
+						<location>88 220</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="Left Bicep">
+				<joints>
+					<joint name="Left Bicep Weight" />
+					<joint name="Left Forearm" />
+				</joints>
+				<images>
+					<image name="bicep" RagdollSpring="9.411932" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+						<upperleft>198 190</upperleft>
+						<lowerright>244 312</lowerright>
+						<anchorcoord>22.23407 92.31364</anchorcoord>
+						<joints>
+							<jointData>
+								<location>25.32379 -23.02695</location>
+							</jointData>
+							<jointData>
+								<location>28 23</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Left Forearm">
+						<joints>
+							<joint name="Left Hand" />
+						</joints>
+						<images>
+							<image name="forearm" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+								<upperleft>241 194</upperleft>
+								<lowerright>290 346</lowerright>
+								<anchorcoord>27 132</anchorcoord>
+								<joints>
+									<jointData>
+										<location>22 19</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Left Hand">
+								<joints>
+									<joint name="Left Thumb" />
+									<joint name="Left Pointer" />
+									<joint name="Left Pinky" />
+								</joints>
+								<images>
+									<image name="hand" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+										<upperleft>282 197</upperleft>
+										<lowerright>325 248</lowerright>
+										<anchorcoord>26.01312 33.23943</anchorcoord>
+										<joints>
+											<jointData>
+												<location>15.74396 23.02208</location>
+											</jointData>
+											<jointData>
+												<location>18 14</location>
+											</jointData>
+											<jointData>
+												<location>32.93799 17.33296</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Left Thumb">
+										<joints>
+											<joint name="Left Thumb2" />
+										</joints>
+										<images>
+											<image name="thumb base" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+												<upperleft>285 372</upperleft>
+												<lowerright>335 447</lowerright>
+												<anchorcoord>24.46994 55.22385</anchorcoord>
+												<joints>
+													<jointData>
+														<location>18 23</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Left Thumb2">
+												<joints>
+													<joint name="Left Thumb2 Weight" />
+												</joints>
+												<images>
+													<image name="thumb tip" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+														<upperleft>290 286</upperleft>
+														<lowerright>322 370</lowerright>
+														<anchorcoord>19 58</anchorcoord>
+														<joints>
+															<jointData>
+																<location>18.35162 20.24113</location>
+															</jointData>
+														</joints>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+									<bone name="Left Pointer">
+										<joints>
+											<joint name="Left Pointer2" />
+										</joints>
+										<images>
+											<image name="finger base" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+												<upperleft>246 346</upperleft>
+												<lowerright>282 464</lowerright>
+												<anchorcoord>12 107</anchorcoord>
+												<joints>
+													<jointData>
+														<location>15 15</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Left Pointer2">
+												<joints>
+													<joint name="Left Pointer2 Weight" />
+												</joints>
+												<images>
+													<image name="finger tip" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+														<upperleft>205 341</upperleft>
+														<lowerright>246 432</lowerright>
+														<anchorcoord>23 63</anchorcoord>
+														<joints>
+															<jointData>
+																<location>19.77148 16.69345</location>
+															</jointData>
+														</joints>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+									<bone name="Left Pinky">
+										<joints>
+											<joint name="Left Pinky2" />
+										</joints>
+										<images>
+											<image name="finger base" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+												<upperleft>247 348</upperleft>
+												<lowerright>280 463</lowerright>
+												<anchorcoord>15.41257 98.21726</anchorcoord>
+												<joints>
+													<jointData>
+														<location>19 7</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Left Pinky2">
+												<joints>
+													<joint name="Left Pinky2 Weight" />
+												</joints>
+												<images>
+													<image name="finger tip" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+														<upperleft>202 337</upperleft>
+														<lowerright>248 428</lowerright>
+														<anchorcoord>27 69</anchorcoord>
+														<joints>
+															<jointData>
+																<location>26.58582 14.07303</location>
+															</jointData>
+														</joints>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Right Bicep">
+				<joints>
+					<joint name="Right Forearm" />
+				</joints>
+				<images>
+					<image name="bicep" RagdollSpring="6.164773" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+						<upperleft>198 192</upperleft>
+						<lowerright>246 313</lowerright>
+						<anchorcoord>26.41006 96.32883</anchorcoord>
+						<joints>
+							<jointData RagdollType="Limit" limit1="-44.5864" limit2="53.78448">
+								<location>28 23</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Right Forearm">
+						<joints>
+							<joint name="Right Hand" />
+						</joints>
+						<images>
+							<image name="forearm" RagdollSpring="5.704545" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+								<upperleft>242 197</upperleft>
+								<lowerright>289 347</lowerright>
+								<anchorcoord>27 132</anchorcoord>
+								<joints>
+									<jointData RagdollType="Limit" limit1="6.729266" limit2="68.14111">
+										<location>22 19</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Right Hand">
+								<joints>
+									<joint name="Right Thumb" />
+									<joint name="Right Pointer" />
+									<joint name="Right Pinky" />
+								</joints>
+								<images>
+									<image name="hand" RagdollSpring="5.346591" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+										<upperleft>287 197</upperleft>
+										<lowerright>324 246</lowerright>
+										<anchorcoord>18.91263 33.84984</anchorcoord>
+										<joints>
+											<jointData RagdollType="Limit" limit1="-27.76239" limit2="29.33488">
+												<location>10 22</location>
+											</jointData>
+											<jointData RagdollType="Limit" limit1="-24.73705" limit2="26.6196">
+												<location>18 14</location>
+											</jointData>
+											<jointData RagdollType="Limit" limit1="-3.896589" limit2="55.71474">
+												<location>25.17831 18.57538</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Right Thumb">
+										<joints>
+											<joint name="Right Thumb2" />
+										</joints>
+										<images>
+											<image name="thumb base" RagdollSpring="5.525568" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+												<upperleft>287 369</upperleft>
+												<lowerright>325 450</lowerright>
+												<anchorcoord>21 63</anchorcoord>
+												<joints>
+													<jointData RagdollType="Limit" limit1="-43.05657" limit2="60.77315">
+														<location>18 23</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Right Thumb2">
+												<joints>
+													<joint name="Right Thumb2 Weight" />
+												</joints>
+												<images>
+													<image name="thumb tip" RagdollGravity="0 1193.182" RagdollSpring="3.761364" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+														<upperleft>291 288</upperleft>
+														<lowerright>321 368</lowerright>
+														<anchorcoord>19 58</anchorcoord>
+														<joints>
+															<jointData>
+																<location>17.03442 13.54384</location>
+															</jointData>
+														</joints>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+									<bone name="Right Pointer">
+										<joints>
+											<joint name="Right Pointer2" />
+										</joints>
+										<images>
+											<image name="finger base" RagdollSpring="5.116477" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+												<upperleft>247 345</upperleft>
+												<lowerright>282 466</lowerright>
+												<anchorcoord>12 107</anchorcoord>
+												<joints>
+													<jointData RagdollType="Limit" limit1="-37.20765" limit2="27.42169">
+														<location>15 15</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Right Pointer2">
+												<joints>
+													<joint name="Right Pointer2 Weight" />
+												</joints>
+												<images>
+													<image name="finger tip" RagdollGravity="0 3806.818" RagdollSpring="10" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+														<upperleft>203 341</upperleft>
+														<lowerright>246 428</lowerright>
+														<anchorcoord>23 63</anchorcoord>
+														<joints>
+															<jointData>
+																<location>25.05573 11.68188</location>
+															</jointData>
+														</joints>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+									<bone name="Right Pinky">
+										<joints>
+											<joint name="Right Pinky2" />
+										</joints>
+										<images>
+											<image name="finger base" RagdollSpring="5.244318" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+												<upperleft>247 347</upperleft>
+												<lowerright>282 462</lowerright>
+												<anchorcoord>15.41257 98.21726</anchorcoord>
+												<joints>
+													<jointData RagdollType="Limit" limit1="-25.11932" limit2="40.07248">
+														<location>19 7</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Right Pinky2">
+												<joints>
+													<joint name="Right Pinky2 Weight" />
+												</joints>
+												<images>
+													<image name="finger tip" RagdollGravity="0 4261.364" RagdollSpring="10" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+														<upperleft>203 338</upperleft>
+														<lowerright>247 428</lowerright>
+														<anchorcoord>27 69</anchorcoord>
+														<joints>
+															<jointData>
+																<location>24.43179 13.81763</location>
+															</jointData>
+														</joints>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Mouth">
+				<images>
+					<image name="mouth" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+						<upperleft>206 63</upperleft>
+						<lowerright>324 192</lowerright>
+						<anchorcoord>58 53</anchorcoord>
+					</image>
+				</images>
+			</bone>
+			<bone name="Left Eye">
+				<images>
+					<image name="left eye" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+						<upperleft>270 1</upperleft>
+						<lowerright>325 57</lowerright>
+						<anchorcoord>25 32</anchorcoord>
+					</image>
+				</images>
+			</bone>
+			<bone name="Right Eye">
+				<images>
+					<image name="right eye" filename="Monsters\Tree\tree_Diffuse.png" normalMapFilename="Monsters\Tree\tree_Normal.png">
+						<upperleft>208 1</upperleft>
+						<lowerright>263 59</lowerright>
+						<anchorcoord>25 32</anchorcoord>
+					</image>
+				</images>
+			</bone>
+		</bones>
+	</bone>
+</skeleton>

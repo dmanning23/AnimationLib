@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+	<Asset Type="AnimationLib.BaseObjectXML">
+		<model>Dan\projectiles\model converted.XML</model>
+		<animations>Dan\projectiles\animations converted.XML</animations>
+		<garments/>
+		<stateMachine>Dan\projectiles\state machine converted.xml</stateMachine>
+		<states>Dan\projectiles\states converted.xml</states>
+		<height>100</height>
+	</Asset>
+</XnaContent>
