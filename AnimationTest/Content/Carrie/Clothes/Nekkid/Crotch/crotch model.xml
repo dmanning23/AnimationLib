@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Crotch" name="Crotch Nekkid" type="Garment">
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Crotch\CrotchFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>151 127</lowerright>
+				<anchorcoord>74 62</anchorcoord>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Crotch\CrotchSide.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>126 121</lowerright>
+				<anchorcoord>65 59</anchorcoord>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Crotch\CrotchBack.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>136 118</lowerright>
+				<anchorcoord>54 56</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<garment name="Grunt">
+	<fragments>
+		<fragment>
+			<model>Monsters\goblin\Grunt\helmet_model.xml</model>
+			<animation>Monsters\goblin\Grunt\helmet_animations.xml</animation>
+		</fragment>
+	</fragments>
+</garment>

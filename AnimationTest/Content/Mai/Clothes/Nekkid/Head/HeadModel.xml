@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone name="Head Nekkid">
+		<joints>
+			<joint name="r bang" />
+			<joint name="r bang 2" />
+			<joint name="l bang" />
+			<joint name="l bang 2" />
+			<joint name="ponytail" />
+			<joint name="bow" />
+		</joints>
+		<images>
+			<image imageFile1="HeadFront.png">
+				<lowerright>256 256</lowerright>
+				<anchorcoord>115 147</anchorcoord>
+				<joints>
+					<jointData RagdollType="Limit" limit1="-17.09618" limit2="22.51547">
+						<location>136 81</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="-22.04952" limit2="17.79759">
+						<location>141 84</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="-21.06034" limit2="22.62821">
+						<location>145 79</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="-27.78711" limit2="25.40837">
+						<location>142 82</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="-47.40223" limit2="50.2774">
+						<location>113 93</location>
+					</jointData>
+					<jointData RagdollType="Float" FloatRadius="5">
+						<location>113.6056 75.34844</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="l bang">
+				<joints>
+					<joint name="l bang weight" />
+				</joints>
+				<images>
+					<image imageFile1="RBang.png">
+						<lowerright>128 128</lowerright>
+						<anchorcoord>86 33</anchorcoord>
+						<joints>
+							<jointData>
+								<location>85 95</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+			</bone>
+			<bone name="l bang 2">
+				<joints>
+					<joint name="l bang weight 2" />
+				</joints>
+				<images>
+					<image imageFile1="RBang.png">
+						<lowerright>128 128</lowerright>
+						<anchorcoord>40.53625 90.19308</anchorcoord>
+						<joints>
+							<jointData>
+								<location>62.53289 94.03188</location>
+							</jointData>
+						</joints>
+					</image>
+					<image imageFile1="BangDark.png">
+						<lowerright>128 128</lowerright>
+						<anchorcoord>86 33</anchorcoord>
+						<joints>
+							<jointData>
+								<location>83 95</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+			</bone>
+			<bone name="r bang">
+				<joints>
+					<joint name="bang weight" />
+				</joints>
+				<images>
+					<image imageFile1="RBang.png">
+						<lowerright>128 128</lowerright>
+						<anchorcoord>93 33</anchorcoord>
+						<joints>
+							<jointData>
+								<location>95 97</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+			</bone>
+			<bone name="r bang 2">
+				<joints>
+					<joint name="bang weight 2" />
+				</joints>
+				<images>
+					<image imageFile1="RBang.png">
+						<lowerright>128 128</lowerright>
+						<anchorcoord>87 33</anchorcoord>
+						<joints>
+							<jointData>
+								<location>88 94</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+			</bone>
+			<bone name="ponytail">
+				<joints>
+					<joint name="ponytail weight" />
+				</joints>
+				<images>
+					<image imageFile1="Ponytail.png">
+						<lowerright>128 256</lowerright>
+						<anchorcoord>67 54</anchorcoord>
+						<joints>
+							<jointData>
+								<location>71.85302 176.7193</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+			</bone>
+			<bone name="bow">
+				<images>
+					<image imageFile1="BowThing.png">
+						<lowerright>64 64</lowerright>
+						<anchorcoord>33 48</anchorcoord>
+					</image>
+				</images>
+			</bone>
+		</bones>
+	</garmentbone>
+</skeleton>

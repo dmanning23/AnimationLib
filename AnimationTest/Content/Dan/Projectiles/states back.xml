@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.StateContainerXML">
+		<states>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>shoot</name>
+				<actions>
+					<Item Type="AnimationLib.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>spin</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="AnimationLib.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<velocity>0 2000</velocity>
+						<minYVelocity>2600</minYVelocity>
+					</Item>
+					<Item Type="AnimationLib.TrailActionXML">
+						<type>Trail</type>
+						<time>0</time>
+						<R>128</R>
+						<G>128</G>
+						<B>128</B>
+						<A>150</A>
+						<lifeDelta>0.4</lifeDelta>
+						<spawnDelta>0.08</spawnDelta>
+						<timeDelta>0.7</timeDelta>
+					</Item>
+					<Item Type="AnimationLib.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0</time>
+						<boneName>wind</boneName>
+						<direction>250 -150</direction>
+						<damage>0.1</damage>
+						<timeDelta>0.7</timeDelta>
+						<hitSound>soft hit</hitSound>
+						<successActions>
+							<Item Type="AnimationLib.SendStateMessageActionXML">
+								<type>SendStateMessage</type>
+								<time>0</time>
+								<message>done</message>
+							</Item>
+						</successActions>
+					</Item>
+					<Item Type="AnimationLib.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="AnimationLib.StateActionsXML">
+				<name>kill</name>
+				<actions>
+					<Item Type="AnimationLib.DeactivateActionXML">
+						<type>Deactivate</type>
+						<time>0</time>
+					</Item>
+				</actions>
+			</Item>
+		</states>
+	</Asset>
+</XnaContent>

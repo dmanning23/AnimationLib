@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="TorsoFront" length="0.1">
+			<keys>
+				<key joint="Torso Nekkid" layer="-1" image="TorsoFront.png" />
+				<key joint="Left Braid" layer="14203" image="WhiteBraid.png" ragdoll="true" />
+				<key joint="Left Braid 2" layer="-1" image="WhiteBraid.png" ragdoll="true" />
+				<key joint="Left Braid 3" layer="-1" image="WhiteBraid.png" ragdoll="true" />
+				<key joint="Left Braid 4" layer="-1" image="WhiteBraid.png" ragdoll="true" />
+				<key joint="Left Ball" layer="-1" image="RedBall.png" ragdoll="true" />
+				<key joint="Left Braid end" layer="1" image="WhiteBraidEnd.png" ragdoll="true" />
+				<key joint="Right Braid" layer="16203" image="RedBraid.png" flip="true" ragdoll="true" />
+				<key joint="Right Braid 2" layer="-1" image="RedBraid.png" ragdoll="true" />
+				<key joint="Right Braid 3" layer="-1" image="RedBraid.png" ragdoll="true" />
+				<key joint="Right Braid 4" layer="-1" image="RedBraid.png" ragdoll="true" />
+				<key joint="Right Ball" layer="-1" image="WhiteBall.png" ragdoll="true" />
+				<key joint="Right Braid end" layer="1" image="RedBraidEnd.png" ragdoll="true" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

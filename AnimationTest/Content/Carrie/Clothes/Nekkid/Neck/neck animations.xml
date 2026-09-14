@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="NeckFront" length="0.1">
+			<keys>
+				<key time="0" joint="Neck Nekkid" layer="-1" image="NeckFront.png" />
+				<key time="6" joint="Neck Nekkid" layer="-1" image="NeckFront.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

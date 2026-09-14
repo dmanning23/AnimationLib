@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Head" name="Head Nekkid" type="Garment">
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Head\HeadFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 159</lowerright>
+				<anchorcoord>63 112</anchorcoord>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Head\HeadSide.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>148 151</lowerright>
+				<anchorcoord>71 108</anchorcoord>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Head\HeadBack.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>141 171</lowerright>
+				<anchorcoord>75 134</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

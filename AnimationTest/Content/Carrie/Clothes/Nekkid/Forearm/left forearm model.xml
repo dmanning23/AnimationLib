@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Left Forearm" name="Left Forearm Nekkid" type="Garment">
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Forearm\ForearmSide.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>51 140</lowerright>
+				<anchorcoord>20 14</anchorcoord>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Forearm\ForearmFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>40 61</lowerright>
+				<anchorcoord>17 14</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

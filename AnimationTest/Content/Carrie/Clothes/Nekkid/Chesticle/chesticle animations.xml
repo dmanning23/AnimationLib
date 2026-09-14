@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="ChesticleFront" length="0.1">
+			<keys>
+				<key time="0" joint="Chesticle Nekkid" layer="-1" image="ChesticleFront.png" />
+				<key time="0" joint="L Titty" layer="-599" image="LTittyFront.png" ragdoll="true" />
+				<key time="0" joint="R Titty" layer="-599" image="RTittyFront.png" ragdoll="true" />
+				<key time="6" joint="Chesticle Nekkid" layer="-1" image="ChesticleFront.png" />
+				<key time="6" joint="L Titty" layer="-599" image="LTittyFront.png" ragdoll="true" />
+				<key time="6" joint="R Titty" layer="-599" image="RTittyFront.png" ragdoll="true" />
+			</keys>
+		</animation>
+		<animation name="ChesticleSide" length="0.1">
+			<keys>
+				<key time="0" joint="Chesticle Nekkid" layer="-1" image="ChesticleSide.png" />
+				<key time="0" joint="L Titty" layer="1" image="LTittySide.png" />
+				<key time="0" joint="R Titty" layer="-2" image="LTittySide.png" ragdoll="true" />
+				<key time="6" joint="Chesticle Nekkid" layer="-1" image="ChesticleSide.png" />
+				<key time="6" joint="L Titty" layer="1" image="LTittySide.png" />
+				<key time="6" joint="R Titty" layer="-2" image="LTittySide.png" ragdoll="true" />
+			</keys>
+		</animation>
+		<animation name="ChesticleBack" length="0.1">
+			<keys>
+				<key time="0" joint="L Titty" layer="2801" image="LTittyFront.png" ragdoll="true" />
+				<key time="0" joint="R Titty" layer="1" ragdoll="true" />
+				<key time="6" joint="Chesticle Nekkid" layer="-1" image="ChesticleBack.png" />
+				<key time="6" joint="L Titty" layer="2801" image="LTittyFront.png" ragdoll="true" />
+				<key time="6" joint="R Titty" layer="1" ragdoll="true" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

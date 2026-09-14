@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone name="Torso Nekkid">
+		<joints>
+			<joint name="Left Braid" />
+			<joint name="Right Braid" />
+		</joints>
+		<images>
+			<image imageFile1="TorsoFront.png">
+				<lowerright>128 128</lowerright>
+				<anchorcoord>59 111</anchorcoord>
+				<joints>
+					<jointData>
+						<location>26 134</location>
+					</jointData>
+					<jointData>
+						<location>96 127</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="Left Braid">
+				<joints>
+					<joint name="Left Braid 2" />
+				</joints>
+				<images>
+					<image imageFile1="WhiteBraid.png">
+						<lowerright>128 128</lowerright>
+						<anchorcoord>55 47</anchorcoord>
+						<joints>
+							<jointData>
+								<location>57.04226 100.3498</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Left Braid 2">
+						<joints>
+							<joint name="Left Braid 3" />
+						</joints>
+						<images>
+							<image imageFile1="WhiteBraid.png">
+								<lowerright>128 128</lowerright>
+								<anchorcoord>56 46</anchorcoord>
+								<joints>
+									<jointData>
+										<location>57.04226 100.3498</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Left Braid 3">
+								<joints>
+									<joint name="Left Braid 4" />
+								</joints>
+								<images>
+									<image imageFile1="WhiteBraid.png">
+										<lowerright>128 128</lowerright>
+										<anchorcoord>56 46</anchorcoord>
+										<joints>
+											<jointData>
+												<location>57.04226 100.3498</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Left Braid 4">
+										<joints>
+											<joint name="Left Ball" />
+										</joints>
+										<images>
+											<image imageFile1="WhiteBraid.png">
+												<lowerright>128 128</lowerright>
+												<anchorcoord>56 49</anchorcoord>
+												<joints>
+													<jointData>
+														<location>55 84</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Left Ball">
+												<joints>
+													<joint name="Left Braid end" />
+												</joints>
+												<images>
+													<image imageFile1="RedBall.png">
+														<lowerright>128 128</lowerright>
+														<anchorcoord>59 34</anchorcoord>
+														<joints>
+															<jointData>
+																<location>64 78</location>
+															</jointData>
+														</joints>
+													</image>
+												</images>
+												<bones>
+													<bone name="Left Braid end">
+														<joints>
+															<joint name="Left Braid weight" />
+														</joints>
+														<images>
+															<image imageFile1="WhiteBraidEnd.png">
+																<lowerright>128 128</lowerright>
+																<anchorcoord>62 16</anchorcoord>
+																<joints>
+																	<jointData>
+																		<location>65.60387 105.981</location>
+																	</jointData>
+																</joints>
+															</image>
+														</images>
+													</bone>
+												</bones>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Right Braid">
+				<joints>
+					<joint name="Right Braid 2" />
+				</joints>
+				<images>
+					<image imageFile1="RedBraid.png">
+						<lowerright>128 128</lowerright>
+						<anchorcoord>55 47</anchorcoord>
+						<joints>
+							<jointData>
+								<location>57.04226 100.3498</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Right Braid 2">
+						<joints>
+							<joint name="Right Braid 3" />
+						</joints>
+						<images>
+							<image imageFile1="RedBraid.png">
+								<lowerright>128 128</lowerright>
+								<anchorcoord>56 46</anchorcoord>
+								<joints>
+									<jointData>
+										<location>57.04226 100.3498</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Right Braid 3">
+								<joints>
+									<joint name="Right Braid 4" />
+								</joints>
+								<images>
+									<image imageFile1="RedBraid.png">
+										<lowerright>128 128</lowerright>
+										<anchorcoord>56 46</anchorcoord>
+										<joints>
+											<jointData>
+												<location>57.04226 100.3498</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Right Braid 4">
+										<joints>
+											<joint name="Right Ball" />
+										</joints>
+										<images>
+											<image imageFile1="RedBraid.png">
+												<lowerright>128 128</lowerright>
+												<anchorcoord>56 49</anchorcoord>
+												<joints>
+													<jointData>
+														<location>55 84</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Right Ball">
+												<joints>
+													<joint name="Right Braid end" />
+												</joints>
+												<images>
+													<image imageFile1="WhiteBall.png">
+														<lowerright>128 128</lowerright>
+														<anchorcoord>59 34</anchorcoord>
+														<joints>
+															<jointData>
+																<location>64 78</location>
+															</jointData>
+														</joints>
+													</image>
+												</images>
+												<bones>
+													<bone name="Right Braid end">
+														<joints>
+															<joint name="Right Braid weight" />
+														</joints>
+														<images>
+															<image imageFile1="RedBraidEnd.png">
+																<lowerright>128 128</lowerright>
+																<anchorcoord>62 16</anchorcoord>
+																<joints>
+																	<jointData>
+																		<location>65.60387 105.981</location>
+																	</jointData>
+																</joints>
+															</image>
+														</images>
+													</bone>
+												</bones>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+		</bones>
+	</garmentbone>
+</skeleton>

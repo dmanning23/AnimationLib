@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Chesticle" name="Chesticle Nekkid" type="Garment">
+		<joints>
+			<joint name="L Titty" />
+			<joint name="R Titty" />
+		</joints>
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Chesticle\ChesticleFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>120 115</lowerright>
+				<anchorcoord>59 103</anchorcoord>
+				<joints>
+					<jointData RagdollType="Float" FloatRadius="11">
+						<location>96 67</location>
+					</jointData>
+					<jointData RagdollType="Float" FloatRadius="11">
+						<location>47 61</location>
+					</jointData>
+				</joints>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Chesticle\ChesticleSide.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>97 118</lowerright>
+				<anchorcoord>49 105</anchorcoord>
+				<joints>
+					<jointData>
+						<location>53 48</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="-46.39718" limit2="21.80141">
+						<location>50 47</location>
+					</jointData>
+				</joints>
+			</image>
+			<image filename="Carrie\Clothes\Nekkid\Chesticle\ChesticleBack.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>108 134</lowerright>
+				<anchorcoord>58 114</anchorcoord>
+				<joints>
+					<jointData>
+						<location>2 3</location>
+					</jointData>
+					<jointData>
+						<location>2 3</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="L Titty">
+				<joints>
+					<joint name="L Tassle" />
+				</joints>
+				<images>
+					<image filename="Carrie\Clothes\Nekkid\Chesticle\LTittyFront.png">
+						<upperleft>0 0</upperleft>
+						<lowerright>49 56</lowerright>
+						<anchorcoord>31 33</anchorcoord>
+						<joints>
+							<jointData>
+								<location>30 32</location>
+							</jointData>
+						</joints>
+					</image>
+					<image filename="Carrie\Clothes\Nekkid\Chesticle\LTittySide.png">
+						<upperleft>0 0</upperleft>
+						<lowerright>53 64</lowerright>
+						<anchorcoord>-2 29</anchorcoord>
+						<joints>
+							<jointData>
+								<location>38 29</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+			</bone>
+			<bone name="R Titty">
+				<joints>
+					<joint name="R Tassle" />
+				</joints>
+				<images>
+					<image filename="Carrie\Clothes\Nekkid\Chesticle\RTittyFront.png">
+						<upperleft>0 0</upperleft>
+						<lowerright>54 60</lowerright>
+						<anchorcoord>24 30</anchorcoord>
+						<joints>
+							<jointData>
+								<location>26 33</location>
+							</jointData>
+						</joints>
+					</image>
+					<image filename="Carrie\Clothes\Nekkid\Chesticle\LTittySide.png">
+						<upperleft>0 0</upperleft>
+						<lowerright>53 64</lowerright>
+						<anchorcoord>-4 29</anchorcoord>
+						<joints>
+							<jointData>
+								<location>37 30</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+			</bone>
+		</bones>
+	</garmentbone>
+</skeleton>

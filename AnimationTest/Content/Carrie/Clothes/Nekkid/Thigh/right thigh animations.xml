@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="ThighFront" length="0.1">
+			<keys>
+				<key time="0" joint="Right Thigh Nekkid" layer="-1" image="ThighFront.png" />
+				<key time="6" joint="Right Thigh Nekkid" layer="-1" image="ThighFront.png" />
+			</keys>
+		</animation>
+		<animation name="ThighSide" length="0.1">
+			<keys>
+				<key time="0" joint="Right Thigh Nekkid" layer="-1" image="ThighSide.png" />
+				<key time="6" joint="Right Thigh Nekkid" layer="-1" image="ThighSide.png" />
+			</keys>
+		</animation>
+		<animation name="ThighBack" length="0.1">
+			<keys>
+				<key time="0" joint="Right Thigh Nekkid" layer="-1" />
+				<key time="6" joint="Right Thigh Nekkid" layer="-1" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

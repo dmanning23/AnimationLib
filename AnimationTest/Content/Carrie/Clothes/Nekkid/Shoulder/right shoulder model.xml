@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Right Shoulder" name="Right Shoulder Nekkid" type="Garment">
+		<images>
+			<image filename="Carrie\Clothes\Nekkid\Shoulder\ShoulderFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>60 53</lowerright>
+				<anchorcoord>40 15</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

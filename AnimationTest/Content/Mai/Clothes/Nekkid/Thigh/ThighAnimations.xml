@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="ThighFront" length="0.1">
+			<keys>
+				<key joint="Thigh Nekkid" layer="-1" image="ThighFront.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

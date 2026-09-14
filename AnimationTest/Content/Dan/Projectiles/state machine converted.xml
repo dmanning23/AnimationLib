@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="StateMachineBuddy.StateMachineXML">
+		<initial>shoot</initial>
+		<stateNames>
+			<Item Type="string">shoot</Item>
+			<Item Type="string">kill</Item>
+		</stateNames>
+		<messageNames>
+			<Item Type="string">done</Item>
+		</messageNames>
+		<states>
+			<Item Type="StateMachineBuddy.StateTableXML">
+				<name>shoot</name>
+				<transitions>
+					<Item Type="StateMachineBuddy.StateChangeXML">
+						<message>done</message>
+						<state>kill</state>
+					</Item>
+				</transitions>
+			</Item>
+			<Item Type="StateMachineBuddy.StateTableXML">
+				<name>kill</name>
+				<transitions>
+					<Item Type="StateMachineBuddy.StateChangeXML">
+						<message>done</message>
+						<state>kill</state>
+					</Item>
+				</transitions>
+			</Item>
+		</states>
+	</Asset>
+</XnaContent>

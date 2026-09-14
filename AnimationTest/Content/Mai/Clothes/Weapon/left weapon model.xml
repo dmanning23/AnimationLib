@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>fan blade</name>
+		<colorable>false</colorable>
+		<joints>
+			<Item Type="AnimationLib.JointXML">
+				<name>rope 1</name>
+			</Item>
+		</joints>
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>256 256</lowerright>
+				<anchorcoord>189 68</anchorcoord>
+				<filename>Mai\Clothes\Weapon\Fan.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>202.936 43.69433</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones>
+			<Item Type="AnimationLib.BoneXML">
+				<name>rope 1</name>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="AnimationLib.JointXML">
+						<name>rope 2</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>32 64</lowerright>
+						<anchorcoord>18.20553 57.29477</anchorcoord>
+						<filename>Mai\Clothes\Weapon\Fan Rope.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>15.5359 48.54942</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones>
+					<Item Type="AnimationLib.BoneXML">
+						<name>rope 2</name>
+						<colorable>false</colorable>
+						<joints>
+							<Item Type="AnimationLib.JointXML">
+								<name>rope 3</name>
+							</Item>
+						</joints>
+						<images>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>32 64</lowerright>
+								<anchorcoord>15.73795 57.26414</anchorcoord>
+								<filename>Mai\Clothes\Weapon\Fan Rope.png</filename>
+								<joints>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>17.47788 47.57831</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles />
+								<lines />
+							</Item>
+						</images>
+						<bones>
+							<Item Type="AnimationLib.BoneXML">
+								<name>rope 3</name>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="AnimationLib.JointXML">
+										<name>rope end</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="AnimationLib.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>32 64</lowerright>
+										<anchorcoord>14.56503 58.88535</anchorcoord>
+										<filename>Mai\Clothes\Weapon\Fan Rope.png</filename>
+										<joints>
+											<Item Type="AnimationLib.JointDataXML">
+												<location>17.47788 49.52029</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles />
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="AnimationLib.BoneXML">
+										<name>rope end</name>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="AnimationLib.JointXML">
+												<name>rope end weight</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="AnimationLib.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>64 128</lowerright>
+												<anchorcoord>28.15869 106.8085</anchorcoord>
+												<filename>Mai\Clothes\Weapon\Fan Tail.png</filename>
+												<joints>
+													<Item Type="AnimationLib.JointDataXML">
+														<location>31.07154 94.18575</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones />
+									</Item>
+								</bones>
+							</Item>
+						</bones>
+					</Item>
+				</bones>
+			</Item>
+		</bones>
+		<parentBone>Left Hand Weapon</parentBone>
+	</Asset>
+</XnaContent>

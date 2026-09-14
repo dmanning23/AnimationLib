@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="SPFSettings.StateActionListXML">
+		<states>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Waiting</name>
+				<actions>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>NEUTRAL front</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-300 1715</direction>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Kinecting</name>
+				<actions>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>NEUTRAL front</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-300 1715</direction>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>MoveLeft</name>
+				<actions>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>NEUTRAL front</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-300 1715</direction>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>MoveRight</name>
+				<actions>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>NEUTRAL front</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-300 1715</direction>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>MoveForward</name>
+				<actions>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>NEUTRAL front</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-300 1715</direction>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>MoveBack</name>
+				<actions>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>NEUTRAL front</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-300 1715</direction>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Bored</name>
+				<actions>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>NEUTRAL front</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-300 1715</direction>
+						<minYVelocity>2300</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+		</states>
+	</Asset>
+</XnaContent>

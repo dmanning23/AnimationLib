@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Chesticle Nekkid</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints>
+			<Item Type="AnimationLib.JointXML">
+				<name>Bow Tie</name>
+			</Item>
+			<Item Type="AnimationLib.JointXML">
+				<name>Collar</name>
+			</Item>
+		</joints>
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>135 156</lowerright>
+				<anchorcoord>71 130</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Chesticle\ChesticleFront.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>70 30</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>2.5</FloatRadius>
+						<FloatOrRotate>true</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>69 21</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>104 136</lowerright>
+				<anchorcoord>68 103</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Chesticle\ChesticleSide.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>77 18</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>2</FloatRadius>
+						<FloatOrRotate>true</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>75 59</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>130 137</lowerright>
+				<anchorcoord>63 119</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Chesticle\ChesticleBack.png</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>2 3</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>2 3</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones>
+			<Item Type="AnimationLib.BoneXML">
+				<name>Bow Tie</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="AnimationLib.JointXML">
+						<name>L Titty weight</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>62 39</lowerright>
+						<anchorcoord>30 19</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Chesticle\BowTieFront.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>30 19</location>
+								<limit1>-45</limit1>
+								<limit2>45</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>35 37</lowerright>
+						<anchorcoord>19 13</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Chesticle\BowTieSide.png</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>19 13</location>
+								<limit1>-45</limit1>
+								<limit2>45</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones />
+			</Item>
+			<Item Type="AnimationLib.BoneXML">
+				<name>Collar</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints />
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>55 31</lowerright>
+						<anchorcoord>27 17</anchorcoord>
+						<filename>Dan\Clothes\Nekkid\Chesticle\CollarFront.png</filename>
+						<joints />
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones />
+			</Item>
+		</bones>
+		<parentBone>Chesticle</parentBone>
+	</Asset>
+</XnaContent>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="FistBack" length="0.1">
+			<keys>
+				<key joint="Hand Nekkid" layer="-1" image="FistPinky.png" />
+			</keys>
+		</animation>
+		<animation name="FistFront" length="0.1">
+			<keys>
+				<key joint="Hand Nekkid" layer="-1" image="FistPinky.png" />
+			</keys>
+		</animation>
+		<animation name="FistPalm" length="0.1">
+			<keys>
+				<key joint="Hand Nekkid" layer="-1" image="FistPinky.png" />
+			</keys>
+		</animation>
+		<animation name="FistPinky" length="0.1">
+			<keys>
+				<key joint="Hand Nekkid" layer="-1" image="FistPinky.png" />
+			</keys>
+		</animation>
+		<animation name="FistThumb" length="0.1">
+			<keys>
+				<key joint="Hand Nekkid" layer="-1" image="FistThumb.png" />
+			</keys>
+		</animation>
+		<animation name="FistWrist" length="0.1">
+			<keys>
+				<key joint="Hand Nekkid" layer="-1" image="FistThumb.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

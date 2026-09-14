@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Right Hand" name="Right Hand Nekkid" type="Garment">
+		<joints>
+			<joint name="Right Hand Weapon" />
+		</joints>
+		<images>
+			<image filename="carrie\Clothes\Nekkid\Hand\FistBack.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>58 58</lowerright>
+				<anchorcoord>15 15</anchorcoord>
+				<joints>
+					<jointData>
+						<location>48 37</location>
+					</jointData>
+				</joints>
+			</image>
+			<image filename="carrie\Clothes\Nekkid\Hand\FistFront.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>58 58</lowerright>
+				<anchorcoord>18 24</anchorcoord>
+				<joints>
+					<jointData>
+						<location>47 21</location>
+					</jointData>
+				</joints>
+			</image>
+			<image filename="carrie\Clothes\Nekkid\Hand\FistPalm.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>58 58</lowerright>
+				<anchorcoord>15 13</anchorcoord>
+				<joints>
+					<jointData>
+						<location>51 27</location>
+					</jointData>
+				</joints>
+			</image>
+			<image filename="carrie\Clothes\Nekkid\Hand\FistPinky.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>58 58</lowerright>
+				<anchorcoord>40 14</anchorcoord>
+				<joints>
+					<jointData>
+						<location>30 36</location>
+					</jointData>
+				</joints>
+			</image>
+			<image filename="carrie\Clothes\Nekkid\Hand\FistThumb.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>58 58</lowerright>
+				<anchorcoord>40 14</anchorcoord>
+				<joints>
+					<jointData>
+						<location>34 32</location>
+					</jointData>
+				</joints>
+			</image>
+			<image filename="carrie\Clothes\Nekkid\Hand\FistWrist.png">
+				<upperleft>0 0</upperleft>
+				<lowerright>58 58</lowerright>
+				<anchorcoord>19 26</anchorcoord>
+				<joints>
+					<jointData>
+						<location>42 27</location>
+					</jointData>
+				</joints>
+			</image>
+		</images>
+		<bones>
+			<bone name="Right Hand Weapon">
+				<images>
+					<image name="Weapon FistBack">
+						<upperleft>0 0</upperleft>
+						<lowerright>58 58</lowerright>
+						<anchorcoord>14 18</anchorcoord>
+					</image>
+					<image name="Weapon FistFront">
+						<upperleft>0 0</upperleft>
+						<lowerright>58 58</lowerright>
+						<anchorcoord>18 24</anchorcoord>
+					</image>
+					<image name="Weapon FistPalm">
+						<upperleft>0 0</upperleft>
+						<lowerright>58 58</lowerright>
+						<anchorcoord>15 13</anchorcoord>
+					</image>
+					<image name="Weapon FistPinky">
+						<upperleft>0 0</upperleft>
+						<lowerright>58 58</lowerright>
+						<anchorcoord>40 14</anchorcoord>
+					</image>
+					<image name="Weapon FistThumb">
+						<upperleft>0 0</upperleft>
+						<lowerright>58 58</lowerright>
+						<anchorcoord>40 14</anchorcoord>
+					</image>
+					<image name="Weapon FistWrist">
+						<upperleft>0 0</upperleft>
+						<lowerright>58 58</lowerright>
+						<anchorcoord>19 26</anchorcoord>
+					</image>
+				</images>
+			</bone>
+		</bones>
+	</garmentbone>
+</skeleton>

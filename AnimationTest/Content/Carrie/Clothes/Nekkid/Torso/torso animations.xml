@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="TorsoFront" length="0.1">
+			<keys>
+				<key time="0" joint="Torso Nekkid" layer="-1" image="TorsoFront.png" />
+				<key time="6" joint="Torso Nekkid" layer="-1" image="TorsoFront.png" />
+			</keys>
+		</animation>
+		<animation name="TorsoSide" length="0.1">
+			<keys>
+				<key time="0" joint="Torso Nekkid" layer="-1" image="TorsoSide.png" />
+				<key time="6" joint="Torso Nekkid" layer="-1" image="TorsoSide.png" />
+			</keys>
+		</animation>
+		<animation name="TorsoBack" length="0.1">
+			<keys>
+				<key time="0" joint="Torso Nekkid" layer="-1" image="TorsoBack.png" />
+				<key time="6" joint="Torso Nekkid" layer="-1" image="TorsoBack.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

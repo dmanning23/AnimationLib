@@ -1,0 +1,1350 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.BoneXML">
+		<name>Crotch</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints>
+			<Item Type="AnimationLib.JointXML">
+				<name>Torso</name>
+			</Item>
+			<Item Type="AnimationLib.JointXML">
+				<name>Left Thigh</name>
+			</Item>
+			<Item Type="AnimationLib.JointXML">
+				<name>Right Thigh</name>
+			</Item>
+		</joints>
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 150</lowerright>
+				<anchorcoord>74 62</anchorcoord>
+				<filename>CrotchFront</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>81 55</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>91 95</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>41 95</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>68 121</center>
+						<radius>78.1089</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>135 159</lowerright>
+				<anchorcoord>64 58</anchorcoord>
+				<filename>CrotchSide</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>68 39</location>
+						<limit1>-45</limit1>
+						<limit2>45</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>46 91</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>46 90</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>51 124</center>
+						<radius>69.35416</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 150</lowerright>
+				<anchorcoord>74 70</anchorcoord>
+				<filename>CrotchBack</filename>
+				<joints>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>77 48</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>38 89</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+					<Item Type="AnimationLib.JointDataXML">
+						<location>90 89</location>
+						<limit1>-180</limit1>
+						<limit2>180</limit2>
+						<FloatRadius>0</FloatRadius>
+						<FloatOrRotate>false</FloatOrRotate>
+					</Item>
+				</joints>
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>70 134</center>
+						<radius>76.41989</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+		</images>
+		<bones>
+			<Item Type="AnimationLib.BoneXML">
+				<name>Torso</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="AnimationLib.JointXML">
+						<name>Chesticle</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>78 126</lowerright>
+						<anchorcoord>38 99</anchorcoord>
+						<filename>TorsoFront</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>36 39</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>124 167</lowerright>
+						<anchorcoord>60 120</anchorcoord>
+						<filename>TorsoSide</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>67 52</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>78 126</lowerright>
+						<anchorcoord>37 99</anchorcoord>
+						<filename>TorsoBack</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>33 34</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones>
+					<Item Type="AnimationLib.BoneXML">
+						<name>Chesticle</name>
+						<type>Normal</type>
+						<colorable>false</colorable>
+						<joints>
+							<Item Type="AnimationLib.JointXML">
+								<name>Neck</name>
+							</Item>
+							<Item Type="AnimationLib.JointXML">
+								<name>Left Shoulder</name>
+							</Item>
+							<Item Type="AnimationLib.JointXML">
+								<name>Right Shoulder</name>
+							</Item>
+						</joints>
+						<images>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>128 128</lowerright>
+								<anchorcoord>67 88</anchorcoord>
+								<filename>ChesticleFront</filename>
+								<joints>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>59 -6</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>94 -9</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>26 -8</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles>
+									<Item Type="AnimationLib.CircleXML">
+										<center>68 58</center>
+										<radius>75.02666</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>119 139</lowerright>
+								<anchorcoord>63 102</anchorcoord>
+								<filename>ChesticleSide</filename>
+								<joints>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>39 20</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>59 13</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>36 17</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles>
+									<Item Type="AnimationLib.CircleXML">
+										<center>49 97</center>
+										<radius>69.18092</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>128 128</lowerright>
+								<anchorcoord>71 94</anchorcoord>
+								<filename>ChesticleBack</filename>
+								<joints>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>72 8</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>34 8</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>110 10</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles>
+									<Item Type="AnimationLib.CircleXML">
+										<center>70 59</center>
+										<radius>72.02777</radius>
+									</Item>
+								</circles>
+								<lines />
+							</Item>
+						</images>
+						<bones>
+							<Item Type="AnimationLib.BoneXML">
+								<name>Neck</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="AnimationLib.JointXML">
+										<name>Head</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="AnimationLib.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>47 68</lowerright>
+										<anchorcoord>21 53</anchorcoord>
+										<filename>NeckFront</filename>
+										<joints>
+											<Item Type="AnimationLib.JointDataXML">
+												<location>21 -15</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles />
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="AnimationLib.BoneXML">
+										<name>Head</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints />
+										<images>
+											<Item Type="AnimationLib.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>145 139</lowerright>
+												<anchorcoord>80 99</anchorcoord>
+												<filename>HeadFront</filename>
+												<joints />
+												<circles>
+													<Item Type="AnimationLib.CircleXML">
+														<center>98 72</center>
+														<radius>66.40783</radius>
+													</Item>
+												</circles>
+												<lines />
+											</Item>
+											<Item Type="AnimationLib.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>163 146</lowerright>
+												<anchorcoord>72 75</anchorcoord>
+												<filename>HeadSide</filename>
+												<joints />
+												<circles>
+													<Item Type="AnimationLib.CircleXML">
+														<center>86 59</center>
+														<radius>64.03124</radius>
+													</Item>
+												</circles>
+												<lines />
+											</Item>
+											<Item Type="AnimationLib.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>145 139</lowerright>
+												<anchorcoord>63 112</anchorcoord>
+												<filename>HeadBack</filename>
+												<joints />
+												<circles>
+													<Item Type="AnimationLib.CircleXML">
+														<center>65 90</center>
+														<radius>65.37584</radius>
+													</Item>
+												</circles>
+												<lines />
+											</Item>
+										</images>
+										<bones />
+									</Item>
+								</bones>
+							</Item>
+							<Item Type="AnimationLib.BoneXML">
+								<name>Left Shoulder</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="AnimationLib.JointXML">
+										<name>Left Bicep</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="AnimationLib.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>52 48</lowerright>
+										<anchorcoord>38 22</anchorcoord>
+										<filename>ShoulderFront</filename>
+										<joints>
+											<Item Type="AnimationLib.JointDataXML">
+												<location>7 37</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles />
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="AnimationLib.BoneXML">
+										<name>Left Bicep</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="AnimationLib.JointXML">
+												<name>Left Forearm</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="AnimationLib.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>54 143</lowerright>
+												<anchorcoord>28 14</anchorcoord>
+												<filename>Bicep</filename>
+												<joints>
+													<Item Type="AnimationLib.JointDataXML">
+														<location>21 112</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones>
+											<Item Type="AnimationLib.BoneXML">
+												<name>Left Forearm</name>
+												<type>Normal</type>
+												<colorable>false</colorable>
+												<joints>
+													<Item Type="AnimationLib.JointXML">
+														<name>Left Hand</name>
+													</Item>
+												</joints>
+												<images>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>64 147</lowerright>
+														<anchorcoord>33 18</anchorcoord>
+														<filename>ForearmSide</filename>
+														<joints>
+															<Item Type="AnimationLib.JointDataXML">
+																<location>31 134</location>
+																<limit1>-180</limit1>
+																<limit2>180</limit2>
+																<FloatRadius>0</FloatRadius>
+																<FloatOrRotate>false</FloatOrRotate>
+															</Item>
+														</joints>
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>31 60</center>
+																<radius>29.38212</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>40 61</lowerright>
+														<anchorcoord>22 13</anchorcoord>
+														<filename>ForearmFront</filename>
+														<joints>
+															<Item Type="AnimationLib.JointDataXML">
+																<location>28 73</location>
+																<limit1>-180</limit1>
+																<limit2>180</limit2>
+																<FloatRadius>0</FloatRadius>
+																<FloatOrRotate>false</FloatOrRotate>
+															</Item>
+														</joints>
+														<circles />
+														<lines />
+													</Item>
+												</images>
+												<bones>
+													<Item Type="AnimationLib.BoneXML">
+														<name>Left Hand</name>
+														<type>Normal</type>
+														<colorable>false</colorable>
+														<joints />
+														<images>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>19 16</anchorcoord>
+																<filename>FistBack</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>31 38</center>
+																		<radius>35.05468</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>24 24</anchorcoord>
+																<filename>FistFront</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>27 27</center>
+																		<radius>34.48301</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>18 12</anchorcoord>
+																<filename>FistPalm</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>29 32</center>
+																		<radius>39.85892</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 15</anchorcoord>
+																<filename>FistPinky</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>34 34</center>
+																		<radius>33.05789</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 18</anchorcoord>
+																<filename>FistThumb</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>36 33</center>
+																		<radius>31.85792</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>26 20</anchorcoord>
+																<filename>FistWrist</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>29 35</center>
+																		<radius>31.25392</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+														</images>
+														<bones />
+													</Item>
+												</bones>
+											</Item>
+										</bones>
+									</Item>
+								</bones>
+							</Item>
+							<Item Type="AnimationLib.BoneXML">
+								<name>Right Shoulder</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="AnimationLib.JointXML">
+										<name>Right Bicep</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="AnimationLib.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>52 48</lowerright>
+										<anchorcoord>38 22</anchorcoord>
+										<filename>ShoulderFront</filename>
+										<joints>
+											<Item Type="AnimationLib.JointDataXML">
+												<location>7 37</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles />
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="AnimationLib.BoneXML">
+										<name>Right Bicep</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="AnimationLib.JointXML">
+												<name>Right Forearm</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="AnimationLib.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>54 143</lowerright>
+												<anchorcoord>28 14</anchorcoord>
+												<filename>Bicep</filename>
+												<joints>
+													<Item Type="AnimationLib.JointDataXML">
+														<location>21 112</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones>
+											<Item Type="AnimationLib.BoneXML">
+												<name>Right Forearm</name>
+												<type>Normal</type>
+												<colorable>false</colorable>
+												<joints>
+													<Item Type="AnimationLib.JointXML">
+														<name>Right Hand</name>
+													</Item>
+												</joints>
+												<images>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>64 147</lowerright>
+														<anchorcoord>33 18</anchorcoord>
+														<filename>ForearmSide</filename>
+														<joints>
+															<Item Type="AnimationLib.JointDataXML">
+																<location>31 134</location>
+																<limit1>-180</limit1>
+																<limit2>180</limit2>
+																<FloatRadius>0</FloatRadius>
+																<FloatOrRotate>false</FloatOrRotate>
+															</Item>
+														</joints>
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>31 60</center>
+																<radius>29.38212</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>40 61</lowerright>
+														<anchorcoord>22 13</anchorcoord>
+														<filename>ForearmFront</filename>
+														<joints>
+															<Item Type="AnimationLib.JointDataXML">
+																<location>28 73</location>
+																<limit1>-180</limit1>
+																<limit2>180</limit2>
+																<FloatRadius>0</FloatRadius>
+																<FloatOrRotate>false</FloatOrRotate>
+															</Item>
+														</joints>
+														<circles />
+														<lines />
+													</Item>
+												</images>
+												<bones>
+													<Item Type="AnimationLib.BoneXML">
+														<name>Right Hand</name>
+														<type>Normal</type>
+														<colorable>false</colorable>
+														<joints />
+														<images>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>19 16</anchorcoord>
+																<filename>FistBack</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>31 38</center>
+																		<radius>35.05468</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>24 24</anchorcoord>
+																<filename>FistFront</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>27 27</center>
+																		<radius>34.48301</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>18 12</anchorcoord>
+																<filename>FistPalm</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>29 32</center>
+																		<radius>39.85892</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 15</anchorcoord>
+																<filename>FistPinky</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>34 34</center>
+																		<radius>33.05789</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 18</anchorcoord>
+																<filename>FistThumb</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>36 33</center>
+																		<radius>31.85792</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+															<Item Type="AnimationLib.ImageXML">
+																<upperleft>0 0</upperleft>
+																<lowerright>68 68</lowerright>
+																<anchorcoord>26 20</anchorcoord>
+																<filename>FistWrist</filename>
+																<joints />
+																<circles>
+																	<Item Type="AnimationLib.CircleXML">
+																		<center>29 35</center>
+																		<radius>31.25392</radius>
+																	</Item>
+																</circles>
+																<lines />
+															</Item>
+														</images>
+														<bones />
+													</Item>
+												</bones>
+											</Item>
+										</bones>
+									</Item>
+								</bones>
+							</Item>
+						</bones>
+					</Item>
+				</bones>
+			</Item>
+			<Item Type="AnimationLib.BoneXML">
+				<name>Left Thigh</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="AnimationLib.JointXML">
+						<name>Left Knee</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>86 213</lowerright>
+						<anchorcoord>31 11</anchorcoord>
+						<filename>ThighFront</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>27 185</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>75 23</anchorcoord>
+						<filename>ThighSide</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>94 180</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<filename>ThighBack</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>55 193</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones>
+					<Item Type="AnimationLib.BoneXML">
+						<name>Left Knee</name>
+						<type>Normal</type>
+						<colorable>false</colorable>
+						<joints>
+							<Item Type="AnimationLib.JointXML">
+								<name>Left Calf</name>
+							</Item>
+						</joints>
+						<images>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>43 61</lowerright>
+								<anchorcoord>17 8</anchorcoord>
+								<filename>Knee</filename>
+								<joints>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>14 43</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles />
+								<lines />
+							</Item>
+						</images>
+						<bones>
+							<Item Type="AnimationLib.BoneXML">
+								<name>Left Calf</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="AnimationLib.JointXML">
+										<name>Left Ankle</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="AnimationLib.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>90 216</lowerright>
+										<anchorcoord>56 13</anchorcoord>
+										<filename>CalfFront</filename>
+										<joints>
+											<Item Type="AnimationLib.JointDataXML">
+												<location>58 166</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles>
+											<Item Type="AnimationLib.CircleXML">
+												<center>50 62</center>
+												<radius>46.823</radius>
+											</Item>
+										</circles>
+										<lines />
+									</Item>
+									<Item Type="AnimationLib.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>110 211</lowerright>
+										<anchorcoord>54 23</anchorcoord>
+										<filename>CalfSide</filename>
+										<joints>
+											<Item Type="AnimationLib.JointDataXML">
+												<location>41 173</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles>
+											<Item Type="AnimationLib.CircleXML">
+												<center>50 75</center>
+												<radius>46.29329</radius>
+											</Item>
+										</circles>
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="AnimationLib.BoneXML">
+										<name>Left Ankle</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="AnimationLib.JointXML">
+												<name>Left Foot</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="AnimationLib.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>50 66</lowerright>
+												<anchorcoord>24 13</anchorcoord>
+												<filename>Ankle</filename>
+												<joints>
+													<Item Type="AnimationLib.JointDataXML">
+														<location>25 34</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones>
+											<Item Type="AnimationLib.BoneXML">
+												<name>Left Foot</name>
+												<type>Foot</type>
+												<colorable>false</colorable>
+												<joints />
+												<images>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<filename>FootTop</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>55 39</center>
+																<radius>47.01064</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>36 46</anchorcoord>
+														<filename>FootBall</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>61 36</center>
+																<radius>50.53711</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>44 35</anchorcoord>
+														<filename>FootFront</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>51 30</center>
+																<radius>49.0408</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<filename>FootSide</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>47 23</center>
+																<radius>44.10215</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>47 35</anchorcoord>
+														<filename>FootBack</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>54 23</center>
+																<radius>49.81968</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+												</images>
+												<bones />
+											</Item>
+										</bones>
+									</Item>
+								</bones>
+							</Item>
+						</bones>
+					</Item>
+				</bones>
+			</Item>
+			<Item Type="AnimationLib.BoneXML">
+				<name>Right Thigh</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints>
+					<Item Type="AnimationLib.JointXML">
+						<name>Right Knee</name>
+					</Item>
+				</joints>
+				<images>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>86 213</lowerright>
+						<anchorcoord>31 11</anchorcoord>
+						<filename>ThighFront</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>27 185</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>75 23</anchorcoord>
+						<filename>ThighSide</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>94 180</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+					<Item Type="AnimationLib.ImageXML">
+						<upperleft>0 0</upperleft>
+						<lowerright>149 232</lowerright>
+						<anchorcoord>73 70</anchorcoord>
+						<filename>ThighBack</filename>
+						<joints>
+							<Item Type="AnimationLib.JointDataXML">
+								<location>55 193</location>
+								<limit1>-180</limit1>
+								<limit2>180</limit2>
+								<FloatRadius>0</FloatRadius>
+								<FloatOrRotate>false</FloatOrRotate>
+							</Item>
+						</joints>
+						<circles />
+						<lines />
+					</Item>
+				</images>
+				<bones>
+					<Item Type="AnimationLib.BoneXML">
+						<name>Right Knee</name>
+						<type>Normal</type>
+						<colorable>false</colorable>
+						<joints>
+							<Item Type="AnimationLib.JointXML">
+								<name>Right Calf</name>
+							</Item>
+						</joints>
+						<images>
+							<Item Type="AnimationLib.ImageXML">
+								<upperleft>0 0</upperleft>
+								<lowerright>43 61</lowerright>
+								<anchorcoord>17 8</anchorcoord>
+								<filename>Knee</filename>
+								<joints>
+									<Item Type="AnimationLib.JointDataXML">
+										<location>14 43</location>
+										<limit1>-180</limit1>
+										<limit2>180</limit2>
+										<FloatRadius>0</FloatRadius>
+										<FloatOrRotate>false</FloatOrRotate>
+									</Item>
+								</joints>
+								<circles />
+								<lines />
+							</Item>
+						</images>
+						<bones>
+							<Item Type="AnimationLib.BoneXML">
+								<name>Right Calf</name>
+								<type>Normal</type>
+								<colorable>false</colorable>
+								<joints>
+									<Item Type="AnimationLib.JointXML">
+										<name>Right Ankle</name>
+									</Item>
+								</joints>
+								<images>
+									<Item Type="AnimationLib.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>90 216</lowerright>
+										<anchorcoord>56 13</anchorcoord>
+										<filename>CalfFront</filename>
+										<joints>
+											<Item Type="AnimationLib.JointDataXML">
+												<location>58 166</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles>
+											<Item Type="AnimationLib.CircleXML">
+												<center>50 62</center>
+												<radius>46.823</radius>
+											</Item>
+										</circles>
+										<lines />
+									</Item>
+									<Item Type="AnimationLib.ImageXML">
+										<upperleft>0 0</upperleft>
+										<lowerright>110 211</lowerright>
+										<anchorcoord>54 23</anchorcoord>
+										<filename>CalfSide</filename>
+										<joints>
+											<Item Type="AnimationLib.JointDataXML">
+												<location>41 173</location>
+												<limit1>-180</limit1>
+												<limit2>180</limit2>
+												<FloatRadius>0</FloatRadius>
+												<FloatOrRotate>false</FloatOrRotate>
+											</Item>
+										</joints>
+										<circles>
+											<Item Type="AnimationLib.CircleXML">
+												<center>50 75</center>
+												<radius>46.29329</radius>
+											</Item>
+										</circles>
+										<lines />
+									</Item>
+								</images>
+								<bones>
+									<Item Type="AnimationLib.BoneXML">
+										<name>Right Ankle</name>
+										<type>Normal</type>
+										<colorable>false</colorable>
+										<joints>
+											<Item Type="AnimationLib.JointXML">
+												<name>Right Foot</name>
+											</Item>
+										</joints>
+										<images>
+											<Item Type="AnimationLib.ImageXML">
+												<upperleft>0 0</upperleft>
+												<lowerright>50 66</lowerright>
+												<anchorcoord>24 13</anchorcoord>
+												<filename>Ankle</filename>
+												<joints>
+													<Item Type="AnimationLib.JointDataXML">
+														<location>25 34</location>
+														<limit1>-180</limit1>
+														<limit2>180</limit2>
+														<FloatRadius>0</FloatRadius>
+														<FloatOrRotate>false</FloatOrRotate>
+													</Item>
+												</joints>
+												<circles />
+												<lines />
+											</Item>
+										</images>
+										<bones>
+											<Item Type="AnimationLib.BoneXML">
+												<name>Right Foot</name>
+												<type>Foot</type>
+												<colorable>false</colorable>
+												<joints />
+												<images>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<filename>FootTop</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>55 39</center>
+																<radius>47.01064</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>36 46</anchorcoord>
+														<filename>FootBall</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>61 36</center>
+																<radius>50.53711</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>44 35</anchorcoord>
+														<filename>FootFront</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>51 30</center>
+																<radius>49.0408</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<filename>FootSide</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>47 23</center>
+																<radius>44.10215</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+													<Item Type="AnimationLib.ImageXML">
+														<upperleft>0 0</upperleft>
+														<lowerright>115 115</lowerright>
+														<anchorcoord>47 35</anchorcoord>
+														<filename>FootBack</filename>
+														<joints />
+														<circles>
+															<Item Type="AnimationLib.CircleXML">
+																<center>54 23</center>
+																<radius>49.81968</radius>
+															</Item>
+														</circles>
+														<lines />
+													</Item>
+												</images>
+												<bones />
+											</Item>
+										</bones>
+									</Item>
+								</bones>
+							</Item>
+						</bones>
+					</Item>
+				</bones>
+			</Item>
+		</bones>
+	</Asset>
+</XnaContent>

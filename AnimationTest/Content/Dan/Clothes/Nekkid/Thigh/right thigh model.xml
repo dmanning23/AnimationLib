@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Right Thigh Nekkid</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>112 252</lowerright>
+				<anchorcoord>58 28</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Thigh\ThighFront.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>112 226</lowerright>
+				<anchorcoord>44 28</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Thigh\ThighSide.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>112 252</lowerright>
+				<anchorcoord>39 9</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Thigh\ThighFront.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Right Thigh</parentBone>
+	</Asset>
+</XnaContent>

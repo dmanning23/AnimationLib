@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<garment name="Nekkid">
+	<fragments>
+		<fragment>
+			<model1>Nekkid\Crotch\CrotchModel.xml</model1>
+			<animation1>Nekkid\Crotch\CrotchAnimations.xml</animation1>
+			<parentBone>Crotch</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Torso\TorsoModel.xml</model1>
+			<animation1>Nekkid\Torso\TorsoAnimations.xml</animation1>
+			<parentBone>Torso</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Chesticle\ChesticleModel.xml</model1>
+			<animation1>Nekkid\Chesticle\ChesticleAnimations.xml</animation1>
+			<parentBone>Chesticle</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Neck\NeckModel.xml</model1>
+			<animation1>Nekkid\Neck\NeckAnimations.xml</animation1>
+			<parentBone>Neck</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Head\HeadModel.xml</model1>
+			<animation1>Nekkid\Head\HeadAnimations.xml</animation1>
+			<parentBone>Head</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Bicep\BicepModel.xml</model1>
+			<animation1>Nekkid\Bicep\BicepAnimations.xml</animation1>
+			<parentBone>Left Bicep</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Calf\CalfModel.xml</model1>
+			<animation1>Nekkid\Calf\CalfAnimations.xml</animation1>
+			<parentBone>Left Calf</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Ankle\AnkleModel.xml</model1>
+			<animation1>Nekkid\Ankle\AnkleAnimations.xml</animation1>
+			<parentBone>Left Ankle</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Foot\FootModel.xml</model1>
+			<animation1>Nekkid\Foot\FootAnimations.xml</animation1>
+			<parentBone>Left Foot</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Forearm\ForearmModel.xml</model1>
+			<animation1>Nekkid\Forearm\ForearmAnimations.xml</animation1>
+			<parentBone>Left Forearm</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Hand\HandModel.xml</model1>
+			<animation1>Nekkid\Hand\HandAnimations.xml</animation1>
+			<parentBone>Left Hand</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Knee\KneeModel.xml</model1>
+			<animation1>Nekkid\Knee\KneeAnimations.xml</animation1>
+			<parentBone>Left Knee</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Shoulder\ShoulderModel.xml</model1>
+			<animation1>Nekkid\Shoulder\ShoulderAnimations.xml</animation1>
+			<parentBone>Left Shoulder</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Thigh\ThighModel.xml</model1>
+			<animation1>Nekkid\Thigh\ThighAnimations.xml</animation1>
+			<parentBone>Left Thigh</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Bicep\BicepModel.xml</model1>
+			<animation1>Nekkid\Bicep\BicepAnimations.xml</animation1>
+			<parentBone>Right Bicep</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Calf\CalfModel.xml</model1>
+			<animation1>Nekkid\Calf\CalfAnimations.xml</animation1>
+			<parentBone>Right Calf</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Ankle\AnkleModel.xml</model1>
+			<animation1>Nekkid\Ankle\AnkleAnimations.xml</animation1>
+			<parentBone>Right Ankle</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Foot\FootModel.xml</model1>
+			<animation1>Nekkid\Foot\FootAnimations.xml</animation1>
+			<parentBone>Right Foot</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Forearm\ForearmModel.xml</model1>
+			<animation1>Nekkid\Forearm\ForearmAnimations.xml</animation1>
+			<parentBone>Right Forearm</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Hand\HandModel.xml</model1>
+			<animation1>Nekkid\Hand\HandAnimations.xml</animation1>
+			<parentBone>Right Hand</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Knee\KneeModel.xml</model1>
+			<animation1>Nekkid\Knee\KneeAnimations.xml</animation1>
+			<parentBone>Right Knee</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Shoulder\ShoulderModel.xml</model1>
+			<animation1>Nekkid\Shoulder\ShoulderAnimations.xml</animation1>
+			<parentBone>Right Shoulder</parentBone>
+		</fragment>
+		<fragment>
+			<model1>Nekkid\Thigh\ThighModel.xml</model1>
+			<animation1>Nekkid\Thigh\ThighAnimations.xml</animation1>
+			<parentBone>Right Thigh</parentBone>
+		</fragment>
+	</fragments>
+</garment>

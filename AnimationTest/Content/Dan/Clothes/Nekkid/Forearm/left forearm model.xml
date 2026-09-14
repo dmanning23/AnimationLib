@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Left Forearm Nekkid</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>74 159</lowerright>
+				<anchorcoord>37 24</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Forearm\ForearmSide.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>80 122</lowerright>
+				<anchorcoord>42 27</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Forearm\ForearmFront.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Left Forearm</parentBone>
+	</Asset>
+</XnaContent>

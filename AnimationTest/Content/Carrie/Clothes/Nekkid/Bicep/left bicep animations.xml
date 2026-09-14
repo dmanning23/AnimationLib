@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="Bicep" length="0.1">
+			<keys>
+				<key time="0" joint="Left Bicep Nekkid" layer="-1" image="Bicep.png" />
+				<key time="6" joint="Left Bicep Nekkid" layer="-1" image="Bicep.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

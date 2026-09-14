@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Left Forearm" name="Left Elbow" type="Garment">
+		<images>
+			<image name="elbow" filename="Monsters\goblin\goblinGrunt_Diffuse.png" normalMapFilename="Monsters\goblin\goblinGrunt_Normal.png">
+				<upperleft>293 104</upperleft>
+				<lowerright>321 133</lowerright>
+				<anchorcoord>23.02017 27.12257</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="ForearmSide" length="0.1">
+			<keys>
+				<key joint="Forearm Nekkid" layer="-100" image="ForearmSide.png" />
+			</keys>
+		</animation>
+		<animation name="ForearmFront" length="0.1">
+			<keys>
+				<key joint="Forearm Nekkid" image="ForearmSide.png" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

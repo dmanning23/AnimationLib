@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.AnimationContainerXML">
+		<animations>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>ChesticleFront</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>ChesticleFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Chesticle Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>BowTieFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>Bow Tie</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>101</layer>
+						<image>CollarFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Collar</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>ChesticleFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Chesticle Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>BowTieFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>Bow Tie</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>101</layer>
+						<image>CollarFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Collar</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>ChesticleSide</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>ChesticleSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Chesticle Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>BowTieSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>Bow Tie</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>ChesticleSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Chesticle Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>BowTieSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>Bow Tie</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image />
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Collar</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>ChesticleBack</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>ChesticleBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Chesticle Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image />
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Bow Tie</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>ChesticleBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Chesticle Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image />
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Bow Tie</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image />
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Collar</joint>
+					</Item>
+				</keys>
+			</Item>
+		</animations>
+	</Asset>
+</XnaContent>

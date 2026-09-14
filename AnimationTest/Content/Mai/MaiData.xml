@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<XnaContent>
+	<Asset Type="SPFSettings.PlayerObjectXML">
+		<model>Mai\MaiModel.xml</model>
+		<animations>Mai\MaiAnimations.xml</animations>
+		<garments>
+			<Item Type="string">Mai\Clothes\Nekkid.xml</Item>
+		</garments>
+		<states>
+			<Item Type="SPFSettings.StateContainerXML">
+				<stateMachine>ground state machine.xml</stateMachine>
+				<stateActions>Mai\MaiGroundStates.xml</stateActions>
+			</Item>
+		</states>
+		<height>650</height>
+		<portrait>Mai\portrait.png</portrait>
+		<deathSound></deathSound>
+	</Asset>
+</XnaContent>

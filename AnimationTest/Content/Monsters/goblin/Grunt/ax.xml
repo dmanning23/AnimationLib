@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<garment name="Grunt">
+	<fragments>
+		<fragment  >
+		<scale>1.5</scale>
+			<model>Monsters\goblin\Grunt\ax_model.xml</model>
+			<animation>Monsters\goblin\Grunt\ax_animations.xml</animation>
+		</fragment>
+	</fragments>
+</garment>

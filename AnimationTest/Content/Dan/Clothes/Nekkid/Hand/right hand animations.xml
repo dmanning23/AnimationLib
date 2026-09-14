@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.AnimationContainerXML">
+		<animations>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>FistBack</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>FistFront</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-100</layer>
+						<image>FistFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-100</layer>
+						<image>FistFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>FistPalm</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistPalm.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistPalm.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>FistPinky</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistPinky.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistPinky.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>FistThumb</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistThumb.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistThumb.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>FistWrist</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistWrist.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>200</layer>
+						<image>FistWrist.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Right Hand Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+		</animations>
+	</Asset>
+</XnaContent>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="FistBack" length="0.1">
+			<keys>
+				<key time="0" joint="Left Hand Nekkid" layer="-1" image="FistBack.png" />
+				<key time="0" joint="Left Hand Weapon" layer="1" image="Weapon FistBack" />
+				<key time="6" joint="Left Hand Nekkid" layer="-1" image="FistBack.png" />
+				<key time="6" joint="Left Hand Weapon" layer="1" image="Weapon FistBack" />
+			</keys>
+		</animation>
+		<animation name="FistFront" length="0.1">
+			<keys>
+				<key time="0" joint="Left Hand Nekkid" layer="-1" image="FistFront.png" />
+				<key time="0" joint="Left Hand Weapon" layer="1" image="Weapon FistFront" />
+				<key time="6" joint="Left Hand Nekkid" layer="-1" image="FistFront.png" />
+				<key time="6" joint="Left Hand Weapon" layer="1" image="Weapon FistFront" />
+			</keys>
+		</animation>
+		<animation name="FistPalm" length="0.1">
+			<keys>
+				<key time="0" joint="Left Hand Nekkid" layer="-1" image="FistPalm.png" />
+				<key time="0" joint="Left Hand Weapon" layer="1" image="Weapon FistPalm" />
+				<key time="6" joint="Left Hand Nekkid" layer="-1" image="FistPalm.png" />
+				<key time="6" joint="Left Hand Weapon" layer="1" image="Weapon FistPalm" />
+			</keys>
+		</animation>
+		<animation name="FistPinky" length="0.1">
+			<keys>
+				<key time="0" joint="Left Hand Nekkid" layer="-1" image="FistPinky.png" />
+				<key time="0" joint="Left Hand Weapon" layer="1" image="Weapon FistPinky" />
+				<key time="6" joint="Left Hand Nekkid" layer="-1" image="FistPinky.png" />
+				<key time="6" joint="Left Hand Weapon" layer="1" image="Weapon FistPinky" />
+			</keys>
+		</animation>
+		<animation name="FistThumb" length="0.1">
+			<keys>
+				<key time="0" joint="Left Hand Nekkid" layer="-1" image="FistThumb.png" />
+				<key time="0" joint="Left Hand Weapon" layer="1" image="Weapon FistThumb" />
+				<key time="6" joint="Left Hand Nekkid" layer="-1" image="FistThumb.png" />
+				<key time="6" joint="Left Hand Weapon" layer="1" image="Weapon FistThumb" />
+			</keys>
+		</animation>
+		<animation name="FistWrist" length="0.1">
+			<keys>
+				<key time="0" joint="Left Hand Nekkid" layer="-1" image="FistWrist.png" />
+				<key time="0" joint="Left Hand Weapon" layer="1" image="Weapon FistWrist" />
+				<key time="6" joint="Left Hand Nekkid" layer="-1" image="FistWrist.png" />
+				<key time="6" joint="Left Hand Weapon" layer="1" image="Weapon FistWrist" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

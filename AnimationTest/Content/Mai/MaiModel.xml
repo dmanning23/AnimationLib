@@ -1,0 +1,582 @@
+<?xml version="1.0"?>
+<skeleton>
+	<bone name="Crotch">
+		<joints>
+			<joint name="Crotch Weight" />
+			<joint name="Torso" />
+			<joint name="Left Thigh" />
+			<joint name="Right Thigh" />
+		</joints>
+		<images>
+			<image name="CrotchFront">
+				<lowerright>137 150</lowerright>
+				<anchorcoord>82 69</anchorcoord>
+				<joints>
+					<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+						<location>74 22</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+						<location>70 57</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+						<location>131 74</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+						<location>20 75</location>
+					</jointData>
+				</joints>
+				<circles>
+					<Item center="69 97" radius="78.1089" />
+				</circles>
+			</image>
+		</images>
+		<bones>
+			<bone name="Crotch Weight" />
+			<bone name="Torso">
+				<joints>
+					<joint name="Chesticle" />
+				</joints>
+				<images>
+					<image name="TorsoFront">
+						<lowerright>78 126</lowerright>
+						<anchorcoord>38 108</anchorcoord>
+						<joints>
+							<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+								<location>37 27</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Chesticle">
+						<joints>
+							<joint name="Neck" />
+							<joint name="Left Shoulder" />
+							<joint name="Right Shoulder" />
+						</joints>
+						<images>
+							<image name="ChesticleFront">
+								<lowerright>128 128</lowerright>
+								<anchorcoord>62 89</anchorcoord>
+								<joints>
+									<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+										<location>63 8</location>
+									</jointData>
+									<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+										<location>83 13</location>
+									</jointData>
+									<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+										<location>40 14</location>
+									</jointData>
+								</joints>
+								<circles>
+									<Item center="62 76" radius="75.02666" />
+								</circles>
+							</image>
+						</images>
+						<bones>
+							<bone name="Neck">
+								<joints>
+									<joint name="Head" />
+								</joints>
+								<images>
+									<image name="NeckFront">
+										<lowerright>47 68</lowerright>
+										<anchorcoord>21 53</anchorcoord>
+										<joints>
+											<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+												<location>18 9</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Head">
+										<joints>
+											<joint name="Head Weight" />
+										</joints>
+										<images>
+											<image name="HeadFront">
+												<lowerright>145 139</lowerright>
+												<anchorcoord>63 112</anchorcoord>
+												<joints>
+													<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+														<location>63 72</location>
+													</jointData>
+												</joints>
+												<circles>
+													<Item center="80 72" radius="65.27634" />
+												</circles>
+											</image>
+										</images>
+										<bones>
+											<bone name="Head Weight" />
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+							<bone name="Left Shoulder">
+								<joints>
+									<joint name="Left Bicep" />
+								</joints>
+								<images>
+									<image name="ShoulderFront">
+										<lowerright>52 48</lowerright>
+										<anchorcoord>38 22</anchorcoord>
+										<joints>
+											<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+												<location>12 45</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Left Bicep">
+										<joints>
+											<joint name="Left Forearm" />
+										</joints>
+										<images>
+											<image name="Bicep">
+												<lowerright>54 143</lowerright>
+												<anchorcoord>28 14</anchorcoord>
+												<joints>
+													<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+														<location>30 106</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Left Forearm">
+												<joints>
+													<joint name="Left Hand" />
+												</joints>
+												<images>
+													<image name="ForearmSide">
+														<lowerright>64 147</lowerright>
+														<anchorcoord>33 18</anchorcoord>
+														<joints>
+															<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+																<location>38 124</location>
+															</jointData>
+														</joints>
+														<circles>
+															<Item center="31 60" radius="29.38212" />
+														</circles>
+													</image>
+													<image name="ForearmFront">
+														<lowerright>40 61</lowerright>
+														<anchorcoord>22 13</anchorcoord>
+														<joints>
+															<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+																<location>25 49</location>
+															</jointData>
+														</joints>
+														<circles>
+															<Item center="71 88" radius="71.17584" />
+														</circles>
+													</image>
+												</images>
+												<bones>
+													<bone name="Left Hand">
+														<images>
+															<image name="FistBack">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>19 16</anchorcoord>
+																<circles>
+																	<Item center="32 32" radius="35.05468" />
+																</circles>
+															</image>
+															<image name="FistFront">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>24 24</anchorcoord>
+																<circles>
+																	<Item center="32 27" radius="31.01612" />
+																</circles>
+															</image>
+															<image name="FistPalm">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>18 12</anchorcoord>
+																<circles>
+																	<Item center="32 29" radius="34.0147" />
+																</circles>
+															</image>
+															<image name="FistPinky">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 15</anchorcoord>
+																<circles>
+																	<Item center="40 30" radius="32" />
+																</circles>
+															</image>
+															<image name="FistThumb">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>38 11</anchorcoord>
+																<circles>
+																	<Item center="36 33" radius="31.85792" />
+																</circles>
+															</image>
+															<image name="FistWrist">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>33 9</anchorcoord>
+																<circles>
+																	<Item center="33 23" radius="31.25392" />
+																</circles>
+															</image>
+														</images>
+													</bone>
+												</bones>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+							<bone name="Right Shoulder">
+								<joints>
+									<joint name="Right Bicep" />
+								</joints>
+								<images>
+									<image name="ShoulderFront">
+										<lowerright>52 48</lowerright>
+										<anchorcoord>38 22</anchorcoord>
+										<joints>
+											<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+												<location>12 45</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Right Bicep">
+										<joints>
+											<joint name="Right Forearm" />
+										</joints>
+										<images>
+											<image name="Bicep">
+												<lowerright>54 143</lowerright>
+												<anchorcoord>28 14</anchorcoord>
+												<joints>
+													<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+														<location>30 106</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Right Forearm">
+												<joints>
+													<joint name="Right Hand" />
+												</joints>
+												<images>
+													<image name="ForearmSide">
+														<lowerright>64 147</lowerright>
+														<anchorcoord>33 18</anchorcoord>
+														<joints>
+															<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+																<location>38 124</location>
+															</jointData>
+														</joints>
+														<circles>
+															<Item center="31 60" radius="29.38212" />
+														</circles>
+													</image>
+													<image name="ForearmFront">
+														<lowerright>40 61</lowerright>
+														<anchorcoord>22 13</anchorcoord>
+														<joints>
+															<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+																<location>25 49</location>
+															</jointData>
+														</joints>
+														<circles>
+															<Item center="71 88" radius="71.17584" />
+														</circles>
+													</image>
+												</images>
+												<bones>
+													<bone name="Right Hand">
+														<images>
+															<image name="FistBack">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>19 16</anchorcoord>
+																<circles>
+																	<Item center="32 32" radius="35.05468" />
+																</circles>
+															</image>
+															<image name="FistFront">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>24 24</anchorcoord>
+																<circles>
+																	<Item center="32 27" radius="31.01612" />
+																</circles>
+															</image>
+															<image name="FistPalm">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>18 12</anchorcoord>
+																<circles>
+																	<Item center="32 29" radius="34.0147" />
+																</circles>
+															</image>
+															<image name="FistPinky">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>48 15</anchorcoord>
+																<circles>
+																	<Item center="40 30" radius="32" />
+																</circles>
+															</image>
+															<image name="FistThumb">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>38 11</anchorcoord>
+																<circles>
+																	<Item center="36 33" radius="31.85792" />
+																</circles>
+															</image>
+															<image name="FistWrist">
+																<lowerright>68 68</lowerright>
+																<anchorcoord>33 9</anchorcoord>
+																<circles>
+																	<Item center="33 23" radius="31.25392" />
+																</circles>
+															</image>
+														</images>
+													</bone>
+												</bones>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Left Thigh">
+				<joints>
+					<joint name="Left Knee" />
+				</joints>
+				<images>
+					<image name="ThighFront">
+						<lowerright>86 213</lowerright>
+						<anchorcoord>40 27</anchorcoord>
+						<joints>
+							<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+								<location>62 158</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Left Knee">
+						<joints>
+							<joint name="Left Calf" />
+						</joints>
+						<images>
+							<image name="Knee">
+								<lowerright>43 61</lowerright>
+								<anchorcoord>22 24</anchorcoord>
+								<joints>
+									<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+										<location>15 55</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Left Calf">
+								<joints>
+									<joint name="Left Ankle" />
+								</joints>
+								<images>
+									<image name="CalfFront">
+										<lowerright>90 216</lowerright>
+										<anchorcoord>56 13</anchorcoord>
+										<joints>
+											<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+												<location>67 176</location>
+											</jointData>
+										</joints>
+										<circles>
+											<Item center="50 62" radius="46.823" />
+										</circles>
+									</image>
+								</images>
+								<bones>
+									<bone name="Left Ankle">
+										<joints>
+											<joint name="Left Foot" />
+										</joints>
+										<images>
+											<image name="Ankle">
+												<lowerright>50 66</lowerright>
+												<anchorcoord>24 13</anchorcoord>
+												<joints>
+													<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+														<location>18 34</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Left Foot" type="Foot">
+												<images>
+													<image name="FootTop">
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<circles>
+															<Item center="45 43" radius="36.67424" />
+														</circles>
+													</image>
+													<image name="FootBall">
+														<lowerright>140 115</lowerright>
+														<anchorcoord>36 46</anchorcoord>
+														<circles>
+															<Item center="53 53" radius="37.21559" />
+														</circles>
+													</image>
+													<image name="FootFront">
+														<lowerright>115 115</lowerright>
+														<anchorcoord>44 35</anchorcoord>
+														<circles>
+															<Item center="54 48" radius="38.0526" />
+														</circles>
+													</image>
+													<image name="FootSide">
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<circles>
+															<Item center="49 39" radius="40.04997" />
+														</circles>
+													</image>
+													<image name="FootBack">
+														<lowerright>115 115</lowerright>
+														<anchorcoord>47 35</anchorcoord>
+														<circles>
+															<Item center="60 48" radius="35.51056" />
+														</circles>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Right Thigh">
+				<joints>
+					<joint name="Right Knee" />
+				</joints>
+				<images>
+					<image name="ThighFront">
+						<lowerright>86 213</lowerright>
+						<anchorcoord>40 27</anchorcoord>
+						<joints>
+							<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+								<location>62 158</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Right Knee">
+						<joints>
+							<joint name="Right Calf" />
+						</joints>
+						<images>
+							<image name="Knee">
+								<lowerright>43 61</lowerright>
+								<anchorcoord>22 24</anchorcoord>
+								<joints>
+									<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+										<location>15 55</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Right Calf">
+								<joints>
+									<joint name="Right Ankle" />
+								</joints>
+								<images>
+									<image name="CalfFront">
+										<lowerright>90 216</lowerright>
+										<anchorcoord>56 13</anchorcoord>
+										<joints>
+											<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+												<location>67 176</location>
+											</jointData>
+										</joints>
+										<circles>
+											<Item center="50 62" radius="46.823" />
+										</circles>
+									</image>
+								</images>
+								<bones>
+									<bone name="Right Ankle">
+										<joints>
+											<joint name="Right Foot" />
+										</joints>
+										<images>
+											<image name="Ankle">
+												<lowerright>50 66</lowerright>
+												<anchorcoord>24 13</anchorcoord>
+												<joints>
+													<jointData RagdollType="Limit" limit1="126.7621" limit2="-126.7621">
+														<location>18 34</location>
+													</jointData>
+												</joints>
+											</image>
+										</images>
+										<bones>
+											<bone name="Right Foot" type="Foot">
+												<images>
+													<image name="FootTop">
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<circles>
+															<Item center="45 43" radius="36.67424" />
+														</circles>
+													</image>
+													<image name="FootBall">
+														<lowerright>140 115</lowerright>
+														<anchorcoord>36 46</anchorcoord>
+														<circles>
+															<Item center="53 53" radius="37.21559" />
+														</circles>
+													</image>
+													<image name="FootFront">
+														<lowerright>115 115</lowerright>
+														<anchorcoord>44 35</anchorcoord>
+														<circles>
+															<Item center="54 48" radius="38.0526" />
+														</circles>
+													</image>
+													<image name="FootSide">
+														<lowerright>140 115</lowerright>
+														<anchorcoord>25 35</anchorcoord>
+														<circles>
+															<Item center="49 39" radius="40.04997" />
+														</circles>
+													</image>
+													<image name="FootBack">
+														<lowerright>115 115</lowerright>
+														<anchorcoord>47 35</anchorcoord>
+														<circles>
+															<Item center="60 48" radius="35.51056" />
+														</circles>
+													</image>
+												</images>
+											</bone>
+										</bones>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+		</bones>
+	</bone>
+</skeleton>

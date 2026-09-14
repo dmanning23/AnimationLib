@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Right Weapon</name>
+		<type>Weapon</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>109 109</lowerright>
+				<anchorcoord>23 96</anchorcoord>
+				<filename>carrie\Clothes\weapon\Fan.png</filename>
+				<joints />
+				<circles>
+					<Item Type="AnimationLib.CircleXML">
+						<center>72 85</center>
+						<radius>59.03389</radius>
+					</Item>
+				</circles>
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Right Hand Weapon</parentBone>
+	</Asset>
+</XnaContent>

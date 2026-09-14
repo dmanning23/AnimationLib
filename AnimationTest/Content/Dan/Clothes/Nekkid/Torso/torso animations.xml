@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.AnimationContainerXML">
+		<animations>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>TorsoFront</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>TorsoFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>2001</layer>
+						<image>LeftFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>L Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>2002</layer>
+						<image>RightFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>R Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>TorsoFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>2001</layer>
+						<image>LeftFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>L Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>2002</layer>
+						<image>RightFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>R Tail</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>TorsoSide</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>TorsoSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>LeftSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>L Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>4002</layer>
+						<image>RightSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>R Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>TorsoSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>LeftSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>L Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>4002</layer>
+						<image>RightSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>R Tail</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>TorsoBack</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>TorsoBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>LeftBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>L Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>RightBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>R Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>TorsoBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Torso Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>LeftBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>L Tail</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>RightBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>true</ragdoll>
+						<joint>R Tail</joint>
+					</Item>
+				</keys>
+			</Item>
+		</animations>
+	</Asset>
+</XnaContent>

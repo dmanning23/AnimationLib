@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.AnimationContainerXML">
+		<animations>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>HeadFront</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>HeadFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Head Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>HeadFront.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Head Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>HeadSide</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>HeadSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Head Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>HeadSide.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Head Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>HeadBack</name>
+				<length>0.1</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>HeadBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Head Nekkid</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>6</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>HeadBack.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>Head Nekkid</joint>
+					</Item>
+				</keys>
+			</Item>
+		</animations>
+	</Asset>
+</XnaContent>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="forearm" length="0.1">
+			<keys>
+				<key time="0" joint="Right Elbow" layer="-1" image="elbow" />
+				<key time="6" joint="Right Elbow" layer="-1" image="elbow" flip="true" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

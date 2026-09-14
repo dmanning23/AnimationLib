@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone parentBone="Right Hand" name="Shield" type="Garment">
+		<images>
+			<image name="shield" filename="Monsters\goblin\goblinGrunt_Diffuse.png" normalMapFilename="Monsters\goblin\goblinGrunt_Normal.png">
+				<upperleft>80 1</upperleft>
+				<lowerright>208 119</lowerright>
+				<anchorcoord>80.16162 45.21408</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

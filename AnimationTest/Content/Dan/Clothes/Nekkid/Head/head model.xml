@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Head Nekkid</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints />
+		<images>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>159 187</lowerright>
+				<anchorcoord>63 131</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Head\HeadFront.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>165 182</lowerright>
+				<anchorcoord>73 118</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Head\HeadSide.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+			<Item Type="AnimationLib.ImageXML">
+				<upperleft>0 0</upperleft>
+				<lowerright>137 173</lowerright>
+				<anchorcoord>63 129</anchorcoord>
+				<filename>Dan\Clothes\Nekkid\Head\HeadBack.png</filename>
+				<joints />
+				<circles />
+				<lines />
+			</Item>
+		</images>
+		<bones />
+		<parentBone>Head</parentBone>
+	</Asset>
+</XnaContent>

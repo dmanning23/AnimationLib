@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="front" length="0.1">
+			<keys />
+		</animation>
+		<animation name="back" length="0.1">
+			<keys>
+				<key time="0" joint="Shield" layer="-11" image="shield" />
+				<key time="6" joint="Shield" layer="-11" image="shield" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="forearm" length="0.1">
+			<keys />
+		</animation>
+	</animations>
+</animationContainer>

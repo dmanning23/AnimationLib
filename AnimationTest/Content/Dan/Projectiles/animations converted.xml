@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.AnimationContainerXML">
+		<animations>
+			<Item Type="AnimationLib.AnimationXML">
+				<name>spin</name>
+				<length>0.7</length>
+				<keys>
+					<Item Type="AnimationLib.KeyXML">
+						<time>0</time>
+						<rotation>0</rotation>
+						<layer>-1</layer>
+						<image>book.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>wind</joint>
+					</Item>
+					<Item Type="AnimationLib.KeyXML">
+						<time>42</time>
+						<rotation>360</rotation>
+						<layer>-1</layer>
+						<image>book.png</image>
+						<flip>false</flip>
+						<translation>0 0</translation>
+						<ragdoll>false</ragdoll>
+						<joint>wind</joint>
+					</Item>
+				</keys>
+			</Item>
+		</animations>
+	</Asset>
+</XnaContent>

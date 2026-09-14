@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="HeadFront" length="0.1">
+			<keys>
+				<key joint="Head Nekkid" layer="-1" image="HeadFront.png" />
+				<key joint="l bang" layer="2" image="RBang.png" flip="true" ragdoll="true" />
+				<key joint="l bang 2" layer="1" image="BangDark.png" flip="true" ragdoll="true" />
+				<key joint="r bang" layer="-1" image="RBang.png" ragdoll="true" />
+				<key joint="r bang 2" layer="-2" image="RBang.png" ragdoll="true" />
+				<key joint="ponytail" layer="1000" image="Ponytail.png" ragdoll="true" />
+				<key joint="bow" layer="1" image="BowThing.png" ragdoll="true" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

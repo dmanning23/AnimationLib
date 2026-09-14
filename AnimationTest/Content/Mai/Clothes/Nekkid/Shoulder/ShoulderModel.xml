@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<skeleton>
+	<garmentbone name="Shoulder Nekkid">
+		<images>
+			<image imageFile1="ShoulderFront.png">
+				<lowerright>64 64</lowerright>
+				<anchorcoord>52 18</anchorcoord>
+			</image>
+		</images>
+	</garmentbone>
+</skeleton>

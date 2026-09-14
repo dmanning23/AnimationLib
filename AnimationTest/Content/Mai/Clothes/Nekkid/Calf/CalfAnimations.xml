@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="CalfFront" length="0.1">
+			<keys>
+				<key joint="Calf Nekkid" layer="-1" image="CalfFront.png" />
+			</keys>
+		</animation>
+		<animation name="CalfSide" length="0.1">
+			<keys>
+				<key joint="Calf Nekkid" layer="-1" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

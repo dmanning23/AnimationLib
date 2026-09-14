@@ -1,0 +1,1573 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="SPFSettings.StateActionListXML">
+		<states>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Stunned</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\LeftWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Stunned</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.EvadeActionXML">
+						<type>Evade</type>
+						<time>0</time>
+						<timeDelta>0.15</timeDelta>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.45</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>TurningAround</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Turning Around Falling</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.1</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Quick</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\LeftWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flick</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.07</time>
+						<boneName>Left Weapon</boneName>
+						<direction>150 -150</direction>
+						<damage>0.1</damage>
+						<timeDelta>0.06</timeDelta>
+						<hitSound></hitSound>
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.25</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>QuickUp</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\LeftWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flickup</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.045</time>
+						<boneName>Left Weapon</boneName>
+						<direction>75 -450</direction>
+						<damage>0.2</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound></hitSound>
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.05</time>
+						<direction>
+							<velocity>0 -400</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.3</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>QuickDown</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flickdown</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.05</time>
+						<direction>
+							<velocity>0 200</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.08</time>
+						<boneName>Left Foot Nekkid</boneName>
+						<direction>140 350</direction>
+						<damage>0.12</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound></hitSound>
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.34</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>QuickForward</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flickforward</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.05</time>
+						<direction>
+							<velocity>400 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.07</time>
+						<boneName>Right Weapon</boneName>
+						<direction>320 -100</direction>
+						<damage>0.1</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound></hitSound>
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.35</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>QuickBack</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>flickback</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>0 150</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.29</time>
+						<boneName>Right Weapon</boneName>
+						<direction>150 360</direction>
+						<damage>0.1</damage>
+						<timeDelta>0.12</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.5</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Strong</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>50 200</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.2</time>
+						<boneName>Right Weapon</boneName>
+						<direction>100 200</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.08</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.35</time>
+						<boneName>Right Weapon</boneName>
+						<direction>100 420</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.65</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>StrongUp</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong up</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>250 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.25</time>
+						<boneName>Right Weapon</boneName>
+						<direction>75 -450</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.12</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.43</time>
+						<boneName>Right Weapon</boneName>
+						<direction>50 -550</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.45</time>
+						<direction>
+							<velocity>0 -250</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.7</time>
+						<boneName>Right Weapon</boneName>
+						<direction>150 -500</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>1</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>StrongDown</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\LeftWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong down</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.28</time>
+						<direction>
+							<velocity>0 800</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.3</time>
+						<boneName>Left Foot Nekkid</boneName>
+						<direction>70 250</direction>
+						<damage>0.14</damage>
+						<timeDelta>0.2</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.6</time>
+						<boneName>Right Foot Nekkid</boneName>
+						<direction>150 400</direction>
+						<damage>0.14</damage>
+						<timeDelta>0.2</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.85</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>StrongForward</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong forward</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>250 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.25</time>
+						<boneName>Right Weapon</boneName>
+						<direction>170 -100</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.1</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.4</time>
+						<boneName>Right Weapon</boneName>
+						<direction>350 -150</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.2</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.73</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>StrongBack</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>strong back</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>400 -200</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>500 -5000</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-500 5000</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0.1</time>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0.1</time>
+						<direction>0 0</direction>
+						<minYVelocity>0</minYVelocity>
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.22</time>
+						<boneName>Right Weapon</boneName>
+						<direction>-230 -150</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.08</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.4</time>
+						<boneName>Right Weapon</boneName>
+						<direction>230 -150</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.CreateAttackActionXML">
+						<type>CreateAttack</type>
+						<time>0.7</time>
+						<boneName>Right Weapon</boneName>
+						<direction>400 -200</direction>
+						<damage>0.13</damage>
+						<timeDelta>0.15</timeDelta>
+						<hitSound />
+						<successActions />
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>1</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Special</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\LeftWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.3</time>
+						<filename>Carrie\Projectiles\data.xml</filename>
+						<startOffset>300 -100</startOffset>
+						<scale>1</scale>
+						<direction>
+							<velocity>2000 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>SpecialUp</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>high fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.3</time>
+						<filename>Carrie\Projectiles\data.xml</filename>
+						<startOffset>0 -350</startOffset>
+						<scale>1</scale>
+						<direction>
+							<velocity>0 -1500</velocity>
+							<directionType>Relative</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>SpecialDown</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>low fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.35</time>
+						<filename>Carrie\Projectiles\data.xml</filename>
+						<startOffset>250 150</startOffset>
+						<scale>1</scale>
+						<direction>
+							<velocity>0 1500</velocity>
+							<directionType>Relative</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>SpecialForward</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\LeftWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.46</time>
+						<filename>Carrie\Projectiles\data.xml</filename>
+						<startOffset>300 -100</startOffset>
+						<scale>1</scale>
+						<direction>
+							<velocity>1500 0</velocity>
+							<directionType>Relative</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>SpecialBack</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\LeftWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>back fireball</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ProjectileActionXML">
+						<type>Projectile</type>
+						<time>0.46</time>
+						<filename>Carrie\Projectiles\data back.xml</filename>
+						<startOffset>-200 -200</startOffset>
+						<scale>1</scale>
+						<direction>
+							<velocity>-1300 -950</velocity>
+							<directionType>Relative</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.9</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>SwitchToGroundStateMachine</name>
+				<actions>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>SwitchToUpStateMachine</name>
+				<actions>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Evade</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>evade</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="SPFSettings.EvadeActionXML">
+						<type>Evade</type>
+						<time>0</time>
+						<timeDelta>0.6</timeDelta>
+					</Item>
+					<Item Type="SPFSettings.TrailActionXML">
+						<type>Trail</type>
+						<time>0</time>
+						<R>255</R>
+						<G>255</G>
+						<B>255</B>
+						<A>150</A>
+						<lifeDelta>0.4</lifeDelta>
+						<spawnDelta>0.1</spawnDelta>
+						<timeDelta>0.6</timeDelta>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0.45</time>
+						<animation>Turning Around Falling</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.6</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Falling</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Falling</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>1200 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-1200 2000</direction>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Float</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Float</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>400 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-400 800</direction>
+						<minYVelocity>3000</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Dive</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Dive</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>400 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>0</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-400 3500</direction>
+						<minYVelocity>4500</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Glide</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Glide</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantAccelerationActionXML">
+						<type>ConstantAcceleration</type>
+						<time>0</time>
+						<direction>
+							<velocity>1500 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<maxVelocity>800</maxVelocity>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-400 1200</direction>
+						<minYVelocity>2500</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>Brake</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Falling</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="SPFSettings.ConstantDeccelerationActionXML">
+						<type>ConstantDecceleration</type>
+						<time>0</time>
+						<direction>-800 1200</direction>
+						<minYVelocity>2500</minYVelocity>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>FlyUp</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>FlyUp</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.SetVelocityActionXML">
+						<type>SetVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>0 -1100</velocity>
+							<directionType>Controller</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0</time>
+						<bone>Crotch</bone>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<StartOffset>0 400</StartOffset>
+						<UseBoneRotation>False</UseBoneRotation>
+						<emitter>
+							<Item Type="ParticleBuddy.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>255</Alpha>
+								<FadeSpeed>2.5</FadeSpeed>
+								<MaxVelocity>200 0</MaxVelocity>
+								<MinVelocity>-200 0</MinVelocity>
+								<ParticleSize>300</ParticleSize>
+								<Scale>-400 -100</Scale>
+								<StartRotation>-180 -180</StartRotation>
+								<Spin>0 0</Spin>
+								<NumStartParticles>1</NumStartParticles>
+								<EmitterLife>0.3</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.1</CreationPeriod>
+								<ParticleGrav>0</ParticleGrav>
+								<BmpFileName>Particles\airdash vertical.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.3</time>
+						<direction>
+							<velocity>0 800</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.3</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>FlyDown</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>FlyDown</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.SetVelocityActionXML">
+						<type>SetVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>0 1900</velocity>
+							<directionType>Controller</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0</time>
+						<bone>Crotch</bone>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<StartOffset>0 -400</StartOffset>
+						<UseBoneRotation>False</UseBoneRotation>
+						<emitter>
+							<Item Type="ParticleBuddy.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>255</Alpha>
+								<FadeSpeed>2.5</FadeSpeed>
+								<MaxVelocity>200 0</MaxVelocity>
+								<MinVelocity>-200 0</MinVelocity>
+								<ParticleSize>300</ParticleSize>
+								<Scale>-400 -100</Scale>
+								<StartRotation>0 0</StartRotation>
+								<Spin>0 0</Spin>
+								<NumStartParticles>1</NumStartParticles>
+								<EmitterLife>0.3</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.1</CreationPeriod>
+								<ParticleGrav>0</ParticleGrav>
+								<BmpFileName>Particles\airdash vertical.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.3</time>
+						<direction>
+							<velocity>0 -500</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.3</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>FlyForward</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>FlyForward</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.SetVelocityActionXML">
+						<type>SetVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>1300 -50</velocity>
+							<directionType>Controller</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0</time>
+						<bone>Chesticle</bone>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<StartOffset>-200 0</StartOffset>
+						<UseBoneRotation>False</UseBoneRotation>
+						<emitter>
+							<Item Type="ParticleBuddy.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>255</Alpha>
+								<FadeSpeed>2.5</FadeSpeed>
+								<MaxVelocity>0 -300</MaxVelocity>
+								<MinVelocity>0 300</MinVelocity>
+								<ParticleSize>300</ParticleSize>
+								<Scale>-400 -100</Scale>
+								<StartRotation>0 0</StartRotation>
+								<Spin>0 0</Spin>
+								<NumStartParticles>1</NumStartParticles>
+								<EmitterLife>0.3</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.1</CreationPeriod>
+								<ParticleGrav>0</ParticleGrav>
+								<BmpFileName>Particles\airdash.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.3</time>
+						<direction>
+							<velocity>-500 -50</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.3</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>FlyBack</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>FlyBack</animation>
+						<playback>Loop</playback>
+					</Item>
+					<Item Type="SPFSettings.SetVelocityActionXML">
+						<type>SetVelocity</type>
+						<time>0</time>
+						<direction>
+							<velocity>-1700 -50</velocity>
+							<directionType>Controller</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0</time>
+						<bone>Chesticle</bone>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<StartOffset>100 0</StartOffset>
+						<UseBoneRotation>False</UseBoneRotation>
+						<emitter>
+							<Item Type="ParticleBuddy.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>255</Alpha>
+								<FadeSpeed>2.5</FadeSpeed>
+								<MaxVelocity>0 -300</MaxVelocity>
+								<MinVelocity>0 300</MinVelocity>
+								<ParticleSize>300</ParticleSize>
+								<Scale>-400 -100</Scale>
+								<StartRotation>180 180</StartRotation>
+								<Spin>0 0</Spin>
+								<NumStartParticles>1</NumStartParticles>
+								<EmitterLife>0.3</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.1</CreationPeriod>
+								<ParticleGrav>0</ParticleGrav>
+								<BmpFileName>Particles\airdash.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+					<Item Type="SPFSettings.AddVelocityActionXML">
+						<type>AddVelocity</type>
+						<time>0.3</time>
+						<direction>
+							<velocity>500 -50</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.3</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+			<Item Type="SPFSettings.StateActionsXML">
+				<name>HitGroundState</name>
+				<actions>
+					<Item Type="SPFSettings.AddGarmentActionXML">
+						<type>AddGarment</type>
+						<time>0</time>
+						<timeDelta>-1</timeDelta>
+						<garmentFile>Carrie\clothes\RightWeapon.xml</garmentFile>
+					</Item>
+					<Item Type="SPFSettings.PlayAnimationActionXML">
+						<type>PlayAnimation</type>
+						<time>0</time>
+						<animation>Hit Ground</animation>
+						<playback>Forwards</playback>
+					</Item>
+					<Item Type="SPFSettings.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0</time>
+						<bone>Left Foot</bone>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<StartOffset>0 0</StartOffset>
+						<UseBoneRotation>False</UseBoneRotation>
+						<emitter>
+							<Item Type="ParticleBuddy.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>255</Alpha>
+								<FadeSpeed>2</FadeSpeed>
+								<MaxVelocity>150 -30</MaxVelocity>
+								<MinVelocity>-150 10</MinVelocity>
+								<ParticleSize>50</ParticleSize>
+								<Scale>-80 -20</Scale>
+								<StartRotation>0 0</StartRotation>
+								<Spin>0 0</Spin>
+								<NumStartParticles>15</NumStartParticles>
+								<EmitterLife>0.15</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.02</CreationPeriod>
+								<ParticleGrav>-100</ParticleGrav>
+								<BmpFileName>Particles\circle.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+					<Item Type="SPFSettings.ParticleEffectActionXML">
+						<type>ParticleEffect</type>
+						<time>0</time>
+						<bone>Right Foot</bone>
+						<direction>
+							<velocity>0 0</velocity>
+							<directionType>Absolute</directionType>
+						</direction>
+						<StartOffset>0 0</StartOffset>
+						<UseBoneRotation>False</UseBoneRotation>
+						<emitter>
+							<Item Type="ParticleBuddy.ParticleXML">
+								<R>255</R>
+								<G>255</G>
+								<B>255</B>
+								<Alpha>255</Alpha>
+								<FadeSpeed>2</FadeSpeed>
+								<MaxVelocity>150 -30</MaxVelocity>
+								<MinVelocity>-150 10</MinVelocity>
+								<ParticleSize>50</ParticleSize>
+								<Scale>-80 -20</Scale>
+								<StartRotation>0 0</StartRotation>
+								<Spin>0 0</Spin>
+								<NumStartParticles>15</NumStartParticles>
+								<EmitterLife>0.15</EmitterLife>
+								<ParticleLife>1</ParticleLife>
+								<CreationPeriod>0.02</CreationPeriod>
+								<ParticleGrav>-100</ParticleGrav>
+								<BmpFileName>Particles\circle.png</BmpFileName>
+							</Item>
+						</emitter>
+					</Item>
+					<Item Type="SPFSettings.SendStateMessageActionXML">
+						<type>SendStateMessage</type>
+						<time>0.1</time>
+						<message>Done</message>
+					</Item>
+				</actions>
+			</Item>
+		</states>
+	</Asset>
+</XnaContent>
