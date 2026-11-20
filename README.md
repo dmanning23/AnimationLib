@@ -4,6 +4,16 @@ A skeletal-based 2D animation system for [MonoGame](https://www.monogame.net/). 
 
 It also includes an optional Verlet-integration ragdoll/physics layer, so a skeleton can blend scripted keyframe animation with physics-driven limb movement (e.g. a cape or ponytail that reacts to gravity).
 
+## Where to start
+
+| If you want to… | Look at |
+|---|---|
+| See the minimum code needed to load a character and play an animation | [AnimationLib.Example](AnimationLib.Example/Game1.cs) — a bare-bones MonoGame game, heavily commented |
+| See the more advanced features in action: dynamic lighting, switching animations and playback modes, the Garment system, ragdoll physics, debug overlays | [AnimationTest](AnimationTest/Game1.cs) — a full-featured sample app |
+| Create and edit skeletons, animations, and garments | [AnimationTool](https://github.com/dmanning23/AnimationTool) — the companion editor for authoring AnimationLib content |
+
+The recommended path is: build your character in **AnimationTool**, copy the pattern from **AnimationLib.Example** to get it on screen, then borrow from **AnimationTest** as you need lighting, garments, and the rest.
+
 ## Features
 
 - **Skeletal hierarchy** — a `Skeleton` of parent/child `Bone`s connected at `Joint`s, each bone carrying one or more `Image`s that can be swapped per-frame.
@@ -50,42 +60,79 @@ AnimationLib also depends on several other packages from the same author, all pu
 
 ```
 AnimationLib/            The library (this is what ships as the NuGet package)
+AnimationLib.Example/    Bare-bones sample: load a character and play one animation
+AnimationTest/           Advanced sample: lighting, garments, animation switching, physics overlays
 AnimationLib.Tests/      NUnit test suite, with sample skeleton/animation content
-AnimationTest/           A runnable MonoGame sample app that loads and plays a character
 ```
 
 ## Quick start
 
-The typical flow is: create an `AnimationContainer`, load a skeleton file, load an animations file, optionally add garments, then update/render it each frame.
+This is a condensed version of [AnimationLib.Example/Game1.cs](AnimationLib.Example/Game1.cs) — open that file for the complete, runnable version.
+
+You need four things: a `GameClock` to drive time, an `AnimationContainer` for the character, a `DrawList` to collect sprites, and a `Renderer` (from RenderBuddy) to draw them.
 
 ```csharp
 using AnimationLib;
+using DrawListBuddy;
 using FilenameBuddy;
+using GameTimer;
+using RenderBuddy;
+using ResolutionBuddy;
 
-// renderer implements RenderBuddy.IRenderer and is used to load images
-var animations = new AnimationContainer(scale: 1f);
-
-var modelFile = new Filename(@"Content\Character\CharacterModel.xml");
-var animFile = new Filename(@"Content\Character\CharacterAnimations.xml");
-
-animations.ReadSkeletonXml(modelFile, renderer);
-animations.ReadAnimationXml(animFile);
-
-// optionally layer a garment onto the loaded skeleton
-var garmentFile = new Filename(@"Content\Character\Clothes\Shirt.xml");
-var garment = new Garment(garmentFile, animations.Skeleton, renderer);
-garment.AddToSkeleton();
-
-animations.SetAnimation("Walk", EPlayback.Loop);
+GameClock _clock = new GameClock();
+AnimationContainer _character = new AnimationContainer();
+DrawList _drawList = new DrawList();
+Renderer _renderer;
 ```
 
-Each frame:
+**LoadContent** — set up the renderer, then load the skeleton *before* the animations (animations refer to the skeleton's bones):
 
 ```csharp
-animations.Update(clock, position, isFlipped, rotation, ignoreRagdoll: false);
-animations.UpdateRagdoll(); // only needed if the model uses physics/ragdoll bones
-animations.Render(drawList);
+_renderer = new Renderer(this, Content);
+_renderer.LoadContent(GraphicsDevice);
+
+// Paths are relative to the Content folder
+_character.ReadSkeletonXml(new Filename("MegaMan/MegaManModel.xml"), _renderer, Content);
+_character.ReadAnimationXml(new Filename("MegaMan/MegaManAnimations.xml"), Content);
+
+// Animation names come from the animation file
+_character.SetAnimation("Walking", EPlayback.Loop);
+
+_clock.Start();
 ```
+
+**Update** — advance the clock, pose the skeleton, then run ragdoll physics:
+
+```csharp
+_clock.Update(gameTime);
+_character.Update(_clock, position, isFlipped: false, rotation: 0f, ignoreRagdoll: false);
+_character.UpdateRagdoll(); // after Update, every frame
+```
+
+**Draw** — render the character into the draw list, then draw the list through the renderer:
+
+```csharp
+_drawList.Flush();
+_character.Render(_drawList);
+
+_renderer.SpriteBatchBegin(BlendState.AlphaBlend,
+    _renderer.Camera.TranslationMatrix * Resolution.TransformationMatrix());
+_drawList.Render(_renderer);
+_renderer.SpriteBatchEnd();
+```
+
+> The Renderer's lighting shader needs `GraphicsProfile.HiDef`, and the sample uses [ResolutionBuddy](https://github.com/dmanning23/ResolutionBuddy)'s `ResolutionComponent` for a fixed virtual resolution. See the Example's constructor for both.
+
+### Adding garments
+
+Garments layer extra pieces (clothes, weapons, accessories) onto an already-loaded skeleton:
+
+```csharp
+var garment = new Garment(new Filename("Character/Clothes/Shirt.xml"), _character.Skeleton, _renderer, Content);
+garment.AddToSkeleton();
+```
+
+[AnimationTest](AnimationTest/Game1.cs) shows loading several garments, removing them, and loading them from JSON.
 
 `AnimationsLoader` wraps this same pattern (skeleton + animations + garments + additional animation sets) if you'd rather work with one loader object per character. Loading JSON content instead of XML uses the `*Json` equivalents (`ReadSkeletonJson`, `ReadAnimationJson`, `SaveJson`, etc.).
 
@@ -101,11 +148,23 @@ animations.Render(drawList);
 
 ## Content format
 
+The easiest way to create content is with [AnimationTool](https://github.com/dmanning23/AnimationTool), which edits skeletons, animations, and garments visually and saves them in the formats below.
+
 Skeletons, animations, and garments are serialized as either XML (`XnaContent`/`AnimationLib.*XML` assets, MonoGame content-pipeline style) or JSON. A skeleton file describes the bone hierarchy — each bone's joints, images, and physics data (attachment points, rotation limits, collision circles/lines). An animations file describes one or more named animations as a list of keyframes per joint (time, image, layer, rotation, translation, flip, ragdoll flag). See [AnimationLib.Tests/Content/SuperSimple](AnimationLib.Tests/Content/SuperSimple) for a minimal working example of both.
 
-## Sample app
+## Sample apps
 
-[AnimationTest](AnimationTest/Game1.cs) is a small MonoGame program that loads a sample character and lets you interact with it:
+### AnimationLib.Example — bare bones
+
+[AnimationLib.Example](AnimationLib.Example/Game1.cs) is the smallest possible game that loads a character and loops one animation. Every step is commented; start here.
+
+```
+dotnet run --project AnimationLib.Example
+```
+
+### AnimationTest — advanced features
+
+[AnimationTest](AnimationTest/Game1.cs) loads a sample character with garments, dynamic point lights (including flickering fire and flare lights), and lets you interact with it:
 
 | Key | Action |
 |---|---|
@@ -146,4 +205,4 @@ dotnet test AnimationLib.Tests
 
 ## License
 
-MIT — see the [PackageLicenseExpression](AnimationLib/AnimationLib.csproj) in the project file.
+MIT — see [LICENSE](LICENSE).
