@@ -1,4 +1,4 @@
-﻿using MathNet.Numerics;
+using MathNet.Numerics;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using Shouldly;

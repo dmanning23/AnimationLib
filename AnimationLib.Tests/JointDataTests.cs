@@ -13,7 +13,7 @@ namespace Animationlib.Tests
 		[SetUp]
 		public void Setup()
 		{
-			Filename.SetCurrentDirectory(@"C:\Projects\animationlib\AnimationLib\AnimationLib.Tests\Content\");
+			Filename.SetCurrentDirectory(System.IO.Path.Combine(TestContext.CurrentContext.TestDirectory, "Content") + System.IO.Path.DirectorySeparatorChar);
 
 			AnimationContainer test = new AnimationContainer();
 			Filename testFile = new Filename();

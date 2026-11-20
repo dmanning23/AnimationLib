@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentXML">
+		<name>Metal Stock</name>
+		<fragments>
+			<Item Type="AnimationLib.GarmentFragmentXML">
+				<model>Gun\Metal Stock Model.xml</model>
+				<animation>Gun\Empty Animations.xml</animation>
+				<parentBone>Chesticle</parentBone>
+			</Item>
+		</fragments>
+	</Asset>
+</XnaContent>

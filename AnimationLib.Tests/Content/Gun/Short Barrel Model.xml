@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Short Barrel</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints />
+		<images />
+		<bones />
+	</Asset>
+</XnaContent>

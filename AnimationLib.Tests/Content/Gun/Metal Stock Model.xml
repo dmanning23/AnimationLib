@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<XnaContent>
+	<Asset Type="AnimationLib.GarmentBoneXML">
+		<name>Metal Stock</name>
+		<type>Normal</type>
+		<colorable>false</colorable>
+		<joints>
+			<Item Type="AnimationLib.JointXML">
+				<name>BarrelMount</name>
+			</Item>
+		</joints>
+		<images />
+		<bones>
+			<Item Type="AnimationLib.BoneXML">
+				<name>BarrelMount</name>
+				<type>Normal</type>
+				<colorable>false</colorable>
+				<joints />
+				<images />
+				<bones />
+			</Item>
+		</bones>
+	</Asset>
+</XnaContent>

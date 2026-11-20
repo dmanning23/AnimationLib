@@ -19,6 +19,16 @@ namespace AnimationLib
         /// </summary>
         private int _currentLayer;
 
+        /// <summary>
+        /// The character skeleton this garment attaches to
+        /// </summary>
+        private Skeleton _characterSkeleton;
+
+        /// <summary>
+        /// The name of the bone this garment attaches to. Resolved when the garment is added to the skeleton.
+        /// </summary>
+        private string _parentBoneName;
+
         #endregion //Fields
 
         #region Properties
@@ -80,6 +90,22 @@ namespace AnimationLib
         /// </summary>
         public void AddToSkeleton()
         {
+            //Resolve the parent bone now, rather than at load time.
+            //The parent may live inside another garment (e.g. a gun barrel attached to a gun stock),
+            //and those bones are only reachable once that garment has been added to the skeleton.
+            var parentBone = FindParentBone();
+            if (null == parentBone)
+            {
+                throw new Exception($"Unable to find parent bone {_parentBoneName} for {GarmentName}. If it belongs to another garment, add that garment to the skeleton first.");
+            }
+
+            //If this garment is attached to a different bone (e.g. the parent garment was swapped out), move it
+            if (!ReferenceEquals(parentBone, GarmentSkeleton.ParentBone))
+            {
+                GarmentSkeleton.RemoveFromSkeleton();
+                BindParentBone(parentBone);
+            }
+
             //add all the garment bones to the bones they attach to
             GarmentSkeleton.AddToSkeleton();
         }
@@ -167,15 +193,26 @@ namespace AnimationLib
         /// </summary>
         public void SetGarmentBones(Skeleton characterSkeleton, string parentBoneName)
         {
-            //find a Bone with the same name as the garment bone
-            var myGarmentBone = GarmentSkeleton;
-            var parentBone = characterSkeleton.RootBone.GetBone(parentBoneName);
+            _characterSkeleton = characterSkeleton;
+            _parentBoneName = parentBoneName;
 
-            if (null == parentBone)
+            //Try to bind now. If the parent bone is inside another garment that hasn't been added yet,
+            //this will fail and the bone gets bound later in AddToSkeleton.
+            var parentBone = FindParentBone();
+            if (null != parentBone)
             {
-                throw new Exception($"Unable to find parent bone {parentBoneName} in {Name}");
+                BindParentBone(parentBone);
             }
+        }
 
+        private Bone FindParentBone()
+        {
+            return _characterSkeleton?.RootBone?.GetBone(_parentBoneName);
+        }
+
+        private void BindParentBone(Bone parentBone)
+        {
+            var myGarmentBone = GarmentSkeleton;
             myGarmentBone.ParentBone = parentBone;
 
             //Make sure the garment bone has the correct animations
