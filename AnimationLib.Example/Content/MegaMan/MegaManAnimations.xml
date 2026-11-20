@@ -1,0 +1,989 @@
+<?xml version="1.0"?>
+<animationContainer>
+	<animations>
+		<animation name="NEUTRAL side" length="0.1">
+			<keys>
+				<key joint="Crotch" layer="-100" image="CrotchFront" />
+				<key joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" />
+				<key joint="Head" layer="-1" image="HeadFront" />
+				<key joint="Face" layer="-1" image="Face Normal" />
+				<key joint="Left Bicep" rotation="-0.2794395" layer="1011" image="BicepFront" />
+				<key joint="Left Forearm" rotation="0.51421934" layer="1" image="Forearm Front" />
+				<key joint="Left Hand" rotation="0.45328325" layer="-1" image="Fist Thumb" />
+				<key joint="Right Bicep" rotation="0.4610619" layer="-211" image="BicepFront" />
+				<key joint="Right Forearm" rotation="0.44366816" layer="-1" image="Forearm Front" />
+				<key joint="Right Hand" layer="-1" image="Fist Thumb" />
+				<key joint="Left Thigh" layer="100" image="ThighFront" />
+				<key joint="Left Calf" rotation="-0.24490304" layer="-1" image="Calf Front" />
+				<key joint="Left Foot" layer="-1" image="Foot Side" />
+				<key joint="Right Thigh" rotation="-1.397181" layer="-99" image="ThighFront" />
+				<key joint="Right Calf" rotation="-0.4234859" layer="-1" image="Calf Front" />
+				<key joint="Right Foot" rotation="0.19601603" layer="-1" image="Foot Front" />
+			</keys>
+		</animation>
+		<animation name="NEUTRAL front" length="0.1">
+			<keys>
+				<key joint="Crotch" layer="-100" image="CrotchFront" />
+				<key joint="Torso" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" layer="-1000" image="ThighFront" />
+			</keys>
+		</animation>
+		<animation name="NEUTRAL back" length="0.1">
+			<keys>
+				<key joint="Crotch" layer="-100" />
+				<key joint="Torso" layer="-2000" />
+				<key joint="Left Thigh" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="-2.713887" layer="-1000" image="ThighFront" />
+			</keys>
+		</animation>
+		<animation name="Standing" length="0.8">
+			<keys>
+				<key joint="Crotch" layer="-100" image="CrotchFront" />
+				<key joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" />
+				<key joint="Face" layer="-1" image="Face Normal" />
+				<key joint="Left Bicep" rotation="-32.044373" layer="1011" image="BicepFront" />
+				<key joint="Right Foot" rotation="-29.423397" layer="-1" image="Foot Front" translation="-0.30684173 -3.5594072" />
+				<key joint="Right Bicep" rotation="67.20296" layer="-211" image="BicepFront" translation="5.8223534 -3.2586567" />
+				<key joint="Left Forearm" rotation="-19.048328" layer="1" image="Forearm Front" />
+				<key joint="Left Hand" rotation="-56.079216" layer="-1" image="Fist Thumb" />
+				<key joint="Head" layer="-1" image="HeadFront" />
+				<key joint="Right Forearm" rotation="-39.480606" layer="-1" image="Forearm Front" />
+				<key joint="Right Hand" layer="-1" image="Fist Thumb" />
+				<key joint="Left Thigh" rotation="-62.764854" layer="100" image="ThighFront" />
+				<key joint="Left Calf" rotation="64.098946" layer="-1" image="Calf Front" translation="4.0759525 -1.9948452" />
+				<key joint="Left Foot" layer="-1" image="Foot Side" />
+				<key joint="Right Thigh" rotation="36.67435" layer="1" image="ThighFront" />
+				<key joint="Right Calf" rotation="-11.611486" layer="-1" image="Calf Front" />
+				<key time="21" joint="Left Forearm" rotation="-49.106564" layer="1" image="Forearm Front" />
+				<key time="21" joint="Right Bicep" rotation="75.17653" layer="-211" image="BicepFront" translation="5.8223534 -3.2586567" />
+				<key time="21" joint="Right Forearm" rotation="-70.916435" layer="-1" image="Forearm Front" />
+				<key time="21" joint="Left Bicep" rotation="-26.578648" layer="1011" image="BicepFront" />
+				<key time="21" joint="Left Thigh" rotation="-64.74684" layer="100" image="ThighFront" translation="5 2" />
+				<key time="21" joint="Crotch" layer="-100" image="CrotchFront" translation="-3 0" />
+				<key time="21" joint="Right Thigh" rotation="31.607502" layer="1" image="ThighFront" translation="3 3" />
+				<key time="21" joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" translation="4 -2" />
+				<key time="48" joint="Right Forearm" rotation="-39.480606" layer="-1" image="Forearm Front" />
+				<key time="48" joint="Left Bicep" rotation="-32.044373" layer="1011" image="BicepFront" />
+				<key time="48" joint="Right Bicep" rotation="67.20296" layer="-211" image="BicepFront" translation="5.8223534 -3.2586567" />
+				<key time="48" joint="Left Thigh" rotation="-64.74684" layer="100" image="ThighFront" />
+				<key time="48" joint="Crotch" layer="-100" image="CrotchFront" />
+				<key time="48" joint="Left Forearm" rotation="-19.048328" layer="1" image="Forearm Front" />
+				<key time="48" joint="Right Thigh" rotation="31.607502" layer="1" image="ThighFront" />
+				<key time="48" joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" />
+			</keys>
+		</animation>
+		<animation name="Walking" length="0.7">
+			<keys>
+				<key joint="Crotch" layer="-100" image="CrotchFront" />
+				<key joint="Head" layer="-1" image="HeadFront" />
+				<key joint="Face" layer="-1" image="Face Normal" />
+				<key joint="Right Foot" rotation="48.158676" layer="-1" image="Foot Side" translation="0.9537811 7.5571456" />
+				<key joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" />
+				<key joint="Left Calf" rotation="7.3521905" layer="-1" image="Calf Front" translation="6.509862 0.9020643" />
+				<key joint="Right Calf" rotation="57.764378" layer="-1" image="Calf Front" translation="7.5062594 -3.5093365" />
+				<key joint="Left Forearm" rotation="-80.67932" layer="1" image="Forearm Front" />
+				<key joint="Left Bicep" rotation="-49.18742" layer="1011" image="BicepFront" />
+				<key joint="Right Bicep" rotation="101.663925" layer="-311" image="BicepFront" translation="4.686649 0.70494974" />
+				<key joint="Right Thigh" rotation="51.632515" layer="-99" image="ThighFront" translation="-1 10" />
+				<key joint="Right Forearm" rotation="-46.611427" layer="-1" image="Forearm Front" />
+				<key joint="Left Foot" rotation="-3.1441789" layer="-1" image="Foot Side" translation="-1.4300213 6.6993446" />
+				<key joint="Right Hand" layer="-1" image="Fist Thumb" />
+				<key joint="Left Thigh" rotation="-43.958374" layer="100" image="ThighFront" />
+				<key joint="Left Hand" rotation="-56.079216" layer="-1" image="Fist Thumb" />
+				<key time="9" joint="Left Thigh" rotation="-4.9749937" layer="100" image="ThighFront" translation="4.026923 12.356742" />
+				<key time="9" joint="Left Bicep" rotation="-53.15067" layer="1011" image="BicepFront" />
+				<key time="9" joint="Left Foot" rotation="-8.925985" layer="-1" image="Foot Side" translation="-0.75264275 3.525971" />
+				<key time="9" joint="Right Calf" rotation="112.32827" layer="-1" image="Calf Front" translation="-1.9402673 -5.9816685" />
+				<key time="9" joint="Left Forearm" rotation="-118.13005" layer="1" image="Forearm Front" />
+				<key time="9" joint="Left Calf" rotation="-1.5983949" layer="-1" image="Calf Front" translation="6.509862 0.9020643" />
+				<key time="9" joint="Right Foot" rotation="83.94321" layer="-1" image="Foot Side" translation="0.9537811 7.5571456" />
+				<key time="9" joint="Head" rotation="0.56532186" layer="-1" image="HeadFront" />
+				<key time="9" joint="Right Bicep" rotation="96.897354" layer="-211" image="BicepFront" />
+				<key time="9" joint="Crotch" rotation="15.037816" layer="-100" image="CrotchFront" />
+				<key time="9" joint="Torso" rotation="-15.9279" layer="1" image="TorsoFront" />
+				<key time="9" joint="Right Forearm" rotation="-136.10172" layer="-1" image="Forearm Front" />
+				<key time="9" joint="Right Thigh" rotation="-56.963085" layer="-99" image="ThighFront" translation="-8.107943 10.182019" />
+				<key time="14" joint="Right Calf" rotation="116.846695" layer="-1" image="Calf Front" translation="3.855544 3.4497952" />
+				<key time="14" joint="Left Foot" rotation="-13.346121" layer="-1" image="Foot Side" translation="-0.37632138 1.7629855" />
+				<key time="14" joint="Right Thigh" rotation="-84.51261" layer="-99" image="ThighFront" translation="18.871037 7.0372143" />
+				<key time="14" joint="Left Thigh" rotation="16.618015" layer="100" image="ThighFront" translation="-5.560629 16.905394" />
+				<key time="14" joint="Left Calf" rotation="-8.760258" layer="-1" image="Calf Front" translation="6.509862 0.9020643" />
+				<key time="19" joint="Left Bicep" rotation="83.85037" layer="1011" image="BicepFront" translation="-24.008463 -9.187619" />
+				<key time="19" joint="Left Forearm" rotation="-40.98854" layer="1" image="Forearm Front" />
+				<key time="19" joint="Right Forearm" rotation="-46.611427" layer="-1" image="Forearm Front" />
+				<key time="19" joint="Head" layer="-1" image="HeadFront" translation="6.8800416 1.3558034" />
+				<key time="19" joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" />
+				<key time="19" joint="Crotch" layer="-100" image="CrotchFront" />
+				<key time="19" joint="Right Calf" rotation="-2.539943" layer="-1" image="Calf Front" translation="7.5062594 -3.5093365" />
+				<key time="19" joint="Left Thigh" rotation="38.211025" layer="100" image="ThighFront" />
+				<key time="19" joint="Left Foot" rotation="41.918842" layer="-1" image="Foot Side" />
+				<key time="19" joint="Left Calf" rotation="60.928818" layer="-1" image="Calf Front" translation="6.509862 0.9020643" />
+				<key time="19" joint="Right Bicep" rotation="-62.78972" layer="-211" image="BicepFront" translation="19.575727 4.2142754" />
+				<key time="19" joint="Right Thigh" rotation="-47.815556" layer="-99" image="ThighFront" translation="13 8" />
+				<key time="19" joint="Right Foot" rotation="-8.346929" layer="-1" image="Foot Side" translation="0.9537811 7.5571456" />
+				<key time="30" joint="Right Bicep" rotation="-25.251516" layer="-211" image="BicepFront" translation="25.572243 4.4187007" />
+				<key time="30" joint="Left Thigh" rotation="-72.52522" layer="100" image="ThighFront" translation="-24 9" />
+				<key time="30" joint="Right Foot" rotation="6.4410706" layer="-1" image="Foot Side" translation="1.4212065 8.323306" />
+				<key time="30" joint="Left Calf" rotation="125.94111" layer="-1" image="Calf Front" translation="2.255245 3.7271533" />
+				<key time="30" joint="Right Forearm" rotation="-125.41898" layer="-1" image="Forearm Front" />
+				<key time="30" joint="Left Foot" rotation="104.23775" layer="-1" image="Foot Side" translation="-0.68392324 3.2040346" />
+				<key time="30" joint="Right Calf" rotation="2.2424402" layer="-1" image="Calf Front" translation="7.5062594 -3.5093365" />
+				<key time="30" joint="Left Bicep" rotation="64.01625" layer="1011" image="BicepFront" translation="-32.106033 -6.46193" />
+				<key time="30" joint="Left Forearm" rotation="-116.04255" layer="1" image="Forearm Front" />
+				<key time="30" joint="Right Thigh" rotation="-11.023456" layer="-99" image="ThighFront" translation="8 9" />
+				<key time="36" joint="Left Calf" rotation="112.20513" layer="-1" image="Calf Front" translation="4.382553 2.3146086" />
+				<key time="36" joint="Right Foot" rotation="-36.80625" layer="-1" image="Foot Side" translation="7.5197554 6.888148" />
+				<key time="36" joint="Left Foot" rotation="26.743685" layer="-1" image="Foot Side" translation="-1.0569723 4.9516897" />
+				<key time="36" joint="Right Thigh" rotation="20.30453" layer="-99" image="ThighFront" translation="5 14" />
+				<key time="36" joint="Right Calf" rotation="17.256907" layer="-1" image="Calf Front" translation="7.5062594 -3.5093365" />
+				<key time="36" joint="Left Thigh" rotation="-91.684685" layer="100" image="ThighFront" translation="5 3" />
+				<key time="42" joint="Left Thigh" rotation="-43.958374" layer="100" image="ThighFront" />
+				<key time="42" joint="Right Thigh" rotation="51.632515" layer="-99" image="ThighFront" translation="-1 10" />
+				<key time="42" joint="Left Bicep" rotation="-49.18742" layer="1011" image="BicepFront" />
+				<key time="42" joint="Left Forearm" rotation="-80.67932" layer="1" image="Forearm Front" />
+				<key time="42" joint="Left Foot" rotation="-3.1441789" layer="-1" image="Foot Side" translation="-1.4300213 6.6993446" />
+				<key time="42" joint="Head" layer="-1" image="HeadFront" />
+				<key time="42" joint="Right Bicep" rotation="101.663925" layer="-311" image="BicepFront" translation="4.686649 0.70494974" />
+				<key time="42" joint="Right Calf" rotation="57.764378" layer="-1" image="Calf Front" translation="7.5062594 -3.5093365" />
+				<key time="42" joint="Left Calf" rotation="7.3521905" layer="-1" image="Calf Front" translation="6.509862 0.9020643" />
+				<key time="42" joint="Right Forearm" rotation="-46.611427" layer="-1" image="Forearm Front" />
+				<key time="42" joint="Right Foot" rotation="48.158676" layer="-1" image="Foot Side" translation="0.9537811 7.5571456" />
+			</keys>
+		</animation>
+		<animation name="Stunned" length="0.3">
+			<keys>
+				<key joint="Crotch" rotation="-32.21655" layer="-100" image="CrotchFront" />
+				<key joint="Head" rotation="13.253076" layer="-1" image="HeadFront" translation="14.323256 8.635399" />
+				<key joint="Face" layer="-1" image="Face Normal" />
+				<key joint="Torso" rotation="14.83395" layer="1" image="TorsoFront" translation="2.4801805 -2.438912" />
+				<key joint="Left Bicep" rotation="-96.768005" layer="1011" image="BicepFront" translation="13.165215 -2.4142573" />
+				<key joint="Right Foot" rotation="-25.333895" layer="-1" image="Foot Front" translation="0.67526424 4.123579" />
+				<key joint="Left Hand" rotation="-56.079216" layer="-1" image="Fist Thumb" translation="-3.4923525 17.74963" />
+				<key joint="Right Bicep" rotation="129.71729" layer="-211" image="BicepFront" translation="9.373609 -4.235877" />
+				<key joint="Left Forearm" rotation="64.7813" layer="1" image="Forearm Front" />
+				<key joint="Right Hand" layer="-1" image="Fist Thumb" />
+				<key joint="Left Thigh" rotation="-86.45056" layer="100" image="ThighFront" translation="1.14746 9.952031" />
+				<key joint="Left Calf" rotation="131.63919" layer="-1" image="Calf Front" />
+				<key joint="Left Foot" rotation="3.671254" layer="-1" image="Foot Side" translation="8.680682 2.8779366" />
+				<key joint="Right Thigh" rotation="58.66354" layer="-99" image="ThighFront" translation="3.374185 6.2416606" />
+				<key joint="Right Calf" rotation="-73.86796" layer="-1" image="Calf Front" />
+				<key joint="Right Forearm" rotation="-69.958954" layer="-1" image="Forearm Front" />
+				<key time="9" joint="Right Calf" rotation="-101.40371" layer="-1" image="Calf Front" />
+				<key time="9" joint="Left Calf" rotation="155.22917" layer="-1" image="Calf Front" />
+				<key time="9" joint="Torso" rotation="25.391523" layer="1" image="TorsoFront" translation="-2.6849825 -3.521584" />
+				<key time="9" joint="Left Forearm" rotation="91.68102" layer="1" image="Forearm Front" />
+				<key time="9" joint="Crotch" rotation="-39.237366" layer="-100" image="CrotchFront" />
+				<key time="9" joint="Left Bicep" rotation="-108.64423" layer="1011" image="BicepFront" translation="13.165215 -2.4142573" />
+				<key time="9" joint="Head" rotation="22.000856" layer="-1" image="HeadFront" translation="14.323256 8.635399" />
+				<key time="9" joint="Right Forearm" rotation="-113.42993" layer="-1" image="Forearm Front" />
+				<key time="9" joint="Left Thigh" rotation="-91.32185" layer="100" image="ThighFront" translation="1.14746 9.952031" />
+				<key time="9" joint="Right Bicep" rotation="148.32144" layer="-211" image="BicepFront" translation="9.373609 -4.235877" />
+				<key time="9" joint="Right Thigh" rotation="95.85487" layer="-99" image="ThighFront" translation="2.2444296 12.730642" />
+				<key time="18" joint="Left Calf" rotation="131.63919" layer="-1" image="Calf Front" />
+				<key time="18" joint="Crotch" rotation="-32.21655" layer="-100" image="CrotchFront" />
+				<key time="18" joint="Right Thigh" rotation="58.66354" layer="-99" image="ThighFront" translation="3.374185 6.2416606" />
+				<key time="18" joint="Torso" rotation="14.83395" layer="1" image="TorsoFront" translation="2.4801805 -2.438912" />
+				<key time="18" joint="Left Thigh" rotation="-86.45056" layer="100" image="ThighFront" translation="1.14746 9.952031" />
+				<key time="18" joint="Right Forearm" rotation="-69.958954" layer="-1" image="Forearm Front" />
+				<key time="18" joint="Right Bicep" rotation="129.71729" layer="-211" image="BicepFront" translation="9.373609 -4.235877" />
+				<key time="18" joint="Right Calf" rotation="-73.86796" layer="-1" image="Calf Front" />
+				<key time="18" joint="Head" rotation="13.253076" layer="-1" image="HeadFront" translation="14.323256 8.635399" />
+				<key time="18" joint="Left Forearm" rotation="64.7813" layer="1" image="Forearm Front" />
+				<key time="18" joint="Left Bicep" rotation="-96.768005" layer="1011" image="BicepFront" translation="13.165215 -2.4142573" />
+			</keys>
+		</animation>
+		<animation name="Blocking" length="0.2">
+			<keys>
+				<key joint="Crotch" rotation="-2.016057" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key joint="Torso" rotation="2.005352" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-36.12843" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="-0.01070547" layer="-1000" image="ThighFront" />
+				<key time="12" joint="Crotch" rotation="1.9839431" layer="-100" image="CrotchFront" translation="-16 7" />
+				<key time="12" joint="Torso" rotation="-4.010705" layer="-2000" image="TorsoFront" />
+				<key time="12" joint="Left Thigh" rotation="-74.19801" layer="-100" image="ThighFront" translation="-9 9" />
+				<key time="12" joint="Right Thigh" rotation="-14.03747" layer="-1000" image="ThighFront" translation="-5 -5" />
+			</keys>
+		</animation>
+		<animation name="Jumping" length="0.3">
+			<keys>
+				<key joint="Crotch" layer="-100" image="CrotchFront" translation="-2 12" />
+				<key joint="Face" layer="-1" image="Face Normal" />
+				<key joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" />
+				<key joint="Head" rotation="-17.64654" layer="-1" image="HeadFront" translation="4.915274 0.28824165" />
+				<key joint="Right Foot" rotation="-29.423397" layer="-1" image="Foot Front" translation="-0.30684173 -3.5594072" />
+				<key joint="Left Hand" rotation="-56.079216" layer="-1" image="Fist Thumb" />
+				<key joint="Left Bicep" rotation="-123.506516" layer="1011" image="BicepFront" />
+				<key joint="Left Forearm" rotation="-19.048328" layer="1" image="Forearm Front" />
+				<key joint="Right Calf" rotation="149.62265" layer="-1" image="Calf Front" />
+				<key joint="Right Bicep" rotation="141.49506" layer="-211" image="BicepFront" translation="-0.3445492 1.5340123" />
+				<key joint="Right Forearm" rotation="86.89806" layer="-1" image="Forearm Front" />
+				<key joint="Right Hand" layer="-1" image="Fist Thumb" />
+				<key joint="Left Thigh" rotation="-124.215706" layer="100" image="ThighFront" translation="-8 12" />
+				<key joint="Left Calf" rotation="130.23288" layer="-1" image="Calf Front" translation="4.0759525 -1.9948452" />
+				<key joint="Right Thigh" rotation="-127.405365" layer="-99" image="ThighFront" translation="-30 20" />
+				<key joint="Left Foot" layer="-1" image="Foot Side" />
+				<key time="9" joint="Right Bicep" rotation="25.936338" layer="-211" image="BicepFront" translation="1.06179 -6.23009" />
+				<key time="9" joint="Left Foot" rotation="47.84976" layer="-1" image="Foot Side" translation="11.30793 13.331025" />
+				<key time="9" joint="Right Forearm" rotation="-3.3344953" layer="-1" image="Forearm Front" />
+				<key time="9" joint="Left Forearm" rotation="10.634256" layer="1" image="Forearm Front" />
+				<key time="9" joint="Head" rotation="-7.9378033" layer="-1" image="HeadFront" translation="12.445568 2.418908" />
+				<key time="9" joint="Left Hand" rotation="-56.079216" layer="-1" image="Fist Thumb" translation="-3.4923525 17.74963" />
+				<key time="9" joint="Right Foot" rotation="6.2290998" layer="-1" image="Foot Front" translation="1.4510632 14.964467" />
+				<key time="9" joint="Right Thigh" rotation="-1.6529889" layer="-99" image="ThighFront" translation="2.8265939 14.968491" />
+				<key time="9" joint="Torso" rotation="-19.9903" layer="1" image="TorsoFront" translation="6.044573 0.085802555" />
+				<key time="9" joint="Left Thigh" rotation="-7.055593" layer="100" image="ThighFront" />
+				<key time="9" joint="Left Calf" rotation="23.644188" layer="-1" image="Calf Front" translation="9.620312 4.7789907" />
+				<key time="9" joint="Crotch" rotation="-1.6602824" layer="-100" image="CrotchFront" />
+				<key time="9" joint="Left Bicep" rotation="13.1525345" layer="1011" image="BicepFront" translation="0.31988978 9.620143" />
+				<key time="9" joint="Right Calf" rotation="-9.149095" layer="-1" image="Calf Front" />
+				<key time="18" joint="Left Foot" rotation="3.671254" layer="-1" image="Foot Side" translation="8.680682 2.8779366" />
+				<key time="18" joint="Right Thigh" rotation="-1.6529889" layer="-99" image="ThighFront" translation="-1.6476514 6.740966" />
+				<key time="18" joint="Right Bicep" rotation="151.90395" layer="-211" image="BicepFront" translation="1.06179 -6.23009" />
+				<key time="18" joint="Left Calf" rotation="131.63919" layer="-1" image="Calf Front" />
+				<key time="18" joint="Left Thigh" rotation="-86.45056" layer="100" image="ThighFront" />
+				<key time="18" joint="Left Bicep" rotation="-121.53768" layer="1011" image="BicepFront" translation="0.31988978 9.620143" />
+				<key time="18" joint="Head" rotation="13.253076" layer="-1" image="HeadFront" translation="6.4984064 5.2104735" />
+				<key time="18" joint="Torso" rotation="-6.261095" layer="1" image="TorsoFront" translation="6.044573 0.085802555" />
+				<key time="18" joint="Crotch" rotation="-12.3390875" layer="-100" image="CrotchFront" />
+				<key time="18" joint="Right Foot" rotation="-25.333895" layer="-1" image="Foot Front" translation="0.67526424 4.123579" />
+			</keys>
+		</animation>
+		<animation name="Dive" length="0.5">
+			<keys>
+				<key joint="Crotch" rotation="-22.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key joint="Torso" rotation="12.07493" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-2.187318" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="12.03211" layer="-1000" image="ThighFront" />
+				<key time="15" joint="Crotch" rotation="-18.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key time="15" joint="Torso" rotation="4.074933" layer="-1999" image="TorsoFront" />
+				<key time="15" joint="Left Thigh" rotation="5.812682" layer="-100" image="ThighFront" />
+				<key time="15" joint="Right Thigh" rotation="4.032111" layer="-1000" image="ThighFront" />
+				<key time="30" joint="Crotch" rotation="-22.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key time="30" joint="Torso" rotation="12.07493" layer="-2000" image="TorsoFront" />
+				<key time="30" joint="Left Thigh" rotation="-2.187318" layer="-100" image="ThighFront" />
+				<key time="30" joint="Right Thigh" rotation="12.03211" layer="-1000" image="ThighFront" />
+			</keys>
+		</animation>
+		<animation name="Float" length="0.5">
+			<keys>
+				<key joint="Crotch" rotation="-38.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key joint="Torso" rotation="28.07493" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-14.18732" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="28.03211" layer="-1000" image="ThighFront" translation="11 -8" />
+				<key time="15" joint="Crotch" rotation="-30.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key time="15" joint="Torso" rotation="20.07493" layer="-2000" image="TorsoFront" />
+				<key time="15" joint="Left Thigh" rotation="-22.18731" layer="-100" image="ThighFront" />
+				<key time="15" joint="Right Thigh" rotation="8.032111" layer="-1000" image="ThighFront" />
+				<key time="30" joint="Crotch" rotation="-38.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key time="30" joint="Torso" rotation="28.07493" layer="-2000" image="TorsoFront" />
+				<key time="30" joint="Left Thigh" rotation="-14.18732" layer="-100" image="ThighFront" />
+				<key time="30" joint="Right Thigh" rotation="28.03211" layer="-1000" image="ThighFront" translation="11 -8" />
+			</keys>
+		</animation>
+		<animation name="Falling" length="0.7">
+			<keys>
+				<key joint="Crotch" rotation="-12.3390875" layer="-100" image="CrotchFront" />
+				<key joint="Left Bicep" rotation="-121.53768" layer="1011" image="BicepFront" translation="0.31988978 9.620143" />
+				<key joint="Head" rotation="13.253076" layer="-1" image="HeadFront" translation="6.4984064 5.2104735" />
+				<key joint="Torso" rotation="-6.261095" layer="1" image="TorsoFront" translation="6.044573 0.085802555" />
+				<key joint="Right Foot" rotation="-25.333895" layer="-1" image="Foot Front" translation="0.67526424 4.123579" />
+				<key joint="Face" layer="-1" image="Face Normal" />
+				<key joint="Right Calf" rotation="-9.149095" layer="-1" image="Calf Front" />
+				<key joint="Left Forearm" rotation="10.634256" layer="1" image="Forearm Front" />
+				<key joint="Left Foot" rotation="3.671254" layer="-1" image="Foot Side" translation="8.680682 2.8779366" />
+				<key joint="Right Bicep" rotation="151.90395" layer="-211" image="BicepFront" translation="1.06179 -6.23009" />
+				<key joint="Right Forearm" rotation="-3.3344953" layer="-1" image="Forearm Front" />
+				<key joint="Right Hand" layer="-1" image="Fist Thumb" />
+				<key joint="Left Thigh" rotation="-86.45056" layer="100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="-1.6529889" layer="-99" image="ThighFront" translation="-1.6476514 6.740966" />
+				<key joint="Left Calf" rotation="131.63919" layer="-1" image="Calf Front" />
+				<key joint="Left Hand" rotation="-56.079216" layer="-1" image="Fist Thumb" translation="-3.4923525 17.74963" />
+				<key time="18" joint="Right Bicep" rotation="151.90395" layer="-211" image="BicepFront" translation="6.8232727 -2.91332" />
+				<key time="18" joint="Right Forearm" rotation="6.527778" layer="-1" image="Forearm Front" translation="4.7681036 1.6031997" />
+				<key time="18" joint="Right Calf" rotation="40.93387" layer="-1" image="Calf Front" />
+				<key time="18" joint="Left Calf" rotation="155.17363" layer="-1" image="Calf Front" translation="-5.0325403 -1.9163654" />
+				<key time="18" joint="Head" rotation="13.253076" layer="-1" image="HeadFront" translation="10.108818 5.2068825" />
+				<key time="18" joint="Right Foot" rotation="-51.153793" layer="-1" image="Foot Front" translation="9.762508 1.7528908" />
+				<key time="18" joint="Torso" rotation="0.40776628" layer="1" image="TorsoFront" translation="6.848706 0.68762636" />
+				<key time="18" joint="Right Thigh" rotation="-10.223956" layer="-99" image="ThighFront" translation="-1.6476514 6.740966" />
+				<key time="18" joint="Left Thigh" rotation="-105.64873" layer="100" image="ThighFront" translation="4.0877395 7.436038" />
+				<key time="18" joint="Crotch" rotation="-17.684393" layer="-100" image="CrotchFront" />
+				<key time="18" joint="Left Bicep" rotation="-121.53768" layer="1011" image="BicepFront" translation="-3.4475656 7.0338645" />
+				<key time="18" joint="Left Forearm" rotation="1.3553516" layer="1" image="Forearm Front" translation="-5.844968 3.9592605" />
+				<key time="42" joint="Crotch" rotation="-12.3390875" layer="-100" image="CrotchFront" />
+				<key time="42" joint="Torso" rotation="-6.261095" layer="1" image="TorsoFront" translation="6.044573 0.085802555" />
+				<key time="42" joint="Head" rotation="13.253076" layer="-1" image="HeadFront" translation="6.4984064 5.2104735" />
+				<key time="42" joint="Left Bicep" rotation="-121.53768" layer="1011" image="BicepFront" translation="0.31988978 9.620143" />
+				<key time="42" joint="Left Forearm" rotation="10.634256" layer="1" image="Forearm Front" />
+				<key time="42" joint="Left Thigh" rotation="-86.45056" layer="100" image="ThighFront" />
+				<key time="42" joint="Right Bicep" rotation="151.90395" layer="-211" image="BicepFront" translation="1.06179 -6.23009" />
+				<key time="42" joint="Right Calf" rotation="-9.149095" layer="-1" image="Calf Front" />
+				<key time="42" joint="Right Thigh" rotation="-1.6529889" layer="-99" image="ThighFront" translation="-1.6476514 6.740966" />
+				<key time="42" joint="Left Calf" rotation="131.63919" layer="-1" image="Calf Front" />
+				<key time="42" joint="Right Forearm" rotation="-3.3344953" layer="-1" image="Forearm Front" />
+				<key time="42" joint="Right Foot" rotation="-25.333895" layer="-1" image="Foot Front" translation="0.67526424 4.123579" />
+			</keys>
+		</animation>
+		<animation name="Glide" length="0.5">
+			<keys>
+				<key joint="Crotch" rotation="-14.06958" layer="-100" image="CrotchFront" translation="30 -67" />
+				<key joint="Torso" rotation="32.07492" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-78.18727" layer="-100" image="ThighFront" translation="-20 7" />
+				<key joint="Right Thigh" rotation="28.03211" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="15" joint="Crotch" rotation="-10.06958" layer="-100" image="CrotchFront" translation="29 -44" />
+				<key time="15" joint="Torso" rotation="28.07493" layer="-2000" image="TorsoFront" />
+				<key time="15" joint="Left Thigh" rotation="-82.18731" layer="-100" image="ThighFront" translation="-20 7" />
+				<key time="15" joint="Right Thigh" rotation="32.03211" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="30" joint="Crotch" rotation="-14.06958" layer="-100" image="CrotchFront" translation="30 -67" />
+				<key time="30" joint="Torso" rotation="32.07492" layer="-2000" image="TorsoFront" />
+				<key time="30" joint="Left Thigh" rotation="-78.18727" layer="-100" image="ThighFront" translation="-20 7" />
+				<key time="30" joint="Right Thigh" rotation="28.03211" layer="-1000" image="ThighFront" translation="0 -7" />
+			</keys>
+		</animation>
+		<animation name="Brake" length="0.5">
+			<keys>
+				<key joint="Crotch" rotation="-50.06958" layer="-100" image="CrotchFront" translation="21 -93" />
+				<key joint="Torso" rotation="32.07492" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-62.18732" layer="-100" image="ThighFront" translation="-10 0" />
+				<key joint="Right Thigh" rotation="8.032109" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="15" joint="Crotch" rotation="-54.06958" layer="-100" image="CrotchFront" translation="23 -70" />
+				<key time="15" joint="Torso" rotation="36.07492" layer="-2000" image="TorsoFront" />
+				<key time="15" joint="Left Thigh" rotation="-54.18732" layer="-100" image="ThighFront" translation="-10 0" />
+				<key time="15" joint="Right Thigh" rotation="0.03210957" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="30" joint="Crotch" rotation="-50.06958" layer="-100" image="CrotchFront" translation="21 -93" />
+				<key time="30" joint="Torso" rotation="32.07492" layer="-2000" image="TorsoFront" />
+				<key time="30" joint="Left Thigh" rotation="-62.18732" layer="-100" image="ThighFront" translation="-10 0" />
+				<key time="30" joint="Right Thigh" rotation="8.032109" layer="-1000" image="ThighFront" translation="0 -7" />
+			</keys>
+		</animation>
+		<animation name="FlyUp" length="0.3">
+			<keys>
+				<key joint="Crotch" rotation="-26.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key joint="Torso" rotation="12.07493" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-6.187315" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="20.03211" layer="-1000" image="ThighFront" translation="11 -8" />
+				<key time="9" joint="Crotch" rotation="-26.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key time="9" joint="Torso" rotation="12.07493" layer="-2000" image="TorsoFront" />
+				<key time="9" joint="Left Thigh" rotation="-6.187315" layer="-100" image="ThighFront" />
+				<key time="9" joint="Right Thigh" rotation="20.03211" layer="-1000" image="ThighFront" translation="11 -8" />
+				<key time="18" joint="Crotch" rotation="-38.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key time="18" joint="Torso" rotation="28.07493" layer="-2000" image="TorsoFront" />
+				<key time="18" joint="Left Thigh" rotation="-14.18732" layer="-100" image="ThighFront" />
+				<key time="18" joint="Right Thigh" rotation="28.03211" layer="-1000" image="ThighFront" translation="11 -8" />
+			</keys>
+		</animation>
+		<animation name="FlyDown" length="0.3">
+			<keys>
+				<key joint="Crotch" rotation="-26.06958" layer="-100" image="CrotchFront" translation="56 -18" />
+				<key joint="Torso" rotation="20.07493" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="1.812682" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="4.032108" layer="-1000" image="ThighFront" translation="10 -16" />
+				<key time="9" joint="Crotch" rotation="-26.06958" layer="-100" image="CrotchFront" translation="56 -18" />
+				<key time="9" joint="Torso" rotation="20.07493" layer="-2000" image="TorsoFront" />
+				<key time="9" joint="Left Thigh" rotation="1.812682" layer="-100" image="ThighFront" />
+				<key time="9" joint="Right Thigh" rotation="4.032108" layer="-1000" image="ThighFront" translation="10 -16" />
+				<key time="18" joint="Crotch" rotation="-22.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key time="18" joint="Torso" rotation="12.07493" layer="-2000" image="TorsoFront" />
+				<key time="18" joint="Left Thigh" rotation="-2.187318" layer="-100" image="ThighFront" />
+				<key time="18" joint="Right Thigh" rotation="12.03211" layer="-1000" image="ThighFront" />
+			</keys>
+		</animation>
+		<animation name="FlyForward" length="0.3">
+			<keys>
+				<key joint="Crotch" rotation="13.93042" layer="-100" image="CrotchFront" translation="55 -8" />
+				<key joint="Torso" rotation="20.07493" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-94.18726" layer="-100" image="ThighFront" translation="-24 16" />
+				<key joint="Right Thigh" rotation="24.03211" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="9" joint="Crotch" rotation="13.93042" layer="-100" image="CrotchFront" translation="55 -8" />
+				<key time="9" joint="Torso" rotation="20.07493" layer="-2000" image="TorsoFront" />
+				<key time="9" joint="Left Thigh" rotation="-94.18726" layer="-100" image="ThighFront" translation="-24 16" />
+				<key time="9" joint="Right Thigh" rotation="24.03211" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="18" joint="Crotch" rotation="-14.06958" layer="-100" image="CrotchFront" translation="30 -67" />
+				<key time="18" joint="Torso" rotation="32.07492" layer="-2000" image="TorsoFront" />
+				<key time="18" joint="Left Thigh" rotation="-78.18727" layer="-100" image="ThighFront" translation="-20 7" />
+				<key time="18" joint="Right Thigh" rotation="28.03211" layer="-1000" image="ThighFront" translation="0 -7" />
+			</keys>
+		</animation>
+		<animation name="FlyBack" length="0.3">
+			<keys>
+				<key joint="Crotch" rotation="-58.06958" layer="-100" image="CrotchFront" translation="14 -44" />
+				<key joint="Torso" rotation="44.07492" layer="-2000" image="TorsoFront" translation="-6 7" />
+				<key joint="Left Thigh" rotation="-50.18732" layer="-100" image="ThighFront" translation="-10 0" />
+				<key joint="Right Thigh" rotation="-3.96789" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="9" joint="Crotch" rotation="-58.06958" layer="-100" image="CrotchFront" translation="14 -44" />
+				<key time="9" joint="Torso" rotation="44.07492" layer="-2000" image="TorsoFront" translation="-6 7" />
+				<key time="9" joint="Left Thigh" rotation="-50.18732" layer="-100" image="ThighFront" translation="-10 0" />
+				<key time="9" joint="Right Thigh" rotation="-3.96789" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="18" joint="Crotch" rotation="-50.06958" layer="-100" image="CrotchFront" translation="21 -93" />
+				<key time="18" joint="Torso" rotation="32.07492" layer="-2000" image="TorsoFront" />
+				<key time="18" joint="Left Thigh" rotation="-62.18732" layer="-100" image="ThighFront" translation="-10 0" />
+				<key time="18" joint="Right Thigh" rotation="8.032109" layer="-1000" image="ThighFront" translation="0 -7" />
+			</keys>
+		</animation>
+		<animation name="Turning Around" length="0.2">
+			<keys>
+				<key joint="Crotch" layer="-100" image="CrotchFront" flip="true" />
+				<key joint="Right Thigh" rotation="31.607502" layer="1" image="ThighFront" />
+				<key joint="Head" layer="-1" image="HeadFront" />
+				<key joint="Left Foot" layer="-1" image="Foot Side" />
+				<key joint="Left Calf" rotation="64.098946" layer="-1" image="Calf Front" translation="4.0759525 -1.9948452" />
+				<key joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" />
+				<key joint="Right Foot" rotation="-21.13812" layer="-1" image="Foot Front" />
+				<key joint="Right Hand" layer="-1" image="Fist Thumb" />
+				<key joint="Left Thigh" rotation="-64.74684" layer="100" image="ThighFront" />
+				<key joint="Right Calf" rotation="-14.811197" layer="-1" image="Calf Front" translation="-4.106205 -2.9125729" />
+				<key joint="Face" layer="-1" image="Face Normal" />
+				<key joint="Left Bicep" rotation="-32.044373" layer="1011" image="BicepFront" />
+				<key joint="Right Forearm" rotation="-39.480606" layer="-1" image="Forearm Front" />
+				<key joint="Right Bicep" rotation="67.20296" layer="-211" image="BicepFront" translation="5.8223534 -3.2586567" />
+				<key joint="Left Forearm" rotation="-19.048328" layer="1" image="Forearm Front" />
+				<key joint="Left Hand" rotation="-56.079216" layer="-1" image="Fist Thumb" />
+				<key time="5" joint="Right Foot" rotation="13.016596" layer="-1" image="Foot Front" translation="4.747663 7.0158577" />
+				<key time="5" joint="Left Bicep" rotation="10.579868" layer="1011" image="BicepFront" />
+				<key time="5" joint="Right Thigh" rotation="1.0609118" layer="1" image="ThighFront" />
+				<key time="5" joint="Torso" rotation="-18.01977" layer="1" image="TorsoFront" translation="3.6025205 -0.14780772" />
+				<key time="5" joint="Crotch" layer="-100" image="CrotchFront" flip="true" translation="-1 -11" />
+				<key time="5" joint="Head" rotation="15.221" layer="-1" image="HeadFront" />
+				<key time="5" joint="Right Calf" rotation="-14.811197" layer="-1" image="Calf Front" />
+				<key time="5" joint="Left Calf" rotation="19.405573" layer="-1" image="Calf Front" />
+				<key time="5" joint="Right Bicep" rotation="28.18506" layer="-211" image="BicepFront" translation="7.8343754 -4.7578278" />
+				<key time="5" joint="Left Thigh" rotation="-18.657888" layer="100" image="ThighFront" />
+				<key time="5" joint="Right Forearm" rotation="-37.212337" layer="-1" image="Forearm Front" />
+				<key time="5" joint="Left Forearm" rotation="-18.751734" layer="1" image="Forearm Front" />
+				<key time="6" joint="Torso" rotation="-18.01977" layer="1" image="TorsoFront" translation="3.6025205 -0.14780772" />
+				<key time="6" joint="Right Calf" rotation="-14.811197" layer="-1" image="Calf Front" />
+				<key time="6" joint="Right Thigh" rotation="1.0609118" layer="1" image="ThighFront" />
+				<key time="6" joint="Crotch" layer="-100" image="CrotchFront" translation="-1 -11" />
+				<key time="6" joint="Left Bicep" rotation="10.579868" layer="1011" image="BicepFront" />
+				<key time="6" joint="Left Calf" rotation="19.405573" layer="-1" image="Calf Front" />
+				<key time="6" joint="Right Bicep" rotation="28.18506" layer="-211" image="BicepFront" translation="-1.16113 -14.998622" />
+				<key time="6" joint="Left Forearm" rotation="28.939924" layer="1" image="Forearm Front" />
+				<key time="6" joint="Right Foot" rotation="13.016596" layer="-1" image="Foot Front" translation="4.747663 7.0158577" />
+				<key time="6" joint="Head" rotation="15.221" layer="-1" image="HeadFront" />
+				<key time="6" joint="Right Forearm" rotation="-39.619392" layer="-1" image="Forearm Front" />
+				<key time="6" joint="Left Thigh" rotation="-18.657888" layer="100" image="ThighFront" />
+				<key time="12" joint="Crotch" layer="-100" image="CrotchFront" />
+				<key time="12" joint="Torso" rotation="-1.952509" layer="1" image="TorsoFront" />
+				<key time="12" joint="Head" layer="-1" image="HeadFront" />
+				<key time="12" joint="Left Bicep" rotation="-32.044373" layer="1011" image="BicepFront" />
+				<key time="12" joint="Left Forearm" rotation="-19.048328" layer="1" image="Forearm Front" />
+				<key time="12" joint="Right Bicep" rotation="67.20296" layer="-211" image="BicepFront" translation="5.8223534 -3.2586567" />
+				<key time="12" joint="Left Thigh" rotation="-64.74684" layer="100" image="ThighFront" />
+				<key time="12" joint="Right Thigh" rotation="31.607502" layer="1" image="ThighFront" />
+				<key time="12" joint="Right Calf" rotation="-14.811197" layer="-1" image="Calf Front" translation="-4.106205 -2.9125729" />
+				<key time="12" joint="Left Calf" rotation="64.098946" layer="-1" image="Calf Front" translation="4.0759525 -1.9948452" />
+				<key time="12" joint="Right Forearm" rotation="-39.480606" layer="-1" image="Forearm Front" />
+				<key time="12" joint="Right Foot" rotation="-21.13812" layer="-1" image="Foot Front" />
+			</keys>
+		</animation>
+		<animation name="Turning Around Slide" length="0.2">
+			<keys>
+				<key joint="Crotch" rotation="-28.249735" layer="-100" image="CrotchFront" />
+				<key joint="Torso" rotation="36.71171" layer="1" image="TorsoFront" translation="-4.417626 -8.131399" />
+				<key joint="Head" rotation="-7.466313" layer="-1" image="HeadFront" flip="true" translation="-8.701033 -3.641831" />
+				<key joint="Face" layer="-1" image="Face Normal" />
+				<key joint="Left Bicep" rotation="-120.40051" layer="1011" image="BicepFront" translation="1.9837937 4.7461047" />
+				<key joint="Left Forearm" rotation="-135.45383" layer="-1181" image="Forearm Front" translation="-9.133124 13.349209" />
+				<key joint="Left Hand" rotation="53.573948" layer="-1" image="Fist Thumb" translation="13.951418 -7.6817727" />
+				<key joint="Right Bicep" rotation="12.931637" layer="-211" image="BicepFront" translation="-4.967896 -4.635061" />
+				<key joint="Right Forearm" rotation="-111.43776" layer="-1" image="Forearm Front" />
+				<key joint="Right Hand" layer="-1" image="Fist Thumb" />
+				<key joint="Left Thigh" rotation="-14.144717" layer="100" image="ThighFront" translation="-22.514235 1.0696354" />
+				<key joint="Left Calf" rotation="16.676264" layer="-1" image="Calf Front" translation="2.4191277 2.2280834" />
+				<key joint="Left Foot" rotation="-25.667887" layer="-1" image="Foot Side" />
+				<key joint="Right Thigh" rotation="-90.87556" layer="-99" image="ThighFront" translation="-4.125282 11.445466" />
+				<key joint="Right Calf" rotation="118.319016" layer="-1" image="Calf Front" translation="6.019882 2.3711078" />
+				<key joint="Right Foot" rotation="51.54718" layer="-1" image="Foot Side" translation="6.134083 3.4272022" />
+			</keys>
+		</animation>
+		<animation name="Turning Around Falling" length="0.1">
+			<keys>
+				<key joint="Crotch" rotation="29.930412" layer="-100" image="CrotchFront" flip="true" translation="-30 -118" />
+				<key joint="Torso" rotation="28.07493" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-70.18732" layer="-100" image="ThighFront" translation="-10 0" />
+				<key joint="Right Thigh" rotation="12.03211" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="3" joint="Crotch" rotation="9.930417" layer="-100" image="CrotchFront" flip="true" translation="-30 -118" />
+				<key time="3" joint="Torso" rotation="8.074933" layer="-2000" image="TorsoFront" />
+				<key time="3" joint="Left Thigh" rotation="5.812682" layer="-100" image="ThighFront" translation="-10 0" />
+				<key time="4" joint="Crotch" rotation="-14.06958" layer="-100" image="CrotchFront" translation="8 -124" />
+				<key time="4" joint="Torso" rotation="8.074933" layer="-2000" image="TorsoFront" />
+				<key time="4" joint="Left Thigh" rotation="5.812682" layer="-100" image="ThighFront" translation="-10 0" />
+				<key time="6" joint="Crotch" rotation="-26.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key time="6" joint="Torso" rotation="28.07493" layer="-2000" image="TorsoFront" />
+				<key time="6" joint="Left Thigh" rotation="-70.18732" layer="-100" image="ThighFront" translation="-10 0" />
+			</keys>
+		</animation>
+		<animation name="Hit Ground" length="0.1">
+			<keys>
+				<key joint="Crotch" rotation="-44.05352" layer="-100" image="CrotchFront" translation="13 72" />
+				<key joint="Torso" rotation="56" layer="-2000" image="TorsoFront" translation="-9 9" />
+				<key joint="Left Thigh" rotation="-5.951828" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="-5.96253" layer="-1000" image="ThighFront" />
+				<key time="3" joint="Crotch" rotation="-23.03479" layer="-100" image="CrotchFront" translation="3 -29" />
+				<key time="4" joint="Crotch" rotation="-16.02854" layer="-100" image="CrotchFront" translation="9 -56" />
+				<key time="5" joint="Crotch" rotation="-9.022301" layer="-100" image="CrotchFront" translation="8 -72" />
+				<key time="6" joint="Crotch" rotation="-2.016057" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key time="6" joint="Torso" rotation="2.005352" layer="-2000" image="TorsoFront" />
+				<key time="6" joint="Left Thigh" rotation="-36.12843" layer="-100" image="ThighFront" />
+				<key time="6" joint="Right Thigh" rotation="-0.01070547" layer="-1000" image="ThighFront" />
+			</keys>
+		</animation>
+		<animation name="flick" length="0.2">
+			<keys>
+				<key joint="Crotch" rotation="-2.016057" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key joint="Torso" rotation="2.005352" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-36.12843" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="-0.01070547" layer="-1000" image="ThighFront" />
+				<key time="3" joint="Crotch" rotation="-1.34939" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key time="3" joint="Torso" rotation="1.00446" layer="-2000" image="TorsoFront" />
+				<key time="3" joint="Left Thigh" rotation="-36.79509" layer="-100" image="ThighFront" />
+				<key time="3" joint="Right Thigh" rotation="-1.344038" layer="-1000" image="ThighFront" />
+				<key time="6" joint="Crotch" rotation="5.983943" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key time="6" joint="Torso" layer="-2000" image="TorsoFront" />
+				<key time="6" joint="Left Thigh" rotation="-44.12843" layer="-100" image="ThighFront" />
+				<key time="6" joint="Right Thigh" rotation="-12.0107" layer="-1000" image="ThighFront" />
+				<key time="12" joint="Crotch" rotation="-2.016057" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key time="12" joint="Torso" rotation="4" layer="-2000" image="TorsoFront" />
+				<key time="12" joint="Left Thigh" rotation="-36.12843" layer="-100" image="ThighFront" />
+				<key time="12" joint="Right Thigh" rotation="-0.01070547" layer="-1000" image="ThighFront" />
+			</keys>
+		</animation>
+		<animation name="flickup" length="0.2">
+			<keys>
+				<key joint="Crotch" rotation="-12" layer="-100" image="CrotchFront" translation="29 -76" />
+				<key joint="Torso" rotation="16" layer="-2000" image="TorsoFront" translation="-3 11" />
+				<key joint="Left Thigh" rotation="-24.12843" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="-0.01070547" layer="-1000" image="ThighFront" translation="-7 -16" />
+				<key time="3" joint="Crotch" rotation="-6.666667" layer="-100" image="CrotchFront" translation="48.66666 -82" />
+				<key time="3" joint="Torso" rotation="8" layer="-2000" image="TorsoFront" translation="-2 7.333333" />
+				<key time="3" joint="Left Thigh" rotation="-24.08562" layer="-100" image="ThighFront" />
+				<key time="3" joint="Right Thigh" rotation="2.659529" layer="-1000" image="ThighFront" translation="-4.666667 -10.66667" />
+				<key time="6" joint="Crotch" rotation="3.999999" layer="-100" image="CrotchFront" translation="88 -94" />
+				<key time="6" joint="Torso" rotation="-7.999999" layer="-2000" image="TorsoFront" />
+				<key time="6" joint="Left Thigh" rotation="-24" layer="-100" image="ThighFront" />
+				<key time="6" joint="Right Thigh" rotation="7.999997" layer="-1000" image="ThighFront" />
+				<key time="12" joint="Crotch" rotation="-16" layer="-100" image="CrotchFront" translation="29 -76" />
+				<key time="12" joint="Torso" rotation="4" layer="-2000" image="TorsoFront" />
+				<key time="12" joint="Left Thigh" rotation="-20.12843" layer="-100" image="ThighFront" />
+				<key time="12" joint="Right Thigh" rotation="11.98929" layer="-1000" image="ThighFront" />
+			</keys>
+		</animation>
+		<animation name="flickforward" length="0.2">
+			<keys>
+				<key joint="Crotch" rotation="-18.37435" layer="-100" translation="52 -43" />
+				<key joint="Torso" rotation="19.80752" layer="-2001" />
+				<key joint="Left Thigh" rotation="28.27811" layer="1100" translation="6 9" />
+				<key joint="Right Thigh" rotation="-13.6632" layer="-1000" translation="0 -15" />
+				<key time="3" joint="Crotch" rotation="-18.37435" layer="-100" translation="50.83333 -44.66667" />
+				<key time="3" joint="Torso" rotation="20.60752" layer="-2001" translation="0.4 0.8" />
+				<key time="3" joint="Left Thigh" rotation="29.353271" layer="1100" translation="4.8 7.2" />
+				<key time="3" joint="Right Thigh" rotation="-14.19629" layer="-1000" translation="0 -12" />
+				<key time="6" joint="Crotch" rotation="-18.37435" layer="-100" translation="45 -53" />
+				<key time="6" joint="Torso" rotation="27.80752" layer="-2001" translation="5 5" />
+				<key time="6" joint="Left Thigh" rotation="33.65391" layer="1100" />
+				<key time="6" joint="Right Thigh" rotation="-16.32866" layer="-1000" />
+				<key time="12" joint="Crotch" rotation="-10.62491" layer="-100" translation="60 -57" />
+				<key time="12" joint="Torso" rotation="17.33631" layer="-2001" />
+				<key time="12" joint="Left Thigh" rotation="13.20552" layer="1100" />
+				<key time="12" joint="Right Thigh" rotation="-22.4603" layer="-1000" />
+			</keys>
+		</animation>
+		<animation name="flickdown" length="0.25">
+			<keys>
+				<key joint="Crotch" rotation="4" layer="-100" translation="2 -86" />
+				<key joint="Right Thigh" rotation="-12.59315" layer="-1000" />
+				<key joint="Torso" rotation="-2.408885" layer="-2001" />
+				<key joint="Left Thigh" rotation="18.02676" layer="1100" translation="-7 14" />
+				<key time="5" joint="Torso" rotation="7.422225" layer="-2001" />
+				<key time="5" joint="Left Thigh" rotation="-45.40181" layer="1100" translation="-5 10" />
+				<key time="5" joint="Crotch" rotation="-8.01682" layer="-100" translation="16.85714 -78.28571" />
+				<key time="5" joint="Right Thigh" rotation="-4.494023" layer="-1000" />
+				<key time="7" joint="Left Thigh" rotation="-21.97324" layer="1100" />
+				<key time="7" joint="Right Thigh" rotation="15.75379" layer="-1000" />
+				<key time="7" joint="Crotch" rotation="-38.05887" layer="-100" translation="54 -59" />
+				<key time="7" joint="Torso" rotation="32" layer="-2001" />
+				<key time="9" joint="Left Thigh" rotation="-30.973242" layer="1100" translation="-9.5 -19.5" />
+				<key time="11" joint="Left Thigh" rotation="-7.9732394" layer="1100" image="ThighFront" translation="-19 -39" />
+				<key time="15" joint="Crotch" layer="-100" translation="33 -89" />
+				<key time="15" joint="Torso" rotation="1.591111" layer="-2001" />
+				<key time="15" joint="Left Thigh" rotation="-9.973239" layer="1100" translation="-24 6" />
+				<key time="15" joint="Right Thigh" rotation="3.753794" layer="-1000" translation="11 -4" />
+			</keys>
+		</animation>
+		<animation name="flickback" length="0.4">
+			<keys>
+				<key joint="Crotch" rotation="-28.07493" layer="-100" translation="3 -55" />
+				<key joint="Right Thigh" rotation="-8.021409" layer="-1000" />
+				<key joint="Left Thigh" rotation="32.08564" layer="1100" translation="-3.671377 2.800658" />
+				<key joint="Torso" rotation="6.016057" layer="-2001" />
+				<key time="8" joint="Crotch" rotation="-38.10168" layer="-100" translation="-48 -14" />
+				<key time="8" joint="Right Thigh" rotation="-15.36366" layer="-1000" />
+				<key time="8" joint="Torso" rotation="24.06423" layer="-2001" />
+				<key time="10" joint="Torso" rotation="29.077612" layer="-2001" />
+				<key time="10" joint="Crotch" rotation="-29.0776" layer="-100" translation="-15 -9" />
+				<key time="12" joint="Crotch" rotation="-23.06155" layer="-100" translation="-11 7" />
+				<key time="13" joint="Crotch" rotation="-20.05352" layer="-1" translation="-23 -4" />
+				<key time="13" joint="Right Thigh" rotation="-42.06367" layer="-1000" />
+				<key time="17" joint="Right Thigh" rotation="-70.62366" layer="-1000" />
+				<key time="18" joint="Crotch" rotation="-2.005352" layer="-100" translation="21 44" />
+				<key time="18" joint="Torso" rotation="44.11775" layer="-2001" />
+				<key time="20" joint="Torso" rotation="62.165924" layer="-1" translation="1.498972 1.851627" />
+				<key time="24" joint="Torso" rotation="62.165924" layer="-2001" translation="1.498972 1.851627" />
+				<key time="24" joint="Left Thigh" rotation="-16.21409" layer="1100" />
+				<key time="24" joint="Crotch" rotation="-2.005352" layer="-100" translation="6 64" />
+				<key time="24" joint="Right Thigh" rotation="-78.04813" layer="-999" />
+			</keys>
+		</animation>
+		<animation name="strong" length="0.35">
+			<keys>
+				<key joint="Crotch" rotation="-38.1017" layer="-100" translation="70 -26" />
+				<key joint="Torso" layer="-2001" />
+				<key joint="Left Thigh" rotation="20.05352" layer="1100" />
+				<key joint="Right Thigh" rotation="18.05887" layer="-1000" />
+				<key time="8" joint="Crotch" rotation="-3.69254" layer="-100" translation="68 -109" />
+				<key time="8" joint="Torso" rotation="20" layer="-2001" />
+				<key time="8" joint="Left Thigh" rotation="8" layer="1100" />
+				<key time="8" joint="Right Thigh" rotation="10.72554" layer="-1000" />
+				<key time="21" joint="Crotch" rotation="18.08028" layer="-100" translation="1 -85" />
+				<key time="21" joint="Torso" rotation="48" layer="-2001" translation="13 9" />
+				<key time="21" joint="Left Thigh" rotation="-16.07493" layer="1100" />
+				<key time="21" joint="Right Thigh" rotation="-17.94113" layer="-1000" />
+			</keys>
+		</animation>
+		<animation name="strong forward" length="0.5">
+			<keys>
+				<key joint="Crotch" rotation="17.67605" layer="-100" image="CrotchFront" translation="47 -27" />
+				<key joint="Left Thigh" rotation="-15.54478" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="11.82055" layer="-1000" image="ThighFront" />
+				<key joint="Torso" rotation="-12.83803" layer="-2000" image="TorsoFront" />
+				<key time="10" joint="Left Thigh" rotation="-2.123097" layer="-100" image="ThighFront" />
+				<key time="10" joint="Torso" rotation="-4.010705" layer="-2000" image="TorsoFront" />
+				<key time="10" joint="Right Thigh" rotation="18.10168" layer="-1000" image="ThighFront" />
+				<key time="10" joint="Crotch" rotation="2.005352" layer="-100" image="CrotchFront" translation="42 -71" />
+				<key time="15" joint="Torso" rotation="3.119437" layer="-2000" image="TorsoFront" />
+				<key time="15" joint="Crotch" rotation="9.297538" layer="-100" image="CrotchFront" translation="42 -65" />
+				<key time="15" joint="Left Thigh" rotation="1.600848" layer="-100" image="ThighFront" />
+				<key time="15" joint="Right Thigh" rotation="7.046635" layer="-1000" image="ThighFront" translation="0 10.90909" />
+				<key time="20" joint="Torso" rotation="10.24958" layer="-2000" image="TorsoFront" />
+				<key time="21" joint="Crotch" rotation="18.04817" layer="-100" image="CrotchFront" translation="46 -48" />
+				<key time="21" joint="Left Thigh" rotation="6.069582" layer="-100" image="ThighFront" />
+				<key time="21" joint="Right Thigh" rotation="-6.219419" layer="-1000" image="ThighFront" />
+				<key time="21" joint="Torso" rotation="12.03211" layer="-2000" image="TorsoFront" />
+				<key time="22" joint="Crotch" rotation="1.96253" layer="-100" translation="28 -19" />
+				<key time="22" joint="Torso" rotation="23.11774" layer="-2001" translation="2.25 1.25" />
+				<key time="22" joint="Right Thigh" rotation="6.855502" layer="-1000" />
+				<key time="22" joint="Left Thigh" rotation="37.14449" layer="1100" />
+				<key time="30" joint="Torso" rotation="52.11774" layer="-2001" translation="9 5" />
+				<key time="30" joint="Crotch" rotation="-6.037467" layer="-100" translation="33 -52" />
+				<key time="30" joint="Left Thigh" rotation="42.14449" layer="1100" />
+				<key time="30" joint="Right Thigh" rotation="-2.144492" layer="-1000" translation="10 -11" />
+			</keys>
+		</animation>
+		<animation name="strong down" length="0.69">
+			<keys>
+				<key joint="Crotch" rotation="-50.04818" layer="-100" translation="10 29" />
+				<key joint="Right Thigh" rotation="-10.06958" layer="-1000" />
+				<key joint="Torso" rotation="71.99999" layer="-2001" translation="9 7" />
+				<key joint="Left Thigh" rotation="23.96789" layer="1100" />
+				<key time="6" joint="Right Thigh" rotation="-1.280581" layer="-1000" />
+				<key time="6" joint="Crotch" rotation="-47.95508" layer="-100" translation="20 -9" />
+				<key time="17" joint="Crotch" rotation="-44.11775" layer="-100" translation="7 -48" />
+				<key time="17" joint="Torso" rotation="32.12843" layer="-2001" translation="5 12" />
+				<key time="17" joint="Right Thigh" rotation="26.16591" layer="-1000" />
+				<key time="17" joint="Left Thigh" rotation="-4.085643" layer="1100" translation="-3 14" />
+				<key time="25" joint="Crotch" rotation="-56.18195" layer="-100" translation="-12 -42" />
+				<key time="25" joint="Torso" rotation="42.17661" layer="-2001" translation="10 4" />
+				<key time="25" joint="Left Thigh" rotation="20.10704" layer="1100" />
+				<key time="25" joint="Right Thigh" rotation="-0.08564287" layer="-1000" />
+				<key time="30" joint="Crotch" rotation="-59.931953" layer="-100" translation="23 -62" />
+				<key time="30" joint="Left Thigh" rotation="27.3815" layer="1100" translation="-16.66667 -4" />
+				<key time="30" joint="Right Thigh" rotation="-14.0125" layer="-1000" />
+				<key time="41" joint="Left Thigh" rotation="61.93042" layer="1100" />
+				<key time="41" joint="Torso" rotation="50.17661" layer="-2001" translation="5 7" />
+				<key time="41" joint="Crotch" rotation="-68.18195" layer="-100" translation="-7 -17" />
+				<key time="41" joint="Right Thigh" rotation="30.133791" layer="-1000" />
+			</keys>
+		</animation>
+		<animation name="strong back" length="0.8">
+			<keys>
+				<key joint="Crotch" rotation="-28" layer="-100" translation="30 -53" />
+				<key joint="Right Thigh" rotation="17.54223" layer="-1000" />
+				<key joint="Left Thigh" rotation="-9.304114" layer="1100" translation="3 3" />
+				<key joint="Torso" rotation="4" layer="-2001" />
+				<key time="6" joint="Right Thigh" rotation="-2.457761" layer="200" />
+				<key time="10" joint="Right Thigh" rotation="1.542237" layer="-1000" />
+				<key time="10" joint="Left Thigh" rotation="10.69588" layer="1100" />
+				<key time="10" joint="Torso" rotation="46.85714" layer="-2001" translation="11 7" />
+				<key time="15" joint="Crotch" rotation="-32" layer="-100" translation="-12 -68" />
+				<key time="15" joint="Left Thigh" rotation="10.69588" layer="1100" />
+				<key time="15" joint="Right Thigh" rotation="1.542237" layer="-1000" />
+				<key time="15" joint="Torso" rotation="64" layer="-2001" translation="12 8" />
+				<key time="16" joint="Crotch" rotation="-24" layer="-100" translation="-15 -93" />
+				<key time="16" joint="Right Thigh" rotation="8" layer="-1000" image="ThighFront" translation="0 12" />
+				<key time="16" joint="Left Thigh" layer="-100" image="ThighFront" />
+				<key time="16" joint="Torso" rotation="32" layer="-2000" translation="2 15" />
+				<key time="25" joint="Crotch" rotation="16" layer="-100" translation="70 -90" />
+				<key time="25" joint="Torso" rotation="4" layer="-2000" translation="4 8" />
+				<key time="26" joint="Crotch" rotation="24" layer="-100" flip="true" translation="-53 -92" />
+				<key time="26" joint="Torso" rotation="24" layer="-2000" translation="4 8" />
+				<key time="28" joint="Torso" rotation="24" layer="-2000" translation="4 8" />
+				<key time="28" joint="Right Thigh" rotation="8" layer="-1000" image="ThighFront" translation="0 12" />
+				<key time="28" joint="Left Thigh" layer="-100" image="ThighFront" />
+				<key time="28" joint="Crotch" rotation="24" layer="-100" flip="true" translation="-74 -92" />
+				<key time="29" joint="Torso" rotation="64" layer="-2001" translation="15 -2" />
+				<key time="29" joint="Right Thigh" rotation="1.542237" layer="-1000" />
+				<key time="29" joint="Left Thigh" rotation="10.69588" layer="1100" />
+				<key time="29" joint="Crotch" rotation="31.999989" layer="-100" flip="true" translation="-100 -68" />
+				<key time="32" joint="Right Thigh" rotation="1.542237" layer="-1000" />
+				<key time="32" joint="Torso" rotation="64" layer="-2001" translation="18 4" />
+				<key time="32" joint="Crotch" rotation="31.999989" layer="-100" flip="true" translation="-66 -72" />
+				<key time="32" joint="Left Thigh" rotation="10.69588" layer="1100" />
+				<key time="33" joint="Right Thigh" rotation="-24" layer="-1000" image="ThighFront" translation="1 7" />
+				<key time="33" joint="Left Thigh" rotation="4" layer="-100" image="ThighFront" />
+				<key time="33" joint="Crotch" rotation="20" layer="-100" image="CrotchFront" flip="true" translation="-74 -91" />
+				<key time="33" joint="Torso" rotation="31.999989" layer="-2000" image="TorsoFront" translation="-2 7" />
+				<key time="37" joint="Right Thigh" rotation="-20.44444" layer="-1000" image="ThighFront" translation="1 7" />
+				<key time="37" joint="Crotch" rotation="-6.666667" layer="-100" image="CrotchFront" flip="true" translation="-47 -113" />
+				<key time="37" joint="Torso" rotation="3.555549" layer="-2000" image="TorsoFront" translation="-4.222222 9.222222" />
+				<key time="37" joint="Left Thigh" rotation="-8.444444" layer="-100" image="ThighFront" translation="-12 -2.222222" />
+				<key time="42" joint="Right Thigh" rotation="-16" layer="-1000" image="ThighFront" translation="1 7" />
+				<key time="42" joint="Torso" rotation="-32" layer="-2000" image="TorsoFront" translation="-7 12" />
+				<key time="42" joint="Left Thigh" rotation="-24" layer="-100" image="ThighFront" translation="-27 -5" />
+				<key time="42" joint="Crotch" rotation="-40" layer="-100" image="CrotchFront" flip="true" translation="36 -66" />
+				<key time="43" joint="Torso" rotation="31.999989" layer="-2000" image="TorsoFront" translation="-2 7" />
+				<key time="43" joint="Crotch" rotation="-24" layer="-100" image="CrotchFront" translation="-10 -86" />
+				<key time="43" joint="Right Thigh" rotation="-24" layer="-1000" image="ThighFront" translation="1 7" />
+				<key time="43" joint="Left Thigh" rotation="4" layer="-100" image="ThighFront" />
+				<key time="45" joint="Torso" rotation="31.999989" layer="-2000" image="TorsoFront" translation="-2 7" />
+				<key time="45" joint="Left Thigh" rotation="4" layer="-100" image="ThighFront" />
+				<key time="45" joint="Right Thigh" rotation="-24" layer="-1000" image="ThighFront" translation="1 7" />
+				<key time="45" joint="Crotch" rotation="-24" layer="-100" image="CrotchFront" translation="2 -77" />
+				<key time="46" joint="Left Thigh" rotation="10.69588" layer="1100" />
+				<key time="46" joint="Right Thigh" rotation="1.542237" layer="-1000" />
+				<key time="46" joint="Torso" rotation="64" layer="-2001" translation="13 11" />
+				<key time="46" joint="Crotch" rotation="-32" layer="-100" translation="-10 -67" />
+				<key time="48" joint="Crotch" rotation="-32" layer="-100" translation="-6 -73" />
+			</keys>
+		</animation>
+		<animation name="strong up" length="0.8">
+			<keys>
+				<key joint="Crotch" rotation="-2.016057" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key joint="Right Thigh" rotation="-0.01070547" layer="-1000" image="ThighFront" />
+				<key joint="Torso" rotation="2.005352" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-36.12843" layer="-100" image="ThighFront" />
+				<key time="7" joint="Torso" rotation="46.08028" layer="-2000" image="TorsoFront" />
+				<key time="7" joint="Right Thigh" rotation="10.05887" layer="-1000" image="ThighFront" />
+				<key time="7" joint="Crotch" rotation="-34.08028" layer="-100" image="CrotchFront" translation="13 -65" />
+				<key time="7" joint="Left Thigh" rotation="-6.026762" layer="-100" image="ThighFront" translation="-3.671377 2.800658" />
+				<key time="17" joint="Left Thigh" rotation="-20.4048" layer="-100" image="ThighFront" />
+				<key time="17" joint="Right Thigh" rotation="9.919716" layer="-1000" image="ThighFront" />
+				<key time="17" joint="Crotch" rotation="-16.29775" layer="-100" image="CrotchFront" translation="55 -15" />
+				<key time="17" joint="Torso" rotation="56.81829" layer="-2000" image="TorsoFront" translation="0 5" />
+				<key time="18" joint="Left Thigh" rotation="-12.18195" layer="1100" />
+				<key time="18" joint="Crotch" rotation="-12.07493" layer="-100" translation="67 10" />
+				<key time="18" joint="Right Thigh" rotation="31.957182" layer="-1000" />
+				<key time="18" joint="Torso" rotation="60.16056" layer="-2001" translation="-4 8" />
+				<key time="24" joint="Right Thigh" rotation="-1.65291" layer="-1000" image="ThighFront" />
+				<key time="24" joint="Left Thigh" rotation="19.89955" layer="1100" image="ThighFront" translation="8 -14" />
+				<key time="24" joint="Crotch" rotation="2.986618" layer="-1" translation="58 -80" />
+				<key time="31" joint="Crotch" rotation="-5.951828" layer="-100" translation="85 -131" />
+				<key time="31" joint="Right Thigh" rotation="-6.198009" layer="-1000" />
+				<key time="31" joint="Left Thigh" rotation="13.99465" layer="1100" />
+				<key time="31" joint="Torso" rotation="-4.042821" layer="-2001" />
+				<key time="32" joint="Left Thigh" rotation="6.048171" layer="-100" image="ThighFront" />
+				<key time="32" joint="Torso" rotation="12.03211" layer="-2000" />
+				<key time="32" joint="Crotch" rotation="-6.016057" layer="-100" translation="85 -130" />
+				<key time="32" joint="Right Thigh" rotation="-16.13916" layer="-1000" image="ThighFront" />
+				<key time="40" joint="Crotch" rotation="11.97601" layer="-100" translation="85 -102" />
+				<key time="40" joint="Torso" rotation="-12" layer="-2000" />
+				<key time="40" joint="Left Thigh" rotation="-50.66096" layer="-100" image="ThighFront" translation="38 0" />
+				<key time="40" joint="Right Thigh" rotation="10.33212" layer="-1000" image="ThighFront" translation="-42 13" />
+			</keys>
+		</animation>
+		<animation name="fireball" length="0.45">
+			<keys>
+				<key joint="Crotch" rotation="-2.016057" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key joint="Right Thigh" rotation="-0.01070547" layer="-1000" image="ThighFront" />
+				<key joint="Left Thigh" rotation="-36.12843" layer="-100" image="ThighFront" />
+				<key joint="Torso" rotation="2.005352" layer="-2000" image="TorsoFront" />
+				<key time="5" joint="Crotch" rotation="-20.04282" layer="-100" image="CrotchFront" translation="58 -61" />
+				<key time="5" joint="Left Thigh" rotation="-12.07493" layer="-100" image="ThighFront" translation="-5 -7" />
+				<key time="5" joint="Right Thigh" rotation="36.06423" layer="-1000" image="ThighFront" />
+				<key time="5" joint="Torso" rotation="30.08028" layer="-2000" image="TorsoFront" translation="-1 0" />
+				<key time="6" joint="Left Thigh" rotation="-18.05887" layer="1100" />
+				<key time="6" joint="Right Thigh" rotation="50.10168" layer="-1000" />
+				<key time="6" joint="Crotch" rotation="-26.06958" layer="-100" translation="43 -38" />
+				<key time="6" joint="Torso" rotation="48.12844" layer="-2001" translation="9 7" />
+				<key time="15" joint="Right Thigh" rotation="44.11775" layer="-1000" />
+				<key time="15" joint="Left Thigh" rotation="-12.07493" layer="1100" />
+				<key time="15" joint="Crotch" rotation="-34.10168" layer="-100" translation="14 -19" />
+				<key time="15" joint="Torso" rotation="70.18732" layer="-2001" translation="8 -3" />
+				<key time="16" joint="Right Thigh" rotation="18.11239" layer="-1000" image="ThighFront" translation="-40 -2" />
+				<key time="16" joint="Crotch" rotation="-4.085643" layer="-100" translation="59 -40" />
+				<key time="16" joint="Left Thigh" rotation="-32.0535" layer="-100" image="ThighFront" translation="52 9" />
+				<key time="16" joint="Torso" rotation="32.10704" layer="-2000" translation="8 -8" />
+				<key time="23" joint="Torso" rotation="9.12302" layer="-2000" translation="1.454545 -6.909091" />
+				<key time="23" joint="Right Thigh" rotation="1.735133" layer="-1000" image="ThighFront" translation="-18.09091 -5.545454" />
+				<key time="23" joint="Crotch" rotation="-7.8663526" layer="-100" translation="36 -102" />
+				<key time="23" joint="Left Thigh" rotation="-2.235343" layer="-100" image="ThighFront" translation="10.09091 13.18182" />
+				<key time="27" joint="Torso" rotation="-4.010705" layer="-2000" />
+				<key time="27" joint="Crotch" rotation="-10.02676" layer="-100" translation="29 -79" />
+				<key time="27" joint="Left Thigh" rotation="15.94647" layer="-100" image="ThighFront" translation="10 -18" />
+				<key time="27" joint="Right Thigh" rotation="-13.90901" layer="-1000" image="ThighFront" />
+			</keys>
+		</animation>
+		<animation name="low fireball" length="0.4">
+			<keys>
+				<key joint="Crotch" rotation="-32.02141" layer="-100" translation="12 -53" />
+				<key joint="Torso" rotation="32.04282" layer="-2001" translation="-1 14" />
+				<key joint="Left Thigh" rotation="-6.133789" layer="1100" />
+				<key joint="Right Thigh" rotation="16.04282" layer="-1000" />
+				<key time="7" joint="Crotch" rotation="-24.02141" layer="-100" translation="30 -59" />
+				<key time="7" joint="Torso" rotation="16.04282" layer="-2001" />
+				<key time="7" joint="Left Thigh" rotation="-10.13379" layer="1100" />
+				<key time="7" joint="Right Thigh" rotation="28.04282" layer="-1000" />
+				<key time="15" joint="Crotch" rotation="-22.37435" layer="-100" translation="20 -54" />
+				<key time="15" joint="Torso" rotation="51.80752" layer="-2001" translation="2 14" />
+				<key time="15" joint="Left Thigh" rotation="-17.6632" layer="1100" translation="-7 0" />
+				<key time="15" joint="Right Thigh" rotation="28.27811" layer="-1000" translation="-5 1" />
+				<key time="24" joint="Crotch" rotation="-34.37435" layer="-100" translation="23 -25" />
+				<key time="24" joint="Torso" rotation="67.80753" layer="-2001" translation="19 10" />
+				<key time="24" joint="Left Thigh" rotation="-9.6632" layer="1100" />
+				<key time="24" joint="Right Thigh" rotation="28.27811" layer="-1000" />
+			</keys>
+		</animation>
+		<animation name="high fireball" length="0.45">
+			<keys>
+				<key joint="Crotch" layer="-100" translation="12 -55" />
+				<key joint="Torso" layer="-2001" />
+				<key joint="Left Thigh" rotation="-4.010705" layer="1100" />
+				<key joint="Right Thigh" rotation="-32.08564" layer="-1000" />
+				<key time="13" joint="Crotch" rotation="-32.02141" layer="-100" translation="-8 -63" />
+				<key time="13" joint="Torso" rotation="21.59111" layer="-2001" />
+				<key time="13" joint="Left Thigh" rotation="14.02676" layer="1100" />
+				<key time="13" joint="Right Thigh" rotation="-12.59313" layer="-1000" />
+				<key time="19" joint="Crotch" rotation="-26.13906" layer="-100" translation="20 -53" />
+				<key time="19" joint="Left Thigh" rotation="22.02676" layer="1100" />
+				<key time="19" joint="Right Thigh" rotation="-12.5931" layer="200" />
+				<key time="27" joint="Crotch" rotation="-12.02141" layer="-100" translation="21 -49" />
+				<key time="27" joint="Torso" rotation="21.59111" layer="-2001" translation="3 6" />
+				<key time="27" joint="Right Thigh" rotation="-12.59313" layer="-1000" />
+			</keys>
+		</animation>
+		<animation name="back fireball" length="0.4">
+			<keys>
+				<key joint="Crotch" rotation="-2.016057" layer="-100" image="CrotchFront" translation="2 -73" />
+				<key joint="Torso" rotation="2.005352" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-36.12843" layer="-100" image="ThighFront" />
+				<key joint="Right Thigh" rotation="-0.01070547" layer="-1000" image="ThighFront" />
+				<key time="24" joint="Crotch" rotation="-2.048171" layer="-100" image="CrotchFront" translation="14 -76" />
+				<key time="24" joint="Torso" layer="-2000" image="TorsoFront" />
+			</keys>
+		</animation>
+		<animation name="evade" length="0.5">
+			<keys>
+				<key joint="Crotch" rotation="-28.07493" layer="-100" translation="5 -57" />
+				<key joint="Right Thigh" rotation="-8.021409" layer="-1000" />
+				<key joint="Torso" rotation="6.016057" layer="-2001" />
+				<key joint="Left Thigh" rotation="32.08564" layer="1100" translation="-8 0" />
+				<key time="7" joint="Torso" rotation="32.08564" layer="-2001" translation="0 11" />
+				<key time="7" joint="Left Thigh" rotation="-92.27825" layer="1100" image="ThighFront" />
+				<key time="7" joint="Crotch" rotation="36.09634" layer="-100" />
+				<key time="7" joint="Right Thigh" rotation="-102.273" layer="-1000" image="ThighFront" translation="14 23" />
+				<key time="19" joint="Right Thigh" rotation="-102.273" layer="-1000" image="ThighFront" />
+				<key time="19" joint="Left Thigh" rotation="-104.2783" layer="1100" image="ThighFront" />
+				<key time="19" joint="Crotch" rotation="312.8348" layer="-100" />
+				<key time="19" joint="Torso" rotation="32.08564" layer="-2001" translation="3 13" />
+				<key time="26" joint="Right Thigh" rotation="-84.40707" layer="1" image="ThighFront" translation="3.818182 5.727273" />
+				<key time="30" joint="Crotch" rotation="372.9952" layer="-100" translation="-8 -18" />
+				<key time="30" joint="Torso" rotation="8" layer="-2001" translation="-7 11" />
+				<key time="30" joint="Left Thigh" rotation="-62.18732" layer="1100" image="ThighFront" />
+				<key time="30" joint="Right Thigh" rotation="-74.19801" layer="-1000" image="ThighFront" translation="6 9" />
+			</keys>
+		</animation>
+		<animation name="evade back" length="0.6">
+			<keys>
+				<key joint="Crotch" rotation="14.03752" layer="-100" translation="23 -12" />
+				<key joint="Right Thigh" rotation="-58.1552" layer="-1000" />
+				<key joint="Torso" rotation="3.989295" layer="-2001" />
+				<key joint="Left Thigh" rotation="-60.16056" layer="1100" />
+				<key time="4" joint="Torso" layer="-2001" />
+				<key time="4" joint="Right Thigh" rotation="-88.2355" layer="-1000" />
+				<key time="4" joint="Crotch" rotation="14.03752" layer="-100" translation="-11 83" />
+				<key time="4" joint="Left Thigh" rotation="-88.2355" layer="1100" />
+				<key time="9" joint="Crotch" rotation="-22.7273" layer="-100" translation="10 -12" />
+				<key time="13" joint="Right Thigh" rotation="10.02676" layer="-1000" />
+				<key time="13" joint="Crotch" rotation="-52.13916" layer="-100" translation="12 -28" />
+				<key time="13" joint="Left Thigh" rotation="12.03211" layer="1100" />
+				<key time="13" joint="Torso" rotation="32.08564" layer="-2001" />
+				<key time="17" joint="Right Thigh" rotation="-111.813" layer="-1" translation="17 18" />
+				<key time="17" joint="Left Thigh" rotation="-105.0162" layer="11" />
+				<key time="18" joint="Right Thigh" rotation="-107.813" layer="-1000" translation="17 18" />
+				<key time="18" joint="Crotch" rotation="-154.4122" layer="-100" />
+				<key time="18" joint="Left Thigh" rotation="-105.0162" layer="1100" />
+				<key time="26" joint="Left Thigh" rotation="-105.0162" layer="1100" />
+				<key time="26" joint="Right Thigh" rotation="-111.813" layer="-1000" translation="17 18" />
+				<key time="26" joint="Torso" rotation="32.08564" layer="-2001" />
+				<key time="26" joint="Crotch" rotation="-324.8669" layer="-100" />
+				<key time="36" joint="Crotch" rotation="-395.0539" layer="-100" translation="-33 138" />
+				<key time="36" joint="Left Thigh" rotation="-62.165924" layer="1100" translation="-7.127145 -8.086216" />
+				<key time="36" joint="Torso" rotation="70.18732" layer="-2001" />
+				<key time="36" joint="Right Thigh" rotation="-60.16056" layer="-1000" />
+			</keys>
+		</animation>
+		<animation name="air evade" length="0.2">
+			<keys>
+				<key joint="Crotch" rotation="-26.06958" layer="-100" image="CrotchFront" translation="30 -121" />
+				<key joint="Torso" rotation="28.07493" layer="-2000" image="TorsoFront" />
+				<key joint="Left Thigh" rotation="-70.18732" layer="-100" image="ThighFront" translation="-10 0" />
+				<key joint="Right Thigh" rotation="12.03211" layer="-1000" image="ThighFront" translation="0 -7" />
+				<key time="12" joint="Crotch" rotation="-22.05887" layer="-100" translation="11 -79" />
+				<key time="12" joint="Torso" rotation="40.10704" layer="-2001" />
+				<key time="12" joint="Left Thigh" rotation="-42.1338" layer="1100" />
+				<key time="12" joint="Right Thigh" rotation="-82.21941" layer="-1000" translation="16 12" />
+			</keys>
+		</animation>
+		<animation name="Dying" length="2">
+			<keys>
+				<key joint="Crotch" rotation="-34.03747" layer="-100" translation="-5 -80" />
+				<key joint="Right Thigh" rotation="13.98394" layer="-1000" />
+				<key joint="Torso" rotation="36" layer="-2001" translation="7 9" />
+				<key joint="Left Thigh" rotation="-12.08564" layer="1100" />
+				<key time="20" joint="Torso" rotation="58" layer="-2001" translation="13 7" />
+				<key time="20" joint="Right Thigh" rotation="-28.08564" layer="-1000" />
+				<key time="20" joint="Crotch" rotation="-127.073105" layer="-100" translation="-67 -103" />
+				<key time="20" joint="Left Thigh" rotation="1.983939" layer="1100" />
+				<key time="32" joint="Left Thigh" rotation="-12.08564" layer="1100" />
+				<key time="32" joint="Crotch" rotation="-114.96279" layer="-100" translation="-65 -173" />
+				<key time="32" joint="Torso" rotation="36" layer="-2001" translation="7 9" />
+				<key time="32" joint="Right Thigh" rotation="13.98394" layer="-1000" />
+				<key time="48" joint="Left Thigh" rotation="1.983939" layer="1100" />
+				<key time="48" joint="Crotch" rotation="-127.073105" layer="-100" translation="-62 238" />
+				<key time="48" joint="Right Thigh" rotation="-28.08564" layer="-1000" />
+				<key time="48" joint="Torso" rotation="58" layer="-2001" translation="13 7" />
+				<key time="64" joint="Right Thigh" rotation="13.98394" layer="-1000" />
+				<key time="64" joint="Left Thigh" rotation="-54.75544" layer="1100" />
+				<key time="64" joint="Crotch" rotation="-114.96279" layer="-100" translation="-42 243" />
+				<key time="64" joint="Torso" rotation="36" layer="-2001" translation="7 9" />
+				<key time="80" joint="Left Thigh" rotation="23.70128" layer="1100" />
+				<key time="80" joint="Torso" rotation="58" layer="-2001" translation="13 7" />
+				<key time="80" joint="Crotch" rotation="-152.2415" layer="-100" translation="-62 238" />
+				<key time="80" joint="Right Thigh" rotation="-28.08564" layer="-1000" />
+				<key time="96" joint="Right Thigh" rotation="13.98394" layer="-1000" />
+				<key time="96" joint="Left Thigh" rotation="-36.80978" layer="1100" />
+				<key time="96" joint="Torso" rotation="36" layer="-2001" translation="7 9" />
+				<key time="96" joint="Crotch" rotation="-118.6861" layer="-100" translation="-42 243" />
+				<key time="108" joint="Left Thigh" rotation="12.96786" layer="1100" />
+			</keys>
+		</animation>
+		<animation name="Dead" length="0.1">
+			<keys>
+				<key joint="Crotch" rotation="-118.6861" layer="-100" translation="-42 243" />
+				<key joint="Torso" rotation="36" layer="-2001" translation="7 9" />
+				<key joint="Left Thigh" rotation="12.96786" layer="1100" />
+				<key joint="Right Thigh" rotation="13.98394" layer="-1000" />
+			</keys>
+		</animation>
+	</animations>
+</animationContainer>

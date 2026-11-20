@@ -1,0 +1,68 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:DesktopGL
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+/reference:XmlBuddy.Content.dll
+
+#---------------------------------- Content ---------------------------------#
+
+#begin AnimationBuddyShader.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:AnimationBuddyShader.fx
+
+#begin MegaMan/Art/MegaManSprites.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MegaMan/Art/MegaManSprites.jpg
+
+#begin MegaMan/Art/MegaManSpriteSheet_Diffuse.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MegaMan/Art/MegaManSpriteSheet_Diffuse.png
+
+#begin MegaMan/Art/MegaManSpriteSheet_Normal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MegaMan/Art/MegaManSpriteSheet_Normal.png
+
+#begin MegaMan/MegaManAnimations.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:MegaMan/MegaManAnimations.xml
+
+#begin MegaMan/MegaManModel.xml
+/importer:XmlSourceImporter
+/processor:XmlDocumentProcessor
+/build:MegaMan/MegaManModel.xml
+

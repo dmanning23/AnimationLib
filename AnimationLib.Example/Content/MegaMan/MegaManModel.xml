@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+<skeleton>
+	<bone name="Crotch">
+		<joints>
+			<joint name="Torso" />
+			<joint name="Left Thigh" />
+			<joint name="Right Thigh" />
+		</joints>
+		<images>
+			<image name="CrotchFront" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+				<upperleft>29 21</upperleft>
+				<lowerright>81 59</lowerright>
+				<anchorcoord>24 18</anchorcoord>
+				<joints>
+					<jointData RagdollType="Limit" limit1="126.76209" limit2="-126.76209">
+						<location>24 9</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="-108.63624" limit2="19.0874">
+						<location>31 12</location>
+					</jointData>
+					<jointData RagdollType="Limit" limit1="-47.574295" limit2="44.283943">
+						<location>20 9</location>
+					</jointData>
+				</joints>
+				<circles>
+					<Item center="27.236023 12.565979" radius="39.051247" />
+				</circles>
+			</image>
+		</images>
+		<bones>
+			<bone name="Torso">
+				<joints>
+					<joint name="Head" />
+					<joint name="Left Bicep" />
+					<joint name="Right Bicep" />
+				</joints>
+				<images>
+					<image name="TorsoFront" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+						<upperleft>93 17</upperleft>
+						<lowerright>148 68</lowerright>
+						<anchorcoord>25 38</anchorcoord>
+						<joints>
+							<jointData>
+								<location>29 11</location>
+							</jointData>
+							<jointData RagdollType="Limit" limit1="-140.74539" limit2="-8.329983">
+								<location>44 18</location>
+							</jointData>
+							<jointData RagdollType="Limit" limit1="-145.17198" limit2="75.678345">
+								<location>12 17</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Head">
+						<joints>
+							<joint name="Face" />
+						</joints>
+						<images>
+							<image name="HeadFront" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+								<upperleft>281 6</upperleft>
+								<lowerright>367 92</lowerright>
+								<anchorcoord>43 74.99997</anchorcoord>
+								<joints>
+									<jointData>
+										<location>50 56.99994</location>
+									</jointData>
+								</joints>
+								<circles>
+									<Item center="46.07544 41.20572" radius="39.051247" />
+								</circles>
+							</image>
+						</images>
+						<bones>
+							<bone name="Face">
+								<images>
+									<image name="Face Normal" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+										<upperleft>31 277</upperleft>
+										<lowerright>85 329</lowerright>
+										<anchorcoord>24.357605 28.329895</anchorcoord>
+									</image>
+								</images>
+							</bone>
+						</bones>
+					</bone>
+					<bone name="Left Bicep">
+						<joints>
+							<joint name="Left Forearm" />
+						</joints>
+						<images>
+							<image name="BicepFront" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+								<upperleft>163 30</upperleft>
+								<lowerright>194 71</lowerright>
+								<anchorcoord>14.820282 5.178955</anchorcoord>
+								<joints>
+									<jointData>
+										<location>12.668945 36.12036</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Left Forearm">
+								<joints>
+									<joint name="Left Hand" />
+								</joints>
+								<images>
+									<image name="Forearm Front" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+										<upperleft>220 8</upperleft>
+										<lowerright>256 52</lowerright>
+										<anchorcoord>18.682281 9.64209</anchorcoord>
+										<joints>
+											<jointData>
+												<location>15.036652 28.528778</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Left Hand" type="Weapon">
+										<images>
+											<image name="Fist Thumb" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+												<upperleft>70 202</upperleft>
+												<lowerright>117 250</lowerright>
+												<anchorcoord>19.613586 11.675079</anchorcoord>
+												<circles>
+													<Item center="27.236023 12.565979" radius="24.02318" />
+												</circles>
+											</image>
+										</images>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+					<bone name="Right Bicep">
+						<joints>
+							<joint name="Right Forearm" />
+						</joints>
+						<images>
+							<image name="BicepFront" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+								<upperleft>163 30</upperleft>
+								<lowerright>194 71</lowerright>
+								<anchorcoord>14.820282 5.178955</anchorcoord>
+								<joints>
+									<jointData>
+										<location>12.668945 36.12036</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Right Forearm">
+								<joints>
+									<joint name="Right Hand" />
+								</joints>
+								<images>
+									<image name="Forearm Front" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+										<upperleft>220 8</upperleft>
+										<lowerright>256 52</lowerright>
+										<anchorcoord>18.682281 9.64209</anchorcoord>
+										<joints>
+											<jointData>
+												<location>15.036652 28.528778</location>
+											</jointData>
+										</joints>
+									</image>
+								</images>
+								<bones>
+									<bone name="Right Hand" type="Weapon">
+										<images>
+											<image name="Fist Thumb" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+												<upperleft>70 202</upperleft>
+												<lowerright>117 250</lowerright>
+												<anchorcoord>19.613586 11.675079</anchorcoord>
+												<circles>
+													<Item center="27.236023 12.565979" radius="24.02318" />
+												</circles>
+											</image>
+										</images>
+									</bone>
+								</bones>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Left Thigh">
+				<joints>
+					<joint name="Left Calf" />
+				</joints>
+				<images>
+					<image name="ThighFront" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+						<upperleft>380 15</upperleft>
+						<lowerright>418 64</lowerright>
+						<anchorcoord>21 6</anchorcoord>
+						<joints>
+							<jointData>
+								<location>14.055725 44.324615</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Left Calf">
+						<joints>
+							<joint name="Left Foot" />
+						</joints>
+						<images>
+							<image name="Calf Front" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+								<upperleft>441 17</upperleft>
+								<lowerright>480 58</lowerright>
+								<anchorcoord>21.325317 8.7699585</anchorcoord>
+								<joints>
+									<jointData>
+										<location>20 29</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Left Foot" type="Foot">
+								<images>
+									<image name="Foot Front" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+										<upperleft>8 112</upperleft>
+										<lowerright>68 160</lowerright>
+										<anchorcoord>35.496338 18.766235</anchorcoord>
+										<circles>
+											<Item center="39.004395 18.485931" radius="19.313196" />
+										</circles>
+									</image>
+									<image name="Foot Side" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+										<upperleft>214 105</upperleft>
+										<lowerright>288 147</lowerright>
+										<anchorcoord>28 17</anchorcoord>
+										<circles>
+											<Item center="33.173065 16.037415" radius="20.282808" />
+										</circles>
+									</image>
+								</images>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+			<bone name="Right Thigh">
+				<joints>
+					<joint name="Right Calf" />
+				</joints>
+				<images>
+					<image name="ThighFront" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+						<upperleft>380 15</upperleft>
+						<lowerright>418 64</lowerright>
+						<anchorcoord>21 6</anchorcoord>
+						<joints>
+							<jointData>
+								<location>14.055725 44.324615</location>
+							</jointData>
+						</joints>
+					</image>
+				</images>
+				<bones>
+					<bone name="Right Calf">
+						<joints>
+							<joint name="Right Foot" />
+						</joints>
+						<images>
+							<image name="Calf Front" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+								<upperleft>441 17</upperleft>
+								<lowerright>480 58</lowerright>
+								<anchorcoord>21.325317 8.7699585</anchorcoord>
+								<joints>
+									<jointData>
+										<location>20 29</location>
+									</jointData>
+								</joints>
+							</image>
+						</images>
+						<bones>
+							<bone name="Right Foot" type="Foot">
+								<images>
+									<image name="Foot Front" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+										<upperleft>8 112</upperleft>
+										<lowerright>68 160</lowerright>
+										<anchorcoord>35.496338 18.766235</anchorcoord>
+										<circles>
+											<Item center="39.004395 18.485931" radius="19.313196" />
+										</circles>
+									</image>
+									<image name="Foot Side" imageFile1="Art/MegaManSpriteSheet_Diffuse.png" normalMap1="Art/MegaManSpriteSheet_Normal.png">
+										<upperleft>214 105</upperleft>
+										<lowerright>288 147</lowerright>
+										<anchorcoord>28 17</anchorcoord>
+										<circles>
+											<Item center="33.173065 16.037415" radius="20.282808" />
+										</circles>
+									</image>
+								</images>
+							</bone>
+						</bones>
+					</bone>
+				</bones>
+			</bone>
+		</bones>
+	</bone>
+</skeleton>
