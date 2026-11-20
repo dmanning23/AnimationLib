@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "AnimationTest",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/AnimationTest/bin/Debug/net8.0/AnimationTest.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/AnimationTest",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "env": {
+                "MGFXC_WINE_PATH": "/Users/danmanning/.winemonogame"
+            }
+        }
+    ]
+}
