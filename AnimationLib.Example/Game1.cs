@@ -1,162 +1,151 @@
 using DrawListBuddy;
+using FilenameBuddy;
 using GameTimer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
 using RenderBuddy;
 using ResolutionBuddy;
-using System;
-using FilenameBuddy;
 
 namespace AnimationLib.Example
 {
     /// <summary>
-    /// This is the main type for your game
+    /// The smallest possible game that loads an AnimationLib character and plays one of its animations.
+    ///
+    /// The flow every frame is:
+    ///   Update: advance the clock -> pose the skeleton for the current animation time -> run ragdoll physics
+    ///   Draw:   the skeleton writes its sprites into a DrawList -> the DrawList is drawn through the Renderer
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class Game1 : Game
     {
-        #region Properties
+        private readonly GraphicsDeviceManager _graphics;
 
-        GraphicsDeviceManager graphics;
+        /// <summary>
+        /// Drives every AnimationLib character. Pass the same clock to all of them so they stay in sync,
+        /// and pause/slow it down to pause/slow down the whole game.
+        /// </summary>
+        private readonly GameClock _clock = new GameClock();
 
-        Renderer Renderer { get; set; }
-        DrawList Drawlist { get; set; }
-        GameClock Clock;
+        /// <summary>
+        /// The character: a skeleton (bones + images) and the set of animations that move it.
+        /// </summary>
+        private readonly AnimationContainer _character = new AnimationContainer();
 
-        public AnimationContainer Animations { get; private set; }
+        /// <summary>
+        /// A reusable list of sprites. The character renders itself into this each frame,
+        /// then the list is drawn all at once in the right layer order.
+        /// </summary>
+        private readonly DrawList _drawList = new DrawList();
 
-        Vector2 _center;
+        /// <summary>
+        /// Wraps the SpriteBatch, the lighting shader, and the camera.
+        /// </summary>
+        private Renderer _renderer;
 
-        #endregion //Properties
-
-        #region Methods
+        /// <summary>
+        /// Where the character stands, in virtual-resolution (game) coordinates.
+        /// </summary>
+        private Vector2 _characterPosition;
 
         public Game1()
         {
             Content.RootDirectory = "Content";
-            Drawlist = new DrawList();
-            Clock = new GameClock();
 
-            graphics = new GraphicsDeviceManager(this)
+            // HiDef is needed for the AnimationBuddyShader lighting effect.
+            _graphics = new GraphicsDeviceManager(this)
             {
                 GraphicsProfile = GraphicsProfile.HiDef
             };
 
-            Animations = new AnimationContainer();
+            // Render in a fixed 1280x720 coordinate space no matter how big the window is.
+            // The component registers itself with the game, so we don't need to keep a reference to it.
+            new ResolutionComponent(this, _graphics,
+                virtualResolution: new Point(1280, 720),
+                screenResolution: new Point(1280, 720),
+                fullscreen: false,
+                letterbox: true,
+                useDeviceResolution: false);
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
-        protected override void Initialize()
-        {
-            var resolution = new ResolutionComponent(this, graphics, new Point(1280, 720), new Point(1280, 720), false, true, false);
-            base.Initialize();
-        }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
         protected override void LoadContent()
         {
-            Renderer = new Renderer(this, Content);
-            Renderer.AmbientColor = new Color(.2f, .2f, .2f);
-            Renderer.ClearLights();
-            Renderer.AddDirectionalLight(new Vector3(0f, 1f, .1f), new Color(.2f, 0f, .3f));
-            Renderer.AddDirectionalLight(new Vector3(-.5f, -1f, -.1f), new Color(1f, .7f, 0f, 0.75f));
-            Renderer.AddDirectionalLight(new Vector3(.5f, -1f, .6f), new Color(1f, 1f, .75f));
+            // --- Renderer ---
+            // Lights must be set up *before* Renderer.LoadContent, which pushes them into the shader.
+            // You can skip the lighting entirely and the Renderer will use one default light.
+            _renderer = new Renderer(this, Content);
+            _renderer.AmbientColor = new Color(.2f, .2f, .2f);
+            _renderer.ClearLights();
+            _renderer.AddDirectionalLight(new Vector3(0f, 1f, .1f), new Color(.2f, 0f, .3f));
+            _renderer.AddDirectionalLight(new Vector3(-.5f, -1f, -.1f), new Color(1f, .7f, 0f, 0.75f));
+            _renderer.AddDirectionalLight(new Vector3(.5f, -1f, .6f), new Color(1f, 1f, .75f));
+            _renderer.LoadContent(GraphicsDevice);
 
-            Renderer.Camera.IgnoreWorldBoundary = true;
+            // --- Character ---
+            // Paths are relative to the Content folder. Both XML files are built by the content pipeline
+            // (see AnimationTest.mgcb), which is why the ContentManager is passed in.
+            // The skeleton has to be loaded first, because the animations refer to its bones.
+            _character.ReadSkeletonXml(new Filename("MegaMan/MegaManModel.xml"), _renderer, Content);
+            _character.ReadAnimationXml(new Filename("MegaMan/MegaManAnimations.xml"), Content);
 
-            Renderer.LoadContent(GraphicsDevice);
+            // Animation names come from the animation file. Loop it forever.
+            _character.SetAnimation("Walking", EPlayback.Loop);
 
-            try
-            {
-                LoadModel(@"MegaMan\MegaManModel.xml",
-                    @"MegaMan\MegaManAnimations.xml",
-                    Content);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Darn! Couldn't load the thing.", ex);
-            }
+            _characterPosition = Resolution.TitleSafeArea.Center.ToVector2();
 
-            //start the time
-            Clock.Start();
-            Animations.SetAnimation("Walking", EPlayback.Loop);
+            // --- Camera ---
+            // The camera pans and zooms to keep every point added to it on screen.
+            // Turn off the world boundary so it doesn't clamp to the Renderer's default world size,
+            // then snap it straight to the character instead of easing in from the origin.
+            _renderer.Camera.IgnoreWorldBoundary = true;
+            _renderer.Camera.AddPoint(_characterPosition);
+            _renderer.Camera.BeginScene(true);
 
-            _center = Resolution.TitleSafeArea.Center.ToVector2();
-
-            Renderer.Camera.BeginScene(true);
+            _clock.Start();
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
-            Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                this.Exit();
+                Exit();
             }
 
+            _clock.Update(gameTime);
+
+            // Camera.Update clears last frame's points, so add this frame's points after it.
+            _renderer.Camera.Update(_clock);
+            _renderer.Camera.AddPoint(_characterPosition);
+            _renderer.Update(gameTime);
+
+            // Pose the skeleton for the current point in the animation...
+            _character.Update(_clock, _characterPosition, isFlipped: false, rotation: 0f, ignoreRagdoll: false);
+
+            // ...then let any ragdoll bones (hair, cloth, etc.) swing on top of that pose.
+            // Call this after Update every frame.
+            _character.UpdateRagdoll();
+
             base.Update(gameTime);
-
-            Clock.Update(gameTime);
-
-            Renderer.Camera.Update(Clock);
-            Renderer.Update(gameTime);
-
-            Animations.Update(Clock, _center, false, 0f, false);
-            Animations.UpdateRagdoll();
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            graphics.GraphicsDevice.Clear(Color.DarkGray);
+            GraphicsDevice.Clear(Color.DarkGray);
 
-            Renderer.Camera.AddPoint(_center);
+            // Ease the camera toward the points added during Update.
+            _renderer.Camera.BeginScene(false);
 
-            Renderer.Camera.BeginScene(false);
+            // Empty out last frame's sprites, then have the character add this frame's.
+            _drawList.Flush();
+            _character.Render(_drawList);
 
-            //set up the drawlist
-            Drawlist.Set(0.0f, Color.White, 1f);
-            Drawlist.Flush();
-
-            //draw the character
-            Animations.Render(Drawlist);
-            Renderer.SpriteBatchBegin(BlendState.AlphaBlend, Renderer.Camera.TranslationMatrix * Resolution.TransformationMatrix(), SpriteSortMode.Immediate);
-
-            Drawlist.Render(Renderer);
-            Renderer.SpriteBatchEnd();
+            // Camera matrix first, then the resolution matrix to scale game coordinates to the window.
+            _renderer.SpriteBatchBegin(BlendState.AlphaBlend,
+                _renderer.Camera.TranslationMatrix * Resolution.TransformationMatrix());
+            _drawList.Render(_renderer);
+            _renderer.SpriteBatchEnd();
 
             base.Draw(gameTime);
         }
-
-        private void LoadModel(string modelFilename, string animationFilename, ContentManager content = null)
-        {
-            var modelFile = new Filename();
-            var animationFile = new Filename();
-
-            modelFile.SetRelFilename(modelFilename);
-            animationFile.SetRelFilename(animationFilename);
-
-            Animations.ReadSkeletonXml(modelFile, Renderer, content);
-            Animations.ReadAnimationXml(animationFile, content);
-        }
-
-        #endregion //Methods
     }
 }
